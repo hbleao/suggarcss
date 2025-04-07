@@ -8,6 +8,10 @@ export default defineConfig({
 	dts: true,
 	minify: true,
 	clean: true,
+	shims: true,
+	banner: {
+		js: "#!/usr/bin/env node",
+	},
 	esbuildPlugins: [
 		{
 			name: "scss-module",

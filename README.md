@@ -12,10 +12,10 @@ A diferença principal é que o SugarCSS utiliza SASS para estilização em vez 
 
 ```bash
 # Instalar a CLI globalmente
-npm install -g @sugarcss/react
+npm install -g sugarcss-react
 
 # Ou usar diretamente com npx
-npx @sugarcss/react install <componente>
+npx sugarcss-react install <componente>
 ```
 
 ## Uso

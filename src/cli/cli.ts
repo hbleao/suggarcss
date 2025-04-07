@@ -15,7 +15,11 @@ program
 program
 	.command("install")
 	.argument("<component>", "Nome do componente para instalar")
-	.option("-d, --dir <directory>", "Diretório de destino para instalar o componente", "")
+	.option(
+		"-d, --dir <directory>",
+		"Diretório de destino para instalar o componente",
+		"",
+	)
 	.action(async (component, options) => {
 		const available = [
 			"button",
@@ -28,22 +32,22 @@ program
 			"tabs",
 			"link",
 		];
-		
+
 		// Verificar se o componente está na lista mas ainda não foi implementado
 		const implemented = ["button", "input"];
 		if (!available.includes(component)) {
 			console.error(`Componente "${component}" não encontrado.`);
 			process.exit(1);
 		}
-		
+
 		if (!implemented.includes(component)) {
 			console.error(`Componente "${component}" ainda não foi implementado.`);
 			process.exit(1);
 		}
 
 		// Ajustar o caminho para apontar para a pasta src/components
-		const srcPath = path.dirname(path.dirname(__dirname));
-		const src = path.join(srcPath, `src/components/${component}`);
+		const pkgPath = path.dirname(path.dirname(__dirname));
+		const src = path.join(pkgPath, `src/components/${component}`);
 		// Usar o diretório especificado ou o diretório atual
 		const baseDir = options.dir ? options.dir : process.cwd();
 		const dest = path.join(baseDir, `src/components/ui/${component}`);

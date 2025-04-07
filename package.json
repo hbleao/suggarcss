@@ -1,14 +1,19 @@
 {
-	"name": "@sugarcss/react",
-	"version": "1.0.0",
+	"name": "sugarcss-react",
+	"version": "1.0.3",
 	"description": "Biblioteca de componentes React com SASS inspirada no shadcn/ui",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"bin": {
-		"sugarcss": "./dist/cli.js"
+		"sugarcss": "./dist/cli/cli.js"
 	},
 	"type": "module",
 	"private": false,
+	"files": [
+		"dist",
+		"src",
+		"README.md"
+	],
 	"keywords": [
 		"react",
 		"sass",
