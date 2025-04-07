@@ -1,0 +1,47 @@
+{
+	"name": "@sugarcss/react",
+	"version": "1.0.0",
+	"description": "Biblioteca de componentes React com SASS inspirada no shadcn/ui",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"bin": {
+		"sugarcss": "./dist/cli.js"
+	},
+	"type": "module",
+	"private": false,
+	"keywords": [
+		"react",
+		"sass",
+		"ui",
+		"components",
+		"sugarcss"
+	],
+	"author": "Henrique Leao <hbragaleao@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"build": "tsup src/index.ts src/cli/cli.ts --format esm --dts --out-dir dist --minify --clean",
+		"build:cli": "tsup src/cli/cli.ts --format esm --out-dir dist --minify --clean",
+		"dev": "tsup src/index.ts src/cli/cli.ts --format esm --dts --out-dir dist --watch",
+		"test:cli": "node dist/cli/cli.js"
+	},
+	"dependencies": {
+		"commander": "^13.1.0",
+		"fs-extra": "^11.3.0"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^11.0.4",
+		"@types/node": "^22.14.0",
+		"@types/react": "^18.2.64",
+		"@types/react-dom": "^18.2.21",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"sass": "^1.72.0",
+		"tsup": "^8.4.0",
+		"typescript": "^5.8.3"
+	},
+	"peerDependencies": {
+		"react": ">=18.0.0",
+		"react-dom": ">=18.0.0",
+		"sass": ">=1.70.0"
+	}
+}
