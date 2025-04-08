@@ -8,9 +8,15 @@
 	"bin": {
 		"porto-ocean": "./dist/cli/cli.js"
 	},
-	"files": ["dist", "src", "README.md"],
+	"files": [
+		"dist",
+		"src/index.ts",
+		"src/cli",
+		"src/components/**/*",
+		"README.md"
+	],
 	"scripts": {
-		"build": "tsup src/index.ts src/cli/cli.ts --format esm --dts --out-dir dist --minify --clean",
+		"build": "tsup src/index.ts src/cli/cli.ts --format esm --dts --out-dir dist --minify --clean && npm run copy-files",
 		"build:cli": "tsup src/cli/cli.ts --format esm --out-dir dist --minify --clean && npm run copy-files",
 		"test": "jest --passWithNoTests",
 		"test:cli": "node dist/cli/cli.js",

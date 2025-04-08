@@ -49,6 +49,13 @@ async function main() {
 		);
 		console.log("✅ README.md copiado para a pasta dist com sucesso!");
 
+		// Copiar a pasta src inteira para dentro da pasta dist
+		await fs.copy(
+			path.resolve(rootDir, "src"),
+			path.resolve(distDir, "src"),
+		);
+		console.log("✅ Pasta src copiada para dentro da pasta dist com sucesso!");
+
 		// Você pode adicionar mais arquivos para copiar aqui
 		// Por exemplo, licença, changelog, etc.
 	} catch (error) {
