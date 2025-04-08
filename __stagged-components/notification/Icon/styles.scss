@@ -1,0 +1,15 @@
+@import '../../../css/src/base.scss';
+
+.notification__icon {
+  width: $spacing-lg;
+  display: flex;
+  justify-content: center;
+}
+
+.left {
+  margin-right: $spacing-3xs;
+}
+
+.right {
+  margin-left: $spacing-3xs;
+}

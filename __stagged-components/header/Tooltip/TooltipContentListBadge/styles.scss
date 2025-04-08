@@ -1,0 +1,14 @@
+@import '../../../../css/src/base.scss';
+
+.tooltip__content-list-badge {
+  display: block;
+  width: max-content;
+  padding: 0 $spacing-2xs;
+  background-color: $black05;
+  border-radius: $spacing-2xs;
+  color: $portoSeguros100;
+  font-family: $porto-roobert;
+  font-size: $text-sm;
+  line-height: 2rem;
+  margin-left: $spacing-2xs;
+}

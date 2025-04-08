@@ -1,0 +1,16 @@
+@import '../../../../css/src/base.scss';
+
+.menu__link {
+  list-style: none;
+  height: min-content;
+  width: max-content;
+  border-radius: $spacing-2xs;
+  background: $black05;
+  padding: $spacing-sm $spacing-2xs;
+  cursor: pointer;
+
+  @media (min-width: $tablet-landscape) {
+    border-radius: none;
+    background-color: inherit;
+  }
+}

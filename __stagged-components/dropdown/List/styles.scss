@@ -1,0 +1,42 @@
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/font-family.scss';
+@import '../../../css/src/tokens/font-size.scss';
+@import '../../../css/src/tokens/font-weight.scss';
+@import '../../../css/src/tokens/layers.scss';
+
+.dropdown__list-box {
+  width: 100%;
+  flex-direction: column;
+  position: absolute;
+  background-color: $white;
+  cursor: pointer;
+  display: none;
+  border-radius: 0.4rem;
+  max-height: 19.2rem;
+  border: 1px solid #b3b3b3;
+  top: 51px;
+  overflow-y: auto;
+  display: flex;
+  z-index: $base;
+
+  filter: drop-shadow(0px 4px 8px $black15);
+
+  ::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $black65;
+    border: 5px solid $white;
+    border-radius: 10px;
+  }
+}
+.dropdown__list {
+  max-height: 145px;
+  overflow-y: scroll;
+  position: absolute;
+  top: 110%;
+  width: 100%;
+  border: 1px solid $black30;
+  border-radius: 6px;
+ }

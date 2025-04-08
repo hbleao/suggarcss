@@ -1,0 +1,55 @@
+@import '../../../css/src/tokens/colors.scss';
+
+.breadcrumb__root {
+  display: flex;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &.light {
+    li {
+      a {
+        color: $black75;
+        outline-color: $portoSeguros100;
+        &:hover {
+          color: $portoSeguros100;
+        }
+      }
+
+      :last-of-type {
+        a {
+          &:hover {
+            color: $black75;
+          }
+        }
+      }
+    }
+  }
+
+  &.dark {
+    background-color: $black85;
+
+    li {
+      a {
+        color: $black15;
+        outline-color: $portoSeguros45;
+
+        &:hover {
+          color: $portoSegurosPrimary;
+        }
+      }
+
+      :last-of-type {
+        a {
+          &:hover {
+            color: $black15;
+          }
+        }
+      }
+    }
+  }
+}

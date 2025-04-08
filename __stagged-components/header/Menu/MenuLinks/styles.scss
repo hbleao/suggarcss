@@ -1,0 +1,22 @@
+@import '../../../../css/src/base.scss';
+
+.menu__links {
+  height: min-content;
+  display: flex;
+  gap: $spacing-sm;
+  overflow-x: auto;
+  padding-right: $spacing-md;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: $tablet-landscape) {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-right: auto;
+    padding-right: 0;
+  }
+}

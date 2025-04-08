@@ -1,0 +1,19 @@
+@import '../../../../css/src/tokens/font-size.scss';
+@import '../../../../css/src/tokens/font-weight.scss';
+@import '../../../../css/src/tokens/font-family.scss';
+
+.cards-carousel__price-info {
+  max-width: 100%;
+  font-family: $porto-roobert;
+  font-weight: $bold;
+  font-size: $text-lg;
+  line-height: 2.4rem;
+  width: 100%;
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  outline-offset: -4px;
+}

@@ -1,0 +1,37 @@
+@import '../../../css/src/tokens/colors.scss';
+
+.accordion__root {
+  list-style: none;
+  width: 100%;
+  border-bottom: 1px solid $black15;
+  background: $white;
+
+  &.--border {
+    &-top {
+      border-radius: 0.4rem 0.4rem 0 0;
+    }
+    &-none {
+      border-radius: 0;
+    }
+    &-base {
+      border-radius: 0 0 0.4rem 0.4rem;
+    }
+  }
+
+  &.--negative {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    i,
+    p,
+    span {
+      color: $white;
+    }
+
+    border-bottom: 1px solid $white;
+    background-color: $portoSeguros100;
+  }
+}

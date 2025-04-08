@@ -1,0 +1,10 @@
+@import '../../../../packages/css/src/base.scss';
+
+.banner-body__subtitle {
+  font-style: $normal;
+  font-weight: 700;
+  font-size: $text-md;
+  line-height: 2.4rem;
+  color: $black100;
+  margin-top: 1rem;
+}

@@ -1,0 +1,15 @@
+@import '../../../css/src/base.scss';
+
+.input__label {
+  pointer-events: none;
+  position: absolute;
+  top: 1.4rem;
+  left: 1.2rem;
+  font-family: $open-sans;
+  font-size: $text-4xs;
+  font-weight: $regular;
+  color: $black75;
+  line-height: 2rem;
+  transition: 0.2s;
+  z-index: 1;
+}

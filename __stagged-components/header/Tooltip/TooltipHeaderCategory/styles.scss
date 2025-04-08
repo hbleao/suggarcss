@@ -1,0 +1,33 @@
+@import '../../../../css/src/base.scss';
+
+.tooltip__header-category {
+  color: $black75;
+  font-family: $open-sans;
+  font-size: $text-4xs;
+  font-weight: $semi-bold;
+  line-height: 2rem;
+  border-radius: $spacing-sm;
+  border: 1px solid $black15;
+  background-color: transparent;
+  padding: $spacing-sm $spacing-2xs;
+  cursor: pointer;
+  outline-offset: -2px;
+  display: flex;
+  gap: $spacing-sm;
+  transition:
+    border,
+    color,
+    0.3s ease;
+
+  &:hover {
+    color: $black75;
+    background: $black15;
+    border: 1px solid transparent;
+  }
+
+  &.isSelected {
+    border: 1px solid $portoSeguros100;
+    color: $portoSeguros100;
+    background-color: transparent;
+  }
+}

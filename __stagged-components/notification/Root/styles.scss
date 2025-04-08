@@ -1,0 +1,126 @@
+@import '../../../css/src/base.scss';
+
+.notification__root {
+  position: relative;
+  width: 304px;
+  padding: $spacing-md;
+  border-radius: $spacing-2xs;
+  display: flex;
+
+  &.--default {
+    background-color: $white;
+    border: 1px solid $black30;
+
+    .notification__title {
+      color: $black85;
+    }
+
+    .notification__description {
+      color: $black75;
+    }
+
+    .notification__link {
+      color: $portoSeguros85;
+    }
+
+    .notification__icon {
+      color: $portoSeguros85;
+    }
+  }
+
+  &.--outlined {
+    background-color: $black05;
+    border: none;
+
+    .notification__title {
+      color: $black85;
+    }
+
+    .notification__description {
+      color: $black75;
+    }
+
+    .notification__link {
+      color: $portoSeguros85;
+    }
+
+    .notification__icon {
+      color: $portoSeguros85;
+    }
+  }
+
+  &.--information {
+    background-color: $portoSeguros85;
+    border: none;
+
+    .notification__title,
+    .notification__description,
+    .notification__link,
+    .notification__icon {
+      color: $white;
+    }
+  }
+
+  &.--attention {
+    background-color: $yellow30;
+    border: none;
+
+    .notification__title {
+      color: $black85;
+    }
+
+    .notification__description {
+      color: $black75;
+    }
+
+    .notification__link {
+      color: $yellow80;
+    }
+
+    .notification__icon {
+      color: $yellow80;
+    }
+  }
+
+  &.--success {
+    background-color: $green30;
+    border: none;
+
+    .notification__title {
+      color: $black85;
+    }
+
+    .notification__description {
+      color: $black75;
+    }
+
+    .notification__link {
+      color: $green85;
+    }
+
+    .notification__icon {
+      color: $green85;
+    }
+  }
+
+  &.--error {
+    background-color: $red30;
+    border: none;
+
+    .notification__title {
+      color: $black85;
+    }
+
+    .notification__description {
+      color: $black75;
+    }
+
+    .notification__link {
+      color: $red85;
+    }
+
+    .notification__icon {
+      color: $red85;
+    }
+  }
+}

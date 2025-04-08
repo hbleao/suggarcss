@@ -1,0 +1,20 @@
+@import '../../../css/src/bg-color.scss';
+
+.header__root {
+  background: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  .header__overlay {
+    &-active {
+      display: block;
+    }
+
+    &-disable {
+      display: none;
+    }
+  }
+}

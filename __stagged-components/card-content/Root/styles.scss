@@ -1,0 +1,34 @@
+@import '../../../css/src/tokens/breakpoints.scss';
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/spacing.scss';
+
+.card-content__root {
+  width: 100%;
+  height: 100%;
+  padding: $spacing-lg;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  &.--light {
+    background-color: $white;
+
+    .card-content__title {
+      color: $black85;
+    }
+
+    .card-content__description {
+      color: $black75;
+    }
+  }
+
+  &.--dark {
+    background-color: $black100;
+
+    .card-content__title,
+    .card-content__description {
+      color: $white;
+    }
+  }
+}

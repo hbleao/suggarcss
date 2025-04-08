@@ -1,0 +1,80 @@
+@import '../../../../packages/css/src/base.scss';
+
+.banner-body__root {
+  width: 100%;
+  font-family: $open-sans;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  outline-offset: -2px;
+  display: flex;
+
+
+
+  &.--light {
+
+    .banner-body__title,
+    i {
+      color: $black100;
+    }
+  }
+
+  &.--dark {
+    .banner-body__title {
+      color: $black05;
+    }
+
+    i,
+    .banner-body__pretitle,
+    .banner-body__subtitle {
+      color: $white;
+    }
+
+    .banner-body__plain-text,
+    .banner-body__text-note {
+      color: $black15;
+    }
+  }
+}
+
+.up {
+  flex-direction: column-reverse;
+}
+
+.down {
+  flex-direction: column;
+}
+
+li {
+  list-style: none;
+}
+
+
+@media (min-width: $tablet-portrait) {
+  .banner-body__root {
+    flex-direction: row;
+  }
+
+  .left {
+    flex-direction: row-reverse;
+
+    .banner-body__content {
+      margin-right: auto;
+    }
+  }
+
+  .right {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: $desktop) {
+  .banner-body__root {
+    gap: 2rem;
+  }
+}
+
+@media (min-width: $wide) {
+  .banner-body__root {
+    gap: 4rem;
+  }
+}

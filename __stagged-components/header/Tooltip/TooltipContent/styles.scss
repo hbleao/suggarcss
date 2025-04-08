@@ -1,0 +1,6 @@
+@import '../../../../css/src/tokens/spacing.scss';
+
+.tooltip__content {
+  display: flex;
+  gap: $spacing-lg;
+}

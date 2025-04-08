@@ -1,0 +1,11 @@
+@import '../../../css/src/base.scss';
+
+.banner-hero__logo {
+  margin-bottom: $spacing-lg;
+
+  img,
+  svg {
+    width: 10.4rem;
+    height: 2.4rem;
+  }
+}

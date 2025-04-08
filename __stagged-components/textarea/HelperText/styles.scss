@@ -1,0 +1,13 @@
+@import '../../../css/src/base.scss';
+
+.textarea__helper-text {
+  font-size: $text-2xs;
+  color: $black70;
+  font-family: $open-sans;
+  font-weight: $medium;
+  line-height: $text-md;
+  margin: 0;
+  position: absolute;
+  bottom: -22px;
+  left: 0;
+}

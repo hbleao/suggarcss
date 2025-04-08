@@ -1,0 +1,10 @@
+@import '../../../css/src/tokens/breakpoints.scss';
+@import '../../../css/src/tokens/spacing.scss';
+
+.footer__column {
+  margin-bottom: 2.4rem;
+
+  @media screen and (min-width: $tablet-landscape) {
+    margin-bottom: 0rem;
+  }
+}

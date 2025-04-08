@@ -1,0 +1,11 @@
+@import '../../../../css/src/base.scss';
+
+.drawer__subcategory-list {
+  height: calc(100vh - 18rem);
+  margin-top: $spacing-md;
+  padding-bottom: 12rem;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3xs;
+  overflow-y: auto;
+}

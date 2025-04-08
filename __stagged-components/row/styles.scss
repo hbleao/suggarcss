@@ -1,0 +1,59 @@
+@import '../../css/src/tokens/breakpoints.scss';
+
+.row {
+  @for $i from 1 through 9 {
+    &.startMobile-#{$i} {
+      grid-column-start: $i;
+    }
+    &.endMobile-#{$i} {
+      grid-column-end: $i;
+    }
+  }
+
+  @media (min-width: $tablet-portrait) {
+    @for $i from 1 through 9 {
+      &.startPortrait-#{$i} {
+        grid-column-start: $i;
+      }
+      &.endPortrait-#{$i} {
+        grid-column-end: $i;
+      }
+    }
+  }
+
+  @media (min-width: $tablet-landscape) {
+    @for $i from 1 through 13 {
+      &.startLandscape-#{$i} {
+        grid-column-start: $i;
+      }
+
+      &.endLandscape-#{$i} {
+        grid-column-end: $i;
+      }
+    }
+  }
+
+  @media (min-width: $desktop) {
+    @for $i from 1 through 13 {
+      &.startDesktop-#{$i} {
+        grid-column-start: $i;
+      }
+
+      &.endDesktop-#{$i} {
+        grid-column-end: $i;
+      }
+    }
+  }
+
+  @media (min-width: $wide) {
+    @for $i from 1 through 13 {
+      &.startWide-#{i} {
+        grid-column-start: $i;
+      }
+
+      &.endWide-#{i} {
+        grid-column-end: $i;
+      }
+    }
+  }
+}

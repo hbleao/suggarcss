@@ -1,0 +1,9 @@
+@import '../../../css/src/tokens/spacing.scss';
+
+.breadcrumb__list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin: $spacing-md 0px;
+}

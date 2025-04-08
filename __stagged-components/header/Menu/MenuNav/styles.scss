@@ -1,0 +1,11 @@
+@import '../../../../css/src/base.scss';
+
+.menu__nav {
+  width: 100%;
+  padding: $spacing-md 0 $spacing-md $spacing-md;
+
+  @media (min-width: $tablet-landscape) {
+    width: max-content;
+    height: 6rem;
+  }
+}

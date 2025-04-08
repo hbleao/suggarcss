@@ -1,0 +1,20 @@
+@import '../../../../css/src/tokens/font-size.scss';
+@import '../../../../css/src/tokens/font-weight.scss';
+@import '../../../../css/src/tokens/font-family.scss';
+@import '../../../../css/src/tokens/breakpoints.scss';
+
+.cards-carousel__benefits-title {
+  width: 100%;
+  font-family: $porto-roobert;
+  font-weight: $bold;
+  font-size: $text-3xs;
+  line-height: 2rem;
+
+  @media (min-width: $tablet-portrait) {
+    line-height: 2rem;
+  }
+
+  @media (min-width: $tablet-landscape) {
+    line-height: 1.6rem;
+  }
+}

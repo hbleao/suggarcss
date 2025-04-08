@@ -1,0 +1,21 @@
+@import '../../../../css/src/tokens/colors.scss';
+@import '../../../../css/src/tokens/font-family.scss';
+@import '../../../../css/src/tokens/font-size.scss';
+@import '../../../../css/src/tokens/font-weight.scss';
+@import '../../../../css/src/tokens/spacing.scss';
+
+.toolbar__label {
+  display: block;
+  width: max-content;
+  text-decoration: none;
+  color: $black100;
+  font-family: $open-sans;
+  font-size: $text-md;
+  font-weight: $bold;
+  line-height: $spacing-2xs;
+  cursor: pointer;
+
+  &:hover {
+    color: $portoSeguros100;
+  }
+}

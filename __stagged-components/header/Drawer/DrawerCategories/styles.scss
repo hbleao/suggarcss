@@ -1,0 +1,13 @@
+@import '../../../../css/src/base.scss';
+
+.drawer__categories {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xs;
+  padding: 0 1rem;
+  opacity: 0;
+  transform: translate(-10rem);
+  transition:
+    opacity 0.5s ease-in,
+    transform 0.5s ease-in-out;
+}

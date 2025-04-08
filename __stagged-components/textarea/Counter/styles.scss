@@ -1,0 +1,13 @@
+@import '../../../css/src/base.scss';
+
+.textarea__counter {
+  display: block;
+  font-size: $text-3xs;
+  color: $black70;
+  font-family: $open-sans;
+  font-weight: $medium;
+  line-height: $text-md;
+  position: absolute;
+  bottom: -22px;
+  right: 0;
+}

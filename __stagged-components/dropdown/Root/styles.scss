@@ -1,0 +1,85 @@
+@import '../../../css/src/tokens/colors.scss';
+
+.dropdown__root {
+  border: none;
+  outline: none;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  &.--filled {
+    .dropdown__label {
+      font-size: 10px;
+      top: 0.4rem;
+    }
+
+    .dropdown__field {
+      padding-top: 1.4rem;
+    }
+  }
+
+  &.--focused {
+    &.--outlined {
+      border-bottom: 1px solid $portoSegurosPrimary;
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    &.--default {
+      border-radius: 4px;
+      border: 1px solid $portoSegurosPrimary;
+    }
+
+    &.dropdown__icon {
+      transform: rotateX(180deg);
+    }
+  }
+
+  &.--outlined {
+    border-bottom: 1px solid $black45;
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  &.--default {
+    border-radius: 4px;
+    border: 1px solid $black45;
+  }
+
+  &.--fluid {
+    width: 100%;
+  }
+
+  &.--contain {
+    min-width: 200px;
+  }
+
+  &.--disabled {
+    pointer-events: none;
+    background: $black05;
+    z-index: 1;
+
+    i,
+    .dropdown__label {
+      color: $black65;
+    }
+  }
+
+  &.--error {
+    &.--outlined {
+      border-bottom: 1px solid $red80;
+    }
+
+    &.--default {
+      border-radius: 4px;
+      border: 1px solid $red80;
+    }
+
+    &.--filled {
+
+      .dropdown__label,
+      .dropdown__icon {
+        color: $red80;
+      }
+    }
+  }
+}

@@ -1,0 +1,238 @@
+@import './tokens/colors.scss';
+
+.--bg {
+  &-portoSeguros100 {
+    background-color: $portoSeguros100;
+  }
+  &-portoSeguros85 {
+    background-color: $portoSeguros85;
+  }
+  &-portoSeguros75 {
+    background-color: $portoSeguros75;
+  }
+  &-portoSegurosPrimary {
+    background-color: $portoSegurosPrimary;
+  }
+  &-portoSeguros65 {
+    background-color: $portoSeguros65;
+  }
+  &-portoSeguros60 {
+    background-color: $portoSeguros60;
+  }
+  &-portoSeguros45 {
+    background-color: $portoSeguros45;
+  }
+  &-portoSeguros30 {
+    background-color: $portoSeguros30;
+  }
+  &-portoSeguros15 {
+    background-color: $portoSeguros15;
+  }
+  &-portoSeguros05 {
+    background-color: $portoSeguros05;
+  }
+
+  &-portoBanking100 {
+    background-color: $portoBanking100;
+  }
+  &-portoBanking85 {
+    background-color: $portoBanking85;
+  }
+  &-portoBanking75 {
+    background-color: $portoBanking75;
+  }
+  &-portoBankingPrimary {
+    background-color: $portoBankingPrimary;
+  }
+  &-portoBanking65 {
+    background-color: $portoBanking65;
+  }
+  &-portoBanking60 {
+    background-color: $portoBanking60;
+  }
+  &-portoBanking45 {
+    background-color: $portoBanking45;
+  }
+  &-portoBanking30 {
+    background-color: $portoBanking30;
+  }
+  &-portoBanking15 {
+    background-color: $portoBanking15;
+  }
+  &-portoBanking05 {
+    background-color: $portoBanking05;
+  }
+
+  &-portoSaude100 {
+    background-color: $portoSaude100;
+  }
+  &-portoSaude85 {
+    background-color: $portoSaude85;
+  }
+  &-portoSaude75 {
+    background-color: $portoSaude75;
+  }
+  &-portoSaudePrimary {
+    background-color: $portoSaudePrimary;
+  }
+  &-portoSaude65 {
+    background-color: $portoSaude65;
+  }
+  &-portoSaude60 {
+    background-color: $portoSaude60;
+  }
+  &-portoSaude45 {
+    background-color: $portoSaude45;
+  }
+  &-portoSaude30 {
+    background-color: $portoSaude30;
+  }
+  &-portoSaude15 {
+    background-color: $portoSaude15;
+  }
+  &-portoSaude05 {
+    background-color: $portoSaude05;
+  }
+
+  &-black100 {
+    background-color: $black100;
+  }
+  &-black85 {
+    background-color: $black85;
+  }
+  &-black75 {
+    background-color: $black75;
+  }
+  &-black70 {
+    background-color: $black70;
+  }
+  &-black65 {
+    background-color: $black65;
+  }
+  &-black60 {
+    background-color: $black60;
+  }
+  &-black45 {
+    background-color: $black45;
+  }
+  &-black30 {
+    background-color: $black30;
+  }
+  &-black15 {
+    background-color: $black15;
+  }
+  &-black05 {
+    background-color: $black05;
+  }
+
+  &-white {
+    background-color: $white;
+  }
+  &-offWhite05 {
+    background-color: $offWhite05;
+  }
+  &-offWhite {
+    background-color: $offWhite;
+  }
+  &-semiWhite {
+    background-color: $semiWhite;
+  }
+
+  &-violet100 {
+    background-color: $violet100;
+  }
+  &-violetPrimary {
+    background-color: $violetPrimary;
+  }
+  &-violet60 {
+    background-color: $violet60;
+  }
+  &-violet30 {
+    background-color: $violet30;
+  }
+
+  &-pink100 {
+    background-color: $pink100;
+  }
+  &-pinkPrimary {
+    background-color: $pinkPrimary;
+  }
+  &-pink60 {
+    background-color: $pink60;
+  }
+  &-pink30 {
+    background-color: $pink30;
+  }
+
+  &-yellow100 {
+    background-color: $yellow100;
+  }
+  &-yellow80 {
+    background-color: $yellow80;
+  }
+  &-yellowPrimary {
+    background-color: $yellowPrimary;
+  }
+  &-yellow60 {
+    background-color: $yellow60;
+  }
+  &-yellow30 {
+    background-color: $yellow30;
+  }
+
+  &-green100 {
+    background-color: $green100;
+  }
+  &-green85 {
+    background-color: $green85;
+  }
+  &-green80 {
+    background-color: $green80;
+  }
+  &-greenPrimary {
+    background-color: $greenPrimary;
+  }
+  &-green60 {
+    background-color: $green60;
+  }
+  &-green30 {
+    background-color: $green30;
+  }
+
+  &-red100 {
+    background-color: $red100;
+  }
+  &-red85 {
+    background-color: $red85;
+  }
+  &-red80 {
+    background-color: $red80;
+  }
+  &-redPrimary {
+    background-color: $redPrimary;
+  }
+  &-red60 {
+    background-color: $red60;
+  }
+  &-red30 {
+    background-color: $red30;
+  }
+  &-alpha {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  &-alpha10 {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  &-alpha30 {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  &-alpha50 {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  &-alpha70 {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  &-alphaChannel {
+    background-color: transparent;
+  }
+}

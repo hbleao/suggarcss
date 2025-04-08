@@ -1,0 +1,16 @@
+@import '../../../css/src/tokens/spacing.scss';
+@import '../../../css/src/tokens/breakpoints.scss';
+
+.footer__bottom-list {
+  @media (min-width: $tablet-portrait) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (min-width: $tablet-landscape) {
+    padding-bottom: $spacing-5xl;
+    display: flex;
+    justify-content: flex-start;
+    gap: 4rem;
+  }
+}

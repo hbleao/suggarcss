@@ -1,0 +1,13 @@
+.modal__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 2.8rem);
+
+  @media (min-width: var(--tablet-portrait)) {
+    max-width: 100%;
+  }
+}

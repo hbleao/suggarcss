@@ -1,0 +1,10 @@
+@import './tokens/font-style.scss';
+
+.--font-style {
+  &-normal {
+    font-style: $normal;
+  }
+  &-italic {
+    font-style: $italic;
+  }
+}

@@ -1,0 +1,14 @@
+@import '../../../../packages/css/src/base.scss';
+
+.banner-body__text-note {
+  font-style: $normal;
+  font-weight: $regular;
+  font-size: $text-3xs;
+  line-height: 2rem;
+  color: $black75;
+  margin-top: $spacing-md;
+
+  @media (min-width: $tablet-portrait) {
+    font-size: $text-4xs;
+  }
+}

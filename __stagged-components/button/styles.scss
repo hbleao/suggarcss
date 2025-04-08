@@ -1,0 +1,301 @@
+@import '../../css/src/base.scss';
+
+.btn {
+  font-size: $text-md;
+  font-family: $open-sans;
+  font-weight: $bold;
+  padding: 0 $spacing-3xs;
+  border-radius: 4px;
+  line-height: 2rem;
+  letter-spacing: 0.4px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-3xs;
+
+  &.--small {
+    padding: 8px 6px;
+  }
+
+  &.--large {
+    padding: 14px 10px;
+  }
+
+  &.--contain {
+    width: max-content;
+  }
+
+  &.--fluid {
+    width: 100%;
+  }
+
+  &.--insurance {
+    &-primary {
+      color: $white;
+      background-color: $portoSeguros100;
+      border-color: $alphaChannel;
+
+      &:hover {
+        background-color: $portoSeguros75;
+      }
+
+      &:active {
+        background-color: $portoSeguros85;
+      }
+    }
+
+    &-secondary {
+      color: $portoSeguros100;
+      background-color: $alphaChannel;
+      border-color: $portoSeguros100;
+
+      &:hover {
+        background-color: $portoSeguros05;
+      }
+
+      &:active {
+        background-color: $portoSeguros15;
+      }
+    }
+
+    &-ghost {
+      color: $portoSeguros100;
+      background-color: $alphaChannel;
+      border-color: $alphaChannel;
+
+      &:hover {
+        background-color: $portoSeguros05;
+      }
+
+      &:active {
+        background-color: $portoSeguros15;
+      }
+    }
+  }
+
+  &.--banking {
+    &-primary {
+      color: $white;
+      background-color: $portoBanking100;
+      border-color: $alphaChannel;
+
+      &:hover {
+        background-color: $portoBanking75;
+      }
+
+      &:active {
+        background-color: $portoBanking85;
+      }
+    }
+
+    &-secondary {
+      color: $portoBanking100;
+      background-color: $alphaChannel;
+      border-color: $portoBanking100;
+
+      &:hover {
+        background-color: $portoBanking05;
+      }
+
+      &:active {
+        background-color: $portoBanking15;
+      }
+    }
+
+    &-ghost {
+      color: $portoBanking100;
+      background-color: $alphaChannel;
+      border-color: $alphaChannel;
+
+      &:hover {
+        background-color: $portoBanking05;
+      }
+
+      &:active {
+        background-color: $portoBanking15;
+      }
+    }
+  }
+
+  &.--health {
+    &-primary {
+      color: $white;
+      background-color: $portoSaude100;
+      border-color: $alphaChannel;
+
+      &:hover {
+        background-color: $portoSaude75;
+      }
+
+      &:active {
+        background-color: $portoSaude85;
+      }
+    }
+
+    &-secondary {
+      color: $portoSaude100;
+      background-color: $alphaChannel;
+      border-color: $portoSaude100;
+
+      &:hover {
+        background-color: $portoSaude05;
+      }
+
+      &:active {
+        background-color: $portoSaude15;
+      }
+    }
+
+    &-ghost {
+      color: $portoSaude100;
+      background-color: $alphaChannel;
+      border-color: $alphaChannel;
+
+      &:hover {
+        background-color: $portoSaude05;
+      }
+
+      &:active {
+        background-color: $portoSaude15;
+      }
+    }
+  }
+
+  &.--danger {
+    &-primary {
+      color: $white;
+      background-color: $red100;
+      border-color: $alphaChannel;
+
+      &:hover {
+        background-color: $red100;
+      }
+
+      &:active {
+        background-color: $red80;
+      }
+    }
+
+    &-secondary {
+      color: $red100;
+      background-color: $alphaChannel;
+      border-color: $red100;
+
+      &:hover {
+        background-color: $red30;
+      }
+
+      &:active {
+        background-color: $red60;
+      }
+    }
+
+    &-ghost {
+      color: $red100;
+      background-color: $alphaChannel;
+      border-color: $alphaChannel;
+
+      &:hover {
+        background-color: $red30;
+      }
+
+      &:active {
+        background-color: $red60;
+      }
+    }
+  }
+
+  &.--negative {
+    &-primary {
+      color: $portoSeguros100;
+      background-color: $white;
+      border-color: $alphaChannel;
+
+      &:hover {
+        background-color: $white;
+        opacity: 0.7;
+      }
+
+      &:active {
+        background-color: $white;
+        opacity: 0.9;
+      }
+    }
+
+    &-secondary {
+      color: $white;
+      background-color: $alphaChannel;
+      border-color: $white;
+
+      &:hover {
+        background-color: $alpha30;
+      }
+
+      &:active {
+        background-color: $alpha50;
+      }
+    }
+
+    &-ghost {
+      color: $white;
+      background-color: $alphaChannel;
+      border-color: $alphaChannel;
+
+      &:hover {
+        background-color: $alpha70;
+      }
+
+      &:active {
+        background-color: $alpha50;
+      }
+    }
+  }
+
+  &.--disabled {
+    &-primary {
+      color: $black60;
+      background-color: $black15;
+      border-color: $alphaChannel;
+
+      &:hover {
+        background-color: $black15;
+      }
+
+      &:active {
+        background-color: $black15;
+      }
+    }
+
+    &-secondary {
+      color: $black60;
+      background-color: $alphaChannel;
+      border-color: $black60;
+
+      &:hover {
+        background-color: $alphaChannel;
+      }
+
+      &:active {
+        background-color: $alphaChannel;
+      }
+    }
+
+    &-ghost {
+      color: $black60;
+      background-color: $alphaChannel;
+      border-color: $alphaChannel;
+
+      &:hover {
+        background-color: $alphaChannel;
+      }
+
+      &:active {
+        background-color: $alphaChannel;
+      }
+    }
+  }
+}

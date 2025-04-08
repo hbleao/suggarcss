@@ -1,0 +1,40 @@
+@import '../../css/src/tokens/breakpoints.scss';
+@import '../../css/src/tokens/grid.scss';
+@import '../../css/src/tokens/spacing.scss';
+
+.grid {
+  grid-column: 1 / span 8;
+  display: grid;
+  margin: 0 $spacing-2xs;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1.6rem;
+
+  @media (min-width: $tablet-portrait) {
+    grid-column: 1 / span 8;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 2.4rem;
+    margin: 0 4.4rem;
+  }
+
+  @media (min-width: $tablet-landscape) {
+    grid-column: 1 / span 12;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.6rem;
+    margin: 0 6.4rem;
+  }
+
+  @media (min-width: $desktop) {
+    grid-column: 1 / span 12;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2.4rem;
+    margin: 0 8.8rem;
+  }
+
+  @media (min-width: $wide) {
+    grid-column: 1 / span 12;
+    max-width: $grid-wide;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 4rem;
+    margin: 0 auto;
+  }
+}

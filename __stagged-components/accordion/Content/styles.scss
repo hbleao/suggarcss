@@ -1,0 +1,22 @@
+@import '../../../css/src/base.scss';
+
+.accordion__content {
+  padding: $spacing-2xs $spacing-2xs $spacing-3xs $spacing-2xs;
+  color: $black70;
+  font-family: $open-sans;
+  font-size: $text-4xs;
+  line-height: 2rem;
+
+  display: flex;
+  flex-direction: column;
+
+  li,
+  a,
+  p,
+  span {
+    color: $black70;
+    font-family: $open-sans;
+    font-size: $text-4xs;
+    line-height: 2rem;
+  }
+}

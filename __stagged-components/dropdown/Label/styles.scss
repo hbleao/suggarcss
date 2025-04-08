@@ -1,0 +1,17 @@
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/font-family.scss';
+@import '../../../css/src/tokens/font-size.scss';
+@import '../../../css/src/tokens/font-weight.scss';
+
+.dropdown__label {
+  pointer-events: none;
+  position: absolute;
+  top: 1.4rem;
+  left: 1.2rem;
+  font-family: $open-sans;
+  font-size: $text-4xs;
+  font-weight: $regular;
+  color: $black75;
+  line-height: 2rem;
+  transition: 0.2s;
+}

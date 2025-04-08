@@ -1,0 +1,13 @@
+@import '../../../css/src/base.scss';
+
+.notification__link {
+  color: $portoSeguros100;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: right;
+  margin-top: $spacing-2xs;
+  cursor: pointer;
+  text-align: end;
+}

@@ -1,0 +1,73 @@
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/breakpoints.scss';
+@import '../../../css/src/tokens/spacing.scss';
+
+.card-icon__root {
+  width: 288px;
+  height: 100%;
+  border-radius: $spacing-md;
+  padding: $spacing-md;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-decoration: none;
+  transition: 0.2s border ease;
+
+  &:hover,
+  :focus {
+    border: 1px solid $portoSeguros100;
+  }
+
+  &.--light {
+    background-color: $white;
+
+    .card-icon__pretitle {
+      color: $black65;
+    }
+    .card-icon__title {
+      color: $black85;
+    }
+    .card-icon__description {
+      color: $black75;
+    }
+
+    .card-icon__icon {
+      color: $black100;
+    }
+  }
+
+  &.--dark {
+    background-color: $black100;
+
+    .card-icon__overline,
+    .card-icon__title,
+    .card-icon__description,
+    .card-icon__icon {
+      color: $white;
+    }
+  }
+
+  &.--link {
+    border: 1px solid $black15;
+  }
+
+  &.--withoutLink {
+    border: none;
+    cursor: initial;
+    pointer-events: none;
+
+    > div span {
+      background-color: $alphaChannel;
+    }
+
+    &:hover,
+    :focus {
+      border: none;
+    }
+  }
+
+  @media (min-width: $tablet-landscape) {
+    padding: 1rem $spacing-3xs $spacing-3xs;
+  }
+}

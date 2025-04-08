@@ -1,0 +1,27 @@
+@import '../../../../css/src/base.scss';
+
+.drawer__category-header {
+  width: 100%;
+  padding-top: $spacing-md;
+  opacity: 0;
+  transition:
+    opacity 0.35s ease-in,
+    transform 0.45s ease-in-out;
+  display: flex;
+  gap: $spacing-sm;
+  align-items: center;
+  flex-wrap: wrap;
+  transform: translate(-6rem);
+
+  img {
+    height: 24px;
+  }
+
+  button {
+    padding-left: 0px;
+
+    >svg {
+      transform: rotate(180deg);
+    }
+  }
+}

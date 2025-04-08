@@ -1,0 +1,26 @@
+@import '../../../css/src/base.scss';
+
+.banner-hero__buttons {
+  margin-top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  button {
+    width: 100% !important;
+    padding: 14px 16px !important;
+  }
+
+  @media (min-width: $tablet-portrait) {
+    margin-top: auto;
+    flex-direction: row;
+
+    button {
+      max-width: max-content !important;
+    }
+  }
+
+  @media (min-width: $desktop) {
+    gap: 2.4rem;
+  }
+}

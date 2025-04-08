@@ -1,0 +1,16 @@
+@import '../../../../css/src/tokens/spacing.scss';
+@import '../../../../css/src/tokens/colors.scss';
+
+.tooltip__card {
+  width: 24rem;
+  height: 30.8rem;
+  padding: $spacing-md;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  border: 1px solid $black15;
+  border-radius: $spacing-sm;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}

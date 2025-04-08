@@ -1,0 +1,10 @@
+@import '../../../../css/src/tokens/colors.scss';
+@import '../../../../css/src/tokens/spacing.scss';
+
+.footer__brand-social-links {
+  margin-top: $spacing-md;
+  max-width: 25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

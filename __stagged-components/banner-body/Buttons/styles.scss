@@ -1,0 +1,22 @@
+@import '../../../../packages/css/src/tokens/breakpoints.scss';
+
+.banner-body__buttons {
+  margin-top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  button {
+    width: 100% !important;
+    padding: 14px 16px !important;
+  }
+
+  @media (min-width: $tablet-landscape) {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    button {
+      width: max-content !important;
+    }
+  }
+}

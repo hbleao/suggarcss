@@ -1,0 +1,69 @@
+@import '../../css/src/tokens/breakpoints.scss';
+
+.show-on-device {
+  display: none;
+
+  &.lessThan {
+    &.mobile {
+      @media screen and (max-width: $mobile) {
+        display: block;
+      }
+    }
+
+    &.tabletPortrait {
+      @media screen and (max-width: $tablet-portrait) {
+        display: block;
+      }
+    }
+
+    &.tabletLandscape {
+      @media screen and (max-width: $tablet-landscape) {
+        display: block;
+      }
+    }
+
+    &.desktop {
+      @media screen and (max-width: $desktop) {
+        display: block;
+      }
+    }
+
+    &.wide {
+      @media screen and (max-width: $wide) {
+        display: block;
+      }
+    }
+  }
+
+  &.greaterThan {
+    &.mobile {
+      @media screen and (min-width: $mobile) {
+        display: block;
+      }
+    }
+
+    &.tabletPortrait {
+      @media screen and (min-width: $tablet-portrait) {
+        display: block;
+      }
+    }
+
+    &.tabletLandscape {
+      @media screen and (min-width: $tablet-landscape) {
+        display: block;
+      }
+    }
+
+    &.desktop {
+      @media screen and (min-width: $desktop) {
+        display: block;
+      }
+    }
+
+    &.wide {
+      @media screen and (min-width: $wide) {
+        display: block;
+      }
+    }
+  }
+}

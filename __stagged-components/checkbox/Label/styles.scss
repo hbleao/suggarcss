@@ -1,0 +1,10 @@
+@import '../../../css/src/tokens/font-size.scss';
+@import '../../../css/src/tokens/font-family.scss';
+
+.checkbox__label {
+  font-family: $open-sans;
+  font-weight: 400;
+  font-size: $text-4xs;
+  line-height: 20px;
+  margin: 0;
+}

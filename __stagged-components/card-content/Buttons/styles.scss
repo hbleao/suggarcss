@@ -1,0 +1,12 @@
+@import '../../../css/src/tokens/spacing.scss';
+
+.card-content__buttons {
+  display: flex;
+  gap: $spacing-md;
+  width: 100%;
+  margin-top: $spacing-lg;
+
+  button {
+    width: 100%;
+  }
+}

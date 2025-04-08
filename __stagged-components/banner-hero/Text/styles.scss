@@ -1,0 +1,17 @@
+@import '../../../css/src/tokens/breakpoints.scss';
+@import '../../../css/src/tokens/font-family.scss';
+@import '../../../css/src/tokens/font-size.scss';
+@import '../../../css/src/tokens/font-style.scss';
+@import '../../../css/src/tokens/font-weight.scss';
+
+.banner-hero__text {
+  font-family: $porto-roobert;
+  font-weight: $regular;
+  font-size: $text-md;
+  line-height: 2.4rem;
+
+  @media screen and (min-width: $desktop) {
+    font-size: $text-lg;
+    line-height: 2.8rem;
+  }
+}

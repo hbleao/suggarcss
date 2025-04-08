@@ -1,0 +1,17 @@
+@import '../../../../css/src/tokens/colors.scss';
+
+.footer__bottom-list-item {
+  margin-bottom: 1.2rem;
+  list-style-type: none;
+
+  :hover {
+    svg,
+    i {
+      color: $portoSeguros45;
+    }
+
+    li {
+      color: $portoSeguros45;
+    }
+  }
+}

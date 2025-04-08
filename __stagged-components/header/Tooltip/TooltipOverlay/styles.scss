@@ -1,0 +1,27 @@
+@import '../../../../css/src/tokens/colors.scss';
+@import '../../../../css/src/tokens/breakpoints.scss';
+@import '../../../../css/src/tokens/layers.scss';
+
+@keyframes fadeIn {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.tooltip__overlay {
+  width: 100vw;
+  height: 1800px;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  right: 0;
+  top: 6rem;
+  z-index: $overlayTooltip;
+  animation: fadeIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+  @media (min-width: $tablet-landscape) {
+    top: 6rem;
+  }
+}

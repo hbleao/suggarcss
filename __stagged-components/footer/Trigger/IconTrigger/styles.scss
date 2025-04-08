@@ -1,0 +1,17 @@
+@import '../../../../css/src/tokens/breakpoints.scss';
+
+.footer__icon-trigger {
+  display: block;
+
+  &.up {
+    transform: rotateX(180deg);
+  }
+
+  &.down {
+    transform: rotateX(0deg);
+  }
+
+  @media screen and (min-width: $tablet-portrait) {
+    display: none;
+  }
+}

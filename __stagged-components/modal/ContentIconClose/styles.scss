@@ -1,0 +1,20 @@
+.modal__content-icon-close {
+  position: absolute;
+  top: 2rem;
+  right: 0.8rem;
+  cursor: pointer;
+  border: none;
+  background-color: var(--alphaChannel);
+
+  :focus:not(:active) {
+    outline: 2px solid var(--portoSeguros100);
+  }
+
+  @media (min-width: var(--tablet-portrait)) {
+    right: 2rem;
+  }
+
+  @media (min-width: var(--tablet-landscape)) {
+    right: 2.4rem;
+  }
+}

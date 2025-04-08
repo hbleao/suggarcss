@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Open Sans', sans-serif;
+
+  &::after,
+  &::before {
+    box-sizing: inherit;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  max-width: 1920px;
+  margin: 0 auto;
+  font-size: 62.5%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#root {
+  margin: 0 auto;
+  max-width: 1920px;
+}
+
+input {
+  font-family: 'Open Sans', sans-serif;
+
+  &::placeholder {
+    font-family: 'Open Sans', sans-serif;
+  }
+}
+
+button {
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+}
+
+label,
+p,
+span,
+div {
+  font-family: 'Open Sans', sans-serif;
+}

@@ -1,0 +1,15 @@
+@import '../../../css/src/base.scss';
+
+.tooltip {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+	&.--light {
+		&__content {
+			filter: invert(1);
+		}
+	}
+}

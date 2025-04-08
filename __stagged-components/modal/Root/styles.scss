@@ -1,0 +1,26 @@
+@keyframes slideRight {
+  0% {
+    right: -50vw;
+  }
+
+  100% {
+    right: 0rem;
+  }
+}
+
+.modal__root {
+  background-color: var(--white);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: -50vw;
+  box-shadow: 0 0.4rem 0.4rem rgba(31, 31, 31, 0.02);
+  z-index: var(--modal);
+  height: 100%;
+  animation: slideRight 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+  @media (min-width: var(--tablet-landscape)) {
+    width: 35vw;
+  }
+}

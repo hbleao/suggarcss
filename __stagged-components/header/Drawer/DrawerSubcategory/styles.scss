@@ -1,0 +1,8 @@
+@import '../../../../css/src/base.scss';
+
+.drawer__subcategory {
+  width: 100%;
+  margin-top: $spacing-sm;
+  gap: $spacing-sm;
+  display: flex;
+}

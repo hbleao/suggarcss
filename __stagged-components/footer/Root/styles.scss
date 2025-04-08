@@ -1,0 +1,7 @@
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/spacing.scss';
+
+.footer__root {
+  background-color: $black100;
+  padding-top: $spacing-5xl;
+}

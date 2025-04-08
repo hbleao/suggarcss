@@ -1,0 +1,11 @@
+@import '../../../css/src/tokens/breakpoints.scss';
+
+.card-testimonial__image {
+  img {
+    max-width: 10rem;
+    width: 100%;
+    border-radius: 50%;
+    width: 6.4rem;
+    height: 6.4rem;
+  }
+}

@@ -1,0 +1,10 @@
+@import '../../../../css/src/tokens/spacing.scss';
+
+.cards-carousel__installments {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-top: auto;
+  position: relative;
+  margin-bottom: $spacing-md;
+}

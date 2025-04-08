@@ -1,0 +1,12 @@
+@import '../../../../css/src/base.scss';
+
+.drawer__label {
+  display: block;
+  width: max-content;
+  text-decoration: none;
+  color: $black100;
+  font-family: $porto-roobert;
+  font-weight: $medium;
+  font-size: $text-lg;
+  line-height: 2.8rem;
+}

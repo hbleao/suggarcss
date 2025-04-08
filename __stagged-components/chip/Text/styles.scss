@@ -1,0 +1,18 @@
+@import '../../../css/src/tokens/font-family.scss';
+@import '../../../css/src/tokens/font-size.scss';
+@import '../../../css/src/tokens/font-weight.scss';
+@import '../../../css/src/tokens/breakpoints.scss';
+
+.chip__text {
+  text-decoration: none;
+  font-size: $text-4xs;
+  font-family: $open-sans;
+  font-weight: $bold;
+  gap: 0.8rem;
+  align-items: center;
+  display: flex;
+
+  @media (min-width: $tablet-portrait) {
+    font-size: $text-md;
+  }
+}

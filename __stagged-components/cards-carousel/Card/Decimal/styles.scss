@@ -1,0 +1,11 @@
+@import '../../../../css/src/tokens/font-size.scss';
+@import '../../../../css/src/tokens/font-weight.scss';
+@import '../../../../css/src/tokens/font-family.scss';
+
+.cards-carousel__decimal {
+  font-family: $porto-roobert;
+  font-weight: $bold;
+  font-size: $text-4xs;
+  line-height: 2rem;
+  display: inline-block;
+}

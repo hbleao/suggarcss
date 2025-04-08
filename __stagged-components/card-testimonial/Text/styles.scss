@@ -1,0 +1,19 @@
+@import '../../../css/src/tokens/breakpoints.scss';
+@import '../../../css/src/tokens/font-size.scss';
+@import '../../../css/src/tokens/font-weight.scss';
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/spacing.scss';
+
+.card-testimonial__text {
+  max-width: 18.4rem;
+  min-height: 14rem;
+  width: 100%;
+  font-weight: $regular;
+  font-size: $text-4xs;
+  line-height: 2rem;
+  color: $black75;
+
+  @media (min-width: $tablet-landscape) {
+    min-height: 12rem;
+  }
+}

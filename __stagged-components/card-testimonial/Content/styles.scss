@@ -1,0 +1,7 @@
+@import '../../../css/src/tokens/spacing.scss';
+
+.card-testimonial__content {
+  display: flex;
+  justify-content: space-between;
+  gap: $spacing-3xl;
+}

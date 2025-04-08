@@ -1,0 +1,22 @@
+@import '../../../../css/src/base.scss';
+
+.menu__link-item {
+  width: max-content;
+  display: block;
+  color: $black70;
+  text-decoration: none;
+  font-family: $porto-roobert;
+  font-weight: $regular;
+  font-size: $text-4xs;
+  line-height: $text-lg;
+
+  @media (min-width: $tablet-landscape) {
+    font-weight: $medium;
+    line-height: 2rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $portoSeguros100;
+    }
+  }
+}

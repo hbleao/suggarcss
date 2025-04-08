@@ -1,0 +1,95 @@
+@import '../../css/src/base.scss';
+
+.typography {
+  &.--title1 {
+    font-family: $porto-roobert, sans-serif;
+    font-size: $text-6xl;
+    line-height: 4.4rem;
+
+    @media (min-width: $desktop) {
+      font-size: $text-8xl;
+      line-height: 6rem;
+    }
+  }
+
+  &.--title2 {
+    font-family: $porto-roobert, sans-serif;
+    font-size: $text-5xl;
+    line-height: 4rem;
+
+    @media (min-width: $desktop) {
+      font-size: $text-7xl;
+      line-height: 5.2rem;
+    }
+  }
+
+  &.--title3 {
+    font-family: $porto-roobert, sans-serif;
+    font-size: $text-4xl;
+    line-height: 3.6rem;
+
+    @media (min-width: $desktop) {
+      font-size: $text-6xl;
+      line-height: 4.4rem;
+    }
+  }
+
+  &.--title4 {
+    font-family: $porto-roobert, sans-serif;
+    font-size: $text-3xl;
+    line-height: 3.2rem;
+
+    @media (min-width: $desktop) {
+      font-size: $text-4xl;
+      line-height: 3.6rem;
+    }
+  }
+
+  &.--title5 {
+    font-family: $porto-roobert, sans-serif;
+    font-size: $text-2xl;
+    line-height: 2.8rem;
+  }
+
+  &.--title6 {
+    font-family: $porto-roobert, sans-serif;
+    font-size: $text-lg;
+    line-height: 2.4rem;
+  }
+
+  &.--body1 {
+    font-family: $open-sans, sans-serif;
+    font-size: $text-md;
+    line-height: 2.4rem;
+  }
+
+  &.--body2 {
+    font-family: $open-sans, sans-serif;
+    font-size: $text-4xs;
+    line-height: 2rem;
+  }
+
+  &.--caption {
+    font-family: $open-sans, sans-serif;
+    font-size: $text-3xs;
+    line-height: 2rem;
+  }
+
+  &.--label {
+    font-family: $open-sans, sans-serif;
+    font-size: $text-2xs;
+    line-height: 1.4rem;
+  }
+
+  &.--overline {
+    font-family: $open-sans, sans-serif;
+    font-size: $text-4xs;
+    line-height: 2rem;
+  }
+
+  &.--button {
+    font-family: $open-sans, sans-serif;
+    font-size: $text-md;
+    line-height: 2rem;
+  }
+}

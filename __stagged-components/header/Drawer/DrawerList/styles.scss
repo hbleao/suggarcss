@@ -1,0 +1,7 @@
+@import '../../../../css/src/base.scss';
+
+.drawer__list {
+  width: 100%;
+  height: calc(100vh - 12rem);
+  padding: 0 $spacing-sm;
+}

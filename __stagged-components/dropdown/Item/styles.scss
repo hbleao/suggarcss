@@ -1,0 +1,27 @@
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/font-family.scss';
+@import '../../../css/src/tokens/font-size.scss';
+@import '../../../css/src/tokens/font-weight.scss';
+
+.dropdown__item {
+  font-size: 1.4rem;
+  font-family: $open-sans;
+  color: $black85;
+  font-weight: 400;
+  padding-left: 1.2rem;
+  display: flex;
+  align-items: center;
+  min-height: 4.8rem;
+  background: $white;
+  border: 0.1rem solid transparent;
+  outline: none;
+
+  &:hover {
+    background: #f1f8ff;
+  }
+
+  &:focus {
+    outline: none;
+    border: 0.1rem solid $portoSegurosPrimary;
+  }
+}

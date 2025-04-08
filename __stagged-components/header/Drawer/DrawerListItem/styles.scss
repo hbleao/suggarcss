@@ -1,0 +1,9 @@
+@import '../../../../css/src/base.scss';
+
+.drawer__list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: $spacing-3xs;
+}

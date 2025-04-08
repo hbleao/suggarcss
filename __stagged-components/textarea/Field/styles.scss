@@ -1,0 +1,16 @@
+@import '../../../css/src/base.scss';
+
+.textarea__field {
+  height: 100%;
+  outline: none;
+  border: none;
+  font-family: $open-sans;
+  font-size: $text-4xs;
+  color: $black100;
+  padding: $spacing-2xs $spacing-3xs $spacing-2xs $spacing-3xs;
+  min-width: 30.4rem;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  appearance: none;
+}

@@ -1,0 +1,28 @@
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/spacing.scss';
+
+.text-body__root {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  &.--light {
+    background-color: $white;
+
+    .text-body__title,
+    .text-body__subtitle,
+    .text-body__text {
+      color: $black75;
+    }
+  }
+
+  &.--dark {
+    background-color: $black85;
+
+    .text-body__title,
+    .text-body__subtitle,
+    .text-body__text {
+      color: $white;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@import '../../../css/src/tokens/breakpoints.scss';
+@import '../../../css/src/tokens/font-size.scss';
+
+.text-body__title {
+  @media (min-width: $tablet-portrait) {
+    font-size: $text-4xl;
+    line-height: $text-5xl;
+  }
+}

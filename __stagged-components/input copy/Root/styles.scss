@@ -1,0 +1,91 @@
+@import '../../../css/src/tokens/colors.scss';
+
+.input__root {
+  position: relative;
+
+  &.--filled {
+    .input__label {
+      font-size: 10px;
+      top: 0.4rem;
+    }
+
+    .input__field {
+      padding-top: 2.4rem;
+    }
+  }
+
+  &.--focused {
+    &.--outlined {
+      .input__box {
+        border-bottom: 1px solid $portoSegurosPrimary;
+        background-color: rgba(0, 0, 0, 0.02);
+      }
+    }
+
+    &.--default {
+      .input__box {
+        border-radius: 4px;
+        border: 1px solid $portoSegurosPrimary;
+      }
+    }
+  }
+
+  &.--outlined {
+    .input__box {
+      border-bottom: 1px solid $black45;
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+  }
+
+  &.--default {
+    .input__box {
+      border-radius: 4px;
+      border: 1px solid $black45;
+    }
+  }
+
+  &.--fluid {
+    width: 100%;
+  }
+
+  &.--contain {
+    width: max-content;
+  }
+
+  &.--disabled {
+    .input__field {
+      pointer-events: none;
+      color: $black65;
+      background: $black05;
+      z-index: 1;
+    }
+
+    i,
+    .input__label {
+      color: $black45;
+    }
+  }
+
+  &.--error {
+    &.--outlined {
+      .input__box {
+        border-bottom: 1px solid $red80;
+      }
+    }
+
+    &.--default {
+      .input__box {
+        border-radius: 4px;
+        border: 1px solid $red80;
+      }
+    }
+
+    &.--filled {
+
+      .input__label,
+      .input__icon {
+        color: $red80;
+      }
+    }
+  }
+}

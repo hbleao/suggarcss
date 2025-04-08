@@ -1,108 +1,119 @@
-# SugarCSS
+# Documentação da CLI do SugarCSS
 
-Uma biblioteca de componentes React com SASS inspirada no shadcn/ui, mas utilizando SASS em vez de Tailwind CSS.
+A CLI (Command Line Interface) que criamos para o SugarCSS é uma ferramenta que permite aos usuários instalar componentes React com SASS em seus projetos. Este documento explica como ela funciona e as bibliotecas que utiliza.
 
-## Sobre
+## Estrutura Básica da CLI
 
-SugarCSS é uma biblioteca de componentes React que segue a filosofia do shadcn/ui: não é uma biblioteca tradicional que você instala via npm, mas sim um conjunto de componentes que você copia para seu projeto, permitindo total controle sobre o código.
+A CLI é construída usando o padrão de design de linha de comando, onde definimos comandos, argumentos e opções que o usuário pode utilizar para interagir com a ferramenta. O arquivo principal está em `src/cli/cli.ts`.
 
-A diferença principal é que o SugarCSS utiliza SASS para estilização em vez de Tailwind CSS, oferecendo uma alternativa para quem prefere trabalhar com SASS.
+## Bibliotecas Utilizadas
 
-## Instalação
+### 1. Commander.js
+
+```typescript
+import { Command } from "commander";
+```
+
+- **Função**: Commander é uma biblioteca popular para criar interfaces de linha de comando em Node.js.
+- **Como é usada**: Usamos para definir comandos, argumentos e opções da CLI.
+- **Recursos principais**:
+  - Definição de comandos (ex: `install`)
+  - Definição de argumentos (ex: `<component>`)
+  - Definição de opções (ex: `--dir`)
+  - Parsing automático dos argumentos da linha de comando
+  - Geração de mensagens de ajuda
+
+### 2. fs-extra
+
+```typescript
+import fs from "fs-extra";
+```
+
+- **Função**: Extensão do módulo `fs` nativo do Node.js com métodos adicionais e promessas.
+- **Como é usada**: Para operações de sistema de arquivos como copiar componentes.
+- **Recursos principais**:
+  - `ensureDir`: Cria diretórios recursivamente se não existirem
+  - `copy`: Copia arquivos e diretórios de forma recursiva
+  - Versões com Promise de todas as operações de arquivo
+
+### 3. path e url (Node.js nativo)
+
+```typescript
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+```
+
+- **Função**: Módulos nativos do Node.js para manipulação de caminhos e URLs.
+- **Como são usados**: Para resolver caminhos de arquivos e diretórios.
+- **Recursos principais**:
+  - `path.join`: Combina segmentos de caminho
+  - `path.dirname`: Obtém o diretório pai de um caminho
+  - `fileURLToPath`: Converte uma URL de arquivo em um caminho de sistema de arquivos
+
+## Fluxo de Execução da CLI
+
+1. **Inicialização**:
+   ```typescript
+   const program = new Command();
+   const __filename = fileURLToPath(import.meta.url);
+   const __dirname = path.dirname(__filename);
+   ```
+   - Cria uma nova instância do Commander
+   - Obtém o caminho do arquivo atual (importante para ESM)
+
+2. **Configuração do Programa**:
+   ```typescript
+   program
+     .name("sugarcss")
+     .description("Instala componentes React com Sass do @sugarcss/react")
+     .version("0.1.0");
+   ```
+   - Define o nome, descrição e versão da CLI
+
+3. **Definição de Comandos**:
+   ```typescript
+   program
+     .command("install")
+     .argument("<component>", "Nome do componente para instalar")
+     .option("-d, --dir <directory>", "Diretório de destino para instalar o componente", "")
+     .action(async (component, options) => {
+       // Lógica de instalação
+     });
+   ```
+   - Define o comando `install`
+   - Requer um argumento `component`
+   - Adiciona uma opção opcional `--dir` para especificar o diretório de destino
+
+4. **Lógica de Instalação**:
+   - Verifica se o componente solicitado existe na lista de componentes disponíveis
+   - Verifica se o componente já foi implementado
+   - Calcula os caminhos de origem e destino
+   - Cria o diretório de destino se não existir
+   - Copia os arquivos do componente para o diretório de destino
+
+5. **Execução do Programa**:
+   ```typescript
+   program.parse();
+   ```
+   - Analisa os argumentos da linha de comando e executa o comando apropriado
+
+## Sistema de Build (tsup)
+
+Além da CLI, usamos o `tsup` (baseado em esbuild) para construir a biblioteca:
+
+- **Configuração**: Definida em `tsup.config.ts`
+- **Funcionalidades**:
+  - Compilação de TypeScript para JavaScript
+  - Geração de arquivos de declaração (.d.ts)
+  - Minificação de código
+  - Plugin personalizado para processar arquivos SCSS
+
+## Exemplo de Uso
 
 ```bash
-# Instalar a CLI globalmente
-npm install -g sugarcss-react
+# Instalar um componente no projeto atual
+node dist/cli/cli.js install button
 
-# Ou usar diretamente com npx
-npx sugarcss-react install <componente>
+# Instalar um componente em um diretório específico
+node dist/cli/cli.js install input --dir /caminho/para/seu/projeto
 ```
-
-## Uso
-
-Após instalar a CLI, você pode instalar componentes individuais em seu projeto:
-
-```bash
-# Instalar o componente Button
-sugarcss install button
-
-# Instalar o componente Input
-sugarcss install input
-```
-
-Isso copiará os arquivos do componente para a pasta `src/components/ui/` do seu projeto.
-
-## Componentes disponíveis
-
-- ✅ Button - Um botão estilizado com SASS
-- ✅ Input - Um campo de entrada com suporte para label e mensagens de erro
-- 🔄 Modal (em breve)
-- 🔄 Dropdown (em breve)
-- 🔄 Textarea (em breve)
-- 🔄 Typography (em breve)
-- 🔄 Accordion (em breve)
-- 🔄 Tabs (em breve)
-- 🔄 Link (em breve)
-
-## Uso dos componentes
-
-### Button
-
-```tsx
-import { Button } from './components/ui/button';
-
-export default function App() {
-  return (
-    <Button onClick={() => alert('Clicado!')}>
-      Clique em mim
-    </Button>
-  );
-}
-```
-
-### Input
-
-```tsx
-import { Input } from './components/ui/input';
-
-export default function App() {
-  return (
-    <div>
-      <Input 
-        label="Nome"
-        placeholder="Digite seu nome"
-      />
-      
-      <Input 
-        label="Email"
-        type="email"
-        placeholder="Digite seu email"
-        error="Email inválido"
-      />
-    </div>
-  );
-}
-```
-
-## Desenvolvimento
-
-Para contribuir com o desenvolvimento:
-
-```bash
-# Clonar o repositório
-git clone <repo-url>
-cd sugarcss
-
-# Instalar dependências
-npm install
-
-# Executar em modo de desenvolvimento
-npm run dev
-
-# Construir a biblioteca
-npm run build
-```
-
-## Licença
-
-MIT

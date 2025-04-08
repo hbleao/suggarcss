@@ -1,0 +1,41 @@
+@import '../../../css/src/tokens/font-weight.scss';
+@import '../../../css/src/tokens/font-family.scss';
+@import '../../../css/src/tokens/font-size.scss';
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/spacing.scss';
+
+.breadcrumb__list-item {
+  &:first-of-type {
+    a {
+      padding-left: 0px;
+    }
+  }
+
+  &:not(:first-of-type) {
+    &::before {
+      content: '/';
+      font-size: $text-4xs;
+      font-family: $open-sans;
+      line-height: 1.5;
+      color: $black45;
+    }
+  }
+
+  &:last-of-type {
+    a {
+      font-weight: $bold;
+      pointer-events: none;
+    }
+  }
+  
+  a {
+    text-decoration: none;
+    font-family: $open-sans;
+    font-size: $text-4xs;
+    line-height: 1.43;
+    font-weight: $regular;
+    cursor: pointer;
+    padding: 0 8px;
+    outline-offset: -2px;
+  }
+}

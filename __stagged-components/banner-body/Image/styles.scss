@@ -1,0 +1,22 @@
+@import '../../../../packages/css/src/tokens/breakpoints.scss';
+
+.banner-body__image {
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  @media (min-width: $tablet-portrait) {
+    width: 50%;
+
+    img {
+      height: 100%;
+      min-height: 32.4rem;
+    }
+  }
+}

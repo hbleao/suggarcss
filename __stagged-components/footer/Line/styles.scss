@@ -1,0 +1,10 @@
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/spacing.scss';
+
+.footer__line {
+  width: 100%;
+  height: 0.1rem;
+  background-color: $white;
+  border: none;
+  margin-bottom: $spacing-md;
+}

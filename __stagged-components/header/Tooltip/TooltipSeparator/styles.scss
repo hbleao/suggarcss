@@ -1,0 +1,9 @@
+@import '../../../../css/src/tokens/colors.scss';
+@import '../../../../css/src/tokens/spacing.scss';
+
+.tooltip__separator {
+  background-color: $black05;
+  height: 2px;
+  width: 100%;
+  margin: $spacing-md 0;
+}

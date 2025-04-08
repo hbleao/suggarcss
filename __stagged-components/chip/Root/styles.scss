@@ -1,0 +1,59 @@
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/spacing.scss';
+
+.chip {
+  width: max-content;
+  background-color: transparent;
+  border-radius: 1.2rem;
+  padding: $spacing-3xs $spacing-md;
+  text-wrap: nowrap;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  i {
+    font-size: 1.6rem;
+  }
+
+  &:hover {
+    background-color: $black15;
+    border: 1px solid $alphaChannel;
+  }
+
+  &:active {
+    background-color: $portoSeguros15;
+    border: 1px solid $portoSeguros15;
+  }
+
+  &.--light {
+    border: 1px solid $black15;
+    color: $black85;
+
+    i {
+      color: $black85;
+    }
+
+    &.--selected {
+      border: 1px solid $portoSeguros15;
+      background-color: $portoSeguros15;
+    }
+  }
+
+  &.--dark {
+    border: 1px solid $black60;
+    color: $offWhite;
+
+    i {
+      color: $offWhite;
+    }
+
+    &:hover,
+    &:active {
+      color: $black85;
+
+      i {
+        color: $black85;
+      }
+    }
+  }
+}

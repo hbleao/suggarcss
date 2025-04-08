@@ -1,0 +1,18 @@
+@import '../../../css/src/tokens/breakpoints.scss';
+@import '../../../css/src/tokens/font-size.scss';
+@import '../../../css/src/tokens/font-weight.scss';
+@import '../../../css/src/tokens/colors.scss';
+
+.card-testimonial__position {
+  margin-top: 0.4rem;
+  font-weight: $regular;
+  font-size: $text-3xs;
+  line-height: 1.6rem;
+  color: $black60;
+  width: 100%;
+  min-height: 3rem;
+
+  @media (min-width: $tablet-landscape) {
+    min-height: auto;
+  }
+}

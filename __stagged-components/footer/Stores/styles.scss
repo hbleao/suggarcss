@@ -1,0 +1,8 @@
+@import '../../../css/src/tokens/spacing.scss';
+
+.footer__stores {
+  margin-top: $spacing-md;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.2rem;
+}

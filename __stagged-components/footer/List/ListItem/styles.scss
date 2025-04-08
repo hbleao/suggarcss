@@ -1,0 +1,9 @@
+@import '../../../../css/src/tokens/spacing.scss';
+
+.footer__list-item {
+  margin-bottom: $spacing-3xs;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}

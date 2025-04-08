@@ -1,0 +1,8 @@
+@import '../../../../css/src/base.scss';
+
+.tooltip__content-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xs;
+  align-items: center;
+}

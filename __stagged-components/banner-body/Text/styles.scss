@@ -1,0 +1,9 @@
+@import '../../../../packages/css/src/base.scss';
+
+.banner-body__plain-text {
+  font-style: $normal;
+  font-weight: $regular;
+  font-size: $text-4xs;
+  line-height: 2rem;
+  color: $black75;
+}

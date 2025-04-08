@@ -1,0 +1,13 @@
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/font-family.scss';
+@import '../../../css/src/tokens/font-size.scss';
+@import '../../../css/src/tokens/font-weight.scss';
+
+.dropdown__error-message {
+  font-size: $text-3xs;
+  color: $red80;
+  font-family: $open-sans;
+  font-weight: $medium;
+  line-height: $text-md;
+  margin: 0.3rem 0 0 1.2rem;
+}

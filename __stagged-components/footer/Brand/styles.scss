@@ -1,0 +1,22 @@
+@import '../../../../packages/css/src/tokens/breakpoints.scss';
+@import '../../../../packages/css/src/tokens/spacing.scss';
+
+.footer__brand {
+  padding-top: $spacing-md;
+
+  @media (min-width: $tablet-portrait) {
+    padding-top: 5.6rem;
+    padding-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 20.5rem;
+    flex-wrap: wrap;
+    column-gap: 7.4rem;
+  }
+
+  @media (min-width: $desktop) {
+    padding-top: 0;
+    display: block;
+    height: auto;
+  }
+}

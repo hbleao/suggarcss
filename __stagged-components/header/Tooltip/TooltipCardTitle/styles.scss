@@ -1,0 +1,13 @@
+@import '../../../../css/src/tokens/spacing.scss';
+@import '../../../../css/src/tokens/font-family.scss';
+@import '../../../../css/src/tokens/font-size.scss';
+@import '../../../../css/src/tokens/font-weight.scss';
+@import '../../../../css/src/tokens/colors.scss';
+
+.tooltip__card-title {
+  color: $black85;
+  font-family: $open-sans;
+  font-size: $text-md;
+  font-weight: $regular;
+  line-height: 2rem;
+}

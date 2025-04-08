@@ -1,0 +1,6 @@
+@import '../../../../css/src/tokens/spacing.scss';
+
+.toolbar__list {
+  display: flex;
+  gap: $spacing-3xs;
+}

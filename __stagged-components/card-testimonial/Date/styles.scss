@@ -1,0 +1,14 @@
+@import '../../../css/src/tokens/breakpoints.scss';
+@import '../../../css/src/tokens/font-size.scss';
+@import '../../../css/src/tokens/font-weight.scss';
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/spacing.scss';
+
+.card-testimonial__date {
+  display: block;
+  margin-top: $spacing-2xs;
+  font-weight: $regular;
+  font-size: 1rem;
+  line-height: $text-4xs;
+  color: $black60;
+}

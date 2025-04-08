@@ -1,0 +1,11 @@
+@import '../../../css/src/tokens/breakpoints.scss';
+@import '../../../css/src/tokens/font-weight.scss';
+
+.banner-hero__subtitle {
+  font-weight: $regular;
+  margin-bottom: 0.8rem;
+
+  @media (min-width: $tablet-portrait) {
+    margin-bottom: 0.4rem;
+  }
+}

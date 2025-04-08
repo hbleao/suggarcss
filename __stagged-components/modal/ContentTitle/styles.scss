@@ -1,0 +1,12 @@
+.modal__content-title {
+  display: flex;
+  margin: 2rem 0 2.4rem;
+
+  i {
+    margin-right: 2.4rem;
+  }
+
+  @media (min-width: var(--tablet-landscape)) {
+    margin: 3.2rem 0;
+  }
+}

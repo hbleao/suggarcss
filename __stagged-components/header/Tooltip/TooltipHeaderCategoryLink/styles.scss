@@ -1,0 +1,22 @@
+@import '../../../../css/src/tokens/font-family.scss';
+@import '../../../../css/src/tokens/font-size.scss';
+@import '../../../../css/src/tokens/font-weight.scss';
+@import '../../../../css/src/tokens/colors.scss';
+@import '../../../../css/src/tokens/spacing.scss';
+
+.tooltip__header-category-link {
+  padding: $spacing-2xs $spacing-sm;
+  color: $black75;
+  border-radius: $spacing-sm;
+  border: 1px solid $black15;
+  font-family: $open-sans;
+  background-color: transparent;
+  font-size: $text-4xs;
+  font-weight: $semi-bold;
+  line-height: 2rem;
+  cursor: pointer;
+  outline-offset: -2px;
+  display: flex;
+  align-items: center;
+  gap: $text-2xs;
+}

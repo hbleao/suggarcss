@@ -1,0 +1,21 @@
+@import '../../../../css/src/base.scss';
+
+.drawer__subcategory-list-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  svg {
+    margin-right: $spacing-2xs;
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: $black100;
+    font-family: $open-sans;
+    font-weight: $regular;
+    font-size: $text-md;
+    line-height: 2rem;
+  }
+}

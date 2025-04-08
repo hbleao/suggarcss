@@ -1,0 +1,28 @@
+@import '../../../css/src/tokens/breakpoints.scss';
+@import '../../../css/src/tokens/spacing.scss';
+
+.footer__list {
+  padding-top: $spacing-md;
+  flex-direction: column;
+  column-gap: 5.8rem;
+  margin-bottom: $spacing-2xl;
+
+  &.isOpen {
+    display: flex;
+  }
+
+  &.isClose {
+    display: none;
+  }
+
+  @media (min-width: $tablet-portrait) {
+    max-height: 29rem;
+    padding-top: 0;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+
+    &.isClose {
+      display: flex;
+    }
+  }
+}

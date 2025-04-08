@@ -1,0 +1,13 @@
+@import '../../../css/src/tokens/colors.scss';
+@import '../../../css/src/tokens/font-family.scss';
+@import '../../../css/src/tokens/font-size.scss';
+@import '../../../css/src/tokens/font-weight.scss';
+@import '../../../css/src/tokens/spacing.scss';
+
+.card-content__description {
+  font-family: $open-sans;
+  font-weight: $regular;
+  font-size: $text-md;
+  line-height: 24px;
+  margin-top: $spacing-md;
+}

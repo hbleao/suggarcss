@@ -1,0 +1,27 @@
+@import '../../../css/src/base.scss';
+
+.header__drawer {
+  position: absolute;
+  max-width: 100%;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  background-color: $white;
+  left: -110rem;
+  top: 6rem;
+  transition: left 0.4s ease;
+
+  @media (min-width: $desktop) {
+    display: none;
+  }
+
+  &.opened {
+    left: 0rem;
+    z-index: $tooltip;
+
+    .drawer__categories {
+      opacity: 1;
+      transform: translate(0rem);
+    }
+  }
+}

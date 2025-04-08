@@ -1,0 +1,10 @@
+.accordion__icon {
+  transition: all 0.3s ease;
+  &.--up {
+    transform: rotateZ(180deg);
+  }
+
+  &.--down {
+    transform: rotateZ(0deg);
+  }
+}
