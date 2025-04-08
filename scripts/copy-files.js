@@ -29,10 +29,16 @@ async function main() {
 			scripts: undefined,
 			// Ajustar caminhos se necessário
 			main: "./index.js", // Relativo à pasta dist
+			module: "./index.js", // Garantir que o módulo ESM também funcione
 			types: "./index.d.ts", // Relativo à pasta dist
 			bin: {
 				"porto-ocean": "./cli/cli.js", // Relativo à pasta dist
 			},
+			// Garantir que os arquivos corretos sejam incluídos
+			files: [
+				".", // Incluir todos os arquivos na raiz da pasta dist
+				"**/*" // Incluir todos os arquivos em todas as subpastas
+			],
 			// Você pode adicionar ou modificar outros campos conforme necessário
 		};
 
@@ -62,6 +68,22 @@ async function main() {
 			path.resolve(distDir, "components"),
 		);
 		console.log("✅ Componentes copiados para a raiz da pasta dist com sucesso!");
+
+		// Verificar e garantir que os arquivos chunk estão presentes
+		const distFiles = await fs.readdir(distDir);
+		const chunkFiles = distFiles.filter(file => file.includes('chunk'));
+		if (chunkFiles.length > 0) {
+			console.log(`✅ Arquivos chunk encontrados: ${chunkFiles.join(', ')}`);
+		} else {
+			console.warn('⚠️ Nenhum arquivo chunk encontrado na pasta dist!');
+		}
+
+		// Listar todos os arquivos na pasta dist para verificar
+		console.log('ℹ️ Arquivos na pasta dist:');
+		const allFiles = await fs.readdir(distDir, { recursive: false });
+		for (const file of allFiles) {
+			console.log(`  - ${file}`);
+		}
 
 		// Você pode adicionar mais arquivos para copiar aqui
 		// Por exemplo, licença, changelog, etc.
