@@ -1,6 +1,6 @@
 {
 	"name": "@porto/js-library-corp-hubv-porto-ocean",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
@@ -9,10 +9,8 @@
 		"porto-ocean": "./dist/cli/cli.js"
 	},
 	"files": [
-		"dist",
-		"src/index.ts",
-		"src/cli",
-		"src/components/**/*",
+		"dist/**/*",
+		"src/**/*",
 		"README.md"
 	],
 	"scripts": {

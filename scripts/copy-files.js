@@ -56,6 +56,13 @@ async function main() {
 		);
 		console.log("✅ Pasta src copiada para dentro da pasta dist com sucesso!");
 
+		// Copiar os componentes para a raiz da pasta dist para maior compatibilidade
+		await fs.copy(
+			path.resolve(rootDir, "src/components"),
+			path.resolve(distDir, "components"),
+		);
+		console.log("✅ Componentes copiados para a raiz da pasta dist com sucesso!");
+
 		// Você pode adicionar mais arquivos para copiar aqui
 		// Por exemplo, licença, changelog, etc.
 	} catch (error) {
