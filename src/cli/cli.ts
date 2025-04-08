@@ -144,9 +144,39 @@ program
 		// Caminho para a raiz do pacote instalado
 		const pkgPath = path.dirname(path.dirname(__dirname));
 
-		// Caminho de origem: onde o componente está no pacote
-		// Usamos a estrutura src/components/{nome-do-componente}
-		const src = path.join(pkgPath, `src/components/${component}`);
+		// Tentamos encontrar o componente em vários caminhos possíveis
+		// Isso garante que a CLI funcione independentemente de como o pacote foi instalado
+		const possiblePaths = [
+			// Caminho 1: src/components na raiz do pacote
+			path.join(pkgPath, `src/components/${component}`),
+			// Caminho 2: src/components dentro da pasta dist
+			path.join(pkgPath, `dist/src/components/${component}`),
+			// Caminho 3: components diretamente na raiz do pacote
+			path.join(pkgPath, `components/${component}`),
+			// Caminho 4: components dentro da pasta dist
+			path.join(pkgPath, `dist/components/${component}`),
+		];
+
+		// Verificamos qual caminho existe
+		let src = "";
+		for (const possiblePath of possiblePaths) {
+			try {
+				if (fs.existsSync(possiblePath)) {
+					src = possiblePath;
+					console.log(`Componente encontrado em: ${src}`);
+					break;
+				}
+			} catch (error) {
+				// Ignorar erros e continuar tentando outros caminhos
+			}
+		}
+
+		// Se não encontramos o componente em nenhum dos caminhos, mostramos um erro
+		if (!src) {
+			console.error(`Não foi possível encontrar o componente "${component}" em nenhum dos caminhos possíveis.`);
+			console.error(`Caminhos verificados:\n${possiblePaths.join('\n')}`);
+			process.exit(1);
+		}
 
 		// Caminho de destino: onde o componente será instalado no projeto do usuário
 		// Seguimos a convenção src/components/ui/{nome-do-componente}
