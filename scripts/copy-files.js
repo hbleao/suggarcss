@@ -31,7 +31,7 @@ async function main() {
 			main: "./index.js", // Relativo à pasta dist
 			types: "./index.d.ts", // Relativo à pasta dist
 			bin: {
-				component: "./cli/cli.js", // Relativo à pasta dist
+				"porto-ocean": "./cli/cli.js", // Relativo à pasta dist
 			},
 			// Você pode adicionar ou modificar outros campos conforme necessário
 		};

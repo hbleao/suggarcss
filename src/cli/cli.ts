@@ -3,6 +3,9 @@
  *
  * Esta CLI permite aos usuários instalar componentes React com SASS em seus projetos.
  * Usa commander para gerenciar os comandos e @inquirer/prompts para interatividade.
+ *
+ * Nota: O shebang (#!/usr/bin/env node) é adicionado automaticamente pelo npm
+ * quando o pacote é instalado e o bin é configurado no package.json.
  */
 
 import { confirm, input, select } from "@inquirer/prompts"; // Prompts interativos para CLI

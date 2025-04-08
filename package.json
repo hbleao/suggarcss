@@ -1,15 +1,14 @@
 {
 	"name": "@porto/js-library-corp-hubv-porto-ocean",
-	"version": "0.0.3",
+	"version": "0.0.5",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
 	"type": "module",
-	"files": [
-		"dist",
-		"src",
-		"README.md"
-	],
+	"bin": {
+		"porto-ocean": "./dist/cli/cli.js"
+	},
+	"files": ["dist", "src", "README.md"],
 	"scripts": {
 		"build": "tsup src/index.ts src/cli/cli.ts --format esm --dts --out-dir dist --minify --clean",
 		"build:cli": "tsup src/cli/cli.ts --format esm --out-dir dist --minify --clean && npm run copy-files",
@@ -39,7 +38,6 @@
 	},
 	"dependencies": {
 		"@inquirer/prompts": "^7.4.1",
-		"@porto-ocean/utils": "^1.0.9",
 		"commander": "^13.1.0",
 		"fs-extra": "^11.3.0"
 	}
