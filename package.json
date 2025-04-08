@@ -1,6 +1,6 @@
 {
 	"name": "sugarcss-react",
-	"version": "1.0.3",
+	"version": "1.0.6",
 	"description": "Biblioteca de componentes React com SASS inspirada no shadcn/ui",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -30,6 +30,7 @@
 		"test:cli": "node dist/cli/cli.js"
 	},
 	"dependencies": {
+		"@inquirer/prompts": "^7.4.1",
 		"commander": "^13.1.0",
 		"fs-extra": "^11.3.0"
 	},
