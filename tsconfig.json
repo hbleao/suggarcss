@@ -12,5 +12,5 @@
 		"skipLibCheck": true,
 		"outDir": "dist"
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx"]
+	"include": ["src/**/*.ts", "src/**/*.tsx", "./src/@types/scss.d.ts"]
 }

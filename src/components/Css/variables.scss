@@ -1,0 +1,198 @@
+@import './tokens/colors.scss';
+@import './tokens/spacing.scss';
+@import './tokens/font-size.scss';
+@import './tokens/font-weight.scss';
+@import './tokens/layers.scss';
+@import './tokens/shadow.scss';
+@import './tokens/breakpoints.scss';
+@import './tokens/radii.scss';
+
+:root {
+  --font-open-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-porto-robert: 'Porto Roobert', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --portoSeguros05: #{$portoSeguros05};
+  --portoSeguros15: #{$portoSeguros15};
+  --portoSeguros30: #{$portoSeguros30};
+  --portoSeguros45: #{$portoSeguros45};
+  --portoSeguros60: #{$portoSeguros60};
+  --portoSeguros65: #{$portoSeguros65};
+  --portoSeguros75: #{$portoSeguros75};
+  --portoSeguros85: #{$portoSeguros85};
+  --portoSeguros100: #{$portoSeguros100};
+  --portoSegurosPrimary: #{$portoSegurosPrimary};
+
+  --portoBanking05: #{$portoBanking05};
+  --portoBanking15: #{$portoBanking15};
+  --portoBanking30: #{$portoBanking30};
+  --portoBanking45: #{$portoBanking45};
+  --portoBanking60: #{$portoBanking60};
+  --portoBanking65: #{$portoBanking65};
+  --portoBanking75: #{$portoBanking75};
+  --portoBanking85: #{$portoBanking85};
+  --portoBanking100: #{$portoBanking100};
+  --portoBankingPrimary: #{$portoBankingPrimary};
+
+  --portoSaude05: #{$portoSaude05};
+  --portoSaude15: #{$portoSaude15};
+  --portoSaude30: #{$portoSaude30};
+  --portoSaude45: #{$portoSaude45};
+  --portoSaude60: #{$portoSaude60};
+  --portoSaude65: #{$portoSaude65};
+  --portoSaude75: #{$portoSaude75};
+  --portoSaude85: #{$portoSaude85};
+  --portoSaude100: #{$portoSaude100};
+  --portoSaudePrimary: #{$portoSaudePrimary};
+
+  --black05: #{$black05};
+  --black15: #{$black15};
+  --black30: #{$black30};
+  --black45: #{$black45};
+  --black60: #{$black60};
+  --black65: #{$black65};
+  --black70: #{$black70};
+  --black75: #{$black75};
+  --black85: #{$black85};
+  --black100: #{$black100};
+
+  --white: #{$white};
+  --semiWhite: #{$semiWhite};
+  --offWhite: #{$offWhite};
+  --offWhite05: #{$offWhite05};
+
+  --violet30: #{$violet30};
+  --violet60: #{$violet60};
+  --violet100: #{$violet100};
+  --violetPrimary: #{$violetPrimary};
+
+  --pink30: #{$pink30};
+  --pink60: #{$pink60};
+  --pink100: #{$pink100};
+  --pinkPrimary: #{$pinkPrimary};
+
+  --yellow30: #{$yellow30};
+  --yellow60: #{$yellow60};
+  --yellow80: #{$yellow80};
+  --yellow100: #{$yellow100};
+  --yellowPrimary: #{$yellowPrimary};
+
+  --green30: #{$green30};
+  --green60: #{$green60};
+  --green80: #{$green80};
+  --green85: #{$green85};
+  --green100: #{$green100};
+  --greenPrimary: #{$greenPrimary};
+
+  --red30: #{$red30};
+  --red60: #{$red60};
+  --red80: #{$red80};
+  --red85: #{$red85};
+  --red100: #{$red100};
+  --redPrimary: #{$redPrimary};
+
+  --alpha: rgba(255, 255, 255, 0);
+  --alpha10: rgba(255, 255, 255, 0.3);
+  --alpha30: rgba(255, 255, 255, 0.3);
+  --alpha50: rgba(255, 255, 255, 0.5);
+  --alpha70: rgba(255, 255, 255, 0.7);
+
+  --transparent: transparent;
+  --currentColor: currentColor;
+
+  --spacing-sm: #{$spacing-sm};
+  --spacing-2xs: #{$spacing-2xs};
+  --spacing-3xs: #{$spacing-3xs};
+  --spacing-md: #{$spacing-md};
+  --spacing-lg: #{$spacing-lg};
+  --spacing-2xl: #{$spacing-2xl};
+  --spacing-3xl: #{$spacing-3xl};
+  --spacing-4xl: #{$spacing-4xl};
+  --spacing-5xl: #{$spacing-5xl};
+  --spacing-6xl: #{$spacing-6xl};
+  --spacing-7xl: #{$spacing-7xl};
+
+  --text-sm: #{$text-sm};
+  --text-2xs: #{$text-2xs};
+  --text-3xs: #{$text-3xs};
+  --text-4xs: #{$text-4xs};
+  --text-md: #{$text-md};
+  --text-lg: #{$text-lg};
+  --text-2xl: #{$text-2xl};
+  --text-3xl: #{$text-3xl};
+  --text-4xl: #{$text-4xl};
+  --text-5xl: #{$text-5xl};
+  --text-6xl: #{$text-6xl};
+  --text-7xl: #{$text-7xl};
+  --text-8xl: #{$text-8xl};
+
+  --breakpoint-sm: #{$mobile};
+  --breakpoint-md: #{$tablet-portrait};
+  --breakpoint-lg: #{$tablet-landscape};
+  --breakpoint-xl: #{$desktop};
+  --breakpoint-2xl: #{$wide};
+
+  --shadow-xs: #{$shadow-xs};
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+  --shadow-xl: #{$shadow-xl};
+  --shadow-2xl: #{$shadow-2xl};
+  --shadow-3xl: #{$shadow-3xl};
+
+  --radii-none: #{$radii-none};
+  --radii-xxs: #{$radii-xxs};
+  --radii-xs: #{$radii-xs};
+  --radii-sm: #{$radii-sm};
+  --radii-md: #{$radii-md};
+  --radii-lg: #{$radii-lg};
+  --radii-xl: #{$radii-xl};
+  --radii-2xl: #{$radii-2xl};
+  --radii-3xl: #{$radii-3xl};
+  --radii-4xl: #{$radii-4xl};
+  --radii-full: #{$radii-full};
+
+  --light: #{$light};
+  --regular: #{$regular};
+  --medium: #{$medium};
+  --semi-bold: #{$semi-bold};
+  --bold: #{$bold};
+
+  --base: #{$base};
+  --menu: #{$menu};
+  --tooltipOverlay: #{$overlayTooltip};
+  --tooltip: #{$tooltip};
+  --alwaysOnTop: #{$alwaysOnTop};
+  --modalOverlay: #{$overlayModal};
+  --modal: #{$modal};
+
+  --aspectVideo: 16 / 9;
+
+  @keyframes ping {
+
+    75%,
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulse {
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes bounce {
+
+    0%,
+    100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+
+    50% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+}

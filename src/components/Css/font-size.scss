@@ -1,0 +1,43 @@
+@import './tokens/font-size.scss';
+
+.--font-size {
+  &-text-sm {
+    font-size: $text-sm;
+  }
+  &-text-2xs {
+    font-size: $text-2xs;
+  }
+  &-text-3xs {
+    font-size: $text-3xs;
+  }
+  &-text-4xs {
+    font-size: $text-4xs;
+  }
+  &-text-md {
+    font-size: $text-md;
+  }
+  &-text-lg {
+    font-size: $text-lg;
+  }
+  &-text-2xl {
+    font-size: $text-2xl;
+  }
+  &-text-3xl {
+    font-size: $text-3xl;
+  }
+  &-text-4xl {
+    font-size: $text-4xl;
+  }
+  &-text-5xl {
+    font-size: $text-5xl;
+  }
+  &-text-6xl {
+    font-size: $text-6xl;
+  }
+  &-text-7xl {
+    font-size: $text-7xl;
+  }
+  &-text-8xl {
+    font-size: $text-8xl;
+  }
+}
