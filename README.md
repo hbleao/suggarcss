@@ -71,18 +71,64 @@ import { fileURLToPath } from "node:url";
    - Define o nome, descrição e versão da CLI
 
 3. **Definição de Comandos**:
+
+   A CLI do SugarCSS oferece os seguintes comandos:
+
+   ### a. Comando `install`
+
+   Instala um componente individual no projeto.
+
    ```typescript
    program
      .command("install")
-     .argument("<component>", "Nome do componente para instalar")
+     .description("Instala um componente individual dentre todos os componentes disponíveis")
+     .argument("[component]", "Nome do componente para instalar (opcional)")
      .option("-d, --dir <directory>", "Diretório de destino para instalar o componente", "")
-     .action(async (component, options) => {
-       // Lógica de instalação
-     });
    ```
-   - Define o comando `install`
-   - Requer um argumento `component`
-   - Adiciona uma opção opcional `--dir` para especificar o diretório de destino
+
+   **Parâmetros:**
+   - `component` (opcional): Nome do componente a ser instalado. Se não for fornecido, será exibida uma interface interativa para seleção.
+   - `-d, --dir <directory>` (opcional): Diretório de destino para instalar o componente. Se não for fornecido, será solicitado interativamente.
+
+   ### b. Comando `installAll`
+
+   Instala todos os componentes implementados de uma só vez.
+
+   ```typescript
+   program
+     .command("installAll")
+     .description("Instala todos os componentes implementados")
+     .option("-d, --dir <directory>", "Diretório de destino para instalar os componentes", "")
+   ```
+
+   **Parâmetros:**
+   - `-d, --dir <directory>` (opcional): Diretório de destino para instalar os componentes. Se não for fornecido, será solicitado interativamente.
+
+   ### c. Comando `list`
+
+   Lista todos os componentes disponíveis e seu status de implementação.
+
+   ```typescript
+   program
+     .command("list")
+     .description("Lista todos os componentes disponíveis")
+   ```
+
+   ### d. Comando `release-notes`
+
+   Exibe as notas de versão do projeto.
+
+   ```typescript
+   program
+     .command("release-notes")
+     .description("Exibe as notas de versão")
+     .argument("[version]", "Versão específica para exibir (opcional)")
+     .option("-a, --all", "Exibe todas as versões", false)
+   ```
+
+   **Parâmetros:**
+   - `version` (opcional): Versão específica para exibir. Se não for fornecido, será exibida a versão mais recente.
+   - `-a, --all` (opcional): Exibe um resumo de todas as versões disponíveis.
 
 4. **Lógica de Instalação**:
    - Verifica se o componente solicitado existe na lista de componentes disponíveis
@@ -108,12 +154,48 @@ Além da CLI, usamos o `tsup` (baseado em esbuild) para construir a biblioteca:
   - Minificação de código
   - Plugin personalizado para processar arquivos SCSS
 
-## Exemplo de Uso
+## Exemplos de Uso
+
+A CLI pode ser usada de várias maneiras:
+
+### Instalação de Componentes
 
 ```bash
-# Instalar um componente no projeto atual
-node dist/cli/cli.js install button
+# Instalar um componente interativamente
+npx porto-ocean install
+
+# Instalar um componente específico
+npx porto-ocean install button
 
 # Instalar um componente em um diretório específico
-node dist/cli/cli.js install input --dir /caminho/para/seu/projeto
+npx porto-ocean install chip --dir ./meu-projeto
+
+# Instalar todos os componentes implementados
+npx porto-ocean installAll
+```
+
+### Listagem e Informações
+
+```bash
+# Listar todos os componentes disponíveis
+npx porto-ocean list
+
+# Ver as notas de release da versão mais recente
+npx porto-ocean release-notes
+
+# Ver as notas de uma versão específica
+npx porto-ocean release-notes 0.0.5
+
+# Listar todas as versões disponíveis
+npx porto-ocean release-notes --all
+```
+
+### Desenvolvimento e Testes
+
+```bash
+# Testar a CLI localmente durante o desenvolvimento
+node dist/cli/cli.js install button
+
+# Executar a CLI após a compilação
+npm run test:cli
 ```
