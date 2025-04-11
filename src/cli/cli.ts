@@ -15,7 +15,11 @@ import { fileURLToPath } from "node:url"; // Converter URLs para caminhos de sis
 import { Command } from "commander"; // Biblioteca para criar interfaces de linha de comando
 import fs from "fs-extra"; // Extensão do fs nativo com métodos adicionais
 // Importar funções de release notes
-import { getReleaseNote, getAllReleaseNotes, formatReleaseNote } from "./release-notes";
+import {
+	formatReleaseNote,
+	getAllReleaseNotes,
+	getReleaseNote,
+} from "./release-notes";
 
 // Inicialização do Commander
 const program = new Command();
@@ -40,6 +44,9 @@ program
  */
 program
 	.command("install") // Define o comando 'install'
+	.description(
+		"Instala um componente individual dentre todos os componentes disponíveis",
+	) // Descrição exibida na ajuda
 	.argument("[component]", "Nome do componente para instalar (opcional)") // Argumento opcional entre colchetes
 	.option(
 		"-d, --dir <directory>", // Opção para especificar diretório de destino
@@ -175,8 +182,10 @@ program
 
 		// Se não encontramos o componente em nenhum dos caminhos, mostramos um erro
 		if (!src) {
-			console.error(`Não foi possível encontrar o componente "${component}" em nenhum dos caminhos possíveis.`);
-			console.error(`Caminhos verificados:\n${possiblePaths.join('\n')}`);
+			console.error(
+				`Não foi possível encontrar o componente "${component}" em nenhum dos caminhos possíveis.`,
+			);
+			console.error(`Caminhos verificados:\n${possiblePaths.join("\n")}`);
 			process.exit(1);
 		}
 
@@ -380,7 +389,9 @@ program
 
 				// Se não encontramos o componente, pulamos para o próximo
 				if (!src) {
-					console.error(`❌ Não foi possível encontrar o componente "${component}" em nenhum dos caminhos possíveis.`);
+					console.error(
+						`❌ Não foi possível encontrar o componente "${component}" em nenhum dos caminhos possíveis.`,
+					);
 					continue;
 				}
 
@@ -394,17 +405,24 @@ program
 				await fs.copy(src, dest);
 
 				// Exibir mensagem de sucesso para este componente
-				console.log(`✅ Componente "${component}" instalado em src/components/ui/${component}`);
+				console.log(
+					`✅ Componente "${component}" instalado em src/components/ui/${component}`,
+				);
 				successCount++;
 			} catch (error: unknown) {
 				// Em caso de erro, exibimos a mensagem mas continuamos com os outros componentes
-				const errorMessage = error instanceof Error ? error.message : String(error);
-				console.error(`❌ Erro ao instalar o componente "${component}": ${errorMessage}`);
+				const errorMessage =
+					error instanceof Error ? error.message : String(error);
+				console.error(
+					`❌ Erro ao instalar o componente "${component}": ${errorMessage}`,
+				);
 			}
 		}
 
 		// Exibir resumo da instalação
-		console.log(`\nInstalação concluída: ${successCount} de ${implemented.length} componentes instalados com sucesso.\n`);
+		console.log(
+			`\nInstalação concluída: ${successCount} de ${implemented.length} componentes instalados com sucesso.\n`,
+		);
 	});
 
 /**
@@ -427,21 +445,21 @@ program
 		if (options.all) {
 			console.log("\nHistórico completo de versões:\n");
 			const allNotes = getAllReleaseNotes();
-			
+
 			// Exibir um resumo de todas as versões
 			for (const note of allNotes) {
 				console.log(`v${note.version} - ${note.date} - ${note.title}`);
 			}
-			
+
 			console.log("\nPara ver detalhes de uma versão específica, execute:");
 			console.log("  npx porto-ocean release-notes <versão>\n");
 			return;
 		}
-		
+
 		// Se uma versão específica foi solicitada, exibimos apenas essa versão
-		const version = versionArg || 'latest';
+		const version = versionArg || "latest";
 		const note = getReleaseNote(version);
-		
+
 		if (!note) {
 			console.error(`\nVersão "${version}" não encontrada.\n`);
 			console.log("Versões disponíveis:");
@@ -451,7 +469,7 @@ program
 			}
 			process.exit(1);
 		}
-		
+
 		// Formatar e exibir a nota de release
 		const formattedNote = formatReleaseNote(note);
 		console.log(formattedNote);
