@@ -55,6 +55,16 @@ async function main() {
 		);
 		console.log("✅ README.md copiado para a pasta dist com sucesso!");
 
+		// Copiar CHANGELOG.md para a pasta dist se existir
+		const changelogPath = path.resolve(rootDir, "CHANGELOG.md");
+		if (await fs.pathExists(changelogPath)) {
+			await fs.copy(
+				changelogPath,
+				path.resolve(distDir, "CHANGELOG.md"),
+			);
+			console.log("✅ CHANGELOG.md copiado para a pasta dist com sucesso!");
+		}
+
 		// Copiar a pasta src inteira para dentro da pasta dist
 		await fs.copy(
 			path.resolve(rootDir, "src"),

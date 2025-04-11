@@ -1,6 +1,6 @@
 {
 	"name": "@porto/js-library-corp-hubv-porto-ocean",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
@@ -15,15 +15,17 @@
 	],
 	"scripts": {
 		"build": "tsup src/index.ts src/cli/cli.ts --format esm --dts --out-dir dist --minify --clean && npm run copy-files",
-		"build:cli": "tsup src/cli/cli.ts --format esm --out-dir dist --minify --clean && npm run copy-files",
+		"build:cli": "tsup src/cli/cli.ts src/cli/release-notes.ts --format esm --out-dir dist --minify --clean && npm run copy-files",
 		"test": "jest --passWithNoTests",
 		"test:cli": "node dist/cli/cli.js",
 		"copy-files": "node scripts/copy-files.js",
+		"update-changelog": "node scripts/update-changelog.js",
 		"clean": "npm run clean:coverage && npm run clean:dist",
 		"clean:coverage": "rimraf coverage",
 		"clean:dist": "rimraf dist",
 		"prepack": "clean-package",
-		"postpack": "clean-package restore"
+		"postpack": "clean-package restore",
+		"prebuild": "npm run update-changelog"
 	},
 	"license": "MIT",
 	"devDependencies": {

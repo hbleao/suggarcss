@@ -14,6 +14,8 @@ import { fileURLToPath } from "node:url"; // Converter URLs para caminhos de sis
 // Importações necessárias
 import { Command } from "commander"; // Biblioteca para criar interfaces de linha de comando
 import fs from "fs-extra"; // Extensão do fs nativo com métodos adicionais
+// Importar funções de release notes
+import { getReleaseNote, getAllReleaseNotes, formatReleaseNote } from "./release-notes";
 
 // Inicialização do Commander
 const program = new Command();
@@ -243,7 +245,7 @@ program
 			"link",
 		];
 
-		const implemented = ["button", "input"];
+		const implemented = ["button", "chip"];
 
 		// Exibir cabeçalho da lista
 		console.log("\nComponentes disponíveis:");
@@ -265,6 +267,194 @@ program
 		console.log("  npx porto-ocean install <componente>");
 		console.log("  ou simplesmente:");
 		console.log("  npx porto-ocean install\n");
+	});
+
+/**
+ * Comando installAll
+ *
+ * Este comando instala todos os componentes implementados de uma só vez,
+ * permitindo que o usuário configure rapidamente toda a biblioteca.
+ */
+program
+	.command("installAll") // Define o comando 'installAll'
+	.description("Instala todos os componentes implementados") // Descrição exibida na ajuda
+	.option(
+		"-d, --dir <directory>", // Opção para especificar diretório de destino
+		"Diretório de destino para instalar os componentes",
+		"", // Valor padrão vazio
+	)
+	.action(async (options) => {
+		// Função executada quando o comando é chamado
+		// Usamos as mesmas listas de componentes do comando install
+		// para manter consistência
+		const available = [
+			"button",
+			"input",
+			"modal",
+			"dropdown",
+			"textarea",
+			"typography",
+			"accordion",
+			"tabs",
+			"link",
+			"chip",
+		];
+
+		const implemented = ["button", "chip"];
+
+		/**
+		 * Seleção do diretório de destino
+		 *
+		 * Se o usuário não especificar um diretório via opção --dir,
+		 * perguntamos interativamente onde instalar os componentes.
+		 */
+		let baseDir = options.dir;
+		if (!baseDir) {
+			// Primeiro, perguntamos se o usuário quer usar o diretório atual
+			const useCurrentDir = await confirm({
+				message: "Deseja instalar no diretório atual?",
+				default: true, // Por padrão, sugerimos usar o diretório atual
+			});
+
+			if (useCurrentDir) {
+				// Se sim, usamos o diretório de trabalho atual
+				baseDir = process.cwd();
+			} else {
+				// Se não, pedimos para digitar um caminho personalizado
+				baseDir = await input({
+					message: "Digite o caminho do diretório de destino:",
+					default: process.cwd(), // Sugerimos o diretório atual como padrão
+				});
+			}
+		}
+
+		// Caminho para a raiz do pacote instalado
+		const pkgPath = path.dirname(path.dirname(__dirname));
+
+		// Exibir mensagem inicial
+		console.log("\nInstalando todos os componentes implementados...\n");
+
+		// Confirmação final antes da instalação
+		const confirmInstall = await confirm({
+			message: `Confirma a instalação de todos os componentes (${implemented.length}) em ${baseDir}/src/components/ui/?`,
+			default: true, // Por padrão, sugerimos confirmar
+		});
+
+		// Se o usuário cancelar, encerramos o programa sem erro
+		if (!confirmInstall) {
+			console.log("Instalação cancelada.");
+			process.exit(0); // Código 0 indica saída sem erro
+		}
+
+		// Contador de componentes instalados com sucesso
+		let successCount = 0;
+
+		// Instalar cada componente implementado
+		for (const component of implemented) {
+			try {
+				// Tentamos encontrar o componente em vários caminhos possíveis
+				// Isso garante que a CLI funcione independentemente de como o pacote foi instalado
+				const possiblePaths = [
+					// Caminho 1: src/components na raiz do pacote
+					path.join(pkgPath, `src/components/${component}`),
+					// Caminho 2: src/components dentro da pasta dist
+					path.join(pkgPath, `dist/src/components/${component}`),
+					// Caminho 3: components diretamente na raiz do pacote
+					path.join(pkgPath, `components/${component}`),
+					// Caminho 4: components dentro da pasta dist
+					path.join(pkgPath, `dist/components/${component}`),
+				];
+
+				// Verificamos qual caminho existe
+				let src = "";
+				for (const possiblePath of possiblePaths) {
+					try {
+						if (fs.existsSync(possiblePath)) {
+							src = possiblePath;
+							break;
+						}
+					} catch (error) {
+						// Ignorar erros e continuar tentando outros caminhos
+					}
+				}
+
+				// Se não encontramos o componente, pulamos para o próximo
+				if (!src) {
+					console.error(`❌ Não foi possível encontrar o componente "${component}" em nenhum dos caminhos possíveis.`);
+					continue;
+				}
+
+				// Caminho de destino: onde o componente será instalado no projeto do usuário
+				const dest = path.join(baseDir, `src/components/ui/${component}`);
+
+				// Garantir que o diretório de destino exista
+				await fs.ensureDir(dest);
+
+				// Copiar todos os arquivos do componente para o destino
+				await fs.copy(src, dest);
+
+				// Exibir mensagem de sucesso para este componente
+				console.log(`✅ Componente "${component}" instalado em src/components/ui/${component}`);
+				successCount++;
+			} catch (error: unknown) {
+				// Em caso de erro, exibimos a mensagem mas continuamos com os outros componentes
+				const errorMessage = error instanceof Error ? error.message : String(error);
+				console.error(`❌ Erro ao instalar o componente "${component}": ${errorMessage}`);
+			}
+		}
+
+		// Exibir resumo da instalação
+		console.log(`\nInstalação concluída: ${successCount} de ${implemented.length} componentes instalados com sucesso.\n`);
+	});
+
+/**
+ * Comando release-notes
+ *
+ * Este comando exibe as notas de versão do projeto,
+ * permitindo que os usuários vejam o que mudou em cada versão.
+ */
+program
+	.command("release-notes") // Define o comando 'release-notes'
+	.description("Exibe as notas de versão") // Descrição exibida na ajuda
+	.argument("[version]", "Versão específica para exibir (opcional)")
+	.option(
+		"-a, --all", // Opção para exibir todas as versões
+		"Exibe todas as versões",
+		false, // Valor padrão
+	)
+	.action(async (versionArg, options) => {
+		// Se a opção --all foi especificada, exibimos todas as versões
+		if (options.all) {
+			console.log("\nHistórico completo de versões:\n");
+			const allNotes = getAllReleaseNotes();
+			
+			// Exibir um resumo de todas as versões
+			for (const note of allNotes) {
+				console.log(`v${note.version} - ${note.date} - ${note.title}`);
+			}
+			
+			console.log("\nPara ver detalhes de uma versão específica, execute:");
+			console.log("  npx porto-ocean release-notes <versão>\n");
+			return;
+		}
+		
+		// Se uma versão específica foi solicitada, exibimos apenas essa versão
+		const version = versionArg || 'latest';
+		const note = getReleaseNote(version);
+		
+		if (!note) {
+			console.error(`\nVersão "${version}" não encontrada.\n`);
+			console.log("Versões disponíveis:");
+			const allNotes = getAllReleaseNotes();
+			for (const note of allNotes) {
+				console.log(`- v${note.version}`);
+			}
+			process.exit(1);
+		}
+		
+		// Formatar e exibir a nota de release
+		const formattedNote = formatReleaseNote(note);
+		console.log(formattedNote);
 	});
 
 /**
