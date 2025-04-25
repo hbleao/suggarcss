@@ -1,11 +1,4 @@
-@import './tokens/colors.scss';
-@import './tokens/spacing.scss';
-@import './tokens/font-size.scss';
-@import './tokens/font-weight.scss';
-@import './tokens/layers.scss';
-@import './tokens/shadow.scss';
-@import './tokens/breakpoints.scss';
-@import './tokens/radii.scss';
+@import './tokens/base.scss';
 
 :root {
   --font-open-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";

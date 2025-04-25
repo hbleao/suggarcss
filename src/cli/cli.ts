@@ -36,14 +36,14 @@ program
 	) // Descrição exibida na ajuda
 	.version("0.1.0") // Versão da CLI
 	.option(
-		"-a, --all", 
+		"-a, --all",
 		"Exibe todas as versões ou instala todos os componentes implementados",
-		false
+		false,
 	)
 	.option(
 		"-d, --dir <directory>",
 		"Diretório de destino para instalar os componentes",
-		""
+		"",
 	);
 
 /**
@@ -333,7 +333,7 @@ program
 		if (!baseDir) {
 			// Primeiro, perguntamos se o usuário quer usar o diretório atual
 			const useCurrentDir = await confirm({
-				message: "Deseja instalar no diretório atual?",
+				message: "Deseja instalar no diretório atual (src)?",
 				default: true, // Por padrão, sugerimos usar o diretório atual
 			});
 
@@ -455,7 +455,7 @@ program
 	.action(async (versionArg, options, command) => {
 		// Obter as opções globais do programa principal
 		const programOptions = command.parent?.opts() || {};
-		
+
 		// Se a opção --all foi especificada (no comando ou globalmente), exibimos todas as versões
 		if (options.all || programOptions.all) {
 			console.log("\nHistórico completo de versões:\n");
@@ -497,24 +497,31 @@ program
  * Ele verifica se a opção global --all foi fornecida e nenhum comando específico foi solicitado,
  * nesse caso, executa o comando installAll.
  */
-program.hook('preAction', (thisCommand, actionCommand) => {
+program.hook("preAction", (thisCommand, actionCommand) => {
 	const options = program.opts();
-	
+
 	// Se a opção global --all foi fornecida e nenhum comando específico foi solicitado
 	if (options.all && !actionCommand.name()) {
 		console.log("Opção --all detectada, executando 'installAll'...");
-		
+
 		// Encontrar o comando installAll
-		const installAllCommand = program.commands.find(cmd => cmd.name() === 'installAll');
-		
+		const installAllCommand = program.commands.find(
+			(cmd) => cmd.name() === "installAll",
+		);
+
 		// Executar o comando installAll se encontrado
 		if (installAllCommand) {
 			// Uma abordagem mais simples é usar o método parse do comando
 			// Isso fará com que o Commander execute o comando installAll
 			console.log("Executando comando 'installAll'...");
-			
+
 			// Redirecionar para o comando installAll
-			program.parse(['node', 'script.js', 'installAll', ...process.argv.slice(3)]);
+			program.parse([
+				"node",
+				"script.js",
+				"installAll",
+				...process.argv.slice(3),
+			]);
 			return; // Importante para evitar que o programa continue
 		}
 	}

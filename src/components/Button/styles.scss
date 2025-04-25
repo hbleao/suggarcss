@@ -37,6 +37,16 @@
       background-color: var(--portoSeguros100);
       border-color: var(--alphaChannel);
 
+      .btn__loader {
+        border: 3px solid var(--white);
+        border-bottom-color: transparent;
+      }
+
+
+      .btn-loader {
+        border: 3px solid var(--white);
+      }
+
       &:hover {
         background-color: var(--portoSeguros75);
       }
@@ -51,6 +61,12 @@
       background-color: var(--alphaChannel);
       border-color: var(--portoSeguros100);
 
+      .btn__loader {
+        border: 3px solid var(--portoSeguros100);
+        border-bottom-color: transparent;
+      }
+
+
       &:hover {
         background-color: var(--portoSeguros05);
       }
@@ -64,6 +80,12 @@
       color: var(--portoSeguros100);
       background-color: var(--alphaChannel);
       border-color: var(--alphaChannel);
+
+      .btn__loader {
+        border: 3px solid var(--portoSeguros100);
+        border-bottom-color: transparent;
+      }
+
 
       &:hover {
         background-color: var(--portoSeguros05);
@@ -81,6 +103,12 @@
       background-color: var(--portoBanking100);
       border-color: var(--alphaChannel);
 
+      .btn__loader {
+        border: 3px solid var(--white);
+        border-bottom-color: transparent;
+      }
+
+
       &:hover {
         background-color: var(--portoBanking75);
       }
@@ -95,6 +123,13 @@
       background-color: var(--alphaChannel);
       border-color: var(--portoBanking100);
 
+
+      .btn__loader {
+        border: 3px solid var(--portoBanking100);
+        border-bottom-color: transparent;
+      }
+
+
       &:hover {
         background-color: var(--portoBanking05);
       }
@@ -108,6 +143,12 @@
       color: var(--portoBanking100);
       background-color: var(--alphaChannel);
       border-color: var(--alphaChannel);
+
+      .btn__loader {
+        border: 3px solid var(--portoBanking100);
+        border-bottom-color: transparent;
+      }
+
 
       &:hover {
         background-color: var(--portoBanking05);
@@ -125,6 +166,11 @@
       background-color: var(--portoSaude100);
       border-color: var(--alphaChannel);
 
+      .btn__loader {
+        border: 3px solid var(--white);
+        border-bottom-color: transparent;
+      }
+
       &:hover {
         background-color: var(--portoSaude75);
       }
@@ -139,6 +185,11 @@
       background-color: var(--alphaChannel);
       border-color: var(--portoSaude100);
 
+      .btn__loader {
+        border: 3px solid var(--portoSaude100);
+        border-bottom-color: transparent;
+      }
+
       &:hover {
         background-color: var(--portoSaude05);
       }
@@ -152,6 +203,11 @@
       color: var(--portoSaude100);
       background-color: var(--alphaChannel);
       border-color: var(--alphaChannel);
+
+      .btn__loader {
+        border: 3px solid var(--portoSaude100);
+        border-bottom-color: transparent;
+      }
 
       &:hover {
         background-color: var(--portoSaude05);
@@ -169,6 +225,11 @@
       background-color: var(--red100);
       border-color: var(--alphaChannel);
 
+      .btn__loader {
+        border: 3px solid var(--white);
+        border-bottom-color: transparent;
+      }
+
       &:hover {
         background-color: var(--red100);
       }
@@ -183,6 +244,11 @@
       background-color: var(--alphaChannel);
       border-color: var(--red100);
 
+      .btn__loader {
+        border: 3px solid var(--red100);
+        border-bottom-color: transparent;
+      }
+
       &:hover {
         background-color: var(--red30);
       }
@@ -196,6 +262,11 @@
       color: var(--red100);
       background-color: var(--alphaChannel);
       border-color: var(--alphaChannel);
+
+      .btn__loader {
+        border: 3px solid var(--red100);
+        border-bottom-color: transparent;
+      }
 
       &:hover {
         background-color: var(--red30);
@@ -213,6 +284,11 @@
       background-color: var(--white);
       border-color: var(--alphaChannel);
 
+      .btn__loader {
+        border: 3px solid var(--portoSeguros100);
+        border-bottom-color: transparent;
+      }
+
       &:hover {
         background-color: var(--white);
         opacity: 0.7;
@@ -229,6 +305,11 @@
       background-color: var(--alphaChannel);
       border-color: var(--white);
 
+      .btn__loader {
+        border: 3px solid var(--white);
+        border-bottom-color: transparent;
+      }
+
       &:hover {
         background-color: var(--alpha30);
       }
@@ -242,6 +323,11 @@
       color: var(--white);
       background-color: var(--alphaChannel);
       border-color: var(--alphaChannel);
+
+      .btn__loader {
+        border: 3px solid var(--portoSeguros100);
+        border-bottom-color: transparent;
+      }
 
       &:hover {
         background-color: var(--alpha70);
@@ -257,7 +343,12 @@
     &-primary {
       color: var(--black60);
       background-color: var(--black15);
-      border-color: var(--alphaChannel);
+      border: 1px solid var(--alphaChannel);
+
+      .btn__loader {
+        border: 3px solid var(--white);
+        border-bottom-color: transparent;
+      }
 
       &:hover {
         background-color: var(--black15);
@@ -273,6 +364,11 @@
       background-color: var(--alphaChannel);
       border-color: var(--black60);
 
+      .btn__loader {
+        border: 3px solid var(--black70);
+        border-bottom-color: transparent;
+      }
+
       &:hover {
         background-color: var(--alphaChannel);
       }
@@ -287,6 +383,11 @@
       background-color: var(--alphaChannel);
       border-color: var(--alphaChannel);
 
+      .btn__loader {
+        border: 3px solid var(--black70);
+        border-bottom-color: transparent;
+      }
+
       &:hover {
         background-color: var(--alphaChannel);
       }
@@ -295,26 +396,5 @@
         background-color: var(--alphaChannel);
       }
     }
-  }
-}
-
-.btn-loader {
-  width: 24px;
-  height: 24px;
-  border: 3px solid #fff;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
   }
 }

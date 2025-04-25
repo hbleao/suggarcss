@@ -1,22 +1,22 @@
-import s from "./styles.module.scss";
+import './styles.scss';
 
-import type { ButtonProps } from "./types";
+import type { ButtonProps } from './types';
 
 export const Button = ({
-	variant = "insurance",
-	styles = "primary",
-	size = "large",
-	width = "contain",
+	variant = 'insurance',
+	styles = 'primary',
+	size = 'large',
+	width = 'contain',
 	isLoading = false,
-	className = "",
+	className = '',
 	children,
 	...restProps
 }: ButtonProps) => {
-	const custom_className = `${s.btn} --${s[variant]}-${s[styles]} --${s[width]} --${s[size]}`;
+	const custom_className = `btn --${variant}-${styles} --${width} --${size}`;
 
 	return (
 		<button className={custom_className} {...restProps}>
-			{children}
+			{isLoading ? <span className="utils-loader btn__loader" /> : children}
 		</button>
 	);
 };

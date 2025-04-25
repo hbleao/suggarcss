@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./styles.scss";
 
 import type { RadioProps } from "./types";
@@ -13,7 +11,6 @@ export const Radio = ({
 }: RadioProps) => {
 	return (
 		<div className={`radio__root --${variant} ${className}`} {...restProps}>
-			<p className="radio__label">{description}</p>
 			<div className="radio__input">
 				<svg
 					width="21"
@@ -33,6 +30,7 @@ export const Radio = ({
 					/>
 				</svg>
 			</div>
+			<p className="radio__label">{description}</p>
 		</div>
 	);
 };

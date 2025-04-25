@@ -1,22 +1,16 @@
-import "./styles.scss";
+import './styles.scss';
 
-import type { CheckboxProps } from "./types";
+import type { CheckboxProps } from './types';
 
 export const Checkbox = ({
-	className = "",
-	variant = "default",
-	label = "",
+	className = '',
+	variant = 'default',
+	label = '',
 	...restProps
 }: CheckboxProps) => {
 	return (
 		<div className={`checkbox__root --${variant} ${className}`} {...restProps}>
-			<label
-				htmlFor={`checkbox-${label}`}
-				className={`checkbox__label ${className}`}
-			>
-				{label}
-			</label>
-			<div className={`checkbox__input ${className}`}>
+			<div className="checkbox__input">
 				<svg
 					width="21"
 					height="20"
@@ -35,6 +29,11 @@ export const Checkbox = ({
 					/>
 				</svg>
 			</div>
+			<label
+				htmlFor={`checkbox-${label}`}
+				className="checkbox__label"
+				dangerouslySetInnerHTML={{ __html: label }}
+			/>
 		</div>
 	);
 };

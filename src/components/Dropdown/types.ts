@@ -6,12 +6,13 @@ export type DropdownOption = {
 };
 
 export type DropdownProps = HTMLAttributes<HTMLDivElement> & {
-	filled?: boolean;
 	variant?: "outlined" | "default";
 	width?: "fluid" | "contain";
 	disabled?: boolean;
-	errorText?: string;
+	errorMessage?: string;
 	helperText?: string;
+	readOnly?: boolean;
+	isLoading?: boolean;
 	label?: string;
 	options?: DropdownOption[];
 	onChange?: (value: string) => void;

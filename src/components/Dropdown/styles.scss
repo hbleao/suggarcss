@@ -86,6 +86,7 @@
     }
 
     &.--filled {
+
       .dropdown__label,
       .dropdown__icon {
         color: var(--red80);
@@ -173,7 +174,6 @@
   top: 51px;
   overflow-y: auto;
   display: flex;
-  z-index: var(--base);
 
   filter: drop-shadow(0px 4px 8px var(--black15));
 
@@ -196,6 +196,7 @@
   width: 100%;
   border: 1px solid var(--black30);
   border-radius: 6px;
+  z-index: 2;
 }
 
 .dropdown__item {
@@ -218,12 +219,12 @@
   &:focus {
     outline: none;
   }
-  
+
   &--selected {
     background: #f1f8ff;
     font-weight: 600;
   }
-  
+
   &:focus {
     border: 0.1rem solid var(--portoSegurosPrimary);
   }

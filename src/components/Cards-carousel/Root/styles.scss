@@ -1,0 +1,150 @@
+@import '../../../css/src/tokens/breakpoints.scss';
+
+.cards-carousel__root {
+  max-width: 100%;
+
+  @media screen and (max-width: $tablet-landscape) {
+    margin-right: 0;
+  }
+
+  .slick-prev {
+    top: 40%;
+  }
+
+  .slick-next {
+    top: 40%;
+  }
+
+  .slick-track,
+  .slick-list {
+    display: flex;
+  }
+
+  .slick-slide > div {
+    flex: 1 0 auto;
+    height: 100%;
+    margin-right: 1.6rem;
+
+    @media screen and (min-width: $tablet-portrait) {
+      margin-right: 2.4rem;
+    }
+  }
+
+  .slick-prev {
+    left: -2.5rem;
+  }
+
+  .slick-next {
+    right: -2.5rem;
+  }
+
+  .slick-slide {
+    transform: translate3d(30px, 0px, 0px);
+  }
+
+  @media screen and (min-width: 360px) {
+    .slick-slide {
+      transform: translate3d(40px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 470px) {
+    .slick-slide {
+      transform: translate3d(50px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 551px) {
+    .slick-slide {
+      transform: translate3d(190px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 590px) {
+    .slick-slide {
+      transform: translate3d(200px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 620px) {
+    .slick-slide {
+      transform: translate3d(220px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 680px) {
+    .slick-slide {
+      transform: translate3d(220px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 710px) {
+    .slick-slide {
+      transform: translate3d(240px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .slick-slide {
+      transform: translate3d(250px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: $tablet-portrait) {
+    .slick-slide {
+      transform: translate3d(220px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 790px) {
+    .slick-slide {
+      transform: translate3d(240px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 840px) {
+    .slick-slide {
+      transform: translate3d(255px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 895px) {
+    .slick-slide {
+      transform: translate3d(270px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 930px) {
+    .slick-slide {
+      transform: translate3d(280px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 955px) {
+    .slick-slide {
+      transform: translate3d(290px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .slick-slide {
+      transform: translate3d(300px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: $tablet-landscape) {
+    .slick-slide {
+      transform: translate3d(0px, 0px, 0px);
+    }
+  }
+
+  @media screen and (min-width: $wide) {
+    .slick-prev {
+      left: 0;
+    }
+
+    .slick-next {
+      right: 0;
+    }
+  }
+}
