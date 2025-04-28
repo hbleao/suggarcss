@@ -1,0 +1,36 @@
+.grid {
+  grid-column: 1 / span 8;
+  display: grid;
+  margin: 0 var(--spacing-2xs);
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1.6rem;
+
+  @media (min-width: var(--tablet-portrait)) {
+    grid-column: 1 / span 8;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 2.4rem;
+    margin: 0 4.4rem;
+  }
+
+  @media (min-width: var(--tablet-landscape)) {
+    grid-column: 1 / span 12;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.6rem;
+    margin: 0 6.4rem;
+  }
+
+  @media (min-width: var(--desktop)) {
+    grid-column: 1 / span 12;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2.4rem;
+    margin: 0 8.8rem;
+  }
+
+  @media (min-width: var(--wide)) {
+    grid-column: 1 / span 12;
+    max-width: var(--grid-wide);
+    grid-template-columns: repeat(12, 1fr);
+    gap: 4rem;
+    margin: 0 auto;
+  }
+}

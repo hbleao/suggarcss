@@ -1,0 +1,169 @@
+.notification__root {
+  position: relative;
+  width: 304px;
+  padding: var(--spacing-md);
+  border-radius: var(--spacing-2xs);
+  display: flex;
+
+  &.--default {
+    background-color: var(--white);
+    border: 1px solidvar(--black30);
+
+    .notification__title {
+      color: var(--black85);
+    }
+
+    .notification__description {
+      color: var(--black75);
+    }
+
+    .notification__link {
+      color: var(--portoSeguros85);
+    }
+
+    .notification__icon {
+      color: var(--portoSeguros85);
+    }
+  }
+
+  &.--outlined {
+    background-color: var(--black05);
+    border: none;
+
+    .notification__title {
+      color: var(--black85);
+    }
+
+    .notification__description {
+      color: var(--black75);
+    }
+
+    .notification__link {
+      color: var(--portoSeguros85);
+    }
+
+    .notification__icon {
+      color: var(--portoSeguros85);
+    }
+  }
+
+  &.--information {
+    background-color: var(--portoSeguros85);
+    border: none;
+
+    .notification__title,
+    .notification__description,
+    .notification__link,
+    .notification__icon {
+      color: var(--white);
+    }
+  }
+
+  &.--attention {
+    background-color: var(--yellow30);
+    border: none;
+
+    .notification__title {
+      color: var(--black85);
+    }
+
+    .notification__description {
+      color: var(--black75);
+    }
+
+    .notification__link {
+      color: var(--yellow80);
+    }
+
+    .notification__icon {
+      color: var(--yellow80);
+    }
+  }
+
+  &.--success {
+    background-color: var(--green30);
+    border: none;
+
+    .notification__title {
+      color: var(--black85);
+    }
+
+    .notification__description {
+      color: var(--black75);
+    }
+
+    .notification__link {
+      color: var(--green85);
+    }
+
+    .notification__icon {
+      color: var(--green85);
+    }
+  }
+
+  &.--error {
+    background-color: var(--red30);
+    border: none;
+
+    .notification__title {
+      color: var(--black85);
+    }
+
+    .notification__description {
+      color: var(--black75);
+    }
+
+    .notification__link {
+      color: var(--red85);
+    }
+
+    .notification__icon {
+      color: var(--red85);
+    }
+  }
+}
+
+.notification__title {
+  font-family: var(--open-sans, sans-serif);
+  font-size: var(--text-md);
+  line-height: 2.4rem;
+  font-weight: bold;
+}
+
+.notification__icon {
+  width: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+}
+
+.left {
+  margin-right: var(--spacing-3xs);
+}
+
+.right {
+  margin-left: var(--spacing-3xs);
+}
+
+.notification__description {
+  font-family: var(--open-sans, sans-serif);
+  font-size: var(--text-md);
+  line-height: 2.4rem;
+  font-weight: regular;
+}
+
+.notification__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notification__link {
+  color: var(--portoSeguros100);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: var(--spacing-2xs);
+  cursor: pointer;
+  text-align: end;
+}

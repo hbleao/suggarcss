@@ -1,0 +1,52 @@
+.container {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.petList {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.petButton {
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: var(--text-md);
+  text-transform: capitalize;
+  padding: 16px 0;
+  border-radius: var(--radii-xs);
+
+  border: 1px solid var(--black75);
+  color: var(--black75);
+  background-color: rgba($color: var(--white), $alpha: 1);
+
+  svg {
+    fill: var(--black75);
+  }
+
+  p {
+    color: var(--black75);
+  }
+
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.active {
+  border: 1px solid var(--portoSeguros100);
+  color: var(--portoSeguros100);
+  background-color: var(--portoSeguros05);
+
+  svg {
+    fill: var(--portoSeguros100);
+  }
+
+  p {
+    color: var(--portoSeguros100);
+  }
+}

@@ -1,0 +1,19 @@
+@import './tokens/font-weight.scss';
+
+.--font-weight {
+  &-light {
+    font-weight: $light;
+  }
+  &-regular {
+    font-weight: $regular;
+  }
+  &-medium {
+    font-weight: $medium;
+  }
+  &-semibold {
+    font-weight: $semi-bold;
+  }
+  &-bold {
+    font-weight: $bold;
+  }
+}

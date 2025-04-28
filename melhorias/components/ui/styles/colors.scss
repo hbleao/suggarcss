@@ -1,0 +1,238 @@
+@import './tokens/colors.scss';
+
+.--color {
+  &-portoSeguros100 {
+    color: $portoSeguros100;
+  }
+  &-portoSeguros85 {
+    color: $portoSeguros85;
+  }
+  &-portoSeguros75 {
+    color: $portoSeguros75;
+  }
+  &-portoSegurosPrimary {
+    color: $portoSegurosPrimary;
+  }
+  &-portoSeguros65 {
+    color: $portoSeguros65;
+  }
+  &-portoSeguros60 {
+    color: $portoSeguros60;
+  }
+  &-portoSeguros45 {
+    color: $portoSeguros45;
+  }
+  &-portoSeguros30 {
+    color: $portoSeguros30;
+  }
+  &-portoSeguros15 {
+    color: $portoSeguros15;
+  }
+  &-portoSeguros05 {
+    color: $portoSeguros05;
+  }
+
+  &-portoBanking100 {
+    color: $portoBanking100;
+  }
+  &-portoBanking85 {
+    color: $portoBanking85;
+  }
+  &-portoBanking75 {
+    color: $portoBanking75;
+  }
+  &-portoBankingPrimary {
+    color: $portoBankingPrimary;
+  }
+  &-portoBanking65 {
+    color: $portoBanking65;
+  }
+  &-portoBanking60 {
+    color: $portoBanking60;
+  }
+  &-portoBanking45 {
+    color: $portoBanking45;
+  }
+  &-portoBanking30 {
+    color: $portoBanking30;
+  }
+  &-portoBanking15 {
+    color: $portoBanking15;
+  }
+  &-portoBanking05 {
+    color: $portoBanking05;
+  }
+
+  &-portoSaude100 {
+    color: $portoSaude100;
+  }
+  &-portoSaude85 {
+    color: $portoSaude85;
+  }
+  &-portoSaude75 {
+    color: $portoSaude75;
+  }
+  &-portoSaudePrimary {
+    color: $portoSaudePrimary;
+  }
+  &-portoSaude65 {
+    color: $portoSaude65;
+  }
+  &-portoSaude60 {
+    color: $portoSaude60;
+  }
+  &-portoSaude45 {
+    color: $portoSaude45;
+  }
+  &-portoSaude30 {
+    color: $portoSaude30;
+  }
+  &-portoSaude15 {
+    color: $portoSaude15;
+  }
+  &-portoSaude05 {
+    color: $portoSaude05;
+  }
+
+  &-black100 {
+    color: $black100;
+  }
+  &-black85 {
+    color: $black85;
+  }
+  &-black75 {
+    color: $black75;
+  }
+  &-black70 {
+    color: $black70;
+  }
+  &-black65 {
+    color: $black65;
+  }
+  &-black60 {
+    color: $black60;
+  }
+  &-black45 {
+    color: $black45;
+  }
+  &-black30 {
+    color: $black30;
+  }
+  &-black15 {
+    color: $black15;
+  }
+  &-black05 {
+    color: $black05;
+  }
+
+  &-white {
+    color: $white;
+  }
+  &-offWhite05 {
+    color: $offWhite05;
+  }
+  &-offWhite {
+    color: $offWhite;
+  }
+  &-semiWhite {
+    color: $semiWhite;
+  }
+
+  &-violet100 {
+    color: $violet100;
+  }
+  &-violetPrimary {
+    color: $violetPrimary;
+  }
+  &-violet60 {
+    color: $violet60;
+  }
+  &-violet30 {
+    color: $violet30;
+  }
+
+  &-pink100 {
+    color: $pink100;
+  }
+  &-pinkPrimary {
+    color: $pinkPrimary;
+  }
+  &-pink60 {
+    color: $pink60;
+  }
+  &-pink30 {
+    color: $pink30;
+  }
+
+  &-yellow100 {
+    color: $yellow100;
+  }
+  &-yellow80 {
+    color: $yellow80;
+  }
+  &-yellowPrimary {
+    color: $yellowPrimary;
+  }
+  &-yellow60 {
+    color: $yellow60;
+  }
+  &-yellow30 {
+    color: $yellow30;
+  }
+
+  &-green100 {
+    color: $green100;
+  }
+  &-green85 {
+    color: $green85;
+  }
+  &-green80 {
+    color: $green80;
+  }
+  &-greenPrimary {
+    color: $greenPrimary;
+  }
+  &-green60 {
+    color: $green60;
+  }
+  &-green30 {
+    color: $green30;
+  }
+
+  &-red100 {
+    color: $red100;
+  }
+  &-red85 {
+    color: $red85;
+  }
+  &-red80 {
+    color: $red80;
+  }
+  &-redPrimary {
+    color: $redPrimary;
+  }
+  &-red60 {
+    color: $red60;
+  }
+  &-red30 {
+    color: $red30;
+  }
+  &-alpha {
+    color: rgba(255, 255, 255, 0);
+  }
+  &-alpha10 {
+    color: rgba(255, 255, 255, 0.3);
+  }
+  &-alpha30 {
+    color: rgba(255, 255, 255, 0.3);
+  }
+  &-alpha50 {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  &-alpha70 {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  &-alphaChannel {
+    color: transparent;
+  }
+}
