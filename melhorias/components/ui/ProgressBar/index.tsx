@@ -1,37 +1,34 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./styles.module.scss";
 
 export type ProgressBarProps = {
-	initialValue?: number;
 	value: number;
+	initialValue?: number;
 	color?: string;
 };
 
 export const ProgressBar = ({
-	initialValue = 0,
 	value,
+	initialValue = 0,
 	color,
 }: ProgressBarProps) => {
-	const [barWidth, setBarWidth] = useState(initialValue);
+	const [progress, setProgress] = useState(initialValue);
 
 	useEffect(() => {
-		const timmer = setTimeout(() => {
-			setBarWidth(value);
-		}, 0);
-
-		return () => {
-			clearInterval(timmer);
-		};
-	}, []);
+		const timeout = setTimeout(() => {
+			setProgress(value);
+		}, 20);
+		return () => clearTimeout(timeout);
+	}, [value]);
 
 	return (
 		<div className={s.progressBar}>
 			<div
-				className={s.progressBarFill}
+				className={s.progressBar__fill}
 				style={{
-					width: `${barWidth}%`,
-					backgroundColor: color || "#0046c0",
+					width: `${progress}%`,
+					backgroundColor: color ?? undefined,
 				}}
 			/>
 		</div>

@@ -1,67 +1,62 @@
 .checkbox__root {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  outline: none;
-  gap: 12px;
+  align-items: center;
+  gap: 1.2rem;
   cursor: pointer;
+  outline: none;
 
   &.--default {
     .checkbox__input {
-      background-color: var(--white);
-    }
-
-    .checkbox__svg {
-      display: none;
+      background-color: $color-neutral-0;
+      border-color: $color-neutral-600;
     }
   }
 
   &.--checked {
     .checkbox__input {
-      background-color: var(--portoSeguros100);
-      border-color: var(--portoSeguros100);
-    }
-
-    .checkbox__svg {
-      display: unset;
+      background-color: $color-brand-insurance-500;
+      border-color: $color-brand-insurance-500;
     }
   }
 
   &.--disabled {
-    .checkbox__input {
-      background-color: var(--black15);
-      border-color: var(--black65);
-    }
+    cursor: not-allowed;
 
-    .checkbox__svg {
-      display: none;
+    .checkbox__input {
+      background-color: $color-neutral-200;
+      border-color: $color-neutral-400;
     }
 
     .checkbox__label {
-      color: var(--black75);
+      color: $color-neutral-500;
+    }
+  }
+
+  &.--focused:not(.--disabled) {
+    .checkbox__input {
+      outline: 2px solid $color-brand-insurance-500;
+      outline-offset: 2px;
     }
   }
 }
 
-.checkbox__label {
-  font-family: var(--open-sans);
-  font-weight: 400;
-  font-size: var(--text-4xs);
-  color: var(--black75);
-  line-height: 20px;
-  margin: 0;
-}
-
 .checkbox__input {
-  cursor: pointer;
   width: 2rem;
   height: 2rem;
-  border-radius: 4px;
-  border-width: 0.2rem;
-  border-style: solid;
-  border-color: var(--black70);
+  border: 2px solid $color-neutral-600;
+  border-radius: $radius-sm;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  background-color: $color-neutral-0;
+  transition: all 0.2s ease;
   flex-shrink: 0;
+}
+
+.checkbox__label {
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  color: $color-neutral-700;
+  line-height: 1.5;
+  user-select: none;
 }

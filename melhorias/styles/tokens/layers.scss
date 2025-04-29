@@ -1,7 +1,8 @@
-$base: 10;
-$menu: 20;
-$overlayTooltip: 30;
-$tooltip: 40;
-$alwaysOnTop: 50;
-$overlayModal: 60;
-$modal: 70;
+// Z-index
+$z-index-base: 10;
+$z-index-menu: 20;
+$z-index-overlay-tooltip: 30;
+$z-index-tooltip: 40;
+$z-index-always-on-top: 50;
+$z-index-overlay-modal: 60;
+$z-index-modal: 70;

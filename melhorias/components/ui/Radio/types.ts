@@ -1,6 +1,8 @@
-import type { HTMLAttributes } from "react";
-
-export type RadioProps = HTMLAttributes<HTMLDivElement> & {
-	variant?: "default" | "checked" | "disabled";
+export type RadioProps = {
+	className?: string;
+	variant?: string;
 	description?: string;
+	checked?: boolean;
+	disabled?: boolean;
+	onChange?: (checked: boolean) => void; // <-- aqui o fix
 };

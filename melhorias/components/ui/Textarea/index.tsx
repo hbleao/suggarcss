@@ -1,39 +1,41 @@
-import { useState } from 'react';
+import React, { useState } from "react";
 
-import './styles.scss';
+import "./styles.scss";
 
-import type { TextareaProps } from './types';
+import type { TextareaProps } from "./types";
 
 export const Textarea = ({
-	className = '',
-	name = '',
-	variant = 'default',
-	width = 'contain',
-	value = '',
-	label = '',
+	className = "",
+	name = "",
+	variant = "default",
+	width = "contain",
+	value = "",
+	label = "",
 	onChange,
 	disabled = false,
 	rows = 5,
-	helperText = '',
-	errorMessage = '',
-	children,
+	helperText = "",
+	errorMessage = "",
+	maxLength = 200,
 	...restProps
 }: TextareaProps) => {
-	const [focused, setFocused] = useState('');
-	const disabledClass = disabled ? '--disabled' : '';
-	const errorClass = errorMessage.length > 0 ? '--error' : '';
-	const filledClass = value.length > 0 ? '--filled' : '';
+	const [isFocused, setIsFocused] = useState(false);
 
-	const handleFocus = (isFocus: boolean) => {
-		if (disabled || errorMessage.length > 0) return;
-		isFocus ? setFocused('--focused') : setFocused('');
+	const filledClass = value.length > 0 ? "--filled" : "";
+	const focusedClass = isFocused ? "--focused" : "";
+	const errorClass = errorMessage ? "--error" : "";
+	const disabledClass = disabled ? "--disabled" : "";
+
+	const handleFocus = (focus: boolean) => {
+		if (disabled) return;
+		setIsFocused(focus);
 	};
 
 	return (
 		<div
+			className={`textarea__root --${variant} --${width} ${filledClass} ${focusedClass} ${errorClass} ${disabledClass} ${className}`}
 			onFocus={() => handleFocus(true)}
 			onBlur={() => handleFocus(false)}
-			className={`textarea__root --${variant} --${width} ${filledClass} ${focused} ${disabledClass} ${errorClass}`}
 			{...restProps}
 		>
 			{label && (
@@ -41,18 +43,33 @@ export const Textarea = ({
 					{label}
 				</label>
 			)}
+
 			<textarea
 				id={name}
 				name={name}
 				className="textarea__field"
 				rows={rows}
-				onChange={onChange}
+				disabled={disabled}
+				maxLength={maxLength}
+				value={value}
+				aria-invalid={!!errorMessage}
+				aria-describedby={errorMessage ? `${name}-error` : undefined}
+				onChange={(e) => onChange?.(e.target.value)}
 			/>
-			<span className="textarea__counter">{value.length} / 200</span>
-			{helperText && !errorMessage && (
-				<p className="input__helper-text">{helperText}</p>
+
+			<span className="textarea__counter">
+				{value.length} / {maxLength}
+			</span>
+
+			{!errorMessage && helperText && (
+				<p className="textarea__helper-text">{helperText}</p>
 			)}
-			{errorMessage && <p className="input__error-message">{errorMessage}</p>}
+
+			{errorMessage && (
+				<p id={`${name}-error`} className="textarea__error-message">
+					{errorMessage}
+				</p>
+			)}
 		</div>
 	);
 };

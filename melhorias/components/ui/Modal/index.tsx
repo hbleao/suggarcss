@@ -1,30 +1,42 @@
 import "./styles.scss";
-
 import type { ModalProps } from "./types";
 
 export const Modal = ({
 	title,
 	subtitle,
 	handleCloseModal,
+	isOpen,
 	children,
 }: ModalProps) => {
+	if (!isOpen) return null;
+
+	const onKeyDown = (event: React.KeyboardEvent) => {
+		if (event.key === "Escape") {
+			handleCloseModal();
+		}
+	};
+
 	return (
-		<>
-			<div className="modal__overlay" />
-			<div className="modal__root">
+		<div className="modal__overlay" onClick={handleCloseModal}>
+			<div
+				className="modal__root"
+				role="dialog"
+				aria-modal="true"
+				aria-labelledby="modal-title"
+				aria-describedby="modal-subtitle"
+				onClick={(e) => e.stopPropagation()}
+				onKeyDown={onKeyDown}
+				tabIndex={-1}
+			>
 				<div className="modal__content">
 					<header className="modal__header">
-						<div className="modal__header-icon-close">
-							<svg
-								width="40"
-								height="40"
-								viewBox="0 0 40 40"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-								onClick={() => handleCloseModal()}
-								onKeyDown={() => handleCloseModal()}
-							>
-								<title>iconde de fechar</title>
+						<button
+							className="modal__header-icon-close"
+							onClick={handleCloseModal}
+							aria-label="Fechar Modal"
+						>
+							<svg width="24" height="24" viewBox="0 0 40 40" fill="none">
+								<title>Ícone de fechar</title>
 								<g id="Porto-Ic-close">
 									<path
 										id="Vector"
@@ -33,15 +45,21 @@ export const Modal = ({
 									/>
 								</g>
 							</svg>
-						</div>
+						</button>
+
 						<div>
-							<p className="modal__header-title">{title}</p>
-							<p className="modal__header-subtitle">{subtitle}</p>
+							<p id="modal-title" className="modal__header-title">
+								{title}
+							</p>
+							<p id="modal-subtitle" className="modal__header-subtitle">
+								{subtitle}
+							</p>
 						</div>
 					</header>
+
 					<div className="modal__body">{children}</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };

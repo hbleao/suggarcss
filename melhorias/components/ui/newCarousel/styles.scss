@@ -6,11 +6,18 @@
 //   &__track {
 //     display: flex;
 //     transition: transform 0.5s ease-in-out;
+//     will-change: transform;
 //   }
 
 //   &__slide {
-//     flex: 0 0 100%;
+//     flex: 0 0 auto;
+//     width: 100%; // Cada slide vai respeitar o width que o TS calcula
 //     max-width: 100%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 1rem;
+//     box-sizing: border-box;
 //   }
 
 //   &__controls {
@@ -24,7 +31,7 @@
 //     transform: translateY(-50%);
 //     pointer-events: none;
 
-//     button {
+//     .carousel__button {
 //       pointer-events: auto;
 //       background: rgba(0, 0, 0, 0.5);
 //       color: white;
@@ -32,10 +39,11 @@
 //       padding: 0.5rem 1rem;
 //       border-radius: 50%;
 //       cursor: pointer;
-//       transition: background 0.3s;
+//       transition: background 0.3s, transform 0.3s;
 
 //       &:hover {
 //         background: rgba(0, 0, 0, 0.7);
+//         transform: scale(1.1);
 //       }
 //     }
 //   }
@@ -55,12 +63,29 @@
 //       border-radius: 50%;
 //       border: none;
 //       cursor: pointer;
-//       transition: background 0.3s;
+//       transition: background 0.3s, transform 0.3s;
 
 //       &.active {
 //         background: white;
+//         transform: scale(1.2);
 //       }
 //     }
+//   }
+// }
+
+// // Mobile First - já otimizado para telas menores
+// // Se quiser mudar comportamento em breakpoints, adicionamos depois!
+
+// // Responsividade (Mobile First)
+// @media (min-width: 768px) {
+//   .carousel__slide {
+//     max-width: 50%; // 2 slides no tablet
+//   }
+// }
+
+// @media (min-width: 1024px) {
+//   .carousel__slide {
+//     max-width: 33.3333%; // 3 slides no desktop
 //   }
 // }
 
@@ -72,11 +97,18 @@
   &__track {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    margin: 0 -8px; // Para compensar o padding dos slides (gap visual)
   }
 
   &__slide {
     flex: 0 0 auto;
-    max-width: 100%;
+    width: 100%;
+    padding: 0 8px; // Gap lateral de 16px total (8px de cada lado)
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__controls {
@@ -98,10 +130,11 @@
       padding: 0.5rem 1rem;
       border-radius: 50%;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.3s;
 
       &:hover {
         background: rgba(0, 0, 0, 0.7);
+        transform: scale(1.1);
       }
     }
   }
@@ -121,24 +154,12 @@
       border-radius: 50%;
       border: none;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.3s;
 
       &.active {
         background: white;
+        transform: scale(1.2);
       }
     }
-  }
-}
-
-// Responsividade (Mobile First)
-@media (min-width: 768px) {
-  .carousel__slide {
-    max-width: 50%; // 2 slides no tablet
-  }
-}
-
-@media (min-width: 1024px) {
-  .carousel__slide {
-    max-width: 33.3333%; // 3 slides no desktop
   }
 }

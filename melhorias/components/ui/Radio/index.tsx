@@ -1,36 +1,58 @@
-import "./styles.scss";
+"use client";
+import React from "react";
 
+import "./styles.scss";
 import type { RadioProps } from "./types";
 
 export const Radio = ({
 	className = "",
 	variant = "default",
 	description = "",
-	children,
+	checked = false,
+	disabled = false,
+	onChange,
 	...restProps
 }: RadioProps) => {
+	const handleToggle = () => {
+		if (disabled) return;
+		onChange?.(!checked);
+	};
+
 	return (
-		<div className={`radio__root --${variant} ${className}`} {...restProps}>
+		<div
+			className={`
+        radio__root 
+        --${variant} 
+        ${checked ? "--checked" : ""}
+        ${disabled ? "--disabled" : ""}
+        ${className}
+      `}
+			role="radio"
+			aria-checked={checked}
+			aria-disabled={disabled}
+			tabIndex={disabled ? -1 : 0}
+			onClick={handleToggle}
+			onKeyDown={(e) =>
+				e.key === "Enter" || e.key === " " ? handleToggle() : undefined
+			}
+			{...restProps}
+		>
 			<div className="radio__input">
-				<svg
-					width="21"
-					height="20"
-					viewBox="0 0 21 20"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-					className="radio__svg"
-				>
-					<title>radio</title>
-					<path
-						d="M15.5 6.66676L9.61714 13.3334L5.5 9.16604"
-						stroke="white"
-						strokeWidth="3"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-					/>
-				</svg>
+				{checked && (
+					<svg
+						width="12"
+						height="12"
+						viewBox="0 0 12 12"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						className="radio__svg"
+					>
+						<circle cx="6" cy="6" r="6" fill="white" />
+					</svg>
+				)}
 			</div>
-			<p className="radio__label">{description}</p>
+
+			{description && <p className="radio__label">{description}</p>}
 		</div>
 	);
 };

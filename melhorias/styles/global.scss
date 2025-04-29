@@ -1,18 +1,26 @@
-// Varibles styles
-@import "./variables.scss";
+// ==============
+// DESIGN TOKENS
+// ==============
+@import "./tokens/colors.scss";
+@import "./tokens/font";
+@import "./tokens/spacing";
+@import "./tokens/radii";
+@import "./tokens/shadow";
+@import "./tokens/breakpoints";
+@import "./tokens/grid";
+@import "./tokens/layers";
 
-// Utils styles
-@import "./bg-color.scss";
-@import "./colors.scss";
-@import "./font-size.scss";
-@import "./font-style.scss";
-@import "./font-weight.scss";
+// ============
+// UTILITARIOS
+// ============
+@import "./fonts.scss";
 
-// Animation styles
+// ============
+// ANIMATIONS
+// ============
 @import "./animation.scss";
 
-// Reset styles
+// ==========
+// RESET CSS
+// ==========
 @import "./reset.scss";
-
-// Custom styles
-@import "./custom.scss";

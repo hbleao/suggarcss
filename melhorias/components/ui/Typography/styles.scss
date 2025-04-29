@@ -1,93 +1,87 @@
 .typography {
-  &.--title1 {
-    font-family: var(--porto-roobert, sans-serif);
-    font-size: var(--text-6xl);
-    line-height: 4.4rem;
+  $variants: (
+    title1: (
+      font: $font-family-secondary,
+      size: $font-size-6xl,
+      line: 4.4rem,
+      md-size: $font-size-8xl,
+      md-line: 6rem,
+    ),
+    title2: (
+      font: $font-family-secondary,
+      size: $font-size-5xl,
+      line: 4rem,
+      md-size: $font-size-7xl,
+      md-line: 5.2rem,
+    ),
+    title3: (
+      font: $font-family-secondary,
+      size: $font-size-4xl,
+      line: 3.6rem,
+      md-size: $font-size-6xl,
+      md-line: 4.4rem,
+    ),
+    title4: (
+      font: $font-family-secondary,
+      size: $font-size-3xl,
+      line: 3.2rem,
+      md-size: $font-size-4xl,
+      md-line: 3.6rem,
+    ),
+    title5: (
+      font: $font-family-secondary,
+      size: $font-size-2xl,
+      line: 2.8rem,
+    ),
+    title6: (
+      font: $font-family-secondary,
+      size: $font-size-lg,
+      line: 2.4rem,
+    ),
+    body1: (
+      font: $font-family-primary,
+      size: $font-size-md,
+      line: 2.4rem,
+    ),
+    body2: (
+      font: $font-family-primary,
+      size: $font-size-4xs,
+      line: 2rem,
+    ),
+    caption: (
+      font: $font-family-primary,
+      size: $font-size-3xs,
+      line: 2rem,
+    ),
+    label: (
+      font: $font-family-primary,
+      size: $font-size-2xs,
+      line: 1.4rem,
+    ),
+    overline: (
+      font: $font-family-primary,
+      size: $font-size-4xs,
+      line: 2rem,
+    ),
+    button: (
+      font: $font-family-primary,
+      size: $font-size-md,
+      line: 2rem,
+    ),
+  );
 
-    @media (min-width: var(--desktop)) {
-      font-size: var(--text-8xl);
-      line-height: 6rem;
+  @each $name, $style in $variants {
+    &.--#{$name} {
+      font-family: map-get($style, font);
+      font-size: map-get($style, size);
+      line-height: map-get($style, line);
+
+      @if map-has-key($style, md-size) {
+        @media (min-width: $breakpoint-lg) {
+          font-size: map-get($style, md-size);
+          line-height: map-get($style, md-line);
+        }
+      }
     }
-  }
-
-  &.--title2 {
-    font-family: var(--porto-roobert, sans-serif);
-    font-size: var(--text-5xl);
-    line-height: 4rem;
-
-    @media (min-width: var(--desktop)) {
-      font-size: var(--text-7xl);
-      line-height: 5.2rem;
-    }
-  }
-
-  &.--title3 {
-    font-family: var(--porto-roobert, sans-serif);
-    font-size: var(--text-4xl);
-    line-height: 3.6rem;
-
-    @media (min-width: var(--desktop)) {
-      font-size: var(--text-6xl);
-      line-height: 4.4rem;
-    }
-  }
-
-  &.--title4 {
-    font-family: var(--porto-roobert, sans-serif);
-    font-size: var(--text-3xl);
-    line-height: 3.2rem;
-
-    @media (min-width: var(--desktop)) {
-      font-size: var(--text-4xl);
-      line-height: 3.6rem;
-    }
-  }
-
-  &.--title5 {
-    font-family: var(--porto-roobert, sans-serif);
-    font-size: var(--text-2xl);
-    line-height: 2.8rem;
-  }
-
-  &.--title6 {
-    font-family: var(--porto-roobert, sans-serif);
-    font-size: var(--text-lg);
-    line-height: 2.4rem;
-  }
-
-  &.--body1 {
-    font-family: var(--open-sans, sans-serif);
-    font-size: var(--text-md);
-    line-height: 2.4rem;
-  }
-
-  &.--body2 {
-    font-family: var(--open-sans, sans-serif);
-    font-size: var(--text-4xs);
-    line-height: 2rem;
-  }
-
-  &.--caption {
-    font-family: var(--open-sans, sans-serif);
-    font-size: var(--text-3xs);
-    line-height: 2rem;
-  }
-
-  &.--label {
-    font-family: var(--open-sans, sans-serif);
-    font-size: var(--text-2xs);
-    line-height: 1.4rem;
-  }
-
-  &.--overline {
-    font-family: var(--open-sans, sans-serif);
-    font-size: var(--text-4xs);
-    line-height: 2rem;
-  }
-
-  &.--button {
-    font-family: var(--open-sans, sans-serif);
-    font-size: var(--text-md);
-    line-height: 2rem;
   }
 }

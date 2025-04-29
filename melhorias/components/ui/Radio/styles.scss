@@ -1,65 +1,62 @@
 .radio__root {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  gap: $space-sm;
+  cursor: pointer;
   outline: none;
-  gap: 8px;
+  user-select: none;
+  transition: all 0.2s ease;
 
   &.--default {
     .radio__input {
-      background-color: var(--white);
-    }
-
-    .radio__svg {
-      display: none;
+      background-color: $color-neutral-0;
+      border-color: $color-neutral-600;
     }
   }
 
   &.--checked {
     .radio__input {
-      background-color: var(--portoSeguros100);
-      border-color: var(--portoSeguros100);
-    }
-
-    .radio__svg {
-      display: unset;
+      background-color: $color-brand-insurance-500;
+      border-color: $color-brand-insurance-500;
     }
   }
 
   &.--disabled {
-    .radio__input {
-      background-color: var(--black15);
-      border-color: var(--black65);
-    }
+    cursor: not-allowed;
 
-    .radio__svg {
-      display: none;
+    .radio__input {
+      background-color: $color-neutral-200;
+      border-color: $color-neutral-400;
     }
 
     .radio__label {
-      color: var(--black65);
+      color: $color-neutral-500;
     }
   }
 }
 
-.radio__label {
-  font-family: var(--font-open-sans);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  margin: 0;
-}
-
 .radio__input {
-  cursor: pointer;
   width: 2rem;
   height: 2rem;
-  border-radius: 100%;
-  border-width: 0.2rem;
-  border-style: solid;
-  border-color: var(--black70);
+  border: 2px solid $color-neutral-600;
+  border-radius: 50%;
+  background-color: $color-neutral-0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.radio__svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: white;
+}
+
+.radio__label {
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  color: $color-neutral-700;
+  line-height: 1.5;
 }

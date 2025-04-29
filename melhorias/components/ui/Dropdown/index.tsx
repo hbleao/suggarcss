@@ -1,86 +1,112 @@
-import { useState } from 'react';
+import { useState } from "react";
+import "./styles.scss";
 
-import './styles.scss';
-
-import { ArrowSvg } from './Arrow';
-import type { DropdownOption, DropdownProps } from './types';
+import { ArrowSvg } from "./Arrow";
+import type { DropdownOption, DropdownProps } from "./types";
 
 export const Dropdown = ({
-	className = '',
-	name = '',
-	variant = 'default',
-	width = 'contain',
+	className = "",
+	name = "",
+	variant = "default",
+	width = "contain",
 	disabled = false,
-	errorMessage = '',
-	helperText = '',
-	label = '',
+	errorMessage = "",
+	helperText = "",
+	label = "",
 	isLoading = false,
 	options = [],
-	value = '',
-	readOnly,
+	value = "",
+	readOnly = false,
 	onChange,
-	children,
 	...restProps
 }: DropdownProps) => {
-	const [focused, setFocused] = useState('');
+	const [isFocused, setIsFocused] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
-	const disabledClass = disabled ? '--disabled' : '';
-	const errorClass = errorMessage ? '--error' : '';
-	const filledClass = value?.length > 0 ? '--filled' : '';
-	const readOnlyClass = readOnly ? '--readonly' : '';
 
-	const handleFocus = (isFocus: boolean) => {
+	const handleFocus = (focus: boolean) => {
 		if (disabled || errorMessage) return;
-		isFocus ? setFocused('--focused') : setFocused('');
+		setIsFocused(focus);
 	};
 
-	const handleSelectedOption = (option: DropdownOption) => {
+	const handleSelectOption = (option: DropdownOption) => {
 		onChange?.(option.value);
 		setIsOpen(false);
 	};
 
+	const toggleDropdown = () => {
+		if (disabled || readOnly) return;
+		setIsOpen((prev) => !prev);
+	};
+
 	return (
 		<div
+			className={`
+        dropdown__root 
+        --${variant} 
+        --${width}
+        ${value ? "--filled" : ""} 
+        ${isFocused ? "--focused" : ""} 
+        ${disabled ? "--disabled" : ""} 
+        ${errorMessage ? "--error" : ""}
+        ${className}
+      `}
 			onFocus={() => handleFocus(true)}
 			onBlur={() => handleFocus(false)}
-			className={`dropdown__root --${variant} --${width} ${filledClass} ${focused} ${disabledClass} ${errorClass}`}
 			{...restProps}
 		>
 			<div
 				className="dropdown__trigger"
-				onClick={() => setIsOpen((old) => !old)}
-				onKeyDown={() => setIsOpen((old) => !old)}
+				onClick={toggleDropdown}
+				role="button"
+				tabIndex={0}
+				onKeyDown={(e) =>
+					e.key === "Enter" || e.key === " " ? toggleDropdown() : undefined
+				}
 			>
 				{label && (
 					<label htmlFor={name} className="dropdown__label">
 						{label}
 					</label>
 				)}
+
 				<input
 					id={name}
 					name={name}
+					type="text"
+					className={`dropdown__field ${readOnly ? "--readonly" : ""}`}
 					value={value}
-					className={`dropdown__field ${readOnlyClass}`}
-					readOnly={readOnly}
+					readOnly
+					tabIndex={-1}
 				/>
+
 				{isLoading ? (
 					<span className="utils-loader" />
 				) : (
 					<ArrowSvg isOpen={isOpen} />
 				)}
 			</div>
-			<ul className={`dropdown__list ${isOpen ? 'block' : 'none'}`}>
-				{options.map((option) => (
-					<li
-						key={option.label}
-						className="dropdown__item"
-						onClick={() => handleSelectedOption(option)}
-						onKeyDown={() => handleSelectedOption(option)}
-					>
-						{option.label}
-					</li>
-				))}
-			</ul>
+
+			{isOpen && (
+				<ul className="dropdown__list" role="listbox">
+					{options.map((option) => (
+						<li
+							key={option.value}
+							className="dropdown__item"
+							role="option"
+							aria-selected={value === option.value}
+							onClick={() => handleSelectOption(option)}
+							onKeyDown={(e) =>
+								e.key === "Enter" || e.key === " "
+									? handleSelectOption(option)
+									: undefined
+							}
+							tabIndex={0}
+						>
+							{option.label}
+						</li>
+					))}
+				</ul>
+			)}
 
 			{helperText && !errorMessage && (
 				<p className="dropdown__helper-text">{helperText}</p>

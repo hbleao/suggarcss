@@ -1,30 +1,33 @@
-// Utility class for visually hiding elements while keeping them accessible
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
+@use "@/styles/tokens/colors" as *;
+@use "@/styles/tokens/spacing" as *;
+@use "@/styles/tokens/typography" as *;
+@use "@/styles/tokens/shadows" as *;
+@use "@/styles/tokens/radius" as *;
+
+// ====================
+// Dropdown Base
+// ====================
 
 .dropdown__root {
-  border: none;
-  outline: none;
   position: relative;
-
   display: flex;
   flex-direction: column;
+  border: none;
+  outline: none;
+
+  &.--fluid {
+    width: 100%;
+  }
+
+  &.--contain {
+    min-width: 20rem;
+  }
 
   &.--filled {
     .dropdown__label {
-      font-size: 10px;
+      font-size: $font-size-xs;
       top: 0.4rem;
     }
-
     .dropdown__field {
       padding-top: 1.4rem;
     }
@@ -32,221 +35,172 @@
 
   &.--focused {
     &.--outlined {
-      border-bottom: 1px solid var(--portoSegurosPrimary);
+      border-bottom: 1px solid $color-brand-insurance-500;
       background-color: rgba(0, 0, 0, 0.02);
     }
-
     &.--default {
-      border-radius: 4px;
-      border: 1px solid var(--portoSegurosPrimary);
-    }
-
-    &.dropdown__icon {
-      transform: rotateX(180deg);
+      border: 1px solid $color-brand-insurance-500;
+      border-radius: $radius-sm;
     }
   }
 
   &.--outlined {
-    border-bottom: 1px solid var(--black45);
+    border-bottom: 1px solid $color-neutral-400;
     background-color: rgba(0, 0, 0, 0.02);
   }
 
   &.--default {
-    border-radius: 4px;
-    border: 1px solid var(--black45);
-  }
-
-  &.--fluid {
-    width: 100%;
-  }
-
-  &.--contain {
-    min-width: 200px;
+    border: 1px solid $color-neutral-400;
+    border-radius: $radius-sm;
   }
 
   &.--disabled {
     pointer-events: none;
-    background: var(--black05);
-    z-index: 1;
+    background-color: $color-neutral-100;
 
-    i,
     .dropdown__label {
-      color: var(--black65);
+      color: $color-neutral-500;
     }
   }
 
   &.--error {
     &.--outlined {
-      border-bottom: 1px solid var(--red80);
+      border-bottom: 1px solid $color-accent-red-700;
     }
-
     &.--default {
-      border-radius: 4px;
-      border: 1px solid var(--red80);
+      border: 1px solid $color-accent-red-700;
+      border-radius: $radius-sm;
     }
-
-    &.--filled {
-
-      .dropdown__label,
-      .dropdown__icon {
-        color: var(--red80);
-      }
+    .dropdown__label {
+      color: $color-accent-red-700;
     }
   }
 }
+
+// ====================
+// Dropdown Trigger
+// ====================
 
 .dropdown__trigger {
   height: 4.8rem;
-  color: var(--black100);
-  padding: 0rem 1.2rem;
-  font-family: var(--open-sans);
-  font-size: var(--medium);
-  font-weight: var(--regular);
-  border-radius: 0.4rem;
-  border: none;
-  cursor: pointer;
-
+  padding: 0 $space-md;
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-regular;
+  background: transparent;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
 .dropdown__label {
-  pointer-events: none;
   position: absolute;
   top: 1.4rem;
   left: 1.2rem;
-  font-family: var(--open-sans);
-  font-size: var(--text-4xs);
-  font-weight: var(--regular);
-  color: var(--black75);
-  line-height: 2rem;
-  transition: 0.2s;
+  pointer-events: none;
+  font-family: $font-family-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  color: $color-neutral-700;
+  transition: 0.2s ease;
 }
 
 .dropdown__field {
-  background-color: transparent;
+  background: transparent;
   width: 100%;
   height: 100%;
-  outline: none;
+  font-family: $font-family-primary;
+  font-size: $font-size-sm;
+  color: $color-neutral-900;
   border: none;
-  font-family: var(--open-sans);
-  font-size: var(--text-4xs);
-  color: var(--black100);
-  min-width: 30.4rem;
-  transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -webkit-appearance: none;
+  outline: none;
+  appearance: none;
   cursor: pointer;
 
   &.--readonly {
-    cursor: pointer;
-  }
-
-  &:focus {
-    outline: none;
+    cursor: default;
   }
 }
 
-.dropdown__icon {
-  transition: all 0.2s ease;
-
-  &.--up {
-    transform: rotateZ(180deg);
-  }
-
-  &.--down {
-    transform: rotateZ(0deg);
-  }
-}
-
-.dropdown__list-box {
-  width: 100%;
-  max-height: 19.2rem;
-  background-color: var(--white);
-  border-radius: 0.4rem;
-  border: 1px solid #b3b3b3;
-  cursor: pointer;
-  position: absolute;
-  top: 51px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-
-  filter: drop-shadow(0px 4px 8px var(--black15));
-
-  ::-webkit-scrollbar {
-    width: 14px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: var(--black65);
-    border: 5px solid var(--white);
-    border-radius: 10px;
-  }
-}
+// ====================
+// Dropdown List
+// ====================
 
 .dropdown__list {
-  max-height: 145px;
-  overflow-y: scroll;
   position: absolute;
   top: 110%;
   width: 100%;
-  border: 1px solid var(--black30);
-  border-radius: 6px;
+  background-color: $color-neutral-0;
+  border: 1px solid $color-neutral-300;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-sm;
+  max-height: 19.2rem;
+  overflow-y: auto;
+  margin-top: $space-xs;
   z-index: 2;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 
-  &.none {
-    z-index: -1;
+  &.hidden {
     visibility: hidden;
+    opacity: 0;
+    transform: scaleY(0.95);
   }
 
-  &.block {
-    z-index: 2;
+  &.visible {
     visibility: visible;
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $color-neutral-400;
+    border-radius: $radius-sm;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $color-neutral-500;
   }
 }
 
-
-
 .dropdown__item {
-  font-size: 1.4rem;
-  font-family: var(--open-sans);
-  color: var(--black85);
-  font-weight: 400;
-  padding-left: 1.2rem;
-  display: flex;
-  align-items: center;
-  min-height: 4.8rem;
-  background: var(--white);
-  border: 0.1rem solid transparent;
-  outline: none;
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  color: $color-neutral-800;
+  padding: $space-sm $space-md;
   cursor: pointer;
+  transition: background 0.2s ease;
 
   &:hover {
-    background: #f1f8ff;
+    background-color: $color-brand-insurance-100;
   }
 
-  &:focus {
-    outline: none;
+  &.selected {
+    font-weight: $font-weight-bold;
+    background-color: $color-brand-insurance-100;
   }
+}
 
-  &--selected {
-    background: #f1f8ff;
-    font-weight: 600;
-  }
+// ====================
+// Helper & Error Text
+// ====================
 
-  &:focus {
-    border: 0.1rem solid var(--portoSegurosPrimary);
-  }
+.dropdown__helper-text,
+.dropdown__error-message {
+  font-size: $font-size-sm;
+  margin-top: $space-xs;
+  margin-left: $space-md;
+  font-family: $font-family-primary;
 }
 
 .dropdown__helper-text {
-  font-size: var(--text-3xs);
-  color: var(--black70);
-  font-family: var(--open-sans);
-  font-weight: var(--medium);
-  line-height: var(--text-md);
-  margin: 0.3rem 0 0 1.2rem;
+  color: $color-neutral-600;
+}
+
+.dropdown__error-message {
+  color: $color-accent-red-700;
 }

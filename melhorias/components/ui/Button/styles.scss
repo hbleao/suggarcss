@@ -1,7 +1,9 @@
+// Button.scss
+
 .btn {
-  font-size: var(--text-md);
   font-family: var(--open-sans);
   font-weight: var(--bold);
+  font-size: var(--text-md);
   padding: 0 var(--spacing-3xs);
   border-radius: 4px;
   line-height: 2rem;
@@ -10,390 +12,168 @@
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: var(--spacing-3xs);
+  flex-direction: row;
+  text-align: center;
 
   &.--small {
     padding: 8px 6px;
   }
-
   &.--large {
     padding: 14px 10px;
   }
-
   &.--contain {
     width: max-content;
   }
-
   &.--fluid {
     width: 100%;
   }
 
-  &.--insurance {
-    &-primary {
-      color: var(--white);
-      background-color: var(--portoSeguros100);
-      border-color: var(--alphaChannel);
-
-      .btn__loader {
-        border: 3px solid var(--white);
-        border-bottom-color: transparent;
-      }
-
-
-      .btn-loader {
-        border: 3px solid var(--white);
-      }
-
-      &:hover {
-        background-color: var(--portoSeguros75);
-      }
-
-      &:active {
-        background-color: var(--portoSeguros85);
-      }
-    }
-
-    &-secondary {
-      color: var(--portoSeguros100);
-      background-color: var(--alphaChannel);
-      border-color: var(--portoSeguros100);
-
-      .btn__loader {
-        border: 3px solid var(--portoSeguros100);
-        border-bottom-color: transparent;
-      }
-
-
-      &:hover {
-        background-color: var(--portoSeguros05);
-      }
-
-      &:active {
-        background-color: var(--portoSeguros15);
-      }
-    }
-
-    &-ghost {
-      color: var(--portoSeguros100);
-      background-color: var(--alphaChannel);
-      border-color: var(--alphaChannel);
-
-      .btn__loader {
-        border: 3px solid var(--portoSeguros100);
-        border-bottom-color: transparent;
-      }
-
-
-      &:hover {
-        background-color: var(--portoSeguros05);
-      }
-
-      &:active {
-        background-color: var(--portoSeguros15);
-      }
-    }
+  .btn__loader {
+    border: 3px solid currentColor;
+    border-bottom-color: transparent;
   }
-
-  &.--banking {
-    &-primary {
-      color: var(--white);
-      background-color: var(--portoBanking100);
-      border-color: var(--alphaChannel);
-
-      .btn__loader {
-        border: 3px solid var(--white);
-        border-bottom-color: transparent;
-      }
-
-
-      &:hover {
-        background-color: var(--portoBanking75);
-      }
-
-      &:active {
-        background-color: var(--portoBanking85);
-      }
-    }
-
-    &-secondary {
-      color: var(--portoBanking100);
-      background-color: var(--alphaChannel);
-      border-color: var(--portoBanking100);
-
-
-      .btn__loader {
-        border: 3px solid var(--portoBanking100);
-        border-bottom-color: transparent;
-      }
-
-
-      &:hover {
-        background-color: var(--portoBanking05);
-      }
-
-      &:active {
-        background-color: var(--portoBanking15);
-      }
-    }
-
-    &-ghost {
-      color: var(--portoBanking100);
-      background-color: var(--alphaChannel);
-      border-color: var(--alphaChannel);
-
-      .btn__loader {
-        border: 3px solid var(--portoBanking100);
-        border-bottom-color: transparent;
-      }
-
-
-      &:hover {
-        background-color: var(--portoBanking05);
-      }
-
-      &:active {
-        background-color: var(--portoBanking15);
-      }
-    }
-  }
-
-  &.--health {
-    &-primary {
-      color: var(--white);
-      background-color: var(--portoSaude100);
-      border-color: var(--alphaChannel);
-
-      .btn__loader {
-        border: 3px solid var(--white);
-        border-bottom-color: transparent;
-      }
-
-      &:hover {
-        background-color: var(--portoSaude75);
-      }
-
-      &:active {
-        background-color: var(--portoSaude85);
-      }
-    }
-
-    &-secondary {
-      color: var(--portoSaude100);
-      background-color: var(--alphaChannel);
-      border-color: var(--portoSaude100);
-
-      .btn__loader {
-        border: 3px solid var(--portoSaude100);
-        border-bottom-color: transparent;
-      }
-
-      &:hover {
-        background-color: var(--portoSaude05);
-      }
-
-      &:active {
-        background-color: var(--portoSaude15);
-      }
-    }
-
-    &-ghost {
-      color: var(--portoSaude100);
-      background-color: var(--alphaChannel);
-      border-color: var(--alphaChannel);
-
-      .btn__loader {
-        border: 3px solid var(--portoSaude100);
-        border-bottom-color: transparent;
-      }
-
-      &:hover {
-        background-color: var(--portoSaude05);
-      }
-
-      &:active {
-        background-color: var(--portoSaude15);
-      }
-    }
-  }
-
-  &.--danger {
-    &-primary {
-      color: var(--white);
-      background-color: var(--red100);
-      border-color: var(--alphaChannel);
-
-      .btn__loader {
-        border: 3px solid var(--white);
-        border-bottom-color: transparent;
-      }
-
-      &:hover {
-        background-color: var(--red100);
-      }
-
-      &:active {
-        background-color: var(--red80);
-      }
-    }
-
-    &-secondary {
-      color: var(--red100);
-      background-color: var(--alphaChannel);
-      border-color: var(--red100);
-
-      .btn__loader {
-        border: 3px solid var(--red100);
-        border-bottom-color: transparent;
-      }
-
-      &:hover {
-        background-color: var(--red30);
-      }
-
-      &:active {
-        background-color: var(--red60);
-      }
-    }
-
-    &-ghost {
-      color: var(--red100);
-      background-color: var(--alphaChannel);
-      border-color: var(--alphaChannel);
-
-      .btn__loader {
-        border: 3px solid var(--red100);
-        border-bottom-color: transparent;
-      }
-
-      &:hover {
-        background-color: var(--red30);
-      }
-
-      &:active {
-        background-color: var(--red60);
-      }
-    }
-  }
-
-  &.--negative {
-    &-primary {
-      color: var(--portoSeguros100);
-      background-color: var(--white);
-      border-color: var(--alphaChannel);
-
-      .btn__loader {
-        border: 3px solid var(--portoSeguros100);
-        border-bottom-color: transparent;
-      }
-
-      &:hover {
-        background-color: var(--white);
-        opacity: 0.7;
-      }
-
-      &:active {
-        background-color: var(--white);
-        opacity: 0.9;
-      }
-    }
-
-    &-secondary {
-      color: var(--white);
-      background-color: var(--alphaChannel);
-      border-color: var(--white);
-
-      .btn__loader {
-        border: 3px solid var(--white);
-        border-bottom-color: transparent;
-      }
-
-      &:hover {
-        background-color: var(--alpha30);
-      }
-
-      &:active {
-        background-color: var(--alpha50);
-      }
-    }
-
-    &-ghost {
-      color: var(--white);
-      background-color: var(--alphaChannel);
-      border-color: var(--alphaChannel);
-
-      .btn__loader {
-        border: 3px solid var(--portoSeguros100);
-        border-bottom-color: transparent;
-      }
-
-      &:hover {
-        background-color: var(--alpha70);
-      }
-
-      &:active {
-        background-color: var(--alpha50);
-      }
-    }
-  }
-
-  &.--disabled {
-    &-primary {
-      color: var(--black60);
-      background-color: var(--black15);
-      border: 1px solid var(--alphaChannel);
-
-      .btn__loader {
-        border: 3px solid var(--white);
-        border-bottom-color: transparent;
-      }
-
-      &:hover {
-        background-color: var(--black15);
-      }
-
-      &:active {
-        background-color: var(--black15);
-      }
-    }
-
-    &-secondary {
-      color: var(--black60);
-      background-color: var(--alphaChannel);
-      border-color: var(--black60);
-
-      .btn__loader {
-        border: 3px solid var(--black70);
-        border-bottom-color: transparent;
-      }
-
-      &:hover {
-        background-color: var(--alphaChannel);
-      }
-
-      &:active {
-        background-color: var(--alphaChannel);
-      }
-    }
-
-    &-ghost {
-      color: var(--black60);
-      background-color: var(--alphaChannel);
-      border-color: var(--alphaChannel);
-
-      .btn__loader {
-        border: 3px solid var(--black70);
-        border-bottom-color: transparent;
-      }
-
-      &:hover {
-        background-color: var(--alphaChannel);
-      }
-
-      &:active {
-        background-color: var(--alphaChannel);
+}
+
+// -----------------------------
+// Variantes dinâmicas
+// -----------------------------
+
+$variants: (
+  insurance: (
+    primary: (
+      bg: var(--portoSeguros100),
+      hover: var(--portoSeguros75),
+      active: var(--portoSeguros85),
+      text: var(--white),
+    ),
+    secondary: (
+      bg: var(--alphaChannel),
+      hover: var(--portoSeguros05),
+      active: var(--portoSeguros15),
+      text: var(--portoSeguros100),
+      border: var(--portoSeguros100),
+    ),
+    ghost: (
+      bg: var(--alphaChannel),
+      hover: var(--portoSeguros05),
+      active: var(--portoSeguros15),
+      text: var(--portoSeguros100),
+      border: var(--alphaChannel),
+    ),
+  ),
+  banking: (
+    primary: (
+      bg: var(--portoBanking100),
+      hover: var(--portoBanking75),
+      active: var(--portoBanking85),
+      text: var(--white),
+    ),
+    secondary: (
+      bg: var(--alphaChannel),
+      hover: var(--portoBanking05),
+      active: var(--portoBanking15),
+      text: var(--portoBanking100),
+      border: var(--portoBanking100),
+    ),
+    ghost: (
+      bg: var(--alphaChannel),
+      hover: var(--portoBanking05),
+      active: var(--portoBanking15),
+      text: var(--portoBanking100),
+      border: var(--alphaChannel),
+    ),
+  ),
+  health: (
+    primary: (
+      bg: var(--portoSaude100),
+      hover: var(--portoSaude75),
+      active: var(--portoSaude85),
+      text: var(--white),
+    ),
+    secondary: (
+      bg: var(--alphaChannel),
+      hover: var(--portoSaude05),
+      active: var(--portoSaude15),
+      text: var(--portoSaude100),
+      border: var(--portoSaude100),
+    ),
+    ghost: (
+      bg: var(--alphaChannel),
+      hover: var(--portoSaude05),
+      active: var(--portoSaude15),
+      text: var(--portoSaude100),
+      border: var(--alphaChannel),
+    ),
+  ),
+  danger: (
+    primary: (
+      bg: var(--red100),
+      hover: var(--red100),
+      active: var(--red80),
+      text: var(--white),
+    ),
+    secondary: (
+      bg: var(--alphaChannel),
+      hover: var(--red30),
+      active: var(--red60),
+      text: var(--red100),
+      border: var(--red100),
+    ),
+    ghost: (
+      bg: var(--alphaChannel),
+      hover: var(--red30),
+      active: var(--red60),
+      text: var(--red100),
+      border: var(--alphaChannel),
+    ),
+  ),
+  negative: (
+    primary: (
+      bg: var(--white),
+      hover: var(--white),
+      active: var(--white),
+      text: var(--portoSeguros100),
+    ),
+    secondary: (
+      bg: var(--alphaChannel),
+      hover: var(--alpha30),
+      active: var(--alpha50),
+      text: var(--white),
+      border: var(--white),
+    ),
+    ghost: (
+      bg: var(--alphaChannel),
+      hover: var(--alpha70),
+      active: var(--alpha50),
+      text: var(--white),
+      border: var(--alphaChannel),
+    ),
+  ),
+);
+
+@each $variant, $styles in $variants {
+  .btn.--#{$variant} {
+    @each $style, $props in $styles {
+      &-#{$style} {
+        color: map-get($props, text);
+        background-color: map-get($props, bg);
+        border-color: map-get($props, border, var(--alphaChannel));
+
+        .btn__loader {
+          border: 3px solid map-get($props, text);
+          border-bottom-color: transparent;
+        }
+
+        &:hover {
+          background-color: map-get($props, hover);
+        }
+
+        &:active {
+          background-color: map-get($props, active);
+        }
       }
     }
   }

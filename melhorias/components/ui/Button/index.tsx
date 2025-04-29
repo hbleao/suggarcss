@@ -1,26 +1,33 @@
-import './styles.scss';
+import "./Button.scss";
+import { clsx } from "@/utils/clsx"; // Atualizado util!
 
-import type { ButtonProps } from './types';
+import type { ButtonProps } from "./types";
 
 export const Button = ({
-	variant = 'insurance',
-	styles = 'primary',
-	size = 'large',
-	width = 'contain',
+	variant = "insurance",
+	styles = "primary",
+	size = "large",
+	width = "contain",
 	isLoading = false,
 	disabled = false,
-	className = '',
+	className = "",
 	children,
 	...restProps
 }: ButtonProps) => {
-	const classDisabledVariant = disabled
-		? `--disabled-${styles}`
-		: `--${variant}-${styles}`;
-	const custom_className = `btn ${classDisabledVariant} --${width} --${size} ${className}`;
+	const composedClassName = clsx(
+		"btn",
+		{
+			[`--disabled-${styles}`]: disabled,
+			[`--${variant}-${styles}`]: !disabled,
+		},
+		`--${size}`,
+		`--${width}`,
+		className,
+	);
 
 	return (
-		<button className={custom_className} disabled={disabled} {...restProps}>
-			{isLoading ? <span className="utils-loader btn__loader" /> : children}
+		<button className={composedClassName} disabled={disabled} {...restProps}>
+			{isLoading ? <span className="btn__loader" /> : children}
 		</button>
 	);
 };

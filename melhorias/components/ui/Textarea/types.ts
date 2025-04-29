@@ -1,17 +1,14 @@
-import type { ChangeEvent, DetailedHTMLProps } from 'react';
-
-export type TextareaProps = DetailedHTMLProps<
-	React.HTMLAttributes<HTMLDivElement>,
-	HTMLDivElement
-> & {
-	value?: string;
+export type TextareaProps = {
+	className?: string;
 	name?: string;
+	variant?: "default" | "outlined";
+	width?: "fluid" | "contain";
+	value: string;
 	label?: string;
-	variant?: 'outlined' | 'default';
-	width?: 'fluid' | 'contain';
-	rows?: number;
+	onChange?: (value: string) => void;
 	disabled?: boolean;
+	rows?: number;
 	helperText?: string;
 	errorMessage?: string;
-	onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+	maxLength?: number;
 };
