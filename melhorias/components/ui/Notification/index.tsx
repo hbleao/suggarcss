@@ -1,31 +1,38 @@
-import "./styles.scss";
+"use client";
 
+import { clsx } from "@/utils/clsx"; // Usando o seu utilitário
+import "./styles.scss";
 import type { NotificationProps } from "./types";
 
 export const Notification = ({
 	title,
 	icon,
-	variant,
+	variant = "default",
 	description,
-	className,
+	className = "",
 	link,
 	...restProps
 }: NotificationProps) => {
 	return (
 		<div
-			className={`notification__root --${variant} ${className}`}
+			className={clsx("notification__root", `--${variant}`, className)}
+			role="alert"
 			{...restProps}
 		>
-			<div className="notification__icon">{icon}</div>
+			{icon && <div className="notification__icon">{icon}</div>}
+
 			<div className="notification__content">
-				<p className="notification__title">{title}</p>
-				<p className="notification__description">{description}</p>
+				{title && <p className="notification__title">{title}</p>}
+				{description && (
+					<p className="notification__description">{description}</p>
+				)}
+
+				{link?.label && (
+					<a href={link.href} className="notification__link">
+						{link.label}
+					</a>
+				)}
 			</div>
-			{link?.label && (
-				<a href={link.href} className="notification__link">
-					{link.label}
-				</a>
-			)}
 		</div>
 	);
 };
