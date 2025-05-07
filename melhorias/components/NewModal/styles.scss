@@ -1,0 +1,38 @@
+.modal__overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  animation: fade-in 0.4s ease forwards;
+  z-index: var(--z-index-overlay-modal);
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+}
+
+.modal__root {
+  background-color: var(--color-neutral-0);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 48rem;
+  height: 100vh;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  transform: translateX(0);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: var(--z-index-modal);
+}
+
+.modal--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal--hidden .modal__root {
+  transform: translateX(100%);
+}
