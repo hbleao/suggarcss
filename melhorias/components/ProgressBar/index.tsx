@@ -1,6 +1,6 @@
-'use client';
-import { useEffect, useState } from 'react';
-import s from './styles.module.scss';
+"use client";
+import { useEffect, useState } from "react";
+import s from "./styles.module.scss";
 
 export type ProgressBarProps = {
 	initialValue?: number;
@@ -31,7 +31,7 @@ export const ProgressBar = ({
 				className={s.progressBarFill}
 				style={{
 					width: `${barWidth}%`,
-					backgroundColor: color || '#0046c0',
+					backgroundColor: color || "#0046c0",
 				}}
 			/>
 		</div>

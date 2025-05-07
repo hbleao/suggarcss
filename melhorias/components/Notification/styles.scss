@@ -1,0 +1,169 @@
+.notification__root {
+  position: relative;
+  width: 304px;
+  padding: var(--space-lg);
+  border-radius: var(--space-sm);
+  display: flex;
+
+  &.--default {
+    background-color: var(--color-neutral-0);
+    border: 1px solid var(--color-neutral-300);
+
+    .notification__title {
+      color: var(--color-neutral-800);
+    }
+
+    .notification__description {
+      color: var(--color-neutral-700);
+    }
+
+    .notification__link {
+      color: var(--color-brand-insurance-800);
+    }
+
+    .notification__icon {
+      color: var(--color-brand-insurance-800);
+    }
+  }
+
+  &.--outlined {
+    background-color: var(--color-neutral-100);
+    border: none;
+
+    .notification__title {
+      color: var(--color-neutral-800);
+    }
+
+    .notification__description {
+      color: var(--color-neutral-700);
+    }
+
+    .notification__link {
+      color: var(--color-brand-insurance-800);
+    }
+
+    .notification__icon {
+      color: var(--color-brand-insurance-800);
+    }
+  }
+
+  &.--information {
+    background-color: var(--color-brand-insurance-800);
+    border: none;
+
+    .notification__title,
+    .notification__description,
+    .notification__link,
+    .notification__icon {
+      color: var(--color-neutral-0);
+    }
+  }
+
+  &.--attention {
+    background-color: var(--color-accent-yellow-300);
+    border: none;
+
+    .notification__title {
+      color: var(--color-neutral-800);
+    }
+
+    .notification__description {
+      color: var(--color-neutral-700);
+    }
+
+    .notification__link {
+      color: var(--color-accent-yellow-800);
+    }
+
+    .notification__icon {
+      color: var(--color-accent-yellow-800);
+    }
+  }
+
+  &.--success {
+    background-color: var(--color-accent-green-300);
+    border: none;
+
+    .notification__title {
+      color: var(--color-neutral-800);
+    }
+
+    .notification__description {
+      color: var(--color-neutral-700);
+    }
+
+    .notification__link {
+      color: var(--color-accent-green-800);
+    }
+
+    .notification__icon {
+      color: var(--color-accent-green-800);
+    }
+  }
+
+  &.--error {
+    background-color: var(--color-accent-red-300);
+    border: none;
+
+    .notification__title {
+      color: var(--color-neutral-800);
+    }
+
+    .notification__description {
+      color: var(--color-neutral-700);
+    }
+
+    .notification__link {
+      color: var(--color-accent-red-800);
+    }
+
+    .notification__icon {
+      color: var(--color-accent-red-800);
+    }
+  }
+}
+
+.notification__title {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xl);
+  line-height: 2.4rem;
+  font-weight: bold;
+}
+
+.notification__icon {
+  width: var(--font-size-2xl);
+  display: flex;
+  justify-content: center;
+}
+
+.left {
+  margin-right: var(--font-size-md);
+}
+
+.right {
+  margin-left: var(--font-size-md);
+}
+
+.notification__description {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xl);
+  line-height: 2.4rem;
+  font-weight: var(--font-weight-regular);
+}
+
+.notification__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notification__link {
+  color: var(--color-brand-insurance-900);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  margin-top: var(--space-md);
+  cursor: pointer;
+  text-align: end;
+}
