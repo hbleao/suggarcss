@@ -1,34 +1,39 @@
-"use client";
-import "./styles.scss";
-import type { ModalProps } from "./types";
-import { useSearchParams, useRouter } from "next/navigation";
-import clsx from "@/";
+'use client';
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import './styles.scss';
+
+import { clsx } from '@/utils';
+
+import type { ModalProps } from './types';
 
 export const Modal = ({
 	title,
 	subtitle,
-	children,
 	name,
+	children,
 }: ModalProps & { name: string }) => {
 	const searchParams = useSearchParams();
 	const router = useRouter();
-	const isOpen = searchParams.get("modal") === name;
+	const isOpen = searchParams.get('modal') === name;
 
 	const handleCloseModal = () => {
 		const params = new URLSearchParams(window.location.search);
-		params.delete("modal");
-		router.push("?" + params.toString(), { scroll: false });
+		params.delete('modal');
+		router.push(`?${params.toString()}`, { scroll: false });
 	};
 
 	return (
-		<div
-			className={clsx("modal__overlay", { "modal--hidden": !isOpen })}
-			onClick={handleCloseModal}
-			onKeyDown={handleCloseModal}
-		>
+		<>
+			{isOpen && (
+				<div
+					className={'modal__overlay'}
+					onClick={handleCloseModal}
+					onKeyDown={handleCloseModal}
+				/>
+			)}
 			<div
-				className="modal__root"
-				role="dialog"
+				className={clsx('modal__root', { 'modal--hidden': !isOpen })}
 				aria-modal="true"
 				aria-labelledby="modal-title"
 				aria-describedby="modal-subtitle"
@@ -69,6 +74,6 @@ export const Modal = ({
 					<div className="modal__body">{children}</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
