@@ -1,15 +1,15 @@
-'use client';
-import { useEffect } from 'react';
+"use client";
+import { useEffect } from "react";
 
-import { buttons } from './buttons';
-import { checkbox } from './checkbox';
-import { inputs } from './inputs';
-import { link } from './link';
-import { modals } from './modals';
-import { selects } from './select';
+import { buttons } from "./buttons";
+import { checkbox } from "./checkbox";
+import { inputs } from "./inputs";
+import { link } from "./link";
+import { modals } from "./modals";
+import { selects } from "./select";
 
 export const useGtmTagger = () => {
-	if (typeof window === 'undefined') return;
+	if (typeof window === "undefined") return;
 	window.dataLayer = window?.dataLayer || [];
 
 	useEffect(() => {
@@ -18,6 +18,7 @@ export const useGtmTagger = () => {
 		checkbox();
 		selects();
 		link();
+		modals();
 
 		const observer = new MutationObserver(() => {
 			buttons();
