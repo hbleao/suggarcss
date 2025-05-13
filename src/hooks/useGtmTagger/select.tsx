@@ -1,34 +1,32 @@
+import { formatGtmText } from '@/utils';
+
 export function selects(): void {
-	const selectList = document.querySelectorAll(
+	const dropdowns = document.querySelectorAll(
 		'.dropdown__root',
 	) as NodeListOf<HTMLDivElement>;
+	const titleElement = document.querySelector('#gtm-title');
+	const titleText = titleElement?.textContent?.trim() ?? 'sem-titulo';
 
 	// biome-ignore lint/complexity/noForEach: <explanation>
-	selectList.forEach((selectEl: HTMLDivElement) => {
-		const liEl = selectEl.querySelector('.dropdown__item') as HTMLLIElement;
+	dropdowns.forEach((dropdown: HTMLElement) => {
+		dropdown.addEventListener('click', () => {
+			setTimeout(() => {
+				const dropdownItems = dropdown.querySelectorAll('.dropdown__item');
 
-		// const handler = () => {
-		// 	setTimeout(() => {
-		// 		console.log('Tagging select');
-		// 	}, 0);
-		// 	const labelEl = selectEl.querySelector(
-		// 		'.dropdown__label',
-		// 	) as HTMLLabelElement;
+				// biome-ignore lint/complexity/noForEach: <explanation>
+				dropdownItems.forEach((item) => {
+					item?.addEventListener('click', () => {
+						const labelElement = dropdown.querySelector('.dropdown__label');
+						const labelText = labelElement?.textContent?.trim() ?? 'sem-valor';
 
-		// 	const label = labelEl?.innerText || 'Sem label';
-		// 	const field = liEl?.innerText || 'Sem field';
-
-		// 	const ev_label = `${formatGtmText(label)}:${formatGtmText(field)}`;
-		// 	console.log(ev_label);
-		// 	window.dataLayer.push({
-		// 		event: 'auto.event',
-		// 		ev_action: 'selecionou',
-		// 		ev_label,
-		// 	});
-		// };
-
-		liEl?.addEventListener('click', () => {
-			console.log('element');
+						window.dataLayer.push({
+							event: 'auto.event',
+							ev_action: `selecionou:${formatGtmText(titleText)}`,
+							ev_label: `${formatGtmText(labelText)}:${formatGtmText(item.innerHTML)}`,
+						});
+					});
+				});
+			}, 0);
 		});
 	});
 }
