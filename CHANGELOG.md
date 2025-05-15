@@ -2,6 +2,27 @@
 
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
+## [0.0.8] - 2025-05-15
+
+### Novos comandos CLI para instalação de recursos
+
+Adição de novos comandos na CLI para facilitar a instalação de estilos, hooks e utilitários.
+
+### ✨ Novos recursos
+
+- Novo comando install-styles para instalar todos os estilos e assets do projeto
+- Novo comando install-hooks para instalar todos os hooks utilitários
+- Novo comando install-utils para instalar todas as funções utilitárias
+
+### 🚀 Melhorias
+
+- Melhor tratamento de erros nos comandos da CLI
+- Feedback mais claro durante o processo de instalação
+
+### 📚 Documentação
+
+- Atualização da documentação da CLI no README.md
+
 ## [0.0.7] - 2025-04-11
 
 ### Novos componentes e melhorias na CLI

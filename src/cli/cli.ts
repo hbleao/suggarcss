@@ -320,7 +320,6 @@ program
 			"link",
 			"chip",
 		];
-
 		const implemented = ["button", "chip"];
 
 		/**
@@ -435,6 +434,264 @@ program
 		console.log(
 			`\nInstalação concluída: ${successCount} de ${implemented.length} componentes instalados com sucesso.\n`,
 		);
+	});
+
+/**
+ * Comando de instalação dos estilos
+ */
+program
+	.command("install-styles")
+	.description("Instala os estilos e assets do projeto")
+	.option(
+		"-d, --dir <directory>", // Opção para especificar diretório de destino
+		"Diretório de destino para instalar os componentes",
+		"", // Valor padrão vazio
+	)
+	.action(async (options) => {
+		let baseDir = options.dir;
+		if (!baseDir) {
+			// Primeiro, perguntamos se o usuário quer usar o diretório atual
+			const useCurrentDir = await confirm({
+				message: "Deseja instalar no diretório atual (src)?",
+				default: true, // Por padrão, sugerimos usar o diretório atual
+			});
+
+			if (useCurrentDir) {
+				// Se sim, usamos o diretório de trabalho atual
+				baseDir = process.cwd();
+			} else {
+				// Se não, pedimos para digitar um caminho personalizado
+				baseDir = await input({
+					message: "Digite o caminho do diretório de destino:",
+					default: process.cwd(), // Sugerimos o diretório atual como padrão
+				});
+			}
+
+			if (!fs.existsSync(baseDir)) {
+				console.error(`O diretório de destino "${baseDir}" não existe.`);
+				process.exit(1);
+			}
+
+			if (!fs.existsSync(path.join(baseDir, "src"))) {
+				console.error(`O diretório "src" não foi encontrado em "${baseDir}".`);
+				process.exit(1);
+			}
+
+			if (!fs.existsSync(path.join(baseDir, "src", "styles"))) {
+				console.error(
+					`O diretório "styles" não foi encontrado em "${baseDir}/src".`,
+				);
+				process.exit(1);
+			}
+
+			// Confirmação final antes da instalação
+			const confirmInstall = await confirm({
+				message: `Confirma a instalação de todos os estilos e assets em ${baseDir}/src/styles?`,
+				default: true, // Por padrão, sugerimos confirmar
+			});
+
+			// Se o usuário cancelar, encerramos o programa sem erro
+			if (!confirmInstall) {
+				console.log("Instalação cancelada.");
+				process.exit(0); // Código 0 indica saída sem erro
+			}
+
+			// Exibir mensagem inicial
+			console.log("\nInstalando todos os estilos e assets...\n");
+
+			// Caminho para a raiz do pacote instalado
+			const pkgPath = path.dirname(path.dirname(__dirname));
+
+			const dest = path.join(baseDir, "src/styles");
+
+			// Garantir que o diretório de destino exista
+			await fs.ensureDir(dest);
+
+			// Copiar todos os arquivos do componente para o destino
+			await fs.copy(pkgPath, dest);
+		}
+	});
+
+/**
+ * Comando de instalação dos hooks
+ */
+program
+	.command("install-hooks")
+	.description("Instala os hooks utilitários do projeto")
+	.option(
+		"-d, --dir <directory>", // Opção para especificar diretório de destino
+		"Diretório de destino para instalar os hooks",
+		"", // Valor padrão vazio
+	)
+	.action(async (options) => {
+		let baseDir = options.dir;
+
+		if (!baseDir) {
+			// Primeiro, perguntamos se o usuário quer usar o diretório atual
+			const useCurrentDir = await confirm({
+				message: "Deseja instalar no diretório atual (src)?",
+				default: true, // Por padrão, sugerimos usar o diretório atual
+			});
+
+			if (useCurrentDir) {
+				// Se sim, usamos o diretório de trabalho atual
+				baseDir = process.cwd();
+			} else {
+				// Se não, pedimos para digitar um caminho personalizado
+				baseDir = await input({
+					message: "Digite o caminho do diretório de destino:",
+					default: process.cwd(), // Sugerimos o diretório atual como padrão
+				});
+			}
+		}
+
+		if (!fs.existsSync(baseDir)) {
+			console.error(`O diretório de destino "${baseDir}" não existe.`);
+			process.exit(1);
+		}
+
+		// Verificar se existe o diretório src
+		const srcDir = path.join(baseDir, "src");
+		if (!fs.existsSync(srcDir)) {
+			console.error(`O diretório "src" não foi encontrado em "${baseDir}".`);
+			process.exit(1);
+		}
+
+		// Criar o diretório hooks se não existir
+		const hooksDir = path.join(srcDir, "hooks");
+		if (!fs.existsSync(hooksDir)) {
+			console.log(
+				`O diretório "hooks" não foi encontrado em "${srcDir}". Será criado.`,
+			);
+		}
+
+		// Confirmação final antes da instalação
+		const confirmInstall = await confirm({
+			message: `Confirma a instalação de todos os hooks em ${hooksDir}?`,
+			default: true, // Por padrão, sugerimos confirmar
+		});
+
+		// Se o usuário cancelar, encerramos o programa sem erro
+		if (!confirmInstall) {
+			console.log("Instalação cancelada.");
+			process.exit(0); // Código 0 indica saída sem erro
+		}
+
+		// Exibir mensagem inicial
+		console.log("\nInstalando todos os hooks...\n");
+
+		// Caminho para a pasta de hooks do pacote instalado
+		const pkgPath = path.dirname(path.dirname(__dirname));
+		const sourcePath = path.join(pkgPath, "src", "hooks");
+
+		// Verificar se a pasta de hooks existe no pacote
+		if (!fs.existsSync(sourcePath)) {
+			console.error("A pasta de hooks não foi encontrada no pacote.");
+			process.exit(1);
+		}
+
+		// Garantir que o diretório de destino exista
+		await fs.ensureDir(hooksDir);
+
+		try {
+			// Copiar todos os arquivos de hooks para o destino
+			await fs.copy(sourcePath, hooksDir);
+			console.log(`Hooks instalados com sucesso em ${hooksDir}`);
+		} catch (error: unknown) {
+			const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
+			console.error(`Erro ao instalar os hooks: ${errorMessage}`);
+			process.exit(1);
+		}
+	});
+
+/**
+ * Comando de instalação dos utilitários
+ */
+program
+	.command("install-utils")
+	.description("Instala as funções utilitárias do projeto")
+	.option(
+		"-d, --dir <directory>", // Opção para especificar diretório de destino
+		"Diretório de destino para instalar os utilitários",
+		"", // Valor padrão vazio
+	)
+	.action(async (options) => {
+		let baseDir = options.dir;
+
+		if (!baseDir) {
+			// Primeiro, perguntamos se o usuário quer usar o diretório atual
+			const useCurrentDir = await confirm({
+				message: "Deseja instalar no diretório atual (src)?",
+				default: true, // Por padrão, sugerimos usar o diretório atual
+			});
+
+			if (useCurrentDir) {
+				// Se sim, usamos o diretório de trabalho atual
+				baseDir = process.cwd();
+			} else {
+				// Se não, pedimos para digitar um caminho personalizado
+				baseDir = await input({
+					message: "Digite o caminho do diretório de destino:",
+					default: process.cwd(), // Sugerimos o diretório atual como padrão
+				});
+			}
+		}
+
+		if (!fs.existsSync(baseDir)) {
+			console.error(`O diretório de destino "${baseDir}" não existe.`);
+			process.exit(1);
+		}
+
+		// Verificar se existe o diretório src
+		const srcDir = path.join(baseDir, "src");
+		if (!fs.existsSync(srcDir)) {
+			console.error(`O diretório "src" não foi encontrado em "${baseDir}".`);
+			process.exit(1);
+		}
+
+		// Criar o diretório utils se não existir
+		const utilsDir = path.join(srcDir, "utils");
+		if (!fs.existsSync(utilsDir)) {
+			console.log(`O diretório "utils" não foi encontrado em "${srcDir}". Será criado.`);
+		}
+
+		// Confirmação final antes da instalação
+		const confirmInstall = await confirm({
+			message: `Confirma a instalação de todos os utilitários em ${utilsDir}?`,
+			default: true, // Por padrão, sugerimos confirmar
+		});
+
+		// Se o usuário cancelar, encerramos o programa sem erro
+		if (!confirmInstall) {
+			console.log("Instalação cancelada.");
+			process.exit(0); // Código 0 indica saída sem erro
+		}
+
+		// Exibir mensagem inicial
+		console.log("\nInstalando todos os utilitários...\n");
+
+		// Caminho para a pasta de utils do pacote instalado
+		const pkgPath = path.dirname(path.dirname(__dirname));
+		const sourcePath = path.join(pkgPath, "src", "utils");
+
+		// Verificar se a pasta de utils existe no pacote
+		if (!fs.existsSync(sourcePath)) {
+			console.error("A pasta de utilitários não foi encontrada no pacote.");
+			process.exit(1);
+		}
+
+		// Garantir que o diretório de destino exista
+		await fs.ensureDir(utilsDir);
+
+		try {
+			// Copiar todos os arquivos de utils para o destino
+			await fs.copy(sourcePath, utilsDir);
+			console.log(`Utilitários instalados com sucesso em ${utilsDir}`);
+		} catch (error: unknown) {
+			const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
+			console.error(`Erro ao instalar os utilitários: ${errorMessage}`);
+			process.exit(1);
+		}
 	});
 
 /**

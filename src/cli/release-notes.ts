@@ -26,6 +26,26 @@ export interface ReleaseNote {
  */
 export const releaseHistory: ReleaseNote[] = [
   {
+    version: "0.0.8",
+    date: "2025-05-15",
+    title: "Novos comandos CLI para instalação de recursos",
+    description: "Adição de novos comandos na CLI para facilitar a instalação de estilos, hooks e utilitários.",
+    changes: {
+      feature: [
+        "Novo comando install-styles para instalar todos os estilos e assets do projeto",
+        "Novo comando install-hooks para instalar todos os hooks utilitários",
+        "Novo comando install-utils para instalar todas as funções utilitárias"
+      ],
+      improvement: [
+        "Melhor tratamento de erros nos comandos da CLI",
+        "Feedback mais claro durante o processo de instalação"
+      ],
+      docs: [
+        "Atualização da documentação da CLI no README.md"
+      ]
+    }
+  },
+  {
     version: "0.0.7",
     date: "2025-04-11",
     title: "Novos componentes e melhorias na CLI",

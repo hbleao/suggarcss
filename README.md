@@ -104,7 +104,49 @@ import { fileURLToPath } from "node:url";
    **Parâmetros:**
    - `-d, --dir <directory>` (opcional): Diretório de destino para instalar os componentes. Se não for fornecido, será solicitado interativamente.
 
-   ### c. Comando `list`
+   ### c. Comando `install-styles`
+
+   Instala todos os estilos e assets do projeto.
+
+   ```typescript
+   program
+     .command("install-styles")
+     .description("Instala os estilos e assets do projeto")
+     .option("-d, --dir <directory>", "Diretório de destino para instalar os estilos", "")
+   ```
+
+   **Parâmetros:**
+   - `-d, --dir <directory>` (opcional): Diretório de destino para instalar os estilos. Se não for fornecido, será solicitado interativamente.
+
+   ### d. Comando `install-hooks`
+
+   Instala todos os hooks utilitários do projeto.
+
+   ```typescript
+   program
+     .command("install-hooks")
+     .description("Instala os hooks utilitários do projeto")
+     .option("-d, --dir <directory>", "Diretório de destino para instalar os hooks", "")
+   ```
+
+   **Parâmetros:**
+   - `-d, --dir <directory>` (opcional): Diretório de destino para instalar os hooks. Se não for fornecido, será solicitado interativamente.
+
+   ### e. Comando `install-utils`
+
+   Instala todas as funções utilitárias do projeto.
+
+   ```typescript
+   program
+     .command("install-utils")
+     .description("Instala as funções utilitárias do projeto")
+     .option("-d, --dir <directory>", "Diretório de destino para instalar os utilitários", "")
+   ```
+
+   **Parâmetros:**
+   - `-d, --dir <directory>` (opcional): Diretório de destino para instalar os utilitários. Se não for fornecido, será solicitado interativamente.
+
+   ### f. Comando `list`
 
    Lista todos os componentes disponíveis e seu status de implementação.
 
@@ -114,7 +156,7 @@ import { fileURLToPath } from "node:url";
      .description("Lista todos os componentes disponíveis")
    ```
 
-   ### d. Comando `release-notes`
+   ### g. Comando `release-notes`
 
    Exibe as notas de versão do projeto.
 
@@ -154,41 +196,268 @@ Além da CLI, usamos o `tsup` (baseado em esbuild) para construir a biblioteca:
   - Minificação de código
   - Plugin personalizado para processar arquivos SCSS
 
-## Exemplos de Uso
+## Guia Detalhado de Uso da CLI
 
-A CLI pode ser usada de várias maneiras:
+A CLI do Porto Ocean foi projetada para facilitar a integração dos componentes, estilos e utilitários em seu projeto. Abaixo, você encontrará instruções detalhadas sobre como usar cada comando.
 
-### Instalação de Componentes
+### 1. Instalação de Componentes Individuais
+
+#### Comando: `install`
+
+O comando `install` permite instalar componentes individuais de forma interativa ou direta.
 
 ```bash
-# Instalar um componente interativamente
+# Modo interativo (recomendado para iniciantes)
 npx porto-ocean install
 
 # Instalar um componente específico
 npx porto-ocean install button
 
 # Instalar um componente em um diretório específico
-npx porto-ocean install chip --dir ./meu-projeto
-
-# Instalar todos os componentes implementados
-npx porto-ocean installAll
+npx porto-ocean install chip --dir ./meu-projeto/src/components
 ```
 
-### Listagem e Informações
+**Fluxo interativo:**
+1. Se nenhum componente for especificado, a CLI mostrará uma lista de todos os componentes disponíveis
+2. Após selecionar o componente, você poderá escolher o diretório de destino
+3. A CLI confirmará a instalação antes de prosseguir
+4. Os arquivos do componente serão copiados para o diretório especificado
+
+**Dica:** Use a opção `--dir` para especificar o diretório de destino diretamente, evitando a etapa interativa.
+
+### 2. Instalação de Todos os Componentes
+
+#### Comando: `installAll`
+
+O comando `installAll` permite instalar todos os componentes implementados de uma só vez.
 
 ```bash
-# Listar todos os componentes disponíveis
-npx porto-ocean list
+# Instalar todos os componentes no diretório atual
+npx porto-ocean installAll
 
-# Ver as notas de release da versão mais recente
+# Instalar todos os componentes em um diretório específico
+npx porto-ocean installAll --dir ./meu-projeto/src/components
+```
+
+**Quando usar:** Este comando é ideal quando você está iniciando um novo projeto e deseja importar todos os componentes disponíveis de uma só vez.
+
+**Nota:** Apenas os componentes já implementados serão instalados. Use o comando `list` para ver quais componentes estão disponíveis.
+
+### 3. Instalação de Estilos e Assets
+
+#### Comando: `install-styles`
+
+O comando `install-styles` instala todos os estilos e assets do projeto, incluindo variáveis CSS, tokens de design, reset CSS e utilitários de estilo.
+
+```bash
+# Instalar estilos no diretório atual
+npx porto-ocean install-styles
+
+# Instalar estilos em um diretório específico
+npx porto-ocean install-styles --dir ./meu-projeto
+```
+
+**O que é instalado:**
+- Variáveis CSS e tokens de design (cores, espaçamentos, tipografia)
+- Reset CSS para normalização entre navegadores
+- Mixins e funções SCSS utilitárias
+- Temas (claro/escuro)
+
+**Estrutura de diretórios criada:**
+```
+src/
+  styles/
+    design-tokens/
+    mixins/
+    themes/
+    reset.scss
+    variables.scss
+```
+
+**Quando usar:** Execute este comando no início do projeto para configurar a base de estilos antes de instalar componentes individuais.
+
+### 4. Instalação de Hooks
+
+#### Comando: `install-hooks`
+
+O comando `install-hooks` instala todos os hooks React utilitários da biblioteca.
+
+```bash
+# Instalar hooks no diretório atual
+npx porto-ocean install-hooks
+
+# Instalar hooks em um diretório específico
+npx porto-ocean install-hooks --dir ./meu-projeto
+```
+
+**Hooks disponíveis:**
+- `useMediaQuery` - Para detecção de breakpoints responsivos
+- `useOutsideClick` - Para detectar cliques fora de um elemento
+- `useLocalStorage` - Para persistir dados no localStorage
+- `useTheme` - Para gerenciar temas claro/escuro
+- E outros hooks utilitários
+
+**Estrutura de diretórios criada:**
+```
+src/
+  hooks/
+    useMediaQuery.ts
+    useOutsideClick.ts
+    useLocalStorage.ts
+    useTheme.ts
+    index.ts
+```
+
+**Exemplo de uso após instalação:**
+```tsx
+import { useMediaQuery } from '../hooks/useMediaQuery';
+
+function MeuComponente() {
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  
+  return (
+    <div>
+      {isMobile ? 'Visão mobile' : 'Visão desktop'}
+    </div>
+  );
+}
+```
+
+### 5. Instalação de Utilitários
+
+#### Comando: `install-utils`
+
+O comando `install-utils` instala todas as funções utilitárias da biblioteca.
+
+```bash
+# Instalar utilitários no diretório atual
+npx porto-ocean install-utils
+
+# Instalar utilitários em um diretório específico
+npx porto-ocean install-utils --dir ./meu-projeto
+```
+
+**Utilitários disponíveis:**
+- `clsx` - Para composição de nomes de classe CSS
+- `formatters` - Para formatação de dados (datas, moedas, etc.)
+- `validators` - Para validação de dados (email, CPF, etc.)
+- `animations` - Funções auxiliares para animações
+
+**Estrutura de diretórios criada:**
+```
+src/
+  utils/
+    clsx.ts
+    formatters.ts
+    validators.ts
+    animations.ts
+    index.ts
+```
+
+**Exemplo de uso após instalação:**
+```tsx
+import { clsx } from '../utils/clsx';
+
+function MeuBotao({ variant, size, className }) {
+  return (
+    <button 
+      className={clsx(
+        'botao',
+        `botao--${variant}`,
+        `botao--${size}`,
+        className
+      )}
+    >
+      Clique aqui
+    </button>
+  );
+}
+```
+
+### 6. Listagem de Componentes
+
+#### Comando: `list`
+
+O comando `list` exibe todos os componentes disponíveis na biblioteca e seu status de implementação.
+
+```bash
+npx porto-ocean list
+```
+
+**Saída de exemplo:**
+```
+Componentes disponíveis no @porto/js-library-corp-hubv-porto-ocean:
+
+✅ button - Implementado
+✅ chip - Implementado
+✅ accordion - Implementado
+❌ dropdown - Não implementado ainda
+❌ modal - Não implementado ainda
+```
+
+**Quando usar:** Use este comando para verificar quais componentes estão disponíveis antes de tentar instalá-los.
+
+### 7. Notas de Versão
+
+#### Comando: `release-notes`
+
+O comando `release-notes` exibe as notas de versão do projeto.
+
+```bash
+# Ver a versão mais recente
 npx porto-ocean release-notes
 
-# Ver as notas de uma versão específica
-npx porto-ocean release-notes 0.0.5
+# Ver uma versão específica
+npx porto-ocean release-notes 0.0.8
 
 # Listar todas as versões disponíveis
 npx porto-ocean release-notes --all
 ```
+
+**Quando usar:** Use este comando para verificar as mudanças em cada versão da biblioteca, especialmente ao atualizar para uma nova versão.
+
+### Fluxo de Trabalho Recomendado
+
+Para obter o melhor resultado ao integrar a biblioteca em seu projeto, recomendamos seguir este fluxo de trabalho:
+
+1. **Iniciar com os estilos base:**
+   ```bash
+   npx porto-ocean install-styles
+   ```
+
+2. **Instalar utilitários e hooks:**
+   ```bash
+   npx porto-ocean install-utils
+   npx porto-ocean install-hooks
+   ```
+
+3. **Instalar componentes específicos conforme necessário:**
+   ```bash
+   npx porto-ocean install button
+   npx porto-ocean install chip
+   ```
+   
+4. **Ou instalar todos os componentes de uma vez:**
+   ```bash
+   npx porto-ocean installAll
+   ```
+
+5. **Verificar as notas de versão para atualizações:**
+   ```bash
+   npx porto-ocean release-notes
+   ```
+
+### Dicas e Solução de Problemas
+
+- **Diretório não encontrado?** Certifique-se de que o diretório de destino existe antes de executar os comandos.
+
+- **Componente não encontrado?** Use `npx porto-ocean list` para verificar os componentes disponíveis.
+
+- **Conflitos de arquivo?** A CLI nunca sobrescreve arquivos existentes sem confirmação.
+
+- **Problemas com importações?** Certifique-se de que seu projeto está configurado para suportar TypeScript e SCSS.
+
+- **Executando em CI/CD?** Use a opção `--dir` para evitar prompts interativos em ambientes automatizados.
 
 ### Desenvolvimento e Testes
 

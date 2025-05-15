@@ -4,5 +4,4 @@ export * from "./components/Accordion";
 export * from "./components/Typography";
 export * from "./components/Loader";
 export * from "./components/Row";
-export * from "./components/Css/reset.scss";
 export * from "./components/Grid";
