@@ -1,0 +1,37 @@
+// styles/column.module.scss
+
+// Define os breakpoints utilizados
+$tablet-portrait: 768px;
+$tablet-landscape: 1024px;
+$desktop: 1224px;
+$wide: 1600px;
+
+// Mapa de breakpoints com prefixos de classe
+$breakpoints: (
+  "": null,
+  // padrão (mobile first)
+  "tablet-portrait": $tablet-portrait,
+  "tablet-landscape": $tablet-landscape,
+  "desktop": $desktop,
+  "wide": $wide,
+);
+
+// Gera classes como .col-1, .col-tablet-portrait-4, etc.
+@mixin generate-column-classes($prefix: "") {
+  @for $i from 1 through 12 {
+    .#{$prefix}col-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+}
+
+// Aplica o mixin para cada breakpoint
+@each $name, $size in $breakpoints {
+  @if $size == null {
+    @include generate-column-classes();
+  } @else {
+    @media (min-width: $size) {
+      @include generate-column-classes("#{$name}-");
+    }
+  }
+}
