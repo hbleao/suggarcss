@@ -1,3 +1,6 @@
+// Import necessary base styles
+@import '../../css/src/bg-color.scss';
+
 .header {
   &__root {
     width: 100%;
@@ -44,6 +47,10 @@
     @media (max-width: 768px) {
       display: none;
     }
+  }
+
+  &__menu-link-container {
+    position: relative;
   }
 
   &__menu-button,
@@ -214,6 +221,7 @@
   }
 
   &__tooltip-card-subtitle {
+    display: block;
     font-size: 0.875rem;
     color: #666;
   }
@@ -251,6 +259,19 @@
   }
 
   // Drawer styles
+  &__drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 250;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
   &__drawer {
     position: fixed;
     top: 0;
@@ -266,6 +287,11 @@
 
     &.--opened {
       transform: translateX(0);
+
+      & + .header__drawer-overlay {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
 
@@ -285,6 +311,8 @@
   }
 
   &__drawer-label {
+    display: flex;
+    align-items: center;
     display: block;
     padding: 0.5rem 0;
     color: inherit;
@@ -321,6 +349,13 @@
 
   &__drawer-subcategory-list-item {
     margin-bottom: 0.5rem;
+  }
+
+  &__drawer-label-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
   }
 
   &__drawer-subcategory-item {

@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
-import { joinClasses } from '@porto-ocean/utils';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+
+// Helper function to join CSS class names
+const joinClasses = (classes: (string | undefined | null | false)[]) => {
+  return classes.filter(Boolean).join(' ');
+};
 
 import './styles.scss';
 import type { HeaderProps, MenuItem, ToolbarItem, DrawerItem } from './types';
@@ -15,17 +19,57 @@ export const Header = ({
   className = '',
 }: HeaderProps) => {
   const [activeTooltip, setActiveTooltip] = useState<number | null>(null);
+  const tooltipRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const menuRefs = useRef<Array<HTMLAnchorElement | null>>([]);
 
-  const handleTooltipToggle = (index: number) => {
-    setActiveTooltip(activeTooltip === index ? null : index);
-  };
-
-  const closeAllTooltips = () => {
+  const closeAllTooltips = useCallback(() => {
     setActiveTooltip(null);
-  };
+  }, []);
+  
+  const handleTooltipToggle = useCallback((index: number) => {
+    setActiveTooltip(activeTooltip === index ? null : index);
+  }, [activeTooltip]);
+
+  // Close tooltips when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (activeTooltip !== null) {
+        const tooltipElement = tooltipRefs.current[activeTooltip];
+        const menuElement = menuRefs.current[activeTooltip];
+        
+        if (
+          tooltipElement && 
+          menuElement && 
+          !tooltipElement.contains(event.target as Node) &&
+          !menuElement.contains(event.target as Node)
+        ) {
+          closeAllTooltips();
+        }
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [activeTooltip, closeAllTooltips]);
+
+  // Close tooltips when pressing escape
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && activeTooltip !== null) {
+        closeAllTooltips();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscapeKey);
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [activeTooltip, closeAllTooltips]);
 
   return (
-    <header className={joinClasses(['header__root', `--${variant}`, className])}>
+    <header className={joinClasses(['header__root', variant === 'negative' ? '--negative' : '', className])}>
       <div className="header__container">
         {/* Menu Section */}
         <div className="header__menu">
@@ -37,20 +81,24 @@ export const Header = ({
           )}
 
           {/* Mobile Menu Icon */}
-          <div 
+          <button 
             className="header__menu-icon-mobile"
             onClick={onDrawerToggle}
+            onKeyDown={(e) => e.key === 'Enter' && onDrawerToggle?.()}
+            aria-label="Toggle mobile menu"
+            type="button"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z" fill="currentColor"/>
             </svg>
-          </div>
+          </button>
 
           {/* Navigation */}
           <nav className="header__nav">
             {menuItems.map((item, index) => (
               <div key={`menu-item-${index}`} className="header__menu-link-container">
                 <a
+                  ref={(el) => { menuRefs.current[index] = el; }}
                   href={item.href}
                   className={joinClasses([
                     'header__menu-link',
@@ -63,6 +111,15 @@ export const Header = ({
                     }
                     item.onClick?.();
                   }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && item.tooltip) {
+                      e.preventDefault();
+                      handleTooltipToggle(index);
+                      item.onClick?.();
+                    }
+                  }}
+                  aria-expanded={activeTooltip === index ? 'true' : 'false'}
+                  id={`menu-item-${index}`}
                 >
                   {item.label}
                   {item.icon && <span className="header__menu-link-icon">{item.icon}</span>}
@@ -72,10 +129,14 @@ export const Header = ({
                 {item.tooltip && (
                   <>
                     <div 
+                      ref={(el) => { tooltipRefs.current[index] = el; }}
                       className={joinClasses([
                         'header__tooltip',
                         activeTooltip === index ? '--visible' : '',
                       ])}
+                      role="dialog"
+                      aria-labelledby={`menu-item-${index}`}
+                      aria-modal="true"
                     >
                       {/* Tooltip Header */}
                       {item.tooltip.header && (
@@ -140,6 +201,10 @@ export const Header = ({
                         activeTooltip === index ? '--visible' : '',
                       ])}
                       onClick={closeAllTooltips}
+                      onKeyDown={(e) => e.key === 'Enter' && closeAllTooltips()}
+                      role="button"
+                      tabIndex={0}
+                      aria-label="Close menu"
                     />
                   </>
                 )}
@@ -161,6 +226,13 @@ export const Header = ({
                       if (!item.href) e.preventDefault();
                       item.onClick?.();
                     }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        if (!item.href) e.preventDefault();
+                        item.onClick?.();
+                      }
+                    }}
+                    aria-label={item.label || 'Toolbar item'}
                   >
                     {item.icon}
                     {item.label && <span className="header__toolbar-label">{item.label}</span>}
@@ -173,7 +245,26 @@ export const Header = ({
       </div>
 
       {/* Drawer */}
-      <div className={joinClasses(['header__drawer', isDrawerOpen ? '--opened' : ''])}>
+      {/* Drawer Overlay */}
+      {isDrawerOpen && (
+        <div 
+          className="header__drawer-overlay" 
+          onClick={onDrawerToggle}
+          onKeyDown={(e) => e.key === 'Enter' && onDrawerToggle?.()}
+          role="button"
+          tabIndex={0}
+          aria-label="Close mobile menu"
+        />
+      )}
+      
+      {/* Drawer */}
+      <div 
+        className={joinClasses(['header__drawer', isDrawerOpen ? '--opened' : ''])} 
+        role="dialog"
+        aria-label="Mobile navigation"
+        aria-modal="true"
+        aria-hidden={!isDrawerOpen}
+      >
         <div className="header__drawer-categories">
           {drawerItems.map((item, index) => (
             <div key={`drawer-item-${index}`}>
@@ -183,6 +274,12 @@ export const Header = ({
                 onClick={(e) => {
                   if (!item.href) e.preventDefault();
                   item.onClick?.();
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    if (!item.href) e.preventDefault();
+                    item.onClick?.();
+                  }
                 }}
               >
                 {item.icon && <span className="header__drawer-label-icon">{item.icon}</span>}
