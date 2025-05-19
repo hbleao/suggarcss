@@ -5,3 +5,4 @@ export * from "./components/Typography";
 export * from "./components/Loader";
 export * from "./components/Row";
 export * from "./components/Grid";
+export * from "./components/Spacing";
