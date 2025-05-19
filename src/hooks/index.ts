@@ -13,6 +13,7 @@ export { useWindowSize } from './useWindowSize';
 export { useOutsideClick } from './useOutsideClick';
 export { useEventListener } from './useEventListener';
 export { useToggle } from './useToggle';
+export { useLockScroll } from './useLockScroll';
 
 // Hooks para performance
 export { useDebouncedValue } from './useDebounce';
