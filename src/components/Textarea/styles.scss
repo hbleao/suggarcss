@@ -15,7 +15,7 @@
   &.--focused {
     &.--outlined {
       .textarea__field {
-        border-bottom: 1px solid var(--portoSegurosPrimary);
+        border-bottom: 1px solid var(--color-brand-insurance-700);
         background-color: rgba(0, 0, 0, 0.02);
       }
     }
@@ -23,14 +23,14 @@
     &.--default {
       .textarea__field {
         border-radius: 4px;
-        border: 1px solid var(--portoSegurosPrimary);
+        border: 1px solid var(--color-brand-insurance-700);
       }
     }
   }
 
   &.--outlined {
     .textarea__field {
-      border-bottom: 1px solid var(--black45);
+      border-bottom: 1px solid var(--color-neutral-400);
       background-color: rgba(0, 0, 0, 0.02);
     }
   }
@@ -38,7 +38,7 @@
   &.--default {
     .textarea__field {
       border-radius: 4px;
-      border: 1px solid var(--black45);
+      border: 1px solid var(--color-neutral-400);
     }
   }
 
@@ -57,29 +57,29 @@
 
     i,
     .textarea__label {
-      color: var(--black45);
+      color: var(--color-neutral-400);
     }
   }
 
   &.--error {
     &.--outlined {
       .textarea__counter {
-        color: var(--red80);
+        color: var(--color-accent-red-700);
       }
 
       .textarea__field {
-        border-bottom: 1px solid var(--red80);
+        border-bottom: 1px solid var(--color-accent-red-700);
       }
     }
 
     &.--default {
       .textarea__counter {
-        color: var(--red80);
+        color: var(--color-accent-red-700);
       }
 
       .textarea__field {
         border-radius: 4px;
-        border: 1px solid var(--red80);
+        border: 1px solid var(--color-accent-red-700);
       }
     }
 
@@ -88,7 +88,7 @@
       .textarea__label,
       .textarea__counter,
       .textarea__icon {
-        color: var(--red80);
+        color: var(--color-accent-red-700);
       }
     }
   }
@@ -99,10 +99,10 @@
   position: absolute;
   top: 0.8rem;
   left: 1.2rem;
-  font-family: var(--open-sans);
-  font-size: var(--text-4xs);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-md);
   font-weight: var(--regular);
-  color: var(--black75);
+  color: var(--color-neutral-700);
   line-height: 2rem;
   transition: 0.2s;
 }
@@ -111,10 +111,10 @@
   height: 100%;
   outline: none;
   border: none;
-  font-family: var(--open-sans);
-  font-size: var(--text-4xs);
-  color: var(--black100);
-  padding: var(--spacing-2xs) var(--spacing-3xs);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-md);
+  color: var(--color-neutral-900);
+  padding: var(--space-sm);
   min-width: 30.4rem;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
@@ -125,21 +125,21 @@
 .textarea__counter {
   display: block;
   font-size: var(--text-3xs);
-  color: var(--black70);
-  font-family: var(--open-sans);
-  font-weight: var(--medium);
-  line-height: var(--text-md);
+  color: var(--color-neutral-700);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--font-size-xl);
   position: absolute;
   bottom: -22px;
   right: 0;
 }
 
 .textarea__helper-text {
-  font-size: var(--text-2xs);
-  color: var(--black70);
-  font-family: var(--open-sans);
-  font-weight: var(--medium);
-  line-height: var(--text-md);
+  font-size: var(--font-size-md);
+  color: var(--color-neutral-700);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--font-size-xl);
   margin: 0;
   position: absolute;
   bottom: -22px;
@@ -148,11 +148,11 @@
 
 .textarea__error-message {
   display: block;
-  font-size: var(--text-2xs);
-  color: var(--red80);
+  font-size: var(--font-size-md);
+  color: var(--color-accent-red-700);
   font-family: var(--open-sans);
-  font-weight: var(--medium);
-  line-height: var(--text-md);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--font-size-xl);
   margin: 0;
   position: absolute;
   bottom: -22px;

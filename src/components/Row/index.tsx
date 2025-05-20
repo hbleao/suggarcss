@@ -1,6 +1,6 @@
-import "./styles.scss";
+import './styles.scss';
 
-import type { RowProps } from "./types";
+import type { RowProps } from './types';
 
 export const Row = ({
 	mobile = [1, 9],
@@ -8,7 +8,7 @@ export const Row = ({
 	landscape = [1, 13],
 	desktop = [1, 13],
 	wide = [1, 13],
-	className = "",
+	className = '',
 	children,
 	...restProps
 }: RowProps) => {

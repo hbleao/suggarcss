@@ -1,0 +1,37 @@
+.text-body__root {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  &.--light {
+    background-color: $white;
+
+    .text-body__title,
+    .text-body__subtitle,
+    .text-body__text {
+      color: $black75;
+    }
+  }
+
+  &.--dark {
+    background-color: $black85;
+
+    .text-body__title,
+    .text-body__subtitle,
+    .text-body__text {
+      color: $white;
+    }
+  }
+}
+
+.text-body__title {
+  @media (min-width: $tablet-portrait) {
+    font-size: $text-4xl;
+    line-height: $text-5xl;
+  }
+}
+
+.text-body__buttons {
+  display: flex;
+  gap: 2rem;
+}

@@ -1,7 +1,8 @@
 import type { HTMLAttributes } from 'react';
 
-export type InputProps = HTMLAttributes<HTMLDivElement> & {
+export type InputProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & {
 	label?: string;
+	name?: string;
 	value?: string;
 	variant?: 'outlined' | 'default';
 	width?: 'fluid' | 'contain';
@@ -9,5 +10,5 @@ export type InputProps = HTMLAttributes<HTMLDivElement> & {
 	isLoading?: boolean;
 	helperText?: string;
 	errorMessage?: string;
-	onChange?: (value: string) => void;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
