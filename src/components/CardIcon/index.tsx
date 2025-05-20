@@ -1,26 +1,18 @@
-import { Typography } from "../Typography";
-import "./styles.scss";
-import type { CardIconProps } from "./types";
+import './styles.scss';
+
+import { Typography } from '../Typography';
+
+import type { CardIconProps } from './types';
 
 export const CardIcon = ({
-	theme = "light",
-	variant = "link",
 	icon,
 	preTitle,
 	title,
 	description,
-	href,
-	onClick,
-	titleProps,
-	preTitleProps,
-	descriptionProps,
-	className = "",
 }: CardIconProps) => {
-	const CardContainer = variant === "link" && href ? "a" : "div";
-
 	return (
-		<CardContainer className={`card-icon__root --${variant}`}>
-			{icon && { icon }}
+		<div className="card-icon__root --withoutLink">
+			{icon && icon}
 
 			{preTitle && (
 				<Typography
@@ -28,7 +20,6 @@ export const CardIcon = ({
 					variant="body2"
 					weight="regular"
 					className="card-icon__pretitle"
-					{...preTitleProps}
 				>
 					{preTitle}
 				</Typography>
@@ -40,7 +31,6 @@ export const CardIcon = ({
 					variant="body1"
 					weight="bold"
 					className="card-icon__title"
-					{...titleProps}
 				>
 					{title}
 				</Typography>
@@ -52,11 +42,10 @@ export const CardIcon = ({
 					variant="body2"
 					weight="regular"
 					className="card-icon__description"
-					{...descriptionProps}
 				>
 					{description}
 				</Typography>
 			)}
-		</CardContainer>
+		</div>
 	);
 };

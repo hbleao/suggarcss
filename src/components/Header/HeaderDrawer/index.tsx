@@ -5,10 +5,10 @@ import React from "react";
 import { MenuNav } from "../MenuNav";
 import * as Header from "../components";
 
-import { Button } from "@/components";
-import useLockScroll from "@/hooks/useLockScroll";
+import { Button, Spacing } from "@/components";
 import { formatAemImageUrl } from "@/utils";
 
+import { useScrollBlock } from "@/hooks";
 import type { Category, HeaderDrawerProps } from "./types";
 
 export const HeaderDrawer = ({
@@ -21,11 +21,13 @@ export const HeaderDrawer = ({
 	handleCategory,
 	handleSubcategory,
 }: HeaderDrawerProps) => {
-	useLockScroll(isOpenMenu);
+	useScrollBlock();
 
 	return (
 		<Header.Drawer isOpen={isOpenMenu}>
+			<Spacing bottom={1.6} />
 			<MenuNav menuLinks={links} />
+			<Spacing bottom={2.4} />
 			<Header.DrawerCategories>
 				<Header.DrawerList>
 					{categories.map((submenu) => (

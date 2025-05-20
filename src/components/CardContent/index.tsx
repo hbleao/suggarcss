@@ -1,10 +1,7 @@
-import React from "react";
-import { Typography } from "@porto-ocean/typography";
-import { Button } from "@porto-ocean/button";
-import { joinClasses } from "@porto-ocean/utils";
-
-import "./styles.scss";
-import type { CardContentProps } from "./types";
+import { Link } from '../Link';
+import { Typography } from '../Typography';
+import './styles.scss';
+import type { CardContentProps } from './types';
 
 /**
  * Componente CardContent para exibir informações em formato de cartão.
@@ -21,7 +18,7 @@ import type { CardContentProps } from "./types";
  *   title="Seguro Auto"
  *   description="Proteção completa para seu veículo com as melhores coberturas."
  * />
- * 
+ *
  * // Card com imagem e botões
  * <CardContent
  *   theme="light"
@@ -43,7 +40,7 @@ import type { CardContentProps } from "./types";
  *     }
  *   ]}
  * />
- * 
+ *
  * // Card com tema escuro e propriedades personalizadas para título
  * <CardContent
  *   theme="dark"
@@ -71,65 +68,46 @@ import type { CardContentProps } from "./types";
  */
 
 export const CardContent = ({
-	theme = "light",
+	theme = 'light',
 	title,
-	titleProps,
 	description,
-	descriptionProps,
 	image,
-	buttons = [],
-	className = "",
+	links = [],
+	className = '',
 	...restProps
 }: CardContentProps) => {
 	return (
-		<div
-			className={joinClasses(["card-content__root", `--${theme}`, className])}
-			{...restProps}
-		>
-			{/* Image Section */}
+		<div className="card-content" {...restProps}>
 			{image && <div className="card-content__image">{image}</div>}
 
-			{/* Content Section */}
 			<div className="card-content__content">
-				{/* Title */}
 				{title && (
 					<Typography
 						as="h3"
 						variant="title5"
 						weight="bold"
 						className="card-content__title"
-						{...titleProps}
 					>
 						{title}
 					</Typography>
 				)}
 
-				{/* Description */}
 				{description && (
 					<Typography
 						as="p"
 						variant="body2"
 						className="card-content__description"
-						{...descriptionProps}
 					>
 						{description}
 					</Typography>
 				)}
 
-				{/* Buttons */}
-				{buttons.length > 0 && (
-					<div className="card-content__buttons">
-						{buttons.map((button, index) => (
-							<Button
-								key={`button-${index}`}
-								variant={button.variant}
-								size={button.size}
-								onClick={button.onClick}
-								href={button.href}
-								{...button}
-							>
-								{button.label}
-							</Button>
+				{links.length > 0 && (
+					<div className="card-content__links">
+						{links.map((link) => (
+							<Link key={link.label} href={link.href}>
+								{link.label}
+							</Link>
 						))}
 					</div>
 				)}

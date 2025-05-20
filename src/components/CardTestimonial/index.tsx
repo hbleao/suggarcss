@@ -1,13 +1,11 @@
-import React from 'react';
-import { Typography } from '@porto-ocean/typography';
-import { joinClasses } from '@porto-ocean/utils';
-
+import { Typography } from '../Typography';
 import './styles.scss';
+
 import type { CardTestimonialProps } from './types';
 
 /**
  * Componente CardTestimonial - Card para exibição de depoimentos
- * 
+ *
  * @component
  * @example
  * ```tsx
@@ -22,94 +20,62 @@ import type { CardTestimonialProps } from './types';
  * ```
  */
 export const CardTestimonial = ({
-  theme = 'light',
-  image,
-  name,
-  nameProps,
-  position,
-  positionProps,
-  date,
-  dateProps,
-  text,
-  textProps,
-  showSeparator = true,
-  className = '',
-  ...restProps
+	image,
+	name,
+	position,
+	date,
+	text,
+	showSeparator = true,
+	...restProps
 }: CardTestimonialProps) => {
-  return (
-    <div
-      className={joinClasses(['card-testimonial__root', `--${theme}`, className])}
-      {...restProps}
-    >
-      {/* Header Section */}
-      <div className="card-testimonial__header">
-        {/* Author Image */}
-        {image && (
-          <div className="card-testimonial__image">
-            {image}
-          </div>
-        )}
+	return (
+		<div className="card-testimonial" {...restProps}>
+			<div className="card-testimonial__header">
+				{image && <div className="card-testimonial__image">{image}</div>}
 
-        {/* Author Info */}
-        <div className="card-testimonial__info">
-          {/* Author Name */}
-          {name && (
-            <Typography
-              as="h3"
-              variant="subtitle1"
-              weight="bold"
-              className="card-testimonial__name"
-              {...nameProps}
-            >
-              {name}
-            </Typography>
-          )}
+				<div className="card-testimonial__info">
+					{name && (
+						<Typography
+							as="h3"
+							variant="body1"
+							weight="bold"
+							className="card-testimonial__name"
+						>
+							{name}
+						</Typography>
+					)}
 
-          {/* Author Position */}
-          {position && (
-            <Typography
-              as="p"
-              variant="body2"
-              className="card-testimonial__position"
-              {...positionProps}
-            >
-              {position}
-            </Typography>
-          )}
+					{position && (
+						<Typography
+							as="p"
+							variant="body2"
+							className="card-testimonial__position"
+						>
+							{position}
+						</Typography>
+					)}
 
-          {/* Testimonial Date */}
-          {date && (
-            <Typography
-              as="span"
-              variant="caption"
-              className="card-testimonial__date"
-              {...dateProps}
-            >
-              {date}
-            </Typography>
-          )}
-        </div>
-      </div>
+					{date && (
+						<Typography
+							as="span"
+							variant="caption"
+							className="card-testimonial__date"
+						>
+							{date}
+						</Typography>
+					)}
+				</div>
+			</div>
 
-      {/* Separator */}
-      {showSeparator && (
-        <hr className="card-testimonial__separator" />
-      )}
+			{showSeparator && <hr className="card-testimonial__separator" />}
 
-      {/* Content Section */}
-      <div className="card-testimonial__content">
-        {/* Testimonial Text */}
-        {text && (
-          <Typography
-            as="p"
-            variant="body1"
-            className="card-testimonial__text"
-            {...textProps}
-          >
-            {text}
-          </Typography>
-        )}
-      </div>
-    </div>
-  );
+			<div className="card-testimonial__content">
+				{text && (
+					<Typography as="p" variant="body1" className="card-testimonial__text">
+						{text}
+					</Typography>
+				)}
+			</div>
+		</div>
+	);
 };

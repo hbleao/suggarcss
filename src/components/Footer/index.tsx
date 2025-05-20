@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -6,11 +7,7 @@ import "./styles.scss";
 import { Column } from "../Column";
 import { icons } from "./icons";
 
-import { Button, Grid } from "@/components";
-import AppleSVG from "../../assets/icons/ic-appstore.svg";
-import GoogleSVG from "../../assets/icons/ic-googleplay.svg";
-import SacSVG from "../../assets/icons/ic-headset.svg";
-import LogoPortoSVG from "../../assets/icons/ic-logo-porto-white.svg";
+import { Button, Flex, Grid, Link, Modal } from "@/components";
 
 import type { FooterProps } from "./types";
 
@@ -96,11 +93,6 @@ export const Footer = ({
 										target="_blank"
 										rel="noreferrer"
 									>
-										{link.icon && (
-											<span className="links__link-icon">
-												<Image src={SacSVG} width={16} height={16} alt="icon" />
-											</span>
-										)}
 										{link.name}
 									</a>
 								</li>
@@ -118,7 +110,7 @@ export const Footer = ({
 					>
 						<Image
 							className="social-media__logo"
-							src={LogoPortoSVG}
+							src={icons["icon-logo-white"]?.icon}
 							alt="Porto seguro"
 							width={156}
 							height={40}
@@ -154,7 +146,7 @@ export const Footer = ({
 									rel="noreferrer"
 								>
 									<Image
-										src={AppleSVG}
+										src={icons["icon-apple"].icon}
 										width={120}
 										height={80}
 										alt="apple store"
@@ -166,7 +158,7 @@ export const Footer = ({
 									rel="noreferrer"
 								>
 									<Image
-										src={GoogleSVG}
+										src={icons["icon-google"].icon}
 										width={120}
 										height={80}
 										alt="google play"
@@ -206,6 +198,41 @@ export const Footer = ({
 					</Column>
 				</>
 			</Grid>
+			<Modal
+				name="parceiros"
+				title="Parceiro Porto"
+				subtitle="Encontre aqui a área exclusiva para o seu perfil"
+			>
+				<Flex direction="column" gap="1.6rem">
+					<Link
+						href="https://corretor.portoseguro.com.br/corretoronline/"
+						styles="secondary"
+					>
+						Corretor on-line
+					</Link>
+					<Link
+						href="https://wwws.portoseguro.com.br/portalnegocio/"
+						styles="secondary"
+					>
+						Prestadores de serviço
+					</Link>
+					<Link href="https://ri.portoseguro.com.br/" styles="secondary">
+						Investidores
+					</Link>
+					<Link
+						href="https://www.portoseguro.com.br/fale-conosco/trabalhe-conosco/representante-de-seguros"
+						styles="secondary"
+					>
+						Representantes de seguro
+					</Link>
+					<Link
+						href="https://www.portoseguro.com.br/fale-conosco/trabalhe-conosco/fornecedores"
+						styles="secondary"
+					>
+						Fornecedores
+					</Link>
+				</Flex>
+			</Modal>
 		</footer>
 	);
 };

@@ -36,6 +36,7 @@ export const MenuNav = ({ menuLinks, loginButton }: MenuNavProps) => {
 						{loginButton && (
 							<Link
 								style={{ marginLeft: "auto" }}
+								width="contain"
 								styles="secondary"
 								size="small"
 								href={loginButton.url}

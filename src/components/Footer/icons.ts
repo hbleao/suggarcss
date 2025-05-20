@@ -1,19 +1,27 @@
-import PinSVG from "@/assets/icons/ic-auto-pin.svg";
-import BalaoSVG from "@/assets/icons/ic-balao.svg";
-import HeadsetSVG from "@/assets/icons/ic-headset.svg";
-import PeopleSVG from "@/assets/icons/ic-people.svg";
-import QaCircleSVG from "@/assets/icons/ic-pergunta-circle.svg";
-import PhoneSVG from "@/assets/icons/ic-phone.svg";
-import FaceSVG from "@/assets/icons/ic-redes-sociais.svg";
-import InstaSVG from "@/assets/icons/ic-redes-sociais2.svg";
-import LinkedInSVG from "@/assets/icons/ic-redes-sociais3.svg";
-import TiktokSVG from "@/assets/icons/ic-redes-sociais4.svg";
-import TwitterSVG from "@/assets/icons/ic-redes-sociais5.svg";
-import YoutubeSVG from "@/assets/icons/ic-redes-sociais6.svg";
-import WhatsappSVG from "@/assets/icons/ic-whatsApp.svg";
+import FaceSVG from "./icons/ic-facebook.svg";
+import InstaSVG from "./icons/ic-instagram.svg";
+import LinkedInSVG from "./icons/ic-linkedin.svg";
+import TiktokSVG from "./icons/ic-tiktok.svg";
+import TwitterSVG from "./icons/ic-x.svg";
+import YoutubeSVG from "./icons/ic-youtube.svg";
+
+import HeadsetSVG from "./icons/ic-headset.svg";
+import BalaoSVG from "./icons/ic-message.svg";
+import PeopleSVG from "./icons/ic-people.svg";
+import PhoneSVG from "./icons/ic-phone.svg";
+import PinSVG from "./icons/ic-pin.svg";
+import QaCircleSVG from "./icons/ic-question.svg";
+import WhatsappSVG from "./icons/ic-whatsApp.svg";
+
+import AppleSVG from "./icons/ic-apple-store.svg";
+import GoogleSVG from "./icons/ic-google-play.svg";
+import LogoSVG from "./icons/ic-logo-porto.svg";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const icons: any = {
+	"icon-apple": { icon: AppleSVG },
+	"icon-google": { icon: GoogleSVG },
+	"icon-logo-white": { icon: LogoSVG },
 	"icon-porto-ic-facebook": { icon: FaceSVG },
 	"icon-porto-ic-instagram": { icon: InstaSVG },
 	"icon-porto-ic-linkedin": { icon: LinkedInSVG },

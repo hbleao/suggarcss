@@ -9,12 +9,14 @@ export const Accordion = ({
 	variant = "default",
 	border = "base",
 	children,
+	...props
 }: AccordionProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<div
 			className={`accordion__root --${variant} --border-${border} --${width}`}
+			{...props}
 		>
 			<div
 				className="accordion__trigger"

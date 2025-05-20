@@ -70,6 +70,7 @@ export function Column({
 			style={{
 				gridColumnStart: gridColumn[0],
 				gridColumnEnd: gridColumn[1],
+				scrollbarWidth: "none",
 			}}
 			{...props}
 		>

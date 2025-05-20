@@ -1,22 +1,22 @@
-import { clsx } from '@/utils/clsx';
+import { clsx } from "@/utils";
 
-import './styles.scss';
+import "./styles.scss";
 
-import type { ButtonProps } from './types';
+import type { ButtonProps } from "./types";
 
 export const Button = ({
-	variant = 'insurance',
-	styles = 'primary',
-	size = 'large',
-	width = 'contain',
+	variant = "insurance",
+	styles = "primary",
+	size = "large",
+	width = "contain",
 	isLoading = false,
 	disabled = false,
-	className = '',
+	className = "",
 	children,
 	...restProps
 }: ButtonProps) => {
 	const composedClassName = clsx(
-		'btn',
+		"btn",
 		{
 			[`--disabled-${styles}`]: disabled,
 			[`--${variant}-${styles}`]: !disabled,

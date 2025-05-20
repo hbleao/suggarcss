@@ -1,13 +1,13 @@
-'use client';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+"use client";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-import './styles.scss';
+import "./styles.scss";
 
-import ArrowLeftSVG from '@/assets/icons/ic-arrow-left.svg';
-import LogoPortoSVG from '@/assets/icons/ic-logo-porto.svg';
-import CartSVG from '@/assets/icons/ic-shopping-cart.svg';
-import { Button } from '../Button';
+import { Button } from "../Button";
+import ArrowLeftSVG from "./icons/ic-arrow-left.svg";
+import LogoPortoSVG from "./icons/ic-logo-porto.svg";
+import CartSVG from "./icons/ic-shopping-cart.svg";
 
 export type HeaderProps = {
 	goBackLink?: string;
@@ -16,7 +16,7 @@ export type HeaderProps = {
 };
 
 export const HeaderAcquisitionFlow = ({
-	goBackLink = '',
+	goBackLink = "",
 	hasGoBackLink = true,
 	hasShoppingCart = true,
 }: HeaderProps) => {
@@ -48,7 +48,7 @@ export const HeaderAcquisitionFlow = ({
 				height={28}
 				width={120}
 				alt="Logo da porto"
-				onClick={() => router.push('/')}
+				onClick={() => router.push("/")}
 			/>
 
 			{hasShoppingCart && (

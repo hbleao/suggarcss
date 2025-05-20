@@ -17,6 +17,7 @@
     grid-template-columns: repeat(12, 1fr);
     gap: 1.6rem;
     padding: 0 6.4rem;
+    margin: 0 auto;
   }
 
   @media (min-width: 1240px) {
@@ -32,7 +33,6 @@
     grid-column: 1 / span 12;
     grid-template-columns: repeat(12, 1fr);
     gap: 4rem;
-    padding: 0 auto;
   }
 }
 

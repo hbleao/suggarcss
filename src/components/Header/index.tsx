@@ -2,15 +2,15 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import { Column, Grid, Link, ShowOnDevice } from "@/components";
+import { HeaderDrawer } from "./HeaderDrawer";
+import { HeaderToolbar } from "./HeaderToolbar";
+import { MenuNav } from "./MenuNav";
 import * as C from "./components";
 
 import LogoPortoSVG from "@/assets/icons/ic-logo-porto.svg";
-import { HeaderDrawer } from "./HeaderDrawer";
+import { Column, Grid, Link, ShowOnDevice } from "@/components";
+
 import type { Category } from "./HeaderDrawer/types";
-import { HeaderToolbar } from "./HeaderToolbar";
-// import { HeaderDrawer } from "./HeaderDrawer";
-// import { HeaderToolbar } from "./HeaderToolbar";
 
 export const Header = (props: any) => {
 	const { menu, submenus: categories } = props;
@@ -64,6 +64,7 @@ export const Header = (props: any) => {
 							<Link
 								style={{ marginLeft: "auto" }}
 								styles="secondary"
+								width="contain"
 								size="small"
 								href={props?.menu?.loginButton.url}
 							>
@@ -73,23 +74,27 @@ export const Header = (props: any) => {
 					</C.MenuLogo>
 				</ShowOnDevice>
 
-				{/* <MenuNav {...menu} /> */}
+				<ShowOnDevice media="tabletLandscape" orientation="greaterThan">
+					<MenuNav {...menu} />
+				</ShowOnDevice>
 			</C.Menu>
 
-			<Grid background="#f7f7f7">
-				<Column>
-					<HeaderToolbar
-						selectedCategory={selectedCategory}
-						categories={categories}
-						subcategory={subcategory}
-						indexSubcategory={indexSubcategory}
-						hasSubcategories={hasSubcategories}
-						handleCategory={handleCategory}
-						handleSubcategory={handleSubcategory}
-						handleRedirect={handleRedirect}
-					/>
-				</Column>
-			</Grid>
+			<div style={{ background: "#f7f7f7" }}>
+				<Grid>
+					<Column>
+						<HeaderToolbar
+							selectedCategory={selectedCategory}
+							categories={categories}
+							subcategory={subcategory}
+							indexSubcategory={indexSubcategory}
+							hasSubcategories={hasSubcategories}
+							handleCategory={handleCategory}
+							handleSubcategory={handleSubcategory}
+							handleRedirect={handleRedirect}
+						/>
+					</Column>
+				</Grid>
+			</div>
 
 			<HeaderDrawer
 				isOpenMenu={isOpenMenu}
