@@ -1,0 +1,26 @@
+.drawer__category-header {
+  width: 100%;
+  padding-top: 16px;
+  transition:
+    opacity 0.35s ease-in,
+    transform 0.45s ease-in-out;
+  opacity: 0;
+  transform: translate(-6rem);
+  display: flex;
+  row-gap: 4px;
+  column-gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+
+  img {
+    height: 24px;
+  }
+
+  button {
+    padding-left: 0px;
+
+    >svg {
+      transform: rotate(180deg);
+    }
+  }
+}

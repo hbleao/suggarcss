@@ -10,7 +10,7 @@
   }
 
   &.--contain {
-    width: max-content;
+    min-width: 20rem;
   }
 
   &.--filled {
@@ -27,39 +27,29 @@
 
   &.--focused {
     &.--outlined {
-      .dropdown__trigger {
-        border-bottom: 1px solid var(--color-brand-insurance-550);
-        background-color: rgba(0, 0, 0, 0.02);
-      }
+      border-bottom: 1px solid var(--color-brand-insurance-550);
+      background-color: rgba(0, 0, 0, 0.02);
     }
 
     &.--default {
-      .dropdown__trigger {
-        border: 1px solid var(--color-brand-insurance-550);
-        border-radius: var(--radius-md);
-      }
-    }
-  }
-
-  &.--outlined {
-    .dropdown__trigger {
-      border-bottom: 1px solid var(--color-neutral-400);
-      background-color: rgba(0, 0, 0, 0.02);
-    }
-  }
-
-  &.--default {
-    .dropdown__trigger {
-      border: 1px solid var(--color-neutral-400);
+      border: 1px solid var(--color-brand-insurance-550);
       border-radius: var(--radius-md);
     }
   }
 
+  &.--outlined {
+    border-bottom: 1px solid var(--color-neutral-400);
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  &.--default {
+    border: 1px solid var(--color-neutral-400);
+    border-radius: var(--radius-md);
+  }
+
   &.--disabled {
-    .dropdown__trigger {
-      pointer-events: none;
-      background-color: var(--color-neutral-100);
-    }
+    pointer-events: none;
+    background-color: var(--color-neutral-100);
 
     .dropdown__label {
       color: var(--color-neutral-500);
@@ -72,16 +62,12 @@
 
   &.--error {
     &.--outlined {
-      .dropdown__trigger {
-        border-bottom: 1px solid var(--color-accent-red-700);
-      }
+      border-bottom: 1px solid var(--color-accent-red-700);
     }
 
     &.--default {
-      .dropdown__trigger {
-        border: 1px solid var(--color-accent-red-700);
-        border-radius: var(--radius-md);
-      }
+      border: 1px solid var(--color-accent-red-700);
+      border-radius: var(--radius-md);
     }
 
     .dropdown__label {

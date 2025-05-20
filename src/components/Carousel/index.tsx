@@ -1,16 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import './styles.scss';
+import { useEffect, useRef, useState } from "react";
 
-interface CarouselProps {
-	children: React.ReactNode[];
-	autoPlay?: boolean;
-	autoPlayInterval?: number;
-	slidesToShow?: number;
-	slidesToScroll?: number;
-	dots?: boolean;
-	arrows?: boolean;
-	gap?: number;
-}
+import "./styles.scss";
+
+import type { CarouselProps } from "./types";
 
 export function Carousel({
 	children,
@@ -32,7 +24,7 @@ export function Carousel({
 
 	const handleDragStart = (e: React.TouchEvent | React.MouseEvent) => {
 		isDragging.current = true;
-		if ('touches' in e) {
+		if ("touches" in e) {
 			startPos.current = e.touches[0].clientX;
 		} else {
 			startPos.current = e.clientX;
@@ -42,7 +34,7 @@ export function Carousel({
 	const handleDragEnd = (e: React.TouchEvent | React.MouseEvent) => {
 		if (!isDragging.current) return;
 		let endPos = 0;
-		if ('changedTouches' in e) {
+		if ("changedTouches" in e) {
 			endPos = e.changedTouches[0].clientX;
 		} else {
 			endPos = e.clientX;
@@ -192,7 +184,7 @@ export function Carousel({
 							style={{
 								width: `${100 / slideCount}%`,
 								padding: `0 ${gap / 2}px`,
-								boxSizing: 'border-box',
+								boxSizing: "border-box",
 							}}
 						>
 							{child}
@@ -208,7 +200,7 @@ export function Carousel({
 									type="button"
 									key={index}
 									onClick={() => goToSlide(index * slidesToScroll)}
-									className={`carousel__dot ${index * slidesToScroll === currentSlide ? 'active' : ''}`}
+									className={`carousel__dot ${index * slidesToScroll === currentSlide ? "active" : ""}`}
 								/>
 							),
 						)}

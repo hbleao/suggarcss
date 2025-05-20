@@ -1,6 +1,7 @@
 export interface AccordionProps {
-	variant: "default" | "negative";
-	border: "top" | "none" | "base";
-	children: React.ReactNode;
 	title: string;
+	variant?: "default" | "negative";
+	border?: "top" | "none" | "base";
+	width?: "fluid" | "contain";
+	children?: React.ReactNode;
 }

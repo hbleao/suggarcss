@@ -1,33 +1,33 @@
 .text-body__root {
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: var(--space-lg);
 
   &.--light {
-    background-color: $white;
+    background-color: var(--color-neutral-0);
 
     .text-body__title,
     .text-body__subtitle,
     .text-body__text {
-      color: $black75;
+      color: var(--color-neutral-700);
     }
   }
 
   &.--dark {
-    background-color: $black85;
+    background-color: var(--color-neutral-800);
 
     .text-body__title,
     .text-body__subtitle,
     .text-body__text {
-      color: $white;
+      color: var(--color-neutral-0);
     }
   }
 }
 
 .text-body__title {
-  @media (min-width: $tablet-portrait) {
-    font-size: $text-4xl;
-    line-height: $text-5xl;
+  @media (min-width: 768px) {
+    font-size: var(--font-size-5xl);
+    line-height: var(--font-size-6xl);
   }
 }
 

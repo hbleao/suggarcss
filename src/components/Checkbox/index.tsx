@@ -22,7 +22,7 @@ export const Checkbox = ({
 				>
 					<title>checkbox</title>
 					<path
-						d="M15.5 6.66676L9.61714 13.3334L5.5 9.16604"
+						d="M5.5 9.16604L9.61714 13.3334L15.5 6.66676"
 						stroke="white"
 						strokeWidth="3"
 						strokeLinecap="round"

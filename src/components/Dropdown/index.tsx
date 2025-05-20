@@ -1,25 +1,25 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import './styles.scss';
+import "./styles.scss";
 
-import { ArrowSvg } from './Arrow';
+import { ArrowSvg } from "./Arrow";
 
-import { clsx } from '@/utils/clsx';
-import { Loader } from '../Loader';
-import type { DropdownOption, DropdownProps } from './types';
+import { clsx } from "@/utils/clsx";
+import { Loader } from "../Loader";
+import type { DropdownOption, DropdownProps } from "./types";
 
 export const Dropdown = ({
-	className = '',
-	name = '',
-	variant = 'default',
-	width = 'contain',
+	className = "",
+	name = "",
+	variant = "default",
+	width = "contain",
 	disabled = false,
-	errorMessage = '',
-	helperText = '',
-	label = '',
+	errorMessage = "",
+	helperText = "",
+	label = "",
 	isLoading = false,
 	options = [],
-	value = '',
+	value = "",
 	readOnly = false,
 	onChange,
 	...restProps
@@ -27,13 +27,13 @@ export const Dropdown = ({
 	const [isFocused, setIsFocused] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const classes = clsx(
-		'dropdown__root',
+		"dropdown__root",
 		`--${variant}`,
 		`--${width}`,
-		{ '--filled': !!value },
-		{ '--focused': isFocused },
-		{ '--disabled': disabled },
-		{ '--error': !!errorMessage },
+		{ "--filled": !!value },
+		{ "--focused": isFocused },
+		{ "--disabled": disabled },
+		{ "--error": !!errorMessage },
 		className,
 	);
 
@@ -64,7 +64,7 @@ export const Dropdown = ({
 					id={name}
 					name={name}
 					type="text"
-					className={`dropdown__field ${readOnly ? '--readonly' : ''}`}
+					className={`dropdown__field ${readOnly ? "--readonly" : ""}`}
 					value={value}
 					readOnly
 					tabIndex={-1}
@@ -77,25 +77,28 @@ export const Dropdown = ({
 				)}
 			</div>
 
-			{isOpen && options?.length > 0 && (
-				<ul className="dropdown__list">
+			{isOpen && (
+				<ul className="dropdown__list" role="listbox">
 					{options.map((option) => (
 						<li
 							key={option.value}
 							className="dropdown__item"
+							role="option"
 							aria-selected={value === option.value}
 							onClick={() => handleSelectOption(option)}
 							onKeyDown={(e) =>
-								e.key === 'Enter' || e.key === ' '
+								e.key === "Enter" || e.key === " "
 									? handleSelectOption(option)
 									: undefined
 							}
+							tabIndex={0}
 						>
 							{option.label}
 						</li>
 					))}
 				</ul>
 			)}
+
 			{helperText && !errorMessage && (
 				<p className="dropdown__helper-text">{helperText}</p>
 			)}

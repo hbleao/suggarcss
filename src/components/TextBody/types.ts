@@ -14,7 +14,7 @@ export type Button = HTMLAttributes<HTMLButtonElement> & {
 	isLoading?: boolean;
 };
 
-export type RootProps = HTMLAttributes<HTMLDivElement> & {
+export type TextBodyProps = HTMLAttributes<HTMLDivElement> & {
 	title?: string;
 	subtitle?: string;
 	text?: string;

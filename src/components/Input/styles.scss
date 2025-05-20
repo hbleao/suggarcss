@@ -25,18 +25,9 @@
   }
 
   &.--focused {
-    &.--outlined {
-      .input__box {
-        border-bottom: 1px solid var(--color-brand-insurance-700);
-        background-color: rgba(0, 0, 0, 0.02);
-      }
-    }
-
-    &.--default {
-      .input__box {
-        border-radius: 4px;
-        border: 1px solid var(--color-brand-insurance-700);
-      }
+    .input__box {
+      border-color: var(--color-brand-insurance-550);
+      background-color: rgba(0, 0, 0, 0.02);
     }
   }
 

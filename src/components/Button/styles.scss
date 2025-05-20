@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--font-size-3xl);
+  gap: var(--font-size-md);
   flex-direction: row;
   text-align: center;
 
@@ -155,7 +155,7 @@ $variants: (
       &-#{$style} {
         color: map-get($props, text);
         background-color: map-get($props, bg);
-        border-color: map-get($props, border, var(--alphaChannel));
+        border-color: map-get($props, border);
 
         .btn__loader {
           border: 3px solid map-get($props, text);

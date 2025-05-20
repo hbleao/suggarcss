@@ -1,0 +1,20 @@
+.menu__links {
+  height: min-content;
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-right: 16px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-right: auto;
+    padding-right: 0;
+  }
+}

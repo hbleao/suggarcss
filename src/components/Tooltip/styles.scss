@@ -1,0 +1,101 @@
+.tooltip {
+  position: relative;
+  display: inline-block;
+
+  &__trigger {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  &__content {
+    position: absolute;
+    z-index: 10;
+    padding: 0.8rem 1.2rem;
+    background-color: var(--color-neutral-900);
+    color: var(--color-neutral-0);
+    border-radius: 0.4rem;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    white-space: nowrap;
+    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    max-width: 20rem;
+    text-align: center;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    &.--visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    // Posicionamento e seta do tooltip
+    &.--top {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-0.8rem);
+      margin-bottom: 0.8rem;
+
+      &::before {
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 0.6rem 0.6rem 0 0.6rem;
+        border-color: var(--color-neutral-900) transparent transparent transparent;
+      }
+    }
+
+    &.--right {
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%) translateX(0.8rem);
+      margin-left: 0.8rem;
+
+      &::before {
+        top: 50%;
+        left: -0.6rem;
+        transform: translateY(-50%);
+        border-width: 0.6rem 0.6rem 0.6rem 0;
+        border-color: transparent var(--color-neutral-900) transparent transparent;
+      }
+    }
+
+    &.--bottom {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(0.8rem);
+      margin-top: 0.8rem;
+
+      &::before {
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 0 0.6rem 0.6rem 0.6rem;
+        border-color: transparent transparent var(--color-neutral-900) transparent;
+      }
+    }
+
+    &.--left {
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%) translateX(-0.8rem);
+      margin-right: 0.8rem;
+
+      &::before {
+        top: 50%;
+        right: -0.6rem;
+        transform: translateY(-50%);
+        border-width: 0.6rem 0 0.6rem 0.6rem;
+        border-color: transparent transparent transparent var(--color-neutral-900);
+      }
+    }
+  }
+}

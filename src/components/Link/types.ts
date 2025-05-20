@@ -1,17 +1,17 @@
-// biome-ignore lint/style/useImportType: <explanation>
-import { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
-type Size = 'large' | 'small';
-type Styles = 'primary' | 'secondary' | 'ghost';
-type Variant = 'insurance' | 'disabled';
+type Size = "large" | "small";
+type Styles = "primary" | "secondary" | "ghost";
+type Variant = "insurance" | "disabled";
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export type LinkProps = any & {
-  size?: Size;
-  styles?: Styles;
-  width?: 'contain' | 'fluid';
-  variant?: Variant;
-  disabled?: string;
-  className?: string;
-  href: string;
-  children: ReactNode;
+	size?: Size;
+	styles?: Styles;
+	width?: "contain" | "fluid";
+	variant?: Variant;
+	disabled?: string;
+	className?: string;
+	href: string;
+	children: ReactNode;
 };

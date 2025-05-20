@@ -1,45 +1,44 @@
-import { clsx } from '@/utils/clsx';
-import { useState } from 'react';
+import { clsx } from "@/utils/clsx";
+import { useState } from "react";
 
-import './styles.scss';
+import "./styles.scss";
 
-import { Loader } from '../Loader';
-
-import type { InputProps } from './types';
+import { Loader } from "../Loader";
+import type { InputProps } from "./types";
 
 export const Input = ({
-	className = '',
-	name = '',
-	variant = 'default',
-	width = 'contain',
+	className = "",
+	name = "",
+	variant = "default",
+	width = "contain",
 	disabled = false,
-	value = '',
+	value = "",
 	isLoading = false,
-	helperText = '',
-	errorMessage = '',
-	label = '',
+	helperText = "",
+	errorMessage = "",
+	label = "",
 	children,
 	onChange,
 	...restProps
 }: InputProps) => {
-	const [focused, setFocused] = useState('');
+	const [focused, setFocused] = useState(false);
+
+	const handleFocus = (isFocus: boolean) => {
+		if (disabled) return;
+		setFocused(isFocus);
+	};
 	const isError = errorMessage.length > 0;
 	const isFilled = value?.toString().length > 0;
 	const classes = clsx(
-		'input__root',
+		"input__root",
 		`--${variant}`,
 		`--${width}`,
-		{ '--filled': !!isFilled },
-		{ '--focused': focused.length > 0 },
-		{ '--disabled': disabled },
-		{ '--error': isError },
+		{ "--filled": !!isFilled },
+		{ "--focused": focused },
+		{ "--disabled": disabled },
+		{ "--error": isError },
 		className,
 	);
-
-	const handleFocus = (isFocus: boolean) => {
-		if (disabled || errorMessage.length > 0) return;
-		isFocus ? setFocused('--focused') : setFocused('');
-	};
 
 	return (
 		<div
@@ -68,6 +67,7 @@ export const Input = ({
 			{isLoading && (
 				<Loader className="input__loader" color="brand-insurance-900" />
 			)}
+
 			{!isError && helperText && (
 				<p className="input__helper-text">{helperText}</p>
 			)}

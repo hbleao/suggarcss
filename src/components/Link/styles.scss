@@ -1,28 +1,28 @@
 .link {
-  font-size: 16px;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
-  padding: var(--space-sm);
-  border-radius: 6px;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  padding: 0 var(--font-size-3xl);
+  border-radius: 4px;
   line-height: 2rem;
+  letter-spacing: 0.4px;
   text-decoration: none;
-  text-align: left;
   border: 1px solid transparent;
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: var(--font-size-3xl);
+  flex-direction: row;
+  text-align: center;
 
   &.--small {
-    height: 36px;
+    padding: 8px 6px;
   }
 
   &.--large {
-    height: 48px;
-    padding: 14px 16px;
+    padding: 10px;
   }
 
   &.--contain {
@@ -33,174 +33,142 @@
     width: 100%;
   }
 
-  &.--insurance {
-    &-primary {
-      color: #fff;
-      background-color: #0046c0;
-      border-color: transparent;
-
-      &:hover {
-        background-color: #1381e2;
-      }
-
-      &:active {
-        background-color: #2662c9;
-
-        a {
-          color: #fff;
-        }
-      }
-    }
-
-    &-secondary {
-      color: #0046c0;
-      background-color: transparent;
-      border-color: #0046c0;
-
-      &:hover {
-        background-color: #eef9ff;
-      }
-
-      &:active {
-        background-color: #d1effe;
-
-        a {
-          color: #0046c0;
-        }
-      }
-    }
-
-    &-ghost {
-      color: #0046c0;
-      background-color: transparent;
-      border-color: transparent;
-
-      &:hover {
-        background-color: #eef9ff;
-      }
-
-      &:active {
-        background-color: #d1effe;
-
-        a {
-          color: #0046c0;
-        }
-      }
-    }
+  .btn__loader {
+    border: 3px solid currentColor;
+    border-bottom-color: transparent;
   }
+}
 
-  &.--negative {
-    &-primary {
-      color: #0046c0;
-      background-color: #fff;
-      border-color: transparent;
+$variants: (
+  insurance: (primary: (bg: var(--color-brand-insurance-900),
+      hover: var(--color-brand-insurance-700),
+      active: var(--color-brand-insurance-800),
+      text: var(--color-neutral-0),
+    ),
+    secondary: (bg: var(--color-alpha-0),
+      hover: var(--color-brand-insurance-100),
+      active: var(--color-brand-insurance-200),
+      text: var(--color-brand-insurance-900),
+      border: var(--color-brand-insurance-900),
+    ),
+    ghost: (bg: var(--color-alpha-0),
+      hover: var(--color-brand-insurance-100),
+      active: var(--color-brand-insurance-200),
+      text: var(--color-brand-insurance-900),
+      border: var(--color-alpha-0),
+    ),
+  ),
+  banking: (primary: (bg: var(--color-brand-banking-900),
+      hover: var(--color-brand-banking-700),
+      active: var(--color-brand-banking-800),
+      text: var(--color-neutral-0),
+    ),
+    secondary: (bg: var(--color-alpha-0),
+      hover: var(--color-brand-banking-100),
+      active: var(--color-brand-banking-200),
+      text: var(--color-brand-banking-900),
+      border: var(--color-brand-banking-900),
+    ),
+    ghost: (bg: var(--color-alpha-0),
+      hover: var(--color-brand-banking-100),
+      active: var(--color-brand-banking-200),
+      text: var(--color-brand-banking-900),
+      border: var(--color-alpha-0),
+    ),
+  ),
+  health: (primary: (bg: var(--color-brand-health-900),
+      hover: var(--color-brand-health-700),
+      active: var(--color-brand-health-800),
+      text: var(--color-neutral-0),
+    ),
+    secondary: (bg: var(--color-alpha-0),
+      hover: var(--color-brand-health-100),
+      active: var(--color-brand-health-200),
+      text: var(--color-brand-health-900),
+      border: var(--color-brand-health-900),
+    ),
+    ghost: (bg: var(--color-alpha-0),
+      hover: var(--color-brand-health-100),
+      active: var(--color-brand-health-200),
+      text: var(--color-brand-health-900),
+      border: var(--color-alpha-0),
+    ),
+  ),
+  danger: (primary: (bg: var(--color-accent-red-900),
+      hover: var(--color-accent-red-900),
+      active: var(--color-accent-red-800),
+      text: var(--color-neutral-0),
+    ),
+    secondary: (bg: var(--color-alpha-0),
+      hover: var(--color-accent-red-500),
+      active: var(--color-accent-red-700),
+      text: var(--color-accent-red-900),
+      border: var(--color-accent-red-900),
+    ),
+    ghost: (bg: var(--color-alpha-0),
+      hover: var(--color-accent-red-500),
+      active: var(--color-accent-red-700),
+      text: var(--color-accent-red-900),
+      border: var(--color-alpha-0),
+    ),
+  ),
+  negative: (primary: (bg: var(--color-neutral-0),
+      hover: var(--color-neutral-0),
+      active: var(--color-neutral-0),
+      text: var(--color-brand-insurance-900),
+    ),
+    secondary: (bg: var(--color-alpha-0),
+      hover: var(--color-alpha-30),
+      active: var(--color-alpha-50),
+      text: var(--color-neutral-0),
+      border: var(--color-neutral-0),
+    ),
+    ghost: (bg: var(--color-alpha-0),
+      hover: var(--color-alpha-70),
+      active: var(--color-alpha-50),
+      text: var(--color-neutral-0),
+      border: var(--color-alpha-0),
+    ),
+  ),
+  disabled: (primary: (bg: var(--color-neutral-200),
+      hover: var(--color-neutral-300),
+      active: var(--color-neutral-300),
+      text: var(--color-neutral-500),
+    ),
+    secondary: (bg: var(--color-alpha-0),
+      hover: var(--color-alpha-30),
+      active: var(--color-alpha-50),
+      text: var(--color-neutral-500),
+      border: var(--color-neutral-500),
+    ),
+    ghost: (bg: var(--color-alpha-0),
+      hover: var(--color-alpha-70),
+      active: var(--color-alpha-50),
+      text: var(--color-neutral-500),
+      border: var(--color-alpha-0),
+    ),
+  ),
+);
 
-      &:hover {
-        background-color: #fff;
-        opacity: 0.7;
-      }
+@each $variant, $styles in $variants {
+  .link.--#{$variant} {
+    @each $style, $props in $styles {
+      &-#{$style} {
+        color: map-get($props, text);
+        background-color: map-get($props, bg);
+        border-color: map-get($props, border);
 
-      &:active {
-        background-color: #fff;
-
-        a {
-          color: #0046c0;
+        .link__loader {
+          border: 3px solid map-get($props, text);
+          border-bottom-color: transparent;
         }
 
-        opacity: 0.9;
-      }
-    }
-
-    &-secondary {
-      color: #fff;
-      background-color: transparent;
-      border-color: #fff;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.3);
-      }
-
-      &:active {
-        background-color: rgba(255, 255, 255, 0.5);
-
-        a {
-          color: #fff;
+        &:hover {
+          background-color: map-get($props, hover);
         }
-      }
-    }
 
-    &-ghost {
-      color: #fff;
-      background-color: transparent;
-      border-color: transparent;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.7);
-      }
-
-      &:active {
-        background-color: rgba(255, 255, 255, 0.5);
-
-        a {
-          color: #fff;
-        }
-      }
-    }
-  }
-
-  &.--disabled {
-    pointer-events: none;
-
-    &-primary {
-      color: #999999;
-      background-color: #e0e0e0;
-      border-color: transparent;
-
-      &:hover {
-        background-color: #e0e0e0;
-      }
-
-      &:active {
-        background-color: #e0e0e0;
-
-        a {
-          color: #999999;
-        }
-      }
-    }
-
-    &-secondary {
-      color: #999999;
-      background-color: transparent;
-      border-color: #999999;
-
-      &:hover {
-        background-color: transparent;
-      }
-
-      &:active {
-        background-color: transparent;
-
-        a {
-          color: #999999;
-        }
-      }
-    }
-
-    &-ghost {
-      color: #999999;
-      background-color: transparent;
-      border-color: transparent;
-
-      &:hover {
-        background-color: transparent;
-      }
-
-      &:active {
-        background-color: transparent;
-
-        a {
-          color: #999999;
+        &:active {
+          background-color: map-get($props, active);
         }
       }
     }

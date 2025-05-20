@@ -1,0 +1,10 @@
+.toolbar__icon {
+  width: 1.6rem;
+  margin-left: 0.8rem;
+  display: flex;
+  justify-content: center;
+
+  > svg {
+    transform: rotate(90deg);
+  }
+}

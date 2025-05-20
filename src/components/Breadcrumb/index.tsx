@@ -1,6 +1,6 @@
-import './styles.scss';
+import "./styles.scss";
 
-import type { RootProps } from './types';
+import type { RootProps } from "./types";
 
 /**
  * O componente Breadcrumb é utilizado para auxiliar o usuário a navegar no sistema.

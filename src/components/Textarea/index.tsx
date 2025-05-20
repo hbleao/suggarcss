@@ -2,17 +2,15 @@ import { useState } from 'react';
 
 import './styles.scss';
 
-import { clsx } from '@/utils';
-
 import type { TextareaProps } from './types';
 
 export const Textarea = ({
 	className = '',
-	name = 'adsfads',
+	name = '',
 	variant = 'default',
 	width = 'contain',
 	value = '',
-	label = 'label',
+	label = '',
 	onChange,
 	disabled = false,
 	rows = 5,
@@ -22,15 +20,9 @@ export const Textarea = ({
 	...restProps
 }: TextareaProps) => {
 	const [focused, setFocused] = useState('');
-	const classes = clsx(
-		'textarea__root',
-		`--${variant}`,
-		`--${width}`,
-		{ '--disabled': disabled },
-		{ '--error': errorMessage.length > 0 },
-		{ '--filled': value.length > 0 },
-		{ '--focused': focused.length > 0 },
-	);
+	const disabledClass = disabled ? '--disabled' : '';
+	const errorClass = errorMessage.length > 0 ? '--error' : '';
+	const filledClass = value.length > 0 ? '--filled' : '';
 
 	const handleFocus = (isFocus: boolean) => {
 		if (disabled || errorMessage.length > 0) return;
@@ -41,7 +33,7 @@ export const Textarea = ({
 		<div
 			onFocus={() => handleFocus(true)}
 			onBlur={() => handleFocus(false)}
-			className={classes}
+			className={`textarea__root --${variant} --${width} ${filledClass} ${focused} ${disabledClass} ${errorClass}`}
 			{...restProps}
 		>
 			{label && (

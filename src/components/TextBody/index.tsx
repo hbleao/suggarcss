@@ -1,19 +1,19 @@
 import "./styles.scss";
 
-import { Typography } from "../Typography";
+import { Typography } from "@/components";
 
 import { Button } from "../Button";
-import type { RootProps } from "./types";
 
-export const Root = ({
+import type { TextBodyProps } from "./types";
+
+export const TextBody = ({
 	title = "title",
 	subtitle = "",
 	text = "",
 	buttons,
 	className = "",
-	children,
 	...restProps
-}: RootProps) => {
+}: TextBodyProps) => {
 	return (
 		<div className="text-body__root" {...restProps}>
 			<Typography
@@ -21,7 +21,6 @@ export const Root = ({
 				weight="medium"
 				as="h3"
 				className="text-body__title"
-				{...restProps}
 			>
 				{title}
 			</Typography>
@@ -33,7 +32,6 @@ export const Root = ({
 					as="p"
 					color="neutral-700"
 					className="text-body__subtitle"
-					{...restProps}
 				>
 					{subtitle}
 				</Typography>
@@ -45,9 +43,9 @@ export const Root = ({
 					weight="regular"
 					as="p"
 					className="text-body__text"
-					{...restProps}
 				>
-					{children}
+					{/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
+					<span dangerouslySetInnerHTML={{ __html: text }} />
 				</Typography>
 			)}
 			{buttons.length > 0 && (

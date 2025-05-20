@@ -6,12 +6,6 @@
   outline: none;
   gap: 8px;
 
-  svg path {
-    stroke-dasharray: 24;
-    stroke-dashoffset: 24;
-    animation: none;
-  }
-
   &.--default {
     .radio__input {
       background-color: var(--color-neutral-0);
@@ -19,10 +13,6 @@
 
     .radio__svg {
       display: none;
-
-      path {
-        animation: draw-check 800ms ease forwards;
-      }
     }
   }
 
@@ -34,10 +24,6 @@
 
     .radio__svg {
       display: unset;
-
-      path {
-        animation: draw-check 800ms ease forwards;
-      }
     }
   }
 
