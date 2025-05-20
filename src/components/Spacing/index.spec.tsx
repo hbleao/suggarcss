@@ -2,10 +2,16 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Spacing } from './index';
 
+// Mock do módulo de estilos
+jest.mock('./styles.module.scss', () => ({
+  spacing: 'spacing-class',
+  inline: 'inline-class'
+}));
+
 describe('Spacing', () => {
   it('deve renderizar com espaçamento vertical', () => {
     render(
-      <Spacing y="md" data-testid="spacing">
+      <Spacing y="1rem" data-testid="spacing">
         <p>Conteúdo</p>
       </Spacing>
     );
@@ -19,21 +25,21 @@ describe('Spacing', () => {
   
   it('deve renderizar com espaçamento horizontal', () => {
     render(
-      <Spacing x="lg" data-testid="spacing">
+      <Spacing x="1.5em" data-testid="spacing">
         <p>Conteúdo</p>
       </Spacing>
     );
     
     const element = screen.getByTestId('spacing');
     expect(element).toHaveStyle({
-      marginLeft: '1.5rem',
-      marginRight: '1.5rem',
+      marginLeft: '1.5em',
+      marginRight: '1.5em',
     });
   });
   
   it('deve renderizar com espaçamento em todos os lados', () => {
     render(
-      <Spacing all="sm" data-testid="spacing">
+      <Spacing all="0.5rem" data-testid="spacing">
         <p>Conteúdo</p>
       </Spacing>
     );
@@ -49,7 +55,7 @@ describe('Spacing', () => {
   
   it('deve renderizar com espaçamento em lados específicos', () => {
     render(
-      <Spacing top="xl" bottom="xs" left="md" right="lg" data-testid="spacing">
+      <Spacing top="2rem" bottom="0.25rem" left="1rem" right="1.5rem" data-testid="spacing">
         <p>Conteúdo</p>
       </Spacing>
     );
@@ -65,15 +71,15 @@ describe('Spacing', () => {
   
   it('deve renderizar com valores numéricos de espaçamento', () => {
     render(
-      <Spacing top={24} bottom={16} data-testid="spacing">
+      <Spacing top={2} bottom={1} data-testid="spacing">
         <p>Conteúdo</p>
       </Spacing>
     );
     
     const element = screen.getByTestId('spacing');
     expect(element).toHaveStyle({
-      marginTop: '24px',
-      marginBottom: '16px',
+      marginTop: '2rem',
+      marginBottom: '1rem',
     });
   });
   
@@ -85,11 +91,11 @@ describe('Spacing', () => {
     );
     
     const element = screen.getByTestId('spacing');
-    expect(element).toHaveClass('inline');
+    expect(element).toHaveClass('inline-class');
   });
   
   it('deve renderizar como um espaçador vazio sem filhos', () => {
-    render(<Spacing y="md" data-testid="spacing" />);
+    render(<Spacing y="1rem" data-testid="spacing" />);
     
     const element = screen.getByTestId('spacing');
     expect(element).toBeEmptyDOMElement();
@@ -127,5 +133,61 @@ describe('Spacing', () => {
     
     const element = screen.getByTestId('spacing');
     expect(element).toHaveStyle({ color: 'red' });
+  });
+
+  it('deve priorizar props específicas sobre props gerais', () => {
+    render(
+      <Spacing y="1rem" top="2rem" data-testid="spacing">
+        <p>Conteúdo</p>
+      </Spacing>
+    );
+    
+    const element = screen.getByTestId('spacing');
+    // top deve sobrescrever y para marginTop
+    expect(element).toHaveStyle({
+      marginTop: '2rem',
+      marginBottom: '1rem'
+    });
+  });
+
+  it('deve aplicar a classe spacing por padrão', () => {
+    render(
+      <Spacing data-testid="spacing">
+        <p>Conteúdo</p>
+      </Spacing>
+    );
+    
+    const element = screen.getByTestId('spacing');
+    expect(element).toHaveClass('spacing-class');
+  });
+
+  it('deve renderizar com variáveis CSS', () => {
+    render(
+      <Spacing all="var(--spacing-md)" data-testid="spacing">
+        <p>Conteúdo</p>
+      </Spacing>
+    );
+    
+    const element = screen.getByTestId('spacing');
+    expect(element).toHaveStyle({
+      marginTop: 'var(--spacing-md)',
+      marginBottom: 'var(--spacing-md)',
+      marginLeft: 'var(--spacing-md)',
+      marginRight: 'var(--spacing-md)'
+    });
+  });
+
+  it('deve renderizar com unidades de porcentagem', () => {
+    render(
+      <Spacing x="5%" data-testid="spacing">
+        <p>Conteúdo</p>
+      </Spacing>
+    );
+    
+    const element = screen.getByTestId('spacing');
+    expect(element).toHaveStyle({
+      marginLeft: '5%',
+      marginRight: '5%'
+    });
   });
 });
