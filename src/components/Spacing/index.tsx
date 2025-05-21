@@ -1,129 +1,75 @@
 import type React from "react";
-import styles from "./styles.module.scss";
-import type { SpacingProps, SpacingSize } from "./types";
 
-// Função auxiliar para combinar classes CSS (substitui a dependência clsx)
-function classNames(
-	...classes: (string | boolean | undefined | null)[]
-): string {
-	return classes.filter(Boolean).join(" ");
-}
+import styles from "./styles.module.scss";
+
+import { clsx } from "@/utils";
+import type { SpacingProps } from "./types";
 
 /**
- * Componente Spacing para adicionar espaçamentos dinâmicos na interface.
+ * `Spacing` — Componente visual para inserir margens verticais e/ou horizontais entre elementos.
  *
- * O componente Spacing permite adicionar margens em diferentes direções
- * (vertical, horizontal, ou em lados específicos) usando valores dinâmicos.
- * Útil para criar layouts com espaçamentos consistentes sem precisar adicionar
- * estilos CSS manualmente.
+ * Ideal para criar espaçamentos consistentes em layouts sem a necessidade de aplicar margens manualmente via CSS.
+ * Pode ser utilizado como elemento vazio para separar componentes ou para aplicar margens específicas em `divs`, `spans`, etc.
  *
  * @component
+ *
+ * @param {Object} props - Propriedades do componente
+ * @param {string} [props.className] - Classe CSS adicional para personalização externa
+ * @param {React.CSSProperties} [props.style] - Estilo inline adicional
+ * @param {SpacingSize} [props.top] - Margem superior
+ * @param {SpacingSize} [props.bottom] - Margem inferior
+ * @param {SpacingSize} [props.left] - Margem à esquerda
+ * @param {SpacingSize} [props.right] - Margem à direita
+ * @param {boolean} [props.inline=false] - Define se o elemento será `display: inline-block` ao invés de `block`
+ *
  * @example
- * ```tsx
- * // Espaçamento vertical usando rem
- * <Spacing y="1rem">
- *   <p>Conteúdo com espaçamento vertical</p>
- * </Spacing>
+ * <div>Elemento acima</div>
+ * <Spacing top="2rem" bottom="2rem" />
+ * <div>Elemento abaixo</div>
  *
- * // Espaçamento horizontal usando em
- * <Spacing x="1.5em">
- *   <p>Conteúdo com espaçamento horizontal</p>
- * </Spacing>
+ * @example
+ * // Espaçamento lateral
+ * <Spacing left="1rem" right="1rem" />
  *
- * // Espaçamento em todos os lados usando variáveis CSS
- * <Spacing all="var(--spacing-md)">
- *   <p>Conteúdo com espaçamento em todos os lados</p>
- * </Spacing>
- *
- * // Espaçamento personalizado em lados específicos
- * <Spacing top="2rem" bottom="0.5rem" left="1rem">
- *   <p>Conteúdo com espaçamentos diferentes em cada lado</p>
- * </Spacing>
- *
- * // Espaçamento com valor numérico (em pixels relativos)
- * <Spacing top={32} bottom={16}>
- *   <p>Conteúdo com espaçamento em pixels relativos</p>
- * </Spacing>
- *
- * // Espaçamento usando porcentagem
- * <Spacing x="5%">
- *   <p>Conteúdo com espaçamento horizontal em porcentagem</p>
- * </Spacing>
- *
- * // Espaçamento vazio (para criar separação entre elementos)
- * <div>Primeiro elemento</div>
- * <Spacing y="1.5rem" />
- * <div>Segundo elemento</div>
- * ```
+ * @returns {JSX.Element} Elemento `div` (ou `span` se customizado) com margens aplicadas
  */
-export const Spacing: React.FC<SpacingProps> = ({
-	children,
-	className,
-	style = {},
-	as: Tag = "div",
-	y,
-	x,
-	top,
-	bottom,
-	left,
-	right,
-	all,
-	inline = false,
-}) => {
-	// Função para converter o tamanho de espaçamento em valor CSS
-	const getSpacingValue = (
-		size: SpacingSize | undefined,
-	): string | number | undefined => {
-		if (size === undefined) return undefined;
 
-		// Se for número, converter para pixels
-		if (typeof size === "number") {
-			return `${size}rem`;
-		}
-
-		// Se for string, retornar diretamente (pode ser qualquer unidade CSS válida)
-		return size;
-	};
-
-	// Calcular os valores de margem
-	const marginTop = getSpacingValue(top ?? y ?? all);
-	const marginBottom = getSpacingValue(bottom ?? y ?? all);
-	const marginLeft = getSpacingValue(left ?? x ?? all);
-	const marginRight = getSpacingValue(right ?? x ?? all);
-
-	// Combinar os estilos
-	const combinedStyle = {
-		...style,
-		marginTop,
-		marginBottom,
-		marginLeft,
-		marginRight,
-	};
-
-	// Se não houver filhos, renderizar como um espaçador vazio
-	if (!children) {
-		return (
-			<Tag
-				className={classNames(
-					styles.spacing,
-					inline && styles.inline,
-					className,
-				)}
-				style={combinedStyle}
-				aria-hidden="true"
-			/>
-		);
-	}
-
-	// Renderizar com filhos
-	return (
-		<Tag
-			className={classNames(styles.spacing, inline && styles.inline, className)}
-			style={combinedStyle}
-		>
-			{children}
-		</Tag>
-	);
+// Função auxiliar para converter valores numéricos para rem
+const toRem = (value?: string | number) => {
+  if (typeof value === 'number') {
+    return `${value}rem`;
+  }
+  return value;
 };
 
-export default Spacing;
+export const Spacing: React.FC<SpacingProps> = ({
+  className,
+  style = {},
+  top,
+  bottom,
+  left,
+  right,
+  inline = false,
+  children = null,
+  ...restProps
+}) => {
+  // Se houver children, não renderiza nada
+  if (children) {
+    return null;
+  }
+
+  return (
+    <div
+      className={clsx(styles.spacing, inline && styles.inline, className)}
+      style={{
+        ...style,
+        marginTop: toRem(top),
+        marginBottom: toRem(bottom),
+        marginLeft: toRem(left),
+        marginRight: toRem(right),
+      }}
+      aria-hidden="true"
+      {...restProps}
+    />
+  );
+};

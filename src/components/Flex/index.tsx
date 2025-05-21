@@ -1,12 +1,16 @@
-import { clsx } from "@/utils";
 import styles from "./styles.module.scss";
+
+import { clsx } from "@/utils";
+
 import type { FlexProps } from "./types";
 
 /**
- * Componente Flexível baseado em CSS Flexbox.
+ * Componente de layout flexível baseado em CSS Flexbox.
  *
- * Permite configurar direção, alinhamento, espaçamento, wrap e outros comportamentos.
- * Inspirado em APIs de layout como Chakra UI e ShadCN.
+ * Permite controle granular sobre a direção, alinhamento, espaçamento e quebra de linha
+ * dos elementos filhos, oferecendo uma API semelhante à do Chakra UI e ShadCN.
+ *
+ * Ideal para construir interfaces responsivas e componíveis com facilidade.
  *
  * @example
  * ```tsx
@@ -15,61 +19,29 @@ import type { FlexProps } from "./types";
  *   <div>Item 2</div>
  * </Flex>
  * ```
+ *
+ * @param children Elementos filhos a serem renderizados dentro do contêiner flex.
+ * @param className Classe CSS adicional para personalização.
+ * @param style Estilo inline opcional.
+ * @param as Elemento HTML que será renderizado (padrão: `div`).
+ * @param direction Direção do layout flexível. Valores possíveis: `"row"`, `"column"`, `"row-reverse"`, `"column-reverse"`.
+ * @param align Alinhamento dos itens no eixo cruzado. Valores possíveis: `"stretch"`, `"center"`, `"flex-start"`, `"flex-end"`, `"baseline"`, etc.
+ * @param justify Distribuição dos itens no eixo principal. Valores possíveis: `"flex-start"`, `"center"`, `"flex-end"`, `"space-between"`, `"space-around"`, `"space-evenly"`, etc.
+ * @param wrap Controle de quebra de linha. Valores possíveis: `"nowrap"`, `"wrap"`, `"wrap-reverse"`.
+ * @param gap Espaçamento entre os itens. Aceita qualquer valor CSS válido para espaçamento (e.g., `"1rem"`, `"8px"`).
+ * @param inline Se verdadeiro, usa `display: inline-flex` em vez de `flex`.
  */
+
 export const Flex = ({
-	/**
-	 * Elementos filhos que serão renderizados dentro do contêiner flexível.
-	 */
 	children,
-
-	/**
-	 * Classe CSS adicional para customização.
-	 */
 	className,
-
-	/**
-	 * Estilo inline opcional.
-	 */
 	style,
-
-	/**
-	 * Tipo de elemento HTML a ser renderizado (padrão: div).
-	 */
 	as: Tag = "div",
-
-	/**
-	 * Direção dos itens no layout flexível.
-	 * Pode ser `row`, `column`, `row-reverse` ou `column-reverse`.
-	 */
 	direction = "row",
-
-	/**
-	 * Alinhamento dos itens ao longo do eixo transversal.
-	 * Exemplo: `stretch`, `center`, `flex-start`, `flex-end`, etc.
-	 */
 	align = "stretch",
-
-	/**
-	 * Justificação dos itens no eixo principal.
-	 * Exemplo: `flex-start`, `center`, `space-between`, etc.
-	 */
 	justify = "flex-start",
-
-	/**
-	 * Quebra de linha dos itens.
-	 * Pode ser `nowrap`, `wrap`, ou `wrap-reverse`.
-	 */
 	wrap = "nowrap",
-
-	/**
-	 * Espaçamento entre os itens.
-	 * Exemplo: `1rem`, `8px`, `0.5ch`, etc.
-	 */
 	gap,
-
-	/**
-	 * Define se o contêiner será `display: inline-flex` ao invés de `flex`.
-	 */
 	inline = false,
 }: FlexProps) => {
 	return (

@@ -1,28 +1,5 @@
-@import "../../css/src/tokens/colors.scss";
-
 .dialog {
-  --color-primary: #{$black85};
-  --color-secondary: #{$black75};
-  --color-light: #{$white};
-
-  &.--dark {
-    --color-primary: #{$white};
-    --color-light: #{$black85};
-    --color-secondary: #{$black15};
-
-    .dialog__footer {
-      .btn.--insurance-primary {
-        background-color: $white;
-        color: $portoSeguros100;
-      }
-
-      .btn.--insurance-secondary {
-        background-color: transparent;
-        color: $white;
-        border-color: $white;
-      }
-    }
-  }
+  background-color: var(--color-neutral-0);
 
   &__overlay {
     display: none;
@@ -43,7 +20,7 @@
   }
 
   &__box {
-    background: var(--color-light);
+    background: var(--color-neutral-0);
     padding: 20px 16px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -81,17 +58,17 @@
 
   &__title,
   &__subtitle {
-    color: var(--color-primary);
+    color: var(--color-neutral-85);
     margin-bottom: 8px;
   }
 
   &__description {
-    color: var(--color-secondary);
+    color: var(--color-neutral-75);
     margin-bottom: 16px;
   }
 
   &__body {
-    color: var(--color-secondary);
+    color: var(--color-neutral-75);
     margin-bottom: 32px;
   }
 
@@ -99,7 +76,7 @@
     display: flex;
     justify-content: flex-end;
     gap: 16px;
-    color: var(--color-secondary);
+    color: var(--color-neutral-75);
 
     &.--column {
       flex-direction: column;

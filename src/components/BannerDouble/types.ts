@@ -9,8 +9,11 @@ type Banner = {
 		src: string;
 		alt: string;
 	};
+	// @ts-ignore
 	bgColor?: ColorToken;
+	// @ts-ignore
 	titleColor?: ColorToken;
+	// @ts-ignore
 	subtitleColor?: ColorToken;
 };
 

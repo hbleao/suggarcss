@@ -1,40 +1,53 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { clsx } from "@/utils/clsx";
 
-import './styles.scss';
+import "./styles.scss";
 
-import type { TextareaProps } from './types';
+import type { TextareaProps } from "./types";
 
 export const Textarea = ({
-	className = '',
-	name = '',
-	variant = 'default',
-	width = 'contain',
-	value = '',
-	label = '',
+	className = "",
+	name = "",
+	variant = "default",
+	width = "contain",
+	value = "",
+	label = "",
 	onChange,
 	disabled = false,
 	rows = 5,
-	helperText = '',
-	errorMessage = '',
+	helperText = "",
+	errorMessage = "",
 	children,
-	...restProps
+	...props
 }: TextareaProps) => {
-	const [focused, setFocused] = useState('');
-	const disabledClass = disabled ? '--disabled' : '';
-	const errorClass = errorMessage.length > 0 ? '--error' : '';
-	const filledClass = value.length > 0 ? '--filled' : '';
+	const [focused, setFocused] = useState(false);
+	const isError = errorMessage.length > 0;
+	const isFilled = value.toString().length > 0;
 
 	const handleFocus = (isFocus: boolean) => {
-		if (disabled || errorMessage.length > 0) return;
-		isFocus ? setFocused('--focused') : setFocused('');
+		if (disabled || isError) return;
+		setFocused(isFocus);
 	};
+
+	const classes = clsx(
+		"textarea__root",
+		`--${variant}`,
+		`--${width}`,
+		{
+			"--filled": isFilled,
+			"--focused": focused,
+			"--disabled": disabled,
+			"--error": isError
+		},
+		className
+	);
 
 	return (
 		<div
 			onFocus={() => handleFocus(true)}
 			onBlur={() => handleFocus(false)}
-			className={`textarea__root --${variant} --${width} ${filledClass} ${focused} ${disabledClass} ${errorClass}`}
-			{...restProps}
+			className={classes}
+			{...props}
 		>
 			{label && (
 				<label htmlFor={name} className="textarea__label">
@@ -46,13 +59,15 @@ export const Textarea = ({
 				name={name}
 				className="textarea__field"
 				rows={rows}
+				value={value}
+				disabled={disabled}
 				onChange={onChange}
 			/>
-			<span className="textarea__counter">{value.length} / 200</span>
-			{helperText && !errorMessage && (
+			<span className="textarea__counter">{value.toString().length} / 200</span>
+			{helperText && !isError && (
 				<p className="input__helper-text">{helperText}</p>
 			)}
-			{errorMessage && <p className="input__error-message">{errorMessage}</p>}
+			{isError && <p className="input__error-message">{errorMessage}</p>}
 		</div>
 	);
 };

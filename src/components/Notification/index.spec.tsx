@@ -1,13 +1,14 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Notification } from './index';
+import type { NotificationProps } from './types';
 
 // Mock do módulo de estilos
 jest.mock('./styles.scss', () => ({}));
 
-describe('Notification', () => {
+describe('<Notification />', () => {
   // Dados de teste padrão
-  const defaultProps = {
+  const defaultProps: NotificationProps = {
     title: 'Título da notificação',
     description: 'Descrição da notificação',
     icon: <span data-testid="mock-icon">🔔</span>,
@@ -210,5 +211,68 @@ describe('Notification', () => {
     const description = screen.getByText(longDescription);
     expect(description).toBeInTheDocument();
     expect(description).toHaveClass('notification__description');
+  });
+
+  // Novos testes adicionados
+  it('deve lidar com cliques no link', () => {
+    const mockOnClick = jest.fn();
+    const link = {
+      label: 'Clique aqui',
+      href: 'https://exemplo.com'
+    };
+    
+    render(
+      <Notification 
+        {...defaultProps} 
+        link={link}
+        data-testid="notification" 
+      />
+    );
+    
+    const linkElement = screen.getByText('Clique aqui');
+    linkElement.onclick = mockOnClick;
+    fireEvent.click(linkElement);
+    
+    expect(mockOnClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('deve renderizar com todos os elementos simultaneamente', () => {
+    const completeProps: NotificationProps = {
+      title: 'Título completo',
+      description: 'Descrição completa',
+      icon: <span data-testid="complete-icon">⚠️</span>,
+      variant: 'attention',
+      className: 'test-class',
+      link: {
+        label: 'Link de teste',
+        href: '/test'
+      }
+    };
+    
+    render(<Notification {...completeProps} data-testid="complete-notification" />);
+    
+    const notification = screen.getByTestId('complete-notification');
+    expect(notification).toHaveClass('notification__root');
+    expect(notification).toHaveClass('--attention');
+    expect(notification).toHaveClass('test-class');
+    
+    expect(screen.getByTestId('complete-icon')).toBeInTheDocument();
+    expect(screen.getByText('Título completo')).toBeInTheDocument();
+    expect(screen.getByText('Descrição completa')).toBeInTheDocument();
+    
+    const link = screen.getByText('Link de teste');
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute('href', '/test');
+  });
+
+  it('deve renderizar corretamente sem className', () => {
+    const propsWithoutClassName = { ...defaultProps };
+    delete propsWithoutClassName.className;
+    
+    render(<Notification {...propsWithoutClassName} data-testid="no-class-notification" />);
+    
+    const notification = screen.getByTestId('no-class-notification');
+    expect(notification).toHaveClass('notification__root');
+    expect(notification).toHaveClass('--default');
   });
 });

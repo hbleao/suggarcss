@@ -4,9 +4,51 @@ import "./styles.scss";
 
 import { ArrowSvg } from "./Arrow";
 
-import { clsx } from "@/utils/clsx";
+import { clsx } from "@/utils";
 import { Loader } from "../Loader";
+
 import type { DropdownOption, DropdownProps } from "./types";
+
+/**
+ * `Dropdown` — Componente de seleção baseado em lista suspensa.
+ *
+ * Permite ao usuário escolher uma opção dentre várias, com suporte a estados como carregamento, erro,
+ * leitura, preenchido e desabilitado. Suporta personalização de tamanho, variante visual e largura.
+ *
+ * @component
+ *
+ * @param {Object} props - Propriedades do componente
+ * @param {string} [props.className=''] - Classe CSS adicional para estilização externa
+ * @param {string} [props.name=''] - Nome do campo, utilizado no `input` interno
+ * @param {"default" | "outlined" | "filled"} [props.variant='default'] - Variante visual do campo
+ * @param {"contain" | "full"} [props.width='contain'] - Largura do dropdown
+ * @param {boolean} [props.disabled=false] - Define se o dropdown está desabilitado
+ * @param {string} [props.errorMessage=''] - Mensagem de erro exibida abaixo do campo
+ * @param {string} [props.helperText=''] - Texto auxiliar exibido abaixo do campo
+ * @param {string} [props.label=''] - Rótulo do campo exibido acima do dropdown
+ * @param {boolean} [props.isLoading=false] - Exibe um indicador de carregamento no dropdown
+ * @param {Array<{ label: string; value: string }>} [props.options=[]] - Lista de opções disponíveis para seleção
+ * @param {string} [props.value=''] - Valor atualmente selecionado
+ * @param {boolean} [props.readOnly=false] - Se `true`, impede a interação com o campo (modo leitura)
+ * @param {(value: string) => void} [props.onChange] - Função executada ao selecionar uma nova opção
+ * @param {React.HTMLAttributes<HTMLDivElement>} props.restProps - Atributos HTML adicionais aplicáveis à `div` raiz
+ *
+ * @example
+ * ```tsx
+ * <Dropdown
+ *   label="Selecione um plano"
+ *   name="plano"
+ *   options={[
+ *     { label: "Básico", value: "basic" },
+ *     { label: "Premium", value: "premium" },
+ *   ]}
+ *   value="premium"
+ *   onChange={(val) => console.log("Selecionado:", val)}
+ * />
+ * ```
+ *
+ * @returns {JSX.Element} O componente Dropdown renderizado
+ */
 
 export const Dropdown = ({
 	className = "",

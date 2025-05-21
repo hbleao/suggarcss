@@ -1,120 +1,133 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { ShowOnDevice } from './index';
+import { render, screen } from "@testing-library/react";
+import { ShowOnDevice } from "./index";
+import type { Media } from "./types";
 
-// Mock do módulo de estilos
-jest.mock('./styles.scss', () => ({}));
+// Mock dos estilos
+jest.mock("./styles.scss", () => ({}));
 
-describe('ShowOnDevice', () => {
-  it('deve renderizar corretamente com orientação greaterThan', () => {
-    render(
-      <ShowOnDevice orientation="greaterThan" media="desktop" data-testid="show-device">
-        <p>Conteúdo visível em desktop ou maior</p>
-      </ShowOnDevice>
-    );
-    
-    const container = screen.getByTestId('show-device');
-    expect(container).toBeInTheDocument();
-    expect(container).toHaveClass('show-on-device');
-    expect(container).toHaveClass('greaterThan');
-    expect(container).toHaveClass('desktop');
-    
-    // Verificar se o conteúdo foi renderizado
-    expect(container).toHaveTextContent('Conteúdo visível em desktop ou maior');
-  });
+// Mock do utilitário clsx
+const mockClsx = jest.fn((...args: unknown[]) => args.filter(Boolean).join(" "));
+jest.mock("@/utils/clsx", () => ({
+	clsx: (...args: unknown[]) => mockClsx(...args),
+}));
 
-  it('deve renderizar corretamente com orientação lessThan', () => {
-    render(
-      <ShowOnDevice orientation="lessThan" media="tabletLandscape" data-testid="show-device">
-        <p>Conteúdo visível em dispositivos menores que tablet landscape</p>
-      </ShowOnDevice>
-    );
-    
-    const container = screen.getByTestId('show-device');
-    expect(container).toBeInTheDocument();
-    expect(container).toHaveClass('show-on-device');
-    expect(container).toHaveClass('lessThan');
-    expect(container).toHaveClass('tabletLandscape');
-    
-    // Verificar se o conteúdo foi renderizado
-    expect(container).toHaveTextContent('Conteúdo visível em dispositivos menores que tablet landscape');
-  });
+describe("<ShowOnDevice />", () => {
+	beforeEach(() => {
+		mockClsx.mockClear();
+	});
 
-  it('deve renderizar com media mobile', () => {
-    render(
-      <ShowOnDevice orientation="greaterThan" media="mobile" data-testid="show-device">
-        <p>Conteúdo visível em mobile ou maior</p>
-      </ShowOnDevice>
-    );
-    
-    const container = screen.getByTestId('show-device');
-    expect(container).toHaveClass('mobile');
-  });
+	const renderComponent = (
+		orientation: "greaterThan" | "lessThan",
+		media: Media,
+		content = "Conteúdo",
+	) => {
+		render(
+			<ShowOnDevice
+				orientation={orientation}
+				media={media}
+				data-testid="show-device"
+			>
+				<p>{content}</p>
+			</ShowOnDevice>,
+		);
+		return screen.getByTestId("show-device");
+	};
 
-  it('deve renderizar com media tabletPortrait', () => {
-    render(
-      <ShowOnDevice orientation="greaterThan" media="tabletPortrait" data-testid="show-device">
-        <p>Conteúdo visível em tablet portrait ou maior</p>
-      </ShowOnDevice>
-    );
-    
-    const container = screen.getByTestId('show-device');
-    expect(container).toHaveClass('tabletPortrait');
-  });
+	it("renderiza com orientação 'greaterThan'", () => {
+		const el = renderComponent("greaterThan", "desktop");
+		
+		// Verificar se o clsx foi chamado com os argumentos corretos
+		expect(mockClsx).toHaveBeenCalledWith(
+			"show-on-device",
+			"greaterThan",
+			"desktop"
+		);
+		
+		expect(el).toHaveTextContent("Conteúdo");
+	});
 
-  it('deve renderizar com media tabletLandscape', () => {
-    render(
-      <ShowOnDevice orientation="greaterThan" media="tabletLandscape" data-testid="show-device">
-        <p>Conteúdo visível em tablet landscape ou maior</p>
-      </ShowOnDevice>
-    );
-    
-    const container = screen.getByTestId('show-device');
-    expect(container).toHaveClass('tabletLandscape');
-  });
+	it("renderiza com orientação 'lessThan'", () => {
+		const el = renderComponent(
+			"lessThan",
+			"tabletLandscape",
+			"Visível em telas menores que tabletLandscape",
+		);
+		
+		// Verificar se o clsx foi chamado com os argumentos corretos
+		expect(mockClsx).toHaveBeenCalledWith(
+			"show-on-device",
+			"lessThan",
+			"tabletLandscape"
+		);
+		
+		expect(el).toHaveTextContent(
+			"Visível em telas menores que tabletLandscape",
+		);
+	});
 
-  it('deve renderizar com media desktop', () => {
-    render(
-      <ShowOnDevice orientation="greaterThan" media="desktop" data-testid="show-device">
-        <p>Conteúdo visível em desktop ou maior</p>
-      </ShowOnDevice>
-    );
-    
-    const container = screen.getByTestId('show-device');
-    expect(container).toHaveClass('desktop');
-  });
+	it.each([
+		"mobile",
+		"tabletPortrait",
+		"tabletLandscape",
+		"desktop",
+		"wide",
+	] as Media[])("adiciona corretamente a classe de media '%s'", (media) => {
+		renderComponent("greaterThan", media);
+		
+		// Verificar se o clsx foi chamado com os argumentos corretos
+		expect(mockClsx).toHaveBeenCalledWith(
+			"show-on-device",
+			"greaterThan",
+			media
+		);
+	});
 
-  it('deve renderizar com media wide', () => {
-    render(
-      <ShowOnDevice orientation="greaterThan" media="wide" data-testid="show-device">
-        <p>Conteúdo visível em telas wide ou maior</p>
-      </ShowOnDevice>
-    );
-    
-    const container = screen.getByTestId('show-device');
-    expect(container).toHaveClass('wide');
-  });
+	it("renderiza filhos complexos corretamente", () => {
+		render(
+			<ShowOnDevice
+				orientation="greaterThan"
+				media="desktop"
+				data-testid="show-device"
+			>
+				<div data-testid="complex-content">
+					<h1>Header</h1>
+					<p>Texto</p>
+					<button type="button">Botão</button>
+				</div>
+			</ShowOnDevice>,
+		);
 
-  it('deve renderizar elementos filhos complexos', () => {
-    render(
-      <ShowOnDevice orientation="greaterThan" media="desktop" data-testid="show-device">
-        <div data-testid="child-div">
-          <h1>Título</h1>
-          <p>Parágrafo</p>
-          <button>Botão</button>
-        </div>
-      </ShowOnDevice>
-    );
-    
-    const container = screen.getByTestId('show-device');
-    const childDiv = screen.getByTestId('child-div');
-    const heading = screen.getByRole('heading');
-    const paragraph = screen.getByText('Parágrafo');
-    const button = screen.getByRole('button');
-    
-    expect(childDiv).toBeInTheDocument();
-    expect(heading).toBeInTheDocument();
-    expect(paragraph).toBeInTheDocument();
-    expect(button).toBeInTheDocument();
-  });
+		// Verificar se o clsx foi chamado com os argumentos corretos
+		expect(mockClsx).toHaveBeenCalledWith(
+			"show-on-device",
+			"greaterThan",
+			"desktop"
+		);
+
+		expect(screen.getByTestId("complex-content")).toBeInTheDocument();
+		expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+			"Header",
+		);
+		expect(screen.getByText("Texto")).toBeInTheDocument();
+		expect(screen.getByRole("button")).toHaveTextContent("Botão");
+	});
+
+	// Teste adicional para verificar a propagação de props HTML
+	it("propaga corretamente atributos HTML adicionais", () => {
+		render(
+			<ShowOnDevice
+				orientation="greaterThan"
+				media="desktop"
+				data-testid="show-device"
+				aria-label="Conteúdo para desktop"
+				title="Conteúdo desktop"
+			>
+				<p>Conteúdo</p>
+			</ShowOnDevice>
+		);
+
+		const el = screen.getByTestId("show-device");
+		expect(el).toHaveAttribute("aria-label", "Conteúdo para desktop");
+		expect(el).toHaveAttribute("title", "Conteúdo desktop");
+	});
 });

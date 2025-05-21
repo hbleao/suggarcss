@@ -3,15 +3,28 @@ import "./styles.scss";
 import type { RootProps } from "./types";
 
 /**
- * O componente Breadcrumb é utilizado para auxiliar o usuário a navegar no sistema.
+ * Componente Breadcrumb utilizado para auxiliar o usuário a navegar no sistema,
+ * exibindo uma trilha de navegação com links para páginas anteriores.
  *
- * @param breadcrumbList - Tipo da propriedade [{ label: 'Home', link: '#' }]
- *
- * @returns Um componente react do tipo React.JSX
+ * @component
+ * @param {Object} props - As propriedades do componente Breadcrumb
+ * @param {Array<{label: string, link: string}>} props.breadcrumbList - Lista de itens do breadcrumb, cada um com label e link
  *
  * @example
+ * // Breadcrumb básico com um único item
+ * <Breadcrumb breadcrumbList={[{ label: 'Home', link: '/' }]} />
  *
- * <Breadcurmb breadcrumbList={[{ label: 'Home', link: '#' }]} />
+ * @example
+ * // Breadcrumb com múltiplos níveis de navegação
+ * <Breadcrumb 
+ *   breadcrumbList={[
+ *     { label: 'Home', link: '/' },
+ *     { label: 'Produtos', link: '/produtos' },
+ *     { label: 'Detalhes', link: '/produtos/detalhes' }
+ *   ]} 
+ * />
+ *
+ * @returns {JSX.Element} Componente Breadcrumb renderizado
  */
 
 export const Breadcrumb = ({ breadcrumbList, ...restProps }: RootProps) => {

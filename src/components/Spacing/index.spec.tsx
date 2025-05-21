@@ -1,193 +1,116 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Spacing } from './index';
+import { render, screen } from "@testing-library/react";
+import { Spacing } from "./index";
 
-// Mock do módulo de estilos
-jest.mock('./styles.module.scss', () => ({
-  spacing: 'spacing-class',
-  inline: 'inline-class'
+jest.mock("./styles.module.scss", () => ({
+  spacing: "spacing-class",
+  inline: "inline-class",
 }));
 
-describe('Spacing', () => {
-  it('deve renderizar com espaçamento vertical', () => {
-    render(
-      <Spacing y="1rem" data-testid="spacing">
-        <p>Conteúdo</p>
-      </Spacing>
-    );
+describe("<Spacing />", () => {
+  it("aplica espaçamento vertical com `top` e `bottom`", () => {
+    render(<Spacing top="1rem" bottom="2rem" data-testid="spacing" />);
+    const el = screen.getByTestId("spacing");
     
-    const element = screen.getByTestId('spacing');
-    expect(element).toHaveStyle({
-      marginTop: '1rem',
-      marginBottom: '1rem',
-    });
-  });
-  
-  it('deve renderizar com espaçamento horizontal', () => {
-    render(
-      <Spacing x="1.5em" data-testid="spacing">
-        <p>Conteúdo</p>
-      </Spacing>
-    );
-    
-    const element = screen.getByTestId('spacing');
-    expect(element).toHaveStyle({
-      marginLeft: '1.5em',
-      marginRight: '1.5em',
-    });
-  });
-  
-  it('deve renderizar com espaçamento em todos os lados', () => {
-    render(
-      <Spacing all="0.5rem" data-testid="spacing">
-        <p>Conteúdo</p>
-      </Spacing>
-    );
-    
-    const element = screen.getByTestId('spacing');
-    expect(element).toHaveStyle({
-      marginTop: '0.5rem',
-      marginBottom: '0.5rem',
-      marginLeft: '0.5rem',
-      marginRight: '0.5rem',
-    });
-  });
-  
-  it('deve renderizar com espaçamento em lados específicos', () => {
-    render(
-      <Spacing top="2rem" bottom="0.25rem" left="1rem" right="1.5rem" data-testid="spacing">
-        <p>Conteúdo</p>
-      </Spacing>
-    );
-    
-    const element = screen.getByTestId('spacing');
-    expect(element).toHaveStyle({
-      marginTop: '2rem',
-      marginBottom: '0.25rem',
-      marginLeft: '1rem',
-      marginRight: '1.5rem',
-    });
-  });
-  
-  it('deve renderizar com valores numéricos de espaçamento', () => {
-    render(
-      <Spacing top={2} bottom={1} data-testid="spacing">
-        <p>Conteúdo</p>
-      </Spacing>
-    );
-    
-    const element = screen.getByTestId('spacing');
-    expect(element).toHaveStyle({
-      marginTop: '2rem',
-      marginBottom: '1rem',
-    });
-  });
-  
-  it('deve renderizar como elemento inline quando inline=true', () => {
-    render(
-      <Spacing inline data-testid="spacing">
-        <p>Conteúdo</p>
-      </Spacing>
-    );
-    
-    const element = screen.getByTestId('spacing');
-    expect(element).toHaveClass('inline-class');
-  });
-  
-  it('deve renderizar como um espaçador vazio sem filhos', () => {
-    render(<Spacing y="1rem" data-testid="spacing" />);
-    
-    const element = screen.getByTestId('spacing');
-    expect(element).toBeEmptyDOMElement();
-    expect(element).toHaveAttribute('aria-hidden', 'true');
-  });
-  
-  it('deve renderizar com o elemento HTML personalizado', () => {
-    render(
-      <Spacing as="section" data-testid="spacing">
-        <p>Conteúdo</p>
-      </Spacing>
-    );
-    
-    const element = screen.getByTestId('spacing');
-    expect(element.tagName.toLowerCase()).toBe('section');
-  });
-  
-  it('deve aplicar classes CSS adicionais', () => {
-    render(
-      <Spacing className="custom-class" data-testid="spacing">
-        <p>Conteúdo</p>
-      </Spacing>
-    );
-    
-    const element = screen.getByTestId('spacing');
-    expect(element).toHaveClass('custom-class');
-  });
-  
-  it('deve aplicar estilos inline adicionais', () => {
-    render(
-      <Spacing style={{ color: 'red' }} data-testid="spacing">
-        <p>Conteúdo</p>
-      </Spacing>
-    );
-    
-    const element = screen.getByTestId('spacing');
-    expect(element).toHaveStyle({ color: 'red' });
+    expect(el).toHaveStyle({ marginTop: "1rem", marginBottom: "2rem" });
+    expect(el.style.marginLeft).toBe("");
+    expect(el.style.marginRight).toBe("");
   });
 
-  it('deve priorizar props específicas sobre props gerais', () => {
-    render(
-      <Spacing y="1rem" top="2rem" data-testid="spacing">
-        <p>Conteúdo</p>
-      </Spacing>
-    );
+  it("aplica espaçamento horizontal com `left` e `right`", () => {
+    render(<Spacing left="1em" right="1.5em" data-testid="spacing" />);
+    const el = screen.getByTestId("spacing");
     
-    const element = screen.getByTestId('spacing');
-    // top deve sobrescrever y para marginTop
-    expect(element).toHaveStyle({
-      marginTop: '2rem',
-      marginBottom: '1rem'
-    });
+    expect(el).toHaveStyle({ marginLeft: "1em", marginRight: "1.5em" });
+    expect(el.style.marginTop).toBe("");
+    expect(el.style.marginBottom).toBe("");
   });
 
-  it('deve aplicar a classe spacing por padrão', () => {
+  it("converte valores numéricos para rem", () => {
+    render(<Spacing top={2} bottom={1} left={0.5} right={1.5} data-testid="spacing" />);
+    const el = screen.getByTestId("spacing");
+    
+    expect(el.style.marginTop).toBe("2rem");
+    expect(el.style.marginBottom).toBe("1rem");
+    expect(el.style.marginLeft).toBe("0.5rem");
+    expect(el.style.marginRight).toBe("1.5rem");
+  });
+
+  it("aplica classe inline quando `inline` é true", () => {
+    const { rerender } = render(<Spacing data-testid="spacing" />);
+    
+    const defaultEl = screen.getByTestId("spacing");
+    expect(defaultEl.className).toContain("spacing-class");
+    expect(defaultEl.className).not.toContain("inline-class");
+    
+    rerender(<Spacing inline data-testid="spacing" />);
+    const inlineEl = screen.getByTestId("spacing");
+    expect(inlineEl.className).toContain("spacing-class");
+    expect(inlineEl.className).toContain("inline-class");
+  });
+
+  it("aplica classes CSS personalizadas", () => {
+    render(<Spacing className="custom-class another-class" data-testid="spacing" />);
+    const el = screen.getByTestId("spacing");
+    
+    expect(el.className).toContain("custom-class");
+    expect(el.className).toContain("another-class");
+    expect(el.className).toContain("spacing-class");
+  });
+
+  it("aplica estilos inline adicionais e mescla com estilos existentes", () => {
     render(
+      <Spacing 
+        style={{ 
+          backgroundColor: "red", 
+          padding: "10px",
+          marginTop: "5px" 
+        }} 
+        top="10px"
+        data-testid="spacing" 
+      />
+    );
+    
+    const el = screen.getByTestId("spacing");
+    
+    expect(el).toHaveStyle({
+      backgroundColor: "red",
+      padding: "10px"
+    });
+    
+    expect(el.style.marginTop).toBe("10px");
+  });
+
+  it("renderiza sem margens por padrão", () => {
+    render(<Spacing data-testid="spacing" />);
+    const el = screen.getByTestId("spacing");
+    
+    expect(el.style.marginTop).toBe("");
+    expect(el.style.marginBottom).toBe("");
+    expect(el.style.marginLeft).toBe("");
+    expect(el.style.marginRight).toBe("");
+    
+    expect(el).toHaveAttribute("aria-hidden", "true");
+    expect(el).toBeEmptyDOMElement();
+  });
+
+  it("retorna null quando tem children", () => {
+    const { container } = render(
       <Spacing data-testid="spacing">
-        <p>Conteúdo</p>
+        <div data-testid="child">Conteúdo ignorado</div>
       </Spacing>
     );
     
-    const element = screen.getByTestId('spacing');
-    expect(element).toHaveClass('spacing-class');
+    // Verifica que o componente retornou null (sem renderizar nada)
+    expect(container.firstChild).toBeNull();
+    
+    // Verifica que o children não foi renderizado
+    expect(screen.queryByTestId("child")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("spacing")).not.toBeInTheDocument();
   });
 
-  it('deve renderizar com variáveis CSS', () => {
-    render(
-      <Spacing all="var(--spacing-md)" data-testid="spacing">
-        <p>Conteúdo</p>
-      </Spacing>
-    );
-    
-    const element = screen.getByTestId('spacing');
-    expect(element).toHaveStyle({
-      marginTop: 'var(--spacing-md)',
-      marginBottom: 'var(--spacing-md)',
-      marginLeft: 'var(--spacing-md)',
-      marginRight: 'var(--spacing-md)'
-    });
-  });
-
-  it('deve renderizar com unidades de porcentagem', () => {
-    render(
-      <Spacing x="5%" data-testid="spacing">
-        <p>Conteúdo</p>
-      </Spacing>
-    );
-    
-    const element = screen.getByTestId('spacing');
-    expect(element).toHaveStyle({
-      marginLeft: '5%',
-      marginRight: '5%'
-    });
+  it("aplica o data-testid corretamente", () => {
+    render(<Spacing data-testid="custom-test-id" />);
+    const el = screen.getByTestId("custom-test-id");
+    expect(el).toBeInTheDocument();
   });
 });

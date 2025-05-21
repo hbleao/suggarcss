@@ -5,15 +5,15 @@ import type { NotificationProps } from './types';
 export const Notification = ({
 	title,
 	icon,
-	variant,
+	variant = "default",
 	description,
-	className,
+	className = "",
 	link,
 	...restProps
 }: NotificationProps) => {
 	return (
 		<div
-			className={`notification__root --${variant} ${className}`}
+			className={`notification__root --${variant}${className ? ` ${className}` : ''}`}
 			{...restProps}
 		>
 			<div className="notification__icon">{icon}</div>

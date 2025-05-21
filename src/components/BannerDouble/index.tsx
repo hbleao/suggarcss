@@ -5,6 +5,41 @@ import { Typography } from "../Typography";
 
 import type { BannerDoubleProps } from "./types";
 
+/**
+ * BannerDouble é um componente que exibe dois banners promocionais lado a lado.
+ * Cada banner contém título, subtítulo opcional, link e imagem de fundo.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <BannerDouble 
+ *   banners={[
+ *     {
+ *       title: "Oferta Especial",
+ *       subtitle: "Até 50% de desconto",
+ *       link: { label: "Ver ofertas", href: "/ofertas" },
+ *       image: { src: "url-da-imagem.jpg", alt: "Imagem promocional" },
+ *       bgColor: "primary",
+ *       titleColor: "white",
+ *       subtitleColor: "light"
+ *     },
+ *     {
+ *       title: "Novos Produtos",
+ *       subtitle: "Confira os lançamentos",
+ *       link: { label: "Explorar", href: "/lancamentos" },
+ *       image: { src: "url-da-imagem-2.jpg", alt: "Novos produtos" },
+ *       bgColor: "secondary",
+ *       titleColor: "dark",
+ *       subtitleColor: "dark"
+ *     }
+ *   ]}
+ * />
+ * ```
+ * 
+ * @param {Object} props - As propriedades do componente
+ * @param {Array<Banner>} props.banners - Array contendo os dados dos banners a serem exibidos (máximo de 2 banners recomendado)
+ * @returns {JSX.Element} Componente BannerDouble renderizado
+ */
 export const BannerDouble = ({ banners }: BannerDoubleProps) => {
 	return (
 		<section className={s["banner-double"]}>

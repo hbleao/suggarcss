@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { clsx } from "@/utils/clsx";
 
 import "./styles.scss";
 
@@ -35,7 +36,7 @@ export const HeaderAcquisitionFlow = ({
 						src={ArrowLeftSVG}
 						height={24}
 						width={24}
-						className="header-acquisition-flow__button"
+						className={clsx("header-acquisition-flow__button")}
 						alt=""
 						onClick={() => router.push(goBackLink)}
 					/>
@@ -43,7 +44,10 @@ export const HeaderAcquisitionFlow = ({
 			)}
 
 			<Image
-				className="header-acquisition-flow__button header-acquisition-flow__item-center"
+				className={clsx(
+					"header-acquisition-flow__button",
+					"header-acquisition-flow__item-center"
+				)}
 				src={LogoPortoSVG}
 				height={28}
 				width={120}
@@ -62,7 +66,7 @@ export const HeaderAcquisitionFlow = ({
 						src={CartSVG}
 						height={24}
 						width={24}
-						className="header-acquisition-flow__button"
+						className={clsx("header-acquisition-flow__button")}
 						alt=""
 						onClick={() => router.push(goBackLink)}
 					/>

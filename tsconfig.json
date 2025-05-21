@@ -10,7 +10,12 @@
 		"jsx": "react-jsx",
 		"declaration": true,
 		"skipLibCheck": true,
-		"outDir": "dist"
+		"outDir": "dist",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"],
+			"@porto-ocean/*": ["src/components/*"]
+		}
 	},
 	"include": ["src/**/*.ts", "src/**/*.tsx", "./src/@types/scss.d.ts"]
 }

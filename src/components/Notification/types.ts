@@ -1,4 +1,6 @@
-export type NotificationProps = {
+import type { HTMLAttributes, ReactNode } from 'react';
+
+export type NotificationProps = HTMLAttributes<HTMLDivElement> & {
 	variant?:
 		| "default"
 		| "outlined"
@@ -8,7 +10,7 @@ export type NotificationProps = {
 		| "error";
 
 	title: string;
-	icon: React.ReactNode;
+	icon: ReactNode;
 	description: string;
 	className?: string;
 	link?: {

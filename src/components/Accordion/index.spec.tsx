@@ -46,8 +46,10 @@ describe('Accordion', () => {
     expect(content).not.toBeInTheDocument();
     
     // Clicar no trigger para expandir
-    const trigger = screen.getByText('Título do Accordion').closest('.accordion__trigger');
-    fireEvent.click(trigger);
+    const titleElement = screen.getByText('Título do Accordion');
+    const trigger = titleElement.closest('.accordion__trigger');
+    expect(trigger).not.toBeNull();
+    if (trigger) fireEvent.click(trigger);
     
     // Verificar se o conteúdo está visível após o clique
     content = screen.getByText('Conteúdo do accordion');
@@ -60,7 +62,7 @@ describe('Accordion', () => {
     expect(icon).not.toHaveClass('--down');
     
     // Clicar novamente para recolher
-    fireEvent.click(trigger);
+    if (trigger) fireEvent.click(trigger);
     
     // Verificar se o conteúdo está oculto novamente
     content = screen.queryByText('Conteúdo do accordion');
@@ -84,15 +86,17 @@ describe('Accordion', () => {
     expect(content).not.toBeInTheDocument();
     
     // Pressionar tecla no trigger para expandir
-    const trigger = screen.getByText('Título do Accordion').closest('.accordion__trigger');
-    fireEvent.keyDown(trigger);
+    const titleElement = screen.getByText('Título do Accordion');
+    const trigger = titleElement.closest('.accordion__trigger');
+    expect(trigger).not.toBeNull();
+    if (trigger) fireEvent.keyDown(trigger);
     
     // Verificar se o conteúdo está visível após o keydown
     content = screen.getByText('Conteúdo do accordion');
     expect(content).toBeInTheDocument();
     
     // Pressionar tecla novamente para recolher
-    fireEvent.keyDown(trigger);
+    if (trigger) fireEvent.keyDown(trigger);
     
     // Verificar se o conteúdo está oculto novamente
     content = screen.queryByText('Conteúdo do accordion');
@@ -154,14 +158,16 @@ describe('Accordion', () => {
           <h3>Subtítulo</h3>
           <p>Parágrafo 1</p>
           <p>Parágrafo 2</p>
-          <button>Botão de ação</button>
+          <button type="button">Botão de ação</button>
         </div>
       </Accordion>
     );
     
     // Expandir o accordion
-    const trigger = screen.getByText('Título do Accordion').closest('.accordion__trigger');
-    fireEvent.click(trigger);
+    const titleElement = screen.getByText('Título do Accordion');
+    const trigger = titleElement.closest('.accordion__trigger');
+    expect(trigger).not.toBeNull();
+    if (trigger) fireEvent.click(trigger);
     
     // Verificar se o conteúdo complexo foi renderizado
     expect(screen.getByText('Subtítulo')).toBeInTheDocument();

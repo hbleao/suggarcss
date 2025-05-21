@@ -1,12 +1,44 @@
-import './styles.scss';
+import "./styles.scss";
 
-import type { CheckboxProps } from './types';
+import type { CheckboxProps } from "./types";
+
+/**
+ * `Checkbox` — Componente de caixa de seleção com suporte a diferentes estados visuais.
+ *
+ * Pode ser utilizado para representar opções selecionáveis em formulários e interfaces interativas.
+ * Suporta três variantes de estado: padrão, marcado e desabilitado, além de permitir rótulos com HTML.
+ *
+ * @component
+ *
+ * @param {Object} props - Propriedades do componente
+ * @param {string} [props.className=''] - Classe CSS adicional para personalização do estilo externo
+ * @param {"default" | "checked" | "disabled"} [props.variant='default'] - Estado visual do checkbox:
+ *  - `"default"`: caixa padrão (não marcada)
+ *  - `"checked"`: caixa marcada
+ *  - `"disabled"`: caixa desabilitada, sem interação
+ * @param {string} [props.label=''] - Texto do rótulo associado ao checkbox (aceita HTML via `dangerouslySetInnerHTML`)
+ * @param {string} [props.title=''] - Texto alternativo (tooltip) para o elemento de entrada
+ *
+ * @example
+ * <Checkbox label="Aceito os termos" />
+ *
+ * @example
+ * <Checkbox variant="checked" label="Opção selecionada" />
+ *
+ * @example
+ * <Checkbox variant="disabled" label="Opção indisponível" />
+ *
+ * @example
+ * <Checkbox label="Aceito os <strong>termos</strong> e <a href='/termos'>condições</a>" />
+ *
+ * @returns {JSX.Element} Elemento JSX representando o checkbox renderizado
+ */
 
 export const Checkbox = ({
-	className = '',
-	variant = 'default',
-	label = '',
-	title = '',
+	className = "",
+	variant = "default",
+	label = "",
+	title = "",
 	...restProps
 }: CheckboxProps) => {
 	return (

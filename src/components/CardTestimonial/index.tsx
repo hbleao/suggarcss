@@ -1,12 +1,16 @@
-import { Typography } from '../Typography';
-import './styles.scss';
+import { Typography } from "../Typography";
+import "./styles.scss";
 
-import type { CardTestimonialProps } from './types';
+import type { CardTestimonialProps } from "./types";
 
 /**
- * Componente CardTestimonial - Card para exibição de depoimentos
+ * Componente `CardTestimonial` — Card para exibição de depoimentos ou avaliações.
+ *
+ * Exibe imagem do autor, nome, cargo, data e o texto do depoimento. Ideal para seções de feedback,
+ * cases de sucesso, provas sociais ou páginas institucionais.
  *
  * @component
+ *
  * @example
  * ```tsx
  * <CardTestimonial
@@ -18,7 +22,19 @@ import type { CardTestimonialProps } from './types';
  *   text="Este produto superou todas as minhas expectativas. Recomendo fortemente para todos que buscam qualidade e eficiência."
  * />
  * ```
+ *
+ * @param {Object} props - Propriedades do componente
+ * @param {React.ReactNode} [props.image] - Elemento de imagem, geralmente um avatar do autor do depoimento
+ * @param {string} [props.name] - Nome da pessoa que fez o depoimento
+ * @param {string} [props.position] - Cargo ou função da pessoa
+ * @param {string} [props.date] - Data do depoimento ou avaliação
+ * @param {string} [props.text] - Conteúdo principal do depoimento
+ * @param {boolean} [props.showSeparator=true] - Define se uma linha separadora será exibida entre o cabeçalho e o conteúdo
+ * @param {React.HTMLAttributes<HTMLDivElement>} props.restProps - Propriedades HTML adicionais aplicadas ao contêiner principal
+ *
+ * @returns {JSX.Element} Elemento JSX representando o card de depoimento
  */
+
 export const CardTestimonial = ({
 	image,
 	name,

@@ -1,109 +1,161 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Radio } from './index';
+import { render, screen, fireEvent } from "@testing-library/react";
 
-// Mock do módulo de estilos
-jest.mock('./styles.scss', () => ({}));
+import { Radio } from "./index";
 
-describe('Radio', () => {
-  it('deve renderizar corretamente com valores padrão', () => {
-    render(<Radio data-testid="radio" />);
-    
-    const radio = screen.getByTestId('radio');
-    expect(radio).toBeInTheDocument();
-    expect(radio).toHaveClass('radio__root');
-    expect(radio).toHaveClass('--default');
-    
-    // Verificar se o SVG foi renderizado
-    const svg = screen.getByTitle('radio');
-    expect(svg).toBeInTheDocument();
-    
-    // Verificar se o label está vazio por padrão
-    const label = screen.getByText('');
-    expect(label).toBeInTheDocument();
-    expect(label).toHaveClass('radio__label');
-  });
+jest.mock("./styles.scss", () => ({}));
 
-  it('deve renderizar com descrição', () => {
-    render(<Radio description="Opção 1" data-testid="radio" />);
-    
-    const radio = screen.getByTestId('radio');
-    expect(radio).toBeInTheDocument();
-    
-    const label = screen.getByText('Opção 1');
-    expect(label).toBeInTheDocument();
-    expect(label).toHaveClass('radio__label');
-  });
+jest.mock("@/utils/clsx", () => {
+	const mockClsx = jest.fn((...args: unknown[]) => {
+		return args
+			.map((arg) => {
+				if (typeof arg === "string") return arg;
+				if (typeof arg === "object" && arg !== null) {
+					return Object.entries(arg)
+						.filter(([_, value]) => Boolean(value))
+						.map(([key]) => key)
+						.join(" ");
+				}
+				return "";
+			})
+			.filter(Boolean)
+			.join(" ");
+	});
 
-  it('deve renderizar com variante checked', () => {
-    render(<Radio variant="checked" data-testid="radio" />);
-    
-    const radio = screen.getByTestId('radio');
-    expect(radio).toHaveClass('--checked');
-    expect(radio).not.toHaveClass('--default');
-  });
+	return {
+		clsx: mockClsx,
+	};
+});
 
-  it('deve renderizar com variante disabled', () => {
-    render(<Radio variant="disabled" data-testid="radio" />);
-    
-    const radio = screen.getByTestId('radio');
-    expect(radio).toHaveClass('--disabled');
-    expect(radio).not.toHaveClass('--default');
-  });
+describe("Radio", () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
 
-  it('deve aplicar classes CSS adicionais', () => {
-    render(<Radio className="custom-class" data-testid="radio" />);
-    
-    const radio = screen.getByTestId('radio');
-    expect(radio).toHaveClass('custom-class');
-    expect(radio).toHaveClass('radio__root');
-  });
+	it("deve renderizar corretamente com valores padrão", () => {
+		const { container } = render(<Radio data-testid="radio" />);
 
-  it('deve passar atributos HTML adicionais para o elemento raiz', () => {
-    render(
-      <Radio 
-        data-testid="radio"
-        aria-label="Opção de rádio"
-        title="Selecione esta opção"
-        role="radio"
-      />
-    );
-    
-    const radio = screen.getByTestId('radio');
-    expect(radio).toHaveAttribute('aria-label', 'Opção de rádio');
-    expect(radio).toHaveAttribute('title', 'Selecione esta opção');
-    expect(radio).toHaveAttribute('role', 'radio');
-  });
+		const radio = screen.getByTestId("radio");
+		expect(radio).toBeInTheDocument();
+		expect(radio.className).toContain("radio__root");
+		expect(radio.className).toContain("--default");
 
-  it('deve renderizar com descrição longa', () => {
-    const longDescription = 'Esta é uma descrição muito longa para testar como o componente lida com textos extensos que podem quebrar em múltiplas linhas';
-    render(<Radio description={longDescription} data-testid="radio" />);
-    
-    const radio = screen.getByTestId('radio');
-    expect(radio).toBeInTheDocument();
-    
-    const label = screen.getByText(longDescription);
-    expect(label).toBeInTheDocument();
-    expect(label).toHaveClass('radio__label');
-  });
+		const svg = container.querySelector(".radio__svg");
+		expect(svg).toBeInTheDocument();
+		expect(svg?.tagName.toLowerCase()).toBe("svg");
 
-  it('deve renderizar o SVG com os atributos corretos', () => {
-    render(<Radio data-testid="radio" />);
-    
-    const svg = screen.getByTitle('radio');
-    expect(svg).toHaveAttribute('width', '21');
-    expect(svg).toHaveAttribute('height', '20');
-    expect(svg).toHaveAttribute('viewBox', '0 0 21 20');
-    expect(svg).toHaveAttribute('fill', 'none');
-    expect(svg).toHaveAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    expect(svg).toHaveClass('radio__svg');
-    
-    // Verificar se o path do SVG está presente
-    const path = svg.querySelector('path');
-    expect(path).toBeInTheDocument();
-    expect(path).toHaveAttribute('stroke', 'white');
-    expect(path).toHaveAttribute('stroke-width', '3');
-    expect(path).toHaveAttribute('stroke-linecap', 'round');
-    expect(path).toHaveAttribute('stroke-linejoin', 'round');
-  });
+		const label = container.querySelector(".radio__label");
+		expect(label).toBeInTheDocument();
+		expect(label).toHaveTextContent("");
+	});
+
+	it("deve renderizar com descrição", () => {
+		const { container } = render(
+			<Radio description="Opção 1" data-testid="radio" />,
+		);
+
+		const radio = screen.getByTestId("radio");
+		expect(radio).toBeInTheDocument();
+
+		const label = container.querySelector(".radio__label");
+		expect(label).toBeInTheDocument();
+		expect(label).toHaveTextContent("Opção 1");
+	});
+
+	it("deve renderizar com variante checked", () => {
+		render(<Radio variant="checked" data-testid="radio" />);
+
+		const radio = screen.getByTestId("radio");
+		expect(radio.className).toContain("--checked");
+		expect(radio.className).not.toContain("--default");
+	});
+
+	it("deve renderizar com variante disabled", () => {
+		render(<Radio variant="disabled" data-testid="radio" />);
+
+		const radio = screen.getByTestId("radio");
+		expect(radio.className).toContain("--disabled");
+		expect(radio.className).not.toContain("--default");
+	});
+
+	it("deve aplicar classes CSS adicionais", () => {
+		render(<Radio className="custom-class" data-testid="radio" />);
+
+		const radio = screen.getByTestId("radio");
+		expect(radio.className).toContain("custom-class");
+		expect(radio.className).toContain("radio__root");
+	});
+
+	it("deve passar atributos HTML adicionais para o elemento raiz", () => {
+		render(
+			<Radio
+				data-testid="radio"
+				aria-label="Opção de rádio"
+				title="Selecione esta opção"
+				role="radio"
+			/>,
+		);
+
+		const radio = screen.getByTestId("radio");
+		expect(radio).toHaveAttribute("aria-label", "Opção de rádio");
+		expect(radio).toHaveAttribute("title", "Selecione esta opção");
+		expect(radio).toHaveAttribute("role", "radio");
+	});
+
+	it("deve renderizar com descrição longa", () => {
+		const longDescription =
+			"Esta é uma descrição muito longa para testar como o componente lida com textos extensos que podem quebrar em múltiplas linhas";
+		const { container } = render(
+			<Radio description={longDescription} data-testid="radio" />,
+		);
+
+		const radio = screen.getByTestId("radio");
+		expect(radio).toBeInTheDocument();
+
+		const label = container.querySelector(".radio__label");
+		expect(label).toBeInTheDocument();
+		expect(label).toHaveTextContent(longDescription);
+	});
+
+	it("deve renderizar o SVG com os atributos corretos", () => {
+		const { container } = render(<Radio data-testid="radio" />);
+
+		const svg = container.querySelector(".radio__svg");
+
+		expect(svg).toBeInTheDocument();
+		expect(svg?.tagName.toLowerCase()).toBe("svg");
+		expect(svg?.getAttribute("width")).toBe("21");
+		expect(svg?.getAttribute("height")).toBe("20");
+		expect(svg?.getAttribute("viewBox")).toBe("0 0 21 20");
+		expect(svg?.getAttribute("fill")).toBe("none");
+		expect(svg?.getAttribute("xmlns")).toBe("http://www.w3.org/2000/svg");
+
+		const path = svg?.querySelector("path");
+		expect(path).toBeInTheDocument();
+		expect(path?.getAttribute("stroke")).toBe("white");
+		expect(path?.getAttribute("stroke-width")).toBe("3");
+		expect(path?.getAttribute("stroke-linecap")).toBe("round");
+		expect(path?.getAttribute("stroke-linejoin")).toBe("round");
+	});
+
+	it("deve ser clicável quando não está desabilitado", () => {
+		const handleClick = jest.fn();
+		render(<Radio data-testid="radio" onClick={handleClick} />);
+
+		const radio = screen.getByTestId("radio");
+		fireEvent.click(radio);
+
+		expect(handleClick).toHaveBeenCalledTimes(1);
+	});
+
+	it("não deve chamar o evento de clique quando está desabilitado", () => {
+		const handleClick = jest.fn();
+		render(
+			<Radio data-testid="radio" variant="disabled" onClick={handleClick} />,
+		);
+
+		const radio = screen.getByTestId("radio");
+		fireEvent.click(radio);
+
+		expect(handleClick).not.toHaveBeenCalled();
+	});
 });

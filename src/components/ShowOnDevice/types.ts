@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, HTMLAttributes } from "react";
 
 export type Media =
 	| "mobile"
@@ -7,7 +7,7 @@ export type Media =
 	| "desktop"
 	| "wide";
 
-export type ShowOnDeviceProps = {
+export type ShowOnDeviceProps = HTMLAttributes<HTMLDivElement> & {
 	orientation: "greaterThan" | "lessThan";
 	media: Media;
 	children: ReactNode;

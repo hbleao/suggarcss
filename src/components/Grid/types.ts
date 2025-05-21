@@ -1,7 +1,7 @@
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
-export type GridProps = {
-	children: ReactNode;
+export type GridProps = HTMLAttributes<HTMLDivElement> & {
+	children?: ReactNode;
 	columns?: number;
 	gap?: string;
 	className?: string;

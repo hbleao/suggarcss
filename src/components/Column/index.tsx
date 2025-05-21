@@ -1,21 +1,18 @@
+import { useEffect, useState } from "react";
+
+import { useMediaQuery, useWindowSize } from "@/hooks";
+
 /**
  * Componente de coluna baseado em Grid CSS responsivo com suporte a breakpoints, aplica classes como `col-6`, `col-desktop-3`, etc .
  *
  * @param children - Conteúdo do componente.
- *
  * @param span - Quantidade de colunas a ocupar no layout padrão (mobile-first), Varia de 1 a 12.
  * @param tabletPortrait - Quantidade de colunas no breakpoint `tablet-portrait` (≥ 768px), Varia de 1 a 12.
- *
  * @param tabletLandscape - Quantidade de colunas no breakpoint `tablet-landscape` (≥ 1024px), Varia de 1 a 12.
- *
  * @param desktop - Quantidade de colunas no breakpoint `desktop` (≥ 1224px), Varia de 1 a 12.
- *
  * @param wide - Quantidade de colunas no breakpoint `wide` (≥ 1600px), Varia de 1 a 12
  *
  */
-
-import { useMediaQuery, useWindowSize } from "@/hooks";
-import { useEffect, useState } from "react";
 
 export function Column({
 	children,

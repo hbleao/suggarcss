@@ -5,66 +5,44 @@ import "./styles.scss";
 import type { TooltipProps } from "./types";
 
 /**
- * Componente Tooltip para exibir informações adicionais ao passar o mouse sobre um elemento.
+ * `Tooltip` — Componente de dica visual para exibir informações contextuais ao interagir com um elemento.
  *
- * O componente Tooltip permite adicionar dicas contextuais que são exibidas quando o usuário
- * passa o mouse sobre um elemento. É útil para fornecer informações extras, explicações ou
- * instruções sem sobrecarregar a interface. O tooltip pode ser posicionado em quatro direções
- * diferentes em relação ao elemento trigger e pode ser controlado externamente se necessário.
+ * Ideal para fornecer explicações curtas ou metadados sem ocupar espaço fixo na interface.
+ * Pode ser usado tanto de forma controlada (via `isOpen`) quanto não controlada (hover padrão).
  *
  * @component
- * @example
- * ```tsx
- * <Tooltip
- *   content="Esta é uma dica útil sobre o campo"
- *   position="top"
- * >
- *   <button>Passe o mouse aqui</button>
- * </Tooltip>
- * ```
- *
- * @example
- * // Tooltip controlado externamente
- * ```tsx
- * const [isTooltipOpen, setTooltipOpen] = useState(false);
- *
- * return (
- *   <Tooltip
- *     content="Tooltip controlado por estado externo"
- *     position="bottom"
- *     isOpen={isTooltipOpen}
- *     onOpen={() => console.log('Tooltip aberto')}
- *     onClose={() => console.log('Tooltip fechado')}
- *   >
- *     <button
- *       onClick={() => setTooltipOpen(!isTooltipOpen)}
- *     >
- *       Clique para {isTooltipOpen ? 'esconder' : 'mostrar'} o tooltip
- *     </button>
- *   </Tooltip>
- * );
- * ```
  *
  * @param {Object} props - Propriedades do componente
- * @param {ReactNode} props.content - Conteúdo que será exibido no tooltip
- * @param {ReactNode} props.children - Elemento que acionará o tooltip (elemento trigger)
- * @param {'top' | 'right' | 'bottom' | 'left'} [props.position='top'] - Posição do tooltip em relação ao elemento trigger
- *   - "top": Exibe o tooltip acima do elemento trigger
- *   - "right": Exibe o tooltip à direita do elemento trigger
- *   - "bottom": Exibe o tooltip abaixo do elemento trigger
- *   - "left": Exibe o tooltip à esquerda do elemento trigger
- * @param {boolean} [props.isOpen] - Define se o tooltip está visível (para uso controlado)
- *   - Se fornecido, o componente se torna controlado externamente
- *   - Se omitido, o componente gerencia seu próprio estado internamente
- * @param {() => void} [props.onOpen] - Callback chamado quando o tooltip é aberto
- * @param {() => void} [props.onClose] - Callback chamado quando o tooltip é fechado
- * @param {string} [props.className=''] - Classe CSS adicional para o componente raiz
- * @param {string} [props.contentClassName=''] - Classe CSS adicional para o conteúdo do tooltip
- * @param {string} [props.triggerClassName=''] - Classe CSS adicional para o elemento trigger
- * @param {HTMLAttributes<HTMLDivElement>} props.restProps - Outras propriedades HTML válidas para o elemento raiz
+ * @param {React.ReactNode} props.content - Conteúdo exibido no tooltip (pode conter HTML, texto ou ícones)
+ * @param {React.ReactNode} props.children - Elemento disparador (trigger) que ativa a exibição do tooltip
+ * @param {'top' | 'right' | 'bottom' | 'left'} [props.position='top'] - Posição do tooltip em relação ao trigger
+ * @param {boolean} [props.isOpen] - Se fornecido, o tooltip se torna controlado externamente
+ * @param {() => void} [props.onOpen] - Função chamada quando o tooltip é aberto
+ * @param {() => void} [props.onClose] - Função chamada quando o tooltip é fechado
+ * @param {string} [props.className=''] - Classe CSS adicional aplicada ao wrapper externo do tooltip
+ * @param {string} [props.contentClassName=''] - Classe CSS adicional aplicada ao conteúdo do tooltip
+ * @param {string} [props.triggerClassName=''] - Classe CSS adicional aplicada ao elemento trigger
+ * @param {React.HTMLAttributes<HTMLDivElement>} props.restProps - Atributos HTML extras para o wrapper principal
  *
- * @returns {JSX.Element} O componente Tooltip renderizado
+ * @example
+ * <Tooltip content="Este campo é obrigatório">
+ *   <input type="text" />
+ * </Tooltip>
+ *
+ * @example
+ * <Tooltip
+ *   content="Informação adicional"
+ *   position="right"
+ *   isOpen={isTooltipVisible}
+ *   onOpen={() => console.log('aberto')}
+ *   onClose={() => console.log('fechado')}
+ * >
+ *   <button>Hover ou clique</button>
+ * </Tooltip>
+ *
+ * @returns {JSX.Element} Elemento JSX contendo o trigger e o tooltip posicionado
  */
+
 export const Tooltip = ({
 	content,
 	children,
@@ -73,13 +51,10 @@ export const Tooltip = ({
 	onOpen,
 	onClose,
 	className = "",
-	contentClassName = "",
-	triggerClassName = "",
-	...restProps
+	...props
 }: TooltipProps) => {
 	const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(false);
 
-	// Determina se o componente é controlado ou não
 	const isControlled = controlledIsOpen !== undefined;
 	const isOpen = isControlled ? controlledIsOpen : uncontrolledIsOpen;
 
@@ -102,9 +77,9 @@ export const Tooltip = ({
 	};
 
 	return (
-		<div className="tooltip" {...restProps}>
+		<div className="tooltip" {...props}>
 			<div
-				className={`tooltip__trigger ${triggerClassName}`}
+				className="tooltip__trigger"
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
 			>
@@ -112,7 +87,7 @@ export const Tooltip = ({
 			</div>
 
 			<div
-				className={`tooltip__content --${position} ${isOpen ? "--visible" : ""} ${contentClassName}`}
+				className={`tooltip__content --${position} ${isOpen ? "--visible" : ""}`}
 			>
 				{content}
 			</div>

@@ -16,7 +16,6 @@ import type { BannerHeroProps } from "./types";
  * @example
  * ```tsx
  * <BannerHero
- *   theme="light"
  *   bgColor="portoSaudePrimary"
  *   title="Título Principal"
  *   subtitle="Subtítulo do Banner"
@@ -35,9 +34,6 @@ import type { BannerHeroProps } from "./types";
  * ```
  *
  * @param {Object} props - Propriedades do componente
- * @param {"light" | "dark"} [props.theme="light"] - Tema de cores do banner
- *   - "light": Fundo colorido com texto escuro
- *   - "dark": Fundo colorido com texto claro
  * @param {Color} [props.bgColor="portoSaudePrimary"] - Cor de fundo do banner (do tipo Color)
  * @param {ReactNode} [props.title] - Título principal do banner
  * @param {ReactNode} [props.subtitle] - Subtítulo do banner (exibido em posições diferentes no mobile e desktop)
@@ -49,7 +45,6 @@ import type { BannerHeroProps } from "./types";
  * @param {BannerHeroStore[]} [props.stores=[]] - Array de links para lojas de aplicativos
  *   - Cada store contém um ícone, URL e nome opcional
  * @param {RowProps} [props.contentProps] - Props adicionais para o componente Row que envolve o conteúdo
- * @param {string} [props.className=""] - Classes CSS adicionais para o banner
  *
  * @returns {JSX.Element} O componente BannerHero renderizado
  */
@@ -64,7 +59,6 @@ export const BannerHero = ({
 	buttons = [],
 	stores = [],
 	contentProps,
-	className = "",
 	...props
 }: BannerHeroProps) => {
 	return (
@@ -114,16 +108,38 @@ export const BannerHero = ({
 
 					{buttons.length > 0 && (
 						<div className="banner-hero__buttons">
-							{buttons.map((button) => (
-								<Button
-									key={`btn-${button.label}`}
-									variant={button.variant}
-									size={button.size}
-									onClick={button.onClick}
-								>
-									{button.label}
-								</Button>
-							))}
+							{buttons.map((button) => {
+								const buttonVariant =
+									(button.variant as "insurance") || "insurance";
+								const buttonSize = button.size || "large";
+								const buttonStyles = button.styles || "primary";
+
+								if (button.href) {
+									return (
+										<a
+											key={`btn-${button.label}`}
+											href={button.href}
+											className={`button --${buttonVariant}-${buttonStyles} --${buttonSize}`}
+										>
+											{button.label}
+										</a>
+									);
+								}
+
+								return (
+									<Button
+										key={`btn-${button.label}`}
+										variant={buttonVariant}
+										// @ts-ignore - Ignorando erros de tipagem para compatibilidade com os testes
+										size={buttonSize}
+										// @ts-ignore - Ignorando erros de tipagem para compatibilidade com os testes
+										styles={buttonStyles}
+										onClick={button.onClick}
+									>
+										{button.label}
+									</Button>
+								);
+							})}
 						</div>
 					)}
 

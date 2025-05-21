@@ -1,3 +1,5 @@
+import { clsx } from "@/utils/clsx";
+
 import "./styles.scss";
 
 import type { RadioProps } from "./types";
@@ -6,11 +8,36 @@ export const Radio = ({
 	className = "",
 	variant = "default",
 	description = "",
+	onClick,
 	children,
 	...restProps
 }: RadioProps) => {
+	const isDisabled = variant === "disabled";
+	
+	const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+		if (isDisabled) {
+			event.preventDefault();
+			event.stopPropagation();
+			return;
+		}
+		
+		if (onClick) {
+			onClick(event);
+		}
+	};
+	
+	const classes = clsx(
+		"radio__root",
+		`--${variant}`,
+		className
+	);
+	
 	return (
-		<div className={`radio__root --${variant} ${className}`} {...restProps}>
+		<div 
+			className={classes} 
+			onClick={handleClick}
+			{...restProps}
+		>
 			<div className="radio__input">
 				<svg
 					width="21"

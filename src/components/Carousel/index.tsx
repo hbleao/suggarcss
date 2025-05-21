@@ -163,10 +163,11 @@ export function Carousel({
 					</button>
 				</div>
 			)}
-			<div className="carousel" ref={wrapperRef}>
+			<div className="carousel" ref={wrapperRef} data-testid="carousel-wrapper">
 				<div
 					ref={containerRef}
 					className="carousel__track"
+					data-testid="carousel-track"
 					style={{
 						width: `${(slideCount * 100) / slidesToShow}%`,
 						gap: `${gap}px`,

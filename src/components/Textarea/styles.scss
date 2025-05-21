@@ -1,4 +1,4 @@
-.textarea__root {
+.textarea {
   position: relative;
 
   &.--filled {
@@ -84,7 +84,6 @@
     }
 
     &.--filled {
-
       .textarea__label,
       .textarea__counter,
       .textarea__icon {
