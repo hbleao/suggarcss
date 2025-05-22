@@ -28,6 +28,83 @@ const program = new Command();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Função executada quando o comando é chamado
+// Lista de todos os componentes planejados para a biblioteca
+// Esta lista é usada tanto para validação quanto para exibição na interface interativa
+const available = [
+	"Accordion",
+	"BannerBody",
+	"BannerHero",
+	"Breadcrumb",
+	"Button",
+	"CardContent",
+	"CardIcon",
+	"CardTestimonial",
+	"CardsCarousel",
+	"Carousel",
+	"Checkbox",
+	"Chip",
+	"styles",
+	"Dialog",
+	"Dropdown",
+	"Footer",
+	"Grid",
+	"Header",
+	"hooks",
+	"Input",
+	"Link",
+	"Loader",
+	"Modal",
+	"ProgressBar",
+	"Modal",
+	"Notification",
+	"Radio",
+	"Row",
+	"Skeleton",
+	"Stepper",
+	"Textarea",
+	"Tooltip",
+	"Typography",
+];
+
+// Componentes que já foram implementados e estão prontos para uso
+// Apenas estes componentes podem ser instalados pelos usuários
+const implemented = [
+	"Accordion",
+	"BannerBody",
+	"BannerHero",
+	"Breadcrumb",
+	"Button",
+	"CardContent",
+	"CardIcon",
+	"CardTestimonial",
+	"CardsCarousel",
+	"Carousel",
+	"Checkbox",
+	"Chip",
+	"styles",
+	"Dialog",
+	"Dropdown",
+	"Footer",
+	"Grid",
+	"Header",
+	"hooks",
+	"Input",
+	"Link",
+	"Loader",
+	"Modal",
+	"ProgressBar",
+	"Modal",
+	"Notification",
+	"Radio",
+	"Row",
+	"Skeleton",
+	"Stepper",
+	"Textarea",
+	"Tooltip",
+	"Typography",
+];
+
 // Configuração básica do programa CLI
 program
 	.name("porto-ocean") // Nome do comando
@@ -45,6 +122,42 @@ program
 		"Diretório de destino para instalar os componentes",
 		"",
 	);
+
+/**
+ * Comando de listagem
+ *
+ * Este comando exibe todos os componentes disponíveis e seu status,
+ * oferecendo uma visão rápida do que está disponível na biblioteca.
+ */
+program
+	.command("list") // Define o comando 'list'
+	.description("Lista todos os componentes disponíveis") // Descrição exibida na ajuda
+	.action(() => {
+		// Função executada quando o comando é chamado
+		// Usamos as mesmas listas de componentes do comando install
+		// para manter consistência
+
+		// Exibir cabeçalho da lista
+		console.log("\nComponentes disponíveis:");
+		console.log("----------------------\n");
+
+		// Iterar sobre todos os componentes e exibir seu status
+		// Usamos for...of em vez de forEach por questões de performance e estilo
+		for (const comp of available) {
+			// Determinar o status do componente (disponível ou em breve)
+			const status = implemented.includes(comp)
+				? "✅ Disponível"
+				: "🔄 Em breve";
+			// padEnd garante alinhamento uniforme na saída do terminal
+			console.log(`${comp.padEnd(15)} ${status}`);
+		}
+
+		// Exibir instruções de uso após a lista
+		console.log("\nPara instalar um componente, execute:");
+		console.log("  npx porto-ocean install <componente>");
+		console.log("  ou simplesmente:");
+		console.log("  npx porto-ocean install\n");
+	});
 
 /**
  * Comando de instalação
@@ -66,25 +179,6 @@ program
 	.action(async (componentArg, options, command) => {
 		// Obter as opções globais do programa principal
 		const programOptions = command.parent?.opts() || {};
-		// Função executada quando o comando é chamado
-		// Lista de todos os componentes planejados para a biblioteca
-		// Esta lista é usada tanto para validação quanto para exibição na interface interativa
-		const available = [
-			"button",
-			"input",
-			"modal",
-			"dropdown",
-			"textarea",
-			"typography",
-			"accordion",
-			"tabs",
-			"link",
-			"chip",
-		];
-
-		// Componentes que já foram implementados e estão prontos para uso
-		// Apenas estes componentes podem ser instalados pelos usuários
-		const implemented = ["button", "chip"];
 
 		/**
 		 * Seleção interativa de componente
@@ -242,55 +336,6 @@ program
 	});
 
 /**
- * Comando de listagem
- *
- * Este comando exibe todos os componentes disponíveis e seu status,
- * oferecendo uma visão rápida do que está disponível na biblioteca.
- */
-program
-	.command("list") // Define o comando 'list'
-	.description("Lista todos os componentes disponíveis") // Descrição exibida na ajuda
-	.action(() => {
-		// Função executada quando o comando é chamado
-		// Usamos as mesmas listas de componentes do comando install
-		// para manter consistência
-		const available = [
-			"button",
-			"input",
-			"modal",
-			"dropdown",
-			"textarea",
-			"typography",
-			"accordion",
-			"tabs",
-			"link",
-		];
-
-		const implemented = ["button", "chip"];
-
-		// Exibir cabeçalho da lista
-		console.log("\nComponentes disponíveis:");
-		console.log("----------------------\n");
-
-		// Iterar sobre todos os componentes e exibir seu status
-		// Usamos for...of em vez de forEach por questões de performance e estilo
-		for (const comp of available) {
-			// Determinar o status do componente (disponível ou em breve)
-			const status = implemented.includes(comp)
-				? "✅ Disponível"
-				: "🔄 Em breve";
-			// padEnd garante alinhamento uniforme na saída do terminal
-			console.log(`${comp.padEnd(15)} ${status}`);
-		}
-
-		// Exibir instruções de uso após a lista
-		console.log("\nPara instalar um componente, execute:");
-		console.log("  npx porto-ocean install <componente>");
-		console.log("  ou simplesmente:");
-		console.log("  npx porto-ocean install\n");
-	});
-
-/**
  * Comando installAll
  *
  * Este comando instala todos os componentes implementados de uma só vez,
@@ -305,23 +350,6 @@ program
 		"", // Valor padrão vazio
 	)
 	.action(async (options) => {
-		// Função executada quando o comando é chamado
-		// Usamos as mesmas listas de componentes do comando install
-		// para manter consistência
-		const available = [
-			"button",
-			"input",
-			"modal",
-			"dropdown",
-			"textarea",
-			"typography",
-			"accordion",
-			"tabs",
-			"link",
-			"chip",
-		];
-		const implemented = ["button", "chip"];
-
 		/**
 		 * Seleção do diretório de destino
 		 *
@@ -434,264 +462,6 @@ program
 		console.log(
 			`\nInstalação concluída: ${successCount} de ${implemented.length} componentes instalados com sucesso.\n`,
 		);
-	});
-
-/**
- * Comando de instalação dos estilos
- */
-program
-	.command("install-styles")
-	.description("Instala os estilos e assets do projeto")
-	.option(
-		"-d, --dir <directory>", // Opção para especificar diretório de destino
-		"Diretório de destino para instalar os componentes",
-		"", // Valor padrão vazio
-	)
-	.action(async (options) => {
-		let baseDir = options.dir;
-		if (!baseDir) {
-			// Primeiro, perguntamos se o usuário quer usar o diretório atual
-			const useCurrentDir = await confirm({
-				message: "Deseja instalar no diretório atual (src)?",
-				default: true, // Por padrão, sugerimos usar o diretório atual
-			});
-
-			if (useCurrentDir) {
-				// Se sim, usamos o diretório de trabalho atual
-				baseDir = process.cwd();
-			} else {
-				// Se não, pedimos para digitar um caminho personalizado
-				baseDir = await input({
-					message: "Digite o caminho do diretório de destino:",
-					default: process.cwd(), // Sugerimos o diretório atual como padrão
-				});
-			}
-
-			if (!fs.existsSync(baseDir)) {
-				console.error(`O diretório de destino "${baseDir}" não existe.`);
-				process.exit(1);
-			}
-
-			if (!fs.existsSync(path.join(baseDir, "src"))) {
-				console.error(`O diretório "src" não foi encontrado em "${baseDir}".`);
-				process.exit(1);
-			}
-
-			if (!fs.existsSync(path.join(baseDir, "src", "styles"))) {
-				console.error(
-					`O diretório "styles" não foi encontrado em "${baseDir}/src".`,
-				);
-				process.exit(1);
-			}
-
-			// Confirmação final antes da instalação
-			const confirmInstall = await confirm({
-				message: `Confirma a instalação de todos os estilos e assets em ${baseDir}/src/styles?`,
-				default: true, // Por padrão, sugerimos confirmar
-			});
-
-			// Se o usuário cancelar, encerramos o programa sem erro
-			if (!confirmInstall) {
-				console.log("Instalação cancelada.");
-				process.exit(0); // Código 0 indica saída sem erro
-			}
-
-			// Exibir mensagem inicial
-			console.log("\nInstalando todos os estilos e assets...\n");
-
-			// Caminho para a raiz do pacote instalado
-			const pkgPath = path.dirname(path.dirname(__dirname));
-
-			const dest = path.join(baseDir, "src/styles");
-
-			// Garantir que o diretório de destino exista
-			await fs.ensureDir(dest);
-
-			// Copiar todos os arquivos do componente para o destino
-			await fs.copy(pkgPath, dest);
-		}
-	});
-
-/**
- * Comando de instalação dos hooks
- */
-program
-	.command("install-hooks")
-	.description("Instala os hooks utilitários do projeto")
-	.option(
-		"-d, --dir <directory>", // Opção para especificar diretório de destino
-		"Diretório de destino para instalar os hooks",
-		"", // Valor padrão vazio
-	)
-	.action(async (options) => {
-		let baseDir = options.dir;
-
-		if (!baseDir) {
-			// Primeiro, perguntamos se o usuário quer usar o diretório atual
-			const useCurrentDir = await confirm({
-				message: "Deseja instalar no diretório atual (src)?",
-				default: true, // Por padrão, sugerimos usar o diretório atual
-			});
-
-			if (useCurrentDir) {
-				// Se sim, usamos o diretório de trabalho atual
-				baseDir = process.cwd();
-			} else {
-				// Se não, pedimos para digitar um caminho personalizado
-				baseDir = await input({
-					message: "Digite o caminho do diretório de destino:",
-					default: process.cwd(), // Sugerimos o diretório atual como padrão
-				});
-			}
-		}
-
-		if (!fs.existsSync(baseDir)) {
-			console.error(`O diretório de destino "${baseDir}" não existe.`);
-			process.exit(1);
-		}
-
-		// Verificar se existe o diretório src
-		const srcDir = path.join(baseDir, "src");
-		if (!fs.existsSync(srcDir)) {
-			console.error(`O diretório "src" não foi encontrado em "${baseDir}".`);
-			process.exit(1);
-		}
-
-		// Criar o diretório hooks se não existir
-		const hooksDir = path.join(srcDir, "hooks");
-		if (!fs.existsSync(hooksDir)) {
-			console.log(
-				`O diretório "hooks" não foi encontrado em "${srcDir}". Será criado.`,
-			);
-		}
-
-		// Confirmação final antes da instalação
-		const confirmInstall = await confirm({
-			message: `Confirma a instalação de todos os hooks em ${hooksDir}?`,
-			default: true, // Por padrão, sugerimos confirmar
-		});
-
-		// Se o usuário cancelar, encerramos o programa sem erro
-		if (!confirmInstall) {
-			console.log("Instalação cancelada.");
-			process.exit(0); // Código 0 indica saída sem erro
-		}
-
-		// Exibir mensagem inicial
-		console.log("\nInstalando todos os hooks...\n");
-
-		// Caminho para a pasta de hooks do pacote instalado
-		const pkgPath = path.dirname(path.dirname(__dirname));
-		const sourcePath = path.join(pkgPath, "src", "hooks");
-
-		// Verificar se a pasta de hooks existe no pacote
-		if (!fs.existsSync(sourcePath)) {
-			console.error("A pasta de hooks não foi encontrada no pacote.");
-			process.exit(1);
-		}
-
-		// Garantir que o diretório de destino exista
-		await fs.ensureDir(hooksDir);
-
-		try {
-			// Copiar todos os arquivos de hooks para o destino
-			await fs.copy(sourcePath, hooksDir);
-			console.log(`Hooks instalados com sucesso em ${hooksDir}`);
-		} catch (error: unknown) {
-			const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
-			console.error(`Erro ao instalar os hooks: ${errorMessage}`);
-			process.exit(1);
-		}
-	});
-
-/**
- * Comando de instalação dos utilitários
- */
-program
-	.command("install-utils")
-	.description("Instala as funções utilitárias do projeto")
-	.option(
-		"-d, --dir <directory>", // Opção para especificar diretório de destino
-		"Diretório de destino para instalar os utilitários",
-		"", // Valor padrão vazio
-	)
-	.action(async (options) => {
-		let baseDir = options.dir;
-
-		if (!baseDir) {
-			// Primeiro, perguntamos se o usuário quer usar o diretório atual
-			const useCurrentDir = await confirm({
-				message: "Deseja instalar no diretório atual (src)?",
-				default: true, // Por padrão, sugerimos usar o diretório atual
-			});
-
-			if (useCurrentDir) {
-				// Se sim, usamos o diretório de trabalho atual
-				baseDir = process.cwd();
-			} else {
-				// Se não, pedimos para digitar um caminho personalizado
-				baseDir = await input({
-					message: "Digite o caminho do diretório de destino:",
-					default: process.cwd(), // Sugerimos o diretório atual como padrão
-				});
-			}
-		}
-
-		if (!fs.existsSync(baseDir)) {
-			console.error(`O diretório de destino "${baseDir}" não existe.`);
-			process.exit(1);
-		}
-
-		// Verificar se existe o diretório src
-		const srcDir = path.join(baseDir, "src");
-		if (!fs.existsSync(srcDir)) {
-			console.error(`O diretório "src" não foi encontrado em "${baseDir}".`);
-			process.exit(1);
-		}
-
-		// Criar o diretório utils se não existir
-		const utilsDir = path.join(srcDir, "utils");
-		if (!fs.existsSync(utilsDir)) {
-			console.log(`O diretório "utils" não foi encontrado em "${srcDir}". Será criado.`);
-		}
-
-		// Confirmação final antes da instalação
-		const confirmInstall = await confirm({
-			message: `Confirma a instalação de todos os utilitários em ${utilsDir}?`,
-			default: true, // Por padrão, sugerimos confirmar
-		});
-
-		// Se o usuário cancelar, encerramos o programa sem erro
-		if (!confirmInstall) {
-			console.log("Instalação cancelada.");
-			process.exit(0); // Código 0 indica saída sem erro
-		}
-
-		// Exibir mensagem inicial
-		console.log("\nInstalando todos os utilitários...\n");
-
-		// Caminho para a pasta de utils do pacote instalado
-		const pkgPath = path.dirname(path.dirname(__dirname));
-		const sourcePath = path.join(pkgPath, "src", "utils");
-
-		// Verificar se a pasta de utils existe no pacote
-		if (!fs.existsSync(sourcePath)) {
-			console.error("A pasta de utilitários não foi encontrada no pacote.");
-			process.exit(1);
-		}
-
-		// Garantir que o diretório de destino exista
-		await fs.ensureDir(utilsDir);
-
-		try {
-			// Copiar todos os arquivos de utils para o destino
-			await fs.copy(sourcePath, utilsDir);
-			console.log(`Utilitários instalados com sucesso em ${utilsDir}`);
-		} catch (error: unknown) {
-			const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
-			console.error(`Erro ao instalar os utilitários: ${errorMessage}`);
-			process.exit(1);
-		}
 	});
 
 /**

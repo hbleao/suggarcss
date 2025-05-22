@@ -7,6 +7,20 @@ jest.mock("./styles.module.scss", () => ({
 	progressBarFill: "progress-bar-fill-class",
 }));
 
+beforeEach(() => {
+	jest.spyOn(window, "requestAnimationFrame").mockImplementation((cb) => {
+		return setTimeout(cb, 0);
+	});
+
+	jest.spyOn(window, "cancelAnimationFrame").mockImplementation((id) => {
+		clearTimeout(id);
+	});
+});
+
+afterEach(() => {
+	jest.restoreAllMocks();
+});
+
 describe("ProgressBar", () => {
 	it("deve renderizar corretamente com valores padrão", () => {
 		render(<ProgressBar value={50} data-testid="progress-bar" />);

@@ -1,4 +1,4 @@
-import { renderHook, act } from "@testing-library/react";
+import { act, renderHook } from "@testing-library/react";
 
 import { useTryCatch } from "../useTryCatch";
 
@@ -108,11 +108,36 @@ describe("useTryCatch", () => {
 		expect(result.current.error).toBeNull();
 	});
 
-	it("deve capturar erros de funções síncronas", async () => {
+	it("deve funcionar com funções asíncronas", async () => {
+		const { result } = renderHook(() => useTryCatch<number>());
+
+		await act(async () => {
+			await result.current.executeWithCallback(() => 42);
+		});
+
+		expect(result.current.data).toBe(42);
+		expect(result.current.error).toBeNull();
+	});
+
+	it("deve capturar erros de funções síncronas com errors", async () => {
 		const { result } = renderHook(() => useTryCatch<number>());
 
 		await act(async () => {
 			await result.current.execute(() => {
+				throw new Error("sync error");
+			});
+		});
+
+		expect(result.current.data).toBeNull();
+		expect(result.current.error).toBeInstanceOf(Error);
+		expect(result.current.error?.message).toBe("sync error");
+	});
+
+	it("deve capturar erros de funções asíncronas", async () => {
+		const { result } = renderHook(() => useTryCatch<number>());
+
+		await act(async () => {
+			await result.current.executeWithCallback(() => {
 				throw new Error("sync error");
 			});
 		});

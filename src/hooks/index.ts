@@ -1,3 +1,4 @@
+"use client";
 /**
  * Exportação centralizada de todos os hooks disponíveis na biblioteca
  *
@@ -7,13 +8,13 @@
 
 // Hooks para responsividade
 export { useMediaQuery } from "./useMediaQuery";
-export { useWindowSize } from "./useWindownSize";
+export { useWindowSize } from "./useWindownSize/";
 
 // Hooks para interação com elementos
-export { useOutsideClick } from "./useOutsideClick";
 export { useEventListener } from "./useEventListener";
-export { useToggle } from "./useToggle";
 export { useLockScroll } from "./useLockScroll";
+export { useOutsideClick } from "./useOutsideClick";
+export { useToggle } from "./useToggle";
 
 // Hooks para performance
 export { useDebouncedValue } from "./useDebounce";

@@ -108,38 +108,15 @@ export const BannerHero = ({
 
 					{buttons.length > 0 && (
 						<div className="banner-hero__buttons">
-							{buttons.map((button) => {
-								const buttonVariant =
-									(button.variant as "insurance") || "insurance";
-								const buttonSize = button.size || "large";
-								const buttonStyles = button.styles || "primary";
-
-								if (button.href) {
-									return (
-										<a
-											key={`btn-${button.label}`}
-											href={button.href}
-											className={`button --${buttonVariant}-${buttonStyles} --${buttonSize}`}
-										>
-											{button.label}
-										</a>
-									);
-								}
-
-								return (
-									<Button
-										key={`btn-${button.label}`}
-										variant={buttonVariant}
-										// @ts-ignore - Ignorando erros de tipagem para compatibilidade com os testes
-										size={buttonSize}
-										// @ts-ignore - Ignorando erros de tipagem para compatibilidade com os testes
-										styles={buttonStyles}
-										onClick={button.onClick}
-									>
-										{button.label}
-									</Button>
-								);
-							})}
+							{buttons.map((button) => (
+								<Button
+									key={`btn-${button.label}`}
+									// @ts-ignore - Ignorando erros de tipagem para compatibilidade com os testes
+									onClick={button.onClick}
+								>
+									{button.label}
+								</Button>
+							))}
 						</div>
 					)}
 

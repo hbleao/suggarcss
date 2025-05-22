@@ -1,3 +1,4 @@
+"use client";
 export { Accordion } from "./Accordion";
 export { BannerDouble } from "./BannerDouble";
 export { BannerHero } from "./BannerHero";
@@ -11,6 +12,7 @@ export { Checkbox } from "./Checkbox";
 export { Chip } from "./Chip";
 export { Column } from "./Column";
 export { Dropdown } from "./Dropdown";
+export { FaqLink } from "./FaqLink";
 export { Flex } from "./Flex";
 export { Footer } from "./Footer";
 export { Grid } from "./Grid";

@@ -1,5 +1,5 @@
-import type React from "react";
 import { render, screen } from "@testing-library/react";
+import type React from "react";
 import { BannerHero } from "./index";
 
 jest.mock("../Loader", () => ({
@@ -93,16 +93,10 @@ describe("<BannerHero />", () => {
 		const buttons = [
 			{
 				label: "Botão Primário",
-				variant: "insurance",
-				styles: "primary",
-				size: "large",
 				onClick: () => {},
 			},
 			{
 				label: "Botão Secundário",
-				variant: "insurance",
-				styles: "secondary",
-				size: "large",
 				onClick: () => {},
 			},
 		];

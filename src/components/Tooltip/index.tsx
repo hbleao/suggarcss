@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import "./styles.scss";
+import s from "./styles.module.scss";
 
 import type { TooltipProps } from "./types";
 
@@ -77,9 +77,9 @@ export const Tooltip = ({
 	};
 
 	return (
-		<div className="tooltip" {...props}>
+		<div className={s.tooltip} {...props}>
 			<div
-				className="tooltip__trigger"
+				className={s.tooltip__trigger}
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
 			>
@@ -87,7 +87,7 @@ export const Tooltip = ({
 			</div>
 
 			<div
-				className={`tooltip__content --${position} ${isOpen ? "--visible" : ""}`}
+				className={`${s.tooltip__content} --${s[position]} ${isOpen ? s["--visible"] : ""}`}
 			>
 				{content}
 			</div>

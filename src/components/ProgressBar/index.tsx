@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import s from "./styles.module.scss";
 
@@ -40,14 +40,17 @@ export const ProgressBar = ({
 	value,
 	color = "#0046c0",
 	"aria-label": ariaLabel = "Progresso",
-	"data-testid": testId = "progress-bar",
+	"data-testid": testId,
 	className,
 	style,
 	...props
 }: ProgressBarProps) => {
 	const [barWidth, setBarWidth] = useState(initialValue);
 
-	const normalizeValue = useCallback((val: number) => Math.min(100, Math.max(0, val)), []);
+	const normalizeValue = useCallback(
+		(val: number) => Math.min(100, Math.max(0, val)),
+		[],
+	);
 
 	useEffect(() => {
 		const updateWidth = () => {
@@ -55,7 +58,7 @@ export const ProgressBar = ({
 		};
 
 		// Em ambiente de teste, atualiza imediatamente sem animação
-		if (process.env.NODE_ENV === 'test') {
+		if (process.env.NODE_ENV === "test") {
 			updateWidth();
 			return;
 		}

@@ -8,7 +8,7 @@ import * as Header from "../components";
 import { Button, Spacing } from "@/components";
 import { formatAemImageUrl } from "@/utils";
 
-import { useScrollBlock } from "@/hooks";
+import { useLockScroll } from "@/hooks";
 import type { Category, HeaderDrawerProps } from "./types";
 
 export const HeaderDrawer = ({
@@ -21,7 +21,7 @@ export const HeaderDrawer = ({
 	handleCategory,
 	handleSubcategory,
 }: HeaderDrawerProps) => {
-	useScrollBlock();
+	useLockScroll(isOpenMenu);
 
 	return (
 		<Header.Drawer isOpen={isOpenMenu}>

@@ -1,5 +1,6 @@
-$mobile: 320px;
-$tablet-portrait: 768px;
-$tablet-landscape: 1024px;
-$desktop: 1224px;
-$wide: 1600px;
+// Breakpoints (media queries)
+$breakpoint-xs: 320px; // mobile start
+$breakpoint-sm: 768px; // tablet portrait start
+$breakpoint-md: 1024px; // tablet landscape start
+$breakpoint-lg: 1224px; // desktop start
+$breakpoint-xl: 1600px; // wide desktop start
