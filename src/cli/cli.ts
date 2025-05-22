@@ -28,7 +28,6 @@ const program = new Command();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Função executada quando o comando é chamado
 // Lista de todos os componentes planejados para a biblioteca
 // Esta lista é usada tanto para validação quanto para exibição na interface interativa
 const available = [
@@ -56,7 +55,6 @@ const available = [
 	"Loader",
 	"Modal",
 	"ProgressBar",
-	"Modal",
 	"Notification",
 	"Radio",
 	"Row",
@@ -64,7 +62,7 @@ const available = [
 	"Stepper",
 	"Textarea",
 	"Tooltip",
-	"Typography",
+	"Typography"
 ];
 
 // Componentes que já foram implementados e estão prontos para uso
@@ -94,7 +92,6 @@ const implemented = [
 	"Loader",
 	"Modal",
 	"ProgressBar",
-	"Modal",
 	"Notification",
 	"Radio",
 	"Row",
@@ -102,7 +99,7 @@ const implemented = [
 	"Stepper",
 	"Textarea",
 	"Tooltip",
-	"Typography",
+	"Typography"
 ];
 
 // Configuração básica do programa CLI
@@ -199,78 +196,96 @@ program
 				disabled: !implemented.includes(comp),
 			}));
 
-			// Exibir prompt de seleção e aguardar escolha do usuário
+			// Exibir o prompt de seleção para o usuário
 			component = await select({
-				message: "Selecione o componente que deseja instalar:",
+				message: "Selecione um componente para instalar:",
 				choices: availableChoices,
 			});
 		}
 
-		/**
-		 * Validação do componente selecionado
-		 *
-		 * Mesmo com a interface interativa, ainda precisamos validar o componente
-		 * para o caso de o usuário especificar diretamente via argumento.
-		 */
-		// Verificar se o componente existe na lista de componentes planejados
+		// Validar se o componente existe e está implementado
 		if (!available.includes(component)) {
-			console.error(`Componente "${component}" não encontrado.`);
-			process.exit(1); // Encerra o programa com código de erro
+			console.error(`\n❌ Erro: Componente "${component}" não encontrado.`);
+			console.log(
+				`\nExecute "npx porto-ocean list" para ver todos os componentes disponíveis.\n`,
+			);
+			process.exit(1);
 		}
 
-		// Verificar se o componente já foi implementado
 		if (!implemented.includes(component)) {
-			console.error(`Componente "${component}" ainda não foi implementado.`);
-			process.exit(1); // Encerra o programa com código de erro
+			console.error(
+				`\n❌ Erro: Componente "${component}" ainda não está implementado.`,
+			);
+			console.log(`\nEste componente estará disponível em breve!\n`);
+			process.exit(1);
 		}
 
 		/**
 		 * Seleção do diretório de destino
 		 *
-		 * Se o usuário não especificar um diretório via opção --dir,
-		 * perguntamos interativamente onde instalar o componente.
+		 * O usuário pode especificar o diretório via:
+		 * 1. Opção específica do comando (-d, --dir)
+		 * 2. Opção global do programa
+		 * 3. Prompt interativo
 		 */
-		let baseDir = options.dir;
-		if (!baseDir) {
-			// Primeiro, perguntamos se o usuário quer usar o diretório atual
-			const useCurrentDir = await confirm({
-				message: "Deseja instalar no diretório atual?",
-				default: true, // Por padrão, sugerimos usar o diretório atual
+		let targetDir = options.dir || programOptions.dir;
+		if (!targetDir) {
+			// Se nenhum diretório foi especificado, perguntar ao usuário
+			targetDir = await input({
+				message:
+					"Digite o caminho para o diretório onde deseja instalar o componente:",
+				default: "src/components/ui", // Sugestão de diretório padrão
+			});
+		}
+
+		// Garantir que o diretório de destino exista
+		const dest = path.resolve(process.cwd(), targetDir, component);
+		if (fs.existsSync(dest)) {
+			// Verificar se o usuário deseja sobrescrever
+			const overwrite = await confirm({
+				message: `O diretório "${dest}" já existe. Deseja sobrescrever?`,
+				default: false, // Por segurança, sugerimos não sobrescrever
 			});
 
-			if (useCurrentDir) {
-				// Se sim, usamos o diretório de trabalho atual
-				baseDir = process.cwd();
-			} else {
-				// Se não, pedimos para digitar um caminho personalizado
-				baseDir = await input({
-					message: "Digite o caminho do diretório de destino:",
-					default: process.cwd(), // Sugerimos o diretório atual como padrão
-				});
+			if (!overwrite) {
+				console.log("\n⚠️ Instalação cancelada pelo usuário.\n");
+				process.exit(0);
 			}
 		}
 
-		/**
-		 * Cálculo dos caminhos de origem e destino
-		 *
-		 * Precisamos determinar de onde copiar os arquivos do componente
-		 * e para onde copiá-los no projeto do usuário.
-		 */
+		// Confirmação final antes da instalação
+		const confirmInstall = await confirm({
+			message: `Confirma a instalação do componente "${component}" em ${dest}?`,
+			default: true, // Por padrão, sugerimos confirmar
+		});
+
+		if (!confirmInstall) {
+			console.log("\n⚠️ Instalação cancelada pelo usuário.\n");
+			process.exit(0);
+		}
+
 		// Caminho para a raiz do pacote instalado
 		const pkgPath = path.dirname(path.dirname(__dirname));
-
-		// Tentamos encontrar o componente em vários caminhos possíveis
+		
+		// Exibir informações de depuração sobre o ambiente
+		console.log(`\nℹ️ Informações de depuração:`);
+		console.log(`- Diretório atual: ${process.cwd()}`);
+		console.log(`- Diretório do pacote: ${pkgPath}`);
+		console.log(`- Componente solicitado: ${component}`);
+		
+		// Tentamos encontrar o componente em caminhos padronizados
 		// Isso garante que a CLI funcione independentemente de como o pacote foi instalado
 		const possiblePaths = [
-			// Caminho 1: src/components na raiz do pacote
-			path.join(pkgPath, `src/components/${component}`),
-			// Caminho 2: src/components dentro da pasta dist
-			path.join(pkgPath, `dist/src/components/${component}`),
-			// Caminho 3: components diretamente na raiz do pacote
-			path.join(pkgPath, `components/${component}`),
-			// Caminho 4: components dentro da pasta dist
+			// Caminho principal: components dentro da pasta dist (nova estrutura padronizada)
 			path.join(pkgPath, `dist/components/${component}`),
+			// Caminho alternativo: src/components na raiz do pacote (para desenvolvimento local)
+			path.join(pkgPath, `src/components/${component}`),
 		];
+		
+		console.log(`- Caminhos possíveis:`);
+		possiblePaths.forEach((path, index) => {
+			console.log(`  ${index + 1}. ${path} (${fs.existsSync(path) ? 'existe' : 'não existe'})`);
+		});
 
 		// Verificamos qual caminho existe
 		let src = "";
@@ -278,286 +293,91 @@ program
 			try {
 				if (fs.existsSync(possiblePath)) {
 					src = possiblePath;
-					console.log(`Componente encontrado em: ${src}`);
+					console.log(`\n✅ Componente encontrado em: ${src}`);
 					break;
 				}
 			} catch (error) {
-				// Ignorar erros e continuar tentando outros caminhos
+				// Exibir erro para facilitar a depuração
+				console.error(`\n❌ Erro ao verificar caminho ${possiblePath}:`, error);
+				// Continuar tentando outros caminhos
 			}
 		}
 
-		// Se não encontramos o componente em nenhum dos caminhos, mostramos um erro
+		// Se não encontramos o componente em nenhum caminho, exibir erro
 		if (!src) {
 			console.error(
-				`Não foi possível encontrar o componente "${component}" em nenhum dos caminhos possíveis.`,
+				`\n❌ Erro: Não foi possível encontrar o componente "${component}" em nenhum dos caminhos possíveis.`,
 			);
-			console.error(`Caminhos verificados:\n${possiblePaths.join("\n")}`);
 			process.exit(1);
 		}
 
-		// Caminho de destino: onde o componente será instalado no projeto do usuário
-		// Seguimos a convenção src/components/ui/{nome-do-componente}
-		const dest = path.join(baseDir, `src/components/ui/${component}`);
+		// Criar o diretório de destino se não existir
+		fs.ensureDirSync(dest);
 
-		/**
-		 * Confirmação final antes da instalação
-		 *
-		 * Pedimos confirmação ao usuário antes de prosseguir com a instalação,
-		 * mostrando exatamente o que será feito.
-		 */
-		const confirmInstall = await confirm({
-			message: `Confirma a instalação do componente "${component}" em ${dest}?`,
-			default: true, // Por padrão, sugerimos confirmar
-		});
-
-		// Se o usuário cancelar, encerramos o programa sem erro
-		if (!confirmInstall) {
-			console.log("Instalação cancelada.");
-			process.exit(0); // Código 0 indica saída sem erro
+		// Copiar o componente para o destino
+		try {
+			await fs.copy(src, dest);
+			console.log(`\n✅ Componente "${component}" instalado em ${dest}`);
+		} catch (error) {
+			console.error(`\n❌ Erro ao copiar o componente:`, error);
+			process.exit(1);
 		}
 
-		/**
-		 * Execução da instalação
-		 *
-		 * Criamos o diretório de destino (se não existir) e
-		 * copiamos todos os arquivos do componente.
-		 */
-		// Garantir que o diretório de destino exista
-		await fs.ensureDir(dest);
-
-		// Copiar todos os arquivos do componente para o destino
-		// fs-extra.copy copia recursivamente todos os arquivos e subdiretórios
-		await fs.copy(src, dest);
-
-		// Exibir mensagem de sucesso
+		// Mensagem de sucesso e próximos passos
+		console.log("\n🎉 Instalação concluída com sucesso!");
 		console.log(
-			`✅ Componente "${component}" instalado em src/components/ui/${component}`,
+			`\nAgora você pode importar o componente em seu código:\n`,
 		);
-	});
-
-/**
- * Comando installAll
- *
- * Este comando instala todos os componentes implementados de uma só vez,
- * permitindo que o usuário configure rapidamente toda a biblioteca.
- */
-program
-	.command("installAll") // Define o comando 'installAll'
-	.description("Instala todos os componentes implementados") // Descrição exibida na ajuda
-	.option(
-		"-d, --dir <directory>", // Opção para especificar diretório de destino
-		"Diretório de destino para instalar os componentes",
-		"", // Valor padrão vazio
-	)
-	.action(async (options) => {
-		/**
-		 * Seleção do diretório de destino
-		 *
-		 * Se o usuário não especificar um diretório via opção --dir,
-		 * perguntamos interativamente onde instalar os componentes.
-		 */
-		let baseDir = options.dir;
-		if (!baseDir) {
-			// Primeiro, perguntamos se o usuário quer usar o diretório atual
-			const useCurrentDir = await confirm({
-				message: "Deseja instalar no diretório atual (src)?",
-				default: true, // Por padrão, sugerimos usar o diretório atual
-			});
-
-			if (useCurrentDir) {
-				// Se sim, usamos o diretório de trabalho atual
-				baseDir = process.cwd();
-			} else {
-				// Se não, pedimos para digitar um caminho personalizado
-				baseDir = await input({
-					message: "Digite o caminho do diretório de destino:",
-					default: process.cwd(), // Sugerimos o diretório atual como padrão
-				});
-			}
-		}
-
-		// Caminho para a raiz do pacote instalado
-		const pkgPath = path.dirname(path.dirname(__dirname));
-
-		// Exibir mensagem inicial
-		console.log("\nInstalando todos os componentes implementados...\n");
-
-		// Confirmação final antes da instalação
-		const confirmInstall = await confirm({
-			message: `Confirma a instalação de todos os componentes (${implemented.length}) em ${baseDir}/src/components/ui/?`,
-			default: true, // Por padrão, sugerimos confirmar
-		});
-
-		// Se o usuário cancelar, encerramos o programa sem erro
-		if (!confirmInstall) {
-			console.log("Instalação cancelada.");
-			process.exit(0); // Código 0 indica saída sem erro
-		}
-
-		// Contador de componentes instalados com sucesso
-		let successCount = 0;
-
-		// Instalar cada componente implementado
-		for (const component of implemented) {
-			try {
-				// Tentamos encontrar o componente em vários caminhos possíveis
-				// Isso garante que a CLI funcione independentemente de como o pacote foi instalado
-				const possiblePaths = [
-					// Caminho 1: src/components na raiz do pacote
-					path.join(pkgPath, `src/components/${component}`),
-					// Caminho 2: src/components dentro da pasta dist
-					path.join(pkgPath, `dist/src/components/${component}`),
-					// Caminho 3: components diretamente na raiz do pacote
-					path.join(pkgPath, `components/${component}`),
-					// Caminho 4: components dentro da pasta dist
-					path.join(pkgPath, `dist/components/${component}`),
-				];
-
-				// Verificamos qual caminho existe
-				let src = "";
-				for (const possiblePath of possiblePaths) {
-					try {
-						if (fs.existsSync(possiblePath)) {
-							src = possiblePath;
-							break;
-						}
-					} catch (error) {
-						// Ignorar erros e continuar tentando outros caminhos
-					}
-				}
-
-				// Se não encontramos o componente, pulamos para o próximo
-				if (!src) {
-					console.error(
-						`❌ Não foi possível encontrar o componente "${component}" em nenhum dos caminhos possíveis.`,
-					);
-					continue;
-				}
-
-				// Caminho de destino: onde o componente será instalado no projeto do usuário
-				const dest = path.join(baseDir, `src/components/ui/${component}`);
-
-				// Garantir que o diretório de destino exista
-				await fs.ensureDir(dest);
-
-				// Copiar todos os arquivos do componente para o destino
-				await fs.copy(src, dest);
-
-				// Exibir mensagem de sucesso para este componente
-				console.log(
-					`✅ Componente "${component}" instalado em src/components/ui/${component}`,
-				);
-				successCount++;
-			} catch (error: unknown) {
-				// Em caso de erro, exibimos a mensagem mas continuamos com os outros componentes
-				const errorMessage =
-					error instanceof Error ? error.message : String(error);
-				console.error(
-					`❌ Erro ao instalar o componente "${component}": ${errorMessage}`,
-				);
-			}
-		}
-
-		// Exibir resumo da instalação
 		console.log(
-			`\nInstalação concluída: ${successCount} de ${implemented.length} componentes instalados com sucesso.\n`,
+			`import { ${component} } from "${path.relative(
+				process.cwd(),
+				dest,
+			)}";\n`,
 		);
 	});
 
 /**
  * Comando release-notes
- *
- * Este comando exibe as notas de versão do projeto,
- * permitindo que os usuários vejam o que mudou em cada versão.
+ * 
+ * Este comando exibe as notas de versão do pacote.
  */
 program
 	.command("release-notes") // Define o comando 'release-notes'
 	.description("Exibe as notas de versão") // Descrição exibida na ajuda
 	.argument("[version]", "Versão específica para exibir (opcional)")
-	.option(
-		"-a, --all", // Opção para exibir todas as versões
-		"Exibe todas as versões",
-		false, // Valor padrão
-	)
-	.action(async (versionArg, options, command) => {
+	.action(async (version, options, command) => {
 		// Obter as opções globais do programa principal
 		const programOptions = command.parent?.opts() || {};
 
-		// Se a opção --all foi especificada (no comando ou globalmente), exibimos todas as versões
-		if (options.all || programOptions.all) {
-			console.log("\nHistórico completo de versões:\n");
+		if (programOptions.all) {
+			// Exibir todas as versões
 			const allNotes = getAllReleaseNotes();
-
-			// Exibir um resumo de todas as versões
-			for (const note of allNotes) {
-				console.log(`v${note.version} - ${note.date} - ${note.title}`);
+			console.log("\n📋 Histórico completo de versões:\n");
+			allNotes.forEach((note) => {
+				console.log(formatReleaseNote(note));
+				console.log("-----------------------------------\n");
+			});
+		} else if (version) {
+			// Exibir uma versão específica
+			const note = getReleaseNote(version);
+			if (note) {
+				console.log(formatReleaseNote(note));
+			} else {
+				console.error(`\n❌ Erro: Versão "${version}" não encontrada.`);
+				process.exit(1);
 			}
-
-			console.log("\nPara ver detalhes de uma versão específica, execute:");
-			console.log("  npx porto-ocean release-notes <versão>\n");
-			return;
+		} else {
+			// Exibir a versão mais recente
+			const latestNote = getAllReleaseNotes()[0]; // A primeira é a mais recente
+			console.log("\n📋 Notas da versão mais recente:\n");
+			console.log(formatReleaseNote(latestNote));
 		}
-
-		// Se uma versão específica foi solicitada, exibimos apenas essa versão
-		const version = versionArg || "latest";
-		const note = getReleaseNote(version);
-
-		if (!note) {
-			console.error(`\nVersão "${version}" não encontrada.\n`);
-			console.log("Versões disponíveis:");
-			const allNotes = getAllReleaseNotes();
-			for (const note of allNotes) {
-				console.log(`- v${note.version}`);
-			}
-			process.exit(1);
-		}
-
-		// Formatar e exibir a nota de release
-		const formattedNote = formatReleaseNote(note);
-		console.log(formattedNote);
 	});
 
-/**
- * Handler para processar a opção global --all
- *
- * Este evento é acionado após o parsing dos argumentos e antes da execução do comando.
- * Ele verifica se a opção global --all foi fornecida e nenhum comando específico foi solicitado,
- * nesse caso, executa o comando installAll.
- */
-program.hook("preAction", (thisCommand, actionCommand) => {
-	const options = program.opts();
+// Analisar os argumentos da linha de comando e executar o comando apropriado
+program.parse(process.argv);
 
-	// Se a opção global --all foi fornecida e nenhum comando específico foi solicitado
-	if (options.all && !actionCommand.name()) {
-		console.log("Opção --all detectada, executando 'installAll'...");
-
-		// Encontrar o comando installAll
-		const installAllCommand = program.commands.find(
-			(cmd) => cmd.name() === "installAll",
-		);
-
-		// Executar o comando installAll se encontrado
-		if (installAllCommand) {
-			// Uma abordagem mais simples é usar o método parse do comando
-			// Isso fará com que o Commander execute o comando installAll
-			console.log("Executando comando 'installAll'...");
-
-			// Redirecionar para o comando installAll
-			program.parse([
-				"node",
-				"script.js",
-				"installAll",
-				...process.argv.slice(3),
-			]);
-			return; // Importante para evitar que o programa continue
-		}
-	}
-});
-
-/**
- * Iniciar o processamento dos argumentos da linha de comando
- *
- * Este comando analisa os argumentos passados pelo usuário e
- * executa o comando apropriado com suas opções e argumentos.
- */
-program.parse();
+// Se nenhum comando for especificado, exibir a ajuda
+if (!process.argv.slice(2).length) {
+	program.outputHelp();
+}

@@ -46,7 +46,7 @@ export const HeaderAcquisitionFlow = ({
 			<Image
 				className={clsx(
 					"header-acquisition-flow__button",
-					"header-acquisition-flow__item-center"
+					"header-acquisition-flow__item-center",
 				)}
 				src={LogoPortoSVG}
 				height={28}

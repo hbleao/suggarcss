@@ -447,6 +447,43 @@ Para obter o melhor resultado ao integrar a biblioteca em seu projeto, recomenda
    npx porto-ocean release-notes
    ```
 
+### Processo de Criação de uma Nova Release
+
+Para criar e publicar uma nova versão do pacote, siga estes passos:
+
+1. **Atualizar o histórico de versões**:
+   - Edite o arquivo `src/cli/release-notes.ts`
+   - Adicione uma nova entrada no array `releaseHistory` no topo da lista
+   - Inclua a versão, data, título e mudanças categorizadas (features, fixes, etc.)
+
+2. **Atualizar a versão no package.json**:
+   ```bash
+   npm version patch # para atualizações pequenas (0.0.x)
+   npm version minor # para novos recursos (0.x.0)
+   npm version major # para mudanças significativas (x.0.0)
+   ```
+
+3. **Gerar o CHANGELOG atualizado**:
+   ```bash
+   npm run update-changelog
+   ```
+
+4. **Compilar o pacote**:
+   ```bash
+   npm run build
+   ```
+
+5. **Testar localmente (opcional)**:
+   ```bash
+   npm pack
+   ```
+   Isso criará um arquivo `.tgz` que você pode instalar em outro projeto para testar.
+
+6. **Publicar no npm**:
+   ```bash
+   npm publish
+   ```
+
 ### Dicas e Solução de Problemas
 
 - **Diretório não encontrado?** Certifique-se de que o diretório de destino existe antes de executar os comandos.
@@ -458,6 +495,8 @@ Para obter o melhor resultado ao integrar a biblioteca em seu projeto, recomenda
 - **Problemas com importações?** Certifique-se de que seu projeto está configurado para suportar TypeScript e SCSS.
 
 - **Executando em CI/CD?** Use a opção `--dir` para evitar prompts interativos em ambientes automatizados.
+
+- **Erros de compilação?** Alguns componentes podem falhar na compilação devido a dependências específicas. Use o comando `build:components` para compilar apenas os componentes que funcionam corretamente.
 
 ### Desenvolvimento e Testes
 

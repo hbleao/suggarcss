@@ -65,19 +65,20 @@ async function main() {
 			console.log("✅ CHANGELOG.md copiado para a pasta dist com sucesso!");
 		}
 
-		// Copiar a pasta src inteira para dentro da pasta dist
-		await fs.copy(
-			path.resolve(rootDir, "src"),
-			path.resolve(distDir, "src"),
-		);
-		console.log("✅ Pasta src copiada para dentro da pasta dist com sucesso!");
-
-		// Copiar os componentes para a raiz da pasta dist para maior compatibilidade
+		// Copiar apenas os componentes para a pasta dist/components
+		// Isso evita duplicações e mantém uma estrutura mais consistente
 		await fs.copy(
 			path.resolve(rootDir, "src/components"),
 			path.resolve(distDir, "components"),
 		);
-		console.log("✅ Componentes copiados para a raiz da pasta dist com sucesso!");
+		console.log("✅ Componentes copiados para a pasta dist/components com sucesso!");
+
+		// Copiar os hooks para a pasta dist/hooks
+		await fs.copy(
+			path.resolve(rootDir, "src/hooks"),
+			path.resolve(distDir, "hooks"),
+		);
+		console.log("✅ Hooks copiados para a pasta dist/hooks com sucesso!");
 
 		// Verificar e garantir que os arquivos chunk estão presentes
 		const distFiles = await fs.readdir(distDir);

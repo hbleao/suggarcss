@@ -9,8 +9,10 @@
 		"porto-ocean": "./dist/cli/cli.js"
 	},
 	"files": [
-		"dist/**/*",
-		"src/**/*",
+		"dist",
+		"src/index.ts",
+		"src/cli",
+		"src/components/**/*",
 		"README.md"
 	],
 	"author": {
@@ -18,11 +20,13 @@
 		"email": "henrique.leao@portoseguro.com.br"
 	},
 	"scripts": {
-		"build": "tsup src/index.ts src/cli/cli.ts --format esm --dts --out-dir dist --minify --clean && npm run copy-files",
-		"build:cli": "tsup src/cli/cli.ts --format esm --out-dir dist --minify --clean && npm run copy-files",
+		"build": "tsup src/index.ts src/cli/cli.ts --format esm,cjs --dts --out-dir dist --minify --clean && npm run build:components && npm run copy-files",
+		"build:cli": "tsup src/cli/cli.ts --format esm,cjs --out-dir dist/cli --minify --clean && chmod +x dist/cli/cli.js && npm run copy-files",
+		"build:components": "node scripts/build-components.js",
 		"test": "jest --passWithNoTests",
-		"test:cli": "node dist/cli/cli.js",
+		"test:cli": "node dist/cli.js",
 		"copy-files": "node scripts/copy-files.js",
+		"update-changelog": "node scripts/update-changelog.js",
 		"clean": "npm run clean:coverage && npm run clean:dist",
 		"clean:coverage": "rimraf coverage",
 		"clean:dist": "rimraf dist",
