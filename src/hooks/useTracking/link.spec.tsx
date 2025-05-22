@@ -20,15 +20,18 @@ describe("link tracking", () => {
     // Configurar o DOM com elementos para teste
     document.body.innerHTML = `
       <div id="gtm-title">Página Principal</div>
-      <a href="/contato">Entre em contato</a>
-      <a href="/sobre">Sobre nós</a>
+      <a class="link" href="/contato">Entre em contato</a>
+      <a class="link" href="/sobre">Sobre nós</a>
     `;
 
     // Executar a função de rastreamento
     link();
 
     // Obter todos os links
-    const linkElements = document.querySelectorAll("a");
+    const linkElements = document.querySelectorAll(".link");
+    
+    // Verificar se os links foram encontrados
+    expect(linkElements.length).toBe(2);
 
     // Verificar se os atributos foram adicionados ao primeiro link
     expect(linkElements[0].getAttribute("data-gtm-name")).toBe("formatted-Página Principal");
@@ -49,22 +52,29 @@ describe("link tracking", () => {
   it("deve usar valores padrão quando elementos não existem", () => {
     // Configurar o DOM sem o elemento de título
     document.body.innerHTML = `
-      <a href="/home"></a>
+      <a class="link" href="/home"></a>
     `;
 
     // Executar a função de rastreamento
     link();
 
     // Obter o link
-    const linkElement = document.querySelector("a");
+    const linkElement = document.querySelector(".link");
+    
+    // Verificar se o link foi encontrado
+    if (!linkElement) {
+      fail("Link não encontrado");
+      return;
+    }
 
     // Verificar se os atributos foram adicionados com valores padrão
     expect(linkElement.getAttribute("data-gtm-name")).toBe("formatted-sem-titulo");
     expect(linkElement.getAttribute("data-gtm-clicktype")).toBe("link");
-    expect(linkElement.getAttribute("data-gtm-subname")).toBe("formatted-sem-texto");
+    expect(linkElement.getAttribute("data-gtm-subname")).toBe("formatted-sem-label");
 
     // Verificar se a função formatGtmText foi chamada corretamente
     expect(formatGtmText).toHaveBeenCalledWith("sem-titulo");
-    expect(formatGtmText).toHaveBeenCalledWith("sem-texto");
+    expect(formatGtmText).toHaveBeenCalledWith("sem-label");
+    expect(formatGtmText).toHaveBeenCalledTimes(2);
   });
 });

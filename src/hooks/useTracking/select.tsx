@@ -1,6 +1,8 @@
 import { formatGtmText } from './utils';
 
 export function selects(): void {
+	if (typeof window === "undefined") return;
+	
 	const dropdowns = document.querySelectorAll(
 		'.dropdown__root',
 	) as NodeListOf<HTMLDivElement>;
@@ -9,20 +11,38 @@ export function selects(): void {
 
 	// biome-ignore lint/complexity/noForEach: <explanation>
 	dropdowns.forEach((dropdown: HTMLElement) => {
+		// Garantir que o elemento dropdown existe
+		if (!dropdown) return;
+		
 		dropdown.addEventListener('click', () => {
 			setTimeout(() => {
 				const dropdownItems = dropdown.querySelectorAll('.dropdown__item');
 
 				// biome-ignore lint/complexity/noForEach: <explanation>
 				dropdownItems.forEach((item) => {
-					item?.addEventListener('click', () => {
+					// Garantir que o item existe
+					if (!item) return;
+					
+					item.addEventListener('click', () => {
 						const labelElement = dropdown.querySelector('.dropdown__label');
-						const labelText = labelElement?.textContent?.trim() ?? 'sem-valor';
+						
+						// Garantir que window.dataLayer existe
+						if (!window.dataLayer) {
+							window.dataLayer = [];
+						}
+						
+						// Obter o texto do label ou usar valor padrão
+						const labelContent = labelElement?.textContent || '';
+						const labelText = labelContent.trim() || 'sem-valor';
+						
+						// Obter o conteúdo do item ou usar valor padrão
+						const itemContent = item.innerHTML || '';
+						const itemText = itemContent.trim() || 'sem-texto';
 
 						window.dataLayer.push({
 							event: 'auto.event',
 							ev_action: `selecionou:${formatGtmText(titleText)}`,
-							ev_label: `${formatGtmText(labelText)}:${formatGtmText(item.innerHTML)}`,
+							ev_label: `${formatGtmText(labelText)}:${formatGtmText(itemText)}`,
 						});
 					});
 				});

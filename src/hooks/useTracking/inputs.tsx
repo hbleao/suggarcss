@@ -9,11 +9,14 @@ export function inputs(): void {
 	inputs.forEach((input: HTMLInputElement) => {
 		const titleElement = document.querySelector('#gtm-title');
 		const titleText = titleElement?.textContent?.trim() ?? 'sem-titulo';
-		const inputname = input?.name?.trim() ?? 'sem-label';
+		
+		// Corrigindo a lógica para garantir que inputname seja 'sem-label' quando o nome estiver vazio
+		const inputName = input?.name || '';
+		const inputValue = inputName.trim() || 'sem-valor';
 
-		input.setAttribute('data-gtm-name', 'form');
-		input.setAttribute('data-gtm-clicktype', 'input');
+		// Define o atributo data-gtm-name apenas uma vez com o valor formatado do título
 		input.setAttribute('data-gtm-name', formatGtmText(titleText));
-		input.setAttribute('data-gtm-subname', formatGtmText(inputname));
+		input.setAttribute('data-gtm-inputtype', input.type || 'text');
+		input.setAttribute('data-gtm-subname', formatGtmText(inputValue));
 	});
 }

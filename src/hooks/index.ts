@@ -7,7 +7,7 @@
 
 // Hooks para responsividade
 export { useMediaQuery } from "./useMediaQuery";
-export { useWindowSize } from "./useWindownSize/";
+export { useWindowSize } from "./useWindownSize";
 
 // Hooks para interação com elementos
 export { useOutsideClick } from "./useOutsideClick";

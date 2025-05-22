@@ -16,8 +16,14 @@ declare global {
 }
 
 export const useTracking = () => {
+	// Verificar se window existe (para compatibilidade com SSR)
 	if (typeof window === "undefined") return;
-	window.dataLayer = window?.dataLayer || [];
+	
+	// Garantir que dataLayer seja um array vazio se não existir
+	if (!window.dataLayer) window.dataLayer = [];
+	
+	// Garantir que dataLayer seja um array
+	if (!Array.isArray(window.dataLayer)) window.dataLayer = [];
 
 	useEffect(() => {
 		buttons();

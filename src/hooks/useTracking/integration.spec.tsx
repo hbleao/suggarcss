@@ -106,13 +106,15 @@ describe('useTracking integration', () => {
   it('deve chamar as funções de rastreamento quando ocorrem mutações no DOM', () => {
     // Criar um mock que permite simular mutações
     let mutationCallback: MutationCallback = () => {}; // Inicialização padrão
+    const mockObserverInstance = {
+      observe: jest.fn(),
+      disconnect: jest.fn(),
+      takeRecords: jest.fn()
+    };
+    
     global.MutationObserver = jest.fn().mockImplementation((callback) => {
       mutationCallback = callback;
-      return {
-        observe: jest.fn(),
-        disconnect: jest.fn(),
-        takeRecords: jest.fn()
-      };
+      return mockObserverInstance;
     }) as unknown as typeof MutationObserver;
     
     // Renderizar o hook
@@ -123,8 +125,7 @@ describe('useTracking integration', () => {
     
     // Simular uma mutação
     const mockMutations = [{ type: 'childList' }] as unknown as MutationRecord[];
-    const mockObserver = (MutationObserver as jest.Mock).mock.results[0].value;
-    mutationCallback(mockMutations, mockObserver);
+    mutationCallback(mockMutations, mockObserverInstance as unknown as MutationObserver);
     
     // Verificar se as funções de rastreamento foram chamadas novamente
     expect(require('./buttons').buttons).toHaveBeenCalled();

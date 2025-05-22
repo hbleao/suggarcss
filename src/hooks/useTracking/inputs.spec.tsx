@@ -20,15 +20,15 @@ describe("inputs tracking", () => {
     // Configurar o DOM com elementos para teste
     document.body.innerHTML = `
       <div id="gtm-title">Formulário de Cadastro</div>
-      <input type="text" name="nome" placeholder="Nome" />
-      <input type="email" name="email" placeholder="Email" />
+      <input class="input__field" type="text" name="nome" placeholder="Nome" />
+      <input class="input__field" type="email" name="email" placeholder="Email" />
     `;
 
     // Executar a função de rastreamento
     inputs();
 
     // Obter todos os inputs
-    const inputElements = document.querySelectorAll("input");
+    const inputElements = document.querySelectorAll(".input__field");
 
     // Verificar se os atributos foram adicionados ao primeiro input
     expect(inputElements[0].getAttribute("data-gtm-name")).toBe("formatted-Formulário de Cadastro");
@@ -49,14 +49,20 @@ describe("inputs tracking", () => {
   it("deve usar valores padrão quando elementos não existem", () => {
     // Configurar o DOM sem o elemento de título
     document.body.innerHTML = `
-      <input type="text" name="" placeholder="Campo sem nome" />
+      <input class="input__field" type="text" name="" placeholder="Campo sem nome" />
     `;
 
     // Executar a função de rastreamento
     inputs();
 
     // Obter o input
-    const inputElement = document.querySelector("input");
+    const inputElement = document.querySelector(".input__field");
+    
+    // Verificar se o input foi encontrado
+    if (!inputElement) {
+      fail("Input não encontrado");
+      return;
+    }
 
     // Verificar se os atributos foram adicionados com valores padrão
     expect(inputElement.getAttribute("data-gtm-name")).toBe("formatted-sem-titulo");
