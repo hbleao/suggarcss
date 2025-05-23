@@ -80,6 +80,27 @@ async function main() {
 		);
 		console.log("✅ Hooks copiados para a pasta dist/hooks com sucesso!");
 
+		// Copiar os arquivos da CLI refatorada
+		await fs.copy(
+			path.resolve(rootDir, "src/cli/commands"),
+			path.resolve(distDir, "cli/commands"),
+		);
+		console.log("✅ Comandos da CLI copiados para a pasta dist/cli/commands com sucesso!");
+
+		// Copiar o arquivo release-notes.ts da CLI
+		await fs.copy(
+			path.resolve(rootDir, "src/cli/release-notes.ts"),
+			path.resolve(distDir, "cli/release-notes.ts"),
+		);
+		console.log("✅ Arquivo release-notes.ts copiado para a pasta dist/cli com sucesso!");
+
+		// Copiar o arquivo utils.ts da CLI
+		await fs.copy(
+			path.resolve(rootDir, "src/cli/utils.ts"),
+			path.resolve(distDir, "cli/utils.ts"),
+		);
+		console.log("✅ Arquivo utils.ts copiado para a pasta dist/cli com sucesso!");
+
 		// Verificar e garantir que os arquivos chunk estão presentes
 		const distFiles = await fs.readdir(distDir);
 		const chunkFiles = distFiles.filter(file => file.includes('chunk'));

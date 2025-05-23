@@ -21,7 +21,7 @@
 	},
 	"scripts": {
 		"build": "tsup src/index.ts src/cli/cli.ts --format esm,cjs --dts --out-dir dist --minify --clean && npm run build:components && npm run copy-files",
-		"build:cli": "tsup src/cli/cli.ts --format esm,cjs --out-dir dist/cli --minify --clean && chmod +x dist/cli/cli.js && npm run copy-files",
+		"build:cli": "tsup src/cli/cli.ts src/cli/utils.ts src/cli/commands/index.ts --format esm,cjs --out-dir dist/cli --minify --clean && chmod +x dist/cli/cli.js && npm run copy-files",
 		"build:components": "node scripts/build-components.js",
 		"test": "jest --passWithNoTests",
 		"test:cli": "node dist/cli.js",

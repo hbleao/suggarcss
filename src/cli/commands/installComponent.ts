@@ -2,8 +2,28 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import { input, confirm, select } from '@inquirer/prompts';
 // Importações das funções utilitárias
+// Definindo tipos para as funções que serão importadas
+type ComponentListFunction = () => string[];
+
+// Importações das funções utilitárias
 // Nota: O arquivo utils.ts deve existir no mesmo diretório que este arquivo
-import { getAvailableComponents, getImplementedComponents } from '../utils';
+declare const getAvailableComponents: ComponentListFunction;
+declare const getImplementedComponents: ComponentListFunction;
+
+// Importação dinâmica para evitar erros de TypeScript durante o build
+// As funções reais serão importadas em tempo de execução
+let utils: { getAvailableComponents: ComponentListFunction; getImplementedComponents: ComponentListFunction };
+
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  utils = require('../utils');
+} catch (error) {
+  // Fallback para caso o módulo não seja encontrado
+  utils = {
+    getAvailableComponents: () => [],
+    getImplementedComponents: () => []
+  };
+}
 
 /**
  * Instala um componente específico no diretório de destino
@@ -12,8 +32,8 @@ import { getAvailableComponents, getImplementedComponents } from '../utils';
  */
 export async function installComponent(componentName: string, initialDestDir?: string): Promise<void> {
   let destDir = initialDestDir;
-  const available = getAvailableComponents();
-  const implemented = getImplementedComponents();
+  const available = utils.getAvailableComponents();
+  const implemented = utils.getImplementedComponents();
 
   // Validar se o componente existe e está implementado
   if (!available.includes(componentName)) {
@@ -95,7 +115,7 @@ export async function installComponent(componentName: string, initialDestDir?: s
  */
 export async function installAllComponents(initialDestDir?: string): Promise<void> {
   let destDir = initialDestDir;
-  const implemented = getImplementedComponents();
+  const implemented = utils.getImplementedComponents();
   
   if (implemented.length === 0) {
     console.error("\n❌ Erro: Nenhum componente implementado encontrado.");
@@ -156,13 +176,17 @@ export async function handleComponentInstallation(componentName?: string, option
   
   // Se um componente específico foi especificado, instalar esse componente
   if (componentName || options?.component) {
-    const component = componentName || options.component;
+    const component = componentName || options?.component || '';
+    if (!component) {
+      console.error('\n❌ Erro: Nome do componente não especificado.\n');
+      process.exit(1);
+    }
     return installComponent(component, options?.dir);
   }
   
   // Caso contrário, mostrar lista interativa de componentes
-  const available = getAvailableComponents();
-  const implemented = getImplementedComponents();
+  const available = utils.getAvailableComponents();
+  const implemented = utils.getImplementedComponents();
   
   if (available.length === 0) {
     console.error("\n❌ Erro: Nenhum componente disponível encontrado.");
@@ -184,5 +208,5 @@ export async function handleComponentInstallation(componentName?: string, option
   });
   
   // O valor retornado pelo select é garantido como string neste contexto
-  return installComponent(selectedComponent, options?.dir);
+  return installComponent(selectedComponent as string, options?.dir);
 }

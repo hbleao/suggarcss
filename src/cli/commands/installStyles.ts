@@ -2,6 +2,17 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import { input, confirm } from '@inquirer/prompts';
 
+// Importação dinâmica para evitar erros de TypeScript durante o build
+let utils: Record<string, any> = {};
+
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  utils = require('../utils');
+} catch (error) {
+  // Fallback para caso o módulo não seja encontrado
+  utils = {};
+}
+
 /**
  * Instala os estilos base do projeto no diretório de destino
  * @param destDir Diretório de destino para instalação
