@@ -16,12 +16,12 @@ import type { RootProps } from "./types";
  *
  * @example
  * // Breadcrumb com múltiplos níveis de navegação
- * <Breadcrumb 
+ * <Breadcrumb
  *   breadcrumbList={[
  *     { label: 'Home', link: '/' },
  *     { label: 'Produtos', link: '/produtos' },
  *     { label: 'Detalhes', link: '/produtos/detalhes' }
- *   ]} 
+ *   ]}
  * />
  *
  * @returns {JSX.Element} Componente Breadcrumb renderizado
@@ -30,14 +30,16 @@ import type { RootProps } from "./types";
 export const Breadcrumb = ({ breadcrumbList, ...restProps }: RootProps) => {
 	return (
 		<div className="breadcrumb" {...restProps}>
-			<ul className="breadcrumb__list">
-				{breadcrumbList.length > 0 &&
-					breadcrumbList.map((breadcrumb) => (
-						<li key={breadcrumb.label} className="breadcrumb__list-item">
-							<a href={breadcrumb.link}>{breadcrumb.label}</a>
-						</li>
-					))}
-			</ul>
+			<div className="breadcrumb__container">
+				<ul className="breadcrumb__list">
+					{breadcrumbList.length > 0 &&
+						breadcrumbList.map((breadcrumb) => (
+							<li key={breadcrumb.label} className="breadcrumb__list-item">
+								<a href={breadcrumb.link}>{breadcrumb.label}</a>
+							</li>
+						))}
+				</ul>
+			</div>
 		</div>
 	);
 };

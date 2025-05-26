@@ -1,4 +1,4 @@
-import { cepMask } from "./cep";
+import { cepMask } from ".";
 
 describe("cepMask", () => {
 	it("should format complete CEP correctly", () => {

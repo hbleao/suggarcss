@@ -2,7 +2,7 @@ import fs from "node:fs";
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-	entry: ["src/index.ts", "src/cli/cli.ts"],
+	entry: ["src/index.ts", "src/cli.ts"],
 	format: ["esm"],
 	dts: true,
 	minify: true,
@@ -15,7 +15,6 @@ export default defineConfig({
 		{
 			name: "scss-module",
 			setup(build) {
-				// Intercepta importações de arquivos .scss
 				build.onLoad({ filter: /\.scss$/ }, async (args) => {
 					const contents = await fs.promises.readFile(args.path, "utf8");
 					const cssModuleKeys =
@@ -24,7 +23,6 @@ export default defineConfig({
 							?.map((selector) => selector.replace(/\.\s*|\s*{/g, ""))
 							.filter(Boolean) || [];
 
-					// Cria um objeto com as classes CSS como chaves
 					const cssModuleExports = cssModuleKeys.reduce(
 						(acc, key) => {
 							acc[key] = key;
@@ -33,7 +31,6 @@ export default defineConfig({
 						{} as Record<string, string>,
 					);
 
-					// Retorna um módulo JavaScript que exporta as classes CSS
 					return {
 						contents: `export default ${JSON.stringify(cssModuleExports)};`,
 						loader: "js",

@@ -1,4 +1,4 @@
-import { plateMask } from "./plate";
+import { plateMask } from ".";
 
 describe("plate.ts", () => {
 	it("should format plate correctly", () => {

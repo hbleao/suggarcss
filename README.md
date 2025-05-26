@@ -1,6 +1,6 @@
-# Documentação da CLI do SugarCSS
+# Documentação da CLI do Porto Ocean
 
-A CLI (Command Line Interface) que criamos para o SugarCSS é uma ferramenta que permite aos usuários instalar componentes React com SASS em seus projetos. Este documento explica como ela funciona e as bibliotecas que utiliza.
+A CLI (Command Line Interface) que criamos para o Porto Ocean é uma ferramenta que permite aos usuários instalar componentes React com SASS em seus projetos. Este documento explica como ela funciona e as bibliotecas que utiliza.
 
 ## Estrutura Básica da CLI
 
@@ -64,16 +64,16 @@ import { fileURLToPath } from "node:url";
 2. **Configuração do Programa**:
    ```typescript
    program
-     .name("sugarcss")
-     .description("Instala componentes React com Sass do @sugarcss/react")
+     .name("porto-ocean")
+     .description("Instala componentes React com Sass do @porto/js-library-corp-hubv-porto-ocean")
      .version("0.1.0");
    ```
    - Define o nome, descrição e versão da CLI
 
 3. **Definição de Comandos**:
 
-   A CLI do SugarCSS oferece os seguintes comandos:
-
+   A CLI do porto-ocean os seguintes comandos:
+F
    ### a. Comando `install`
 
    Instala um componente individual no projeto.
@@ -200,271 +200,70 @@ Além da CLI, usamos o `tsup` (baseado em esbuild) para construir a biblioteca:
 
 A CLI do Porto Ocean foi projetada para facilitar a integração dos componentes, estilos e utilitários em seu projeto. Abaixo, você encontrará instruções detalhadas sobre como usar cada comando.
 
-### 1. Instalação de Recursos
+### 1. Instalação de Componentes Individuais
 
 #### Comando: `install`
 
-O comando `install` permite instalar componentes, estilos, hooks e utilitários da biblioteca. Cada tipo de recurso pode ser instalado usando uma opção específica.
-
-##### Instalação de Componentes
+O comando `install` permite instalar componentes individuais de forma interativa ou direta.
 
 ```bash
-# Modo interativo (apresenta uma lista de componentes disponíveis)
+# Modo interativo (recomendado para iniciantes)
 npx porto-ocean install
 
 # Instalar um componente específico
-npx porto-ocean install Button
+npx porto-ocean install button
 
-# Instalar um componente específico usando a opção --component
-npx porto-ocean install --component Button
-
-# Instalar todos os componentes implementados
-npx porto-ocean install --all-components
-
-# Instalar em um diretório específico
-npx porto-ocean install Button --dir ./meu-projeto/src/components
+# Instalar um componente em um diretório específico
+npx porto-ocean install chip --dir ./meu-projeto/src/components
 ```
-
-> **Nota:** Você pode especificar apenas uma opção por vez (`--all-components`, `--styles`, `--hooks` ou `--utils`)
 
 **Fluxo interativo:**
 1. Se nenhum componente for especificado, a CLI mostrará uma lista de todos os componentes disponíveis
-2. Após selecionar um componente, você pode especificar o diretório de destino
+2. Após selecionar o componente, você poderá escolher o diretório de destino
 3. A CLI confirmará a instalação antes de prosseguir
+4. Os arquivos do componente serão copiados para o diretório especificado
 
-**Estrutura de diretórios após instalação:**
-```
-src/components/ui/Button/
-  Button.tsx
-  styles.scss
-  types.ts
-  index.ts
-```
+**Dica:** Use a opção `--dir` para especificar o diretório de destino diretamente, evitando a etapa interativa.
 
-**Exemplo de uso após instalação:**
-```tsx
-import { Button } from '../components/ui/Button';
+### 2. Instalação de Todos os Componentes
 
-function MeuComponente() {
-  return (
-    <Button variant="primary">Clique aqui</Button>
-  );
-}
-```
+#### Comando: `installAll`
 
-##### Instalação de Estilos
+O comando `installAll` permite instalar todos os componentes implementados de uma só vez.
 
 ```bash
-# Instalar apenas os estilos base do projeto
-npx porto-ocean install --styles
+# Instalar todos os componentes no diretório atual
+npx porto-ocean installAll
 
-# Especificar diretório de destino
-npx porto-ocean install --styles --dir ./src/styles
+# Instalar todos os componentes em um diretório específico
+npx porto-ocean installAll --dir ./meu-projeto/src/components
 ```
 
-**Fluxo de instalação:**
-1. Se nenhum diretório for especificado, a CLI solicitará o diretório de destino
-2. A CLI confirmará a instalação antes de prosseguir
-3. Os arquivos de estilo serão copiados para o diretório especificado
+**Quando usar:** Este comando é ideal quando você está iniciando um novo projeto e deseja importar todos os componentes disponíveis de uma só vez.
 
-**Estrutura de diretórios após instalação:**
-```
-src/styles/
-  variables.scss
-  mixins.scss
-  reset.scss
-  styles.scss
-```
+**Nota:** Apenas os componentes já implementados serão instalados. Use o comando `list` para ver quais componentes estão disponíveis.
 
-**Exemplo de uso após instalação:**
-```scss
-// No seu arquivo principal de estilos
-@import "./styles/styles.scss";
-```
+### 3. Instalação de Estilos e Assets
 
-##### Instalação de Hooks
+#### Comando: `install-styles`
+
+O comando `install-styles` instala todos os estilos e assets do projeto, incluindo variáveis CSS, tokens de design, reset CSS e utilitários de estilo.
 
 ```bash
-# Instalar todos os hooks disponíveis
-npx porto-ocean install --hooks
+# Instalar estilos no diretório atual
+npx porto-ocean install-styles
 
-# Especificar diretório de destino
-npx porto-ocean install --hooks --dir ./src/hooks
+# Instalar estilos em um diretório específico
+npx porto-ocean install-styles --dir ./meu-projeto
 ```
 
-**Fluxo de instalação:**
-1. Se nenhum diretório for especificado, a CLI solicitará o diretório de destino
-2. A CLI confirmará a instalação antes de prosseguir
-3. Todos os hooks serão copiados para o diretório especificado
+**O que é instalado:**
+- Variáveis CSS e tokens de design (cores, espaçamentos, tipografia)
+- Reset CSS para normalização entre navegadores
+- Mixins e funções SCSS utilitárias
+- Temas (claro/escuro)
 
-**Estrutura de diretórios após instalação:**
-```
-src/hooks/
-  useMediaQuery.ts
-  useOutsideClick.ts
-  useToggle.ts
-  usePrevious.ts
-  useWindowSize.ts
-  useOnScreen.ts
-  useCookie.ts
-  index.ts
-```
-
-**Exemplo de uso após instalação:**
-```tsx
-import { useMediaQuery, useOutsideClick } from '../hooks';
-
-function MeuComponente() {
-  const isMobile = useMediaQuery('(max-width: 768px)');
-  const ref = useOutsideClick(() => console.log('Clique fora do elemento'));
-  
-  return (
-    <div ref={ref}>
-      {isMobile ? 'Visão mobile' : 'Visão desktop'}
-    </div>
-  );
-}
-```
-
-##### Instalação de Utilitários
-
-```bash
-# Instalar todas as funções utilitárias
-npx porto-ocean install --utils
-
-# Especificar diretório de destino
-npx porto-ocean install --utils --dir ./src/utils
-```
-
-**Fluxo de instalação:**
-1. Se nenhum diretório for especificado, a CLI solicitará o diretório de destino
-2. A CLI confirmará a instalação antes de prosseguir
-3. Todas as funções utilitárias serão copiadas para o diretório especificado
-
-**Estrutura de diretórios após instalação:**
-```
-src/utils/
-  clsx.ts
-  formatDate.ts
-  sanitize/
-    index.ts
-  encrypt/
-    index.ts
-```
-
-**Exemplo de uso após instalação:**
-```tsx
-import { clsx } from '../utils/clsx';
-
-function MeuComponente({ isActive }) {
-  return (
-    <div className={clsx('base-class', isActive && 'active-class')}>
-      Conteúdo
-    </div>
-  );
-}
-```
-
-### 2. Listagem de Componentes
-
-#### Comando: `list`
-
-O comando `list` exibe todos os componentes disponíveis na biblioteca, indicando quais estão implementados e prontos para uso.
-
-```bash
-# Listar todos os componentes
-npx porto-ocean list
-```
-
-**Resultado:**
-A saída mostrará uma lista de todos os componentes, com indicação visual de quais estão implementados e quais estão em desenvolvimento.
-
-```
-  Button    ✅ Implementado
-  Card      ✅ Implementado
-  Checkbox  ✅ Implementado
-  Dialog    ✅ Implementado
-  Footer    ✅ Implementado
-  Header    ⚠️ Em desenvolvimento
-  Input     ✅ Implementado
-  Select    ✅ Implementado
-  Tooltip   ✅ Implementado
-
-Total: 9 componentes (8 implementados)
-```
-
-### 3. Notas de Versão
-
-#### Comando: `release-notes`
-
-O comando `release-notes` permite visualizar as notas de versão da biblioteca.
-
-```bash
-# Ver a versão mais recente
-npx porto-ocean release-notes
-
-# Ver uma versão específica
-npx porto-ocean release-notes 0.0.5
-
-# Listar todas as versões
-npx porto-ocean release-notes --all
-```
-
-**Resultado:**
-A saída mostrará as notas de versão formatadas, incluindo novas funcionalidades, correções e melhorias para a versão especificada.
-
-```
-🚀 Versão 0.1.0 - 22/05/2025
-Melhoria da CLI com novos comandos e refatoração do código
-
-✨ Novos recursos:
-  • Comando install --component para instalar componentes específicos
-  • Comando install --all-components para instalar todos os componentes
-  • Comando install --styles para instalar estilos base
-  • Comando install --hooks para instalar hooks
-  • Comando install --utils para instalar utilitários
-
-🐛 Correções de bugs:
-  • Correção da importação de arquivos SVG
-  • Correção da importação de arquivos SCSS
-
-🔧 Melhorias:
-  • Refatoração do código da CLI para melhor manutenção
-  • Melhoria na documentação dos comandos
-```
-
-### 4. Processo de Criação de Release
-
-Para criar uma nova release da biblioteca, siga estes passos:
-
-1. Adicione uma nova entrada no array `releaseHistory` no arquivo `src/cli/release-notes.ts`
-2. Atualize a versão no arquivo `package.json`
-3. Execute `npm run update-changelog` para atualizar o CHANGELOG.md
-4. Execute `npm run build` para compilar a biblioteca
-5. Publique a nova versão com `npm publish`
-
-### 5. Estrutura do Código da CLI
-
-A CLI do Porto Ocean foi refatorada para uma estrutura modular, facilitando a manutenção e extensão:
-
-```
-src/cli/
-  ├── cli.ts                # Ponto de entrada principal da CLI
-  ├── utils.ts              # Funções utilitárias comuns
-  ├── release-notes.ts      # Definições das notas de versão
-  └── commands/            # Diretório com os comandos separados
-      ├── index.ts          # Exportações de todos os comandos
-      ├── installComponent.ts # Lógica de instalação de componentes
-      ├── installStyles.ts   # Lógica de instalação de estilos
-      ├── installHooks.ts    # Lógica de instalação de hooks
-      ├── installUtils.ts    # Lógica de instalação de utilitários
-      ├── listComponents.ts  # Lógica de listagem de componentes
-      └── releaseNotes.ts    # Lógica de exibição de notas de versão
-```
-
-Esta estrutura modular facilita a adição de novos comandos e a manutenção do código existente.
-
-**Estrutura de diretórios:**
+**Estrutura de diretórios criada:**
 ```
 src/
   styles/
@@ -515,7 +314,7 @@ import { useMediaQuery } from '../hooks/useMediaQuery';
 
 function MeuComponente() {
   const isMobile = useMediaQuery('(max-width: 768px)');
-  
+
   return (
     <div>
       {isMobile ? 'Visão mobile' : 'Visão desktop'}
@@ -561,7 +360,7 @@ import { clsx } from '../utils/clsx';
 
 function MeuBotao({ variant, size, className }) {
   return (
-    <button 
+    <button
       className={clsx(
         'botao',
         `botao--${variant}`,
@@ -637,7 +436,7 @@ Para obter o melhor resultado ao integrar a biblioteca em seu projeto, recomenda
    npx porto-ocean install button
    npx porto-ocean install chip
    ```
-   
+
 4. **Ou instalar todos os componentes de uma vez:**
    ```bash
    npx porto-ocean installAll

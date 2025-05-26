@@ -11,11 +11,15 @@
 		"declaration": true,
 		"skipLibCheck": true,
 		"outDir": "dist",
-		"baseUrl": ".",
-		"paths": {
-			"@/*": ["src/*"],
-			"@porto-ocean/*": ["src/components/*"]
-		}
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx", "./src/@types/scss.d.ts"]
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"/src/@types"
+	]
 }

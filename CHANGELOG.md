@@ -2,26 +2,86 @@
 
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
-## [0.0.8] - 2025-05-15
+## [1.0.0] - 2025-05-22
 
-### Novos comandos CLI para instalação de recursos
+### Atualização na API de todos os componentes - BREAKING CHANGE
 
-Adição de novos comandos na CLI para facilitar a instalação de estilos, hooks e utilitários.
+Todos os componentes sofreram alterações na API, testes e documentação
 
 ### ✨ Novos recursos
 
-- Novo comando install-styles para instalar todos os estilos e assets do projeto
-- Novo comando install-hooks para instalar todos os hooks utilitários
-- Novo comando install-utils para instalar todas as funções utilitárias
+- Criado novo Hook useAsync
+- Criado novo Hook useCookie
+- Criado novo Hook useCopyToClipboard
+- Criado novo Hook useDebounce
+- Criado novo Hook useEventListener
+- Criado novo Hook useForm
+- Criado novo Hook useIntersectionObserver
+- Criado novo Hook useLocalStorage
+- Criado novo Hook useMediaQuery
+- Criado novo Hook useOnScreen
+- Criado novo Hook OutsideClick
+- Criado novo Hook Previous
+- Criado novo Hook useToggle
+- Criado novo Hook useTracking
+- Criado novo Hook useTryCatch
+- Criado novo Hook useWindownSize
+- Criado novo Utils clsx
+- Criado novo Utils encrypt
+- Criado novo Utils masks
+- Criado novo Utils sanitize
 
 ### 🚀 Melhorias
 
-- Melhor tratamento de erros nos comandos da CLI
-- Feedback mais claro durante o processo de instalação
+- Todos os componentes receberam testes unitários
+- Todos os componentes foram documentados com JSDOC
 
-### 📚 Documentação
+### 🐛 Correções
 
-- Atualização da documentação da CLI no README.md
+- Ajustado tokens css
+
+## [0.0.10] - 2025-04-11
+
+### Componente Carousel
+
+Ajuste no componente carousel
+
+### 🐛 Correções
+
+- Ajustado as variaveis do arquivo styles.scss
+
+## [0.0.9] - 2025-04-11
+
+### Novos componentes
+
+Criado novos componentes disponibilizados
+
+### ✨ Novos recursos
+
+- Novo componente Button
+- Novo componente Tooltip
+- Novo componente Grid
+- Novo componente Row
+- Novo componente Modal
+- Novo componente Notification
+- Novo componente Carousel
+
+### 🚀 Melhorias
+
+- Adicionado loader do componente Input
+- Adicionado loader do componente Dropdown
+- Adicionado loader do componente Button
+
+## [0.0.8] - 2025-04-10
+
+### Novos componentes e ajuste na responsividade
+
+Adição melhorias significativas na CLI.
+
+### ✨ Novos recursos
+
+- Criada nova option no cli de instalar todos os componentes
+- Criada nova option no cli de criar relase notes
 
 ## [0.0.7] - 2025-04-11
 

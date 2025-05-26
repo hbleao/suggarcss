@@ -1,4 +1,4 @@
-import { phoneMask } from "./phone";
+import { phoneMask } from ".";
 
 describe("phoneMask", () => {
 	it("should format mobile phone correctly", () => {

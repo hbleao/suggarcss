@@ -1,4 +1,4 @@
-import { cpfMask } from "./cpf";
+import { cpfMask } from ".";
 
 describe("cpf.ts", () => {
 	it("should format complete CPF correctly", () => {

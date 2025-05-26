@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import { useMediaQuery, useWindowSize } from "@/hooks";
 
+import type { ColumnProps } from "./types";
+
 /**
  * Componente de coluna baseado em Grid CSS responsivo com suporte a breakpoints, aplica classes como `col-6`, `col-desktop-3`, etc .
  *
@@ -29,7 +31,7 @@ export function Column({
 	const isDesktop = useMediaQuery("(min-width: 1440px)");
 	const isWide = useMediaQuery("(min-width: 1600px)");
 	const { width } = useWindowSize();
-	const [gridColumn, setGridColumn] = useState([1, 9]);
+	const [gridColumn, setGridColumn] = useState(isMobile ? [1, 9] : [1, 13]);
 
 	function handleCurrentMedia() {
 		if (isWide) {

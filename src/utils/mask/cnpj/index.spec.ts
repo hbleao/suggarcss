@@ -1,4 +1,4 @@
-import { cnpjMask } from "./cnpj";
+import { cnpjMask } from ".";
 
 describe("cnpjMask", () => {
 	it("should format complete CNPJ correctly", () => {

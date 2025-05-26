@@ -1,12 +1,16 @@
 .breadcrumb {
-  width: max-content;
-  display: flex;
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  max-width: 100%;
+  overflow: hidden;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  &__container {
+    overflow: scroll;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   &__list {
@@ -38,6 +42,7 @@
     &:last-of-type {
       a {
         font-weight: 700;
+        pointer-events: none;
 
         &:hover {
           color: var(--color-neutral-700);

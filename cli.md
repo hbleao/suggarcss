@@ -1,4 +1,4 @@
-# Documentação da CLI do SugarCSS
+# Documentação da CLI do Porto Ocean
 
 A CLI (Command Line Interface) que criamos para o SugarCSS é uma ferramenta que permite aos usuários instalar componentes React com SASS em seus projetos. Este documento explica como ela funciona e as bibliotecas que utiliza.
 

@@ -1,6 +1,4 @@
-type Breakpoints = "tabletPortrait" | "tabletLandscape" | "desktop" | "wide";
-
-interface ColumnProps {
+export type ColumnProps = {
 	children: React.ReactNode;
 	mobile?: number[];
 	tabletPortrait?: number[];
@@ -8,4 +6,4 @@ interface ColumnProps {
 	desktop?: number[];
 	wide?: number[];
 	className?: string;
-}
+};
