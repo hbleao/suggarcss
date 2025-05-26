@@ -7,14 +7,26 @@ import path from 'node:path';
  */
 export function getAvailableComponents(): string[] {
   try {
-    // Caminho para a raiz do pacote instalado
-    const pkgPath = path.dirname(path.dirname(__dirname));
+    // Detectar se estamos no ambiente de desenvolvimento ou no pacote instalado
+    const isDevEnvironment = process.cwd().includes('sugarcss');
     
     // Possíveis caminhos dos componentes
-    const possiblePaths = [
-      path.join(pkgPath, "dist/components"),
-      path.join(pkgPath, "src/components"),
-    ];
+    let possiblePaths = [];
+    
+    if (isDevEnvironment) {
+      // No ambiente de desenvolvimento, usar caminhos relativos ao diretório atual
+      possiblePaths = [
+        path.join(process.cwd(), "src/components"),
+        path.join(process.cwd(), "dist/components")
+      ];
+    } else {
+      // No pacote instalado, usar caminhos relativos ao diretório do pacote
+      const pkgPath = path.dirname(path.dirname(__dirname));
+      possiblePaths = [
+        path.join(pkgPath, "dist/components"),
+        path.join(pkgPath, "src/components")
+      ];
+    }
     
     // Encontrar o caminho dos componentes
     let componentsPath = "";
@@ -26,15 +38,22 @@ export function getAvailableComponents(): string[] {
     }
     
     if (!componentsPath) {
+      console.log('Nenhum caminho de componentes encontrado. Caminhos verificados:', possiblePaths);
       return [];
     }
     
     // Listar diretórios de componentes
-    return fs
+    const directories = fs
       .readdirSync(componentsPath)
-      .filter((dir) => 
-        fs.statSync(path.join(componentsPath, dir)).isDirectory()
-      );
+      .filter((dir) => {
+        try {
+          return fs.statSync(path.join(componentsPath, dir)).isDirectory();
+        } catch (error) {
+          return false;
+        }
+      });
+    
+    return directories;
   } catch (error) {
     console.error("Erro ao obter componentes disponíveis:", error);
     return [];
@@ -52,14 +71,26 @@ export function getImplementedComponents(): string[] {
   const available = getAvailableComponents();
   
   return available.filter((component) => {
-    // Caminho para a raiz do pacote instalado
-    const pkgPath = path.dirname(path.dirname(__dirname));
+    // Detectar se estamos no ambiente de desenvolvimento ou no pacote instalado
+    const isDevEnvironment = process.cwd().includes('sugarcss');
     
     // Possíveis caminhos do componente
-    const possiblePaths = [
-      path.join(pkgPath, `dist/components/${component}`),
-      path.join(pkgPath, `src/components/${component}`),
-    ];
+    let possiblePaths = [];
+    
+    if (isDevEnvironment) {
+      // No ambiente de desenvolvimento, usar caminhos relativos ao diretório atual
+      possiblePaths = [
+        path.join(process.cwd(), `src/components/${component}`),
+        path.join(process.cwd(), `dist/components/${component}`)
+      ];
+    } else {
+      // No pacote instalado, usar caminhos relativos ao diretório do pacote
+      const pkgPath = path.dirname(path.dirname(__dirname));
+      possiblePaths = [
+        path.join(pkgPath, `dist/components/${component}`),
+        path.join(pkgPath, `src/components/${component}`)
+      ];
+    }
     
     // Verificar se o componente tem os arquivos necessários
     for (const possiblePath of possiblePaths) {
@@ -83,14 +114,26 @@ export function getImplementedComponents(): string[] {
  * @returns Caminho para o recurso ou string vazia se não encontrado
  */
 export function findResourcePath(resourceType: string): string {
-  // Caminho para a raiz do pacote instalado
-  const pkgPath = path.dirname(path.dirname(__dirname));
+  // Detectar se estamos no ambiente de desenvolvimento ou no pacote instalado
+  const isDevEnvironment = process.cwd().includes('sugarcss');
   
   // Possíveis caminhos do recurso
-  const possiblePaths = [
-    path.join(pkgPath, `dist/${resourceType}`),
-    path.join(pkgPath, `src/${resourceType}`),
-  ];
+  let possiblePaths = [];
+  
+  if (isDevEnvironment) {
+    // No ambiente de desenvolvimento, usar caminhos relativos ao diretório atual
+    possiblePaths = [
+      path.join(process.cwd(), `src/${resourceType}`),
+      path.join(process.cwd(), `dist/${resourceType}`)
+    ];
+  } else {
+    // No pacote instalado, usar caminhos relativos ao diretório do pacote
+    const pkgPath = path.dirname(path.dirname(__dirname));
+    possiblePaths = [
+      path.join(pkgPath, `dist/${resourceType}`),
+      path.join(pkgPath, `src/${resourceType}`)
+    ];
+  }
   
   // Encontrar o caminho do recurso
   for (const possiblePath of possiblePaths) {
@@ -99,5 +142,6 @@ export function findResourcePath(resourceType: string): string {
     }
   }
   
+  console.log(`Nenhum caminho para ${resourceType} encontrado. Caminhos verificados:`, possiblePaths);
   return "";
 }

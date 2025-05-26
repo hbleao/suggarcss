@@ -57,11 +57,18 @@ export async function installComponent(componentName: string, initialDestDir?: s
     });
   }
 
-  // Confirmação antes da instalação
-  const confirmInstall = await confirm({
-    message: `Confirma a instalação do componente ${componentName} em ${path.resolve(process.cwd(), destDir)}?`,
-    default: true,
-  });
+  // Confirmação antes da instalação (pular se o diretório foi fornecido como parâmetro)
+  let confirmInstall = true;
+  
+  // Se o diretório não foi fornecido como parâmetro inicial, pedir confirmação
+  if (destDir !== initialDestDir) {
+    confirmInstall = await confirm({
+      message: `Confirma a instalação do componente ${componentName} em ${path.resolve(process.cwd(), destDir)}?`,
+      default: true,
+    });
+  } else {
+    console.log(`\n📦 Instalando componente ${componentName} em ${path.resolve(process.cwd(), destDir)}...\n`);
+  }
 
   if (!confirmInstall) {
     console.log("\n⚠️ Instalação cancelada pelo usuário.\n");
@@ -69,14 +76,26 @@ export async function installComponent(componentName: string, initialDestDir?: s
   }
 
   try {
-    // Caminho para a raiz do pacote instalado
-    const pkgPath = path.dirname(path.dirname(__dirname));
+    // Detectar se estamos no ambiente de desenvolvimento ou no pacote instalado
+    const isDevEnvironment = process.cwd().includes('sugarcss');
     
     // Possíveis caminhos do componente
-    const possiblePaths = [
-      path.join(pkgPath, `dist/components/${componentName}`),
-      path.join(pkgPath, `src/components/${componentName}`),
-    ];
+    let possiblePaths = [];
+    
+    if (isDevEnvironment) {
+      // No ambiente de desenvolvimento, usar caminhos relativos ao diretório atual
+      possiblePaths = [
+        path.join(process.cwd(), `src/components/${componentName}`),
+        path.join(process.cwd(), `dist/components/${componentName}`)
+      ];
+    } else {
+      // No pacote instalado, usar caminhos relativos ao diretório do pacote
+      const pkgPath = path.dirname(path.dirname(__dirname));
+      possiblePaths = [
+        path.join(pkgPath, `dist/components/${componentName}`),
+        path.join(pkgPath, `src/components/${componentName}`)
+      ];
+    }
     
     // Encontrar o caminho do componente
     let src = "";
@@ -86,6 +105,11 @@ export async function installComponent(componentName: string, initialDestDir?: s
         console.log(`✅ Componente encontrado em: ${src}`);
         break;
       }
+    }
+    
+    // Imprimir caminhos verificados para debug se o componente não for encontrado
+    if (!src) {
+      console.log('Caminhos verificados:', possiblePaths);
     }
     
     if (!src) {
@@ -131,11 +155,18 @@ export async function installAllComponents(initialDestDir?: string): Promise<voi
     });
   }
   
-  // Confirmação antes da instalação
-  const confirmInstall = await confirm({
-    message: `Confirma a instalação de todos os ${implemented.length} componentes implementados em ${path.resolve(process.cwd(), destDir)}?`,
-    default: true,
-  });
+  // Confirmação antes da instalação (pular se o diretório foi fornecido como parâmetro)
+  let confirmInstall = true;
+  
+  // Se o diretório não foi fornecido como parâmetro inicial, pedir confirmação
+  if (destDir !== initialDestDir) {
+    confirmInstall = await confirm({
+      message: `Confirma a instalação de todos os ${implemented.length} componentes implementados em ${path.resolve(process.cwd(), destDir)}?`,
+      default: true,
+    });
+  } else {
+    console.log(`\n📦 Instalando todos os ${implemented.length} componentes implementados em ${path.resolve(process.cwd(), destDir)}...\n`);
+  }
   
   if (!confirmInstall) {
     console.log("\n⚠️ Instalação cancelada pelo usuário.\n");
@@ -145,11 +176,31 @@ export async function installAllComponents(initialDestDir?: string): Promise<voi
   console.log("\n🔄 Instalando todos os componentes implementados...\n");
   
   // Instalar cada componente implementado
+  let successCount = 0;
+  let failCount = 0;
+  
   for (const component of implemented) {
-    await installComponent(component, destDir);
+    try {
+      await installComponent(component, destDir);
+      successCount++;
+    } catch (error) {
+      console.error(`\n❌ Erro ao instalar o componente ${component}:`, error);
+      failCount++;
+    }
   }
   
-  console.log(`\n✅ Todos os ${implemented.length} componentes foram instalados com sucesso!\n`);
+  console.log(`\n📊 Resumo da instalação:`);
+  console.log(`✅ ${successCount} componentes instalados com sucesso`);
+  if (failCount > 0) {
+    console.log(`❌ ${failCount} componentes falharam na instalação`);
+  }
+  
+  if (successCount > 0) {
+    console.log(`\n✅ Instalação concluída!\n`);
+  } else {
+    console.error(`\n❌ Nenhum componente foi instalado com sucesso.\n`);
+    process.exit(1);
+  }
 }
 
 /**
