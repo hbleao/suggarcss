@@ -1,0 +1,73 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Column" />
+
+# Column
+
+O componente `Column` é uma implementação responsiva baseada em Grid CSS que permite definir o comportamento de colunas em diferentes breakpoints.
+
+
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Column nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-column-examples--default)
+- [Com Props Personalizadas](/story/components-column-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-column-examples--custom-example)
+## Importação
+
+```jsx
+import { Column } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Exemplo de Uso
+
+```jsx
+<Grid>
+  <Column 
+    mobile={[1, 9]} 
+    tabletPortrait={[1, 5]} 
+    tabletLandscape={[1, 7]} 
+    desktop={[1, 4]} 
+    wide={[1, 3]}
+  >
+    Conteúdo da coluna
+  </Column>
+</Grid>
+```
+
+## Props
+
+| Prop | Tipo | Obrigatório | Padrão | Descrição |
+|------|------|-------------|--------|-----------|
+| `children` | `React.ReactNode` | Sim | - | Conteúdo do componente |
+| `mobile` | `[number, number]` | Não | - | Array com posição inicial e final da coluna em dispositivos móveis |
+| `tabletPortrait` | `[number, number]` | Não | - | Array com posição inicial e final da coluna em tablets em modo retrato |
+| `tabletLandscape` | `[number, number]` | Não | - | Array com posição inicial e final da coluna em tablets em modo paisagem |
+| `desktop` | `[number, number]` | Não | - | Array com posição inicial e final da coluna em desktops |
+| `wide` | `[number, number]` | Não | - | Array com posição inicial e final da coluna em telas largas |
+
+## Comportamento Responsivo
+
+O componente `Column` adapta seu layout com base no tamanho da tela:
+
+- **Mobile**: Telas com largura menor que 768px
+- **Tablet Portrait**: Telas com largura entre 768px e 1023px
+- **Tablet Landscape**: Telas com largura entre 1024px e 1365px
+- **Desktop**: Telas com largura entre 1366px e 1919px
+- **Wide**: Telas com largura igual ou maior que 1920px
+
+## Como Funciona
+
+Cada prop de breakpoint (`mobile`, `tabletPortrait`, etc.) recebe um array com dois números:
+
+1. O primeiro número representa a coluna inicial (grid-column-start)
+2. O segundo número representa a coluna final (grid-column-end)
+
+Por exemplo, `[1, 7]` significa que a coluna começa na linha 1 e termina na linha 7 do grid.
+
+## Uso com o Componente Grid
+
+O componente `Column` deve ser usado dentro do componente `Grid`, que define a estrutura do grid CSS. O `Grid` padrão tem 12 colunas, mas isso pode ser personalizado.

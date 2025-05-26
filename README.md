@@ -196,6 +196,28 @@ Além da CLI, usamos o `tsup` (baseado em esbuild) para construir a biblioteca:
   - Minificação de código
   - Plugin personalizado para processar arquivos SCSS
 
+## Storybook
+
+O projeto utiliza Storybook para documentar e testar visualmente os componentes. O Storybook permite visualizar os componentes em diferentes estados e interagir com eles em um ambiente isolado.
+
+### Executando o Storybook
+
+Para iniciar o servidor de desenvolvimento do Storybook, execute o seguinte comando:
+
+```bash
+npm run storybook
+```
+
+Isto iniciará o Storybook em `http://localhost:6006` (ou outra porta, caso a 6006 esteja ocupada).
+
+### Estrutura do Storybook
+
+As stories do Storybook estão organizadas na pasta `.storybook/stories` seguindo a estrutura:
+
+- `.storybook/stories/components/` - Stories para componentes individuais
+- `.storybook/stories/Foundations/` - Documentação de fundamentos do design system
+- `.storybook/stories/` - Páginas de introdução e boas-vindas
+
 ## Guia Detalhado de Uso da CLI
 
 A CLI do Porto Ocean foi projetada para facilitar a integração dos componentes, estilos e utilitários em seu projeto. Abaixo, você encontrará instruções detalhadas sobre como usar cada comando.

@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Link" />
+
+# Link
+
+O componente `Link` fornece uma maneira consistente de criar links de navegação dentro da aplicação, com suporte a diferentes variantes visuais e estados.
+
+
+
+## Importação
+
+```jsx
+import { Link } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Link } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <div>
+      <Link href="https://exemplo.com">Link Externo</Link>
+      <Link href="/pagina-interna">Link Interno</Link>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo do link |
+| `href` | `string` | - | URL de destino do link |
+| `variant` | `'default' \| 'primary' \| 'secondary'` | `'default'` | Variante visual do link |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Tamanho do link |
+| `disabled` | `boolean` | `false` | Desativa o link |
+| `external` | `boolean` | `false` | Se verdadeiro, abre o link em uma nova aba |
+| `underline` | `'always' \| 'hover' \| 'none'` | `'hover'` | Quando mostrar o sublinhado |
+| `onClick` | `(e: MouseEvent) => void` | - | Função chamada quando o link é clicado |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `as` | `ElementType` | `'a'` | Componente a ser renderizado (útil para integração com bibliotecas de roteamento) |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Link nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-link-examples--default)
+- [Com Props Personalizadas](/story/components-link-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-link-examples--custom-example)
+## Acessibilidade
+
+O componente `Link` segue as práticas recomendadas de acessibilidade:
+
+- Utiliza a tag semântica `<a>` para links
+- Adiciona `rel="noopener noreferrer"` para links externos por segurança
+- Suporta navegação por teclado
+- Mantém contraste adequado para garantir legibilidade
+- Indica visualmente links visitados, com foco e hover
+- Para links que abrem em nova aba, inclui um ícone visual e texto assistivo
+
+## Boas Práticas
+
+- Use texto descritivo para links, evitando frases genéricas como "clique aqui"
+- Indique visualmente quando um link abre em uma nova aba
+- Mantenha a consistência visual dos links em toda a aplicação
+- Considere o contexto ao escolher a variante e o estilo do link
+- Evite links muito próximos uns dos outros em dispositivos móveis para facilitar o toque
+- Use a propriedade `as` para integração com bibliotecas de roteamento como React Router
+- Prefira usar o componente `Button` para ações que não navegam para outra página

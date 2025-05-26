@@ -1,0 +1,251 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Typography" />
+
+# Typography
+
+O componente Typography é usado para exibir texto de forma consistente em toda a aplicação, seguindo a hierarquia tipográfica definida no sistema de design.
+
+
+
+## Importação
+
+```jsx
+import { Typography } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+<Typography variant="title1">Título Principal</Typography>
+<Typography variant="body1">Este é um texto de corpo padrão.</Typography>
+```
+
+## Variantes
+
+O Typography suporta diferentes variantes para representar diferentes níveis de hierarquia:
+
+```jsx
+// Títulos
+<Typography variant="title1">Título 1</Typography>
+<Typography variant="title2">Título 2</Typography>
+<Typography variant="title3">Título 3</Typography>
+<Typography variant="title4">Título 4</Typography>
+<Typography variant="title5">Título 5</Typography>
+
+// Corpo de texto
+<Typography variant="body1">Corpo de texto principal</Typography>
+<Typography variant="body2">Corpo de texto secundário</Typography>
+
+// Outros
+<Typography variant="caption">Texto de legenda</Typography>
+<Typography variant="overline">TEXTO OVERLINE</Typography>
+```
+
+## Cores
+
+O Typography suporta diferentes cores para o texto:
+
+```jsx
+// Cor neutra padrão (escura)
+<Typography color="neutral-900">Texto em cor neutra escura</Typography>
+
+// Cor neutra clara (para fundos escuros)
+<Typography color="neutral-0">Texto em cor neutra clara</Typography>
+
+// Cor primária da marca
+<Typography color="brand-primary">Texto em cor primária</Typography>
+
+// Cor secundária da marca
+<Typography color="brand-secondary">Texto em cor secundária</Typography>
+
+// Outras cores
+<Typography color="neutral-700">Texto em cinza médio</Typography>
+<Typography color="error">Texto de erro</Typography>
+<Typography color="success">Texto de sucesso</Typography>
+```
+
+## Pesos de Fonte
+
+O Typography suporta diferentes pesos de fonte:
+
+```jsx
+// Peso regular (padrão)
+<Typography weight="regular">Texto com peso regular</Typography>
+
+// Peso médio
+<Typography weight="medium">Texto com peso médio</Typography>
+
+// Peso negrito
+<Typography weight="bold">Texto em negrito</Typography>
+```
+
+## Elemento HTML
+
+Você pode especificar qual elemento HTML deve ser renderizado:
+
+```jsx
+// Renderiza como um h1 (padrão para title1)
+<Typography variant="title1" as="h1">Título Principal</Typography>
+
+// Renderiza como um h2
+<Typography variant="title1" as="h2">Título Principal como h2</Typography>
+
+// Renderiza como um parágrafo (padrão para body1)
+<Typography variant="body1" as="p">Parágrafo de texto</Typography>
+
+// Renderiza como um span
+<Typography variant="body1" as="span">Texto inline</Typography>
+
+// Outros elementos
+<Typography variant="body1" as="label">Label de formulário</Typography>
+<Typography variant="caption" as="figcaption">Legenda de figura</Typography>
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `variant` | `"title1" \| "title2" \| "title3" \| "title4" \| "title5" \| "body1" \| "body2" \| "caption" \| "overline"` | `"title1"` | Variante tipográfica |
+| `as` | `string` | Depende da variante | Elemento HTML a ser renderizado |
+| `color` | `string` | `"neutral-900"` | Cor do texto |
+| `weight` | `"regular" \| "medium" \| "bold"` | `"regular"` | Peso da fonte |
+| `children` | `ReactNode` | - | Conteúdo do texto |
+| `...restProps` | `HTMLAttributes<HTMLElement>` | - | Todas as props nativas do elemento HTML |
+
+## Combinações
+
+Você pode combinar diferentes propriedades para criar estilos tipográficos personalizados:
+
+```jsx
+<Typography 
+  variant="title1" 
+  weight="bold" 
+  color="brand-primary"
+  style={{ letterSpacing: '0.5px' }}
+>
+  Título personalizado
+</Typography>
+```
+
+## Alinhamento de Texto
+
+O componente Typography suporta diferentes alinhamentos de texto:
+
+```jsx
+// Alinhamento à esquerda (padrão)
+<Typography style={{ textAlign: 'left' }}>Texto alinhado à esquerda</Typography>
+
+// Alinhamento ao centro
+<Typography style={{ textAlign: 'center' }}>Texto alinhado ao centro</Typography>
+
+// Alinhamento à direita
+<Typography style={{ textAlign: 'right' }}>Texto alinhado à direita</Typography>
+
+// Alinhamento justificado
+<Typography style={{ textAlign: 'justify' }}>
+  Texto justificado que se estende por várias linhas para demonstrar 
+  como o alinhamento justificado distribui o texto uniformemente.
+</Typography>
+```
+
+## Truncamento e Quebra de Linha
+
+```jsx
+// Texto truncado com elipse
+<Typography style={{ 
+  whiteSpace: 'nowrap', 
+  overflow: 'hidden', 
+  textOverflow: 'ellipsis',
+  maxWidth: '200px'
+}}>
+  Este é um texto muito longo que será truncado quando exceder o tamanho máximo disponível.
+</Typography>
+
+// Quebra de palavra
+<Typography style={{ wordBreak: 'break-word' }}>
+  Textomuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuitolongosemespaçosquequebraráquandonecessário
+</Typography>
+```
+
+## Exemplos
+
+### Exemplo Básico
+
+```jsx
+<Typography />
+```
+
+### Exemplo com Props
+
+```jsx
+<Typography 
+  // Adicione props específicas do componente aqui
+/>
+``` de Uso
+
+### Cabeçalho de Página
+
+```jsx
+<div className="page-header">
+  <Typography variant="title1" weight="bold">
+    Título da Página
+  </Typography>
+  <Typography variant="body1" color="neutral-700">
+    Descrição ou subtítulo da página que fornece contexto adicional.
+  </Typography>
+</div>
+```
+
+### Card de Conteúdo
+
+```jsx
+<div className="card">
+  <Typography variant="title3" weight="medium">
+    Título do Card
+  </Typography>
+  <Typography variant="body1" style={{ marginTop: '8px' }}>
+    Conteúdo principal do card com informações detalhadas.
+  </Typography>
+  <Typography variant="caption" color="neutral-700" style={{ marginTop: '16px' }}>
+    Última atualização: 26 de maio de 2025
+  </Typography>
+</div>
+```
+
+### Formulário
+
+```jsx
+<form>
+  <div className="form-field">
+    <Typography variant="body2" weight="medium" as="label" htmlFor="nome">
+      Nome Completo
+    </Typography>
+    <input id="nome" type="text" />
+    <Typography variant="caption" color="error">
+      Este campo é obrigatório
+    </Typography>
+  </div>
+</form>
+```
+
+## Acessibilidade
+
+O componente Typography implementa as melhores práticas de acessibilidade:
+
+- Usa elementos HTML semânticos apropriados para cada variante
+- Mantém contraste adequado entre texto e fundo
+- Preserva a hierarquia de cabeçalhos (h1, h2, etc.) quando apropriado
+- Permite personalização para atender a requisitos específicos de acessibilidade
+
+## Boas Práticas
+
+- Mantenha a hierarquia tipográfica consistente em toda a aplicação
+- Use variantes de título (title1-title5) para cabeçalhos e títulos
+- Use variantes de corpo (body1-body2) para texto de conteúdo principal
+- Use caption para texto auxiliar e legendas
+- Evite usar muitas variantes diferentes na mesma tela
+- Mantenha o contraste adequado entre o texto e o fundo
+- Respeite a hierarquia de cabeçalhos HTML para melhorar a acessibilidade
+- Evite usar estilos inline excessivos que possam comprometer a consistência

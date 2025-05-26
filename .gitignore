@@ -13,3 +13,5 @@ test-project
 
 # vscode
 .vscode
+
+*storybook.log

@@ -1,0 +1,108 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Carousel" />
+
+# Carousel
+
+O componente `Carousel` permite exibir uma coleção de elementos em um formato de slideshow, permitindo que o usuário navegue entre os itens através de controles de navegação ou gestos de deslize.
+
+
+
+## Importação
+
+```jsx
+import { Carousel } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Carousel } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const items = [
+    {
+      id: 1,
+      image: 'https://via.placeholder.com/800x400?text=Slide+1',
+      title: 'Slide 1',
+      description: 'Descrição do slide 1'
+    },
+    {
+      id: 2,
+      image: 'https://via.placeholder.com/800x400?text=Slide+2',
+      title: 'Slide 2',
+      description: 'Descrição do slide 2'
+    },
+    {
+      id: 3,
+      image: 'https://via.placeholder.com/800x400?text=Slide+3',
+      title: 'Slide 3',
+      description: 'Descrição do slide 3'
+    }
+  ];
+
+  return (
+    <Carousel>
+      {items.map(item => (
+        <Carousel.Item key={item.id}>
+          <img src={item.image} alt={item.title} />
+          <Carousel.Caption>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      ))}
+    </Carousel>
+  );
+}
+```
+
+## Props
+
+### Carousel
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Itens do carousel (componentes Carousel.Item) |
+| `autoPlay` | `boolean` | `false` | Se verdadeiro, avança automaticamente os slides |
+| `interval` | `number` | `5000` | Intervalo em milissegundos entre os slides quando autoPlay é verdadeiro |
+| `showControls` | `boolean` | `true` | Se verdadeiro, exibe os controles de navegação (setas) |
+| `showIndicators` | `boolean` | `true` | Se verdadeiro, exibe os indicadores de slide (pontos) |
+| `pauseOnHover` | `boolean` | `true` | Se verdadeiro, pausa o autoPlay quando o mouse está sobre o carousel |
+| `infiniteLoop` | `boolean` | `true` | Se verdadeiro, permite navegação infinita entre os slides |
+| `swipeable` | `boolean` | `true` | Se verdadeiro, permite navegação por gestos de deslize em dispositivos touch |
+| `onChange` | `(index: number) => void` | - | Função chamada quando o slide ativo muda |
+| `selectedItem` | `number` | `0` | Índice do slide ativo (quando controlado) |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+### Carousel.Item
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo do slide |
+| `className` | `string` | - | Classe CSS adicional para o item |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+### Carousel.Caption
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo da legenda |
+| `className` | `string` | - | Classe CSS adicional para a legenda |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+
+
+## Boas Práticas
+
+- Limite o número de slides para evitar sobrecarga de informações
+- Forneça controles de navegação claros e visíveis
+- Use autoPlay com moderação e sempre permita que o usuário pause a animação
+- Inclua indicadores de progresso para mostrar a posição atual e o total de slides
+- Considere a responsividade, ajustando o número de slides visíveis em diferentes tamanhos de tela
+- Mantenha o tempo de transição entre slides curto (300-500ms) para uma experiência fluida
+- Para carousels com muitos itens, considere adicionar uma opção "Ver Todos"
+- Evite usar múltiplos carousels na mesma página para não confundir o usuário

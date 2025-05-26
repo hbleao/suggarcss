@@ -1,0 +1,95 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/CardTestimonial" />
+
+# CardTestimonial
+
+O componente `CardTestimonial` é uma variação especializada do Card projetada para exibir depoimentos, avaliações e feedback de clientes ou usuários. Este componente apresenta uma estrutura otimizada para destacar citações, informações do autor e imagens de perfil.
+
+
+
+## Importação
+
+```jsx
+import { CardTestimonial } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { CardTestimonial } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <CardTestimonial
+      quote="O Ocean Design System transformou completamente nossa abordagem de desenvolvimento de interfaces. A consistência e a facilidade de uso são impressionantes."
+      author="Maria Silva"
+      role="Diretora de Produto, Empresa XYZ"
+      avatarSrc="/path/to/avatar.jpg"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `quote` | `ReactNode` | - | O texto do depoimento ou citação |
+| `author` | `string` | - | Nome do autor do depoimento |
+| `role` | `string` | - | Cargo ou empresa do autor |
+| `avatarSrc` | `string` | - | URL da imagem de avatar do autor |
+| `avatarAlt` | `string` | `'Avatar'` | Texto alternativo para a imagem do avatar |
+| `rating` | `number` | - | Avaliação numérica (1-5) para exibir estrelas |
+| `ratingMax` | `number` | `5` | Valor máximo da escala de avaliação |
+| `date` | `string` | - | Data do depoimento |
+| `companyLogo` | `ReactNode` | - | Logo da empresa do autor |
+| `companyName` | `string` | - | Nome da empresa do autor |
+| `quoteIcon` | `ReactNode` | - | Ícone personalizado para as aspas |
+| `showQuoteIcon` | `boolean` | `true` | Se deve exibir o ícone de aspas |
+| `elevation` | `number` | `1` | Nível de elevação (sombra) do card |
+| `bordered` | `boolean` | `false` | Se verdadeiro, exibe uma borda em vez de sombra |
+| `backgroundColor` | `string` | - | Cor de fundo personalizada para o card |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `quoteClassName` | `string` | - | Classe CSS adicional para o texto da citação |
+| `quoteStyle` | `CSSProperties` | - | Estilos inline adicionais para o texto da citação |
+| `authorClassName` | `string` | - | Classe CSS adicional para o nome do autor |
+| `authorStyle` | `CSSProperties` | - | Estilos inline adicionais para o nome do autor |
+| `roleClassName` | `string` | - | Classe CSS adicional para o cargo/empresa |
+| `roleStyle` | `CSSProperties` | - | Estilos inline adicionais para o cargo/empresa |
+| `avatarClassName` | `string` | - | Classe CSS adicional para o avatar |
+| `avatarStyle` | `CSSProperties` | - | Estilos inline adicionais para o avatar |
+| `avatarSize` | `'small' \| 'medium' \| 'large'` | `'medium'` | Tamanho do avatar |
+| `layout` | `'standard' \| 'compact' \| 'horizontal'` | `'standard'` | Layout do card de depoimento |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente CardTestimonial nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-cardtestimonial-examples--default)
+- [Com Props Personalizadas](/story/components-cardtestimonial-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-cardtestimonial-examples--custom-example)
+## Acessibilidade
+
+O componente `CardTestimonial` segue as práticas recomendadas de acessibilidade:
+
+- Imagens de avatar incluem texto alternativo apropriado
+- Mantém contraste adequado entre texto e fundo
+- Estrutura semântica apropriada para leitores de tela
+- Componentes interativos (quando presentes) são acessíveis por teclado
+- Avaliações em estrelas incluem descrição textual para leitores de tela
+
+## Boas Práticas
+
+- Use depoimentos autênticos e específicos para maior credibilidade
+- Inclua informações relevantes sobre o autor (nome, cargo, empresa)
+- Mantenha os depoimentos concisos e focados em benefícios específicos
+- Use avatares de alta qualidade e consistentes em estilo
+- Para melhor responsividade, use um sistema de grid ou flexbox para organizar múltiplos depoimentos
+- Considere usar o layout "compact" para dispositivos móveis
+- Agrupe depoimentos relacionados ou de setores semelhantes
+- Inclua avaliações em estrelas quando disponíveis para reforçar o feedback positivo
+- Use o layout "horizontal" para destacar depoimentos importantes

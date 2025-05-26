@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Spacing" />
+
+# Spacing
+
+O componente `Spacing` é utilizado para adicionar espaçamento consistente entre elementos da interface, seguindo o sistema de design do Ocean. Ele ajuda a manter o ritmo vertical e horizontal da aplicação, garantindo consistência no layout.
+
+
+
+## Importação
+
+```jsx
+import { Spacing } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Spacing } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <div>
+      <div>Primeiro elemento</div>
+      <Spacing size="md" />
+      <div>Segundo elemento</div>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'xxl'` | `'md'` | Tamanho do espaçamento |
+| `direction` | `'horizontal' \| 'vertical'` | `'vertical'` | Direção do espaçamento |
+| `inline` | `boolean` | `false` | Se verdadeiro, usa display inline-block em vez de block |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `as` | `ElementType` | `'div'` | Elemento HTML a ser renderizado |
+
+
+
+## Boas Práticas
+
+- Use o componente `Spacing` para manter consistência no espaçamento em toda a aplicação
+- Prefira os tamanhos predefinidos (`xs`, `sm`, `md`, `lg`, `xl`, `xxl`) em vez de valores personalizados para manter a consistência
+- Use espaçamento vertical (`direction="vertical"`) para separar seções de conteúdo
+- Use espaçamento horizontal (`direction="horizontal"`) para separar elementos em linha
+- Combine com componentes de layout como `Grid` e `Flex` para criar interfaces bem estruturadas
+- Para formulários, use tamanhos consistentes de espaçamento entre os campos
+- Considere usar a prop `as` para renderizar elementos semânticos apropriados quando necessário

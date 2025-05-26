@@ -1,0 +1,83 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Badge" />
+
+# Badge
+
+O componente `Badge` é usado para destacar informações numéricas ou status, geralmente exibindo um pequeno indicador numérico ou um ponto colorido sobre outro elemento.
+
+
+
+## Importação
+
+```jsx
+import { Badge } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Badge, Button } from '@porto/js-library-corp-hubv-porto-ocean';
+import { Bell, ShoppingCart, Envelope } from 'phosphor-react';
+
+function Example() {
+  return (
+    <div style={{ display: 'flex', gap: '24px' }}>
+      <Badge count={5}>
+        <Button variant="secondary" icon={<Bell size={20} />} />
+      </Badge>
+      
+      <Badge count={12}>
+        <Button variant="secondary" icon={<ShoppingCart size={20} />} />
+      </Badge>
+      
+      <Badge dot>
+        <Button variant="secondary" icon={<Envelope size={20} />} />
+      </Badge>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Elemento sobre o qual o badge será posicionado |
+| `count` | `number \| string` | - | Valor numérico ou texto a ser exibido no badge |
+| `dot` | `boolean` | `false` | Se verdadeiro, exibe apenas um ponto em vez de um número |
+| `max` | `number` | `99` | Valor máximo a ser exibido antes de mostrar "{max}+" |
+| `showZero` | `boolean` | `false` | Se verdadeiro, exibe o badge mesmo quando o valor é zero |
+| `offset` | `[number, number]` | - | Ajuste da posição do badge [horizontal, vertical] |
+| `color` | `'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error' \| 'info'` | `'error'` | Cor do badge |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Tamanho do badge |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Badge nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-badge-examples--default)
+- [Com Props Personalizadas](/story/components-badge-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-badge-examples--custom-example)
+## Acessibilidade
+
+O componente `Badge` segue as práticas recomendadas de acessibilidade:
+
+- Utiliza atributos ARIA apropriados para indicar a presença de notificações
+- Mantém contraste adequado entre o texto e o fundo do badge
+- Garante que o badge não interfira na legibilidade do conteúdo principal
+- Para badges com significado importante, inclui informações contextuais para leitores de tela
+
+## Boas Práticas
+
+- Use badges para destacar informações importantes que precisam de atenção imediata
+- Mantenha o conteúdo do badge conciso (geralmente números ou texto muito curto)
+- Use cores diferentes para indicar diferentes tipos de informação ou níveis de prioridade
+- Para contadores com valores potencialmente grandes, use a propriedade `max` para evitar overflow visual
+- Posicione o badge de forma que não obstrua informações importantes do elemento principal
+- Para indicar apenas a presença de algo (sem quantidade específica), use o modo `dot`
+- Considere a acessibilidade ao escolher cores e contrastes para o badge

@@ -1,0 +1,310 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Checkbox" />
+
+# Checkbox
+
+O componente Checkbox permite que os usuários selecionem uma ou mais opções de um conjunto, sendo fundamental para formulários e interfaces interativas.
+
+
+
+
+
+## Uso Básico
+
+```jsx
+import { useState } from 'react';
+import { Checkbox } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const [checked, setChecked] = useState(false);
+  
+  return (
+    <Checkbox
+      label="Aceito os termos e condições"
+      checked={checked}
+      onChange={(e) => setChecked(e.target.checked)}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Obrigatório | Descrição |
+|------|------|-------------|-----------|
+| `label` | `string \| ReactNode` | Sim | Texto ou elemento React para o label do checkbox |
+| `checked` | `boolean` | Sim | Estado de seleção do checkbox |
+| `onChange` | `(e: React.ChangeEvent<HTMLInputElement>) => void` | Sim | Função chamada quando o estado muda |
+| `id` | `string` | Não | ID único para o checkbox (gerado automaticamente se não fornecido) |
+| `name` | `string` | Não | Nome do campo para uso em formulários |
+| `value` | `string` | Não | Valor do checkbox quando submetido em um formulário |
+| `disabled` | `boolean` | Não | Define se o checkbox está desabilitado |
+| `error` | `boolean` | Não | Indica um estado de erro |
+| `errorMessage` | `string` | Não | Mensagem de erro a ser exibida |
+| `helperText` | `string` | Não | Texto de ajuda adicional |
+| `variant` | `'default' \| 'card'` | Não | Variante visual do checkbox (padrão: 'default') |
+| `size` | `'small' \| 'medium' \| 'large'` | Não | Tamanho do checkbox (padrão: 'medium') |
+| `indeterminate` | `boolean` | Não | Estado indeterminado para representar seleção parcial |
+
+## Variações
+
+### Estados do Checkbox
+
+O componente Checkbox pode ter diferentes estados:
+
+```jsx
+// Checkbox desmarcado (padrão)
+<Checkbox label="Opção não selecionada" checked={false} onChange={handleChange} />
+
+// Checkbox marcado
+<Checkbox label="Opção selecionada" checked={true} onChange={handleChange} />
+
+// Checkbox desabilitado (não marcado)
+<Checkbox label="Opção desabilitada" disabled checked={false} onChange={handleChange} />
+
+// Checkbox desabilitado (marcado)
+<Checkbox label="Opção selecionada e desabilitada" disabled checked={true} onChange={handleChange} />
+
+// Checkbox com erro
+<Checkbox 
+  label="Opção com erro" 
+  checked={checked} 
+  onChange={handleChange}
+  error={true}
+  errorMessage="Este campo é obrigatório"
+/>
+
+// Checkbox indeterminado (útil para seleção parcial em grupos)
+<Checkbox 
+  label="Algumas subopções selecionadas" 
+  checked={true}
+  indeterminate={true} 
+  onChange={handleChange} 
+/>
+```
+
+### Tamanhos
+
+O Checkbox está disponível em diferentes tamanhos:
+
+```jsx
+// Tamanho pequeno
+<Checkbox size="small" label="Checkbox pequeno" checked={checked} onChange={handleChange} />
+
+// Tamanho médio (padrão)
+<Checkbox size="medium" label="Checkbox médio" checked={checked} onChange={handleChange} />
+
+// Tamanho grande
+<Checkbox size="large" label="Checkbox grande" checked={checked} onChange={handleChange} />
+```
+
+### Variantes
+
+O Checkbox suporta diferentes variantes visuais:
+
+```jsx
+// Variante padrão
+<Checkbox 
+  variant="default" 
+  label="Checkbox padrão" 
+  checked={checked} 
+  onChange={handleChange} 
+/>
+
+// Variante card (com estilo de cartão)
+<Checkbox 
+  variant="card" 
+  label="Checkbox estilo card" 
+  checked={checked} 
+  onChange={handleChange} 
+/>
+```
+
+## Casos de Uso Comuns
+
+### Grupo de Checkboxes
+
+```jsx
+import { useState } from 'react';
+import { Checkbox, Typography } from '@sugarcss/core';
+
+function CheckboxGroup() {
+  const [options, setOptions] = useState({
+    option1: false,
+    option2: false,
+    option3: false,
+  });
+  
+  const handleChange = (name) => (e) => {
+    setOptions({
+      ...options,
+      [name]: e.target.checked,
+    });
+  };
+  
+  return (
+    <div>
+      <Typography variant="title4" style={{ marginBottom: '16px' }}>Selecione suas preferências:</Typography>
+      
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <Checkbox 
+          label="Opção 1" 
+          checked={options.option1} 
+          onChange={handleChange('option1')} 
+        />
+        <Checkbox 
+          label="Opção 2" 
+          checked={options.option2} 
+          onChange={handleChange('option2')} 
+        />
+        <Checkbox 
+          label="Opção 3" 
+          checked={options.option3} 
+          onChange={handleChange('option3')} 
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+### Checkbox com Conteúdo Rico no Label
+
+```jsx
+<Checkbox
+  label={
+    <div>
+      <Typography variant="body1" weight="medium">Inscrever-se na newsletter</Typography>
+      <Typography variant="body2" color="neutral-700" style={{ marginTop: '4px' }}>
+        Receba atualizações semanais sobre novos recursos e conteúdos.
+      </Typography>
+    </div>
+  }
+  checked={subscribed}
+  onChange={handleSubscriptionChange}
+/>
+```
+
+### Checkbox "Selecionar Todos"
+
+```jsx
+import { useState, useEffect } from 'react';
+import { Checkbox } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function SelectAllExample() {
+  const [items, setItems] = useState([
+    { id: 1, name: 'Item 1', selected: false },
+    { id: 2, name: 'Item 2', selected: false },
+    { id: 3, name: 'Item 3', selected: false },
+  ]);
+  
+  const [selectAll, setSelectAll] = useState({
+    checked: false,
+    indeterminate: false,
+  });
+  
+  useEffect(() => {
+    const selectedCount = items.filter(item => item.selected).length;
+    
+    setSelectAll({
+      checked: selectedCount === items.length,
+      indeterminate: selectedCount > 0 && selectedCount < items.length,
+    });
+  }, [items]);
+  
+  const handleSelectAll = (e) => {
+    const isChecked = e.target.checked;
+    
+    setItems(items.map(item => ({
+      ...item,
+      selected: isChecked,
+    })));
+    
+    setSelectAll({
+      checked: isChecked,
+      indeterminate: false,
+    });
+  };
+  
+  const handleItemChange = (id) => (e) => {
+    setItems(items.map(item => 
+      item.id === id ? { ...item, selected: e.target.checked } : item
+    ));
+  };
+  
+  return (
+    <div>
+      <Checkbox
+        label="Selecionar todos"
+        checked={selectAll.checked}
+        indeterminate={selectAll.indeterminate}
+        onChange={handleSelectAll}
+      />
+      
+      <div style={{ marginLeft: '24px', marginTop: '12px' }}>
+        {items.map(item => (
+          <Checkbox
+            key={item.id}
+            label={item.name}
+            checked={item.selected}
+            onChange={handleItemChange(item.id)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+## Acessibilidade
+
+O componente Checkbox implementa as melhores práticas de acessibilidade:
+
+- Usa elementos nativos `<input type="checkbox">` para compatibilidade máxima com tecnologias assistivas
+- Associa corretamente labels com inputs usando atributos `id` e `for`
+- Suporta navegação e ativação por teclado
+- Comunica estados (selecionado, desabilitado, erro) visualmente e para leitores de tela
+- Fornece mensagens de erro acessíveis quando necessário
+
+## Validação de Formulários
+
+O Checkbox pode ser facilmente integrado com bibliotecas de validação de formulários:
+
+```jsx
+// Exemplo com React Hook Form
+import { useForm } from 'react-hook-form';
+import { Checkbox, Button } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function FormExample() {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+  
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Checkbox
+        label="Aceito os termos e condições"
+        error={!!errors.terms}
+        errorMessage={errors.terms?.message}
+        {...register('terms', { required: 'Você deve aceitar os termos para continuar' })}
+      />
+      
+      <Button type="submit" style={{ marginTop: '16px' }}>Enviar</Button>
+    </form>
+  );
+}
+```
+
+## Boas Práticas
+
+- Use labels claros e descritivos que indicam o que será selecionado
+- Agrupe checkboxes relacionados visualmente e semanticamente
+- Forneça estados visuais distintos para todos os estados possíveis (normal, hover, foco, selecionado, desabilitado)
+- Use o estado indeterminado apenas para representar seleção parcial em grupos hierárquicos
+- Posicione os checkboxes consistentemente (geralmente à esquerda do label)
+- Evite usar checkboxes para ações que ocorrem imediatamente; use-os para seleção de opções
+- Considere usar a variante "card" para opções mais complexas ou que precisam de maior destaque visual

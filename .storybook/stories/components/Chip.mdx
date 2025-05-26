@@ -1,0 +1,60 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Chip" />
+
+# Chip
+
+O componente `Chip` permite exibir informações compactas como tags, filtros, opções ou estados, sendo ideal para representar entidades pequenas com estilo visual distinto.
+
+
+
+## Importação
+
+```jsx
+import { Chip } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Chip } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <div style={{ display: 'flex', gap: '8px' }}>
+      <Chip>Básico</Chip>
+      <Chip variant="primary">Primário</Chip>
+      <Chip variant="secondary">Secundário</Chip>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo do chip |
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error' \| 'info'` | `'default'` | Variante visual do chip |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Tamanho do chip |
+| `icon` | `ReactNode` | - | Ícone a ser exibido no início do chip |
+| `onDelete` | `() => void` | - | Função chamada quando o botão de exclusão é clicado (se fornecida, exibe o botão de exclusão) |
+| `deleteIcon` | `ReactNode` | - | Ícone personalizado para o botão de exclusão |
+| `disabled` | `boolean` | `false` | Desativa o chip |
+| `clickable` | `boolean` | `false` | Torna o chip clicável |
+| `onClick` | `(e: MouseEvent) => void` | - | Função chamada quando o chip é clicado (requer `clickable={true}`) |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+
+
+
+## Boas Práticas
+
+- Use chips para representar informações compactas como tags, filtros ou estados
+- Mantenha o conteúdo dos chips curto e conciso
+- Combine chips com ícones para melhorar a compreensão visual
+- Use variantes de cores para indicar diferentes categorias ou estados
+- Para seleção múltipla, use chips clicáveis que alternam entre estados
+- Considere adicionar um contador quando houver muitos chips selecionados
+- Para chips deletáveis, forneça feedback visual e confirmação quando necessário

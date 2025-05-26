@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/ShowOnDevice" />
+
+# ShowOnDevice
+
+O componente `ShowOnDevice` permite exibir conteúdo condicionalmente com base no tipo de dispositivo ou tamanho de tela, facilitando a criação de interfaces responsivas sem a necessidade de escrever media queries CSS manualmente.
+
+
+
+## Importação
+
+```jsx
+import { ShowOnDevice } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { ShowOnDevice } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <div>
+      <ShowOnDevice device="mobile">
+        <p>Este conteúdo só será exibido em dispositivos móveis.</p>
+      </ShowOnDevice>
+      
+      <ShowOnDevice device="desktop">
+        <p>Este conteúdo só será exibido em desktops.</p>
+      </ShowOnDevice>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `device` | `'mobile' \| 'tablet' \| 'desktop' \| 'largeDesktop'` | - | Tipo de dispositivo em que o conteúdo deve ser exibido |
+| `devices` | `Array<'mobile' \| 'tablet' \| 'desktop' \| 'largeDesktop'>` | - | Múltiplos tipos de dispositivos em que o conteúdo deve ser exibido |
+| `minWidth` | `number` | - | Largura mínima da tela (em pixels) para exibir o conteúdo |
+| `maxWidth` | `number` | - | Largura máxima da tela (em pixels) para exibir o conteúdo |
+| `orientation` | `'portrait' \| 'landscape'` | - | Orientação do dispositivo em que o conteúdo deve ser exibido |
+| `children` | `ReactNode` | - | Conteúdo a ser exibido condicionalmente |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `render` | `() => ReactNode` | - | Função de renderização alternativa para o conteúdo |
+| `fallback` | `ReactNode` | `null` | Conteúdo a ser exibido quando a condição não é atendida |
+| `ssr` | `boolean` | `false` | Se verdadeiro, renderiza o conteúdo no servidor e oculta via CSS |
+
+
+
+## Boas Práticas
+
+- Use `ShowOnDevice` para adaptar a interface a diferentes dispositivos, não para ocultar conteúdo importante
+- Considere sempre fornecer uma alternativa (via prop `fallback`) quando ocultar conteúdo específico para um dispositivo
+- Para conteúdo crítico, certifique-se de que está acessível em todos os dispositivos, mesmo que com apresentações diferentes
+- Combine com o hook `useMediaQuery` para lógica mais complexa de responsividade
+- Use a prop `ssr` quando o conteúdo for importante para SEO ou acessibilidade
+- Prefira usar os tipos de dispositivo predefinidos (`device` ou `devices`) em vez de larguras personalizadas para manter a consistência
+- Para layouts complexos, considere usar componentes de layout responsivos como `Grid` ou `Flex` em conjunto com `ShowOnDevice`

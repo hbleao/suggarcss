@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .typography {
   $variants: (
     title1: (font: var(--font-family-secondary),
@@ -60,14 +62,14 @@
 
 @each $name, $style in $variants {
   &.--#{$name} {
-    font-family: map-get($style, font);
-    font-size: map-get($style, size);
-    line-height: map-get($style, line);
+    font-family: map.get($style, font);
+    font-size: map.get($style, size);
+    line-height: map.get($style, line);
 
-    @if map-has-key($style, md-size) {
+    @if map.has-key($style, md-size) {
       @media (min-width: var(--breakpoint-lg)) {
-        font-size: map-get($style, md-size);
-        line-height: map-get($style, md-line);
+        font-size: map.get($style, md-size);
+        line-height: map.get($style, md-line);
       }
     }
   }

@@ -1,0 +1,95 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/UseCopyToClipboard" />
+
+# useCopyToClipboard
+
+O hook `useCopyToClipboard` facilita a cópia de texto para a área de transferência do usuário, fornecendo feedback sobre o sucesso ou falha da operação.
+
+## Importação
+
+```jsx
+import { useCopyToClipboard } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+```
+
+## Uso Básico
+
+```jsx
+import React, { useState } from 'react';
+import { Button, Typography } from '@porto/js-library-corp-hubv-porto-ocean';
+import { useCopyToClipboard } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+
+function CopyExample() {
+  const [value, copy, { success, error }] = useCopyToClipboard();
+  const textToCopy = 'Este texto será copiado para a área de transferência!';
+  
+  return (
+    <div>
+      <Typography variant="title2">Exemplo de Cópia</Typography>
+      
+      <div style={{ 
+        padding: '16px', 
+        background: '#f5f5f5', 
+        borderRadius: '4px',
+        marginTop: '16px'
+      }}>
+        <Typography variant="body2">{textToCopy}</Typography>
+      </div>
+      
+      <Button 
+        onClick={() => copy(textToCopy)}
+        style={{ marginTop: '16px' }}
+      >
+        Copiar Texto
+      </Button>
+      
+      {success && (
+        <Typography 
+          variant="body2" 
+          style={{ color: '#52c41a', marginTop: '8px' }}
+        >
+          Texto copiado com sucesso!
+        </Typography>
+      )}
+      
+      {error && (
+        <Typography 
+          variant="body2" 
+          style={{ color: '#f5222d', marginTop: '8px' }}
+        >
+          Erro ao copiar: {error.message}
+        </Typography>
+      )}
+      
+      {value && (
+        <div style={{ marginTop: '16px' }}>
+          <Typography variant="subtitle2">Valor copiado:</Typography>
+          <Typography variant="body2">{value}</Typography>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## Retorno
+
+O hook `useCopyToClipboard` retorna um array com três elementos:
+
+| Índice | Tipo | Descrição |
+|--------|------|-----------|
+| `0` | `string \| null` | O último valor copiado com sucesso |
+| `1` | `(text: string) => Promise<boolean>` | Função para copiar texto para a área de transferência |
+| `2` | `{ success: boolean, error: Error \| null }` | Estado da última operação de cópia |
+
+
+
+## Boas Práticas
+
+- Use `useCopyToClipboard` para melhorar a experiência do usuário ao copiar informações como códigos, links e textos formatados
+- Sempre forneça feedback visual claro sobre o sucesso ou falha da operação de cópia
+- Considere o contexto de uso - em dispositivos móveis, a experiência de cópia pode ser diferente
+- Para textos longos, considere copiar apenas as partes mais relevantes ou oferecer opções para selecionar o que copiar
+- Combine com outros hooks como `useTimeout` para gerenciar o feedback visual temporário
+- Para cópia de dados sensíveis, considere limpar a área de transferência após um período de tempo usando um timer

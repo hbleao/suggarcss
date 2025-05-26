@@ -1,0 +1,164 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/CardContent" />
+
+# CardContent
+
+O componente CardContent é usado para exibir informações estruturadas em formato de cartão, incluindo título, descrição, imagem e links de ação.
+
+
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente CardContent nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-cardcontent-examples--default)
+- [Com Props Personalizadas](/story/components-cardcontent-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-cardcontent-examples--custom-example)
+## Importação
+
+```jsx
+import { CardContent } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+<CardContent
+  title="Título do Card"
+  description="Descrição detalhada do conteúdo deste card."
+  image={{ url: "/images/example.jpg", alt: "Imagem de exemplo" }}
+  links={[{ label: "Saiba mais", href: "/detalhes" }]}
+/>
+```
+
+## Props
+
+| Prop | Tipo | Obrigatório | Descrição |
+|------|------|-------------|-----------|
+| `title` | `string` | Sim | Título principal do card |
+| `description` | `string` | Sim | Texto descritivo do conteúdo |
+| `image` | `{ url: string; alt: string; }` | Não | Imagem a ser exibida no card |
+| `links` | `Array<{ label: string; href: string; target?: string; }>` | Não | Lista de links de ação |
+
+## Variações
+
+### Card Básico (Apenas Texto)
+
+```jsx
+<CardContent
+  title="Card Básico"
+  description="Um card simples apenas com título e descrição."
+/>
+```
+
+### Card com Imagem
+
+```jsx
+<CardContent
+  title="Card com Imagem"
+  description="Este card inclui uma imagem ilustrativa."
+  image={{
+    url: "/images/example.jpg",
+    alt: "Descrição da imagem para acessibilidade"
+  }}
+/>
+```
+
+### Card com Links de Ação
+
+```jsx
+<CardContent
+  title="Card com Links"
+  description="Este card inclui links para ações relacionadas."
+  links={[
+    { label: "Saiba mais", href: "/detalhes" },
+    { label: "Contato", href: "/contato", target: "_blank" }
+  ]}
+/>
+```
+
+### Card Completo
+
+```jsx
+<CardContent
+  title="Card Completo"
+  description="Este card inclui todos os elementos disponíveis: título, descrição, imagem e links."
+  image={{
+    url: "/images/example.jpg",
+    alt: "Descrição da imagem para acessibilidade"
+  }}
+  links={[
+    { label: "Saiba mais", href: "/detalhes" },
+    { label: "Contato", href: "/contato", target: "_blank" }
+  ]}
+/>
+```
+
+## Personalização
+
+O CardContent pode ser personalizado através de props adicionais e estilos:
+
+```jsx
+<CardContent
+  title="Card Personalizado"
+  description="Este card possui estilos personalizados."
+  style={{
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    padding: "24px"
+  }}
+/>
+```
+
+## Acessibilidade
+
+O componente CardContent segue as melhores práticas de acessibilidade:
+
+- Utiliza elementos semânticos HTML apropriados
+- Requer texto alternativo para imagens (`alt`)
+- Mantém contraste adequado entre texto e fundo
+- Garante que links sejam acessíveis e descritivos
+
+## Responsividade
+
+O CardContent é totalmente responsivo e se adapta a diferentes tamanhos de tela:
+
+- Em telas pequenas, o conteúdo é empilhado verticalmente
+- Em telas médias e grandes, o layout pode se ajustar para melhor aproveitamento do espaço
+- As imagens são redimensionadas proporcionalmente para manter a qualidade visual
+
+## Uso em Layouts
+
+O CardContent pode ser usado em vários contextos de layout:
+
+### Grid de Cards
+
+```jsx
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "24px" }}>
+  <CardContent title="Card 1" description="Descrição do card 1" />
+  <CardContent title="Card 2" description="Descrição do card 2" />
+  <CardContent title="Card 3" description="Descrição do card 3" />
+  <CardContent title="Card 4" description="Descrição do card 4" />
+</div>
+```
+
+### Lista de Cards
+
+```jsx
+<div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+  <CardContent title="Card 1" description="Descrição do card 1" />
+  <CardContent title="Card 2" description="Descrição do card 2" />
+  <CardContent title="Card 3" description="Descrição do card 3" />
+</div>
+```
+
+## Boas Práticas
+
+- Use títulos concisos e descritivos
+- Mantenha descrições claras e diretas
+- Utilize imagens relevantes e de alta qualidade
+- Limite o número de links de ação para evitar sobrecarga
+- Mantenha a consistência visual entre cards relacionados
+- Considere a hierarquia visual ao organizar o conteúdo dentro do card

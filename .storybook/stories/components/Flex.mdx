@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Flex" />
+
+# Flex
+
+O componente `Flex` é um wrapper flexível baseado no modelo de layout Flexbox do CSS, permitindo criar layouts responsivos e alinhamentos complexos com facilidade.
+
+
+
+## Importação
+
+```jsx
+import { Flex } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Flex } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <Flex gap="16px">
+      <div style={{ padding: '20px', background: '#e6f7ff', borderRadius: '4px' }}>Item 1</div>
+      <div style={{ padding: '20px', background: '#e6f7ff', borderRadius: '4px' }}>Item 2</div>
+      <div style={{ padding: '20px', background: '#e6f7ff', borderRadius: '4px' }}>Item 3</div>
+    </Flex>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `direction` | `'row' \| 'row-reverse' \| 'column' \| 'column-reverse'` | `'row'` | Define a direção principal dos itens |
+| `wrap` | `'nowrap' \| 'wrap' \| 'wrap-reverse'` | `'nowrap'` | Controla se os itens devem quebrar para a próxima linha |
+| `justify` | `'flex-start' \| 'flex-end' \| 'center' \| 'space-between' \| 'space-around' \| 'space-evenly'` | `'flex-start'` | Alinhamento dos itens ao longo do eixo principal |
+| `align` | `'flex-start' \| 'flex-end' \| 'center' \| 'baseline' \| 'stretch'` | `'flex-start'` | Alinhamento dos itens ao longo do eixo transversal |
+| `alignContent` | `'flex-start' \| 'flex-end' \| 'center' \| 'space-between' \| 'space-around' \| 'stretch'` | `'stretch'` | Alinhamento das linhas quando há múltiplas linhas |
+| `gap` | `string \| number` | `0` | Espaçamento entre os itens |
+| `rowGap` | `string \| number` | - | Espaçamento entre as linhas |
+| `columnGap` | `string \| number` | - | Espaçamento entre as colunas |
+| `flex` | `string \| number` | - | Propriedade flex shorthand (grow, shrink, basis) |
+| `flexGrow` | `number` | - | Fator de crescimento do container |
+| `flexShrink` | `number` | - | Fator de encolhimento do container |
+| `flexBasis` | `string \| number` | - | Tamanho base do container |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `children` | `ReactNode` | - | Conteúdo do componente |
+
+
+
+## Boas Práticas
+
+- Use `Flex` para criar layouts responsivos que se adaptam a diferentes tamanhos de tela
+- Combine `direction`, `wrap` e `gap` para criar layouts flexíveis
+- Use `justify` e `align` para controlar o alinhamento dos itens
+- Para layouts mais complexos com grade, considere usar o componente `Grid`
+- Aproveite a propriedade `flex` para controlar como os itens crescem e encolhem
+- Use `wrap="wrap"` para garantir que os itens não ultrapassem os limites do container em telas menores
+- Combine com consultas de mídia ou o hook `useMediaQuery` para criar layouts verdadeiramente responsivos

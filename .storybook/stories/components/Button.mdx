@@ -1,0 +1,175 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Button" />
+
+# Button
+
+O componente `Button` é usado para iniciar ações e navegações na interface, fornecendo uma maneira consistente para os usuários interagirem com a aplicação.
+
+
+
+## Exemplos
+
+### Variantes de Estilo
+
+```jsx
+<div style={{ display: 'flex', gap: '16px' }}>
+  <Button variant="insurance" styles="primary">Primário</Button>
+  <Button variant="insurance" styles="secondary">Secundário</Button>
+  <Button variant="insurance" styles="ghost">Ghost</Button>
+</div>
+```
+
+### Variantes de Produto
+
+```jsx
+<div style={{ display: 'flex', gap: '16px' }}>
+  <Button variant="insurance">Seguro</Button>
+  <Button variant="banking">Banco</Button>
+  <Button variant="health">Saúde</Button>
+</div>
+```
+
+### Tamanhos
+
+```jsx
+<div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+  <Button variant="insurance" size="small">Pequeno</Button>
+  <Button variant="insurance">Médio (Padrão)</Button>
+  <Button variant="insurance" size="large">Grande</Button>
+</div>
+```
+
+### Estados
+
+```jsx
+<div style={{ display: 'flex', gap: '16px' }}>
+  <Button variant="insurance">Normal</Button>
+  <Button variant="insurance" disabled>Desabilitado</Button>
+  <Button variant="negative">Negativo</Button>
+</div>
+```
+
+## Variantes
+
+<Canvas>
+  <Story name="Insurance">
+    <Button variant="insurance">Seguro</Button>
+  </Story>
+  <Story name="Banking">
+    <Button variant="banking">Banco</Button>
+  </Story>
+  <Story name="Health">
+    <Button variant="health">Saúde</Button>
+  </Story>
+</Canvas>
+
+## Importação
+
+```jsx
+import { Button } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+<Button>Botão Padrão</Button>
+```
+
+## Variantes
+
+O Button suporta diferentes variantes que representam contextos específicos:
+
+```jsx
+// Variante de seguro (padrão)
+<Button variant="insurance">Seguro</Button>
+
+// Variante bancária
+<Button variant="banking">Banco</Button>
+
+// Variante de saúde
+<Button variant="health">Saúde</Button>
+
+// Variante negativa (geralmente para ações destrutivas)
+<Button variant="negative">Cancelar</Button>
+
+// Variante desabilitada
+<Button variant="disabled">Indisponível</Button>
+```
+
+## Estilos
+
+O Button oferece diferentes estilos visuais:
+
+```jsx
+// Estilo primário (padrão)
+<Button styles="primary">Primário</Button>
+
+// Estilo secundário
+<Button styles="secondary">Secundário</Button>
+
+// Estilo ghost (apenas contorno)
+<Button styles="ghost">Ghost</Button>
+```
+
+## Tamanhos
+
+O Button está disponível em diferentes tamanhos:
+
+```jsx
+// Tamanho grande (padrão)
+<Button size="large">Grande</Button>
+
+// Tamanho pequeno
+<Button size="small">Pequeno</Button>
+```
+
+## Largura
+
+O Button pode ter largura fixa ou se adaptar ao conteúdo:
+
+```jsx
+// Largura contida ao conteúdo (padrão)
+<Button width="contain">Contido</Button>
+
+// Largura fluida (ocupa todo o espaço disponível)
+<Button width="fluid">Fluido</Button>
+```
+
+## Estado de Carregamento
+
+O Button pode exibir um indicador de carregamento:
+
+```jsx
+<Button isLoading={true}>Carregando</Button>
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `variant` | `"insurance" \| "banking" \| "health" \| "negative" \| "disabled"` | `"insurance"` | Define a variante visual do botão |
+| `styles` | `"primary" \| "secondary" \| "ghost"` | `"primary"` | Define o estilo visual do botão |
+| `size` | `"small" \| "large"` | `"large"` | Define o tamanho do botão |
+| `width` | `"contain" \| "fluid"` | `"contain"` | Define como o botão se comporta em relação à largura |
+| `isLoading` | `boolean` | `false` | Exibe um indicador de carregamento |
+| `disabled` | `boolean` | `false` | Desabilita o botão |
+| `className` | `string` | `""` | Classes CSS adicionais |
+| `children` | `React.ReactNode` | - | Conteúdo do botão |
+| `...restProps` | `HTMLButtonProps` | - | Outras props de botão HTML nativo |
+
+## Acessibilidade
+
+- O componente Button é implementado usando o elemento nativo `<button>`, garantindo comportamento acessível
+- Quando desabilitado, o atributo `disabled` é aplicado para informar tecnologias assistivas
+- O estado de carregamento é comunicado através de texto alternativo para leitores de tela
+- O componente mantém contraste adequado em todas as variantes e estados
+
+## Boas Práticas
+
+- Use texto conciso e claro que descreva a ação que o botão executa
+- Escolha a variante apropriada para o contexto (ex: use "negative" para ações destrutivas)
+- Evite usar muitos botões primários na mesma tela
+- Mantenha consistência no uso de variantes em toda a aplicação
+- Use o estado de carregamento para operações assíncronas

@@ -1,0 +1,100 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/BannerDouble" />
+
+# BannerDouble
+
+O componente `BannerDouble` exibe dois banners promocionais lado a lado, cada um contendo título, subtítulo opcional, link e imagem de fundo.
+
+
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente BannerDouble nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-bannerdouble-examples--default)
+- [Com Props Personalizadas](/story/components-bannerdouble-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-bannerdouble-examples--custom-example)
+## Importação
+
+```jsx
+import { BannerDouble } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Exemplo de Uso
+
+```jsx
+<BannerDouble 
+  banners={[
+    {
+      title: "Oferta Especial",
+      subtitle: "Até 50% de desconto",
+      link: { label: "Ver ofertas", href: "/ofertas" },
+      image: { src: "url-da-imagem.jpg", alt: "Imagem promocional" },
+      bgColor: "primary",
+      titleColor: "white",
+      subtitleColor: "light"
+    },
+    {
+      title: "Novos Produtos",
+      subtitle: "Confira os lançamentos",
+      link: { label: "Explorar", href: "/lancamentos" },
+      image: { src: "url-da-imagem-2.jpg", alt: "Novos produtos" },
+      bgColor: "secondary",
+      titleColor: "dark",
+      subtitleColor: "dark"
+    }
+  ]}
+/>
+```
+
+## Props
+
+O componente `BannerDouble` aceita as seguintes props:
+
+| Prop | Tipo | Obrigatório | Descrição |
+|------|------|------------|-----------|
+| `banners` | `Array` | Sim | Array contendo a configuração dos dois banners |
+
+Cada objeto no array `banners` aceita as seguintes propriedades:
+
+| Propriedade | Tipo | Obrigatório | Descrição |
+|-------------|------|------------|-----------|
+| `title` | `string` | Sim | Título principal do banner |
+| `subtitle` | `string` | Não | Subtítulo do banner |
+| `link` | `object` | Não | Objeto contendo `label` e `href` para o link do banner |
+| `image` | `object` | Não | Objeto contendo `src` e `alt` para a imagem de fundo |
+| `bgColor` | `string` | Não | Cor de fundo do banner (primary, secondary, insurance, banking, health) |
+| `titleColor` | `string` | Não | Cor do título (white, dark, light) |
+| `subtitleColor` | `string` | Não | Cor do subtítulo (white, dark, light) |
+
+## Variações
+
+O componente `BannerDouble` pode ser personalizado através das propriedades de cada banner no array `banners`.
+
+### Cores de Fundo
+
+Você pode definir diferentes cores de fundo para cada banner:
+
+- `primary`: Cor primária da marca
+- `secondary`: Cor secundária da marca
+- `insurance`: Cor temática de seguros
+- `banking`: Cor temática de banco
+- `health`: Cor temática de saúde
+
+### Cores de Texto
+
+Você pode definir diferentes cores para o título e subtítulo:
+
+- `white`: Texto branco
+- `dark`: Texto escuro
+- `light`: Texto claro
+
+## Boas Práticas
+
+- Use imagens de fundo com boa qualidade e que contrastem bem com o texto
+- Mantenha os títulos curtos e diretos
+- Use subtítulos para complementar a informação do título
+- Escolha cores de texto que tenham bom contraste com a cor de fundo
+- Certifique-se de que os links têm labels descritivos

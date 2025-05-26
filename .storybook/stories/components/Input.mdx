@@ -1,0 +1,82 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Input" />
+
+# Input
+
+O componente `Input` permite criar campos de entrada de texto com diversos estilos e funcionalidades, sendo fundamental para formulários e interações do usuário.
+
+
+
+## Importação
+
+```jsx
+import { Input } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React, { useState } from 'react';
+import { Input } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const [value, setValue] = useState('');
+  
+  return (
+    <Input
+      label="Nome"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      placeholder="Digite seu nome"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `label` | `string` | - | Rótulo do campo de entrada |
+| `value` | `string` | - | Valor atual do campo |
+| `onChange` | `(e: ChangeEvent<HTMLInputElement>) => void` | - | Função chamada quando o valor muda |
+| `placeholder` | `string` | - | Texto de placeholder quando o campo está vazio |
+| `type` | `string` | `'text'` | Tipo do input (text, password, email, etc.) |
+| `disabled` | `boolean` | `false` | Desativa o campo de entrada |
+| `error` | `string` | - | Mensagem de erro a ser exibida abaixo do campo |
+| `success` | `boolean` | `false` | Indica se o campo está em estado de sucesso |
+| `helperText` | `string` | - | Texto de ajuda exibido abaixo do campo |
+| `required` | `boolean` | `false` | Indica se o campo é obrigatório |
+| `icon` | `ReactNode` | - | Ícone a ser exibido dentro do campo |
+| `iconPosition` | `'left' \| 'right'` | `'left'` | Posição do ícone dentro do campo |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `inputClassName` | `string` | - | Classe CSS adicional para o elemento input |
+| `labelClassName` | `string` | - | Classe CSS adicional para o rótulo |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Input nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-input-examples--default)
+- [Com Props Personalizadas](/story/components-input-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-input-examples--custom-example)
+## Acessibilidade
+
+O componente `Input` segue as práticas recomendadas de acessibilidade:
+
+- Associa corretamente os rótulos (`label`) aos campos de entrada
+- Suporta atributos `aria-*` para melhorar a acessibilidade
+- Indica claramente estados de erro e sucesso
+- Fornece feedback visual e textual para validação
+- Mantém contraste adequado entre o texto e o fundo
+
+## Boas Práticas
+
+- Sempre forneça rótulos claros e descritivos para os campos de entrada
+- Use o tipo de input apropriado (email, password, tel, etc.) para ativar o teclado correto em dispositivos móveis
+- Forneça mensagens de erro específicas e úteis
+- Use o atributo `placeholder` como uma dica, não como substituto para o rótulo
+- Considere adicionar validação em tempo real para melhorar a experiência do usuário
+- Agrupe campos relacionados em seções lógicas em formulários complexos

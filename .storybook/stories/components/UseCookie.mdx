@@ -1,0 +1,92 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/UseCookie" />
+
+# useCookie
+
+O hook `useCookie` gerencia cookies no navegador, permitindo leitura, escrita e exclusão com opções avançadas como expiração, domínio e flags de segurança.
+
+## Importação
+
+```jsx
+import { useCookie } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Button, Typography } from '@porto/js-library-corp-hubv-porto-ocean';
+import { useCookie } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+
+function CookieExample() {
+  const [cookieValue, setCookieValue, removeCookie] = useCookie('meu-cookie', 'valor-inicial');
+  
+  return (
+    <div>
+      <Typography variant="title2">Exemplo de Cookie</Typography>
+      
+      <Typography variant="body1" style={{ marginTop: '16px' }}>
+        Valor atual do cookie: <strong>{cookieValue}</strong>
+      </Typography>
+      
+      <div style={{ display: 'flex', gap: '8px', marginTop: '16px' }}>
+        <Button onClick={() => setCookieValue('novo-valor')}>
+          Atualizar Cookie
+        </Button>
+        
+        <Button onClick={() => setCookieValue('outro-valor', { days: 7 })}>
+          Atualizar (7 dias)
+        </Button>
+        
+        <Button variant="secondary" onClick={removeCookie}>
+          Remover Cookie
+        </Button>
+      </div>
+    </div>
+  );
+}
+```
+
+## Parâmetros
+
+O hook `useCookie` aceita os seguintes parâmetros:
+
+| Parâmetro | Tipo | Obrigatório | Descrição |
+|-----------|------|-------------|-----------|
+| `name` | `string` | Sim | Nome do cookie |
+| `initialValue` | `string` | Não | Valor inicial do cookie (caso não exista) |
+| `options` | `object` | Não | Opções adicionais para configurar o comportamento do cookie |
+
+### Opções
+
+| Opção | Tipo | Padrão | Descrição |
+|-------|------|--------|-----------|
+| `days` | `number` | `undefined` | Número de dias até a expiração do cookie |
+| `path` | `string` | `'/'` | Caminho do cookie |
+| `domain` | `string` | `undefined` | Domínio do cookie |
+| `secure` | `boolean` | `false` | Se o cookie deve ser enviado apenas por HTTPS |
+| `sameSite` | `string` | `'Lax'` | Política SameSite ('Strict', 'Lax' ou 'None') |
+| `httpOnly` | `boolean` | `false` | Se o cookie deve ser acessível apenas pelo servidor |
+
+## Retorno
+
+O hook `useCookie` retorna um array com três elementos:
+
+| Índice | Tipo | Descrição |
+|--------|------|-----------|
+| `0` | `string` | Valor atual do cookie |
+| `1` | `function` | Função para atualizar o valor do cookie: `(newValue, options?) => void` |
+| `2` | `function` | Função para remover o cookie: `() => void` |
+
+
+
+## Boas Práticas
+
+- Use cookies para armazenar pequenas quantidades de dados (menos de 4KB).
+- Defina um tempo de expiração apropriado para seus cookies usando a opção `days`.
+- Para dados maiores ou que não precisam ser enviados ao servidor em cada requisição, considere usar `localStorage` ou `sessionStorage`.
+- Documente claramente quais cookies sua aplicação utiliza e para quê, especialmente para conformidade com leis de privacidade como GDPR e LGPD.
+- Combine com outros hooks como `useEffect` para executar ações quando o valor do cookie mudar.
+- Considere criar hooks personalizados baseados em `useCookie` para casos de uso específicos, como `useThemePreference` ou `useAuthToken`.

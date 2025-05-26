@@ -1,0 +1,572 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Alert" />
+
+# Alert
+
+O componente `Alert` é usado para fornecer feedback contextual aos usuários através de mensagens de alerta. Ele é útil para exibir informações importantes, avisos, erros ou mensagens de sucesso.
+
+## Importação
+
+```jsx
+import { Alert } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Alert } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <Alert severity="info">Esta é uma mensagem informativa.</Alert>
+      <Alert severity="success">Operação realizada com sucesso!</Alert>
+      <Alert severity="warning">Atenção! Esta ação requer confirmação.</Alert>
+      <Alert severity="error">Ocorreu um erro ao processar sua solicitação.</Alert>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo da mensagem do alert |
+| `severity` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Nível de severidade do alert |
+| `variant` | `'filled' \| 'outlined' \| 'standard'` | `'standard'` | Variante visual do alert |
+| `title` | `string` | - | Título opcional para o alert |
+| `icon` | `ReactNode` | - | Ícone personalizado (substitui o ícone padrão) |
+| `action` | `ReactNode` | - | Elemento de ação a ser exibido no alert (ex: botão) |
+| `onClose` | `() => void` | - | Função chamada quando o botão de fechar é clicado (se fornecida, exibe o botão de fechar) |
+| `closable` | `boolean` | `false` | Se verdadeiro, exibe o botão de fechar |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+## Exemplos
+
+### Variantes de Alert
+
+```jsx
+import React from 'react';
+import { Alert, Typography } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function AlertVariants() {
+  return (
+    <div>
+      <Typography variant="subtitle1" style={{ marginBottom: '16px' }}>
+        Variante Standard
+      </Typography>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
+        <Alert severity="info" variant="standard">
+          Esta é uma mensagem informativa na variante standard.
+        </Alert>
+        <Alert severity="success" variant="standard">
+          Operação realizada com sucesso na variante standard!
+        </Alert>
+        <Alert severity="warning" variant="standard">
+          Atenção! Esta ação requer confirmação na variante standard.
+        </Alert>
+        <Alert severity="error" variant="standard">
+          Ocorreu um erro ao processar sua solicitação na variante standard.
+        </Alert>
+      </div>
+      
+      <Typography variant="subtitle1" style={{ marginBottom: '16px' }}>
+        Variante Outlined
+      </Typography>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
+        <Alert severity="info" variant="outlined">
+          Esta é uma mensagem informativa na variante outlined.
+        </Alert>
+        <Alert severity="success" variant="outlined">
+          Operação realizada com sucesso na variante outlined!
+        </Alert>
+        <Alert severity="warning" variant="outlined">
+          Atenção! Esta ação requer confirmação na variante outlined.
+        </Alert>
+        <Alert severity="error" variant="outlined">
+          Ocorreu um erro ao processar sua solicitação na variante outlined.
+        </Alert>
+      </div>
+      
+      <Typography variant="subtitle1" style={{ marginBottom: '16px' }}>
+        Variante Filled
+      </Typography>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <Alert severity="info" variant="filled">
+          Esta é uma mensagem informativa na variante filled.
+        </Alert>
+        <Alert severity="success" variant="filled">
+          Operação realizada com sucesso na variante filled!
+        </Alert>
+        <Alert severity="warning" variant="filled">
+          Atenção! Esta ação requer confirmação na variante filled.
+        </Alert>
+        <Alert severity="error" variant="filled">
+          Ocorreu um erro ao processar sua solicitação na variante filled.
+        </Alert>
+      </div>
+    </div>
+  );
+}
+```
+
+### Alert com Título
+
+```jsx
+import React from 'react';
+import { Alert } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function AlertWithTitle() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <Alert 
+        severity="info" 
+        title="Informação"
+      >
+        Uma nova versão do sistema está disponível. Atualize para acessar os novos recursos.
+      </Alert>
+      
+      <Alert 
+        severity="success" 
+        title="Sucesso"
+      >
+        Seu cadastro foi realizado com sucesso! Você receberá um e-mail de confirmação em breve.
+      </Alert>
+      
+      <Alert 
+        severity="warning" 
+        title="Atenção"
+      >
+        Seu plano expirará em 7 dias. Renove agora para evitar a interrupção do serviço.
+      </Alert>
+      
+      <Alert 
+        severity="error" 
+        title="Erro"
+      >
+        Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.
+      </Alert>
+    </div>
+  );
+}
+```
+
+### Alert Fechável
+
+```jsx
+import React, { useState } from 'react';
+import { Alert, Button } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function ClosableAlert() {
+  const [alerts, setAlerts] = useState({
+    info: true,
+    success: true,
+    warning: true,
+    error: true
+  });
+  
+  const handleClose = (type) => {
+    setAlerts(prev => ({
+      ...prev,
+      [type]: false
+    }));
+  };
+  
+  const resetAlerts = () => {
+    setAlerts({
+      info: true,
+      success: true,
+      warning: true,
+      error: true
+    });
+  };
+  
+  return (
+    <div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
+        {alerts.info && (
+          <Alert 
+            severity="info" 
+            closable 
+            onClose={() => handleClose('info')}
+          >
+            Esta mensagem pode ser fechada.
+          </Alert>
+        )}
+        
+        {alerts.success && (
+          <Alert 
+            severity="success" 
+            closable 
+            onClose={() => handleClose('success')}
+          >
+            Esta mensagem de sucesso pode ser fechada.
+          </Alert>
+        )}
+        
+        {alerts.warning && (
+          <Alert 
+            severity="warning" 
+            closable 
+            onClose={() => handleClose('warning')}
+          >
+            Esta mensagem de aviso pode ser fechada.
+          </Alert>
+        )}
+        
+        {alerts.error && (
+          <Alert 
+            severity="error" 
+            closable 
+            onClose={() => handleClose('error')}
+          >
+            Esta mensagem de erro pode ser fechada.
+          </Alert>
+        )}
+      </div>
+      
+      {(!alerts.info || !alerts.success || !alerts.warning || !alerts.error) && (
+        <Button onClick={resetAlerts}>
+          Restaurar Alertas
+        </Button>
+      )}
+    </div>
+  );
+}
+```
+
+### Alert com Ações
+
+```jsx
+import React from 'react';
+import { Alert, Button } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function AlertWithActions() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <Alert 
+        severity="info" 
+        action={
+          <Button variant="secondary" size="small">
+            Saiba Mais
+          </Button>
+        }
+      >
+        Novos recursos disponíveis na plataforma.
+      </Alert>
+      
+      <Alert 
+        severity="success" 
+        action={
+          <Button variant="secondary" size="small">
+            Ver Detalhes
+          </Button>
+        }
+      >
+        Pagamento confirmado com sucesso.
+      </Alert>
+      
+      <Alert 
+        severity="warning" 
+        action={
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <Button variant="secondary" size="small">
+              Ignorar
+            </Button>
+            <Button variant="primary" size="small">
+              Renovar
+            </Button>
+          </div>
+        }
+      >
+        Seu plano expirará em 7 dias.
+      </Alert>
+      
+      <Alert 
+        severity="error" 
+        action={
+          <Button variant="primary" size="small">
+            Tentar Novamente
+          </Button>
+        }
+      >
+        Falha ao enviar formulário.
+      </Alert>
+    </div>
+  );
+}
+```
+
+### Alert com Ícones Personalizados
+
+```jsx
+import React from 'react';
+import { Alert } from '@porto/js-library-corp-hubv-porto-ocean';
+import { 
+  LightbulbFilament, 
+  ThumbsUp, 
+  Warning, 
+  WarningOctagon 
+} from 'phosphor-react';
+
+function CustomIconAlert() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <Alert 
+        severity="info" 
+        icon={<LightbulbFilament size={24} />}
+      >
+        Dica: Você pode personalizar seu perfil nas configurações.
+      </Alert>
+      
+      <Alert 
+        severity="success" 
+        icon={<ThumbsUp size={24} weight="fill" />}
+      >
+        Excelente! Todas as tarefas foram concluídas.
+      </Alert>
+      
+      <Alert 
+        severity="warning" 
+        icon={<Warning size={24} weight="fill" />}
+      >
+        Cuidado! Esta ação não pode ser desfeita.
+      </Alert>
+      
+      <Alert 
+        severity="error" 
+        icon={<WarningOctagon size={24} weight="fill" />}
+      >
+        Erro crítico! O sistema não conseguiu processar sua solicitação.
+      </Alert>
+    </div>
+  );
+}
+```
+
+### Alert com Conteúdo Rico
+
+```jsx
+import React from 'react';
+import { Alert, Typography, Link } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function RichContentAlert() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <Alert 
+        severity="info" 
+        title="Política de Privacidade Atualizada"
+      >
+        <Typography variant="body2" style={{ marginBottom: '8px' }}>
+          Atualizamos nossa política de privacidade para atender aos requisitos da LGPD. 
+          As principais mudanças incluem:
+        </Typography>
+        
+        <ul style={{ margin: '0 0 8px 20px' }}>
+          <li>
+            <Typography variant="body2">
+              Maior transparência sobre como seus dados são utilizados
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              Novos controles para gerenciar suas preferências de privacidade
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              Procedimentos atualizados para solicitações de exclusão de dados
+            </Typography>
+          </li>
+        </ul>
+        
+        <Typography variant="body2">
+          Para mais informações, consulte nossa{' '}
+          <Link href="/privacidade">Política de Privacidade</Link> completa.
+        </Typography>
+      </Alert>
+      
+      <Alert 
+        severity="error" 
+        title="Erro de Pagamento"
+        variant="outlined"
+      >
+        <Typography variant="body2" style={{ marginBottom: '8px' }}>
+          Não foi possível processar seu pagamento devido aos seguintes problemas:
+        </Typography>
+        
+        <ul style={{ margin: '0 0 8px 20px' }}>
+          <li>
+            <Typography variant="body2">
+              <strong>Cartão expirado:</strong> O cartão informado está vencido
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              <strong>Código de segurança inválido:</strong> Verifique o código no verso do cartão
+            </Typography>
+          </li>
+        </ul>
+        
+        <Typography variant="body2">
+          Por favor, atualize suas informações de pagamento ou tente outro método.
+          Se precisar de ajuda, entre em contato com nosso{' '}
+          <Link href="/suporte">Suporte ao Cliente</Link>.
+        </Typography>
+      </Alert>
+    </div>
+  );
+}
+```
+
+### Sistema de Notificações com Alert
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import { Alert, Button, Typography } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function NotificationSystem() {
+  const [notifications, setNotifications] = useState([]);
+  
+  // Função para adicionar uma nova notificação
+  const addNotification = (severity, message, autoClose = true) => {
+    const id = Date.now();
+    const newNotification = {
+      id,
+      severity,
+      message,
+      autoClose
+    };
+    
+    setNotifications(prev => [newNotification, ...prev]);
+    
+    // Auto-fechar após 5 segundos se autoClose for true
+    if (autoClose) {
+      setTimeout(() => {
+        removeNotification(id);
+      }, 5000);
+    }
+  };
+  
+  // Função para remover uma notificação
+  const removeNotification = (id) => {
+    setNotifications(prev => prev.filter(notification => notification.id !== id));
+  };
+  
+  // Demonstração: adicionar notificações automáticas
+  useEffect(() => {
+    // Adicionar uma notificação inicial após 1 segundo
+    const timer = setTimeout(() => {
+      addNotification('info', 'Bem-vindo ao sistema de notificações!', false);
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+  
+  return (
+    <div>
+      <Typography variant="subtitle1" style={{ marginBottom: '16px' }}>
+        Sistema de Notificações
+      </Typography>
+      
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '24px' }}>
+        <Button 
+          variant="primary" 
+          onClick={() => addNotification('info', 'Esta é uma notificação informativa.')}
+        >
+          Info
+        </Button>
+        
+        <Button 
+          variant="success" 
+          onClick={() => addNotification('success', 'Operação realizada com sucesso!')}
+        >
+          Sucesso
+        </Button>
+        
+        <Button 
+          variant="warning" 
+          onClick={() => addNotification('warning', 'Atenção! Esta ação requer confirmação.')}
+        >
+          Aviso
+        </Button>
+        
+        <Button 
+          variant="error" 
+          onClick={() => addNotification('error', 'Ocorreu um erro ao processar sua solicitação.', false)}
+        >
+          Erro
+        </Button>
+      </div>
+      
+      <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        gap: '8px',
+        maxHeight: '300px',
+        overflowY: 'auto',
+        padding: '8px',
+        border: notifications.length ? '1px solid #f0f0f0' : 'none',
+        borderRadius: '4px'
+      }}>
+        {notifications.length === 0 ? (
+          <Typography variant="body2" style={{ color: '#8c8c8c', textAlign: 'center', padding: '16px' }}>
+            Nenhuma notificação no momento. Clique nos botões acima para testar.
+          </Typography>
+        ) : (
+          notifications.map(notification => (
+            <Alert 
+              key={notification.id}
+              severity={notification.severity}
+              closable
+              onClose={() => removeNotification(notification.id)}
+              style={{ 
+                animation: 'fadeIn 0.3s ease-in-out',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              {notification.message}
+            </Alert>
+          ))
+        )}
+      </div>
+      
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+    </div>
+  );
+}
+```
+
+## Acessibilidade
+
+O componente `Alert` segue as práticas recomendadas de acessibilidade:
+
+- Utiliza o atributo `role="alert"` para anunciar mensagens importantes para leitores de tela
+- Implementa cores e ícones que seguem as diretrizes de contraste do WCAG
+- Fornece feedback visual claro para diferentes níveis de severidade
+- Inclui texto descritivo que comunica claramente o propósito da mensagem
+- Para alertas fecháveis, o botão de fechar tem texto acessível para leitores de tela
+
+## Boas Práticas
+
+- Use o nível de severidade apropriado para cada tipo de mensagem:
+  - `info`: Para informações neutras ou dicas
+  - `success`: Para confirmações de ações bem-sucedidas
+  - `warning`: Para avisos que requerem atenção, mas não impedem o progresso
+  - `error`: Para erros que impedem o progresso ou requerem ação imediata
+- Mantenha as mensagens concisas e diretas
+- Use títulos para mensagens mais complexas ou que precisam de mais contexto
+- Considere adicionar ações relevantes diretamente no alert
+- Para mensagens temporárias, use alertas fecháveis com auto-fechamento
+- Evite exibir muitos alertas simultaneamente para não sobrecarregar o usuário
+- Posicione os alertas de forma consistente na interface

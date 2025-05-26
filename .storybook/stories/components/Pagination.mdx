@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Pagination" />
+
+# Pagination
+
+O componente `Pagination` permite navegar através de conjuntos de dados divididos em múltiplas páginas, facilitando a exploração de grandes volumes de informações de forma organizada e eficiente.
+
+
+
+## Importação
+
+```jsx
+import { Pagination } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React, { useState } from 'react';
+import { Pagination } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 10;
+  
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+  
+  return (
+    <Pagination
+      currentPage={currentPage}
+      totalPages={totalPages}
+      onPageChange={handlePageChange}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `currentPage` | `number` | `1` | Página atual |
+| `totalPages` | `number` | - | Número total de páginas |
+| `onPageChange` | `(page: number) => void` | - | Função chamada quando a página é alterada |
+| `siblingCount` | `number` | `1` | Número de páginas exibidas antes e depois da página atual |
+| `boundaryCount` | `number` | `1` | Número de páginas exibidas no início e fim da paginação |
+| `showFirstButton` | `boolean` | `true` | Exibe o botão para ir para a primeira página |
+| `showLastButton` | `boolean` | `true` | Exibe o botão para ir para a última página |
+| `showPreviousButton` | `boolean` | `true` | Exibe o botão para ir para a página anterior |
+| `showNextButton` | `boolean` | `true` | Exibe o botão para ir para a próxima página |
+| `disabled` | `boolean` | `false` | Desativa todos os controles de paginação |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Tamanho dos controles de paginação |
+| `variant` | `'default' \| 'outlined' \| 'text'` | `'default'` | Variante visual dos controles de paginação |
+| `shape` | `'rounded' \| 'circular'` | `'rounded'` | Formato dos controles de paginação |
+| `color` | `'default' \| 'primary' \| 'secondary'` | `'primary'` | Cor dos controles de paginação |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `itemClassName` | `string` | - | Classe CSS adicional para cada item de paginação |
+| `itemStyle` | `CSSProperties` | - | Estilos inline adicionais para cada item de paginação |
+| `hideOnSinglePage` | `boolean` | `true` | Oculta a paginação quando há apenas uma página |
+
+
+
+## Boas Práticas
+
+- Combine a paginação com indicadores de progresso (ex: "Exibindo 1-10 de 100 itens")
+- Posicione a paginação de forma consistente, geralmente no final do conteúdo paginado
+- Considere usar tamanhos maiores em interfaces de toque
+- Ajuste a quantidade de páginas visíveis com base no tamanho da tela
+- Mantenha a página atual visível mesmo quando o usuário navega para outras partes do aplicativo
+- Use a prop `hideOnSinglePage` para ocultar a paginação quando há apenas uma página
+- Considere adicionar opções para ajustar o número de itens por página
+- Mantenha a paginação acessível por teclado para usuários com deficiência visual
+- Evite alterações de layout quando o usuário navega entre páginas

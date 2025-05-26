@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Select" />
+
+# Select
+
+O componente `Select` permite aos usuários escolher uma opção de uma lista suspensa, sendo ideal para formulários onde o espaço é limitado e há várias opções disponíveis.
+
+
+
+## Importação
+
+```jsx
+import { Select } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React, { useState } from 'react';
+import { Select } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const [value, setValue] = useState('');
+  
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+  
+  return (
+    <Select
+      label="Estado"
+      value={value}
+      onChange={handleChange}
+    >
+      <Select.Option value="">Selecione um estado</Select.Option>
+      <Select.Option value="sp">São Paulo</Select.Option>
+      <Select.Option value="rj">Rio de Janeiro</Select.Option>
+      <Select.Option value="mg">Minas Gerais</Select.Option>
+      <Select.Option value="rs">Rio Grande do Sul</Select.Option>
+    </Select>
+  );
+}
+```
+
+## Props
+
+### Select
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Opções do select (componentes Select.Option) |
+| `label` | `string` | - | Rótulo do select |
+| `value` | `string` | - | Valor selecionado |
+| `onChange` | `(e: ChangeEvent<HTMLSelectElement>) => void` | - | Função chamada quando o valor muda |
+| `placeholder` | `string` | - | Texto exibido quando nenhum valor está selecionado |
+| `disabled` | `boolean` | `false` | Desativa o select |
+| `error` | `string` | - | Mensagem de erro a ser exibida |
+| `helperText` | `string` | - | Texto de ajuda a ser exibido abaixo do select |
+| `required` | `boolean` | `false` | Indica se o campo é obrigatório |
+| `fullWidth` | `boolean` | `false` | Se verdadeiro, o select ocupará toda a largura disponível |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Tamanho do select |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `id` | `string` | - | ID do elemento select |
+| `name` | `string` | - | Nome do campo para formulários |
+
+### Select.Option
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo da opção |
+| `value` | `string` | - | Valor da opção |
+| `disabled` | `boolean` | `false` | Desativa a opção |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Select nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-select-examples--default)
+- [Com Props Personalizadas](/story/components-select-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-select-examples--custom-example)
+## Acessibilidade
+
+O componente `Select` segue as práticas recomendadas de acessibilidade:
+
+- Associa corretamente os rótulos (`label`) ao elemento select
+- Utiliza atributos ARIA apropriados para indicar estados e propriedades
+- Suporta navegação por teclado (Tab para focar, setas para navegar entre opções)
+- Fornece feedback visual claro para os estados de foco, seleção e desabilitado
+- Inclui mensagens de erro acessíveis para validação de formulários
+
+## Boas Práticas
+
+- Forneça sempre uma opção padrão ou placeholder para indicar que uma seleção é necessária
+- Use mensagens de erro claras e específicas para validação
+- Agrupe opções relacionadas usando `Select.Group` quando houver muitas opções
+- Considere usar componentes mais avançados como `Autocomplete` para listas muito longas
+- Mantenha os rótulos das opções concisos e descritivos
+- Para seleção múltipla, considere usar o componente `MultiSelect` ou `Checkbox` em vez de `Select`
+- Ordene as opções de forma lógica (alfabética, numérica, por relevância) para facilitar a localização

@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Skeleton" />
+
+# Skeleton
+
+O componente `Skeleton` é usado para criar placeholders animados que simulam o layout do conteúdo enquanto os dados reais estão sendo carregados, melhorando a percepção de desempenho e reduzindo a sensação de espera.
+
+
+
+## Importação
+
+```jsx
+import { Skeleton } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Skeleton } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <Skeleton variant="text" width={200} height={20} />
+      <Skeleton variant="text" width={300} height={20} />
+      <Skeleton variant="rectangular" width="100%" height={120} />
+      <Skeleton variant="circular" width={60} height={60} />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `variant` | `'text' \| 'rectangular' \| 'circular'` | `'text'` | Forma do skeleton |
+| `width` | `number \| string` | - | Largura do skeleton |
+| `height` | `number \| string` | - | Altura do skeleton |
+| `animation` | `'pulse' \| 'wave' \| 'none'` | `'pulse'` | Tipo de animação |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+
+
+## Boas Práticas
+
+- Use o Skeleton para representar a estrutura do conteúdo que está sendo carregado
+- Mantenha as dimensões do Skeleton próximas às do conteúdo real
+- Combine diferentes variantes para criar layouts complexos
+- Evite usar animações muito chamativas que possam distrair o usuário
+- Considere desativar as animações após um longo período de carregamento
+- Use o Skeleton apenas para conteúdo que leva mais de 300ms para carregar
+- Para melhor experiência, mantenha a estrutura do Skeleton similar à do conteúdo final
+- Considere usar o Skeleton para carregamento progressivo de listas longas

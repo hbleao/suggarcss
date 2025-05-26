@@ -1,0 +1,88 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Grid" />
+
+# Grid
+
+O componente `Grid` oferece um sistema de layout baseado em CSS Grid, permitindo criar designs complexos e responsivos com facilidade. É ideal para estruturar páginas inteiras ou seções que exigem alinhamento preciso em duas dimensões.
+
+
+
+## Importação
+
+```jsx
+import { Grid } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Grid } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <Grid columns={3} gap="16px">
+      <div style={{ padding: '20px', background: '#e6f7ff', borderRadius: '4px' }}>Item 1</div>
+      <div style={{ padding: '20px', background: '#e6f7ff', borderRadius: '4px' }}>Item 2</div>
+      <div style={{ padding: '20px', background: '#e6f7ff', borderRadius: '4px' }}>Item 3</div>
+      <div style={{ padding: '20px', background: '#e6f7ff', borderRadius: '4px' }}>Item 4</div>
+      <div style={{ padding: '20px', background: '#e6f7ff', borderRadius: '4px' }}>Item 5</div>
+      <div style={{ padding: '20px', background: '#e6f7ff', borderRadius: '4px' }}>Item 6</div>
+    </Grid>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `columns` | `number \| string` | `12` | Número de colunas ou template de colunas (ex: "1fr 2fr 1fr") |
+| `rows` | `number \| string` | - | Número de linhas ou template de linhas (ex: "auto 1fr auto") |
+| `gap` | `string \| number` | `0` | Espaçamento entre os itens (linhas e colunas) |
+| `rowGap` | `string \| number` | - | Espaçamento entre as linhas |
+| `columnGap` | `string \| number` | - | Espaçamento entre as colunas |
+| `autoRows` | `string` | - | Tamanho das linhas criadas automaticamente |
+| `autoColumns` | `string` | - | Tamanho das colunas criadas automaticamente |
+| `autoFlow` | `'row' \| 'column' \| 'dense' \| 'row dense' \| 'column dense'` | - | Controla como os itens são posicionados automaticamente |
+| `justifyItems` | `'start' \| 'end' \| 'center' \| 'stretch'` | - | Alinhamento horizontal dos itens dentro de suas células |
+| `alignItems` | `'start' \| 'end' \| 'center' \| 'stretch'` | - | Alinhamento vertical dos itens dentro de suas células |
+| `justifyContent` | `'start' \| 'end' \| 'center' \| 'stretch' \| 'space-around' \| 'space-between' \| 'space-evenly'` | - | Alinhamento horizontal da grade inteira |
+| `alignContent` | `'start' \| 'end' \| 'center' \| 'stretch' \| 'space-around' \| 'space-between' \| 'space-evenly'` | - | Alinhamento vertical da grade inteira |
+| `templateAreas` | `string` | - | Define áreas nomeadas para o grid |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `children` | `ReactNode` | - | Conteúdo do componente |
+
+## Componente Grid.Item
+
+O componente `Grid.Item` é usado dentro de `Grid` para controlar o posicionamento e dimensionamento de itens individuais.
+
+### Props do Grid.Item
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `column` | `number \| string` | - | Posição da coluna inicial ou intervalo de colunas (ex: "1 / 3") |
+| `row` | `number \| string` | - | Posição da linha inicial ou intervalo de linhas (ex: "1 / 3") |
+| `area` | `string` | - | Nome da área do grid (deve corresponder a uma área definida em templateAreas) |
+| `colSpan` | `number` | `1` | Número de colunas que o item ocupa |
+| `rowSpan` | `number` | `1` | Número de linhas que o item ocupa |
+| `justifySelf` | `'start' \| 'end' \| 'center' \| 'stretch'` | - | Alinhamento horizontal do item dentro de sua célula |
+| `alignSelf` | `'start' \| 'end' \| 'center' \| 'stretch'` | - | Alinhamento vertical do item dentro de sua célula |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `children` | `ReactNode` | - | Conteúdo do componente |
+
+
+
+## Boas Práticas
+
+- Use `Grid` para layouts bidimensionais complexos onde tanto linhas quanto colunas precisam ser controladas
+- Para layouts mais simples e unidimensionais, considere usar o componente `Flex`
+- Aproveite as áreas nomeadas para criar layouts complexos sem se preocupar com posições específicas
+- Combine com consultas de mídia ou o hook `useMediaQuery` para criar layouts responsivos
+- Use `gap` para espaçamento consistente entre os itens
+- Para layouts responsivos, ajuste o número de colunas com base no tamanho da tela
+- Considere usar unidades flexíveis como `fr` para criar layouts que se adaptam ao espaço disponível

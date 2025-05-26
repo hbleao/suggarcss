@@ -1,0 +1,119 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Card" />
+
+# Card
+
+O componente `Card` é um contêiner versátil que agrupa conteúdo relacionado e ações em um único elemento, fornecendo uma base visual consistente para diversos tipos de informação.
+
+
+
+## Importação
+
+```jsx
+import { Card } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Card, Typography, Button } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <Card>
+      <Card.Header>
+        <Typography variant="subtitle1">Título do Card</Typography>
+      </Card.Header>
+      
+      <Card.Body>
+        <Typography variant="body1">
+          Este é um exemplo básico de um card com cabeçalho, corpo e rodapé.
+          O conteúdo principal fica no corpo do card.
+        </Typography>
+      </Card.Body>
+      
+      <Card.Footer>
+        <Button variant="primary">Ação Principal</Button>
+        <Button variant="secondary">Ação Secundária</Button>
+      </Card.Footer>
+    </Card>
+  );
+}
+```
+
+## Props
+
+### Card
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo do card |
+| `variant` | `'default' \| 'outlined' \| 'elevated'` | `'default'` | Variante visual do card |
+| `hoverable` | `boolean` | `false` | Se verdadeiro, adiciona efeito de hover ao card |
+| `onClick` | `(e: MouseEvent) => void` | - | Função chamada quando o card é clicado |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+### Card.Header
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo do cabeçalho |
+| `className` | `string` | - | Classe CSS adicional para o cabeçalho |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+### Card.Body
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo do corpo |
+| `className` | `string` | - | Classe CSS adicional para o corpo |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+### Card.Footer
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo do rodapé |
+| `className` | `string` | - | Classe CSS adicional para o rodapé |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+### Card.Image
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `src` | `string` | - | URL da imagem |
+| `alt` | `string` | - | Texto alternativo para a imagem |
+| `position` | `'top' \| 'bottom'` | `'top'` | Posição da imagem no card |
+| `className` | `string` | - | Classe CSS adicional para a imagem |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Card nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-card-examples--default)
+- [Com Props Personalizadas](/story/components-card-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-card-examples--custom-example)
+## Acessibilidade
+
+O componente `Card` segue as práticas recomendadas de acessibilidade:
+
+- Utiliza estrutura semântica apropriada para o conteúdo
+- Para cards clicáveis, implementa atributos ARIA adequados e suporte a navegação por teclado
+- Mantém contraste adequado entre o conteúdo e o fundo do card
+- Garante que imagens incluam texto alternativo descritivo
+- Preserva a ordem de leitura lógica para leitores de tela
+
+## Boas Práticas
+
+- Use cards para agrupar informações relacionadas e criar uma hierarquia visual clara
+- Mantenha o conteúdo dos cards conciso e focado em um único tópico ou ação
+- Seja consistente no uso de cabeçalhos, imagens e ações entre cards similares
+- Para cards clicáveis, forneça indicações visuais claras (como efeito de hover)
+- Considere a responsividade ao definir o layout de múltiplos cards
+- Use as subcomponentes `Card.Header`, `Card.Body` e `Card.Footer` para manter uma estrutura consistente
+- Evite sobrecarregar cards com muitas ações ou informações

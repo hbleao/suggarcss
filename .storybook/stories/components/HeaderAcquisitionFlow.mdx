@@ -1,0 +1,98 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/HeaderAcquisitionFlow" />
+
+# HeaderAcquisitionFlow
+
+O componente `HeaderAcquisitionFlow` é um cabeçalho especializado para fluxos de aquisição e checkout, oferecendo navegação simplificada com botão de voltar e acesso ao carrinho de compras.
+
+
+
+## Exemplos
+
+### Exemplo Básico
+
+```jsx
+<HeaderAcquisitionFlow
+  goBackLink="/produtos"
+  hasGoBackLink={true}
+  hasShoppingCart={true}
+  logoSrc="/path/to/logo.svg"
+  logoAlt="Logo da Empresa"
+/>
+```
+
+### Exemplo com Etapas
+
+```jsx
+<HeaderAcquisitionFlow
+  goBackLink="/produtos"
+  hasGoBackLink={true}
+  hasShoppingCart={true}
+  logoSrc="/path/to/logo.svg"
+  logoAlt="Logo da Empresa"
+  steps={[
+    { label: 'Dados Pessoais', completed: true },
+    { label: 'Endereço', completed: true },
+    { label: 'Pagamento', active: true },
+    { label: 'Confirmação', completed: false }
+  ]}
+/>
+```
+
+## Importação
+
+```jsx
+import { HeaderAcquisitionFlow } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Exemplo de Uso
+
+```jsx
+// Cabeçalho básico para fluxo de aquisição
+<HeaderAcquisitionFlow 
+  goBackLink="/produtos" 
+  hasGoBackLink={true}
+  hasShoppingCart={true}
+/>
+```
+
+## Props
+
+| Prop | Tipo | Obrigatório | Padrão | Descrição |
+|------|------|-------------|--------|-----------|
+| `goBackLink` | `string` | Não | `""` | URL para navegação ao clicar no botão de voltar |
+| `hasGoBackLink` | `boolean` | Não | `true` | Define se o botão de voltar deve ser exibido |
+| `hasShoppingCart` | `boolean` | Não | `true` | Define se o ícone do carrinho de compras deve ser exibido |
+| `logoSrc` | `string` | Não | - | URL da imagem do logo |
+| `logoAlt` | `string` | Não | `"Logo"` | Texto alternativo para o logo |
+| `onGoBackClick` | `function` | Não | - | Função chamada ao clicar no botão de voltar |
+| `onCartClick` | `function` | Não | - | Função chamada ao clicar no ícone do carrinho |
+| `onLogoClick` | `function` | Não | - | Função chamada ao clicar no logo |
+
+## Estrutura
+
+O componente `HeaderAcquisitionFlow` é composto por três elementos principais:
+
+1. **Botão de voltar**: Permite ao usuário retornar à página anterior no fluxo
+2. **Logo**: Identidade visual da marca, geralmente centralizado
+3. **Ícone de carrinho**: Acesso rápido ao carrinho de compras
+
+## Acessibilidade
+
+O componente `HeaderAcquisitionFlow` implementa as seguintes práticas de acessibilidade:
+
+- Botões e links com textos alternativos adequados para leitores de tela
+- Foco visual claro para navegação por teclado
+- Contraste adequado entre texto e fundo
+- Estrutura semântica com elementos HTML apropriados
+
+## Casos de Uso
+
+O `HeaderAcquisitionFlow` é ideal para:
+
+- Fluxos de checkout e pagamento
+- Processos de contratação de serviços
+- Jornadas de aquisição com múltiplas etapas
+- Qualquer fluxo onde a navegação simplificada é prioritária

@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/TextBody" />
+
+# TextBody
+
+O componente `TextBody` é utilizado para exibir blocos de texto com formatação consistente, seguindo o sistema de design do Ocean. Ele oferece diferentes variantes de estilo, tamanhos e pesos para atender a diversas necessidades de conteúdo textual.
+
+
+
+## Importação
+
+```jsx
+import { TextBody } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { TextBody } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <TextBody>
+      Este é um texto padrão usando o componente TextBody.
+    </TextBody>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `variant` | `'body1' \| 'body2' \| 'caption' \| 'overline'` | `'body1'` | Variante de estilo do texto |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Tamanho do texto |
+| `weight` | `'regular' \| 'medium' \| 'bold'` | `'regular'` | Peso da fonte |
+| `color` | `string` | - | Cor do texto (substitui a cor padrão da variante) |
+| `align` | `'left' \| 'center' \| 'right' \| 'justify'` | `'left'` | Alinhamento do texto |
+| `noWrap` | `boolean` | `false` | Se verdadeiro, o texto não quebra linha |
+| `truncate` | `boolean` | `false` | Se verdadeiro, o texto é truncado com reticências quando excede uma linha |
+| `paragraph` | `boolean` | `false` | Se verdadeiro, adiciona margem inferior para criar espaçamento de parágrafo |
+| `gutterBottom` | `boolean` | `false` | Se verdadeiro, adiciona margem inferior |
+| `component` | `ElementType` | `'p'` | Elemento HTML a ser renderizado |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `children` | `ReactNode` | - | Conteúdo do componente |
+
+
+
+## Boas Práticas
+
+- Use a variante `body1` para o texto principal do conteúdo
+- Use a variante `body2` para texto secundário ou de suporte
+- Use a variante `caption` para legendas, notas de rodapé e informações auxiliares
+- Use a variante `overline` para rótulos, cabeçalhos de seção e categorias
+- Mantenha a consistência no uso das variantes em toda a aplicação
+- Use a prop `paragraph` para criar espaçamento adequado entre parágrafos
+- Evite usar texto justificado (`align="justify"`) em blocos estreitos, pois pode criar espaçamentos irregulares entre palavras
+- Prefira alinhamento à esquerda (`align="left"`) para blocos de texto longos, pois é mais legível
+- Use a prop `component` para garantir que o elemento HTML correto seja usado para o contexto
+- Evite usar a prop `truncate` para informações críticas, pois parte do conteúdo ficará oculta

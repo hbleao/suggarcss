@@ -1,0 +1,139 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Accessibility" />
+
+# Acessibilidade
+
+A acessibilidade é um pilar fundamental do SugarCSS. Nosso objetivo é garantir que todos os componentes e interfaces construídos com nossa biblioteca sejam acessíveis a todos os usuários, independentemente de suas habilidades ou deficiências.
+
+## Princípios de Acessibilidade
+
+O SugarCSS segue os princípios do WCAG 2.1 (Web Content Accessibility Guidelines) e visa atender ao nível AA de conformidade. Nossos princípios fundamentais são:
+
+### 1. Perceptível
+
+- Fornecer alternativas em texto para conteúdo não textual
+- Criar conteúdo que possa ser apresentado de diferentes maneiras
+- Tornar mais fácil para os usuários ver e ouvir o conteúdo
+
+### 2. Operável
+
+- Tornar todas as funcionalidades disponíveis a partir do teclado
+- Dar aos usuários tempo suficiente para ler e usar o conteúdo
+- Não projetar conteúdo que possa causar convulsões ou reações físicas
+- Ajudar os usuários a navegar e encontrar conteúdo
+
+### 3. Compreensível
+
+- Tornar o texto legível e compreensível
+- Fazer com que as páginas funcionem de maneira previsível
+- Ajudar os usuários a evitar e corrigir erros
+
+### 4. Robusto
+
+- Maximizar a compatibilidade com ferramentas assistivas atuais e futuras
+
+## Implementação nos Componentes
+
+Todos os componentes do SugarCSS são projetados com acessibilidade em mente:
+
+### Semântica HTML
+
+Utilizamos elementos HTML semânticos apropriados para cada componente:
+
+```jsx
+// Uso correto de elementos semânticos
+<Button>Ação</Button>           // Renderiza <button>
+<Typography as="h1">Título</Typography>  // Renderiza <h1>
+```
+
+### Suporte a Teclado
+
+Todos os componentes interativos são acessíveis via teclado:
+
+- `Tab` para navegação entre elementos focáveis
+- `Enter` ou `Space` para ativar botões e links
+- `Esc` para fechar modais e dropdowns
+- Teclas de seta para navegação em menus e listas
+
+### Atributos ARIA
+
+Implementamos atributos ARIA (Accessible Rich Internet Applications) apropriados:
+
+```jsx
+// Modal acessível
+<Modal 
+  title="Título do Modal"
+  isOpen={isOpen}
+  onClose={handleClose}
+  aria-labelledby="modal-title"
+  aria-describedby="modal-description"
+>
+  <h2 id="modal-title">Título do Modal</h2>
+  <p id="modal-description">Descrição do conteúdo do modal.</p>
+</Modal>
+```
+
+### Contraste de Cores
+
+Nossas cores seguem as diretrizes de contraste do WCAG 2.1 AA:
+
+- Texto normal: contraste mínimo de 4.5:1
+- Texto grande (18pt ou 14pt bold): contraste mínimo de 3:1
+- Componentes de interface e gráficos: contraste mínimo de 3:1
+
+### Estados Focáveis
+
+Todos os elementos interativos têm estados de foco visíveis e consistentes:
+
+```css
+/* Exemplo de estilo de foco */
+:focus {
+  outline: 2px solid var(--sugarcss-color-focus);
+  outline-offset: 2px;
+}
+```
+
+## Checklist de Acessibilidade
+
+Ao usar componentes do SugarCSS, verifique se:
+
+- [ ] Os textos têm contraste suficiente com o fundo
+- [ ] Os componentes interativos são acessíveis via teclado
+- [ ] Os formulários têm labels associados e mensagens de erro claras
+- [ ] As imagens têm texto alternativo apropriado
+- [ ] Os ícones decorativos são ignorados por leitores de tela
+- [ ] Os ícones funcionais têm descrições acessíveis
+- [ ] Os modais e popovers capturam e gerenciam o foco corretamente
+- [ ] O conteúdo dinâmico é anunciado apropriadamente para leitores de tela
+
+## Testes de Acessibilidade
+
+Recomendamos testar regularmente a acessibilidade de suas interfaces:
+
+### Ferramentas Automatizadas
+
+- **Lighthouse**: Para auditorias gerais de acessibilidade
+- **axe DevTools**: Para testes detalhados de acessibilidade
+- **WAVE**: Para verificação visual de problemas de acessibilidade
+
+### Testes Manuais
+
+- Navegação por teclado: Tente usar sua interface apenas com o teclado
+- Leitores de tela: Teste com VoiceOver (macOS), NVDA ou JAWS (Windows)
+- Zoom: Verifique se a interface funciona bem com zoom de até 200%
+- Contraste: Verifique o contraste em diferentes condições de iluminação
+
+## Recursos Adicionais
+
+- [WCAG 2.1 Guidelines](https://www.w3.org/TR/WCAG21/)
+- [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/)
+- [Inclusive Components](https://inclusive-components.design/)
+- [A11y Project Checklist](https://www.a11yproject.com/checklist/)
+
+## Contribuindo para a Acessibilidade
+
+Se você encontrar problemas de acessibilidade em nossos componentes ou tiver sugestões para melhorias, por favor, abra uma issue em nosso repositório ou envie um pull request.
+
+

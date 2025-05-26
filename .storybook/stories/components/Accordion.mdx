@@ -1,0 +1,234 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Accordion" />
+
+# Accordion
+
+O componente `Accordion` permite criar painéis expansíveis que podem ser abertos e fechados para mostrar ou esconder conteúdo, economizando espaço e organizando informações em seções.
+
+
+
+## Importação
+
+```jsx
+import { Accordion } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Accordion } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <Accordion title="Informações Gerais">
+      <p>Este é o conteúdo do accordion que será mostrado quando expandido.</p>
+      <p>Você pode incluir qualquer conteúdo aqui, incluindo texto, imagens e outros componentes.</p>
+    </Accordion>
+  );
+}
+```
+
+## Múltiplos Accordions
+
+```jsx
+import React from 'react';
+import { Accordion } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function MultipleAccordions() {
+  return (
+    <div>
+      <Accordion title="Seção 1" defaultOpen>
+        <p>Conteúdo da seção 1. Este accordion está aberto por padrão.</p>
+      </Accordion>
+      
+      <Accordion title="Seção 2">
+        <p>Conteúdo da seção 2.</p>
+      </Accordion>
+      
+      <Accordion title="Seção 3">
+        <p>Conteúdo da seção 3.</p>
+      </Accordion>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `title` | `string` | - | Título do accordion que será exibido no cabeçalho |
+| `children` | `ReactNode` | - | Conteúdo que será exibido quando o accordion estiver expandido |
+| `defaultOpen` | `boolean` | `false` | Se o accordion deve estar aberto por padrão |
+| `disabled` | `boolean` | `false` | Desativa o accordion, impedindo que seja aberto ou fechado |
+| `onChange` | `(isOpen: boolean) => void` | - | Função chamada quando o estado do accordion muda |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `headerClassName` | `string` | - | Classe CSS adicional para o cabeçalho do accordion |
+| `contentClassName` | `string` | - | Classe CSS adicional para o conteúdo do accordion |
+
+## Exemplos
+
+### Exemplo Básico
+
+```jsx
+<Accordion />
+```
+
+### Exemplo com Props
+
+```jsx
+<Accordion 
+  // Adicione props específicas do componente aqui
+/>
+```
+
+### Accordion com Ícone Personalizado
+
+```jsx
+import React from 'react';
+import { Accordion } from '@porto/js-library-corp-hubv-porto-ocean';
+import { InfoCircle } from 'phosphor-react';
+
+function CustomIconAccordion() {
+  return (
+    <Accordion 
+      title="Informações Importantes"
+      icon={<InfoCircle size={20} />}
+    >
+      <p>Este accordion usa um ícone personalizado no cabeçalho.</p>
+    </Accordion>
+  );
+}
+```
+
+### Accordion Controlado
+
+```jsx
+import React, { useState } from 'react';
+import { Accordion, Button } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function ControlledAccordion() {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <div>
+      <Button 
+        onClick={() => setIsOpen(!isOpen)}
+        style={{ marginBottom: '16px' }}
+      >
+        {isOpen ? 'Fechar' : 'Abrir'} Accordion
+      </Button>
+      
+      <Accordion 
+        title="Accordion Controlado"
+        open={isOpen}
+        onChange={setIsOpen}
+      >
+        <p>Este accordion é controlado externamente pelo botão acima.</p>
+      </Accordion>
+    </div>
+  );
+}
+```
+
+### Accordion com Conteúdo Rico
+
+```jsx
+import React from 'react';
+import { Accordion, Button, Typography } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function RichContentAccordion() {
+  return (
+    <Accordion title="Detalhes do Produto">
+      <div style={{ padding: '16px' }}>
+        <Typography variant="subtitle1">Especificações Técnicas</Typography>
+        
+        <ul style={{ marginTop: '8px' }}>
+          <li>Processador: Intel Core i7</li>
+          <li>Memória: 16GB RAM</li>
+          <li>Armazenamento: 512GB SSD</li>
+          <li>Tela: 15.6" Full HD</li>
+        </ul>
+        
+        <Typography variant="subtitle1" style={{ marginTop: '16px' }}>
+          Garantia
+        </Typography>
+        <Typography variant="body2">
+          Este produto possui garantia de 12 meses contra defeitos de fabricação.
+        </Typography>
+        
+        <div style={{ marginTop: '16px' }}>
+          <Button>Adicionar ao Carrinho</Button>
+        </div>
+      </div>
+    </Accordion>
+  );
+}
+```
+
+### Grupo de Accordions (Comportamento de Sanfona)
+
+```jsx
+import React, { useState } from 'react';
+import { Accordion } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function AccordionGroup() {
+  const [openIndex, setOpenIndex] = useState(0);
+  
+  const handleChange = (index) => (isOpen) => {
+    if (isOpen) {
+      setOpenIndex(index);
+    } else if (openIndex === index) {
+      setOpenIndex(null);
+    }
+  };
+  
+  return (
+    <div>
+      <Accordion 
+        title="Perguntas Frequentes - Geral"
+        open={openIndex === 0}
+        onChange={handleChange(0)}
+      >
+        <p>Respostas para perguntas gerais sobre nossos produtos e serviços.</p>
+      </Accordion>
+      
+      <Accordion 
+        title="Perguntas Frequentes - Entrega"
+        open={openIndex === 1}
+        onChange={handleChange(1)}
+      >
+        <p>Informações sobre prazos de entrega, rastreamento e políticas de devolução.</p>
+      </Accordion>
+      
+      <Accordion 
+        title="Perguntas Frequentes - Pagamento"
+        open={openIndex === 2}
+        onChange={handleChange(2)}
+      >
+        <p>Detalhes sobre métodos de pagamento, parcelamento e segurança.</p>
+      </Accordion>
+    </div>
+  );
+}
+```
+
+## Acessibilidade
+
+O componente `Accordion` segue as práticas recomendadas de acessibilidade:
+
+- Utiliza os atributos `aria-expanded` para indicar o estado do accordion
+- Implementa `aria-controls` para associar o cabeçalho ao conteúdo
+- Suporta navegação por teclado (Enter e Space para abrir/fechar)
+- Mantém o foco apropriado ao interagir com o componente
+
+## Boas Práticas
+
+- Use accordions para organizar conteúdo extenso em seções gerenciáveis
+- Forneça títulos claros e descritivos para cada accordion
+- Evite aninhar accordions dentro de outros accordions, pois isso pode confundir os usuários
+- Considere deixar o primeiro accordion aberto por padrão para indicar como o componente funciona
+- Use o comportamento de sanfona (apenas um accordion aberto por vez) quando o conteúdo for mutuamente exclusivo

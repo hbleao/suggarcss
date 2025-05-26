@@ -1,0 +1,104 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Dropdown" />
+
+# Dropdown
+
+O componente `Dropdown` exibe um menu suspenso quando acionado, permitindo que o usuário selecione uma opção de uma lista de alternativas ou acesse funcionalidades adicionais.
+
+
+
+## Importação
+
+```jsx
+import { Dropdown } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Dropdown, Button } from '@porto/js-library-corp-hubv-porto-ocean';
+import { CaretDown } from 'phosphor-react';
+
+function Example() {
+  const handleItemClick = (key) => {
+    console.log(`Item clicado: ${key}`);
+  };
+
+  return (
+    <Dropdown
+      trigger={
+        <Button variant="secondary" icon={<CaretDown size={16} />} iconPosition="right">
+          Opções
+        </Button>
+      }
+      items={[
+        { key: 'item-1', label: 'Opção 1', onClick: () => handleItemClick('item-1') },
+        { key: 'item-2', label: 'Opção 2', onClick: () => handleItemClick('item-2') },
+        { key: 'item-3', label: 'Opção 3', onClick: () => handleItemClick('item-3') }
+      ]}
+    />
+  );
+}
+```
+
+## Props
+
+### Dropdown
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `trigger` | `ReactNode` | - | Elemento que aciona o dropdown quando clicado |
+| `items` | `DropdownItem[]` | - | Array de itens a serem exibidos no dropdown |
+| `placement` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'bottom'` | Posição do dropdown em relação ao trigger |
+| `visible` | `boolean` | - | Controla a visibilidade do dropdown (quando controlado) |
+| `defaultVisible` | `boolean` | `false` | Define se o dropdown está visível inicialmente (quando não controlado) |
+| `onVisibleChange` | `(visible: boolean) => void` | - | Função chamada quando a visibilidade do dropdown muda |
+| `disabled` | `boolean` | `false` | Se verdadeiro, desativa o dropdown |
+| `arrow` | `boolean` | `false` | Se verdadeiro, exibe uma seta apontando para o trigger |
+| `overlay` | `ReactNode` | - | Conteúdo personalizado para o dropdown (alternativa a items) |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+### DropdownItem
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `key` | `string` | - | Identificador único do item |
+| `label` | `ReactNode` | - | Conteúdo do item |
+| `icon` | `ReactNode` | - | Ícone a ser exibido antes do label |
+| `disabled` | `boolean` | `false` | Se verdadeiro, desativa o item |
+| `danger` | `boolean` | `false` | Se verdadeiro, aplica estilo de perigo ao item |
+| `onClick` | `() => void` | - | Função chamada quando o item é clicado |
+| `divider` | `boolean` | `false` | Se verdadeiro, exibe um divisor após o item |
+| `className` | `string` | - | Classe CSS adicional para o item |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Dropdown nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-dropdown-examples--default)
+- [Com Props Personalizadas](/story/components-dropdown-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-dropdown-examples--custom-example)
+## Acessibilidade
+
+O componente `Dropdown` segue as práticas recomendadas de acessibilidade:
+
+- Implementa o padrão WAI-ARIA para menus, usando `role="menu"`, `role="menuitem"` e atributos relacionados
+- Suporta navegação completa por teclado (Tab para focar no trigger, Enter/Space para abrir, setas para navegar entre itens, Esc para fechar)
+- Gerencia corretamente o foco quando o dropdown é aberto e fechado
+- Fornece feedback visual claro para os estados de foco, hover e desabilitado
+- Implementa atributos `aria-expanded` e `aria-haspopup` para indicar o estado do dropdown
+
+## Boas Práticas
+
+- Use rótulos claros e concisos para os itens do dropdown
+- Agrupe itens relacionados e use divisores para separar grupos diferentes
+- Limite o número de itens no dropdown para evitar listas muito longas
+- Considere usar ícones junto com texto para melhorar a compreensão visual
+- Para ações destrutivas (como excluir), use a propriedade `danger` para destacar visualmente
+- Evite aninhar muitos níveis de submenus, pois isso pode dificultar a navegação
+- Posicione o dropdown de forma que não fique cortado pelos limites da tela
+- Para seleção de valores, considere usar o componente `Select` em vez de `Dropdown`

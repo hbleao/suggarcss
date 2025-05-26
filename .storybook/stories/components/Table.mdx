@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Table" />
+
+# Table
+
+O componente `Table` permite exibir dados estruturados em linhas e colunas, facilitando a organização e comparação de informações. É ideal para apresentar conjuntos de dados que compartilham as mesmas propriedades.
+
+
+
+## Importação
+
+```jsx
+import { Table } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Table } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const columns = [
+    { key: 'name', header: 'Nome' },
+    { key: 'age', header: 'Idade' },
+    { key: 'email', header: 'Email' }
+  ];
+  
+  const data = [
+    { id: 1, name: 'João Silva', age: 28, email: 'joao@exemplo.com' },
+    { id: 2, name: 'Maria Oliveira', age: 34, email: 'maria@exemplo.com' },
+    { id: 3, name: 'Pedro Santos', age: 42, email: 'pedro@exemplo.com' }
+  ];
+  
+  return (
+    <Table
+      columns={columns}
+      data={data}
+      keyExtractor={(item) => item.id}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `columns` | `Array<Column>` | - | Array de definições de colunas |
+| `data` | `Array<any>` | - | Array de dados a serem exibidos |
+| `keyExtractor` | `(item: any) => string \| number` | - | Função para extrair uma chave única de cada item |
+| `loading` | `boolean` | `false` | Indica se a tabela está carregando dados |
+| `loadingRows` | `number` | `3` | Número de linhas a serem exibidas durante o carregamento |
+| `emptyMessage` | `ReactNode` | `'Nenhum dado encontrado'` | Mensagem exibida quando não há dados |
+| `sortable` | `boolean` | `false` | Permite ordenação das colunas |
+| `initialSortColumn` | `string` | - | Chave da coluna inicialmente ordenada |
+| `initialSortDirection` | `'asc' \| 'desc'` | `'asc'` | Direção inicial da ordenação |
+| `onSort` | `(column: string, direction: 'asc' \| 'desc') => void` | - | Função chamada quando a ordenação muda |
+| `selectable` | `boolean` | `false` | Permite seleção de linhas |
+| `selectedRows` | `Array<string \| number>` | - | Array de chaves das linhas selecionadas |
+| `onSelectRow` | `(rowKey: string \| number, selected: boolean) => void` | - | Função chamada quando uma linha é selecionada/deselecionada |
+| `onSelectAll` | `(selected: boolean) => void` | - | Função chamada quando todas as linhas são selecionadas/deselecionadas |
+| `striped` | `boolean` | `false` | Aplica cores alternadas às linhas |
+| `bordered` | `boolean` | `false` | Adiciona bordas à tabela |
+| `hoverable` | `boolean` | `true` | Destaca a linha ao passar o mouse |
+| `compact` | `boolean` | `false` | Reduz o espaçamento interno das células |
+| `responsive` | `boolean` | `true` | Torna a tabela responsiva em telas pequenas |
+| `stickyHeader` | `boolean` | `false` | Mantém o cabeçalho fixo durante a rolagem |
+| `maxHeight` | `string \| number` | - | Altura máxima da tabela, ativa rolagem vertical |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+### Tipo Column
+
+| Propriedade | Tipo | Padrão | Descrição |
+|-------------|------|--------|-----------|
+| `key` | `string` | - | Chave única para a coluna, corresponde à propriedade no objeto de dados |
+| `header` | `ReactNode` | - | Conteúdo do cabeçalho da coluna |
+| `width` | `string \| number` | - | Largura da coluna |
+| `align` | `'left' \| 'center' \| 'right'` | `'left'` | Alinhamento do conteúdo da coluna |
+| `sortable` | `boolean` | - | Permite ordenação desta coluna (sobrescreve a prop global) |
+| `render` | `(value: any, row: any, index: number) => ReactNode` | - | Função para renderização personalizada da célula |
+| `className` | `string` | - | Classe CSS adicional para as células desta coluna |
+| `headerClassName` | `string` | - | Classe CSS adicional para o cabeçalho desta coluna |
+
+
+
+## Boas Práticas
+
+- Use cabeçalhos descritivos e concisos para as colunas
+- Mantenha a tabela simples, evitando muitas colunas em telas pequenas
+- Use a prop `responsive` para garantir que a tabela seja utilizável em dispositivos móveis
+- Implemente paginação para conjuntos de dados grandes
+- Forneça opções de filtragem e ordenação para facilitar a localização de informações
+- Use renderização personalizada para formatar dados de maneira apropriada (datas, números, status)
+- Considere usar a prop `stickyHeader` para tabelas com muitas linhas
+- Mantenha a consistência no alinhamento: números à direita, texto à esquerda
+- Use a prop `striped` para melhorar a legibilidade de tabelas com muitas linhas
+- Forneça mensagens claras para estados vazios ou de erro

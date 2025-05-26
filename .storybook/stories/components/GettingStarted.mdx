@@ -1,0 +1,129 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/GettingStarted" />
+
+# Começando com o Ocean
+
+Este guia irá ajudá-lo a instalar e começar a usar o Ocean em seu projeto.
+
+## Instalação
+
+Para instalar o Ocean em seu projeto, use npm ou yarn:
+
+```bash
+# Usando npm
+npm install @porto/js-library-corp-hubv-porto-ocean
+
+# Usando yarn
+yarn add @porto/js-library-corp-hubv-porto-ocean
+```
+
+## Configuração
+
+Para usar os componentes do Ocean, importe os tokens CSS em seu arquivo principal:
+
+```javascript
+// Em seu arquivo principal (por exemplo, _app.js ou index.js)
+import '@porto/js-library-corp-hubv-porto-ocean/dist/styles.css';
+```
+
+## Uso Básico
+
+Importe os componentes diretamente do pacote:
+
+```jsx
+import { Button, Typography, Modal } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function App() {
+  return (
+    <div>
+      <Typography variant="title1">Olá, SugarCSS!</Typography>
+      <Button variant="insurance" styles="primary">Clique em mim</Button>
+    </div>
+  );
+}
+```
+
+## Configuração do TypeScript
+
+O Ocean é totalmente tipado com TypeScript. Para obter o melhor suporte de IntelliSense, certifique-se de que seu `tsconfig.json` inclua:
+
+```json
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "target": "es5"
+  }
+}
+```
+
+## Temas e Personalização
+
+O Ocean oferece suporte a personalização através de variáveis CSS. Você pode sobrescrever as variáveis padrão para criar seu próprio tema:
+
+```css
+:root {
+  --ocean-color-primary: #your-primary-color;
+  --ocean-color-secondary: #your-secondary-color;
+  --ocean-font-family: "Your Font", sans-serif;
+}
+```
+
+## Exemplo Completo
+
+Aqui está um exemplo completo de uma aplicação React usando o Ocean:
+
+```jsx
+import React from 'react';
+import { Button, Typography, CardContent } from '@porto/js-library-corp-hubv-porto-ocean';
+import '@porto/js-library-corp-hubv-porto-ocean/dist/styles.css';
+
+function App() {
+  return (
+    <div style={{ padding: '2rem' }}>
+      <Typography variant="title1" weight="bold" color="brand-primary">
+        Bem-vindo ao Ocean
+      </Typography>
+      
+      <Typography variant="body1" style={{ marginTop: '1rem', marginBottom: '2rem' }}>
+        Esta é uma demonstração simples dos componentes do Ocean.
+      </Typography>
+      
+      <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
+        <Button variant="insurance" styles="primary">Botão Primário</Button>
+        <Button variant="insurance" styles="secondary">Botão Secundário</Button>
+        <Button variant="insurance" styles="ghost">Botão Ghost</Button>
+      </div>
+      
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <CardContent
+          title="Card de Exemplo"
+          description="Este é um exemplo de como usar o componente CardContent do Ocean."
+          image={{ url: 'https://via.placeholder.com/300x200', alt: 'Imagem de exemplo' }}
+          links={[{ label: 'Saiba mais', href: '#' }]}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+## Próximos Passos
+
+Agora que você já configurou o Ocean em seu projeto, explore a documentação para aprender mais sobre os componentes disponíveis:
+
+- [Fundamentos de Design](./foundations/)
+- [Componentes](./components/)
+- [Padrões Técnicos](./technical-patterns.md)
+
+Se você encontrar algum problema ou tiver dúvidas, consulte o [Guia de Contribuição](./contributing.md) para saber como obter ajuda ou contribuir com o projeto.
+
+

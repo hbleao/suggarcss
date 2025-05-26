@@ -1,0 +1,267 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/BannerHero" />
+
+# BannerHero
+
+O componente BannerHero é usado para criar seções de destaque em páginas, geralmente no topo, apresentando conteúdo importante com impacto visual.
+
+
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente BannerHero nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-bannerhero-examples--default)
+- [Com Props Personalizadas](/story/components-bannerhero-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-bannerhero-examples--custom-example)
+## Importação
+
+```jsx
+import { BannerHero } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+<BannerHero
+  title="Título Principal"
+  subtitle="Subtítulo ou descrição complementar"
+  imageUrl="/images/banner-background.jpg"
+  ctaLabel="Saiba Mais"
+  ctaUrl="/detalhes"
+/>
+```
+
+## Props
+
+| Prop | Tipo | Obrigatório | Descrição |
+|------|------|-------------|-----------|
+| `title` | `string` | Sim | Título principal do banner |
+| `subtitle` | `string` | Não | Subtítulo ou descrição complementar |
+| `imageUrl` | `string` | Sim | URL da imagem de fundo |
+| `ctaLabel` | `string` | Não | Texto do botão de call-to-action |
+| `ctaUrl` | `string` | Não | URL para onde o botão de CTA direciona |
+| `variant` | `'primary' \| 'secondary' \| 'dark'` | Não | Variante visual do banner (padrão: 'primary') |
+| `size` | `'small' \| 'medium' \| 'large' \| 'full'` | Não | Tamanho do banner (padrão: 'medium') |
+| `alignment` | `'left' \| 'center' \| 'right'` | Não | Alinhamento do conteúdo (padrão: 'left') |
+| `overlayOpacity` | `number` | Não | Opacidade da sobreposição escura (0-1, padrão: 0.4) |
+| `onCtaClick` | `(e: React.MouseEvent) => void` | Não | Função chamada ao clicar no botão de CTA |
+
+## Variações
+
+### Variantes Visuais
+
+O BannerHero suporta diferentes variantes visuais para se adequar ao contexto da página:
+
+```jsx
+// Variante primária (padrão)
+<BannerHero
+  variant="primary"
+  title="Variante Primária"
+  subtitle="Ideal para destaques principais"
+  imageUrl="/images/primary-banner.jpg"
+  ctaLabel="Começar Agora"
+  ctaUrl="/start"
+/>
+
+// Variante secundária
+<BannerHero
+  variant="secondary"
+  title="Variante Secundária"
+  subtitle="Para seções complementares"
+  imageUrl="/images/secondary-banner.jpg"
+  ctaLabel="Descobrir"
+  ctaUrl="/discover"
+/>
+
+// Variante escura
+<BannerHero
+  variant="dark"
+  title="Variante Escura"
+  subtitle="Para um visual mais dramático"
+  imageUrl="/images/dark-banner.jpg"
+  ctaLabel="Explorar"
+  ctaUrl="/explore"
+/>
+```
+
+### Tamanhos
+
+O BannerHero está disponível em diferentes tamanhos:
+
+```jsx
+// Tamanho pequeno
+<BannerHero
+  size="small"
+  title="Banner Pequeno"
+  imageUrl="/images/small-banner.jpg"
+/>
+
+// Tamanho médio (padrão)
+<BannerHero
+  size="medium"
+  title="Banner Médio"
+  imageUrl="/images/medium-banner.jpg"
+/>
+
+// Tamanho grande
+<BannerHero
+  size="large"
+  title="Banner Grande"
+  imageUrl="/images/large-banner.jpg"
+/>
+
+// Tamanho tela cheia
+<BannerHero
+  size="full"
+  title="Banner em Tela Cheia"
+  imageUrl="/images/full-banner.jpg"
+/>
+```
+
+### Alinhamentos
+
+O conteúdo do BannerHero pode ser alinhado de diferentes formas:
+
+```jsx
+// Alinhamento à esquerda (padrão)
+<BannerHero
+  alignment="left"
+  title="Alinhado à Esquerda"
+  imageUrl="/images/banner.jpg"
+/>
+
+// Alinhamento centralizado
+<BannerHero
+  alignment="center"
+  title="Alinhado ao Centro"
+  imageUrl="/images/banner.jpg"
+/>
+
+// Alinhamento à direita
+<BannerHero
+  alignment="right"
+  title="Alinhado à Direita"
+  imageUrl="/images/banner.jpg"
+/>
+```
+
+## Personalização Avançada
+
+### Com Conteúdo Personalizado
+
+Você pode usar a prop `children` para adicionar conteúdo personalizado ao banner:
+
+```jsx
+<BannerHero
+  title="Banner com Conteúdo Personalizado"
+  imageUrl="/images/banner.jpg"
+>
+  <div style={{ marginTop: '24px', backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '16px', borderRadius: '8px' }}>
+    <h3>Conteúdo Personalizado</h3>
+    <p>Você pode adicionar qualquer conteúdo React aqui para personalizar seu banner.</p>
+    <div style={{ display: 'flex', gap: '8px', marginTop: '16px' }}>
+      <Button variant="primary">Botão Principal</Button>
+      <Button variant="secondary">Botão Secundário</Button>
+    </div>
+  </div>
+</BannerHero>
+```
+
+### Com Sobreposição Personalizada
+
+Você pode ajustar a opacidade da sobreposição para controlar o contraste entre o conteúdo e a imagem de fundo:
+
+```jsx
+// Sobreposição mais clara
+<BannerHero
+  title="Sobreposição Sutil"
+  subtitle="A imagem de fundo é mais visível"
+  imageUrl="/images/banner.jpg"
+  overlayOpacity={0.2}
+/>
+
+// Sobreposição padrão
+<BannerHero
+  title="Sobreposição Padrão"
+  subtitle="Equilíbrio entre imagem e legibilidade"
+  imageUrl="/images/banner.jpg"
+  overlayOpacity={0.4}
+/>
+
+// Sobreposição mais escura
+<BannerHero
+  title="Sobreposição Intensa"
+  subtitle="Para maior legibilidade do texto"
+  imageUrl="/images/banner.jpg"
+  overlayOpacity={0.7}
+/>
+```
+
+## Casos de Uso Comuns
+
+### Banner de Página Inicial
+
+```jsx
+<BannerHero
+  title="Bem-vindo ao SugarCSS"
+  subtitle="Uma biblioteca de componentes React moderna, acessível e fácil de usar"
+  imageUrl="/images/home-banner.jpg"
+  ctaLabel="Começar Agora"
+  ctaUrl="/getting-started"
+  size="large"
+  alignment="center"
+/>
+```
+
+### Banner de Promoção
+
+```jsx
+<BannerHero
+  title="Oferta Especial"
+  subtitle="Aproveite 20% de desconto em todos os planos até o final do mês"
+  imageUrl="/images/promo-banner.jpg"
+  ctaLabel="Ver Ofertas"
+  ctaUrl="/offers"
+  variant="secondary"
+/>
+```
+
+### Banner de Seção
+
+```jsx
+<BannerHero
+  title="Nossos Serviços"
+  subtitle="Conheça as soluções que oferecemos para sua empresa"
+  imageUrl="/images/services-banner.jpg"
+  size="small"
+/>
+```
+
+## Acessibilidade
+
+O componente BannerHero implementa as melhores práticas de acessibilidade:
+
+- Usa estrutura semântica HTML apropriada
+- Garante contraste adequado entre texto e fundo
+- Fornece texto alternativo para imagens
+- Mantém todos os elementos interativos acessíveis por teclado
+
+## Responsividade
+
+O BannerHero é totalmente responsivo:
+
+- Em dispositivos móveis, o tamanho e o espaçamento são ajustados automaticamente
+- O texto é redimensionado para manter a legibilidade em diferentes tamanhos de tela
+- A imagem de fundo é ajustada para diferentes proporções de tela
+
+## Boas Práticas
+
+- Use imagens de alta qualidade com boa resolução
+- Mantenha o texto conciso e impactante
+- Certifique-se de que há contraste suficiente entre o texto e a imagem de fundo
+- Escolha imagens que complementem o conteúdo e a mensagem
+- Evite sobrecarregar o banner com muitos elementos ou texto
+- Considere o contexto da página ao escolher o tamanho e a variante do banner

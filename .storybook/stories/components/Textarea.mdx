@@ -1,0 +1,93 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Textarea" />
+
+# Textarea
+
+O componente `Textarea` permite aos usuários inserir e editar textos longos ou de múltiplas linhas, sendo ideal para comentários, descrições e outros conteúdos extensos.
+
+
+
+## Importação
+
+```jsx
+import { Textarea } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React, { useState } from 'react';
+import { Textarea } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const [value, setValue] = useState('');
+  
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+  
+  return (
+    <Textarea
+      label="Descrição"
+      value={value}
+      onChange={handleChange}
+      placeholder="Digite uma descrição detalhada"
+      rows={4}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `label` | `string` | - | Rótulo do textarea |
+| `value` | `string` | - | Valor do textarea |
+| `onChange` | `(e: ChangeEvent<HTMLTextAreaElement>) => void` | - | Função chamada quando o valor muda |
+| `placeholder` | `string` | - | Texto exibido quando o textarea está vazio |
+| `rows` | `number` | `3` | Número de linhas visíveis |
+| `maxLength` | `number` | - | Número máximo de caracteres permitidos |
+| `showCount` | `boolean` | `false` | Se verdadeiro, exibe um contador de caracteres |
+| `disabled` | `boolean` | `false` | Desativa o textarea |
+| `readOnly` | `boolean` | `false` | Torna o textarea somente leitura |
+| `error` | `string` | - | Mensagem de erro a ser exibida |
+| `helperText` | `string` | - | Texto de ajuda a ser exibido abaixo do textarea |
+| `required` | `boolean` | `false` | Indica se o campo é obrigatório |
+| `resize` | `'none' \| 'vertical' \| 'horizontal' \| 'both'` | `'vertical'` | Controla como o textarea pode ser redimensionado |
+| `autoSize` | `boolean \| { minRows: number, maxRows: number }` | `false` | Se verdadeiro, ajusta automaticamente a altura com base no conteúdo |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `id` | `string` | - | ID do elemento textarea |
+| `name` | `string` | - | Nome do campo para formulários |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Textarea nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-textarea-examples--default)
+- [Com Props Personalizadas](/story/components-textarea-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-textarea-examples--custom-example)
+## Acessibilidade
+
+O componente `Textarea` segue as práticas recomendadas de acessibilidade:
+
+- Associa corretamente os rótulos (`label`) ao elemento textarea
+- Utiliza atributos ARIA apropriados para indicar estados e propriedades
+- Suporta navegação por teclado
+- Fornece feedback visual claro para os estados de foco, erro e desabilitado
+- Inclui mensagens de erro acessíveis para validação de formulários
+- Mantém contraste adequado entre o texto e o fundo
+
+## Boas Práticas
+
+- Forneça sempre um rótulo descritivo para o textarea
+- Use o atributo `placeholder` para dar dicas sobre o formato esperado, não para substituir o rótulo
+- Inclua mensagens de erro específicas e úteis quando a validação falhar
+- Considere usar o recurso `showCount` para campos com limite de caracteres
+- Para textos longos, use o recurso `autoSize` para melhorar a experiência do usuário
+- Mantenha o número de linhas (`rows`) apropriado para o tipo de conteúdo esperado
+- Forneça texto de ajuda (`helperText`) quando necessário para esclarecer o propósito do campo
+- Para formulários complexos, agrupe campos relacionados e mantenha uma estrutura lógica

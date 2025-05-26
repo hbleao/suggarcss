@@ -1,0 +1,93 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/UseDebouncedValue" />
+
+# useDebouncedValue
+
+O hook `useDebouncedValue` cria uma versão "debounced" de um valor, atualizando-o apenas após um período de inatividade especificado, o que melhora a performance em operações que não precisam responder a cada mudança de estado.
+
+## Importação
+
+```jsx
+import { useDebouncedValue } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+```
+
+## Uso Básico
+
+```jsx
+import React, { useState } from 'react';
+import { Typography } from '@porto/js-library-corp-hubv-porto-ocean';
+import { useDebouncedValue } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+
+function SearchExample() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearchTerm = useDebouncedValue(searchTerm, 500);
+  
+  return (
+    <div>
+      <Typography variant="title2">Pesquisa com Debounce</Typography>
+      
+      <div style={{ marginTop: '16px' }}>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Digite para pesquisar..."
+          style={{ 
+            width: '100%', 
+            padding: '8px', 
+            borderRadius: '4px',
+            border: '1px solid #d9d9d9'
+          }}
+        />
+        
+        <div style={{ marginTop: '16px' }}>
+          <Typography variant="body2">
+            Termo digitado: <strong>{searchTerm}</strong>
+          </Typography>
+          <Typography variant="body2">
+            Termo com debounce (500ms): <strong>{debouncedSearchTerm}</strong>
+          </Typography>
+          <Typography variant="caption" style={{ color: '#8c8c8c', marginTop: '8px', display: 'block' }}>
+            O valor com debounce é atualizado apenas 500ms após a última digitação.
+          </Typography>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+## Parâmetros
+
+O hook `useDebouncedValue` aceita os seguintes parâmetros:
+
+| Parâmetro | Tipo | Obrigatório | Descrição |
+|-----------|------|-------------|-----------|
+| `value` | `T` | Sim | O valor original que será debounced |
+| `delay` | `number` | Não | Tempo de espera em milissegundos (padrão: 500ms) |
+| `options` | `object` | Não | Opções adicionais para configurar o comportamento do debounce |
+
+### Opções
+
+| Opção | Tipo | Padrão | Descrição |
+|-------|------|--------|-----------|
+| `leading` | `boolean` | `false` | Se `true`, invoca a atualização imediatamente no início |
+| `trailing` | `boolean` | `true` | Se `true`, invoca a atualização após o período de espera |
+| `maxWait` | `number` | `undefined` | Tempo máximo de espera em milissegundos |
+
+## Retorno
+
+O hook `useDebouncedValue` retorna o valor debounced, que é atualizado apenas após o período de espera especificado.
+
+
+
+## Boas Práticas
+
+- Use `useDebouncedValue` para otimizar operações que não precisam responder a cada mudança de estado
+- Combine com `useEffect` para executar efeitos colaterais apenas quando o valor debounced mudar
+- Para interfaces de usuário, forneça feedback visual enquanto o debounce está em andamento
+- Considere usar a opção `leading: true` quando precisar de uma resposta imediata seguida pelo comportamento de debounce
+- Para casos onde você precisa garantir que uma atualização aconteça após um tempo máximo, use a opção `maxWait`
+- Em formulários complexos, aplique debounce em campos individuais em vez de todo o estado do formulário

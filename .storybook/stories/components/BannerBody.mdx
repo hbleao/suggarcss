@@ -1,0 +1,96 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/BannerBody" />
+
+# BannerBody
+
+O componente `BannerBody` é uma seção de conteúdo flexível e responsiva, projetada para exibir informações importantes, mensagens promocionais ou chamadas para ação em destaque na interface do usuário.
+
+
+
+## Importação
+
+```jsx
+import { BannerBody } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { BannerBody, Button } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <BannerBody
+      title="Conheça nossos novos planos"
+      description="Agora com mais recursos e melhor custo-benefício para sua empresa."
+      actions={
+        <Button variant="primary">Saiba mais</Button>
+      }
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `title` | `ReactNode` | - | Título principal do banner |
+| `description` | `ReactNode` | - | Texto descritivo ou conteúdo secundário |
+| `actions` | `ReactNode` | - | Botões ou links de ação |
+| `image` | `string` | - | URL da imagem a ser exibida no banner |
+| `imageAlt` | `string` | `''` | Texto alternativo para a imagem |
+| `imagePosition` | `'left' \| 'right'` | `'right'` | Posição da imagem em relação ao conteúdo |
+| `backgroundColor` | `string` | - | Cor de fundo personalizada |
+| `textColor` | `string` | - | Cor do texto personalizada |
+| `fullWidth` | `boolean` | `false` | Se o banner deve ocupar toda a largura disponível |
+| `rounded` | `boolean` | `true` | Se o banner deve ter bordas arredondadas |
+| `elevated` | `boolean` | `false` | Se o banner deve ter elevação (sombra) |
+| `variant` | `'default' \| 'highlight' \| 'subtle'` | `'default'` | Variante visual do banner |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Tamanho do banner, afetando o espaçamento interno |
+| `alignment` | `'left' \| 'center' \| 'right'` | `'left'` | Alinhamento do conteúdo textual |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `titleClassName` | `string` | - | Classe CSS adicional para o título |
+| `titleStyle` | `CSSProperties` | - | Estilos inline adicionais para o título |
+| `descriptionClassName` | `string` | - | Classe CSS adicional para a descrição |
+| `descriptionStyle` | `CSSProperties` | - | Estilos inline adicionais para a descrição |
+| `actionsClassName` | `string` | - | Classe CSS adicional para a área de ações |
+| `actionsStyle` | `CSSProperties` | - | Estilos inline adicionais para a área de ações |
+| `imageClassName` | `string` | - | Classe CSS adicional para a imagem |
+| `imageStyle` | `CSSProperties` | - | Estilos inline adicionais para a imagem |
+| `imageWidth` | `string \| number` | - | Largura personalizada para a imagem |
+| `imageHeight` | `string \| number` | - | Altura personalizada para a imagem |
+| `imageFit` | `'cover' \| 'contain' \| 'fill' \| 'none'` | `'cover'` | Modo de ajuste da imagem |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente BannerBody nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-bannerbody-examples--default)
+- [Com Props Personalizadas](/story/components-bannerbody-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-bannerbody-examples--custom-example)
+## Acessibilidade
+
+O componente `BannerBody` segue as práticas recomendadas de acessibilidade:
+
+- Estrutura semântica apropriada para leitores de tela
+- Contraste adequado entre texto e fundo
+- Imagens incluem texto alternativo
+- Botões e links são acessíveis por teclado
+- Tamanho de texto adequado para legibilidade
+
+## Boas Práticas
+
+- Mantenha o título e a descrição concisos e diretos
+- Use imagens relevantes que complementem o conteúdo textual
+- Escolha cores que contrastem bem para garantir legibilidade
+- Limite o número de ações para evitar sobrecarga cognitiva
+- Use o tamanho apropriado para a importância da mensagem
+- Considere a responsividade em diferentes tamanhos de tela
+- Evite usar muitos banners na mesma página para não sobrecarregar a interface
+- Use a variante "highlight" apenas para informações realmente importantes
+- Mantenha consistência no estilo dos banners em toda a aplicação

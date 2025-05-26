@@ -1,0 +1,106 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/UseAsync" />
+
+# useAsync
+
+O hook `useAsync` gerencia estados de loading, erro e sucesso em operações assíncronas, simplificando o tratamento de requisições e processamento de dados.
+
+## Importação
+
+```jsx
+import { useAsync } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Button, Typography } from '@porto/js-library-corp-hubv-porto-ocean';
+import { useAsync } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+
+function AsyncExample() {
+  const fetchData = async () => {
+    // Simulando uma requisição com 1 segundo de delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    return { message: 'Dados carregados com sucesso!' };
+  };
+  
+  const { 
+    execute, 
+    status, 
+    value, 
+    error 
+  } = useAsync(fetchData, false);
+  
+  return (
+    <div>
+      <Typography variant="title2">Exemplo de useAsync</Typography>
+      
+      <div style={{ marginTop: '16px' }}>
+        <Button 
+          onClick={execute}
+          disabled={status === 'pending'}
+        >
+          {status === 'pending' ? 'Carregando...' : 'Carregar Dados'}
+        </Button>
+        
+        <div style={{ marginTop: '16px' }}>
+          {status === 'idle' && (
+            <Typography variant="body2">Clique no botão para carregar os dados.</Typography>
+          )}
+          
+          {status === 'pending' && (
+            <Typography variant="body2">Carregando dados...</Typography>
+          )}
+          
+          {status === 'success' && (
+            <Typography variant="body2" style={{ color: '#52c41a' }}>
+              Sucesso: {value.message}
+            </Typography>
+          )}
+          
+          {status === 'error' && (
+            <Typography variant="body2" style={{ color: '#f5222d' }}>
+              Erro: {error.message}
+            </Typography>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+## Parâmetros
+
+O hook `useAsync` aceita os seguintes parâmetros:
+
+| Parâmetro | Tipo | Obrigatório | Descrição |
+|-----------|------|-------------|-----------|
+| `asyncFunction` | `() => Promise<T>` | Sim | Função assíncrona a ser executada |
+| `immediate` | `boolean` | Não | Se a função deve ser executada imediatamente (padrão: `true`) |
+| `initialState` | `object` | Não | Estado inicial para o hook |
+
+## Retorno
+
+O hook `useAsync` retorna um objeto com as seguintes propriedades:
+
+| Propriedade | Tipo | Descrição |
+|-------------|------|-----------|
+| `execute` | `() => Promise<T>` | Função para executar a operação assíncrona |
+| `status` | `'idle' \| 'pending' \| 'success' \| 'error'` | Estado atual da operação |
+| `value` | `T \| null` | Valor retornado pela operação (quando bem-sucedida) |
+| `error` | `Error \| null` | Erro ocorrido (quando falha) |
+| `reset` | `() => void` | Função para resetar o estado para `idle` |
+
+
+
+## Boas Práticas
+
+- Use `useAsync` para simplificar o gerenciamento de estados em operações assíncronas como chamadas de API
+- Combine com outros hooks como `useEffect` para executar operações assíncronas quando determinadas dependências mudarem
+- Aproveite os diferentes estados (`idle`, `pending`, `success`, `error`) para fornecer feedback visual adequado ao usuário
+- Para formulários, use `useAsync` para gerenciar o envio e o feedback de erros de validação do servidor
+- Considere criar hooks personalizados baseados em `useAsync` para operações específicas da sua aplicação, como `useFetchUser` ou `useSubmitForm`

@@ -1,0 +1,80 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Avatar" />
+
+# Avatar
+
+O componente `Avatar` é usado para representar uma pessoa, entidade ou conteúdo de forma visual, geralmente exibindo uma imagem, iniciais ou ícone dentro de uma forma circular ou quadrada.
+
+
+
+## Importação
+
+```jsx
+import { Avatar } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Avatar } from '@porto/js-library-corp-hubv-porto-ocean';
+import { User } from 'phosphor-react';
+
+function Example() {
+  return (
+    <div style={{ display: 'flex', gap: '16px' }}>
+      {/* Avatar com imagem */}
+      <Avatar src="https://exemplo.com/imagem-usuario.jpg" alt="João Silva" />
+      
+      {/* Avatar com iniciais */}
+      <Avatar>JS</Avatar>
+      
+      {/* Avatar com ícone */}
+      <Avatar icon={<User size={24} />} />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo do avatar (geralmente iniciais) |
+| `src` | `string` | - | URL da imagem a ser exibida |
+| `alt` | `string` | - | Texto alternativo para a imagem (acessibilidade) |
+| `icon` | `ReactNode` | - | Ícone a ser exibido quando não há imagem |
+| `size` | `'small' \| 'medium' \| 'large' \| number` | `'medium'` | Tamanho do avatar |
+| `shape` | `'circle' \| 'square' \| 'rounded'` | `'circle'` | Forma do avatar |
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'error' \| 'warning' \| 'success' \| 'info'` | `'default'` | Variante de cor do avatar |
+| `onClick` | `(e: MouseEvent) => void` | - | Função chamada quando o avatar é clicado |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Avatar nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-avatar-examples--default)
+- [Com Props Personalizadas](/story/components-avatar-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-avatar-examples--custom-example)
+## Acessibilidade
+
+O componente `Avatar` segue as práticas recomendadas de acessibilidade:
+
+- Inclui o atributo `alt` para descrever a imagem para usuários de leitores de tela
+- Mantém contraste adequado entre o texto das iniciais e o fundo
+- Fornece feedback visual para avatares interativos (com `onClick`)
+- Utiliza tamanhos adequados para garantir legibilidade e interação em dispositivos de toque
+
+## Boas Práticas
+
+- Sempre forneça um texto alternativo descritivo para avatares com imagens
+- Implemente um fallback adequado para quando as imagens não carregarem
+- Use iniciais legíveis quando não houver imagem disponível
+- Mantenha consistência no tamanho e forma dos avatares em toda a aplicação
+- Para avatares interativos, forneça feedback visual claro para estados de hover e foco
+- Em grupos de avatares, considere limitar o número de avatares visíveis e mostrar um indicador de overflow
+- Use variantes de cor para indicar status ou categorias quando apropriado
