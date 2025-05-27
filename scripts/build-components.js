@@ -1,10 +1,12 @@
 /**
- * Script para compilar componentes individualmente
+ * Script para compilar componentes individualmente e corrigir a CLI
  * 
- * Este script compila cada componente separadamente, o que permite:
- * 1. Ignorar componentes problemáticos sem afetar os demais
- * 2. Personalizar as configurações de build para cada componente se necessário
- * 3. Melhorar a performance do processo de build
+ * Este script realiza duas funções principais:
+ * 1. Compila cada componente separadamente, o que permite:
+ *    - Ignorar componentes problemáticos sem afetar os demais
+ *    - Personalizar as configurações de build para cada componente se necessário
+ *    - Melhorar a performance do processo de build
+ * 2. Corrige o arquivo CLI compilado adicionando o shebang necessário
  */
 
 import { execSync } from 'node:child_process';
@@ -89,8 +91,58 @@ async function buildComponents() {
   console.log(`⚠️ ${IGNORED_COMPONENTS.length} componentes ignorados`);
 }
 
-// Executar a função principal
-buildComponents().catch(error => {
-  console.error('Erro durante o processo de build:', error);
-  process.exit(1);
-});
+/**
+ * Função para corrigir o arquivo CLI compilado
+ * Adiciona o shebang no início do arquivo para permitir execução como comando
+ */
+function fixCliFile() {
+  console.log('\n🔧 Corrigindo arquivo CLI...');
+  
+  const cliPath = path.join(process.cwd(), 'dist', 'cli.cjs');
+  
+  try {
+    // Verifica se o arquivo existe
+    if (!fs.existsSync(cliPath)) {
+      console.log('⚠️ Arquivo CLI não encontrado em:', cliPath);
+      return;
+    }
+    
+    // Lê o conteúdo atual do arquivo CLI
+    let content = fs.readFileSync(cliPath, 'utf8');
+    
+    // Verifica se o shebang já existe
+    if (!content.startsWith('#!/usr/bin/env node')) {
+      // Adiciona o shebang no início do arquivo
+      content = '#!/usr/bin/env node\n' + content;
+      
+      // Escreve o conteúdo modificado de volta ao arquivo
+      fs.writeFileSync(cliPath, content, 'utf8');
+      
+      // Torna o arquivo executável (chmod +x)
+      try {
+        fs.chmodSync(cliPath, '755');
+      } catch (err) {
+        console.log('⚠️ Aviso: Não foi possível tornar o arquivo executável. Você pode precisar fazer isso manualmente.');
+      }
+      
+      console.log('✅ CLI corrigida com sucesso!');
+    } else {
+      console.log('ℹ️ CLI já está corrigida.');
+    }
+  } catch (err) {
+    console.error('❌ Erro ao corrigir a CLI:', err);
+  }
+}
+
+// Executar as funções principais
+async function main() {
+  try {
+    await buildComponents();
+    fixCliFile();
+  } catch (error) {
+    console.error('Erro durante o processo de build:', error);
+    process.exit(1);
+  }
+}
+
+main();

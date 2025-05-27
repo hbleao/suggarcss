@@ -20,7 +20,7 @@
   "scripts": {
     "build": "npm run build:lib && npm run build:cli && npm run build:components && npm run copy-files",
     "build:lib": "tsup --config tsup.config.ts",
-    "build:cli": "tsup src/cli/cli.ts --format cjs --out-dir dist --minify --clean --external react,react-dom,sanitize-html,aes-js,crypto-js,next,next/image,next/link,next/navigation && node fix-cli.cjs",
+    "build:cli": "tsup src/cli/cli.ts --format cjs --out-dir dist --minify --clean --external react,react-dom,sanitize-html,aes-js,crypto-js,next,next/image,next/link,next/navigation",
     "build:components": "node scripts/build-components.js",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
