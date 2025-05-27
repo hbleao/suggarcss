@@ -1,4 +1,4 @@
-import { useState, useCallback, type ChangeEvent, type FormEvent } from "react";
+import { type ChangeEvent, type FormEvent, useCallback, useState } from "react";
 
 /**
  * Tipo para funções de validação de formulário
@@ -43,11 +43,11 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  *
  * @example
  * // Exemplo de uso do hook useForm em um formulário completo:
- * 
+ *
  * import React from 'react';
  * import { useForm } from '@sugarcss/hooks';
  * import { Input, Textarea, Select, Radio, Checkbox, Button } from '@sugarcss/components';
- * 
+ *
  * function RegistrationForm() {
  *   // Função de validação
  *   const validate = (values) => {
@@ -60,7 +60,7 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  *     if (values.interests.length === 0) errors.interests = 'Selecione pelo menos um interesse';
  *     return errors;
  *   };
- * 
+ *
  *   // Inicialização do hook
  *   const {
  *     values,
@@ -89,10 +89,9 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  *     validate,
  *     (formValues) => console.log('Form submitted:', formValues)
  *   );
- * 
+ *
  *   return (
  *     <form onSubmit={handleSubmit}>
- *       {/* Exemplo de Input de texto */}
  *       <div className="form-group">
  *         <label htmlFor="name">Nome</label>
  *         <Input
@@ -106,8 +105,7 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  *         />
  *         {touched.name && errors.name && <div className="error">{errors.name}</div>}
  *       </div>
- * 
- *       {/* Exemplo de Input de email */}
+ *
  *       <div className="form-group">
  *         <label htmlFor="email">Email</label>
  *         <Input
@@ -121,8 +119,7 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  *         />
  *         {touched.email && errors.email && <div className="error">{errors.email}</div>}
  *       </div>
- * 
- *       {/* Exemplo de Textarea */}
+ *
  *       <div className="form-group">
  *         <label htmlFor="bio">Biografia</label>
  *         <Textarea
@@ -133,8 +130,7 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  *           onBlur={handleBlur}
  *         />
  *       </div>
- * 
- *       {/* Exemplo de Radio buttons */}
+ *
  *       <div className="form-group">
  *         <label>Gênero</label>
  *         <div className="radio-group">
@@ -162,8 +158,7 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  *         </div>
  *         {touched.gender && errors.gender && <div className="error">{errors.gender}</div>}
  *       </div>
- * 
- *       {/* Exemplo de Select/Dropdown */}
+ *
  *       <div className="form-group">
  *         <label htmlFor="plan">Plano</label>
  *         <Select
@@ -181,8 +176,7 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  *         </Select>
  *         {touched.plan && errors.plan && <div className="error">{errors.plan}</div>}
  *       </div>
- * 
- *       {/* Exemplo de Checkbox único */}
+ *
  *       <div className="form-group">
  *         <Checkbox
  *           name="terms"
@@ -193,8 +187,7 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  *         />
  *         {touched.terms && errors.terms && <div className="error">{errors.terms}</div>}
  *       </div>
- * 
- *       {/* Exemplo de Múltiplos checkboxes */}
+ *
  *       <div className="form-group">
  *         <label>Interesses</label>
  *         <div className="checkbox-group">
@@ -222,8 +215,7 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  *         </div>
  *         {touched.interests && errors.interests && <div className="error">{errors.interests}</div>}
  *       </div>
- * 
- *       {/* Botão de submissão */}
+ *
  *       <Button type="submit" disabled={isSubmitting || !isValid}>
  *         {isSubmitting ? 'Enviando...' : 'Enviar'}
  *       </Button>
@@ -239,7 +231,7 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  * //   value={values.name}
  * //   onChange={handleChange} // Método genérico
  * // />
- * // 
+ * //
  * // // OU usando o handler específico:
  * // <Input
  * //   name="name"
@@ -278,282 +270,278 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  * // />
  */
 export function useForm<T extends Record<string, unknown>>(
-  initialValues: T,
-  validate?: ValidationFunction<T>,
-  onSubmit?: (values: T) => void | Promise<void>,
+	initialValues: T,
+	validate?: ValidationFunction<T>,
+	onSubmit?: (values: T) => void | Promise<void>
 ) {
-  const [values, setValues] = useState<T>(initialValues);
-  const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>(
-    validate ? validate(initialValues) : {},
-  );
-  const [touched, setTouched] = useState<Partial<Record<keyof T, boolean>>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+	const [values, setValues] = useState<T>(initialValues);
+	const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>(
+		validate ? validate(initialValues) : {}
+	);
+	const [touched, setTouched] = useState<Partial<Record<keyof T, boolean>>>({});
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
-  /**
-   * Manipula mudanças em qualquer tipo de campo de formulário
-   */
-  const handleChange = useCallback(
-    (
-      e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
-    ) => {
-      const { name, value, type } = e.target;
-      let fieldValue: unknown;
+	/**
+	 * Manipula mudanças em qualquer tipo de campo de formulário
+	 */
+	const handleChange = useCallback(
+		(e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+			const { name, value, type } = e.target;
+			let fieldValue: unknown;
 
-      // Determina o valor apropriado com base no tipo de campo
-      switch (type) {
-        case "checkbox":
-          fieldValue = (e.target as HTMLInputElement).checked;
-          break;
-        case "radio":
-          fieldValue = value;
-          break;
-        case "number":
-          fieldValue = value === "" ? "" : Number(value);
-          break;
-        case "select-multiple":
-          fieldValue = Array.from(
-            (e.target as HTMLSelectElement).selectedOptions,
-            (option) => option.value,
-          );
-          break;
-        default:
-          fieldValue = value;
-      }
+			// Determina o valor apropriado com base no tipo de campo
+			switch (type) {
+				case "checkbox":
+					fieldValue = (e.target as HTMLInputElement).checked;
+					break;
+				case "radio":
+					fieldValue = value;
+					break;
+				case "number":
+					fieldValue = value === "" ? "" : Number(value);
+					break;
+				case "select-multiple":
+					fieldValue = Array.from(
+						(e.target as HTMLSelectElement).selectedOptions,
+						(option) => option.value
+					);
+					break;
+				default:
+					fieldValue = value;
+			}
 
-      const newValues = {
-        ...values,
-        [name]: fieldValue,
-      };
+			const newValues = {
+				...values,
+				[name]: fieldValue,
+			};
 
-      setValues(newValues);
+			setValues(newValues);
 
-      if (validate) {
-        const validationErrors = validate(newValues);
-        setErrors(validationErrors);
-      }
-    },
-    [values, validate],
-  );
+			if (validate) {
+				const validationErrors = validate(newValues);
+				setErrors(validationErrors);
+			}
+		},
+		[values, validate]
+	);
 
-  /**
-   * Manipula o evento de perda de foco em qualquer campo
-   */
-  const handleBlur = useCallback(
-    (
-      e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
-    ) => {
-      const { name } = e.target;
+	/**
+	 * Manipula o evento de perda de foco em qualquer campo
+	 */
+	const handleBlur = useCallback(
+		(e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+			const { name } = e.target;
 
-      setTouched((prev) => ({
-        ...prev,
-        [name]: true,
-      }));
+			setTouched((prev) => ({
+				...prev,
+				[name]: true,
+			}));
 
-      if (validate) {
-        const validationErrors = validate(values);
-        setErrors(validationErrors);
-      }
-    },
-    [values, validate],
-  );
+			if (validate) {
+				const validationErrors = validate(values);
+				setErrors(validationErrors);
+			}
+		},
+		[values, validate]
+	);
 
-  /**
-   * Manipula a submissão do formulário
-   */
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+	/**
+	 * Manipula a submissão do formulário
+	 */
+	const handleSubmit = async (e: FormEvent) => {
+		e.preventDefault();
 
-    if (validate) {
-      const validationErrors = validate(values);
-      setErrors(validationErrors);
+		if (validate) {
+			const validationErrors = validate(values);
+			setErrors(validationErrors);
 
-      const allTouched = Object.keys(values).reduce(
-        (acc, key) => {
-          acc[key as keyof T] = true;
-          return acc;
-        },
-        {} as Record<keyof T, boolean>,
-      );
+			const allTouched = Object.keys(values).reduce(
+				(acc, key) => {
+					acc[key as keyof T] = true;
+					return acc;
+				},
+				{} as Record<keyof T, boolean>
+			);
 
-      setTouched(allTouched);
+			setTouched(allTouched);
 
-      if (Object.keys(validationErrors).length > 0) {
-        return;
-      }
-    }
+			if (Object.keys(validationErrors).length > 0) {
+				return;
+			}
+		}
 
-    setIsSubmitting(true);
+		setIsSubmitting(true);
 
-    if (onSubmit) {
-      try {
-        await onSubmit(values);
-      } catch (error) {
-        console.error("Erro ao enviar formulário:", error);
-      } finally {
-        setIsSubmitting(false);
-      }
-    } else {
-      setIsSubmitting(false);
-    }
-  };
+		if (onSubmit) {
+			try {
+				await onSubmit(values);
+			} catch (error) {
+				console.error("Erro ao enviar formulário:", error);
+			} finally {
+				setIsSubmitting(false);
+			}
+		} else {
+			setIsSubmitting(false);
+		}
+	};
 
-  /**
-   * Reseta o formulário para os valores iniciais
-   */
-  const resetForm = () => {
-    setValues(initialValues);
-    setErrors({});
-    setTouched({});
-    setIsSubmitting(false);
-  };
+	/**
+	 * Reseta o formulário para os valores iniciais
+	 */
+	const resetForm = () => {
+		setValues(initialValues);
+		setErrors({});
+		setTouched({});
+		setIsSubmitting(false);
+	};
 
-  const isValid = Object.keys(errors).length === 0;
+	const isValid = Object.keys(errors).length === 0;
 
-  /**
-   * Manipula a seleção de um valor em um campo de rádio
-   */
-  const handleRadioChange = useCallback(
-    (name: string, value: string | number | boolean) => {
-      const newValues = {
-        ...values,
-        [name]: value,
-      };
+	/**
+	 * Manipula a seleção de um valor em um campo de rádio
+	 */
+	const handleRadioChange = useCallback(
+		(name: string, value: string | number | boolean) => {
+			const newValues = {
+				...values,
+				[name]: value,
+			};
 
-      setValues(newValues);
-      setTouched((prev) => ({
-        ...prev,
-        [name]: true,
-      }));
+			setValues(newValues);
+			setTouched((prev) => ({
+				...prev,
+				[name]: true,
+			}));
 
-      if (validate) {
-        const validationErrors = validate(newValues);
-        setErrors(validationErrors);
-      }
-    },
-    [values, validate],
-  );
+			if (validate) {
+				const validationErrors = validate(newValues);
+				setErrors(validationErrors);
+			}
+		},
+		[values, validate]
+	);
 
-  /**
-   * Manipula a seleção de um valor em um dropdown
-   */
-  const handleSelectChange = useCallback(
-    (name: string, value: string | string[]) => {
-      const newValues = {
-        ...values,
-        [name]: value,
-      };
+	/**
+	 * Manipula a seleção de um valor em um dropdown
+	 */
+	const handleSelectChange = useCallback(
+		(name: string, value: string | string[]) => {
+			const newValues = {
+				...values,
+				[name]: value,
+			};
 
-      setValues(newValues);
-      setTouched((prev) => ({
-        ...prev,
-        [name]: true,
-      }));
+			setValues(newValues);
+			setTouched((prev) => ({
+				...prev,
+				[name]: true,
+			}));
 
-      if (validate) {
-        const validationErrors = validate(newValues);
-        setErrors(validationErrors);
-      }
-    },
-    [values, validate],
-  );
+			if (validate) {
+				const validationErrors = validate(newValues);
+				setErrors(validationErrors);
+			}
+		},
+		[values, validate]
+	);
 
-  /**
-   * Manipula a alteração de um valor em um campo de texto ou textarea
-   */
-  const handleTextChange = useCallback(
-    (name: string, value: string) => {
-      const newValues = {
-        ...values,
-        [name]: value,
-      };
+	/**
+	 * Manipula a alteração de um valor em um campo de texto ou textarea
+	 */
+	const handleTextChange = useCallback(
+		(name: string, value: string) => {
+			const newValues = {
+				...values,
+				[name]: value,
+			};
 
-      setValues(newValues);
+			setValues(newValues);
 
-      if (validate) {
-        const validationErrors = validate(newValues);
-        setErrors(validationErrors);
-      }
-    },
-    [values, validate],
-  );
+			if (validate) {
+				const validationErrors = validate(newValues);
+				setErrors(validationErrors);
+			}
+		},
+		[values, validate]
+	);
 
-  /**
-   * Manipula a alteração de um checkbox
-   */
-  const handleCheckboxChange = useCallback(
-    (name: string, checked: boolean) => {
-      const newValues = {
-        ...values,
-        [name]: checked,
-      };
+	/**
+	 * Manipula a alteração de um checkbox
+	 */
+	const handleCheckboxChange = useCallback(
+		(name: string, checked: boolean) => {
+			const newValues = {
+				...values,
+				[name]: checked,
+			};
 
-      setValues(newValues);
-      setTouched((prev) => ({
-        ...prev,
-        [name]: true,
-      }));
+			setValues(newValues);
+			setTouched((prev) => ({
+				...prev,
+				[name]: true,
+			}));
 
-      if (validate) {
-        const validationErrors = validate(newValues);
-        setErrors(validationErrors);
-      }
-    },
-    [values, validate],
-  );
+			if (validate) {
+				const validationErrors = validate(newValues);
+				setErrors(validationErrors);
+			}
+		},
+		[values, validate]
+	);
 
-  /**
-   * Manipula a alteração de múltiplos checkboxes que compartilham o mesmo nome
-   * Útil para grupos de checkboxes onde você quer armazenar os valores selecionados em um array
-   */
-  const handleMultiCheckboxChange = useCallback(
-    (name: string, value: string, checked: boolean) => {
-      const currentValues = (values[name] as string[]) || [];
-      let newValues;
+	/**
+	 * Manipula a alteração de múltiplos checkboxes que compartilham o mesmo nome
+	 * Útil para grupos de checkboxes onde você quer armazenar os valores selecionados em um array
+	 */
+	const handleMultiCheckboxChange = useCallback(
+		(name: string, value: string, checked: boolean) => {
+			const currentValues = (values[name] as string[]) || [];
+			let newValues;
 
-      if (checked) {
-        // Adiciona o valor ao array se o checkbox foi marcado
-        newValues = {
-          ...values,
-          [name]: [...currentValues, value],
-        };
-      } else {
-        // Remove o valor do array se o checkbox foi desmarcado
-        newValues = {
-          ...values,
-          [name]: currentValues.filter((item) => item !== value),
-        };
-      }
+			if (checked) {
+				// Adiciona o valor ao array se o checkbox foi marcado
+				newValues = {
+					...values,
+					[name]: [...currentValues, value],
+				};
+			} else {
+				// Remove o valor do array se o checkbox foi desmarcado
+				newValues = {
+					...values,
+					[name]: currentValues.filter((item) => item !== value),
+				};
+			}
 
-      setValues(newValues);
-      setTouched((prev) => ({
-        ...prev,
-        [name]: true,
-      }));
+			setValues(newValues);
+			setTouched((prev) => ({
+				...prev,
+				[name]: true,
+			}));
 
-      if (validate) {
-        const validationErrors = validate(newValues);
-        setErrors(validationErrors);
-      }
-    },
-    [values, validate],
-  );
+			if (validate) {
+				const validationErrors = validate(newValues);
+				setErrors(validationErrors);
+			}
+		},
+		[values, validate]
+	);
 
-  return {
-    values,
-    errors,
-    touched,
-    isSubmitting,
-    isValid,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    resetForm,
-    setValues,
-    // Métodos específicos para diferentes tipos de campos
-    handleRadioChange,
-    handleSelectChange,
-    handleTextChange,
-    handleCheckboxChange,
-    handleMultiCheckboxChange,
-  };
+	return {
+		values,
+		errors,
+		touched,
+		isSubmitting,
+		isValid,
+		handleChange,
+		handleBlur,
+		handleSubmit,
+		resetForm,
+		setValues,
+		// Métodos específicos para diferentes tipos de campos
+		handleRadioChange,
+		handleSelectChange,
+		handleTextChange,
+		handleCheckboxChange,
+		handleMultiCheckboxChange,
+	};
 }
