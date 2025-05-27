@@ -1,15 +1,30 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as CheckboxStories from './Checkbox.stories';
 
-
-<Meta title="Components/Checkbox" />
+<Meta title="Components/Checkbox" of={CheckboxStories} />
 
 # Checkbox
 
 O componente Checkbox permite que os usuários selecionem uma ou mais opções de um conjunto, sendo fundamental para formulários e interfaces interativas.
 
+## Exemplos Interativos
 
+### Estados do Checkbox
+<Canvas>
+  <Story of={CheckboxStories.DefaultCheckbox} />
+  <Story of={CheckboxStories.CheckedCheckbox} />
+  <Story of={CheckboxStories.DisabledCheckbox} />
+</Canvas>
 
+### Checkbox com HTML no Label
+<Canvas>
+  <Story of={CheckboxStories.WithHTMLLabel} />
+</Canvas>
 
+### Grupo de Checkboxes
+<Canvas>
+  <Story of={CheckboxStories.CheckboxGroup} />
+</Canvas>
 
 ## Uso Básico
 

@@ -1,13 +1,28 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as BreadcrumbStories from './Breadcrumb.stories';
 
-
-<Meta title="Components/Breadcrumb" />
+<Meta title="Components/Breadcrumb" of={BreadcrumbStories} />
 
 # Breadcrumb
 
 O componente `Breadcrumb` fornece uma trilha de navegação que mostra a localização atual do usuário dentro da hierarquia do site, facilitando a navegação entre níveis.
 
+## Exemplos Interativos
 
+### Breadcrumb Padrão
+<Canvas>
+  <Story of={BreadcrumbStories.Default} />
+</Canvas>
+
+### Breadcrumb com Item Único
+<Canvas>
+  <Story of={BreadcrumbStories.SingleItem} />
+</Canvas>
+
+### Breadcrumb com Caminho Longo
+<Canvas>
+  <Story of={BreadcrumbStories.LongPath} />
+</Canvas>
 
 ## Importação
 
@@ -34,23 +49,11 @@ function Example() {
 
 ## Props
 
-### Breadcrumb
-
 | Prop | Tipo | Padrão | Descrição |
 |------|------|--------|-----------|
-| `children` | `ReactNode` | - | Os itens do breadcrumb |
-| `separator` | `ReactNode` | `/` | Separador entre os itens |
+| `breadcrumbList` | `Array<{label: string, link: string}>` | - | Lista de itens do breadcrumb, cada um com label e link |
 | `className` | `string` | - | Classe CSS adicional para o componente |
-
-### Breadcrumb.Item
-
-| Prop | Tipo | Padrão | Descrição |
-|------|------|--------|-----------|
-| `children` | `ReactNode` | - | Conteúdo do item |
-| `href` | `string` | - | URL para navegação (se omitido, o item será renderizado como texto) |
-| `onClick` | `(e: MouseEvent) => void` | - | Função chamada quando o item é clicado |
-| `className` | `string` | - | Classe CSS adicional para o item |
-| `active` | `boolean` | `false` | Indica se o item está ativo (geralmente o último item) |
+| ...props | `HTMLAttributes<HTMLDivElement>` | - | Outras props HTML válidas para divs |
 
 
 

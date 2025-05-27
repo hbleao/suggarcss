@@ -1,13 +1,43 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as FlexStories from './Flex.stories';
 
-
-<Meta title="Components/Flex" />
+<Meta title="Components/Flex" of={FlexStories} />
 
 # Flex
 
 O componente `Flex` é um wrapper flexível baseado no modelo de layout Flexbox do CSS, permitindo criar layouts responsivos e alinhamentos complexos com facilidade.
 
+## Exemplos Interativos
 
+### Flex em Linha (Row)
+<Canvas>
+  <Story of={FlexStories.Row} />
+</Canvas>
+
+### Flex em Coluna (Column)
+<Canvas>
+  <Story of={FlexStories.Column} />
+</Canvas>
+
+### Diferentes Justificativas (Justify Content)
+<Canvas>
+  <Story of={FlexStories.JustifyContent} />
+</Canvas>
+
+### Diferentes Alinhamentos (Align Items)
+<Canvas>
+  <Story of={FlexStories.AlignItems} />
+</Canvas>
+
+### Quebra de Linha (Wrap)
+<Canvas>
+  <Story of={FlexStories.Wrap} />
+</Canvas>
+
+### Flex Inline
+<Canvas>
+  <Story of={FlexStories.InlineFlex} />
+</Canvas>
 
 ## Importação
 

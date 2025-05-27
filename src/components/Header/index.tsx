@@ -7,7 +7,7 @@ import { HeaderToolbar } from "./HeaderToolbar";
 import { MenuNav } from "./MenuNav";
 import * as C from "./components";
 
-import LogoPortoSVG from "@/assets/icons/ic-logo-porto.svg";
+import LogoPortoSVG from "./icons/ic-logo-porto.svg";
 import { Column, Grid, Link, ShowOnDevice } from "@/components";
 
 import type { Category } from "./HeaderDrawer/types";
@@ -15,12 +15,10 @@ import type { Category } from "./HeaderDrawer/types";
 export const Header = (props: any) => {
 	const { menu, submenus: categories } = props;
 	const [isOpenMenu, setIsOpenMenu] = useState(false);
-	const [selectedCategory, setSelectedCategory] = useState({} as Ca);
+	const [selectedCategory, setSelectedCategory] = useState({} as Category);
 	const [indexSubcategory, setIndexSubcategory] = useState(0);
 	const hasSubcategories = !!selectedCategory?.categories;
-	const subcategory = hasSubcategories
-		? selectedCategory?.categories[indexSubcategory]
-		: [];
+	const subcategory = hasSubcategories ? selectedCategory?.categories[indexSubcategory] : { name: '', links: [] };
 
 	function handleToggleMenu() {
 		if (!isOpenMenu) {
@@ -51,9 +49,7 @@ export const Header = (props: any) => {
 		<C.Root>
 			<C.Menu>
 				<ShowOnDevice media="tabletLandscape" orientation="lessThan">
-					<C.MenuLogo
-						style={{ borderBottom: isOpenMenu ? "1px solid #e0e0e0" : "" }}
-					>
+					<C.MenuLogo style={{ borderBottom: isOpenMenu ? "1px solid #e0e0e0" : "" }}>
 						<C.IconMobileMenu
 							isOpen={isOpenMenu}
 							aria-label={isOpenMenu ? "Fechar menu" : "Abrir menu"}

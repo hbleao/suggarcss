@@ -1,21 +1,43 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as BannerHeroStories from './BannerHero.stories';
 
-
-<Meta title="Components/BannerHero" />
+<Meta title="Components/BannerHero" of={BannerHeroStories} />
 
 # BannerHero
 
-O componente BannerHero é usado para criar seções de destaque em páginas, geralmente no topo, apresentando conteúdo importante com impacto visual.
-
-
+O componente BannerHero é usado para criar seções de destaque em páginas, geralmente no topo, apresentando conteúdo importante com impacto visual. Ideal para landing pages, páginas iniciais e seções de destaque.
 
 ## Exemplos Interativos
 
-Você pode ver exemplos interativos do componente BannerHero nas seguintes páginas:
+### Banner Padrão
+<Canvas>
+  <Story of={BannerHeroStories.DefaultBanner} />
+</Canvas>
 
-- [Exemplo Básico](/story/components-bannerhero-examples--default)
-- [Com Props Personalizadas](/story/components-bannerhero-examples--with-custom-props)
-- [Exemplo Personalizado](/story/components-bannerhero-examples--custom-example)
+### Banner com Logo
+<Canvas>
+  <Story of={BannerHeroStories.WithLogo} />
+</Canvas>
+
+### Banner com Links para Lojas de Aplicativos
+<Canvas>
+  <Story of={BannerHeroStories.WithStores} />
+</Canvas>
+
+### Banner sem Imagem
+<Canvas>
+  <Story of={BannerHeroStories.WithoutImage} />
+</Canvas>
+
+### Banner sem Botões
+<Canvas>
+  <Story of={BannerHeroStories.WithoutButtons} />
+</Canvas>
+
+### Banner com Fundo Personalizado
+<Canvas>
+  <Story of={BannerHeroStories.CustomBackground} />
+</Canvas>
 ## Importação
 
 ```jsx
@@ -36,18 +58,17 @@ import { BannerHero } from '@porto/js-library-corp-hubv-porto-ocean';
 
 ## Props
 
-| Prop | Tipo | Obrigatório | Descrição |
-|------|------|-------------|-----------|
-| `title` | `string` | Sim | Título principal do banner |
-| `subtitle` | `string` | Não | Subtítulo ou descrição complementar |
-| `imageUrl` | `string` | Sim | URL da imagem de fundo |
-| `ctaLabel` | `string` | Não | Texto do botão de call-to-action |
-| `ctaUrl` | `string` | Não | URL para onde o botão de CTA direciona |
-| `variant` | `'primary' \| 'secondary' \| 'dark'` | Não | Variante visual do banner (padrão: 'primary') |
-| `size` | `'small' \| 'medium' \| 'large' \| 'full'` | Não | Tamanho do banner (padrão: 'medium') |
-| `alignment` | `'left' \| 'center' \| 'right'` | Não | Alinhamento do conteúdo (padrão: 'left') |
-| `overlayOpacity` | `number` | Não | Opacidade da sobreposição escura (0-1, padrão: 0.4) |
-| `onCtaClick` | `(e: React.MouseEvent) => void` | Não | Função chamada ao clicar no botão de CTA |
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `bgColor` | `ColorToken` | `'neutral-0'` | Cor de fundo do banner |
+| `title` | `ReactNode` | - | Título principal do banner |
+| `subtitle` | `ReactNode` | - | Subtítulo do banner |
+| `text` | `ReactNode` | - | Texto descritivo do banner |
+| `logo` | `ReactNode` | - | Logo a ser exibido no topo do conteúdo |
+| `image` | `ReactNode` | - | Imagem principal do banner |
+| `buttons` | `BannerHeroButton[]` | `[]` | Array de botões de ação |
+| `stores` | `BannerHeroStore[]` | `[]` | Array de links para lojas de aplicativos |
+| `contentProps` | `RowProps` | - | Props adicionais para o componente Row que envolve o conteúdo |
 
 ## Variações
 

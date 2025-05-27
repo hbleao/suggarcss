@@ -1,0 +1,81 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Hooks/UseOutsideClick" />
+
+# useOutsideClick
+
+O hook `useOutsideClick` permite detectar cliques fora de um elemento específico, sendo muito útil para componentes como dropdowns, modais e menus que precisam fechar quando o usuário clica fora deles.
+
+## Importação
+
+```jsx
+import { useOutsideClick } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+```
+
+## Uso Básico
+
+```jsx
+import React, { useState } from 'react';
+import { Button } from '@porto/js-library-corp-hubv-porto-ocean';
+import { useOutsideClick } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+
+function DropdownExample() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const ref = useOutsideClick(() => {
+    if (isOpen) setIsOpen(false);
+  });
+
+  return (
+    <div ref={ref} className="dropdown-container">
+      <Button onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? 'Fechar Menu' : 'Abrir Menu'}
+      </Button>
+
+      {isOpen && (
+        <div className="dropdown-menu">
+          <ul>
+            <li>Opção 1</li>
+            <li>Opção 2</li>
+            <li>Opção 3</li>
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## Parâmetros
+
+O hook `useOutsideClick` aceita os seguintes parâmetros:
+
+| Parâmetro | Tipo | Obrigatório | Descrição |
+|-----------|------|-------------|-----------|
+| `callback` | `() => void` | Sim | Função a ser executada quando ocorrer um clique fora do elemento |
+| `options` | `object` | Não | Opções adicionais para configurar o comportamento do hook |
+
+### Opções
+
+| Opção | Tipo | Padrão | Descrição |
+|-------|------|--------|-----------|
+| `events` | `string[]` | `['mousedown', 'touchstart']` | Lista de eventos para monitorar |
+| `enabled` | `boolean` | `true` | Se o hook está ativo |
+
+## Retorno
+
+O hook `useOutsideClick` retorna uma referência (ref) que deve ser anexada ao elemento que você deseja monitorar:
+
+```jsx
+const ref = useOutsideClick(callback, options);
+```
+
+
+
+## Boas Práticas
+
+- Use `useOutsideClick` para simplificar a lógica de fechamento de elementos interativos
+- Combine com outros hooks como `useToggle` ou `useModal` para criar componentes interativos completos
+- Considere a opção `enabled` para controlar quando o hook deve estar ativo
+- Lembre-se que o hook monitora eventos de mouse e touch, tornando-o compatível com dispositivos móveis

@@ -1,13 +1,48 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as SkeletonStories from './Skeleton.stories';
 
-
-<Meta title="Components/Skeleton" />
+<Meta title="Components/Skeleton" of={SkeletonStories} />
 
 # Skeleton
 
 O componente `Skeleton` é usado para criar placeholders animados que simulam o layout do conteúdo enquanto os dados reais estão sendo carregados, melhorando a percepção de desempenho e reduzindo a sensação de espera.
 
+## Exemplos Interativos
 
+### Bloco Básico
+<Canvas>
+  <Story of={SkeletonStories.BasicBlock} />
+</Canvas>
+
+### Bloco Arredondado
+<Canvas>
+  <Story of={SkeletonStories.RoundedBlock} />
+</Canvas>
+
+### Skeleton de Texto
+<Canvas>
+  <Story of={SkeletonStories.TextSkeleton} />
+</Canvas>
+
+### Avatar com Texto
+<Canvas>
+  <Story of={SkeletonStories.AvatarWithText} />
+</Canvas>
+
+### Skeleton de Card
+<Canvas>
+  <Story of={SkeletonStories.CardSkeleton} />
+</Canvas>
+
+### Skeleton de Tabela
+<Canvas>
+  <Story of={SkeletonStories.TableSkeleton} />
+</Canvas>
+
+### Skeleton de Formulário
+<Canvas>
+  <Story of={SkeletonStories.FormSkeleton} />
+</Canvas>
 
 ## Importação
 

@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom';
 import { CardContent } from "./index";
 
 // Mock do componente Image do Next.js
@@ -6,6 +7,14 @@ jest.mock("next/image", () => ({
 	__esModule: true,
 	default: ({ src, alt }: { src: string; alt: string }) => (
 		<img src={src} alt={alt} data-testid="next-image" />
+	),
+}));
+
+// Mock do componente Link
+jest.mock("../Link", () => ({
+	__esModule: true,
+	Link: ({ href, children, ...rest }: { href: string; children: React.ReactNode }) => (
+		<a href={href} data-testid="mocked-link" {...rest}>{children}</a>
 	),
 }));
 
@@ -49,7 +58,9 @@ describe("<CardContent />", () => {
 
 		render(<CardContent links={links} />);
 
-		const link = screen.getByText("Saiba mais").closest("a");
+		const linkText = screen.getByText("Saiba mais");
+		expect(linkText).toBeInTheDocument();
+		const link = linkText.closest("a");
 		expect(link).toBeInTheDocument();
 		expect(link).toHaveAttribute("href", "/saiba-mais");
 	});
@@ -65,9 +76,9 @@ describe("<CardContent />", () => {
 
 		// Usar for...of em vez de forEach para seguir as recomendações de lint
 		for (const link of links) {
-			const linkElement = screen.getByText(link.label).closest("a");
+			const linkElement = screen.getByText(link.label);
 			expect(linkElement).toBeInTheDocument();
-			expect(linkElement).toHaveAttribute("href", link.href);
+			expect(linkElement.closest("a")).toHaveAttribute("href", link.href);
 		}
 
 		const linksContainer = screen.getByText("Saiba mais").closest(".card-content__links");

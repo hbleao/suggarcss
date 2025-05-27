@@ -1,13 +1,48 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as SpacingStories from './Spacing.stories';
 
-
-<Meta title="Components/Spacing" />
+<Meta title="Components/Spacing" of={SpacingStories} />
 
 # Spacing
 
 O componente `Spacing` é utilizado para adicionar espaçamento consistente entre elementos da interface, seguindo o sistema de design do Ocean. Ele ajuda a manter o ritmo vertical e horizontal da aplicação, garantindo consistência no layout.
 
+## Exemplos Interativos
 
+### Espaçamento Vertical
+<Canvas>
+  <Story of={SpacingStories.VerticalSpacing} />
+</Canvas>
+
+### Espaçamento Horizontal
+<Canvas>
+  <Story of={SpacingStories.HorizontalSpacing} />
+</Canvas>
+
+### Espaçamento Combinado
+<Canvas>
+  <Story of={SpacingStories.CombinedSpacing} />
+</Canvas>
+
+### Espaçamento Inline
+<Canvas>
+  <Story of={SpacingStories.InlineSpacing} />
+</Canvas>
+
+### Valores Numéricos
+<Canvas>
+  <Story of={SpacingStories.NumericValues} />
+</Canvas>
+
+### Com Estilos Personalizados
+<Canvas>
+  <Story of={SpacingStories.WithCustomStyles} />
+</Canvas>
+
+### Espaçamento em Grid
+<Canvas>
+  <Story of={SpacingStories.SpacingInGrid} />
+</Canvas>
 
 ## Importação
 

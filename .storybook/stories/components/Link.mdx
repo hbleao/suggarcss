@@ -1,13 +1,63 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as LinkStories from './Link.stories';
 
-
-<Meta title="Components/Link" />
+<Meta title="Components/Link" of={LinkStories} />
 
 # Link
 
 O componente `Link` fornece uma maneira consistente de criar links de navegação dentro da aplicação, com suporte a diferentes variantes visuais e estados.
 
+## Exemplos Interativos
 
+### Link Padrão
+<Canvas>
+  <Story of={LinkStories.DefaultLink} />
+</Canvas>
+
+### Link Primário
+<Canvas>
+  <Story of={LinkStories.PrimaryLink} />
+</Canvas>
+
+### Link Secundário
+<Canvas>
+  <Story of={LinkStories.SecondaryLink} />
+</Canvas>
+
+### Link Fantasma
+<Canvas>
+  <Story of={LinkStories.GhostLink} />
+</Canvas>
+
+### Link Pequeno
+<Canvas>
+  <Story of={LinkStories.SmallLink} />
+</Canvas>
+
+### Link Grande
+<Canvas>
+  <Story of={LinkStories.LargeLink} />
+</Canvas>
+
+### Link Desabilitado
+<Canvas>
+  <Story of={LinkStories.DisabledLink} />
+</Canvas>
+
+### Link com Largura Fluida
+<Canvas>
+  <Story of={LinkStories.FluidWidthLink} />
+</Canvas>
+
+### Link com Ícone
+<Canvas>
+  <Story of={LinkStories.WithIcon} />
+</Canvas>
+
+### Link Externo
+<Canvas>
+  <Story of={LinkStories.ExternalLink} />
+</Canvas>
 
 ## Importação
 

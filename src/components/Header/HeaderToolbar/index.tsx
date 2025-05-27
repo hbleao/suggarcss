@@ -37,7 +37,7 @@ export const HeaderToolbar = ({
 			)}
 
 			<Header.ToolbarList>
-				{categories.map((category) => (
+				{categories.map((category: any) => (
 					<Header.ToolbarListItem
 						tabIndex={0}
 						key={category.label}
@@ -87,7 +87,7 @@ export const HeaderToolbar = ({
 							{hasSubcategories && (
 								<React.Fragment>
 									<Header.TooltipContentList>
-										{firstColumnLinks.map((subcategory) => (
+										{firstColumnLinks.map((subcategory: any) => (
 											<Header.TooltipContentListItem key={subcategory.label}>
 												<a href={subcategory.url} target={subcategory.target}>
 													{subcategory.label}
@@ -102,7 +102,7 @@ export const HeaderToolbar = ({
 									</Header.TooltipContentList>
 
 									<Header.TooltipContentList>
-										{lastColumnLinks.map((subcategory) => (
+										{lastColumnLinks.map((subcategory: any) => (
 											<Header.TooltipContentListItem key={subcategory.label}>
 												<a href={subcategory.url} target={subcategory.target}>
 													{subcategory.label}

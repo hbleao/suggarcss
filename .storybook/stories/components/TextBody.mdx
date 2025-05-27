@@ -1,13 +1,53 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as TextBodyStories from './TextBody.stories';
 
-
-<Meta title="Components/TextBody" />
+<Meta title="Components/TextBody" of={TextBodyStories} />
 
 # TextBody
 
-O componente `TextBody` é utilizado para exibir blocos de texto com formatação consistente, seguindo o sistema de design do Ocean. Ele oferece diferentes variantes de estilo, tamanhos e pesos para atender a diversas necessidades de conteúdo textual.
+O componente `TextBody` é utilizado para exibir blocos de texto com título, subtítulo, descrição e botões, seguindo o sistema de design. É ideal para seções informativas, mensagens promocionais ou chamadas para ação.
 
+## Exemplos Interativos
 
+### TextBody Padrão
+<Canvas>
+  <Story of={TextBodyStories.DefaultTextBody} />
+</Canvas>
+
+### Sem Subtítulo
+<Canvas>
+  <Story of={TextBodyStories.WithoutSubtitle} />
+</Canvas>
+
+### Sem Texto
+<Canvas>
+  <Story of={TextBodyStories.WithoutText} />
+</Canvas>
+
+### Com Conteúdo HTML
+<Canvas>
+  <Story of={TextBodyStories.WithHTMLContent} />
+</Canvas>
+
+### Com Um Botão
+<Canvas>
+  <Story of={TextBodyStories.SingleButton} />
+</Canvas>
+
+### Com Múltiplos Botões
+<Canvas>
+  <Story of={TextBodyStories.MultipleButtons} />
+</Canvas>
+
+### Diferentes Variantes
+<Canvas>
+  <Story of={TextBodyStories.DifferentVariants} />
+</Canvas>
+
+### Estilos Personalizados
+<Canvas>
+  <Story of={TextBodyStories.CustomStyles} />
+</Canvas>
 
 ## Importação
 
@@ -34,19 +74,12 @@ function Example() {
 
 | Prop | Tipo | Padrão | Descrição |
 |------|------|--------|-----------|
-| `variant` | `'body1' \| 'body2' \| 'caption' \| 'overline'` | `'body1'` | Variante de estilo do texto |
-| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Tamanho do texto |
-| `weight` | `'regular' \| 'medium' \| 'bold'` | `'regular'` | Peso da fonte |
-| `color` | `string` | - | Cor do texto (substitui a cor padrão da variante) |
-| `align` | `'left' \| 'center' \| 'right' \| 'justify'` | `'left'` | Alinhamento do texto |
-| `noWrap` | `boolean` | `false` | Se verdadeiro, o texto não quebra linha |
-| `truncate` | `boolean` | `false` | Se verdadeiro, o texto é truncado com reticências quando excede uma linha |
-| `paragraph` | `boolean` | `false` | Se verdadeiro, adiciona margem inferior para criar espaçamento de parágrafo |
-| `gutterBottom` | `boolean` | `false` | Se verdadeiro, adiciona margem inferior |
-| `component` | `ElementType` | `'p'` | Elemento HTML a ser renderizado |
-| `className` | `string` | - | Classe CSS adicional para o componente |
+| `title` | `string` | `'title'` | Título principal do bloco |
+| `subtitle` | `string` | `''` | Subtítulo ou destaque complementar |
+| `text` | `string` | `''` | Texto descritivo principal (aceita HTML via `dangerouslySetInnerHTML`) |
+| `buttons` | `Array<{ label: string } & React.ComponentProps<typeof Button>>` | Obrigatório | Lista de botões renderizados abaixo do texto |
+| `className` | `string` | `''` | Classe CSS adicional para personalização externa |
 | `style` | `CSSProperties` | - | Estilos inline adicionais |
-| `children` | `ReactNode` | - | Conteúdo do componente |
 
 
 

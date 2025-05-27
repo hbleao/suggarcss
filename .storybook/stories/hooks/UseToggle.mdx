@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Hooks/UseToggle" />
+
+# useToggle
+
+O hook `useToggle` fornece uma maneira simples de alternar entre estados booleanos, útil para controlar elementos de interface como menus, acordeões, tabs e outros componentes que possuem estados de aberto/fechado ou ativo/inativo.
+
+## Importação
+
+```jsx
+import { useToggle } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Button } from '@porto/js-library-corp-hubv-porto-ocean';
+import { useToggle } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+
+function ExemploToggle() {
+  const [ativo, toggle] = useToggle(false);
+
+  return (
+    <div>
+      <Button onClick={toggle}>
+        {ativo ? 'Desativar' : 'Ativar'}
+      </Button>
+
+      {ativo && <p>Conteúdo visível quando ativo</p>}
+    </div>
+  );
+}
+```
+
+## Retorno
+
+O hook `useToggle` retorna um array com dois elementos:
+
+| Índice | Tipo | Descrição |
+|--------|------|-----------|
+| `[0]` | `boolean` | Estado atual (true ou false) |
+| `[1]` | `(nextValue?: boolean) => void` | Função para alternar o estado. Opcionalmente aceita um valor específico |
+
+## Parâmetros
+
+O hook `useToggle` aceita um parâmetro opcional:
+
+| Parâmetro | Tipo | Padrão | Descrição |
+|-----------|------|--------|-----------|
+| `initialValue` | `boolean` | `false` | Valor inicial do estado |
+
+```jsx
+// Iniciar com o estado ativo
+const [ativo, toggle] = useToggle(true);
+```
+
+
+
+## Boas Práticas
+
+- Use o hook `useToggle` para simplificar a lógica de alternância de estados booleanos
+- Combine com outros hooks para criar funcionalidades mais complexas
+- Utilize o parâmetro `initialValue` para definir o estado inicial quando necessário
+- Aproveite a capacidade de definir um valor específico quando precisar forçar um estado específico
+- Considere a acessibilidade ao implementar elementos de interface que usam o `useToggle`, como adicionar atributos `aria-expanded`, `aria-hidden`, etc.

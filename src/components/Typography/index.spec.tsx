@@ -1,4 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { Typography } from "./index";
 
 jest.mock("./styles.scss", () => ({}));
@@ -43,7 +45,7 @@ describe("Typography", () => {
 
 	it("deve renderizar com cor personalizada", () => {
 		render(
-			<Typography color="primary-500" data-testid="typography">
+			<Typography color={"primary-500" as any} data-testid="typography">
 				Texto colorido
 			</Typography>,
 		);
@@ -145,7 +147,7 @@ describe("Typography", () => {
 			<Typography
 				as="h3"
 				variant="title4"
-				color="secondary-700"
+				color={"secondary-700" as any}
 				weight="semibold"
 				fontStyle="italic"
 				className="custom-class"

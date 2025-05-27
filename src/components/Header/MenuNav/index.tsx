@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import IcLogoPorto from "@/assets/icons/ic-logo-porto.svg";
+import IcLogoPorto from "../icons/ic-logo-porto.svg";
 
 import { Column, Grid, Link, ShowOnDevice } from "@/components";
 import * as Header from "../components";

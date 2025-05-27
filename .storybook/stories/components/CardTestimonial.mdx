@@ -1,13 +1,43 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as CardTestimonialStories from './CardTestimonial.stories';
 
-
-<Meta title="Components/CardTestimonial" />
+<Meta title="Components/CardTestimonial" of={CardTestimonialStories} />
 
 # CardTestimonial
 
-O componente `CardTestimonial` é uma variação especializada do Card projetada para exibir depoimentos, avaliações e feedback de clientes ou usuários. Este componente apresenta uma estrutura otimizada para destacar citações, informações do autor e imagens de perfil.
+O componente `CardTestimonial` é uma variação especializada do Card projetada para exibir depoimentos, avaliações e feedback de clientes ou usuários. Ideal para seções de provas sociais, cases de sucesso ou páginas institucionais.
 
+## Exemplos Interativos
 
+### Depoimento Completo
+<Canvas>
+  <Story of={CardTestimonialStories.DefaultCardTestimonial} />
+</Canvas>
+
+### Sem Imagem
+<Canvas>
+  <Story of={CardTestimonialStories.WithoutImage} />
+</Canvas>
+
+### Sem Data
+<Canvas>
+  <Story of={CardTestimonialStories.WithoutDate} />
+</Canvas>
+
+### Sem Cargo/Posição
+<Canvas>
+  <Story of={CardTestimonialStories.WithoutPosition} />
+</Canvas>
+
+### Sem Separador
+<Canvas>
+  <Story of={CardTestimonialStories.WithoutSeparator} />
+</Canvas>
+
+### Com Estilo Personalizado
+<Canvas>
+  <Story of={CardTestimonialStories.CustomStyling} />
+</Canvas>
 
 ## Importação
 
@@ -37,18 +67,12 @@ function Example() {
 
 | Prop | Tipo | Padrão | Descrição |
 |------|------|--------|-----------|
-| `quote` | `ReactNode` | - | O texto do depoimento ou citação |
-| `author` | `string` | - | Nome do autor do depoimento |
-| `role` | `string` | - | Cargo ou empresa do autor |
-| `avatarSrc` | `string` | - | URL da imagem de avatar do autor |
-| `avatarAlt` | `string` | `'Avatar'` | Texto alternativo para a imagem do avatar |
-| `rating` | `number` | - | Avaliação numérica (1-5) para exibir estrelas |
-| `ratingMax` | `number` | `5` | Valor máximo da escala de avaliação |
-| `date` | `string` | - | Data do depoimento |
-| `companyLogo` | `ReactNode` | - | Logo da empresa do autor |
-| `companyName` | `string` | - | Nome da empresa do autor |
-| `quoteIcon` | `ReactNode` | - | Ícone personalizado para as aspas |
-| `showQuoteIcon` | `boolean` | `true` | Se deve exibir o ícone de aspas |
+| `image` | `ReactNode` | - | Elemento de imagem, geralmente um avatar do autor do depoimento |
+| `name` | `ReactNode` | - | Nome da pessoa que fez o depoimento |
+| `position` | `ReactNode` | - | Cargo ou função da pessoa |
+| `date` | `ReactNode` | - | Data do depoimento ou avaliação |
+| `text` | `ReactNode` | - | Conteúdo principal do depoimento |
+| `showSeparator` | `boolean` | `true` | Define se uma linha separadora será exibida entre o cabeçalho e o conteúdo |
 | `elevation` | `number` | `1` | Nível de elevação (sombra) do card |
 | `bordered` | `boolean` | `false` | Se verdadeiro, exibe uma borda em vez de sombra |
 | `backgroundColor` | `string` | - | Cor de fundo personalizada para o card |

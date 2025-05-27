@@ -1,21 +1,33 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as ModalStories from './Modal.stories';
 
-
-<Meta title="Components/Modal" />
+<Meta title="Components/Modal" of={ModalStories} />
 
 # Modal
 
 O componente Modal é usado para exibir conteúdo em uma camada sobreposta à interface principal, focando a atenção do usuário em uma tarefa ou informação específica.
 
-
-
 ## Exemplos Interativos
 
-Você pode ver exemplos interativos do componente Modal nas seguintes páginas:
+### Modal Básico
+<Canvas>
+  <Story of={ModalStories.BasicModal} />
+</Canvas>
 
-- [Exemplo Básico](/story/components-modal-examples--default)
-- [Com Props Personalizadas](/story/components-modal-examples--with-custom-props)
-- [Exemplo Personalizado](/story/components-modal-examples--custom-example)
+### Modal com Subtítulo
+<Canvas>
+  <Story of={ModalStories.ModalWithSubtitle} />
+</Canvas>
+
+### Modal com Formulário
+<Canvas>
+  <Story of={ModalStories.ModalWithForm} />
+</Canvas>
+
+### Modal com Conteúdo Extenso
+<Canvas>
+  <Story of={ModalStories.LargeModal} />
+</Canvas>
 ## Importação
 
 ```jsx

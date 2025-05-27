@@ -1,21 +1,58 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as TooltipStories from './Tooltip.stories';
 
-
-<Meta title="Components/Tooltip" />
+<Meta title="Components/Tooltip" of={TooltipStories} />
 
 # Tooltip
 
 O componente Tooltip exibe informações contextuais ou explicativas quando o usuário passa o mouse sobre, foca ou toca em um elemento, ajudando a esclarecer funcionalidades sem sobrecarregar a interface.
 
-
-
 ## Exemplos Interativos
 
-Você pode ver exemplos interativos do componente Tooltip nas seguintes páginas:
+### Tooltip Padrão
+<Canvas>
+  <Story of={TooltipStories.DefaultTooltip} />
+</Canvas>
 
-- [Exemplo Básico](/story/components-tooltip-examples--default)
-- [Com Props Personalizadas](/story/components-tooltip-examples--with-custom-props)
-- [Exemplo Personalizado](/story/components-tooltip-examples--custom-example)
+### Posição Superior
+<Canvas>
+  <Story of={TooltipStories.PositionTop} />
+</Canvas>
+
+### Posição Direita
+<Canvas>
+  <Story of={TooltipStories.PositionRight} />
+</Canvas>
+
+### Posição Inferior
+<Canvas>
+  <Story of={TooltipStories.PositionBottom} />
+</Canvas>
+
+### Posição Esquerda
+<Canvas>
+  <Story of={TooltipStories.PositionLeft} />
+</Canvas>
+
+### Tooltip com Conteúdo HTML
+<Canvas>
+  <Story of={TooltipStories.WithHTMLContent} />
+</Canvas>
+
+### Tooltip Controlado
+<Canvas>
+  <Story of={TooltipStories.ControlledTooltip} />
+</Canvas>
+
+### Tooltip com Estilos Personalizados
+<Canvas>
+  <Story of={TooltipStories.TooltipWithCustomStyles} />
+</Canvas>
+
+### Tooltip em Diferentes Elementos
+<Canvas>
+  <Story of={TooltipStories.TooltipOnDifferentElements} />
+</Canvas>
 ## Importação
 
 ```jsx

@@ -1,13 +1,43 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as CardIconStories from './CardIcon.stories';
 
-
-<Meta title="Components/CardIcon" />
+<Meta title="Components/CardIcon" of={CardIconStories} />
 
 # CardIcon
 
 O componente `CardIcon` é uma variação especializada do componente Card que combina um ícone proeminente com conteúdo textual, criando um elemento visual atraente para destacar recursos, serviços ou categorias.
 
+## Exemplos Interativos
 
+### Card com Ícone Padrão
+<Canvas>
+  <Story of={CardIconStories.DefaultCardIcon} />
+</Canvas>
+
+### Card com Pré-Título
+<Canvas>
+  <Story of={CardIconStories.WithPreTitle} />
+</Canvas>
+
+### Card como Link
+<Canvas>
+  <Story of={CardIconStories.AsLink} />
+</Canvas>
+
+### Card sem Ícone
+<Canvas>
+  <Story of={CardIconStories.WithoutIcon} />
+</Canvas>
+
+### Card sem Descrição
+<Canvas>
+  <Story of={CardIconStories.WithoutDescription} />
+</Canvas>
+
+### Card com Estilo Personalizado
+<Canvas>
+  <Story of={CardIconStories.CustomStyling} />
+</Canvas>
 
 ## Importação
 
@@ -37,18 +67,14 @@ function Example() {
 
 | Prop | Tipo | Padrão | Descrição |
 |------|------|--------|-----------|
-| `icon` | `ReactNode` | - | Ícone a ser exibido no card |
-| `title` | `ReactNode` | - | Título do card |
-| `description` | `ReactNode` | - | Descrição ou conteúdo do card |
-| `iconColor` | `string` | - | Cor do ícone |
-| `iconBackground` | `string` | - | Cor de fundo do contêiner do ícone |
-| `iconSize` | `'small' \| 'medium' \| 'large'` | `'medium'` | Tamanho do ícone |
-| `iconPosition` | `'top' \| 'left'` | `'top'` | Posição do ícone em relação ao conteúdo |
-| `onClick` | `() => void` | - | Função chamada quando o card é clicado |
-| `href` | `string` | - | URL para onde o card deve navegar quando clicado |
-| `target` | `string` | - | Atributo target para o link (quando href é fornecido) |
-| `clickable` | `boolean` | `false` | Se verdadeiro, o card terá aparência clicável mesmo sem onClick ou href |
-| `elevation` | `number` | `1` | Nível de elevação (sombra) do card |
+| `icon` | `ReactNode` | - | Ícone a ser exibido no topo do card |
+| `preTitle` | `ReactNode` | - | Texto auxiliar exibido antes do título |
+| `title` | `ReactNode` | - | Título principal do card |
+| `description` | `ReactNode` | - | Descrição complementar |
+| `variant` | `'link' \| 'static'` | `'static'` | Variante visual (interativa ou estática) |
+| `href` | `string` | - | URL para tornar o card clicável |
+| `titleProps` | `Record<string, unknown>` | - | Propriedades adicionais para o título |
+| `descriptionProps` | `Record<string, unknown>` | - | Propriedades adicionais para a descrição |
 | `hoverElevation` | `number` | `3` | Nível de elevação ao passar o mouse sobre o card |
 | `bordered` | `boolean` | `false` | Se verdadeiro, exibe uma borda em vez de sombra |
 | `className` | `string` | - | Classe CSS adicional para o componente |

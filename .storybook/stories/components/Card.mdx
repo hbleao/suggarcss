@@ -1,13 +1,58 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as CardStories from './Card.stories';
 
-
-<Meta title="Components/Card" />
+<Meta title="Components/Card" of={CardStories} />
 
 # Card
 
 O componente `Card` é um contêiner versátil que agrupa conteúdo relacionado e ações em um único elemento, fornecendo uma base visual consistente para diversos tipos de informação.
 
+## Exemplos Interativos
 
+### Card Padrão
+<Canvas>
+  <Story of={CardStories.DefaultCard} />
+</Canvas>
+
+### Card com Sombra
+<Canvas>
+  <Story of={CardStories.WithShadow} />
+</Canvas>
+
+### Card com Borda
+<Canvas>
+  <Story of={CardStories.WithBorder} />
+</Canvas>
+
+### Card com Borda Arredondada Personalizada
+<Canvas>
+  <Story of={CardStories.WithCustomBorderRadius} />
+</Canvas>
+
+### Card com Fundo Personalizado
+<Canvas>
+  <Story of={CardStories.WithCustomBackground} />
+</Canvas>
+
+### Card com Largura Fixa
+<Canvas>
+  <Story of={CardStories.WithCustomWidth} />
+</Canvas>
+
+### Card com Altura Fixa
+<Canvas>
+  <Story of={CardStories.WithCustomHeight} />
+</Canvas>
+
+### Card com Efeito Hover
+<Canvas>
+  <Story of={CardStories.WithHoverEffect} />
+</Canvas>
+
+### Card Personalizado
+<Canvas>
+  <Story of={CardStories.WithCustomStyles} />
+</Canvas>
 
 ## Importação
 

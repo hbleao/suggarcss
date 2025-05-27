@@ -1,13 +1,48 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as TypographyStories from './Typography.stories';
 
-
-<Meta title="Components/Typography" />
+<Meta title="Components/Typography" of={TypographyStories} />
 
 # Typography
 
 O componente Typography é usado para exibir texto de forma consistente em toda a aplicação, seguindo a hierarquia tipográfica definida no sistema de design.
 
+## Exemplos Interativos
 
+### Variantes de Título
+<Canvas>
+  <Story of={TypographyStories.TitleVariants} />
+</Canvas>
+
+### Variantes de Corpo de Texto
+<Canvas>
+  <Story of={TypographyStories.BodyVariants} />
+</Canvas>
+
+### Outras Variantes
+<Canvas>
+  <Story of={TypographyStories.OtherVariants} />
+</Canvas>
+
+### Pesos de Fonte
+<Canvas>
+  <Story of={TypographyStories.WeightVariants} />
+</Canvas>
+
+### Estilos de Fonte
+<Canvas>
+  <Story of={TypographyStories.FontStyleVariants} />
+</Canvas>
+
+### Variantes de Cor
+<Canvas>
+  <Story of={TypographyStories.ColorVariants} />
+</Canvas>
+
+### Combinações Personalizadas
+<Canvas>
+  <Story of={TypographyStories.CustomCombinations} />
+</Canvas>
 
 ## Importação
 

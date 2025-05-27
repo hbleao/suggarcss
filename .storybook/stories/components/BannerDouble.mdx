@@ -1,21 +1,33 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as BannerDoubleStories from './BannerDouble.stories';
 
-
-<Meta title="Components/BannerDouble" />
+<Meta title="Components/BannerDouble" of={BannerDoubleStories} />
 
 # BannerDouble
 
-O componente `BannerDouble` exibe dois banners promocionais lado a lado, cada um contendo título, subtítulo opcional, link e imagem de fundo.
-
-
+O componente `BannerDouble` exibe dois banners promocionais lado a lado, cada um contendo título, subtítulo opcional, link e imagem de fundo. Ideal para destacar promoções, produtos ou serviços em destaque.
 
 ## Exemplos Interativos
 
-Você pode ver exemplos interativos do componente BannerDouble nas seguintes páginas:
+### Banner Duplo Padrão
+<Canvas>
+  <Story of={BannerDoubleStories.DefaultBannerDouble} />
+</Canvas>
 
-- [Exemplo Básico](/story/components-bannerdouble-examples--default)
-- [Com Props Personalizadas](/story/components-bannerdouble-examples--with-custom-props)
-- [Exemplo Personalizado](/story/components-bannerdouble-examples--custom-example)
+### Banner Duplo sem Subtítulos
+<Canvas>
+  <Story of={BannerDoubleStories.WithoutSubtitles} />
+</Canvas>
+
+### Banner Duplo com Cores Personalizadas
+<Canvas>
+  <Story of={BannerDoubleStories.CustomColors} />
+</Canvas>
+
+### Banner Único
+<Canvas>
+  <Story of={BannerDoubleStories.SingleBanner} />
+</Canvas>
 ## Importação
 
 ```jsx

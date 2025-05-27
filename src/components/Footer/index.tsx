@@ -119,7 +119,7 @@ export const Footer = ({
 						{socialMedia && socialMedia.length > 0 && (
 							<div className="social-media__links">
 								{socialMedia.map((media) => (
-									<a
+									<Link
 										key={`social-${media.icon}`}
 										href={media.url}
 										target="_blank"
@@ -132,7 +132,7 @@ export const Footer = ({
 											src={icons[media.icon]?.icon}
 											alt="icon"
 										/>
-									</a>
+									</Link>
 								))}
 							</div>
 						)}
@@ -140,30 +140,26 @@ export const Footer = ({
 						<div className="footer__store">
 							<h3 className="store__title">{titleAppStore}</h3>
 							<div className="store__list">
-								<a
-									href={buttonsAppStore[0].url}
-									target="_blank"
-									rel="noreferrer"
-								>
-									<Image
-										src={icons["icon-apple"].icon}
-										width={120}
-										height={80}
-										alt="apple store"
-									/>
-								</a>
-								<a
-									href={buttonsAppStore[1].url}
-									target="_blank"
-									rel="noreferrer"
-								>
-									<Image
-										src={icons["icon-google"].icon}
-										width={120}
-										height={80}
-										alt="google play"
-									/>
-								</a>
+								{buttonsAppStore && buttonsAppStore.length > 0 && (
+									<Link href={buttonsAppStore[0].url} target="_blank" rel="noreferrer">
+										<Image
+											src={icons["icon-apple"].icon}
+											width={120}
+											height={80}
+											alt="apple store"
+										/>
+									</Link>
+								)}
+								{buttonsAppStore && buttonsAppStore.length > 1 && (
+									<Link href={buttonsAppStore[1].url} target="_blank" rel="noreferrer">
+										<Image
+											src={icons["icon-google"].icon}
+											width={120}
+											height={80}
+											alt="google play"
+										/>
+									</Link>
+								)}
 							</div>
 
 							<Button

@@ -1,13 +1,48 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as FooterStories from './Footer.stories';
 
-
-<Meta title="Components/Footer" />
+<Meta title="Components/Footer" of={FooterStories} />
 
 # Footer
 
 O componente `Footer` é usado para criar rodapés de página consistentes, fornecendo navegação secundária, informações de contato, links para redes sociais e outras informações importantes que devem estar presentes em todas as páginas do site.
 
+## Exemplos Interativos
 
+### Footer Padrão
+<Canvas>
+  <Story of={FooterStories.DefaultFooter} />
+</Canvas>
+
+### Footer sem Logo
+<Canvas>
+  <Story of={FooterStories.WithoutLogo} />
+</Canvas>
+
+### Footer sem Links
+<Canvas>
+  <Story of={FooterStories.WithoutLinks} />
+</Canvas>
+
+### Footer sem Redes Sociais
+<Canvas>
+  <Story of={FooterStories.WithoutSocialMedia} />
+</Canvas>
+
+### Footer com Fundo Personalizado
+<Canvas>
+  <Story of={FooterStories.WithCustomBackground} />
+</Canvas>
+
+### Footer com Cores de Texto Personalizadas
+<Canvas>
+  <Story of={FooterStories.WithCustomTextColor} />
+</Canvas>
+
+### Footer com Conteúdo Adicional
+<Canvas>
+  <Story of={FooterStories.WithAdditionalContent} />
+</Canvas>
 
 ## Importação
 

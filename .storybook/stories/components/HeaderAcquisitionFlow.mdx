@@ -1,45 +1,48 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as HeaderAcquisitionFlowStories from './HeaderAcquisitionFlow.stories';
 
-
-<Meta title="Components/HeaderAcquisitionFlow" />
+<Meta title="Components/HeaderAcquisitionFlow" of={HeaderAcquisitionFlowStories} />
 
 # HeaderAcquisitionFlow
 
 O componente `HeaderAcquisitionFlow` é um cabeçalho especializado para fluxos de aquisição e checkout, oferecendo navegação simplificada com botão de voltar e acesso ao carrinho de compras.
 
+## Exemplos Interativos
 
+### Cabeçalho Padrão
+<Canvas>
+  <Story of={HeaderAcquisitionFlowStories.DefaultHeader} />
+</Canvas>
 
-## Exemplos
+### Com Etapas Concluídas
+<Canvas>
+  <Story of={HeaderAcquisitionFlowStories.WithCompletedSteps} />
+</Canvas>
 
-### Exemplo Básico
+### Com Múltiplas Etapas Concluídas
+<Canvas>
+  <Story of={HeaderAcquisitionFlowStories.WithMultipleCompletedSteps} />
+</Canvas>
 
-```jsx
-<HeaderAcquisitionFlow
-  goBackLink="/produtos"
-  hasGoBackLink={true}
-  hasShoppingCart={true}
-  logoSrc="/path/to/logo.svg"
-  logoAlt="Logo da Empresa"
-/>
-```
+### Com Cores Personalizadas
+<Canvas>
+  <Story of={HeaderAcquisitionFlowStories.WithCustomColors} />
+</Canvas>
 
-### Exemplo com Etapas
+### Com Ícones Personalizados
+<Canvas>
+  <Story of={HeaderAcquisitionFlowStories.WithCustomStepIcons} />
+</Canvas>
 
-```jsx
-<HeaderAcquisitionFlow
-  goBackLink="/produtos"
-  hasGoBackLink={true}
-  hasShoppingCart={true}
-  logoSrc="/path/to/logo.svg"
-  logoAlt="Logo da Empresa"
-  steps={[
-    { label: 'Dados Pessoais', completed: true },
-    { label: 'Endereço', completed: true },
-    { label: 'Pagamento', active: true },
-    { label: 'Confirmação', completed: false }
-  ]}
-/>
-```
+### Com Link de Ajuda
+<Canvas>
+  <Story of={HeaderAcquisitionFlowStories.WithHelpLink} />
+</Canvas>
+
+### Com Botão Voltar
+<Canvas>
+  <Story of={HeaderAcquisitionFlowStories.WithBackButton} />
+</Canvas>
 
 ## Importação
 

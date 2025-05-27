@@ -1,13 +1,48 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as CarouselStories from './Carousel.stories';
 
-
-<Meta title="Components/Carousel" />
+<Meta title="Components/Carousel" of={CarouselStories} />
 
 # Carousel
 
 O componente `Carousel` permite exibir uma coleção de elementos em um formato de slideshow, permitindo que o usuário navegue entre os itens através de controles de navegação ou gestos de deslize.
 
+## Exemplos Interativos
 
+### Carousel Padrão
+<Canvas>
+  <Story of={CarouselStories.DefaultCarousel} />
+</Canvas>
+
+### Com Indicadores (Dots)
+<Canvas>
+  <Story of={CarouselStories.WithDots} />
+</Canvas>
+
+### Com Setas de Navegação
+<Canvas>
+  <Story of={CarouselStories.WithArrows} />
+</Canvas>
+
+### Com Indicadores e Setas
+<Canvas>
+  <Story of={CarouselStories.WithDotsAndArrows} />
+</Canvas>
+
+### Com Reprodução Automática
+<Canvas>
+  <Story of={CarouselStories.AutoPlay} />
+</Canvas>
+
+### Múltiplos Slides Visíveis
+<Canvas>
+  <Story of={CarouselStories.MultipleSlides} />
+</Canvas>
+
+### Com Espaçamento Personalizado
+<Canvas>
+  <Story of={CarouselStories.CustomGap} />
+</Canvas>
 
 ## Importação
 
@@ -65,18 +100,14 @@ function Example() {
 
 | Prop | Tipo | Padrão | Descrição |
 |------|------|--------|-----------|
-| `children` | `ReactNode` | - | Itens do carousel (componentes Carousel.Item) |
-| `autoPlay` | `boolean` | `false` | Se verdadeiro, avança automaticamente os slides |
-| `interval` | `number` | `5000` | Intervalo em milissegundos entre os slides quando autoPlay é verdadeiro |
-| `showControls` | `boolean` | `true` | Se verdadeiro, exibe os controles de navegação (setas) |
-| `showIndicators` | `boolean` | `true` | Se verdadeiro, exibe os indicadores de slide (pontos) |
-| `pauseOnHover` | `boolean` | `true` | Se verdadeiro, pausa o autoPlay quando o mouse está sobre o carousel |
-| `infiniteLoop` | `boolean` | `true` | Se verdadeiro, permite navegação infinita entre os slides |
-| `swipeable` | `boolean` | `true` | Se verdadeiro, permite navegação por gestos de deslize em dispositivos touch |
-| `onChange` | `(index: number) => void` | - | Função chamada quando o slide ativo muda |
-| `selectedItem` | `number` | `0` | Índice do slide ativo (quando controlado) |
-| `className` | `string` | - | Classe CSS adicional para o componente |
-| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `children` | `React.ReactNode[]` | Obrigatório | Array de elementos React que serão exibidos como slides |
+| `autoPlay` | `boolean` | `false` | Se verdadeiro, o carousel avançará automaticamente |
+| `autoPlayInterval` | `number` | `3000` | Intervalo em milissegundos entre os slides quando autoPlay está ativado |
+| `slidesToShow` | `number` | `1` | Número de slides a serem exibidos simultaneamente |
+| `slidesToScroll` | `number` | `1` | Número de slides a serem percorridos por vez ao navegar |
+| `dots` | `boolean` | `false` | Se verdadeiro, exibe os indicadores de posição (dots) |
+| `arrows` | `boolean` | `false` | Se verdadeiro, exibe as setas de navegação (anterior/próximo) |
+| `gap` | `number` | `16` | Espaçamento em pixels entre os slides |
 
 ### Carousel.Item
 

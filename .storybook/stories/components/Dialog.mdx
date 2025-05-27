@@ -1,13 +1,43 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as DialogStories from './Dialog.stories';
 
-
-<Meta title="Components/Dialog" />
+<Meta title="Components/Dialog" of={DialogStories} />
 
 # Dialog
 
 O componente `Dialog` é utilizado para criar janelas modais que aparecem sobre o conteúdo principal da página, exigindo atenção ou interação do usuário antes de prosseguir. É ideal para confirmações, alertas, formulários curtos e outras interações focadas.
 
+## Exemplos Interativos
 
+### Dialog Padrão
+<Canvas>
+  <Story of={DialogStories.DefaultDialog} />
+</Canvas>
+
+### Dialog sem Título
+<Canvas>
+  <Story of={DialogStories.WithoutTitle} />
+</Canvas>
+
+### Dialog sem Descrição
+<Canvas>
+  <Story of={DialogStories.WithoutDescription} />
+</Canvas>
+
+### Dialog sem Botão de Fechar
+<Canvas>
+  <Story of={DialogStories.WithoutCloseButton} />
+</Canvas>
+
+### Dialog com Largura Personalizada
+<Canvas>
+  <Story of={DialogStories.CustomWidth} />
+</Canvas>
+
+### Dialog com Estilos Personalizados
+<Canvas>
+  <Story of={DialogStories.CustomStyles} />
+</Canvas>
 
 ## Importação
 

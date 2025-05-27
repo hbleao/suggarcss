@@ -1,13 +1,38 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as HeaderStories from './Header.stories';
 
-
-<Meta title="Components/Header" />
+<Meta title="Components/Header" of={HeaderStories} />
 
 # Header
 
 O componente `Header` é usado para criar cabeçalhos de página consistentes, fornecendo navegação principal, logo da marca, funcionalidades de pesquisa e outros elementos de interação importantes que devem estar presentes em todas as páginas do site.
 
+## Exemplos Interativos
 
+### Header Padrão
+<Canvas>
+  <Story of={HeaderStories.DefaultHeader} />
+</Canvas>
+
+### Header sem Botão de Login
+<Canvas>
+  <Story of={HeaderStories.WithoutLoginButton} />
+</Canvas>
+
+### Header sem Submenus
+<Canvas>
+  <Story of={HeaderStories.WithoutSubmenus} />
+</Canvas>
+
+### Header com Links Personalizados
+<Canvas>
+  <Story of={HeaderStories.WithCustomLinks} />
+</Canvas>
+
+### Header com Links Externos
+<Canvas>
+  <Story of={HeaderStories.WithExternalLinks} />
+</Canvas>
 
 ## Importação
 

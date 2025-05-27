@@ -1,9 +1,11 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as BannerBodyStories from './BannerBody.stories';
 
-
-<Meta title="Components/BannerBody" />
+<Meta title="Components/BannerBody" of={BannerBodyStories} />
 
 # BannerBody
+
+> **⚠️ COMPONENTE EM DESENVOLVIMENTO** - Este componente ainda está sendo implementado e pode não estar disponível na versão atual da biblioteca.
 
 O componente `BannerBody` é uma seção de conteúdo flexível e responsiva, projetada para exibir informações importantes, mensagens promocionais ou chamadas para ação em destaque na interface do usuário.
 
@@ -68,11 +70,45 @@ function Example() {
 
 ## Exemplos Interativos
 
-Você pode ver exemplos interativos do componente BannerBody nas seguintes páginas:
+### Banner Padrão
+<Canvas>
+  <Story of={BannerBodyStories.DefaultBanner} />
+</Canvas>
 
-- [Exemplo Básico](/story/components-bannerbody-examples--default)
-- [Com Props Personalizadas](/story/components-bannerbody-examples--with-custom-props)
-- [Exemplo Personalizado](/story/components-bannerbody-examples--custom-example)
+### Banner sem Subtítulo
+<Canvas>
+  <Story of={BannerBodyStories.WithoutSubtitle} />
+</Canvas>
+
+### Banner sem Texto
+<Canvas>
+  <Story of={BannerBodyStories.WithoutText} />
+</Canvas>
+
+### Banner sem Imagem
+<Canvas>
+  <Story of={BannerBodyStories.WithoutImage} />
+</Canvas>
+
+### Banner sem Botões
+<Canvas>
+  <Story of={BannerBodyStories.WithoutButtons} />
+</Canvas>
+
+### Banner com Múltiplos Botões
+<Canvas>
+  <Story of={BannerBodyStories.WithMultipleButtons} />
+</Canvas>
+
+### Banner com Fundo Personalizado
+<Canvas>
+  <Story of={BannerBodyStories.WithCustomBackground} />
+</Canvas>
+
+### Banner com Imagem à Direita
+<Canvas>
+  <Story of={BannerBodyStories.WithImageOnRight} />
+</Canvas>
 ## Acessibilidade
 
 O componente `BannerBody` segue as práticas recomendadas de acessibilidade:

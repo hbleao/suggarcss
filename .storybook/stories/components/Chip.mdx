@@ -1,13 +1,24 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as ChipStories from './Chip.stories';
 
-
-<Meta title="Components/Chip" />
+<Meta title="Components/Chip" of={ChipStories} />
 
 # Chip
 
 O componente `Chip` permite exibir informações compactas como tags, filtros, opções ou estados, sendo ideal para representar entidades pequenas com estilo visual distinto.
 
+## Exemplos Interativos
 
+### Variantes de Chip
+<Canvas>
+  <Story of={ChipStories.DefaultChip} />
+  <Story of={ChipStories.SelectedChip} />
+</Canvas>
+
+### Grupo de Chips
+<Canvas>
+  <Story of={ChipStories.ChipGroup} />
+</Canvas>
 
 ## Importação
 

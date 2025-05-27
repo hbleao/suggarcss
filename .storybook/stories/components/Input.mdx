@@ -1,13 +1,49 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as InputStories from './Input.stories';
 
-
-<Meta title="Components/Input" />
+<Meta title="Components/Input" of={InputStories} />
 
 # Input
 
 O componente `Input` permite criar campos de entrada de texto com diversos estilos e funcionalidades, sendo fundamental para formulários e interações do usuário.
 
+## Exemplos Interativos
 
+### Input Padrão
+<Canvas>
+  <Story of={InputStories.DefaultInput} />
+</Canvas>
+
+### Input com Borda
+<Canvas>
+  <Story of={InputStories.OutlinedInput} />
+</Canvas>
+
+### Input com Texto de Ajuda
+<Canvas>
+  <Story of={InputStories.WithHelperText} />
+</Canvas>
+
+### Input com Erro
+<Canvas>
+  <Story of={InputStories.WithError} />
+</Canvas>
+
+### Estados do Input
+<Canvas>
+  <Story of={InputStories.DisabledInput} />
+  <Story of={InputStories.LoadingInput} />
+</Canvas>
+
+### Input com Largura Fluida
+<Canvas>
+  <Story of={InputStories.FluidWidthInput} />
+</Canvas>
+
+### Tipos de Input
+<Canvas>
+  <Story of={InputStories.BasicInputs} />
+</Canvas>
 
 ## Importação
 

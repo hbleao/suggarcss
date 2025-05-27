@@ -1,13 +1,45 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as DropdownStories from './Dropdown.stories';
 
-
-<Meta title="Components/Dropdown" />
+<Meta title="Components/Dropdown" of={DropdownStories} />
 
 # Dropdown
 
 O componente `Dropdown` exibe um menu suspenso quando acionado, permitindo que o usuário selecione uma opção de uma lista de alternativas ou acesse funcionalidades adicionais.
 
+## Exemplos Interativos
 
+### Dropdown Padrão
+<Canvas>
+  <Story of={DropdownStories.DefaultDropdown} />
+</Canvas>
+
+### Dropdown com Borda
+<Canvas>
+  <Story of={DropdownStories.OutlinedDropdown} />
+</Canvas>
+
+### Dropdown com Texto de Ajuda
+<Canvas>
+  <Story of={DropdownStories.WithHelperText} />
+</Canvas>
+
+### Dropdown com Erro
+<Canvas>
+  <Story of={DropdownStories.WithError} />
+</Canvas>
+
+### Estados do Dropdown
+<Canvas>
+  <Story of={DropdownStories.DisabledDropdown} />
+  <Story of={DropdownStories.LoadingDropdown} />
+  <Story of={DropdownStories.ReadOnlyDropdown} />
+</Canvas>
+
+### Dropdown com Largura Fluida
+<Canvas>
+  <Story of={DropdownStories.FluidWidthDropdown} />
+</Canvas>
 
 ## Importação
 

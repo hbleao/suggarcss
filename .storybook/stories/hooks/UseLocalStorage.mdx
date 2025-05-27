@@ -1,0 +1,88 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Hooks/UseLocalStorage" />
+
+# useLocalStorage
+
+O hook `useLocalStorage` permite persistir e sincronizar o estado do React com o localStorage do navegador, facilitando o armazenamento de dados entre sessões de navegação.
+
+## Importação
+
+```jsx
+import { useLocalStorage } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Button } from '@porto/js-library-corp-hubv-porto-ocean';
+import { useLocalStorage } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+
+function ExemploLocalStorage() {
+  const [nome, setNome] = useLocalStorage('nome-usuario', '');
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={nome}
+        onChange={(e) => setNome(e.target.value)}
+        placeholder="Digite seu nome"
+      />
+
+      <p>
+        {nome ? `Olá, ${nome}!` : 'Por favor, digite seu nome.'}
+      </p>
+
+      <Button onClick={() => setNome('')}>
+        Limpar
+      </Button>
+    </div>
+  );
+}
+```
+
+## Retorno
+
+O hook `useLocalStorage` retorna um array com dois elementos, similar ao hook `useState`:
+
+| Índice | Tipo | Descrição |
+|--------|------|-----------|
+| `[0]` | `any` | Valor atual armazenado |
+| `[1]` | `(value: any) => void` | Função para atualizar o valor armazenado |
+
+## Parâmetros
+
+O hook `useLocalStorage` aceita os seguintes parâmetros:
+
+| Parâmetro | Tipo | Obrigatório | Descrição |
+|-----------|------|-------------|-----------|
+| `key` | `string` | Sim | Chave usada para armazenar o valor no localStorage |
+| `initialValue` | `any` | Sim | Valor inicial caso não exista um valor armazenado |
+| `options` | `object` | Não | Opções adicionais para configurar o comportamento do hook |
+
+### Opções
+
+| Opção | Tipo | Padrão | Descrição |
+|-------|------|--------|-----------|
+| `serialize` | `(value: any) => string` | `JSON.stringify` | Função para serializar o valor antes de armazenar |
+| `deserialize` | `(value: string) => any` | `JSON.parse` | Função para deserializar o valor após recuperá-lo |
+
+
+
+## Limitações
+
+- O localStorage tem limite de armazenamento (geralmente 5-10MB dependendo do navegador)
+- Só pode armazenar strings, por isso usamos JSON para serialização/deserialização
+- Não é compartilhado entre diferentes domínios ou navegadores
+- Não é acessível em navegação privada após o fechamento da janela
+
+## Boas Práticas
+
+- Use chaves descritivas e específicas para evitar colisões com outros scripts
+- Considere adicionar um prefixo à chave para identificar seu aplicativo (ex: `app-name:user-preferences`)
+- Implemente tratamento de erros para casos em que o localStorage não esteja disponível
+- Evite armazenar grandes quantidades de dados que possam impactar a performance
+- Use o hook para dados que realmente precisam persistir entre sessões, não para estado temporário

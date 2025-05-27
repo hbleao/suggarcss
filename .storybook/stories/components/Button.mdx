@@ -1,15 +1,53 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as ButtonStories from './Button.stories';
 
-
-<Meta title="Components/Button" />
+<Meta title="Components/Button" of={ButtonStories} />
 
 # Button
 
 O componente `Button` é usado para iniciar ações e navegações na interface, fornecendo uma maneira consistente para os usuários interagirem com a aplicação.
 
+## Exemplos Interativos
 
+### Todas as Variantes
+<Canvas>
+  <Story of={ButtonStories.ButtonShowcase} />
+</Canvas>
 
-## Exemplos
+### Variantes de Estilo
+<Canvas>
+  <Story of={ButtonStories.PrimaryButton} />
+  <Story of={ButtonStories.SecondaryButton} />
+  <Story of={ButtonStories.GhostButton} />
+</Canvas>
+
+### Variantes de Produto
+<Canvas>
+  <Story of={ButtonStories.InsuranceButton} />
+  <Story of={ButtonStories.BankingButton} />
+  <Story of={ButtonStories.HealthButton} />
+  <Story of={ButtonStories.NegativeButton} />
+</Canvas>
+
+### Tamanhos
+<Canvas>
+  <Story of={ButtonStories.SmallButton} />
+  <Story of={ButtonStories.LargeButton} />
+</Canvas>
+
+### Larguras
+<Canvas>
+  <Story of={ButtonStories.BasicButton} />
+  <Story of={ButtonStories.FluidButton} />
+</Canvas>
+
+### Estados
+<Canvas>
+  <Story of={ButtonStories.DisabledButton} />
+  <Story of={ButtonStories.LoadingButton} />
+</Canvas>
+
+## Exemplos de Código
 
 ### Variantes de Estilo
 

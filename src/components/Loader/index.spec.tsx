@@ -1,4 +1,6 @@
-import { render } from "@testing-library/react";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import type { HTMLAttributes } from "react";
 import { Loader } from "./index";
 
@@ -28,7 +30,7 @@ describe("<Loader />", () => {
 	});
 
 	it("deve renderizar com cor personalizada", () => {
-		const { container } = render(<Loader color="primary-500" />);
+		const { container } = render(<Loader color={"primary-500" as any} />);
 		const loader = container.firstChild as HTMLElement;
 
 		expect(loader).toHaveClass("--border-primary-500");
@@ -56,7 +58,7 @@ describe("<Loader />", () => {
 
 	it("deve combinar múltiplas propriedades personalizadas", () => {
 		const { container } = render(
-			<Loader color="secondary-700" size={36} className="custom-class" />,
+			<Loader color={"secondary-700" as any} size={36} className="custom-class" />,
 		);
 		const loader = container.firstChild as HTMLElement;
 

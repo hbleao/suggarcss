@@ -1,13 +1,38 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as GridStories from './Grid.stories';
 
-
-<Meta title="Components/Grid" />
+<Meta title="Components/Grid" of={GridStories} />
 
 # Grid
 
 O componente `Grid` oferece um sistema de layout baseado em CSS Grid, permitindo criar designs complexos e responsivos com facilidade. É ideal para estruturar páginas inteiras ou seções que exigem alinhamento preciso em duas dimensões.
 
+## Exemplos Interativos
 
+### Grid Básico
+<Canvas>
+  <Story of={GridStories.BasicGrid} />
+</Canvas>
+
+### Grid com Três Colunas
+<Canvas>
+  <Story of={GridStories.ThreeColumnGrid} />
+</Canvas>
+
+### Grid com Fundo
+<Canvas>
+  <Story of={GridStories.GridWithBackground} />
+</Canvas>
+
+### Grid com Espaçamento Personalizado
+<Canvas>
+  <Story of={GridStories.GridWithCustomGap} />
+</Canvas>
+
+### Grids Aninhados
+<Canvas>
+  <Story of={GridStories.NestedGrids} />
+</Canvas>
 
 ## Importação
 

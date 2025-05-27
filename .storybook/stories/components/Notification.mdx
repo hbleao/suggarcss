@@ -1,13 +1,53 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as NotificationStories from './Notification.stories';
 
-
-<Meta title="Components/Notification" />
+<Meta title="Components/Notification" of={NotificationStories} />
 
 # Notification
 
 O componente `Notification` exibe mensagens informativas, de alerta ou de feedback que aparecem temporariamente na interface do usuário, geralmente em resposta a uma ação do usuário ou a um evento do sistema.
 
+## Exemplos Interativos
 
+### Notificação Padrão
+<Canvas>
+  <Story of={NotificationStories.DefaultNotification} />
+</Canvas>
+
+### Notificação com Borda
+<Canvas>
+  <Story of={NotificationStories.OutlinedNotification} />
+</Canvas>
+
+### Notificação Informativa
+<Canvas>
+  <Story of={NotificationStories.InformationNotification} />
+</Canvas>
+
+### Notificação de Atenção
+<Canvas>
+  <Story of={NotificationStories.AttentionNotification} />
+</Canvas>
+
+### Notificação de Sucesso
+<Canvas>
+  <Story of={NotificationStories.SuccessNotification} />
+</Canvas>
+
+### Notificação de Erro
+<Canvas>
+  <Story of={NotificationStories.ErrorNotification} />
+</Canvas>
+
+### Notificação com Link
+<Canvas>
+  <Story of={NotificationStories.NotificationWithLink} />
+</Canvas>
+
+### Múltiplas Notificações
+<Canvas>
+  <Story of={NotificationStories.MultipleNotifications} />
+</Canvas>
 
 ## Importação
 

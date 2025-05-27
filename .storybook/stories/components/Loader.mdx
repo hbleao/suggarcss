@@ -1,13 +1,43 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as LoaderStories from './Loader.stories';
 
-
-<Meta title="Components/Loader" />
+<Meta title="Components/Loader" of={LoaderStories} />
 
 # Loader
 
 O componente `Loader` é usado para indicar ao usuário que uma operação está em andamento, fornecendo feedback visual durante processos de carregamento, envio de dados ou qualquer operação assíncrona.
 
+## Exemplos Interativos
 
+### Loader Padrão
+<Canvas>
+  <Story of={LoaderStories.DefaultLoader} />
+</Canvas>
+
+### Loader com Diferentes Tamanhos
+<Canvas>
+  <Story of={LoaderStories.WithDifferentSizes} />
+</Canvas>
+
+### Loader com Diferentes Cores
+<Canvas>
+  <Story of={LoaderStories.WithDifferentColors} />
+</Canvas>
+
+### Loader com Classes Personalizadas
+<Canvas>
+  <Story of={LoaderStories.WithCustomClasses} />
+</Canvas>
+
+### Loader com Estilos Inline
+<Canvas>
+  <Story of={LoaderStories.WithCustomStyles} />
+</Canvas>
+
+### Loader em Contexto
+<Canvas>
+  <Story of={LoaderStories.LoaderInContext} />
+</Canvas>
 
 ## Importação
 
@@ -34,18 +64,10 @@ function Example() {
 
 | Prop | Tipo | Padrão | Descrição |
 |------|------|--------|-----------|
-| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Tamanho do loader |
-| `color` | `string` | `'primary'` | Cor do loader (pode ser uma cor CSS válida ou uma variável de tema) |
-| `variant` | `'spinner' \| 'dots' \| 'pulse'` | `'spinner'` | Estilo visual do loader |
-| `thickness` | `number` | `3` | Espessura das linhas (para o variant spinner) |
-| `speed` | `'slow' \| 'normal' \| 'fast'` | `'normal'` | Velocidade da animação |
-| `label` | `string` | - | Texto a ser exibido junto com o loader |
-| `labelPosition` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'bottom'` | Posição do texto em relação ao loader |
-| `fullScreen` | `boolean` | `false` | Se verdadeiro, exibe o loader em tela cheia com um overlay |
-| `overlay` | `boolean` | `false` | Se verdadeiro, exibe um overlay por trás do loader |
-| `overlayColor` | `string` | `'rgba(255, 255, 255, 0.7)'` | Cor do overlay |
-| `className` | `string` | - | Classe CSS adicional para o componente |
-| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `color` | `string` | `'neutral-900'` | Cor do loader, usando tokens de cor do sistema |
+| `size` | `number` | `24` | Tamanho do loader em pixels |
+| `className` | `string` | - | Classes CSS adicionais para o loader |
+| `style` | `CSSProperties` | - | Estilos inline adicionais para o loader |
 
 
 

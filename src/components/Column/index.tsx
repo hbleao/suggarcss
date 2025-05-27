@@ -66,6 +66,7 @@ export function Column({
 
 	return (
 		<div
+			className="column"
 			style={{
 				gridColumnStart: gridColumn[0],
 				gridColumnEnd: gridColumn[1],

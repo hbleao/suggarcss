@@ -17,7 +17,7 @@ export { useOutsideClick } from "./useOutsideClick";
 export { useToggle } from "./useToggle";
 
 // Hooks para performance
-export { useDebouncedValue } from "./useDebounce";
+export { useDebouncedValue } from "./useDebounceValue";
 
 // Hooks para formulários
 export { useForm } from "./useForm";

@@ -1,13 +1,48 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as RadioStories from './Radio.stories';
 
-
-<Meta title="Components/Radio" />
+<Meta title="Components/Radio" of={RadioStories} />
 
 # Radio
 
 O componente `Radio` permite criar botões de opção para seleção única entre múltiplas alternativas, sendo ideal para formulários onde apenas uma opção pode ser selecionada.
 
+## Exemplos Interativos
 
+### Radio Padrão
+<Canvas>
+  <Story of={RadioStories.Default} />
+</Canvas>
+
+### Radio Selecionado
+<Canvas>
+  <Story of={RadioStories.Checked} />
+</Canvas>
+
+### Radio Desabilitado
+<Canvas>
+  <Story of={RadioStories.Disabled} />
+</Canvas>
+
+### Radio com Descrição
+<Canvas>
+  <Story of={RadioStories.WithDescription} />
+</Canvas>
+
+### Grupo de Radio Buttons
+<Canvas>
+  <Story of={RadioStories.RadioGroup} />
+</Canvas>
+
+### Radio com Estilo Personalizado
+<Canvas>
+  <Story of={RadioStories.RadioWithCustomStyling} />
+</Canvas>
+
+### Radio com Texto Longo
+<Canvas>
+  <Story of={RadioStories.RadioWithLongText} />
+</Canvas>
 
 ## Importação
 

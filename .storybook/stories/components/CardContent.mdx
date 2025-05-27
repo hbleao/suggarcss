@@ -1,21 +1,48 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as CardContentStories from './CardContent.stories';
 
-
-<Meta title="Components/CardContent" />
+<Meta title="Components/CardContent" of={CardContentStories} />
 
 # CardContent
 
-O componente CardContent é usado para exibir informações estruturadas em formato de cartão, incluindo título, descrição, imagem e links de ação.
-
-
+O componente CardContent é usado para exibir informações estruturadas em formato de cartão, incluindo título, descrição, imagem e links de ação. Ideal para apresentar produtos, serviços, planos ou artigos.
 
 ## Exemplos Interativos
 
-Você pode ver exemplos interativos do componente CardContent nas seguintes páginas:
+### Card Completo
+<Canvas>
+  <Story of={CardContentStories.DefaultCardContent} />
+</Canvas>
 
-- [Exemplo Básico](/story/components-cardcontent-examples--default)
-- [Com Props Personalizadas](/story/components-cardcontent-examples--with-custom-props)
-- [Exemplo Personalizado](/story/components-cardcontent-examples--custom-example)
+### Card sem Imagem
+<Canvas>
+  <Story of={CardContentStories.WithoutImage} />
+</Canvas>
+
+### Card sem Links
+<Canvas>
+  <Story of={CardContentStories.WithoutLinks} />
+</Canvas>
+
+### Card apenas com Título
+<Canvas>
+  <Story of={CardContentStories.TitleOnly} />
+</Canvas>
+
+### Card apenas com Descrição
+<Canvas>
+  <Story of={CardContentStories.DescriptionOnly} />
+</Canvas>
+
+### Card com Múltiplos Links
+<Canvas>
+  <Story of={CardContentStories.MultipleLinks} />
+</Canvas>
+
+### Card com Estilo Personalizado
+<Canvas>
+  <Story of={CardContentStories.CustomStyling} />
+</Canvas>
 ## Importação
 
 ```jsx
@@ -35,12 +62,13 @@ import { CardContent } from '@porto/js-library-corp-hubv-porto-ocean';
 
 ## Props
 
-| Prop | Tipo | Obrigatório | Descrição |
-|------|------|-------------|-----------|
-| `title` | `string` | Sim | Título principal do card |
-| `description` | `string` | Sim | Texto descritivo do conteúdo |
-| `image` | `{ url: string; alt: string; }` | Não | Imagem a ser exibida no card |
-| `links` | `Array<{ label: string; href: string; target?: string; }>` | Não | Lista de links de ação |
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `title` | `string` | - | Título principal do card |
+| `description` | `string` | - | Texto descritivo do conteúdo |
+| `image` | `{ url: string; alt: string; }` | - | Imagem a ser exibida no topo do card |
+| `links` | `Array<{ label: string; href: string; }>` | `[]` | Lista de links de ação |
+| `className` | `string` | `''` | Classe CSS adicional para customização do estilo externo |
 
 ## Variações
 

@@ -1,12 +1,19 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as AccordionStories from './Accordion.stories';
 
-
-<Meta title="Components/Accordion" />
+<Meta title="Components/Accordion" of={AccordionStories} />
 
 # Accordion
 
 O componente `Accordion` permite criar painéis expansíveis que podem ser abertos e fechados para mostrar ou esconder conteúdo, economizando espaço e organizando informações em seções.
 
+## Exemplo Interativo
+
+<Canvas>
+  <Story of={AccordionStories.Default} />
+  <Story of={AccordionStories.OpenByDefault} />
+  <Story of={AccordionStories.Multiple} />
+</Canvas>
 
 
 ## Importação

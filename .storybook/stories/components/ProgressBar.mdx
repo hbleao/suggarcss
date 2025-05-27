@@ -1,13 +1,53 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as ProgressBarStories from './ProgressBar.stories';
 
-
-<Meta title="Components/ProgressBar" />
+<Meta title="Components/ProgressBar" of={ProgressBarStories} />
 
 # ProgressBar
 
 O componente `ProgressBar` exibe visualmente o progresso de uma operação, permitindo que os usuários acompanhem o status de processos como carregamentos, uploads, downloads ou qualquer tarefa que tenha um início e fim definidos.
 
+## Exemplos Interativos
 
+### Barra de Progresso Padrão
+<Canvas>
+  <Story of={ProgressBarStories.Default} />
+</Canvas>
+
+### Barra de Progresso com Cor Personalizada
+<Canvas>
+  <Story of={ProgressBarStories.WithCustomColor} />
+</Canvas>
+
+### Barra de Progresso com Valor Inicial
+<Canvas>
+  <Story of={ProgressBarStories.WithInitialValue} />
+</Canvas>
+
+### Barra de Progresso Completa
+<Canvas>
+  <Story of={ProgressBarStories.FullProgress} />
+</Canvas>
+
+### Barra de Progresso Vazia
+<Canvas>
+  <Story of={ProgressBarStories.NoProgress} />
+</Canvas>
+
+### Barra de Progresso Animada
+<Canvas>
+  <Story of={ProgressBarStories.AnimatedProgress} />
+</Canvas>
+
+### Barras de Progresso com Estilo Personalizado
+<Canvas>
+  <Story of={ProgressBarStories.CustomStyling} />
+</Canvas>
+
+### Múltiplas Barras de Progresso
+<Canvas>
+  <Story of={ProgressBarStories.MultipleProgressBars} />
+</Canvas>
 
 ## Importação
 

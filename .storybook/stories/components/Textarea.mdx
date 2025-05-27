@@ -1,13 +1,48 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as TextareaStories from './Textarea.stories';
 
-
-<Meta title="Components/Textarea" />
+<Meta title="Components/Textarea" of={TextareaStories} />
 
 # Textarea
 
 O componente `Textarea` permite aos usuários inserir e editar textos longos ou de múltiplas linhas, sendo ideal para comentários, descrições e outros conteúdos extensos.
 
+## Exemplos Interativos
 
+### Textarea Padrão
+<Canvas>
+  <Story of={TextareaStories.DefaultTextarea} />
+</Canvas>
+
+### Textarea com Borda
+<Canvas>
+  <Story of={TextareaStories.OutlinedTextarea} />
+</Canvas>
+
+### Textarea com Texto de Ajuda
+<Canvas>
+  <Story of={TextareaStories.WithHelperText} />
+</Canvas>
+
+### Textarea com Erro
+<Canvas>
+  <Story of={TextareaStories.WithError} />
+</Canvas>
+
+### Textarea Desabilitado
+<Canvas>
+  <Story of={TextareaStories.DisabledTextarea} />
+</Canvas>
+
+### Textarea com Linhas Personalizadas
+<Canvas>
+  <Story of={TextareaStories.CustomRows} />
+</Canvas>
+
+### Textarea com Largura Fluida
+<Canvas>
+  <Story of={TextareaStories.FluidWidthTextarea} />
+</Canvas>
 
 ## Importação
 
