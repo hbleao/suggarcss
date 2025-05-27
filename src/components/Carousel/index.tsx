@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { CardProvider } from "./CardContext";
+import { TaggedButton } from "./TaggedButton";
 
 import "./styles.scss";
 
-import type { CarouselProps } from "./types";
+import type { CarouselProps, CardTaggingData } from "./types";
 
 export function Carousel({
 	children,
@@ -13,6 +15,8 @@ export function Carousel({
 	dots = false,
 	arrows = false,
 	gap = 16,
+	onCardClick,
+	cardTaggingData,
 }: CarouselProps) {
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const slideCount = children.length;
@@ -50,13 +54,14 @@ export function Carousel({
 		isDragging.current = false;
 	};
 
-	const goToSlide = (index: number) => {
-		if (index < 0) {
-			index = slideCount - 1;
-		} else if (index >= slideCount) {
-			index = 0;
+	const goToSlide = (slideIndex: number) => {
+		let newIndex = slideIndex;
+		if (newIndex < 0) {
+			newIndex = slideCount - 1;
+		} else if (newIndex >= slideCount) {
+			newIndex = 0;
 		}
-		setCurrentSlide(index);
+		setCurrentSlide(newIndex);
 	};
 
 	useEffect(() => {
@@ -99,6 +104,7 @@ export function Carousel({
 						type="button"
 						onClick={() => goToSlide(currentSlide - slidesToScroll)}
 						className="carousel__button"
+						aria-label="Slide anterior"
 					>
 						<svg
 							width="48"
@@ -106,10 +112,11 @@ export function Carousel({
 							viewBox="0 0 48 48"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
 						>
 							<circle cx="24" cy="24" r="24" fill="#EEF9FF" />
 							<g opacity="0.8">
-								<g clip-path="url(#clip0_2355_5155)">
+								<g clipPath="url(#clip0_2355_5155)">
 									<path
 										d="M30.9339 36.9609C31.304 36.5167 31.23 35.7765 30.7858 35.4063L17.2391 24.0063L30.7858 12.6062C31.304 12.2361 31.304 11.5699 30.9339 11.0517C30.5638 10.6075 29.8235 10.5335 29.3794 10.9036L14.7962 23.118C14.5741 23.3401 14.426 23.6362 14.426 24.0063C14.426 24.3024 14.5741 24.6725 14.7962 24.8946L29.3794 37.0349C29.8235 37.4791 30.5638 37.405 30.9339 36.9609Z"
 										fill="#0046C0"
@@ -132,6 +139,7 @@ export function Carousel({
 						type="button"
 						onClick={() => goToSlide(currentSlide + slidesToScroll)}
 						className="carousel__button"
+						aria-label="Próximo slide"
 					>
 						<svg
 							width="48"
@@ -139,10 +147,11 @@ export function Carousel({
 							viewBox="0 0 48 48"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
 						>
 							<circle cx="24" cy="24" r="24" fill="#F2FAFF" />
 							<g opacity="0.8">
-								<g clip-path="url(#clip0_2355_5154)">
+								<g clipPath="url(#clip0_2355_5154)">
 									<path
 										d="M17.3132 11.039C16.943 11.4832 17.0171 12.2235 17.4612 12.5936L31.008 23.9937L17.4612 35.3937C16.943 35.7639 16.943 36.4301 17.3132 36.9483C17.6833 37.3924 18.4236 37.4665 18.8677 37.0963L33.4509 24.882C33.673 24.6599 33.8211 24.3638 33.8211 23.9937C33.8211 23.6975 33.673 23.3274 33.4509 23.1053L18.8677 10.965C18.4236 10.5209 17.6833 10.5949 17.3132 11.039Z"
 										fill="#0046C0"
@@ -178,32 +187,65 @@ export function Carousel({
 					onTouchStart={handleDragStart}
 					onTouchEnd={handleDragEnd}
 				>
-					{children.map((child, index) => (
-						<div
-							key={index}
-							className="carousel__slide"
-							style={{
-								width: `${100 / slideCount}%`,
-								padding: `0 ${gap / 2}px`,
-								boxSizing: "border-box",
-							}}
-						>
-							{child}
-						</div>
-					))}
+					{children.map((child, index) => {
+						const cardData = cardTaggingData?.[index] || {};
+						const cardId = cardData.id?.toString() || `card-${index}`;
+						
+						const handleCardClick = () => {
+							if (onCardClick && cardData) {
+								onCardClick(cardData);
+							}
+						};
+
+						const handleKeyDown = (event: React.KeyboardEvent) => {
+							if (event.key === 'Enter' || event.key === ' ') {
+								event.preventDefault();
+								handleCardClick();
+							}
+						};
+						
+						return (
+							<CardProvider key={cardId} value={cardData}>
+								<div
+									className="carousel__slide"
+									style={{
+										width: `${100 / slideCount}%`,
+										padding: `0 ${gap / 2}px`,
+										boxSizing: "border-box",
+										cursor: onCardClick ? "pointer" : "default"
+									}}
+									onClick={handleCardClick}
+									onKeyDown={handleKeyDown}
+									data-title={cardData.title}
+									data-label={cardData.label}
+									data-id={cardData.id}
+									data-testid={`carousel-card-${index}`}
+									tabIndex={onCardClick ? 0 : -1}
+									role={onCardClick ? "button" : undefined}
+									aria-label={cardData.title ? `${cardData.title} ${cardData.label || ''}`.trim() : undefined}
+								>
+									{child}
+								</div>
+							</CardProvider>
+						);
+					})}
 				</div>
 
 				{dots && (
 					<div className="carousel__dots">
 						{Array.from({ length: Math.ceil(slideCount / slidesToScroll) }).map(
-							(_, index) => (
-								<button
-									type="button"
-									key={index}
-									onClick={() => goToSlide(index * slidesToScroll)}
-									className={`carousel__dot ${index * slidesToScroll === currentSlide ? "active" : ""}`}
-								/>
-							),
+							(_, index) => {
+								const dotId = `dot-${index}`;
+								return (
+									<button
+										key={dotId}
+										type="button"
+										onClick={() => goToSlide(index * slidesToScroll)}
+										className={`carousel__dot ${index * slidesToScroll === currentSlide ? "active" : ""}`}
+										aria-label={`Ir para slide ${index + 1}`}
+									/>
+								);
+							}
 						)}
 					</div>
 				)}

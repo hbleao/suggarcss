@@ -228,4 +228,215 @@ describe("useForm", () => {
 
 		expect(onSubmit).toHaveBeenCalledWith(initialValues);
 	});
+
+	it("deve manipular campos de rádio corretamente", () => {
+		const initialValues = { gender: "" };
+
+		const { result } = renderHook(() => useForm(initialValues));
+
+		act(() => {
+			result.current.handleRadioChange("gender", "masculino");
+		});
+
+		expect(result.current.values).toEqual({
+			gender: "masculino",
+		});
+		expect(result.current.touched).toEqual({ gender: true });
+
+		act(() => {
+			result.current.handleRadioChange("gender", "feminino");
+		});
+
+		expect(result.current.values).toEqual({
+			gender: "feminino",
+		});
+	});
+
+	it("deve manipular campos de select corretamente", () => {
+		const initialValues = { plan: "" };
+
+		const { result } = renderHook(() => useForm(initialValues));
+
+		act(() => {
+			result.current.handleSelectChange("plan", "basic");
+		});
+
+		expect(result.current.values).toEqual({
+			plan: "basic",
+		});
+		expect(result.current.touched).toEqual({ plan: true });
+
+		act(() => {
+			result.current.handleSelectChange("plan", "premium");
+		});
+
+		expect(result.current.values).toEqual({
+			plan: "premium",
+		});
+	});
+
+	it("deve manipular múltiplos selects corretamente", () => {
+		const initialValues = { categories: [] as string[] };
+
+		const { result } = renderHook(() => useForm(initialValues));
+
+		act(() => {
+			result.current.handleSelectChange("categories", ["sports", "music"]);
+		});
+
+		expect(result.current.values).toEqual({
+			categories: ["sports", "music"],
+		});
+		expect(result.current.touched).toEqual({ categories: true });
+	});
+
+	it("deve manipular campos de texto corretamente", () => {
+		const initialValues = { bio: "" };
+
+		const { result } = renderHook(() => useForm(initialValues));
+
+		act(() => {
+			result.current.handleTextChange("bio", "Minha biografia");
+		});
+
+		expect(result.current.values).toEqual({
+			bio: "Minha biografia",
+		});
+
+		act(() => {
+			result.current.handleTextChange("bio", "Biografia atualizada");
+		});
+
+		expect(result.current.values).toEqual({
+			bio: "Biografia atualizada",
+		});
+	});
+
+	it("deve manipular checkboxes individuais corretamente", () => {
+		const initialValues = { terms: false };
+
+		const { result } = renderHook(() => useForm(initialValues));
+
+		act(() => {
+			result.current.handleCheckboxChange("terms", true);
+		});
+
+		expect(result.current.values).toEqual({
+			terms: true,
+		});
+		expect(result.current.touched).toEqual({ terms: true });
+
+		act(() => {
+			result.current.handleCheckboxChange("terms", false);
+		});
+
+		expect(result.current.values).toEqual({
+			terms: false,
+		});
+	});
+
+	it("deve manipular múltiplos checkboxes corretamente", () => {
+		const initialValues = { interests: [] as string[] };
+
+		const { result } = renderHook(() => useForm(initialValues));
+
+		// Adiciona um valor
+		act(() => {
+			result.current.handleMultiCheckboxChange("interests", "sports", true);
+		});
+
+		expect(result.current.values).toEqual({
+			interests: ["sports"],
+		});
+		expect(result.current.touched).toEqual({ interests: true });
+
+		// Adiciona outro valor
+		act(() => {
+			result.current.handleMultiCheckboxChange("interests", "music", true);
+		});
+
+		expect(result.current.values).toEqual({
+			interests: ["sports", "music"],
+		});
+
+		// Remove um valor
+		act(() => {
+			result.current.handleMultiCheckboxChange("interests", "sports", false);
+		});
+
+		expect(result.current.values).toEqual({
+			interests: ["music"],
+		});
+	});
+
+	it("deve validar campos após usar handlers específicos", () => {
+		const initialValues = { 
+			gender: "", 
+			plan: "", 
+			bio: "", 
+			terms: false, 
+			interests: [] as string[] 
+		};
+
+		const validate = (values: typeof initialValues) => {
+			const errors: Record<string, string> = {};
+
+			if (!values.gender) {
+				errors.gender = "Gênero é obrigatório";
+			}
+
+			if (!values.plan) {
+				errors.plan = "Plano é obrigatório";
+			}
+
+			if (!values.bio) {
+				errors.bio = "Biografia é obrigatória";
+			}
+
+			if (!values.terms) {
+				errors.terms = "Você deve aceitar os termos";
+			}
+
+			if (values.interests.length === 0) {
+				errors.interests = "Selecione pelo menos um interesse";
+			}
+
+			return errors;
+		};
+
+		const { result } = renderHook(() => useForm(initialValues, validate));
+
+		// Inicialmente todos os campos têm erro
+		expect(Object.keys(result.current.errors).length).toBe(5);
+		expect(result.current.isValid).toBe(false);
+
+		// Corrige um campo por vez usando os handlers específicos
+		act(() => {
+			result.current.handleRadioChange("gender", "masculino");
+		});
+		expect(Object.keys(result.current.errors).length).toBe(4);
+
+		act(() => {
+			result.current.handleSelectChange("plan", "basic");
+		});
+		expect(Object.keys(result.current.errors).length).toBe(3);
+
+		act(() => {
+			result.current.handleTextChange("bio", "Minha biografia");
+		});
+		expect(Object.keys(result.current.errors).length).toBe(2);
+
+		act(() => {
+			result.current.handleCheckboxChange("terms", true);
+		});
+		expect(Object.keys(result.current.errors).length).toBe(1);
+
+		act(() => {
+			result.current.handleMultiCheckboxChange("interests", "sports", true);
+		});
+
+		// Agora o formulário deve ser válido
+		expect(Object.keys(result.current.errors).length).toBe(0);
+		expect(result.current.isValid).toBe(true);
+	});
 });
