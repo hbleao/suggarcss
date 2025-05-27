@@ -2,238 +2,394 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="Contribuindo" />
 
-# Guia de Contribuição
+<div
+  style={{
+    background: 'linear-gradient(135deg, #0046c0 0%, #31b5fc 100%)',
+    color: 'white',
+    padding: '3rem',
+    borderRadius: '12px',
+    marginBottom: '3rem',
+    boxShadow: '0 8px 24px rgba(0, 70, 192, 0.25)',
+    position: 'relative',
+    overflow: 'hidden',
+    minHeight: '280px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  }}
+>
+  <div
+    style={{
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      width: '150px',
+      height: '150px',
+      background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)',
+      borderRadius: '50%',
+      transform: 'translate(30%, -30%)'
+    }}
+  />
+  <div
+    style={{
+      position: 'absolute',
+      bottom: 0,
+      left: '10%',
+      width: '120px',
+      height: '120px',
+      background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%)',
+      borderRadius: '50%',
+      transform: 'translate(-30%, 30%)'
+    }}
+  />
 
-Obrigado por considerar contribuir com o ocean! Este documento fornece diretrizes para contribuir com o projeto, desde a configuração do ambiente de desenvolvimento até o processo de envio de pull requests.
+  <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: '700' }}>
+    Contribuindo para o ocean
+  </h1>
 
-## Código de Conduta
+  <p style={{ fontSize: '1.2rem', maxWidth: '800px', lineHeight: '1.6' }}>
+    Como colaborar e contribuir com o ocean Design System
+  </p>
+</div>
 
-Ao participar deste projeto, você concorda em seguir nosso Código de Conduta, que promove um ambiente respeitoso e inclusivo para todos os contribuidores.
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #0046c0',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#0046c0', marginTop: 0 }}>🍬 Sobre o ocean</h2>
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
+    O ocean é um Design System construído para criar experiências digitais consistentes e de alta qualidade. Sua contribuição é fundamental para o crescimento e evolução do sistema.
+  </p>
+</div>
 
-## Configuração do Ambiente de Desenvolvimento
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #31b5fc',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#31b5fc', marginTop: 0 }}>🔄 Fluxo de Contribuição</h2>
 
-### Pré-requisitos
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#0046c0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <span style={{color: 'white', fontWeight: 'bold'}}>1</span>
+      </span>
+      Crie uma issue (ou comente em uma existente)
+    </h3>
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      Explique o que pretende fazer e por quê.
+    </p>
+  </div>
 
-- Node.js (versão 16 ou superior)
-- npm (versão 7 ou superior) ou yarn (versão 1.22 ou superior)
-- Git
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#0046c0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <span style={{color: 'white', fontWeight: 'bold'}}>2</span>
+      </span>
+      Crie um branch
+    </h3>
+    <div style={{ background: '#f5f7fa', padding: '1rem', borderRadius: '4px', fontFamily: 'monospace', overflowX: 'auto' }}>
+      git checkout -b feature/nome-da-feature
+    </div>
+  </div>
 
-### Passos para Configuração
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#0046c0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <span style={{color: 'white', fontWeight: 'bold'}}>3</span>
+      </span>
+      Desenvolva
+    </h3>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li>Escreva testes</li>
+      <li>Atualize o Storybook se necessário</li>
+      <li>Documente props, exemplos e usos</li>
+      <li>Siga o padrão de commits convencionais</li>
+    </ul>
+  </div>
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/hbleao/ocean.git
-   cd ocean
-   ```
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#0046c0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <span style={{color: 'white', fontWeight: 'bold'}}>4</span>
+      </span>
+      Testes e verificação
+    </h3>
+    <div style={{ background: '#f5f7fa', padding: '1rem', borderRadius: '4px', fontFamily: 'monospace', overflowX: 'auto' }}>
+      npm run test<br />
+      npm run lint
+    </div>
+  </div>
 
-2. Instale as dependências:
-   ```bash
-   npm install
-   # ou
-   yarn
-   ```
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#0046c0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <span style={{color: 'white', fontWeight: 'bold'}}>5</span>
+      </span>
+      Crie um Pull Request
+    </h3>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li>Descreva as mudanças realizadas</li>
+      <li>Referencie a issue relacionada</li>
+      <li>Adicione capturas de tela se aplicável</li>
+    </ul>
+  </div>
+</div>
 
-3. Execute o ambiente de desenvolvimento:
-   ```bash
-   npm run dev
-   # ou
-   yarn dev
-   ```
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #66cafc',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#66cafc', marginTop: 0 }}>🧱 Estrutura do Projeto</h2>
 
-4. Para visualizar a documentação e os componentes no Storybook:
-   ```bash
-   npm run storybook
-   # ou
-   yarn storybook
-   ```
-
-## Estrutura do Projeto
-
-```
-ocean/
-├── .storybook/          # Configuração do Storybook
-│   └── stories/         # Documentação e stories dos componentes
-├── docs/                # Documentação centralizada
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff'
+    }}
+  >
+    <pre style={{ background: '#f5f7fa', padding: '1rem', borderRadius: '4px', fontFamily: 'monospace', overflowX: 'auto', margin: 0 }}>ocean/
+├── .storybook/          # Storybook config
 ├── src/
-│   ├── components/      # Componentes da biblioteca
-│   ├── styles/          # Estilos globais e tokens
-│   └── utils/           # Utilitários e helpers
-├── tests/               # Testes e configurações de teste
-└── package.json         # Dependências e scripts
-```
+│   ├── components/      # Componentes reutilizáveis
+│   ├── hooks/           # Hooks personalizados
+│   ├── styles/          # Estilos globais
+│   └── utils/           # Funções auxiliares
+├── scripts/             # Scripts CLI (build, changelog, etc.)
+├── tests/               # Testes automatizados
+├── cli/                 # Código da CLI ocean
+├── package.json
+└── tsconfig.json</pre>
+  </div>
+</div>
 
-## Fluxo de Trabalho para Contribuições
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #0046c0',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#0046c0', marginTop: 0 }}>🛠️ Configuração do Ambiente</h2>
 
-### 1. Crie uma Issue
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem' }}>
+      Instalação
+    </h3>
+    <div style={{ background: '#f5f7fa', padding: '1rem', borderRadius: '4px', fontFamily: 'monospace', overflowX: 'auto' }}>
+git clone https://github.com/seu-user/ocean.git<br />
+cd ocean<br />
+npm install
+    </div>
+  </div>
 
-Antes de começar a trabalhar em uma contribuição, verifique se já existe uma issue relacionada. Se não, crie uma nova issue descrevendo:
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem' }}>
+      Executando localmente
+    </h3>
+    <div style={{ background: '#f5f7fa', padding: '1rem', borderRadius: '4px', fontFamily: 'monospace', overflowX: 'auto' }}>
+npm run dev<br />
+npm run storybook
+    </div>
+  </div>
+</div>
 
-- O que você pretende fazer
-- Por que isso é necessário
-- Como você planeja implementar
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #0046c0',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#0046c0', marginTop: 0 }}>📝 Commits Convencionais</h2>
 
-### 2. Crie um Branch
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>Use:</p>
+    <div style={{ background: '#f5f7fa', padding: '1rem', borderRadius: '4px', fontFamily: 'monospace', overflowX: 'auto' }}>
+      tipo(escopo): descrição<br />
+      <br />
+      Exemplos:<br />
+      feat(button): adiciona prop `iconLeft`<br />
+      fix(cli): corrige bug de path no Windows
+    </div>
 
-Crie um branch a partir do `main` com um nome descritivo:
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginTop: '1.5rem' }}>Tipos:</p>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li><code>feat</code>: nova funcionalidade</li>
+      <li><code>fix</code>: correção de bug</li>
+      <li><code>docs</code>: documentação</li>
+      <li><code>style</code>: formatação, sem mudança de código</li>
+      <li><code>refactor</code>: refatoração de código</li>
+      <li><code>test</code>: testes</li>
+      <li><code>chore</code>: tarefas de manutenção</li>
+    </ul>
+  </div>
+</div>
 
-```bash
-git checkout -b feature/nome-da-feature
-# ou
-git checkout -b fix/nome-do-bug
-```
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #31b5fc',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#31b5fc', marginTop: 0 }}>📈 Versionamento</h2>
 
-### 3. Desenvolvimento
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff'
+    }}
+  >
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>Usamos <strong>SemVer</strong>:</p>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li><code>1.0.1</code> → patch</li>
+      <li><code>1.3.0</code> → minor</li>
+      <li><code>2.0.0</code> → major (breaking change)</li>
+    </ul>
+  </div>
+</div>
 
-Ao desenvolver, siga estas diretrizes:
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #66cafc',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#66cafc', marginTop: 0 }}>🙏 Agradecimento</h2>
 
-- Siga os padrões de código existentes
-- Escreva testes para novas funcionalidades
-- Mantenha a documentação atualizada
-- Faça commits pequenos e descritivos
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff'
+    }}
+  >
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      Obrigado por contribuir com o ocean! Sua ajuda é fundamental para melhorarmos o design system e criarmos experiências incríveis para nossos usuários.
+    </p>
 
-### 4. Testes
-
-Certifique-se de que todos os testes passam:
-
-```bash
-npm run test
-# ou
-yarn test
-```
-
-E verifique a cobertura de código:
-
-```bash
-npm run test:coverage
-# ou
-yarn test:coverage
-```
-
-### 5. Linting e Formatação
-
-Verifique se seu código segue os padrões de linting:
-
-```bash
-npm run lint
-# ou
-yarn lint
-```
-
-E formate o código:
-
-```bash
-npm run format
-# ou
-yarn format
-```
-
-### 6. Envie um Pull Request
-
-Quando sua contribuição estiver pronta:
-
-1. Atualize seu branch com as últimas alterações do `main`:
-   ```bash
-   git checkout main
-   git pull
-   git checkout seu-branch
-   git merge main
-   ```
-
-2. Resolva quaisquer conflitos
-
-3. Envie seu branch para o repositório:
-   ```bash
-   git push origin seu-branch
-   ```
-
-4. Crie um Pull Request no GitHub com:
-   - Um título claro e descritivo
-   - Uma descrição detalhada das alterações
-   - Referência à issue relacionada (use "Fixes #123" ou "Relates to #123")
-
-## Diretrizes para Contribuição
-
-### Componentes
-
-Ao criar ou modificar componentes:
-
-1. **Estrutura**: Siga a estrutura padrão de componentes:
-   ```
-   ComponentName/
-   ├── index.tsx         # Exportação principal
-   ├── ComponentName.tsx # Implementação
-   ├── types.ts          # Tipos e interfaces
-   ├── styles.scss       # Estilos (se necessário)
-   └── __tests__/        # Testes
-       └── ComponentName.test.tsx
-   ```
-
-2. **Props**: Defina tipos claros para todas as props e use valores padrão quando apropriado.
-
-3. **Acessibilidade**: Garanta que o componente seja acessível, seguindo as diretrizes WCAG.
-
-4. **Testes**: Escreva testes abrangentes para o componente.
-
-5. **Documentação**: Crie ou atualize a documentação do componente, incluindo:
-   - Descrição
-   - Props
-   - Exemplos de uso
-   - Considerações de acessibilidade
-
-### Documentação
-
-Ao contribuir com documentação:
-
-1. Use Markdown para formatação.
-2. Inclua exemplos de código quando relevante.
-3. Mantenha a documentação concisa e direta.
-4. Verifique a ortografia e gramática.
-
-### Commits
-
-Siga o padrão de commits convencionais:
-
-```
-tipo(escopo): descrição curta
-
-Descrição mais longa, se necessário
-
-Rodapé com referências a issues, breaking changes, etc.
-```
-
-Onde `tipo` pode ser:
-- `feat`: Nova funcionalidade
-- `fix`: Correção de bug
-- `docs`: Alterações na documentação
-- `style`: Alterações que não afetam o código (formatação, etc.)
-- `refactor`: Refatoração de código
-- `test`: Adição ou correção de testes
-- `chore`: Alterações no processo de build, ferramentas, etc.
-
-## Revisão de Código
-
-Seu Pull Request será revisado por pelo menos um mantenedor do projeto. Durante a revisão:
-
-- Esteja aberto a feedback e sugestões
-- Responda a comentários de forma clara e respeitosa
-- Faça as alterações solicitadas ou explique por que elas não são necessárias
-
-## Versionamento
-
-O ocean segue o Versionamento Semântico (SemVer):
-
-- **Patch (1.0.x)**: Correções de bugs e pequenas melhorias
-- **Minor (1.x.0)**: Novas funcionalidades compatíveis com versões anteriores
-- **Major (x.0.0)**: Mudanças que quebram compatibilidade
-
-## Recursos Adicionais
-
-- [Documentação do ocean](./README.md)
-- [Padrões Técnicos](./technical-patterns.md)
-- [Guia de Acessibilidade](./foundations/accessibility.md)
-
-## Agradecimentos
-
-Agradecemos a todos os contribuidores que ajudam a melhorar o ocean! Seu tempo e esforço são muito apreciados.
-
-
+    <h3 style={{ color: '#0046c0', margin: '1.5rem 0 1rem 0', fontSize: '1.3rem' }}>
+      Links úteis
+    </h3>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li><a href="./README.md" style={{ color: '#0046c0', textDecoration: 'none' }}>README.md</a></li>
+      <li><a href="./CHANGELOG.md" style={{ color: '#0046c0', textDecoration: 'none' }}>CHANGELOG.md</a></li>
+    </ul>
+  </div>
+</div>

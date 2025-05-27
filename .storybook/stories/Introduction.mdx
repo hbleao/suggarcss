@@ -2,40 +2,508 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="Introdução" />
 
-# Ocean Design System
+<div
+  style={{
+    background: 'linear-gradient(135deg, #0046c0 0%, #31b5fc 100%)',
+    color: 'white',
+    padding: '3rem',
+    borderRadius: '12px',
+    marginBottom: '3rem',
+    boxShadow: '0 8px 24px rgba(0, 70, 192, 0.25)',
+    position: 'relative',
+    overflow: 'hidden',
+    minHeight: '280px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  }}
+>
+  <div 
+    style={{
+      position: 'absolute',
+      top: '15%',
+      right: '8%',
+      width: '180px',
+      height: '180px',
+      background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)',
+      borderRadius: '50%'
+    }}
+  />
+  <div 
+    style={{
+      position: 'absolute',
+      bottom: '10%',
+      left: '15%',
+      width: '120px',
+      height: '120px',
+      background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)',
+      borderRadius: '50%'
+    }}
+  />
+  <h1 style={{ 
+    fontSize: '3.2rem', 
+    margin: '0 0 1.2rem 0', 
+    fontWeight: 'bold',
+    letterSpacing: '-0.5px',
+    position: 'relative',
+    textShadow: '0 2px 10px rgba(0, 0, 0, 0.15)'
+  }}>
+    Ocean Design System
+  </h1>
+  <p style={{ 
+    fontSize: '1.4rem', 
+    marginBottom: '0', 
+    maxWidth: '800px',
+    lineHeight: '1.6',
+    position: 'relative',
+    opacity: '0.9',
+    fontWeight: '300',
+    letterSpacing: '0.5px'
+  }}>
+    A biblioteca de componentes React da Porto Seguro
+  </p>
+</div>
 
-Bem-vindo à documentação do Ocean Design System, a biblioteca de componentes React da Porto Seguro.
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #0046c0',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <div style={{ 
+    display: 'flex', 
+    alignItems: 'center', 
+    marginBottom: '1.2rem' 
+  }}>
+    <div style={{ 
+      width: '36px', 
+      height: '36px', 
+      borderRadius: '50%', 
+      background: '#0046c0', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      marginRight: '12px',
+      flexShrink: 0
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 7H13V13H11V7ZM11 15H13V17H11V15Z" fill="white"/>
+      </svg>
+    </div>
+    <h2 style={{ 
+      color: '#0046c0', 
+      margin: '0', 
+      fontSize: '1.8rem',
+      fontWeight: '600'
+    }}>
+      Visão Geral
+    </h2>
+  </div>
+  <p style={{ 
+    fontSize: '1.1rem', 
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    O <strong>Ocean Design System</strong> é uma biblioteca de componentes React com SASS que implementa a linguagem visual da Porto Seguro. Foi projetada para criar experiências digitais consistentes, acessíveis e de alta qualidade em todos os produtos e serviços da Porto.
+  </p>
+</div>
 
-## Visão Geral
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #1381e2',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <div style={{ 
+    display: 'flex', 
+    alignItems: 'center', 
+    marginBottom: '1.2rem' 
+  }}>
+    <div style={{ 
+      width: '36px', 
+      height: '36px', 
+      borderRadius: '50%', 
+      background: '#1381e2', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      marginRight: '12px',
+      flexShrink: 0
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z" fill="white"/>
+        <path d="M7 12H9V17H7V12Z" fill="white"/>
+        <path d="M11 7H13V17H11V7Z" fill="white"/>
+        <path d="M15 9H17V17H15V9Z" fill="white"/>
+      </svg>
+    </div>
+    <h2 style={{ 
+      color: '#1381e2', 
+      margin: '0', 
+      fontSize: '1.8rem',
+      fontWeight: '600'
+    }}>
+      Principais Recursos
+    </h2>
+  </div>
+  
+  <div style={{ 
+    display: 'grid', 
+    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+    gap: '1.5rem',
+    marginTop: '1.5rem'
+  }}>
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'flex-start',
+      padding: '1rem',
+      background: '#eef9ff',
+      borderRadius: '8px',
+      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
+    }}>
+      <div style={{ 
+        width: '28px', 
+        height: '28px', 
+        borderRadius: '50%', 
+        background: '#0046c0', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        marginRight: '12px',
+        flexShrink: 0
+      }}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 8H8V4H4V8ZM10 20H14V16H10V20ZM4 20H8V16H4V20ZM4 14H8V10H4V14ZM10 14H14V10H10V14ZM16 4V8H20V4H16ZM10 8H14V4H10V8ZM16 14H20V10H16V14ZM16 20H20V16H16V20Z" fill="white"/>
+        </svg>
+      </div>
+      <div>
+        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#0046c0' }}>Componentes React</h3>
+        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Uma coleção completa de componentes React prontos para uso</p>
+      </div>
+    </div>
+    
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'flex-start',
+      padding: '1rem',
+      background: '#eef9ff',
+      borderRadius: '8px',
+      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
+    }}>
+      <div style={{ 
+        width: '28px', 
+        height: '28px', 
+        borderRadius: '50%', 
+        background: '#31b5fc', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        marginRight: '12px',
+        flexShrink: 0
+      }}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 18H14V16H10V18ZM3 6V8H21V6H3ZM6 13H18V11H6V13Z" fill="white"/>
+        </svg>
+      </div>
+      <div>
+        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#31b5fc' }}>Design Responsivo</h3>
+        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Todos os componentes são totalmente responsivos e adaptáveis a diferentes tamanhos de tela</p>
+      </div>
+    </div>
+    
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'flex-start',
+      padding: '1rem',
+      background: '#eef9ff',
+      borderRadius: '8px',
+      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
+    }}>
+      <div style={{ 
+        width: '28px', 
+        height: '28px', 
+        borderRadius: '50%', 
+        background: '#0046c0', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        marginRight: '12px',
+        flexShrink: 0
+      }}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" fill="white"/>
+          <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="white"/>
+          <circle cx="12" cy="12" r="2" fill="white"/>
+        </svg>
+      </div>
+      <div>
+        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#0046c0' }}>Acessibilidade</h3>
+        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Componentes desenvolvidos seguindo as diretrizes WCAG para garantir acessibilidade</p>
+      </div>
+    </div>
+    
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'flex-start',
+      padding: '1rem',
+      background: '#eef9ff',
+      borderRadius: '8px',
+      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
+    }}>
+      <div style={{ 
+        width: '28px', 
+        height: '28px', 
+        borderRadius: '50%', 
+        background: '#66cafc', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        marginRight: '12px',
+        flexShrink: 0
+      }}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C16.97 21 21 16.97 21 12C21 7.03 16.97 3 12 3ZM19 12C19 16.08 15.67 19.44 11.59 19.95V4.05C15.67 4.56 19 7.92 19 12Z" fill="white"/>
+        </svg>
+      </div>
+      <div>
+        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#66cafc' }}>Temas e Variantes</h3>
+        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Suporte a diferentes temas e variantes para os diversos negócios da Porto</p>
+      </div>
+    </div>
+    
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'flex-start',
+      padding: '1rem',
+      background: '#eef9ff',
+      borderRadius: '8px',
+      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
+    }}>
+      <div style={{ 
+        width: '28px', 
+        height: '28px', 
+        borderRadius: '50%', 
+        background: '#1381e2', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        marginRight: '12px',
+        flexShrink: 0
+      }}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 4V7H14V19H17V7H22V4H9Z" fill="white"/>
+          <path d="M3 12H6V19H9V12H12V9H3V12Z" fill="white"/>
+        </svg>
+      </div>
+      <div>
+        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#1381e2' }}>Tipografia Consistente</h3>
+        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Sistema tipográfico padronizado para manter a consistência visual</p>
+      </div>
+    </div>
+    
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'flex-start',
+      padding: '1rem',
+      background: '#eef9ff',
+      borderRadius: '8px',
+      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
+    }}>
+      <div style={{ 
+        width: '28px', 
+        height: '28px', 
+        borderRadius: '50%', 
+        background: '#31b5fc', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        marginRight: '12px',
+        flexShrink: 0
+      }}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 3V21H21V3H3ZM19 19H5V5H19V19Z" fill="white"/>
+          <path d="M11 7H13V17H11V7Z" fill="white"/>
+          <path d="M7 11H17V13H7V11Z" fill="white"/>
+        </svg>
+      </div>
+      <div>
+        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#31b5fc' }}>Sistema de Grid</h3>
+        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Sistema de grid flexível e responsivo para layouts consistentes</p>
+      </div>
+    </div>
+    
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'flex-start',
+      padding: '1rem',
+      background: '#eef9ff',
+      borderRadius: '8px',
+      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
+    }}>
+      <div style={{ 
+        width: '28px', 
+        height: '28px', 
+        borderRadius: '50%', 
+        background: '#66cafc', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        marginRight: '12px',
+        flexShrink: 0
+      }}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16.5 9c-1.5 0-2.91.38-4.13 1.03l.67-2.68c.15-.59-.33-1.15-.94-1.15H8.5c-.38 0-.73.27-.83.64L6.21 13.75c-.14.53.25 1.05.8 1.05h2.29l-.67 4.32c-.08.49.31.91.8.91.28 0 .55-.15.7-.39l5.18-7.18C14.09 9.75 11.25 9 9 9c-1.39 0-2.67.27-3.82.72l.58-2.32C5.9 6.86 5.37 6.3 4.76 6.3H2.25c-.38 0-.73.27-.83.64L.17 11.81c-.14.53.25 1.05.8 1.05h2.29l-1.23 7.94c-.08.49.31.91.8.91.28 0 .55-.15.7-.39L7.8 14.5c1.43.5 3.01.78 4.7.78 2.7 0 5.15-.67 7.25-1.82l.63-.88c.35-.48.23-1.16-.27-1.5-.86-.57-1.86-.99-2.93-1.21l-1.28-.35c.02-.01.05-.02.07-.02.84-.23 1.72-.37 2.66-.37.84 0 1.67.11 2.44.32.5.14 1.03-.11 1.14-.62.1-.5-.22-1-.72-1.14-1-.28-2.07-.42-3.17-.42z" fill="white"/>
+        </svg>
+      </div>
+      <div>
+        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#66cafc' }}>Hooks Personalizados</h3>
+        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Coleção de hooks React para funcionalidades comuns</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-O Ocean Design System é uma biblioteca de componentes React com SASS que implementa a linguagem visual da Porto Seguro. Foi projetada para criar experiências digitais consistentes, acessíveis e de alta qualidade em todos os produtos e serviços da Porto.
-
-## Principais Recursos
-
-- **Componentes React**: Uma coleção completa de componentes React prontos para uso
-- **Design Responsivo**: Todos os componentes são totalmente responsivos e adaptáveis a diferentes tamanhos de tela
-- **Acessibilidade**: Componentes desenvolvidos seguindo as diretrizes WCAG para garantir acessibilidade
-- **Temas e Variantes**: Suporte a diferentes temas e variantes para os diversos negócios da Porto
-- **Tipografia Consistente**: Sistema tipográfico padronizado para manter a consistência visual
-- **Sistema de Grid**: Sistema de grid flexível e responsivo para layouts consistentes
-- **Hooks Personalizados**: Coleção de hooks React para funcionalidades comuns
-
-## Instalação
-
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #0046c0',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <div style={{ 
+    display: 'flex', 
+    alignItems: 'center', 
+    marginBottom: '1.2rem' 
+  }}>
+    <div style={{ 
+      width: '36px', 
+      height: '36px', 
+      borderRadius: '50%', 
+      background: '#0046c0', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      marginRight: '12px',
+      flexShrink: 0
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.5 13.5L12 21L4.5 13.5L6 12L11.25 17.25V3H12.75V17.25L18 12L19.5 13.5Z" fill="white"/>
+      </svg>
+    </div>
+    <h2 style={{ 
+      color: '#0046c0', 
+      margin: '0', 
+      fontSize: '1.8rem',
+      fontWeight: '600'
+    }}>
+      Instalação
+    </h2>
+  </div>
+  
+  <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+    <div style={{ flex: '1', minWidth: '250px' }}>
+      <p style={{ 
+        marginTop: 0,
+        marginBottom: '1rem',
+        fontSize: '1.05rem',
+        fontWeight: '500',
+        color: '#333'
+      }}>
+        Usando npm:
+      </p>
+      
 ```bash
 npm install @porto/js-library-corp-hubv-porto-ocean
 ```
-
-ou
-
+    </div>
+    
+    <div style={{ flex: '1', minWidth: '250px' }}>
+      <p style={{ 
+        marginTop: 0,
+        marginBottom: '1rem',
+        fontSize: '1.05rem',
+        fontWeight: '500',
+        color: '#333'
+      }}>
+        Usando yarn:
+      </p>
+      
 ```bash
 yarn add @porto/js-library-corp-hubv-porto-ocean
 ```
+    </div>
+  </div>
+</div>
 
-## Uso Básico
-
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #1381e2',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <div style={{ 
+    display: 'flex', 
+    alignItems: 'center', 
+    marginBottom: '1.2rem' 
+  }}>
+    <div style={{ 
+      width: '36px', 
+      height: '36px', 
+      borderRadius: '50%', 
+      background: '#1381e2', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      marginRight: '12px',
+      flexShrink: 0
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 18H4V6H20V18Z" fill="white"/>
+        <path d="M6 8.25H18V9.75H6V8.25Z" fill="white"/>
+        <path d="M6 11.25H18V12.75H6V11.25Z" fill="white"/>
+        <path d="M6 14.25H12V15.75H6V14.25Z" fill="white"/>
+      </svg>
+    </div>
+    <h2 style={{ 
+      color: '#1381e2', 
+      margin: '0', 
+      fontSize: '1.8rem',
+      fontWeight: '600'
+    }}>
+      Uso Básico
+    </h2>
+  </div>
+  
+  <div style={{ 
+    padding: '1.5rem', 
+    background: '#eef9ff', 
+    borderRadius: '8px',
+    marginBottom: '1rem'
+  }}>
+  
 ```jsx
 import { Button, Card, Header } from '@porto/js-library-corp-hubv-porto-ocean';
+import '@porto/js-library-corp-hubv-porto-ocean/dist/styles.css';
 
 function App() {
   return (
@@ -50,15 +518,248 @@ function App() {
   );
 }
 ```
+  </div>
+  
+  <p style={{ 
+    fontSize: '0.95rem', 
+    color: '#555', 
+    margin: 0,
+    fontStyle: 'italic'
+  }}>
+    Lembre-se de importar os estilos CSS para garantir a aparência correta dos componentes.
+  </p>
+</div>
 
-## Estrutura da Documentação
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #31b5fc',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <div style={{ 
+    display: 'flex', 
+    alignItems: 'center', 
+    marginBottom: '1.2rem' 
+  }}>
+    <div style={{ 
+      width: '36px', 
+      height: '36px', 
+      borderRadius: '50%', 
+      background: '#31b5fc', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      marginRight: '12px',
+      flexShrink: 0
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM18 20H6V4H13V9H18V20Z" fill="white"/>
+        <path d="M9 13H15V15H9V13Z" fill="white"/>
+        <path d="M9 16H15V18H9V16Z" fill="white"/>
+      </svg>
+    </div>
+    <h2 style={{ 
+      color: '#31b5fc', 
+      margin: '0', 
+      fontSize: '1.8rem',
+      fontWeight: '600'
+    }}>
+      Estrutura da Documentação
+    </h2>
+  </div>
+  
+  <div style={{ 
+    display: 'grid', 
+    gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+    gap: '1rem',
+    marginTop: '1rem'
+  }}>
+    <div style={{ 
+      padding: '1rem', 
+      background: '#eef9ff', 
+      borderRadius: '8px',
+      borderLeft: '3px solid #0046c0'
+    }}>
+      <h3 style={{ 
+        margin: '0 0 0.5rem 0', 
+        fontSize: '1.1rem', 
+        color: '#0046c0',
+        fontWeight: '600'
+      }}>
+        Introdução
+      </h3>
+      <p style={{ 
+        margin: 0, 
+        fontSize: '0.95rem', 
+        color: '#444',
+        lineHeight: '1.4'
+      }}>
+        Visão geral e conceitos básicos
+      </p>
+    </div>
+    
+    <div style={{ 
+      padding: '1rem', 
+      background: '#eef9ff', 
+      borderRadius: '8px',
+      borderLeft: '3px solid #1381e2'
+    }}>
+      <h3 style={{ 
+        margin: '0 0 0.5rem 0', 
+        fontSize: '1.1rem', 
+        color: '#1381e2',
+        fontWeight: '600'
+      }}>
+        Componentes
+      </h3>
+      <p style={{ 
+        margin: 0, 
+        fontSize: '0.95rem', 
+        color: '#444',
+        lineHeight: '1.4'
+      }}>
+        Documentação detalhada de cada componente
+      </p>
+    </div>
+    
+    <div style={{ 
+      padding: '1rem', 
+      background: '#eef9ff', 
+      borderRadius: '8px',
+      borderLeft: '3px solid #66cafc'
+    }}>
+      <h3 style={{ 
+        margin: '0 0 0.5rem 0', 
+        fontSize: '1.1rem', 
+        color: '#66cafc',
+        fontWeight: '600'
+      }}>
+        Hooks
+      </h3>
+      <p style={{ 
+        margin: 0, 
+        fontSize: '0.95rem', 
+        color: '#444',
+        lineHeight: '1.4'
+      }}>
+        Documentação dos hooks personalizados
+      </p>
+    </div>
+    
+    <div style={{ 
+      padding: '1rem', 
+      background: '#eef9ff', 
+      borderRadius: '8px',
+      borderLeft: '3px solid #31b5fc'
+    }}>
+      <h3 style={{ 
+        margin: '0 0 0.5rem 0', 
+        fontSize: '1.1rem', 
+        color: '#31b5fc',
+        fontWeight: '600'
+      }}>
+        Fundamentos
+      </h3>
+      <p style={{ 
+        margin: 0, 
+        fontSize: '0.95rem', 
+        color: '#444',
+        lineHeight: '1.4'
+      }}>
+        Princípios de design, tipografia, cores e grid
+      </p>
+    </div>
+    
+    <div style={{ 
+      padding: '1rem', 
+      background: '#eef9ff', 
+      borderRadius: '8px',
+      borderLeft: '3px solid #0046c0'
+    }}>
+      <h3 style={{ 
+        margin: '0 0 0.5rem 0', 
+        fontSize: '1.1rem', 
+        color: '#0046c0',
+        fontWeight: '600'
+      }}>
+        Padrões Técnicos
+      </h3>
+      <p style={{ 
+        margin: 0, 
+        fontSize: '0.95rem', 
+        color: '#444',
+        lineHeight: '1.4'
+      }}>
+        Guias e boas práticas para desenvolvedores
+      </p>
+    </div>
+  </div>
+</div>
 
-- **Introdução**: Visão geral e conceitos básicos
-- **Componentes**: Documentação detalhada de cada componente
-- **Hooks**: Documentação dos hooks personalizados
-- **Fundamentos**: Princípios de design, tipografia, cores e grid
-- **Padrões Técnicos**: Guias e boas práticas para desenvolvedores
-
-## Contribuição
-
-O Ocean Design System é um projeto em constante evolução. Contribuições são bem-vindas através do repositório oficial. Consulte o guia de contribuição para mais detalhes.
+<div
+  style={{
+    background: 'linear-gradient(135deg, #0046c0 0%, #31b5fc 100%)',
+    color: 'white',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2rem',
+    boxShadow: '0 4px 12px rgba(0, 70, 192, 0.2)',
+    position: 'relative',
+    overflow: 'hidden'
+  }}
+>
+  <div 
+    style={{
+      position: 'absolute',
+      top: '20%',
+      right: '5%',
+      width: '100px',
+      height: '100px',
+      background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)',
+      borderRadius: '50%'
+    }}
+  />
+  
+  <h2 style={{ 
+    fontSize: '2rem', 
+    margin: '0 0 1rem 0', 
+    fontWeight: 'bold',
+    position: 'relative'
+  }}>
+    Contribuição
+  </h2>
+  
+  <p style={{ 
+    fontSize: '1.1rem', 
+    marginBottom: '1.5rem', 
+    maxWidth: '800px',
+    lineHeight: '1.6',
+    position: 'relative',
+    opacity: '0.9'
+  }}>
+    O <strong>Ocean Design System</strong> é um projeto em constante evolução. Contribuições são bem-vindas através do repositório oficial.
+  </p>
+  
+  <a 
+    href="./contributing.md" 
+    style={{
+      display: 'inline-block',
+      padding: '0.75rem 1.5rem',
+      background: 'rgba(255, 255, 255, 0.15)',
+      color: 'white',
+      borderRadius: '4px',
+      textDecoration: 'none',
+      fontWeight: '500',
+      transition: 'background 0.2s',
+      border: '1px solid rgba(255, 255, 255, 0.3)',
+      fontSize: '1rem'
+    }}
+  >
+    Consulte o Guia de Contribuição
+  </a>
+</div>

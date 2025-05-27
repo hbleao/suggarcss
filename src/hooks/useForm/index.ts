@@ -45,8 +45,8 @@ type ValidationFunction<T> = (values: T) => Partial<Record<keyof T, string>>;
  * // Exemplo de uso do hook useForm em um formulário completo:
  *
  * import React from 'react';
- * import { useForm } from '@sugarcss/hooks';
- * import { Input, Textarea, Select, Radio, Checkbox, Button } from '@sugarcss/components';
+ * import { useForm } from '@ocean/hooks';
+ * import { Input, Textarea, Select, Radio, Checkbox, Button } from '@ocean/components';
  *
  * function RegistrationForm() {
  *   // Função de validação

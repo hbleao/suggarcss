@@ -6,36 +6,107 @@ import { Meta } from '@storybook/blocks';
   style={{
     background: 'linear-gradient(135deg, #0046c0 0%, #31b5fc 100%)',
     color: 'white',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2rem',
-    boxShadow: '0 4px 12px rgba(0, 70, 192, 0.2)'
+    padding: '2.5rem',
+    borderRadius: '12px',
+    marginBottom: '3rem',
+    boxShadow: '0 8px 24px rgba(0, 70, 192, 0.25)',
+    position: 'relative',
+    overflow: 'hidden'
   }}
 >
-  <h1 style={{ fontSize: '2.5rem', margin: '0 0 1rem 0', fontWeight: 'bold' }}>
-    Começando com o ocean
+  <div 
+    style={{
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      width: '150px',
+      height: '150px',
+      background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)',
+      borderRadius: '50%',
+      transform: 'translate(30%, -30%)'
+    }}
+  />
+  <div 
+    style={{
+      position: 'absolute',
+      bottom: 0,
+      left: '10%',
+      width: '100px',
+      height: '100px',
+      background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)',
+      borderRadius: '50%',
+      transform: 'translate(0, 30%)'
+    }}
+  />
+  <h1 style={{ 
+    fontSize: '3rem', 
+    margin: '0 0 1.5rem 0', 
+    fontWeight: 'bold',
+    letterSpacing: '-0.5px',
+    position: 'relative'
+  }}>
+    Começando com o Ocean
   </h1>
-  <p style={{ fontSize: '1.2rem', marginBottom: '1.5rem', maxWidth: '800px' }}>
-    Este guia irá ajudá-lo a instalar e começar a usar o ocean em seu projeto,
+  <p style={{ 
+    fontSize: '1.3rem', 
+    marginBottom: '1.5rem', 
+    maxWidth: '800px',
+    lineHeight: '1.6',
+    position: 'relative'
+  }}>
+    Este guia irá ajudá-lo a instalar e começar a usar o Ocean em seu projeto,
     fornecendo componentes modernos e acessíveis para suas aplicações.
   </p>
 </div>
 
 <div
   style={{
-    background: '#eef9ff',
-    border: '1px solid #b3e4fd',
-    borderLeft: '4px solid #0046c0',
-    padding: '1.5rem',
-    borderRadius: '4px',
-    marginBottom: '2rem'
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #0046c0',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+    position: 'relative'
   }}
 >
-  <h2 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.8rem' }}>
-    Instalação
-  </h2>
-  <p style={{ marginBottom: '1rem' }}>
-    Para instalar o ocean em seu projeto, use npm ou yarn:
+  <div style={{ 
+    display: 'flex', 
+    alignItems: 'center', 
+    marginBottom: '1.2rem' 
+  }}>
+    <div style={{ 
+      width: '36px', 
+      height: '36px', 
+      borderRadius: '50%', 
+      background: '#0046c0', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      marginRight: '12px',
+      flexShrink: 0
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.5 13.5L12 21L4.5 13.5L6 12L11.25 17.25V3H12.75V17.25L18 12L19.5 13.5Z" fill="white"/>
+      </svg>
+    </div>
+    <h2 style={{ 
+      color: '#0046c0', 
+      margin: '0', 
+      fontSize: '1.8rem',
+      fontWeight: '600'
+    }}>
+      Instalação
+    </h2>
+  </div>
+  <p style={{ 
+    marginBottom: '1.2rem',
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333'
+  }}>
+    Para instalar o Ocean em seu projeto, use npm ou yarn:
   </p>
 
 ```bash
@@ -49,19 +120,56 @@ yarn add @porto/js-library-corp-hubv-porto-ocean
 
 <div
   style={{
-    background: '#eef9ff',
-    border: '1px solid #b3e4fd',
-    borderLeft: '4px solid #2662c9',
-    padding: '1.5rem',
-    borderRadius: '4px',
-    marginBottom: '2rem'
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #2662c9',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+    position: 'relative'
   }}
 >
-  <h2 style={{ color: '#2662c9', margin: '0 0 1rem 0', fontSize: '1.8rem' }}>
-    Configuração
-  </h2>
-  <p style={{ marginBottom: '1rem' }}>
-    Para usar os componentes do ocean, importe os tokens CSS em seu arquivo principal:
+  <div style={{ 
+    display: 'flex', 
+    alignItems: 'center', 
+    marginBottom: '1.2rem' 
+  }}>
+    <div style={{ 
+      width: '36px', 
+      height: '36px', 
+      borderRadius: '50%', 
+      background: '#2662c9', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      marginRight: '12px',
+      flexShrink: 0
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="white"/>
+        <path d="M13 3H11V7H13V3Z" fill="white"/>
+        <path d="M13 17H11V21H13V17Z" fill="white"/>
+        <path d="M21 11H17V13H21V11Z" fill="white"/>
+        <path d="M7 11H3V13H7V11Z" fill="white"/>
+      </svg>
+    </div>
+    <h2 style={{ 
+      color: '#2662c9', 
+      margin: '0', 
+      fontSize: '1.8rem',
+      fontWeight: '600'
+    }}>
+      Configuração
+    </h2>
+  </div>
+  <p style={{ 
+    marginBottom: '1.2rem',
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333'
+  }}>
+    Para usar os componentes do Ocean, importe os tokens CSS em seu arquivo principal:
   </p>
 
 ```javascript
@@ -72,18 +180,54 @@ import '@porto/js-library-corp-hubv-porto-ocean/dist/styles.css';
 
 <div
   style={{
-    background: '#eef9ff',
-    border: '1px solid #b3e4fd',
-    borderLeft: '4px solid #1381e2',
-    padding: '1.5rem',
-    borderRadius: '4px',
-    marginBottom: '2rem'
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #1381e2',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+    position: 'relative'
   }}
 >
-  <h2 style={{ color: '#1381e2', margin: '0 0 1rem 0', fontSize: '1.8rem' }}>
-    Uso Básico
-  </h2>
-  <p style={{ marginBottom: '1rem' }}>
+  <div style={{ 
+    display: 'flex', 
+    alignItems: 'center', 
+    marginBottom: '1.2rem' 
+  }}>
+    <div style={{ 
+      width: '36px', 
+      height: '36px', 
+      borderRadius: '50%', 
+      background: '#1381e2', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      marginRight: '12px',
+      flexShrink: 0
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 18H4V6H20V18Z" fill="white"/>
+        <path d="M6 8.25H18V9.75H6V8.25Z" fill="white"/>
+        <path d="M6 11.25H18V12.75H6V11.25Z" fill="white"/>
+        <path d="M6 14.25H12V15.75H6V14.25Z" fill="white"/>
+      </svg>
+    </div>
+    <h2 style={{ 
+      color: '#1381e2', 
+      margin: '0', 
+      fontSize: '1.8rem',
+      fontWeight: '600'
+    }}>
+      Uso Básico
+    </h2>
+  </div>
+  <p style={{ 
+    marginBottom: '1.2rem',
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333'
+  }}>
     Importe os componentes diretamente do pacote:
   </p>
 
@@ -93,7 +237,7 @@ import { Button, Typography, Modal } from '@porto/js-library-corp-hubv-porto-oce
 function App() {
   return (
     <div>
-      <Typography variant="title1">Olá, ocean!</Typography>
+      <Typography variant="title1">Olá, Ocean!</Typography>
       <Button variant="insurance" styles="primary">Clique em mim</Button>
     </div>
   );
@@ -103,19 +247,54 @@ function App() {
 
 <div
   style={{
-    background: '#eef9ff',
-    border: '1px solid #b3e4fd',
-    borderLeft: '4px solid #00a1fc',
-    padding: '1.5rem',
-    borderRadius: '4px',
-    marginBottom: '2rem'
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #00a1fc',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+    position: 'relative'
   }}
 >
-  <h2 style={{ color: '#00a1fc', margin: '0 0 1rem 0', fontSize: '1.8rem' }}>
-    Configuração do TypeScript
-  </h2>
-  <p style={{ marginBottom: '1rem' }}>
-    O ocean é totalmente tipado com TypeScript. Para obter o melhor suporte de IntelliSense, certifique-se de que seu <code style={{ backgroundColor: '#f0f0f0', padding: '0.2rem 0.4rem', borderRadius: '3px' }}>tsconfig.json</code> inclua:
+  <div style={{ 
+    display: 'flex', 
+    alignItems: 'center', 
+    marginBottom: '1.2rem' 
+  }}>
+    <div style={{ 
+      width: '36px', 
+      height: '36px', 
+      borderRadius: '50%', 
+      background: '#00a1fc', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      marginRight: '12px',
+      flexShrink: 0
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 4H8C5.79 4 4 5.79 4 8V16C4 18.21 5.79 20 8 20H16C18.21 20 20 18.21 20 16V8C20 5.79 18.21 4 16 4ZM18 16C18 17.1 17.1 18 16 18H8C6.9 18 6 17.1 6 16V8C6 6.9 6.9 6 8 6H16C17.1 6 18 6.9 18 8V16Z" fill="white"/>
+        <path d="M9 15H11V9H9V15Z" fill="white"/>
+        <path d="M13 15H15V9H13V15Z" fill="white"/>
+      </svg>
+    </div>
+    <h2 style={{ 
+      color: '#00a1fc', 
+      margin: '0', 
+      fontSize: '1.8rem',
+      fontWeight: '600'
+    }}>
+      Configuração do TypeScript
+    </h2>
+  </div>
+  <p style={{ 
+    marginBottom: '1.2rem',
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333'
+  }}>
+    O Ocean é totalmente tipado com TypeScript. Para obter o melhor suporte de IntelliSense, certifique-se de que seu <code style={{ backgroundColor: '#f0f0f0', padding: '0.2rem 0.4rem', borderRadius: '3px', fontFamily: 'monospace' }}>tsconfig.json</code> inclua:
   </p>
 
 ```json
@@ -135,19 +314,52 @@ function App() {
 
 <div
   style={{
-    background: '#eef9ff',
-    border: '1px solid #b3e4fd',
-    borderLeft: '4px solid #31b5fc',
-    padding: '1.5rem',
-    borderRadius: '4px',
-    marginBottom: '2rem'
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #31b5fc',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+    position: 'relative'
   }}
 >
-  <h2 style={{ color: '#31b5fc', margin: '0 0 1rem 0', fontSize: '1.8rem' }}>
-    Temas e Personalização
-  </h2>
-  <p style={{ marginBottom: '1rem' }}>
-    O ocean oferece suporte a personalização através de variáveis CSS. Você pode sobrescrever as variáveis padrão para criar seu próprio tema:
+  <div style={{ 
+    display: 'flex', 
+    alignItems: 'center', 
+    marginBottom: '1.2rem' 
+  }}>
+    <div style={{ 
+      width: '36px', 
+      height: '36px', 
+      borderRadius: '50%', 
+      background: '#31b5fc', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      marginRight: '12px',
+      flexShrink: 0
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C16.97 21 21 16.97 21 12C21 7.03 16.97 3 12 3ZM19 12C19 16.08 15.67 19.44 11.59 19.95V4.05C15.67 4.56 19 7.92 19 12Z" fill="white"/>
+      </svg>
+    </div>
+    <h2 style={{ 
+      color: '#31b5fc', 
+      margin: '0', 
+      fontSize: '1.8rem',
+      fontWeight: '600'
+    }}>
+      Temas e Personalização
+    </h2>
+  </div>
+  <p style={{ 
+    marginBottom: '1.2rem',
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333'
+  }}>
+    O Ocean oferece suporte a personalização através de variáveis CSS. Você pode sobrescrever as variáveis padrão para criar seu próprio tema:
   </p>
 
 ```css
@@ -161,19 +373,55 @@ function App() {
 
 <div
   style={{
-    background: '#eef9ff',
-    border: '1px solid #b3e4fd',
-    borderLeft: '4px solid #66cafc',
-    padding: '1.5rem',
-    borderRadius: '4px',
-    marginBottom: '2rem'
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #66cafc',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+    position: 'relative'
   }}
 >
-  <h2 style={{ color: '#66cafc', margin: '0 0 1rem 0', fontSize: '1.8rem' }}>
-    Exemplo Completo
-  </h2>
-  <p style={{ marginBottom: '1rem' }}>
-    Aqui está um exemplo completo de uma aplicação React usando o ocean:
+  <div style={{ 
+    display: 'flex', 
+    alignItems: 'center', 
+    marginBottom: '1.2rem' 
+  }}>
+    <div style={{ 
+      width: '36px', 
+      height: '36px', 
+      borderRadius: '50%', 
+      background: '#66cafc', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      marginRight: '12px',
+      flexShrink: 0
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z" fill="white"/>
+        <path d="M7 12H9V17H7V12Z" fill="white"/>
+        <path d="M11 7H13V17H11V7Z" fill="white"/>
+        <path d="M15 9H17V17H15V9Z" fill="white"/>
+      </svg>
+    </div>
+    <h2 style={{ 
+      color: '#66cafc', 
+      margin: '0', 
+      fontSize: '1.8rem',
+      fontWeight: '600'
+    }}>
+      Exemplo Completo
+    </h2>
+  </div>
+  <p style={{ 
+    marginBottom: '1.2rem',
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333'
+  }}>
+    Aqui está um exemplo completo de uma aplicação React usando o Ocean:
   </p>
 
 ```jsx
