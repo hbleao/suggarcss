@@ -1,10 +1,14 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Padrões Técnicos" />
+
 # Padrões Técnicos
 
-Este documento descreve os padrões técnicos e convenções de código adotados no SugarCSS para garantir consistência, manutenibilidade e qualidade do código.
+Este documento descreve os padrões técnicos e convenções de código adotados no ocean para garantir consistência, manutenibilidade e qualidade do código.
 
 ## Estrutura de Componentes
 
-Cada componente no SugarCSS segue uma estrutura consistente:
+Cada componente no ocean segue uma estrutura consistente:
 
 ```
 src/components/ComponentName/
@@ -41,15 +45,15 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 import React from 'react';
 import { ButtonProps } from './types';
 
-const Button = ({ 
-  variant = 'insurance', 
-  styles = 'primary', 
+const Button = ({
+  variant = 'insurance',
+  styles = 'primary',
   size = 'large',
   children,
-  ...restProps 
+  ...restProps
 }: ButtonProps) => {
   const composedClassName = `btn --${variant}-${styles} --${size}`;
-  
+
   return (
     <button className={composedClassName} {...restProps}>
       {children}
@@ -88,7 +92,7 @@ export default Button;
 
 ## TypeScript
 
-O SugarCSS é construído com TypeScript para garantir segurança de tipos e melhor experiência de desenvolvimento.
+O ocean é construído com TypeScript para garantir segurança de tipos e melhor experiência de desenvolvimento.
 
 ### Diretrizes de TypeScript
 
@@ -158,33 +162,33 @@ describe('Button', () => {
   it('renders correctly with default props', () => {
     render(<Button>Click me</Button>);
     const button = screen.getByText('Click me');
-    
+
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass('btn --insurance-primary --large');
   });
-  
+
   it('applies custom variant, style and size', () => {
     render(
       <Button variant="banking" styles="secondary" size="small">
         Custom Button
       </Button>
     );
-    
+
     const button = screen.getByText('Custom Button');
     expect(button).toHaveClass('btn --banking-secondary --small');
   });
-  
+
   it('handles click events', () => {
     const handleClick = jest.fn();
     render(<Button onClick={handleClick}>Click me</Button>);
-    
+
     fireEvent.click(screen.getByText('Click me'));
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
-  
+
   it('is disabled when disabled prop is true', () => {
     render(<Button disabled>Disabled Button</Button>);
-    
+
     const button = screen.getByText('Disabled Button');
     expect(button).toBeDisabled();
   });
@@ -214,7 +218,7 @@ Cada componente deve ser bem documentado:
 ```tsx
 /**
  * Modal component that displays content in an overlay.
- * 
+ *
  * @param {object} props - Component props
  * @param {string} props.title - The title of the modal
  * @param {string} [props.subtitle] - Optional subtitle for the modal
@@ -222,7 +226,7 @@ Cada componente deve ser bem documentado:
  * @param {boolean} props.isOpen - Whether the modal is open
  * @param {() => void} props.onClose - Function to call when the modal is closed
  * @param {string} [props.size='medium'] - Size of the modal ('small', 'medium', 'large')
- * 
+ *
  * @example
  * <Modal
  *   title="Confirmation"
@@ -261,7 +265,7 @@ const Component = ({ id }) => {
   const handleClick = useCallback(() => {
     console.log(`Item ${id} clicked`);
   }, [id]);
-  
+
   return <Button onClick={handleClick}>Click me</Button>;
 };
 
@@ -270,7 +274,7 @@ const ExpensiveComponent = ({ data }) => {
   const processedData = useMemo(() => {
     return data.map(item => complexProcessing(item));
   }, [data]);
-  
+
   return <div>{processedData.map(renderItem)}</div>;
 };
 ```
@@ -290,7 +294,7 @@ Todos os componentes devem seguir as diretrizes de acessibilidade:
 
 ## Versionamento e Releases
 
-O SugarCSS segue o Versionamento Semântico (SemVer):
+O ocean segue o Versionamento Semântico (SemVer):
 
 - **Versão Patch (1.0.x)**: Correções de bugs e pequenas melhorias
 - **Versão Minor (1.x.0)**: Novos recursos compatíveis com versões anteriores
@@ -298,4 +302,4 @@ O SugarCSS segue o Versionamento Semântico (SemVer):
 
 ## Contribuição
 
-Consulte o [Guia de Contribuição](./contributing.md) para informações sobre como contribuir com o SugarCSS.
+Consulte o [Guia de Contribuição](./contributing.md) para informações sobre como contribuir com o ocean.

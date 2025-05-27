@@ -1,12 +1,13 @@
-# Sistema de Design Ocean
+import { Meta } from '@storybook/blocks';
 
-![Logo Ocean](https://via.placeholder.com/200x60?text=Ocean)
+<Meta title="Boas vindas" />
 
-O Ocean é uma biblioteca de componentes React em TypeScript que fornece um conjunto de componentes reutilizáveis, estilizados e acessíveis para construir interfaces modernas e consistentes.
+<div style={{ height: '300px', borderRadius: '8px', backgroundColor: '#d1effe', color: 'white', padding: '2rem' }}>
+  <h1>Ocean Design system</h1>
+  <p>Feita para ser usada em aplicações web</p>
+</div>
 
-## Documentação Centralizada
-
-Bem-vindo à documentação centralizada do Ocean. Aqui você encontrará informações detalhadas sobre todos os componentes, fundamentos de design e padrões técnicos da biblioteca.
+<p >Bem-vindo à documentação centralizada do Ocean. Aqui você encontrará informações detalhadas sobre todos os componentes, fundamentos de design e padrões técnicos da biblioteca.</p>
 
 ## Índice
 
@@ -120,12 +121,12 @@ import { useModal } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
 
 function ExemploModal() {
   const { isOpen, openModal, closeModal } = useModal();
-  
+
   return (
     <>
       <Button onClick={openModal}>Abrir Modal</Button>
-      
-      <Modal 
+
+      <Modal
         title="Exemplo de Modal"
         subtitle="Usando o hook useModal para controle de estado"
         isOpen={isOpen}

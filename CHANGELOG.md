@@ -228,7 +228,7 @@ Adição do comando installAll para facilitar a instalação de todos os compone
 
 ### Primeira versão
 
-Lançamento inicial da biblioteca SugarCSS com CLI básica.
+Lançamento inicial da biblioteca ocean com CLI básica.
 
 ### ✨ Novos recursos
 

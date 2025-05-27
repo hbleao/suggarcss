@@ -1,6 +1,6 @@
-# SugarCSS - Biblioteca de Componentes React
+# ocean - Biblioteca de Componentes React
 
-O SugarCSS é uma biblioteca de componentes React com SASS que fornece uma série de componentes reutilizáveis para construção de interfaces de usuário modernas. Este documento explica como utilizar a biblioteca, executar testes e visualizar a documentação interativa.
+O ocean é uma biblioteca de componentes React com SASS que fornece uma série de componentes reutilizáveis para construção de interfaces de usuário modernas. Este documento explica como utilizar a biblioteca, executar testes e visualizar a documentação interativa.
 
 ## Testes
 

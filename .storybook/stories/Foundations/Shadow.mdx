@@ -1,0 +1,195 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Shadow" />
+
+# Sombras
+
+O Ocean Design System utiliza um sistema de sombras cuidadosamente projetado para criar profundidade, hierarquia e foco na interface.
+
+## O que são tokens de sombra?
+
+Tokens de sombra são variáveis predefinidas que representam diferentes níveis de elevação através de sombras projetadas. Eles ajudam a criar uma sensação de profundidade e hierarquia na interface, indicando visualmente a relação entre os elementos.
+
+## Escala de Sombras
+
+O Ocean oferece uma escala progressiva de sombras que vai de XS a 3XL, proporcionando diferentes níveis de elevação:
+
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', marginBottom: '2rem' }}>
+  <div style={{ width: '200px', marginBottom: '2rem' }}>
+    <div style={{ 
+      height: '100px', 
+      backgroundColor: '#ffffff', 
+      borderRadius: '8px',
+      boxShadow: '0px 1px 2px rgba(10, 13, 18, 0.06)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#666'
+    }}>
+      Elevação XS
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$shadow-xs</p>
+    <p style={{ margin: '0', color: '#666', fontSize: '0.8rem' }}>0px 1px 2px rgba(10, 13, 18, 0.06)</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Elevação muito sutil</p>
+  </div>
+  
+  <div style={{ width: '200px', marginBottom: '2rem' }}>
+    <div style={{ 
+      height: '100px', 
+      backgroundColor: '#ffffff', 
+      borderRadius: '8px',
+      boxShadow: '0px 1px 2px rgba(10, 13, 18, 0.1), 0px 1px 3px rgba(10, 13, 18, 0.1)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#666'
+    }}>
+      Elevação SM
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$shadow-sm</p>
+    <p style={{ margin: '0', color: '#666', fontSize: '0.8rem' }}>0px 1px 2px rgba(10, 13, 18, 0.1), 0px 1px 3px rgba(10, 13, 18, 0.1)</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Elevação sutil</p>
+  </div>
+  
+  <div style={{ width: '200px', marginBottom: '2rem' }}>
+    <div style={{ 
+      height: '100px', 
+      backgroundColor: '#ffffff', 
+      borderRadius: '8px',
+      boxShadow: '0px 4px 6px rgba(10, 13, 18, 0.1), 0px 2px 4px rgba(10, 13, 18, 0.06)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#666'
+    }}>
+      Elevação MD
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$shadow-md</p>
+    <p style={{ margin: '0', color: '#666', fontSize: '0.8rem' }}>0px 4px 6px rgba(10, 13, 18, 0.1), 0px 2px 4px rgba(10, 13, 18, 0.06)</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Elevação média</p>
+  </div>
+  
+  <div style={{ width: '200px', marginBottom: '2rem' }}>
+    <div style={{ 
+      height: '100px', 
+      backgroundColor: '#ffffff', 
+      borderRadius: '8px',
+      boxShadow: '0px 12px 16px rgba(10, 13, 18, 0.08), 0px 2px 4px rgba(10, 13, 18, 0.03)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#666'
+    }}>
+      Elevação LG
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$shadow-lg</p>
+    <p style={{ margin: '0', color: '#666', fontSize: '0.8rem' }}>0px 12px 16px rgba(10, 13, 18, 0.08), 0px 2px 4px rgba(10, 13, 18, 0.03)</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Elevação grande</p>
+  </div>
+  
+  <div style={{ width: '200px', marginBottom: '2rem' }}>
+    <div style={{ 
+      height: '100px', 
+      backgroundColor: '#ffffff', 
+      borderRadius: '8px',
+      boxShadow: '0px 20px 24px rgba(10, 13, 18, 0.08), 0px 8px 8px rgba(10, 13, 18, 0.03)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#666'
+    }}>
+      Elevação XL
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$shadow-xl</p>
+    <p style={{ margin: '0', color: '#666', fontSize: '0.8rem' }}>0px 20px 24px rgba(10, 13, 18, 0.08), 0px 8px 8px rgba(10, 13, 18, 0.03)</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Elevação extra grande</p>
+  </div>
+  
+  <div style={{ width: '200px', marginBottom: '2rem' }}>
+    <div style={{ 
+      height: '100px', 
+      backgroundColor: '#ffffff', 
+      borderRadius: '8px',
+      boxShadow: '0px 24px 48px rgba(10, 13, 18, 0.18), 0px 4px 4px rgba(10, 13, 18, 0.04)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#666'
+    }}>
+      Elevação 2XL
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$shadow-2xl</p>
+    <p style={{ margin: '0', color: '#666', fontSize: '0.8rem' }}>0px 24px 48px rgba(10, 13, 18, 0.18), 0px 4px 4px rgba(10, 13, 18, 0.04)</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Elevação muito grande</p>
+  </div>
+  
+  <div style={{ width: '200px', marginBottom: '2rem' }}>
+    <div style={{ 
+      height: '100px', 
+      backgroundColor: '#ffffff', 
+      borderRadius: '8px',
+      boxShadow: '0px 32px 64px rgba(10, 13, 18, 0.14), 0px 5px 5px rgba(10, 13, 18, 0.04)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#666'
+    }}>
+      Elevação 3XL
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$shadow-3xl</p>
+    <p style={{ margin: '0', color: '#666', fontSize: '0.8rem' }}>0px 32px 64px rgba(10, 13, 18, 0.14), 0px 5px 5px rgba(10, 13, 18, 0.04)</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Elevação máxima</p>
+  </div>
+</div>
+
+## Uso dos Tokens de Sombra
+
+As sombras devem ser aplicadas de forma consistente para criar uma hierarquia visual clara na interface.
+
+### Aplicação Comum
+
+- **$shadow-xs e $shadow-sm**: Para elementos sutilmente elevados como cartões, botões em estado normal
+- **$shadow-md**: Para elementos em hover, componentes interativos
+- **$shadow-lg**: Para elementos em foco, dropdowns, popovers
+- **$shadow-xl e $shadow-2xl**: Para modais, diálogos, elementos flutuantes
+- **$shadow-3xl**: Para elementos que precisam de máximo destaque
+
+### Como usar os tokens de sombra
+
+Em SCSS:
+```scss
+.card {
+  box-shadow: $shadow-sm;
+  
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+.modal {
+  box-shadow: $shadow-xl;
+}
+```
+
+Em CSS:
+```css
+.card {
+  box-shadow: var(--ocean-shadow-sm);
+}
+
+.card:hover {
+  box-shadow: var(--ocean-shadow-md);
+}
+
+.modal {
+  box-shadow: var(--ocean-shadow-xl);
+}
+```
+
+## Boas Práticas
+
+- Use sombras para indicar hierarquia e interatividade
+- Evite usar sombras muito intensas em elementos pequenos
+- Combine sombras com transições suaves para criar interações fluidas
+- Mantenha consistência no uso das sombras para elementos com funções similares
+- Considere o contexto de uso: interfaces mais leves podem usar sombras mais sutis, enquanto interfaces mais imersivas podem usar sombras mais pronunciadas

@@ -34,7 +34,7 @@ import { Checkbox } from '@porto/js-library-corp-hubv-porto-ocean';
 
 function Example() {
   const [checked, setChecked] = useState(false);
-  
+
   return (
     <Checkbox
       label="Aceito os termos e condições"
@@ -83,20 +83,20 @@ O componente Checkbox pode ter diferentes estados:
 <Checkbox label="Opção selecionada e desabilitada" disabled checked={true} onChange={handleChange} />
 
 // Checkbox com erro
-<Checkbox 
-  label="Opção com erro" 
-  checked={checked} 
+<Checkbox
+  label="Opção com erro"
+  checked={checked}
   onChange={handleChange}
   error={true}
   errorMessage="Este campo é obrigatório"
 />
 
 // Checkbox indeterminado (útil para seleção parcial em grupos)
-<Checkbox 
-  label="Algumas subopções selecionadas" 
+<Checkbox
+  label="Algumas subopções selecionadas"
   checked={true}
-  indeterminate={true} 
-  onChange={handleChange} 
+  indeterminate={true}
+  onChange={handleChange}
 />
 ```
 
@@ -121,19 +121,19 @@ O Checkbox suporta diferentes variantes visuais:
 
 ```jsx
 // Variante padrão
-<Checkbox 
-  variant="default" 
-  label="Checkbox padrão" 
-  checked={checked} 
-  onChange={handleChange} 
+<Checkbox
+  variant="default"
+  label="Checkbox padrão"
+  checked={checked}
+  onChange={handleChange}
 />
 
 // Variante card (com estilo de cartão)
-<Checkbox 
-  variant="card" 
-  label="Checkbox estilo card" 
-  checked={checked} 
-  onChange={handleChange} 
+<Checkbox
+  variant="card"
+  label="Checkbox estilo card"
+  checked={checked}
+  onChange={handleChange}
 />
 ```
 
@@ -143,7 +143,7 @@ O Checkbox suporta diferentes variantes visuais:
 
 ```jsx
 import { useState } from 'react';
-import { Checkbox, Typography } from '@sugarcss/core';
+import { Checkbox, Typography } from '@ocean/core';
 
 function CheckboxGroup() {
   const [options, setOptions] = useState({
@@ -151,33 +151,33 @@ function CheckboxGroup() {
     option2: false,
     option3: false,
   });
-  
+
   const handleChange = (name) => (e) => {
     setOptions({
       ...options,
       [name]: e.target.checked,
     });
   };
-  
+
   return (
     <div>
       <Typography variant="title4" style={{ marginBottom: '16px' }}>Selecione suas preferências:</Typography>
-      
+
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        <Checkbox 
-          label="Opção 1" 
-          checked={options.option1} 
-          onChange={handleChange('option1')} 
+        <Checkbox
+          label="Opção 1"
+          checked={options.option1}
+          onChange={handleChange('option1')}
         />
-        <Checkbox 
-          label="Opção 2" 
-          checked={options.option2} 
-          onChange={handleChange('option2')} 
+        <Checkbox
+          label="Opção 2"
+          checked={options.option2}
+          onChange={handleChange('option2')}
         />
-        <Checkbox 
-          label="Opção 3" 
-          checked={options.option3} 
-          onChange={handleChange('option3')} 
+        <Checkbox
+          label="Opção 3"
+          checked={options.option3}
+          onChange={handleChange('option3')}
         />
       </div>
     </div>
@@ -214,41 +214,41 @@ function SelectAllExample() {
     { id: 2, name: 'Item 2', selected: false },
     { id: 3, name: 'Item 3', selected: false },
   ]);
-  
+
   const [selectAll, setSelectAll] = useState({
     checked: false,
     indeterminate: false,
   });
-  
+
   useEffect(() => {
     const selectedCount = items.filter(item => item.selected).length;
-    
+
     setSelectAll({
       checked: selectedCount === items.length,
       indeterminate: selectedCount > 0 && selectedCount < items.length,
     });
   }, [items]);
-  
+
   const handleSelectAll = (e) => {
     const isChecked = e.target.checked;
-    
+
     setItems(items.map(item => ({
       ...item,
       selected: isChecked,
     })));
-    
+
     setSelectAll({
       checked: isChecked,
       indeterminate: false,
     });
   };
-  
+
   const handleItemChange = (id) => (e) => {
-    setItems(items.map(item => 
+    setItems(items.map(item =>
       item.id === id ? { ...item, selected: e.target.checked } : item
     ));
   };
-  
+
   return (
     <div>
       <Checkbox
@@ -257,7 +257,7 @@ function SelectAllExample() {
         indeterminate={selectAll.indeterminate}
         onChange={handleSelectAll}
       />
-      
+
       <div style={{ marginLeft: '24px', marginTop: '12px' }}>
         {items.map(item => (
           <Checkbox
@@ -294,11 +294,11 @@ import { Checkbox, Button } from '@porto/js-library-corp-hubv-porto-ocean';
 
 function FormExample() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  
+
   const onSubmit = (data) => {
     console.log(data);
   };
-  
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Checkbox
@@ -307,7 +307,7 @@ function FormExample() {
         errorMessage={errors.terms?.message}
         {...register('terms', { required: 'Você deve aceitar os termos para continuar' })}
       />
-      
+
       <Button type="submit" style={{ marginTop: '16px' }}>Enviar</Button>
     </form>
   );

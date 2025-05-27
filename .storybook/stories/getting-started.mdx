@@ -1,10 +1,42 @@
-# Começando com o Ocean
+import { Meta } from '@storybook/blocks';
 
-Este guia irá ajudá-lo a instalar e começar a usar o Ocean em seu projeto.
+<Meta title="Começando" />
 
-## Instalação
+<div
+  style={{
+    background: 'linear-gradient(135deg, #0046c0 0%, #31b5fc 100%)',
+    color: 'white',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2rem',
+    boxShadow: '0 4px 12px rgba(0, 70, 192, 0.2)'
+  }}
+>
+  <h1 style={{ fontSize: '2.5rem', margin: '0 0 1rem 0', fontWeight: 'bold' }}>
+    Começando com o ocean
+  </h1>
+  <p style={{ fontSize: '1.2rem', marginBottom: '1.5rem', maxWidth: '800px' }}>
+    Este guia irá ajudá-lo a instalar e começar a usar o ocean em seu projeto,
+    fornecendo componentes modernos e acessíveis para suas aplicações.
+  </p>
+</div>
 
-Para instalar o Ocean em seu projeto, use npm ou yarn:
+<div
+  style={{
+    background: '#eef9ff',
+    border: '1px solid #b3e4fd',
+    borderLeft: '4px solid #0046c0',
+    padding: '1.5rem',
+    borderRadius: '4px',
+    marginBottom: '2rem'
+  }}
+>
+  <h2 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.8rem' }}>
+    Instalação
+  </h2>
+  <p style={{ marginBottom: '1rem' }}>
+    Para instalar o ocean em seu projeto, use npm ou yarn:
+  </p>
 
 ```bash
 # Usando npm
@@ -13,19 +45,47 @@ npm install @porto/js-library-corp-hubv-porto-ocean
 # Usando yarn
 yarn add @porto/js-library-corp-hubv-porto-ocean
 ```
+</div>
 
-## Configuração
-
-Para usar os componentes do Ocean, importe os tokens CSS em seu arquivo principal:
+<div
+  style={{
+    background: '#eef9ff',
+    border: '1px solid #b3e4fd',
+    borderLeft: '4px solid #2662c9',
+    padding: '1.5rem',
+    borderRadius: '4px',
+    marginBottom: '2rem'
+  }}
+>
+  <h2 style={{ color: '#2662c9', margin: '0 0 1rem 0', fontSize: '1.8rem' }}>
+    Configuração
+  </h2>
+  <p style={{ marginBottom: '1rem' }}>
+    Para usar os componentes do ocean, importe os tokens CSS em seu arquivo principal:
+  </p>
 
 ```javascript
 // Em seu arquivo principal (por exemplo, _app.js ou index.js)
 import '@porto/js-library-corp-hubv-porto-ocean/dist/styles.css';
 ```
+</div>
 
-## Uso Básico
-
-Importe os componentes diretamente do pacote:
+<div
+  style={{
+    background: '#eef9ff',
+    border: '1px solid #b3e4fd',
+    borderLeft: '4px solid #1381e2',
+    padding: '1.5rem',
+    borderRadius: '4px',
+    marginBottom: '2rem'
+  }}
+>
+  <h2 style={{ color: '#1381e2', margin: '0 0 1rem 0', fontSize: '1.8rem' }}>
+    Uso Básico
+  </h2>
+  <p style={{ marginBottom: '1rem' }}>
+    Importe os componentes diretamente do pacote:
+  </p>
 
 ```jsx
 import { Button, Typography, Modal } from '@porto/js-library-corp-hubv-porto-ocean';
@@ -33,16 +93,30 @@ import { Button, Typography, Modal } from '@porto/js-library-corp-hubv-porto-oce
 function App() {
   return (
     <div>
-      <Typography variant="title1">Olá, SugarCSS!</Typography>
+      <Typography variant="title1">Olá, ocean!</Typography>
       <Button variant="insurance" styles="primary">Clique em mim</Button>
     </div>
   );
 }
 ```
+</div>
 
-## Configuração do TypeScript
-
-O Ocean é totalmente tipado com TypeScript. Para obter o melhor suporte de IntelliSense, certifique-se de que seu `tsconfig.json` inclua:
+<div
+  style={{
+    background: '#eef9ff',
+    border: '1px solid #b3e4fd',
+    borderLeft: '4px solid #00a1fc',
+    padding: '1.5rem',
+    borderRadius: '4px',
+    marginBottom: '2rem'
+  }}
+>
+  <h2 style={{ color: '#00a1fc', margin: '0 0 1rem 0', fontSize: '1.8rem' }}>
+    Configuração do TypeScript
+  </h2>
+  <p style={{ marginBottom: '1rem' }}>
+    O ocean é totalmente tipado com TypeScript. Para obter o melhor suporte de IntelliSense, certifique-se de que seu <code style={{ backgroundColor: '#f0f0f0', padding: '0.2rem 0.4rem', borderRadius: '3px' }}>tsconfig.json</code> inclua:
+  </p>
 
 ```json
 {
@@ -57,10 +131,24 @@ O Ocean é totalmente tipado com TypeScript. Para obter o melhor suporte de Inte
   }
 }
 ```
+</div>
 
-## Temas e Personalização
-
-O Ocean oferece suporte a personalização através de variáveis CSS. Você pode sobrescrever as variáveis padrão para criar seu próprio tema:
+<div
+  style={{
+    background: '#eef9ff',
+    border: '1px solid #b3e4fd',
+    borderLeft: '4px solid #31b5fc',
+    padding: '1.5rem',
+    borderRadius: '4px',
+    marginBottom: '2rem'
+  }}
+>
+  <h2 style={{ color: '#31b5fc', margin: '0 0 1rem 0', fontSize: '1.8rem' }}>
+    Temas e Personalização
+  </h2>
+  <p style={{ marginBottom: '1rem' }}>
+    O ocean oferece suporte a personalização através de variáveis CSS. Você pode sobrescrever as variáveis padrão para criar seu próprio tema:
+  </p>
 
 ```css
 :root {
@@ -69,10 +157,24 @@ O Ocean oferece suporte a personalização através de variáveis CSS. Você pod
   --ocean-font-family: "Your Font", sans-serif;
 }
 ```
+</div>
 
-## Exemplo Completo
-
-Aqui está um exemplo completo de uma aplicação React usando o Ocean:
+<div
+  style={{
+    background: '#eef9ff',
+    border: '1px solid #b3e4fd',
+    borderLeft: '4px solid #66cafc',
+    padding: '1.5rem',
+    borderRadius: '4px',
+    marginBottom: '2rem'
+  }}
+>
+  <h2 style={{ color: '#66cafc', margin: '0 0 1rem 0', fontSize: '1.8rem' }}>
+    Exemplo Completo
+  </h2>
+  <p style={{ marginBottom: '1rem' }}>
+    Aqui está um exemplo completo de uma aplicação React usando o ocean:
+  </p>
 
 ```jsx
 import React from 'react';
@@ -83,23 +185,23 @@ function App() {
   return (
     <div style={{ padding: '2rem' }}>
       <Typography variant="title1" weight="bold" color="brand-primary">
-        Bem-vindo ao Ocean
+        Bem-vindo ao ocean
       </Typography>
-      
+
       <Typography variant="body1" style={{ marginTop: '1rem', marginBottom: '2rem' }}>
-        Esta é uma demonstração simples dos componentes do Ocean.
+        Esta é uma demonstração simples dos componentes do ocean.
       </Typography>
-      
+
       <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
         <Button variant="insurance" styles="primary">Botão Primário</Button>
         <Button variant="insurance" styles="secondary">Botão Secundário</Button>
         <Button variant="insurance" styles="ghost">Botão Ghost</Button>
       </div>
-      
+
       <div style={{ display: 'flex', gap: '1rem' }}>
         <CardContent
           title="Card de Exemplo"
-          description="Este é um exemplo de como usar o componente CardContent do Ocean."
+          description="Este é um exemplo de como usar o componente CardContent do ocean."
           image={{ url: 'https://via.placeholder.com/300x200', alt: 'Imagem de exemplo' }}
           links={[{ label: 'Saiba mais', href: '#' }]}
         />
@@ -110,13 +212,81 @@ function App() {
 
 export default App;
 ```
+</div>
 
-## Próximos Passos
+<div
+  style={{
+    background: 'linear-gradient(135deg, #8cd7fd 0%, #b3e4fd 100%)',
+    color: '#0046c0',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginTop: '2rem',
+    boxShadow: '0 4px 12px rgba(0, 70, 192, 0.1)'
+  }}
+>
+  <h2 style={{ fontSize: '2rem', margin: '0 0 1rem 0', fontWeight: 'bold' }}>
+    Próximos Passos
+  </h2>
+  <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', maxWidth: '800px' }}>
+    Agora que você já configurou o ocean em seu projeto, explore a documentação para aprender mais sobre os componentes disponíveis:
+  </p>
 
-Agora que você já configurou o Ocean em seu projeto, explore a documentação para aprender mais sobre os componentes disponíveis:
+  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+    <a
+      href="./foundations/"
+      style={{
+        display: 'block',
+        padding: '1rem 1.5rem',
+        background: '#0046c0',
+        color: 'white',
+        borderRadius: '4px',
+        textDecoration: 'none',
+        fontWeight: 'bold',
+        boxShadow: '0 2px 4px rgba(0, 70, 192, 0.2)'
+      }}
+    >
+      Fundamentos de Design
+    </a>
+    <a
+      href="./components/"
+      style={{
+        display: 'block',
+        padding: '1rem 1.5rem',
+        background: '#0046c0',
+        color: 'white',
+        borderRadius: '4px',
+        textDecoration: 'none',
+        fontWeight: 'bold',
+        boxShadow: '0 2px 4px rgba(0, 70, 192, 0.2)'
+      }}
+    >
+      Componentes
+    </a>
+    <a
+      href="./technical-patterns.md"
+      style={{
+        display: 'block',
+        padding: '1rem 1.5rem',
+        background: '#0046c0',
+        color: 'white',
+        borderRadius: '4px',
+        textDecoration: 'none',
+        fontWeight: 'bold',
+        boxShadow: '0 2px 4px rgba(0, 70, 192, 0.2)'
+      }}
+    >
+      Padrões Técnicos
+    </a>
+  </div>
 
-- [Fundamentos de Design](./foundations/)
-- [Componentes](./components/)
-- [Padrões Técnicos](./technical-patterns.md)
-
-Se você encontrar algum problema ou tiver dúvidas, consulte o [Guia de Contribuição](./contributing.md) para saber como obter ajuda ou contribuir com o projeto.
+  <p style={{ fontSize: '1.1rem', marginTop: '1.5rem', maxWidth: '800px' }}>
+    Se você encontrar algum problema ou tiver dúvidas, consulte o{' '}
+    <a
+      href="./contributing.md"
+      style={{ color: '#0046c0', fontWeight: 'bold', textDecoration: 'underline' }}
+    >
+      Guia de Contribuição
+    </a>{' '}
+    para saber como obter ajuda ou contribuir com o projeto.
+  </p>
+</div>

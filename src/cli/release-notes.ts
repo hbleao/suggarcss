@@ -72,8 +72,7 @@ export const releaseHistory: ReleaseNote[] = [
 		version: "0.0.7",
 		date: "2025-04-11",
 		title: "Novos componentes e melhorias na CLI",
-		description:
-			"Adição de novos componentes e melhorias significativas na CLI.",
+		description: "Adição de novos componentes e melhorias significativas na CLI.",
 		changes: {
 			feature: [
 				"Novo componente Input com suporte a diferentes variantes",
@@ -108,10 +107,7 @@ export const releaseHistory: ReleaseNote[] = [
 		date: "2025-04-01",
 		title: "Componente Chip",
 		changes: {
-			feature: [
-				"Adição do componente Chip",
-				"Suporte para diferentes variantes de Chip",
-			],
+			feature: ["Adição do componente Chip", "Suporte para diferentes variantes de Chip"],
 			improvement: ["Melhorias na documentação dos componentes"],
 		},
 	},
@@ -120,9 +116,7 @@ export const releaseHistory: ReleaseNote[] = [
 		date: "2025-03-15",
 		title: "Comando de listagem",
 		changes: {
-			feature: [
-				"Novo comando 'list' para exibir todos os componentes disponíveis",
-			],
+			feature: ["Novo comando 'list' para exibir todos os componentes disponíveis"],
 			fix: ["Correção do caminho do binário da CLI"],
 		},
 	},
@@ -143,10 +137,7 @@ export const releaseHistory: ReleaseNote[] = [
 		date: "2025-02-15",
 		title: "Componente Button",
 		changes: {
-			feature: [
-				"Adição do componente Button",
-				"Suporte para diferentes variantes de Button",
-			],
+			feature: ["Adição do componente Button", "Suporte para diferentes variantes de Button"],
 			fix: ["Correção na estrutura de arquivos do pacote"],
 		},
 	},
@@ -154,12 +145,9 @@ export const releaseHistory: ReleaseNote[] = [
 		version: "0.0.1",
 		date: "2025-02-01",
 		title: "Primeira versão",
-		description: "Lançamento inicial da biblioteca SugarCSS com CLI básica.",
+		description: "Lançamento inicial da biblioteca ocean com CLI básica.",
 		changes: {
-			feature: [
-				"CLI básica para instalação de componentes",
-				"Estrutura inicial do projeto",
-			],
+			feature: ["CLI básica para instalação de componentes", "Estrutura inicial do projeto"],
 		},
 	},
 ];
@@ -246,8 +234,7 @@ export function formatReleaseNote(note: ReleaseNote): string {
  */
 export function generateChangelog(): string {
 	let changelog = "# Changelog\n\n";
-	changelog +=
-		"Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.\n\n";
+	changelog += "Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.\n\n";
 
 	for (const note of releaseHistory) {
 		changelog += `## [${note.version}] - ${note.date}\n\n`;
