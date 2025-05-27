@@ -2,137 +2,503 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="Acessibilidade" />
 
-# Acessibilidade
+<div
+  style={{
+    background: 'linear-gradient(135deg, #0046c0 0%, #31b5fc 100%)',
+    color: 'white',
+    padding: '3rem',
+    borderRadius: '12px',
+    marginBottom: '3rem',
+    boxShadow: '0 8px 24px rgba(0, 70, 192, 0.25)',
+    position: 'relative',
+    overflow: 'hidden',
+    minHeight: '280px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  }}
+>
+  {/* Pseudo-elemento decorativo 1 - círculo grande */}
+  <div
+    style={{
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '180px',
+      background: 'radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)',
+      borderRadius: '50%',
+      transform: 'translate(30%, -30%)'
+    }}
+  />
+  
+  {/* Pseudo-elemento decorativo 2 - círculo médio */}
+  <div
+    style={{
+      position: 'absolute',
+      bottom: 0,
+      left: '10%',
+      width: '150px',
+      height: '150px',
+      background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 70%)',
+      borderRadius: '50%',
+      transform: 'translate(-30%, 30%)'
+    }}
+  />
+  
+  {/* Novo elemento decorativo - ondas */}
+  <div
+    style={{
+      position: 'absolute',
+      bottom: '10px',
+      right: '10px',
+      width: '200px',
+      height: '100px',
+      background: 'url("data:image/svg+xml,%3Csvg width=\'200\' height=\'100\' viewBox=\'0 0 200 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 50 C 40 30, 60 70, 100 50 C 140 30, 160 70, 200 50 L 200 100 L 0 100 Z\' fill=\'rgba(255,255,255,0.1)\' /%3E%3C/svg%3E")',
+      backgroundSize: 'cover',
+      opacity: '0.7'
+    }}
+  />
+  
+  {/* Novo elemento decorativo - pontos */}
+  <div
+    style={{
+      position: 'absolute',
+      top: '50px',
+      left: '50px',
+      width: '100px',
+      height: '100px',
+      backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+      backgroundSize: '15px 15px',
+      opacity: '0.2'
+    }}
+  />
 
-A acessibilidade é um pilar fundamental do ocean. Nosso objetivo é garantir que todos os componentes e interfaces construídos com nossa biblioteca sejam acessíveis a todos os usuários, independentemente de suas habilidades ou deficiências.
+  <h1 style={{ 
+    fontSize: '3.5rem', 
+    marginBottom: '1.5rem', 
+    fontWeight: '800',
+    color: 'white',
+    textShadow: '0 2px 10px rgba(0,0,0,0.15)',
+    position: 'relative',
+    zIndex: '2'
+  }}>
+    Acessibilidade
+  </h1>
 
-## Princípios de Acessibilidade
+  <p style={{ 
+    fontSize: '1.3rem', 
+    maxWidth: '800px', 
+    lineHeight: '1.7',
+    color: 'white',
+    textShadow: '0 1px 5px rgba(0,0,0,0.1)',
+    position: 'relative',
+    zIndex: '2'
+  }}>
+    A acessibilidade é um pilar fundamental do ocean. Nosso objetivo é garantir que todos os componentes e interfaces construídos com nossa biblioteca sejam acessíveis a todos os usuários, independentemente de suas habilidades ou deficiências.
+  </p>
+</div>
 
-O ocean segue os princípios do WCAG 2.1 (Web Content Accessibility Guidelines) e visa atender ao nível AA de conformidade. Nossos princípios fundamentais são:
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #0046c0',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#0046c0', marginTop: 0 }}>Princípios de Acessibilidade</h2>
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
+    O ocean segue os princípios do WCAG 2.1 (Web Content Accessibility Guidelines) e visa atender ao nível AA de conformidade. Nossos princípios fundamentais são:
+  </p>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#0046c0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <span style={{color: 'white', fontWeight: 'bold'}}>1</span>
+      </span>
+      Perceptível
+    </h3>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li>Fornecer alternativas em texto para conteúdo não textual</li>
+      <li>Criar conteúdo que possa ser apresentado de diferentes maneiras</li>
+      <li>Tornar mais fácil para os usuários ver e ouvir o conteúdo</li>
+    </ul>
+  </div>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#0046c0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <span style={{color: 'white', fontWeight: 'bold'}}>2</span>
+      </span>
+      Operável
+    </h3>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li>Tornar todas as funcionalidades disponíveis a partir do teclado</li>
+      <li>Dar aos usuários tempo suficiente para ler e usar o conteúdo</li>
+      <li>Não projetar conteúdo que possa causar convulsões ou reações físicas</li>
+      <li>Ajudar os usuários a navegar e encontrar conteúdo</li>
+    </ul>
+  </div>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#0046c0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <span style={{color: 'white', fontWeight: 'bold'}}>3</span>
+      </span>
+      Compreensível
+    </h3>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li>Tornar o texto legível e compreensível</li>
+      <li>Fazer com que as páginas funcionem de maneira previsível</li>
+      <li>Ajudar os usuários a evitar e corrigir erros</li>
+    </ul>
+  </div>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#0046c0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <span style={{color: 'white', fontWeight: 'bold'}}>4</span>
+      </span>
+      Robusto
+    </h3>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li>Maximizar a compatibilidade com ferramentas assistivas atuais e futuras</li>
+    </ul>
+  </div>
+</div>
 
-### 1. Perceptível
-
-- Fornecer alternativas em texto para conteúdo não textual
-- Criar conteúdo que possa ser apresentado de diferentes maneiras
-- Tornar mais fácil para os usuários ver e ouvir o conteúdo
-
-### 2. Operável
-
-- Tornar todas as funcionalidades disponíveis a partir do teclado
-- Dar aos usuários tempo suficiente para ler e usar o conteúdo
-- Não projetar conteúdo que possa causar convulsões ou reações físicas
-- Ajudar os usuários a navegar e encontrar conteúdo
-
-### 3. Compreensível
-
-- Tornar o texto legível e compreensível
-- Fazer com que as páginas funcionem de maneira previsível
-- Ajudar os usuários a evitar e corrigir erros
-
-### 4. Robusto
-
-- Maximizar a compatibilidade com ferramentas assistivas atuais e futuras
-
-## Implementação nos Componentes
-
-Todos os componentes do ocean são projetados com acessibilidade em mente:
-
-### Semântica HTML
-
-Utilizamos elementos HTML semânticos apropriados para cada componente:
-
-```jsx
-// Uso correto de elementos semânticos
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #31b5fc',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#31b5fc', marginTop: 0 }}>Implementação nos Componentes</h2>
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
+    Todos os componentes do ocean são projetados com acessibilidade em mente:
+  </p>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem' }}>
+      Semântica HTML
+    </h3>
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      Utilizamos elementos HTML semânticos apropriados para cada componente:
+    </p>
+    <pre style={{ background: '#f5f7fa', padding: '1rem', borderRadius: '4px', fontFamily: 'monospace', overflowX: 'auto', margin: 0 }}>
+{`// Uso correto de elementos semânticos
 <Button>Ação</Button>           // Renderiza <button>
-<Typography as="h1">Título</Typography>  // Renderiza <h1>
-```
-
-### Suporte a Teclado
-
-Todos os componentes interativos são acessíveis via teclado:
-
-- `Tab` para navegação entre elementos focáveis
-- `Enter` ou `Space` para ativar botões e links
-- `Esc` para fechar modais e dropdowns
-- Teclas de seta para navegação em menus e listas
-
-### Atributos ARIA
-
-Implementamos atributos ARIA (Accessible Rich Internet Applications) apropriados:
-
-```jsx
-// Modal acessível
+<Typography as="h1">Título</Typography>  // Renderiza <h1>`}
+    </pre>
+  </div>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem' }}>
+      Suporte a Teclado
+    </h3>
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      Todos os componentes interativos são acessíveis via teclado:
+    </p>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li><code>Tab</code> para navegação entre elementos focáveis</li>
+      <li><code>Enter</code> ou <code>Space</code> para ativar botões e links</li>
+      <li><code>Esc</code> para fechar modais e dropdowns</li>
+      <li>Teclas de seta para navegação em menus e listas</li>
+    </ul>
+  </div>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem' }}>
+      Atributos ARIA
+    </h3>
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      Implementamos atributos ARIA (Accessible Rich Internet Applications) apropriados:
+    </p>
+    <pre style={{ background: '#f5f7fa', padding: '1rem', borderRadius: '4px', fontFamily: 'monospace', overflowX: 'auto', margin: 0 }}>
+{`// Modal acessível
 <Modal
   title="Título do Modal"
-  isOpen={isOpen}
-  onClose={handleClose}
+  isOpen={true}
+  onClose={() => {}}
   aria-labelledby="modal-title"
   aria-describedby="modal-description"
 >
   <h2 id="modal-title">Título do Modal</h2>
   <p id="modal-description">Descrição do conteúdo do modal.</p>
-</Modal>
-```
-
-### Contraste de Cores
-
-Nossas cores seguem as diretrizes de contraste do WCAG 2.1 AA:
-
-- Texto normal: contraste mínimo de 4.5:1
-- Texto grande (18pt ou 14pt bold): contraste mínimo de 3:1
-- Componentes de interface e gráficos: contraste mínimo de 3:1
-
-### Estados Focáveis
-
-Todos os elementos interativos têm estados de foco visíveis e consistentes:
-
-```css
-/* Exemplo de estilo de foco */
+</Modal>`}
+    </pre>
+  </div>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem' }}>
+      Contraste de Cores
+    </h3>
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      Nossas cores seguem as diretrizes de contraste do WCAG 2.1 AA:
+    </p>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li>Texto normal: contraste mínimo de 4.5:1</li>
+      <li>Texto grande (18pt ou 14pt bold): contraste mínimo de 3:1</li>
+      <li>Componentes de interface e gráficos: contraste mínimo de 3:1</li>
+    </ul>
+  </div>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem' }}>
+      Estados Focáveis
+    </h3>
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      Todos os elementos interativos têm estados de foco visíveis e consistentes:
+    </p>
+    <pre style={{ background: '#f5f7fa', padding: '1rem', borderRadius: '4px', fontFamily: 'monospace', overflowX: 'auto', margin: 0 }}>
+{`/* Exemplo de estilo de foco */
 :focus {
   outline: 2px solid var(--ocean-color-focus);
   outline-offset: 2px;
-}
-```
+}`}
+    </pre>
+  </div>
+</div>
 
-## Checklist de Acessibilidade
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #66cafc',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#66cafc', marginTop: 0 }}>Checklist de Acessibilidade</h2>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff'
+    }}
+  >
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      Ao usar componentes do ocean, verifique se:
+    </p>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li>Os textos têm contraste suficiente com o fundo</li>
+      <li>Os componentes interativos são acessíveis via teclado</li>
+      <li>Os formulários têm labels associados e mensagens de erro claras</li>
+      <li>As imagens têm texto alternativo apropriado</li>
+      <li>Os ícones decorativos são ignorados por leitores de tela</li>
+      <li>Os ícones funcionais têm descrições acessíveis</li>
+      <li>Os modais e popovers capturam e gerenciam o foco corretamente</li>
+      <li>O conteúdo dinâmico é anunciado apropriadamente para leitores de tela</li>
+    </ul>
+  </div>
+</div>
 
-Ao usar componentes do ocean, verifique se:
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #0046c0',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#0046c0', marginTop: 0 }}>Testes de Acessibilidade</h2>
+  
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
+    Recomendamos testar regularmente a acessibilidade de suas interfaces:
+  </p>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff',
+      marginBottom: '1.5rem'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem' }}>
+      Ferramentas Automatizadas
+    </h3>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li><strong>Lighthouse</strong>: Para auditorias gerais de acessibilidade</li>
+      <li><strong>axe DevTools</strong>: Para testes detalhados de acessibilidade</li>
+      <li><strong>WAVE</strong>: Para verificação visual de problemas de acessibilidade</li>
+    </ul>
+  </div>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff'
+    }}
+  >
+    <h3 style={{ color: '#0046c0', margin: '0 0 1rem 0', fontSize: '1.3rem' }}>
+      Testes Manuais
+    </h3>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li><strong>Navegação por teclado</strong>: Tente usar sua interface apenas com o teclado</li>
+      <li><strong>Leitores de tela</strong>: Teste com VoiceOver (macOS), NVDA ou JAWS (Windows)</li>
+      <li><strong>Zoom</strong>: Verifique se a interface funciona bem com zoom de até 200%</li>
+      <li><strong>Contraste</strong>: Verifique o contraste em diferentes condições de iluminação</li>
+    </ul>
+  </div>
+</div>
 
-- [ ] Os textos têm contraste suficiente com o fundo
-- [ ] Os componentes interativos são acessíveis via teclado
-- [ ] Os formulários têm labels associados e mensagens de erro claras
-- [ ] As imagens têm texto alternativo apropriado
-- [ ] Os ícones decorativos são ignorados por leitores de tela
-- [ ] Os ícones funcionais têm descrições acessíveis
-- [ ] Os modais e popovers capturam e gerenciam o foco corretamente
-- [ ] O conteúdo dinâmico é anunciado apropriadamente para leitores de tela
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #31b5fc',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#31b5fc', marginTop: 0 }}>Recursos Adicionais</h2>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff'
+    }}
+  >
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li><a href="https://www.w3.org/TR/WCAG21/" style={{ color: '#0046c0', textDecoration: 'none' }}>WCAG 2.1 Guidelines</a></li>
+      <li><a href="https://www.w3.org/TR/wai-aria-practices-1.1/" style={{ color: '#0046c0', textDecoration: 'none' }}>WAI-ARIA Authoring Practices</a></li>
+      <li><a href="https://inclusive-components.design/" style={{ color: '#0046c0', textDecoration: 'none' }}>Inclusive Components</a></li>
+      <li><a href="https://www.a11yproject.com/checklist/" style={{ color: '#0046c0', textDecoration: 'none' }}>A11y Project Checklist</a></li>
+    </ul>
+  </div>
+</div>
 
-## Testes de Acessibilidade
-
-Recomendamos testar regularmente a acessibilidade de suas interfaces:
-
-### Ferramentas Automatizadas
-
-- **Lighthouse**: Para auditorias gerais de acessibilidade
-- **axe DevTools**: Para testes detalhados de acessibilidade
-- **WAVE**: Para verificação visual de problemas de acessibilidade
-
-### Testes Manuais
-
-- Navegação por teclado: Tente usar sua interface apenas com o teclado
-- Leitores de tela: Teste com VoiceOver (macOS), NVDA ou JAWS (Windows)
-- Zoom: Verifique se a interface funciona bem com zoom de até 200%
-- Contraste: Verifique o contraste em diferentes condições de iluminação
-
-## Recursos Adicionais
-
-- [WCAG 2.1 Guidelines](https://www.w3.org/TR/WCAG21/)
-- [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/)
-- [Inclusive Components](https://inclusive-components.design/)
-- [A11y Project Checklist](https://www.a11yproject.com/checklist/)
-
-## Contribuindo para a Acessibilidade
-
-Se você encontrar problemas de acessibilidade em nossos componentes ou tiver sugestões para melhorias, por favor, abra uma issue em nosso repositório ou envie um pull request.
-
-
+<div
+  style={{
+    background: '#f8fbff',
+    border: '1px solid #d0e8fd',
+    borderLeft: '5px solid #66cafc',
+    padding: '2rem',
+    borderRadius: '8px',
+    marginBottom: '2.5rem',
+    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
+  }}
+>
+  <h2 style={{ color: '#66cafc', marginTop: 0 }}>Contribuindo para a Acessibilidade</h2>
+  
+  <div
+    style={{
+      background: 'white',
+      padding: '1.5rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #e0f0ff'
+    }}
+  >
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      Se você encontrar problemas de acessibilidade em nossos componentes ou tiver sugestões para melhorias, por favor, abra uma issue em nosso repositório ou envie um pull request.
+    </p>
+  </div>
+</div>
