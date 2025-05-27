@@ -4,6 +4,16 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 ## [1.0.1] - 2025-05-26
 
+### ✨ Novos recursos
+
+#### Documentação com Storybook
+
+- Adicionado Storybook para documentação interativa de componentes
+- Configurados add-ons para Controls, Actions, Accessibility, Viewport e Docs
+- Implementada documentação MDX para componentes, hooks e fundamentos do design system
+- Adicionadas stories para visualização e teste interativo de componentes
+- Configurada construção de versão estática do Storybook para hospedagem
+
 ### 🐛 Correções de Bugs
 
 #### Correções de Testes de Componentes

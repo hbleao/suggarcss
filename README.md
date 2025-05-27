@@ -47,12 +47,103 @@ npm run storybook
 
 O Storybook estará disponível em `http://localhost:6006`.
 
+Para construir uma versão estática do Storybook:
+
+```bash
+npm run build-storybook
+```
+
+Isso criará uma versão estática na pasta `storybook-static` que pode ser hospedada em qualquer servidor web.
+
 ### Estrutura do Storybook
 
 - `.storybook/stories/Components/` - Documentação de componentes
 - `.storybook/stories/Foundations/` - Documentação de fundamentos do design system
 - `.storybook/stories/hooks/` - Documentação dos hooks personalizados
 - `.storybook/stories/` - Páginas de introdução e boas-vindas
+
+### Configuração do Storybook
+
+O Storybook está configurado com os seguintes add-ons:
+
+- **Controls**: Permite modificar props dinamicamente para testar diferentes estados dos componentes
+- **Actions**: Captura e exibe eventos disparados pelos componentes
+- **Accessibility**: Verifica problemas de acessibilidade nos componentes
+- **Viewport**: Permite visualizar componentes em diferentes tamanhos de tela
+- **Docs**: Gera documentação automática a partir dos tipos TypeScript e comentários JSDoc
+
+### Documentação de Componentes
+
+Cada componente deve ter sua própria story para documentação. Exemplo de como criar uma story:
+
+```tsx
+// Button.stories.tsx
+import { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
+
+const meta: Meta<typeof Button> = {
+  title: 'Components/Button',
+  component: Button,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    variant: { control: 'select', options: ['primary', 'secondary', 'tertiary'] },
+    size: { control: 'select', options: ['small', 'medium', 'large'] },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Button>;
+
+export const Primary: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Button',
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    variant: 'secondary',
+    children: 'Button',
+  },
+};
+```
+
+### Documentação com MDX
+
+Além das stories em TypeScript, o projeto também utiliza MDX para documentação mais rica:
+
+```mdx
+{/* Button.mdx */}
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/blocks';
+import { Button } from './Button';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+O componente Button é usado para iniciar uma ação.
+
+<Canvas>
+  <Story of={ButtonStories.Primary} />
+</Canvas>
+
+## Props
+
+<ArgsTable of={Button} />
+
+## Variantes
+
+<Canvas>
+  <Story of={ButtonStories.Secondary} />
+</Canvas>
+```
+
+Os arquivos MDX estão localizados em `.storybook/stories/` e fornecem documentação detalhada sobre os componentes, hooks e fundamentos do design system.
 
 ## Documentação da CLI do Porto Ocean
 
