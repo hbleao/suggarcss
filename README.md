@@ -1,4 +1,60 @@
-# Documentação da CLI do Porto Ocean
+# SugarCSS - Biblioteca de Componentes React
+
+O SugarCSS é uma biblioteca de componentes React com SASS que fornece uma série de componentes reutilizáveis para construção de interfaces de usuário modernas. Este documento explica como utilizar a biblioteca, executar testes e visualizar a documentação interativa.
+
+## Testes
+
+O projeto utiliza Jest e React Testing Library para testes de componentes. Todos os componentes possuem testes unitários abrangentes para garantir a qualidade e o funcionamento correto.
+
+### Executando Testes
+
+Para executar todos os testes:
+
+```bash
+npm run test
+```
+
+Para executar testes com cobertura:
+
+```bash
+npm run test:coverage
+```
+
+Para executar testes em modo de observação (watch mode):
+
+```bash
+npm run test:watch
+```
+
+### Estrutura de Testes
+
+Cada componente possui seu próprio arquivo de teste (`index.spec.tsx`) localizado no mesmo diretório do componente. Os testes verificam:
+
+- Renderização correta do componente
+- Comportamento com diferentes props
+- Interações do usuário
+- Acessibilidade
+
+## Storybook
+
+O projeto utiliza Storybook para documentação interativa dos componentes. O Storybook permite visualizar e interagir com os componentes em diferentes estados.
+
+### Executando o Storybook
+
+```bash
+npm run storybook
+```
+
+O Storybook estará disponível em `http://localhost:6006`.
+
+### Estrutura do Storybook
+
+- `.storybook/stories/Components/` - Documentação de componentes
+- `.storybook/stories/Foundations/` - Documentação de fundamentos do design system
+- `.storybook/stories/hooks/` - Documentação dos hooks personalizados
+- `.storybook/stories/` - Páginas de introdução e boas-vindas
+
+## Documentação da CLI do Porto Ocean
 
 A CLI (Command Line Interface) que criamos para o Porto Ocean é uma ferramenta que permite aos usuários instalar componentes React com SASS em seus projetos. Este documento explica como ela funciona e as bibliotecas que utiliza.
 

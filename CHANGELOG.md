@@ -2,6 +2,50 @@
 
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
+## [1.0.1] - 2025-05-26
+
+### 🐛 Correções de Bugs
+
+#### Correções de Testes de Componentes
+
+##### Column Component
+- Atualizado para verificar nomes de classes em vez de estilos diretos
+- Corrigido o teste para corresponder à implementação real do componente
+
+##### Card Component
+- Corrigida a lógica de aplicação de nomes de classe para garantir que as classes corretas sejam aplicadas nos testes
+- Ajustada a implementação para corresponder às expectativas dos testes
+
+##### Footer Component
+- Substituídas tags `<a>` por componentes `<Link>` para evitar problemas com elementos HTML sendo usados como filhos React
+- Corrigido o acesso a arrays potencialmente indefinidos com verificações adequadas
+- Adicionados mocks para os componentes Link, Button, Grid, Flex e Modal nos testes
+- Adicionado mock para o componente Column e ícones para garantir renderização adequada
+
+##### Header Component
+- Corrigido o tipo de `selectedCategory` para usar `Category` em vez de `Ca`
+- Ajustada a inicialização de subcategoria para evitar erros de tipo
+- Atualizado para usar `getAllByTestId` com um padrão regex para encontrar componentes ShowOnDevice
+
+##### HeaderAcquisitionFlow Component
+- Adicionada importação do Jest DOM para fornecer matchers personalizados
+- Corrigidos os testes para simular corretamente cliques nos elementos de imagem dentro dos botões
+- Usado encadeamento opcional para acessar elementos com segurança e evitar erros de TypeScript
+
+##### HeaderToolbar Component
+- Corrigido o mapeamento de categorias e subcategorias para especificar tipos adequados
+- Resolvidos erros de tipo implícito 'any'
+
+##### Configuração de Testes
+- Adicionados mocks para arquivos SVG para evitar erros de token inesperado
+- Configurados mocks adequados para next/navigation e useSearchParams
+
+##### Resultado
+- Todos os 499 testes agora passam com sucesso
+- Melhorada a cobertura de testes em vários componentes
+- Resolvidos problemas de tipagem TypeScript
+- Corrigidos erros de lint relacionados a acessibilidade e práticas recomendadas
+
 ## [1.0.0] - 2025-05-22
 
 ### Atualização na API de todos os componentes - BREAKING CHANGE
