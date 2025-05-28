@@ -6,7 +6,7 @@ export const BannerDOC = (props) => (
       color: 'white',
       padding: '3rem',
       borderRadius: '12px',
-      textShadow: '1px 1px 1px rgb(42, 42, 42)',
+      textShadow: '1px 1px 1px #000000',
       marginBottom: '64px',
       boxShadow: '0 8px 24px rgba(0, 70, 192, 0.25)',
       position: 'relative',
@@ -75,7 +75,6 @@ export const BannerDOC = (props) => (
 
     <h1 style={{
       fontSize: '3.5rem',
-      marginBottom: '1.5rem',
       fontWeight: '800',
       color: '#fff',
       position: 'relative',
@@ -85,7 +84,7 @@ export const BannerDOC = (props) => (
     </h1>
 
     <p style={{
-      fontSize: '1.6rem',
+      fontSize: '18px',
       maxWidth: '800px',
       lineHeight: '1.7',
       color: 'white',

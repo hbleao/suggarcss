@@ -1,6 +1,6 @@
-import path from 'node:path';
+import { confirm, input } from '@inquirer/prompts';
 import fs from 'fs-extra';
-import { input, confirm } from '@inquirer/prompts';
+import path from 'node:path';
 
 // Importação dinâmica para evitar erros de TypeScript durante o build
 let utils: { [key: string]: () => string[] } = {};
@@ -24,7 +24,7 @@ export async function installUtils(initialDestDir?: string): Promise<void> {
     destDir = await input({
       message:
         "Digite o caminho para o diretório onde deseja instalar as funções utilitárias:",
-      default: "src/utils", // Sugestão de diretório padrão
+      default: "src/utils",
     });
   }
 
@@ -42,13 +42,13 @@ export async function installUtils(initialDestDir?: string): Promise<void> {
   try {
     // Caminho para a raiz do pacote instalado
     const pkgPath = path.dirname(path.dirname(__dirname));
-    
+
     // Possíveis caminhos das funções utilitárias
     const possiblePaths = [
       path.join(pkgPath, "dist/utils"),
       path.join(pkgPath, "src/utils"),
     ];
-    
+
     // Encontrar o caminho das funções utilitárias
     let src = "";
     for (const possiblePath of possiblePaths) {
@@ -58,21 +58,21 @@ export async function installUtils(initialDestDir?: string): Promise<void> {
         break;
       }
     }
-    
+
     if (!src) {
       console.error("❌ Funções utilitárias não encontradas.");
       process.exit(1);
     }
-    
+
     // Destino para as funções utilitárias
     const dest = path.resolve(process.cwd(), destDir);
-    
+
     // Criar diretório de destino se não existir
     fs.ensureDirSync(dest);
-    
+
     // Copiar arquivos
     fs.copySync(src, dest);
-    
+
     console.log(`\n✅ Funções utilitárias instaladas com sucesso em ${dest}!\n`);
     console.log("Utilitários disponíveis:");
     console.log("- clsx: Para combinar classes CSS condicionalmente");

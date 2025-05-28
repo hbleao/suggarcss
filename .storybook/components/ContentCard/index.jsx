@@ -1,7 +1,7 @@
-export const ContentCard = ({ 
-  title, 
-  children, 
-  borderColor = '#0046c0', 
+export const ContentCard = ({
+  title,
+  children,
+  borderColor = '#0046c0',
   backgroundColor = 'white',
   icon = null
 }) => (
@@ -9,7 +9,7 @@ export const ContentCard = ({
     style={{
       background: backgroundColor,
       border: '1px solid #e0f0ff',
-      borderLeft: `4px solid ${borderColor}`,
+      border: `1px solid ${borderColor}`,
       padding: '1.5rem',
       borderRadius: '8px',
       marginBottom: '2rem',
@@ -17,18 +17,18 @@ export const ContentCard = ({
     }}
   >
     {title && (
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        marginBottom: '1.2rem' 
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        marginBottom: '1.2rem'
       }}>
         {icon && (
-          <div style={{ 
-            width: '32px', 
-            height: '32px', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
+          <div style={{
+            width: '32px',
+            height: '32px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             marginRight: '12px',
             flexShrink: 0,
             color: borderColor
@@ -36,10 +36,10 @@ export const ContentCard = ({
             {icon}
           </div>
         )}
-        <h2 style={{ 
-          color: '#404040', 
-          margin: '0', 
-          fontSize: '1.5rem',
+        <h2 style={{
+          color: '#404040',
+          margin: '0',
+          fontSize: '18px',
           fontWeight: '600'
         }}>
           {title}

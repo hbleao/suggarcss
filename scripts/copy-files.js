@@ -32,7 +32,7 @@ async function main() {
 			module: "./index.js", // Garantir que o módulo ESM também funcione
 			types: "./index.d.ts", // Relativo à pasta dist
 			bin: {
-				"porto-ocean": "./cli/cli.js", // Relativo à pasta dist
+				"ocean": "./cli.cjs", // Relativo à pasta dist
 			},
 			// Garantir que os arquivos corretos sejam incluídos
 			files: [
@@ -80,7 +80,14 @@ async function main() {
 		);
 		console.log("✅ Hooks copiados para a pasta dist/hooks com sucesso!");
 
-		// Copiar os arquivos da CLI refatorada
+    // Copiar os styles para a pasta dist/styles
+		await fs.copy(
+			path.resolve(rootDir, "src/styles"),
+			path.resolve(distDir, "styles"),
+		);
+		console.log("✅ Styles copiados para a pasta dist/styles com sucesso!");
+
+		// Copiar os arquivos da CLI
 		await fs.copy(
 			path.resolve(rootDir, "src/cli/commands"),
 			path.resolve(distDir, "cli/commands"),
@@ -94,12 +101,12 @@ async function main() {
 		);
 		console.log("✅ Arquivo release-notes.ts copiado para a pasta dist/cli com sucesso!");
 
-		// Copiar o arquivo utils.ts da CLI
+    // Copiar os utils para a pasta dist/utils
 		await fs.copy(
-			path.resolve(rootDir, "src/cli/utils.ts"),
-			path.resolve(distDir, "cli/utils.ts"),
+			path.resolve(rootDir, "src/utils"),
+			path.resolve(distDir, "utils"),
 		);
-		console.log("✅ Arquivo utils.ts copiado para a pasta dist/cli com sucesso!");
+		console.log("✅ Arquivo utils.ts copiado para a pasta dist/utils com sucesso!");
 
 		// Verificar e garantir que os arquivos chunk estão presentes
 		const distFiles = await fs.readdir(distDir);

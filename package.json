@@ -6,7 +6,7 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "bin": {
-    "porto-ocean": "./dist/cli.cjs"
+    "ocean": "./dist/cli.cjs"
   },
   "files": [
     "dist/**/*",

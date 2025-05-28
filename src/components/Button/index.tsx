@@ -35,7 +35,7 @@ export const Button = ({
 	variant = "insurance",
 	styles = "primary",
 	size = "large",
-	width = "contain",
+	width = "fluid",
 	isLoading = false,
 	disabled = false,
 	className = "",
@@ -46,7 +46,7 @@ export const Button = ({
 	const variantClass = disabled ? `--disabled-${styles}` : `--${variant}-${styles}`;
 	const sizeClass = `--${size}`;
 	const widthClass = `--${width}`;
-	
+
 	const composedClassName = `btn ${variantClass} ${sizeClass} ${widthClass} ${className}`.trim();
 
 	return (

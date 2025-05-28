@@ -30,26 +30,26 @@ import type { InputProps } from "./types";
  *
  * @example
  * // Input com texto de ajuda
- * <Input 
- *   label="Email" 
- *   name="email" 
+ * <Input
+ *   label="Email"
+ *   name="email"
  *   helperText="Digite seu email principal"
  * />
  *
  * @example
  * // Input com mensagem de erro
- * <Input 
- *   label="Senha" 
- *   name="senha" 
+ * <Input
+ *   label="Senha"
+ *   name="senha"
  *   type="password"
  *   errorMessage="A senha deve ter pelo menos 8 caracteres"
  * />
  *
  * @example
  * // Input em estado de carregamento
- * <Input 
- *   label="Buscar CEP" 
- *   name="cep" 
+ * <Input
+ *   label="Buscar CEP"
+ *   name="cep"
  *   isLoading={true}
  * />
  *
@@ -60,7 +60,7 @@ export const Input = ({
 	className = "",
 	name = "",
 	variant = "default",
-	width = "contain",
+	width = "fluid",
 	disabled = false,
 	value = "",
 	isLoading = false,

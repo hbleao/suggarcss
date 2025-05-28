@@ -1,11 +1,10 @@
 "use client";
+import { clsx } from "@/utils/clsx";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { clsx } from "@/utils/clsx";
 
 import "./styles.scss";
 
-import { Button } from "../Button";
 import ArrowLeftSVG from "./icons/ic-arrow-left.svg";
 import LogoPortoSVG from "./icons/ic-logo-porto.svg";
 import CartSVG from "./icons/ic-shopping-cart.svg";
@@ -26,21 +25,17 @@ export const HeaderAcquisitionFlow = ({
 	return (
 		<div className="header-acquisition-flow">
 			{hasGoBackLink && (
-				<Button
-					title="voltar"
-					variant="negative"
-					styles="ghost"
-					className="header-acquisition-flow__item-left"
-				>
-					<Image
-						src={ArrowLeftSVG}
-						height={24}
-						width={24}
-						className={clsx("header-acquisition-flow__button")}
-						alt=""
-						onClick={() => router.push(goBackLink)}
-					/>
-				</Button>
+				<Image
+					src={ArrowLeftSVG}
+					height={24}
+					width={24}
+					className={clsx(
+						"header-acquisition-flow__button",
+						"header-acquisition-flow__item-left",
+					)}
+					alt=""
+					onClick={() => router.push(goBackLink)}
+				/>
 			)}
 
 			<Image
@@ -56,21 +51,17 @@ export const HeaderAcquisitionFlow = ({
 			/>
 
 			{hasShoppingCart && (
-				<Button
-					title="voltar"
-					variant="negative"
-					styles="ghost"
-					className="header-acquisition-flow__item-right"
-				>
-					<Image
-						src={CartSVG}
-						height={24}
-						width={24}
-						className={clsx("header-acquisition-flow__button")}
-						alt=""
-						onClick={() => router.push(goBackLink)}
-					/>
-				</Button>
+				<Image
+					src={CartSVG}
+					height={24}
+					width={24}
+					className={clsx(
+						"header-acquisition-flow__button",
+						"header-acquisition-flow__item-right",
+					)}
+					alt=""
+					onClick={() => router.push(goBackLink)}
+				/>
 			)}
 		</div>
 	);

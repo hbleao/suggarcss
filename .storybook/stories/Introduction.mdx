@@ -1,27 +1,22 @@
 import { Meta } from '@storybook/blocks';
-import { 
-  BannerDOC, 
-  ContentCard, 
-  SectionTitle, 
-  InfoBox, 
-  CodeBlock, 
-  FeatureGrid, 
+import {
+  BannerDOC,
+  ContentCard,
+  SectionTitle,
+  InfoBox,
+  CodeBlock,
+  FeatureGrid,
   FeatureItem,
   BannerFooter
 } from '../components';
 
 <Meta title="Introdução" />
 
-<BannerDOC title="Ocean Design System" description="A biblioteca de componentes React da Porto Seguro." />
+<BannerDOC title="Introdução ao Ocean" description="A biblioteca de componentes React da Porto Seguro." />
 
-<ContentCard 
+<ContentCard
   title="Visão Geral"
-  borderColor="#0046c0"
-  icon={
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 7H13V13H11V7ZM11 15H13V17H11V15Z" fill="white"/>
-    </svg>
-  }
+  borderColor="#fff"
 >
   <p style={{
     fontSize: '1.1rem',
@@ -33,15 +28,15 @@ import {
   </p>
 </ContentCard>
 
-<ContentCard 
+<ContentCard
   title="Principais Recursos"
-  borderColor="#1381e2"
+  borderColor="#0046c0"
   icon={
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z" fill="white"/>
-      <path d="M7 12H9V17H7V12Z" fill="white"/>
-      <path d="M11 7H13V17H11V7Z" fill="white"/>
-      <path d="M15 9H17V17H15V9Z" fill="white"/>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="#0046c0" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z" fill="#0046c0"/>
+      <path d="M7 12H9V17H7V12Z" fill="#0046c0"/>
+      <path d="M11 7H13V17H11V7Z" fill="#0046c0"/>
+      <path d="M15 9H17V17H15V9Z" fill="#0046c0"/>
     </svg>
   }
 >
@@ -59,13 +54,8 @@ import {
 
     <FeatureItem
       title="Design Responsivo"
-      borderColor="#31b5fc"
+      borderColor="#0046c0"
       titleColor="#31b5fc"
-      icon={
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 18H14V16H10V18ZM3 6V8H21V6H3ZM6 13H18V11H6V13Z" fill="white"/>
-        </svg>
-      }
       description="Todos os componentes são totalmente responsivos e adaptáveis a diferentes tamanhos de tela"
     />
 
@@ -119,7 +109,7 @@ import {
   </FeatureGrid>
 </ContentCard>
 
-<ContentCard 
+<ContentCard
   title="Princípios de Design"
   borderColor="#0046c0"
   icon={
@@ -191,7 +181,7 @@ import {
   </FeatureGrid>
 </ContentCard>
 
-<ContentCard 
+<ContentCard
   title="Arquitetura"
   borderColor="#31b5fc"
   icon={
@@ -236,7 +226,6 @@ import {
       </p>
     </InfoBox>
   </FeatureGrid>
-
   <div style={{
     fontSize: '1.1rem',
     lineHeight: '1.6',
@@ -251,7 +240,7 @@ import {
   </div>
 </ContentCard>
 
-<ContentCard 
+<ContentCard
   title="Começando"
   borderColor="#66cafc"
   icon={
@@ -277,25 +266,6 @@ import { Button, Card } from '@porto/js-library-corp-hubv-porto-ocean';
 ```
   </CodeBlock>
 
-  <div style={{
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '2rem'
-  }}>
-    <a href="/?path=/docs/come%C3%A7ando--docs" style={{
-      display: 'inline-block',
-      padding: '0.8rem 1.5rem',
-      background: '#0046c0',
-      color: 'white',
-      borderRadius: '4px',
-      textDecoration: 'none',
-      fontWeight: '500',
-      fontSize: '1.1rem',
-      boxShadow: '0 2px 4px rgba(0, 70, 192, 0.2)'
-    }}>
-      Ver Guia Completo de Instalação
-    </a>
-  </div>
 </ContentCard>
 
 <BannerFooter />

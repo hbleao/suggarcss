@@ -2,19 +2,19 @@
 
 import { Command } from "commander";
 import {
-	handleComponentInstallation,
-	handleReleaseNotes,
-	installHooks,
-	installStyles,
-	installUtils,
-	listComponents,
+  handleComponentInstallation,
+  handleReleaseNotes,
+  installHooks,
+  installStyles,
+  installUtils,
+  listComponents,
 } from "./commands";
 
 // Criar programa principal
 const program = new Command();
 
 // Configurar informações do programa
-program.name("ocean").description("CLI para o Porto Ocean Design System").version("0.1.0");
+program.name("ocean").description("CLI para o Porto Ocean Design System").version("1.0.0");
 
 // Comando install - Instalação de componentes, estilos, hooks e utils
 program
