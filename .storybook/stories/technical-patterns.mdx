@@ -1,68 +1,10 @@
 import { Meta } from '@storybook/blocks';
+import { BannerDOC } from '../components/Banner/index.jsx';
 
 <Meta title="Padrões Técnicos" />
 
-<div
-  style={{
-    background: 'linear-gradient(135deg, #0046c0 0%, #31b5fc 100%)',
-    color: 'white',
-    padding: '3rem',
-    borderRadius: '12px',
-    marginBottom: '3rem',
-    boxShadow: '0 8px 24px rgba(0, 70, 192, 0.25)',
-    position: 'relative',
-    overflow: 'hidden',
-    minHeight: '280px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
-  }}
->
-  <div 
-    style={{
-      position: 'absolute',
-      top: '15%',
-      right: '8%',
-      width: '180px',
-      height: '180px',
-      background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)',
-      borderRadius: '50%'
-    }}
-  />
-  <div 
-    style={{
-      position: 'absolute',
-      bottom: '10%',
-      left: '15%',
-      width: '120px',
-      height: '120px',
-      background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)',
-      borderRadius: '50%'
-    }}
-  />
-  <h1 style={{ 
-    fontSize: '3.2rem', 
-    margin: '0 0 1.2rem 0', 
-    fontWeight: 'bold',
-    letterSpacing: '-0.5px',
-    position: 'relative',
-    textShadow: '0 2px 10px rgba(0, 0, 0, 0.15)'
-  }}>
-    Padrões Técnicos
-  </h1>
-  <p style={{ 
-    fontSize: '1.4rem', 
-    marginBottom: '0', 
-    maxWidth: '800px',
-    lineHeight: '1.6',
-    position: 'relative',
-    opacity: '0.9',
-    fontWeight: '300',
-    letterSpacing: '0.5px'
-  }}>
-    Convenções e práticas para garantir consistência e qualidade no Ocean
-  </p>
-</div>
+<BannerDOC title="Padrões Técnicos" description="O Ocean possui uma serie de convenções e práticas para garantir consistência e qualidade no Ocean" />
+
 
 <div
   style={{
@@ -75,16 +17,16 @@ import { Meta } from '@storybook/blocks';
     boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
   }}
 >
-  <p style={{ 
-    fontSize: '1.1rem', 
+  <p style={{
+    fontSize: '1.1rem',
     lineHeight: '1.6',
     color: '#333',
     marginBottom: '1.5rem'
   }}>
     Cada componente no Ocean segue uma estrutura monolítica consistente, consolidando todos os subcomponentes em um único componente React:
   </p>
-  
-  <div style={{ 
+
+  <div style={{
     background: '#eef9ff',
     padding: '1.5rem',
     borderRadius: '8px',
@@ -103,30 +45,30 @@ src/components/ComponentName/
 └─ index.spec.tsx    # Testes do componente
 </pre>
   </div>
-  
-  <div style={{ 
-    display: 'flex', 
-    gap: '1.5rem', 
+
+  <div style={{
+    display: 'flex',
+    gap: '1.5rem',
     flexWrap: 'wrap',
     marginBottom: '1.5rem'
   }}>
-    <div style={{ 
-      flex: '1', 
+    <div style={{
+      flex: '1',
       minWidth: '250px',
       background: '#eef9ff',
       padding: '1rem',
       borderRadius: '8px',
       borderLeft: '3px solid #0046c0'
     }}>
-      <h4 style={{ 
-        margin: '0 0 0.5rem 0', 
+      <h4 style={{
+        margin: '0 0 0.5rem 0',
         color: '#0046c0',
         fontSize: '1.1rem'
       }}>
         Abordagem Monolítica
       </h4>
-      <ul style={{ 
-        margin: '0', 
+      <ul style={{
+        margin: '0',
         paddingLeft: '1.2rem',
         fontSize: '0.95rem',
         color: '#444',
@@ -138,24 +80,24 @@ src/components/ComponentName/
         <li>Implementar renderização condicional para diferentes partes do componente</li>
       </ul>
     </div>
-    
-    <div style={{ 
-      flex: '1', 
+
+    <div style={{
+      flex: '1',
       minWidth: '250px',
       background: '#eef9ff',
       padding: '1rem',
       borderRadius: '8px',
       borderLeft: '3px solid #31b5fc'
     }}>
-      <h4 style={{ 
-        margin: '0 0 0.5rem 0', 
+      <h4 style={{
+        margin: '0 0 0.5rem 0',
         color: '#31b5fc',
         fontSize: '1.1rem'
       }}>
         Benefícios
       </h4>
-      <ul style={{ 
-        margin: '0', 
+      <ul style={{
+        margin: '0',
         paddingLeft: '1.2rem',
         fontSize: '0.95rem',
         color: '#444',
@@ -168,24 +110,24 @@ src/components/ComponentName/
       </ul>
     </div>
   </div>
-  
-  <h3 style={{ 
-    color: '#1381e2', 
-    fontSize: '1.3rem', 
+
+  <h3 style={{
+    color: '#1381e2',
+    fontSize: '1.3rem',
     marginBottom: '1rem',
     marginTop: '2rem',
     fontWeight: '600'
   }}>
     Exemplo de Implementação
   </h3>
-  
-  <div style={{ 
+
+  <div style={{
     background: '#eef9ff',
     borderRadius: '8px',
     overflow: 'hidden',
     marginBottom: '1rem'
   }}>
-    <div style={{ 
+    <div style={{
       background: '#1381e2',
       color: 'white',
       padding: '0.5rem 1rem',
@@ -194,7 +136,7 @@ src/components/ComponentName/
     }}>
       src/components/Button/index.tsx
     </div>
-    
+
 ```tsx
 import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 
@@ -235,10 +177,10 @@ const Button = ({
 export default Button;
 ```
   </div>
-  
-  <p style={{ 
-    fontSize: '0.95rem', 
-    color: '#555', 
+
+  <p style={{
+    fontSize: '0.95rem',
+    color: '#555',
     fontStyle: 'italic',
     margin: 0
   }}>
@@ -257,19 +199,19 @@ export default Button;
     boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
   }}
 >
-  <div style={{ 
-    display: 'flex', 
-    alignItems: 'center', 
-    marginBottom: '1.2rem' 
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '1.2rem'
   }}>
-    <div style={{ 
-      width: '36px', 
-      height: '36px', 
-      borderRadius: '50%', 
-      background: '#31b5fc', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center', 
+    <div style={{
+      width: '36px',
+      height: '36px',
+      borderRadius: '50%',
+      background: '#31b5fc',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       marginRight: '12px',
       flexShrink: 0
     }}>
@@ -280,53 +222,53 @@ export default Button;
         <path d="M12 12H15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <h2 style={{ 
-      color: '#31b5fc', 
-      margin: '0', 
+    <h2 style={{
+      color: '#31b5fc',
+      margin: '0',
       fontSize: '1.8rem',
       fontWeight: '600'
     }}>
       Convenções de Nomenclatura
     </h2>
   </div>
-  
-  <p style={{ 
-    fontSize: '1.1rem', 
+
+  <p style={{
+    fontSize: '1.1rem',
     lineHeight: '1.6',
     color: '#333',
     marginBottom: '1.5rem'
   }}>
     Seguir convenções de nomenclatura consistentes é essencial para manter a qualidade e legibilidade do código no Ocean Design System.
   </p>
-  
-  <div style={{ 
-    display: 'grid', 
-    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
+
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
     gap: '1.5rem',
     marginBottom: '1rem'
   }}>
-    <div style={{ 
+    <div style={{
       background: 'white',
       padding: '1.5rem',
       borderRadius: '8px',
       boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
       border: '1px solid #e0f0ff'
     }}>
-      <h3 style={{ 
-        color: '#0046c0', 
-        margin: '0 0 1rem 0', 
+      <h3 style={{
+        color: '#0046c0',
+        margin: '0 0 1rem 0',
         fontSize: '1.3rem',
         display: 'flex',
         alignItems: 'center',
         gap: '8px'
       }}>
-        <span style={{ 
-          width: '24px', 
-          height: '24px', 
-          borderRadius: '50%', 
-          background: '#0046c0', 
-          display: 'flex', 
-          alignItems: 'center', 
+        <span style={{
+          width: '24px',
+          height: '24px',
+          borderRadius: '50%',
+          background: '#0046c0',
+          display: 'flex',
+          alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0
         }}>
@@ -337,8 +279,8 @@ export default Button;
         </span>
         Componentes
       </h3>
-      <ul style={{ 
-        margin: '0', 
+      <ul style={{
+        margin: '0',
         paddingLeft: '1.2rem',
         fontSize: '0.95rem',
         color: '#444',
@@ -349,29 +291,29 @@ export default Button;
         <li>Evite abreviações, exceto quando amplamente reconhecidas</li>
       </ul>
     </div>
-    
-    <div style={{ 
+
+    <div style={{
       background: 'white',
       padding: '1.5rem',
       borderRadius: '8px',
       boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
       border: '1px solid #e0f0ff'
     }}>
-      <h3 style={{ 
-        color: '#0046c0', 
-        margin: '0 0 1rem 0', 
+      <h3 style={{
+        color: '#0046c0',
+        margin: '0 0 1rem 0',
         fontSize: '1.3rem',
         display: 'flex',
         alignItems: 'center',
         gap: '8px'
       }}>
-        <span style={{ 
-          width: '24px', 
-          height: '24px', 
-          borderRadius: '50%', 
-          background: '#0046c0', 
-          display: 'flex', 
-          alignItems: 'center', 
+        <span style={{
+          width: '24px',
+          height: '24px',
+          borderRadius: '50%',
+          background: '#0046c0',
+          display: 'flex',
+          alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0
         }}>
@@ -383,8 +325,8 @@ export default Button;
         </span>
         Props
       </h3>
-      <ul style={{ 
-        margin: '0', 
+      <ul style={{
+        margin: '0',
         paddingLeft: '1.2rem',
         fontSize: '0.95rem',
         color: '#444',
@@ -395,29 +337,29 @@ export default Button;
         <li>Prefixe props booleanas com <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>is</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>has</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>should</code> ou similar: <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>isOpen</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>hasIcon</code></li>
       </ul>
     </div>
-    
-    <div style={{ 
+
+    <div style={{
       background: 'white',
       padding: '1.5rem',
       borderRadius: '8px',
       boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
       border: '1px solid #e0f0ff'
     }}>
-      <h3 style={{ 
-        color: '#0046c0', 
-        margin: '0 0 1rem 0', 
+      <h3 style={{
+        color: '#0046c0',
+        margin: '0 0 1rem 0',
         fontSize: '1.3rem',
         display: 'flex',
         alignItems: 'center',
         gap: '8px'
       }}>
-        <span style={{ 
-          width: '24px', 
-          height: '24px', 
-          borderRadius: '50%', 
-          background: '#0046c0', 
-          display: 'flex', 
-          alignItems: 'center', 
+        <span style={{
+          width: '24px',
+          height: '24px',
+          borderRadius: '50%',
+          background: '#0046c0',
+          display: 'flex',
+          alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0
         }}>
@@ -431,8 +373,8 @@ export default Button;
         </span>
         Tipos e Interfaces
       </h3>
-      <ul style={{ 
-        margin: '0', 
+      <ul style={{
+        margin: '0',
         paddingLeft: '1.2rem',
         fontSize: '0.95rem',
         color: '#444',
@@ -443,29 +385,29 @@ export default Button;
         <li>Sufixe tipos de variantes com <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>Variant</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>Style</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>Size</code>, etc.</li>
       </ul>
     </div>
-    
-    <div style={{ 
+
+    <div style={{
       background: 'white',
       padding: '1.5rem',
       borderRadius: '8px',
       boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
       border: '1px solid #e0f0ff'
     }}>
-      <h3 style={{ 
-        color: '#0046c0', 
-        margin: '0 0 1rem 0', 
+      <h3 style={{
+        color: '#0046c0',
+        margin: '0 0 1rem 0',
         fontSize: '1.3rem',
         display: 'flex',
         alignItems: 'center',
         gap: '8px'
       }}>
-        <span style={{ 
-          width: '24px', 
-          height: '24px', 
-          borderRadius: '50%', 
-          background: '#0046c0', 
-          display: 'flex', 
-          alignItems: 'center', 
+        <span style={{
+          width: '24px',
+          height: '24px',
+          borderRadius: '50%',
+          background: '#0046c0',
+          display: 'flex',
+          alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0
         }}>
@@ -477,8 +419,8 @@ export default Button;
         </span>
         CSS
       </h3>
-      <ul style={{ 
-        margin: '0', 
+      <ul style={{
+        margin: '0',
         paddingLeft: '1.2rem',
         fontSize: '0.95rem',
         color: '#444',
@@ -490,8 +432,8 @@ export default Button;
       </ul>
     </div>
   </div>
-  
-  <div style={{ 
+
+  <div style={{
     background: '#eef9ff',
     padding: '1.2rem',
     borderRadius: '8px',
@@ -500,13 +442,13 @@ export default Button;
     alignItems: 'flex-start',
     gap: '12px'
   }}>
-    <div style={{ 
-      width: '24px', 
-      height: '24px', 
-      borderRadius: '50%', 
-      background: '#31b5fc', 
-      display: 'flex', 
-      alignItems: 'center', 
+    <div style={{
+      width: '24px',
+      height: '24px',
+      borderRadius: '50%',
+      background: '#31b5fc',
+      display: 'flex',
+      alignItems: 'center',
       justifyContent: 'center',
       flexShrink: 0,
       marginTop: '2px'
@@ -517,9 +459,9 @@ export default Button;
         <path d="M12 8H12.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <p style={{ 
-      fontSize: '0.95rem', 
-      color: '#444', 
+    <p style={{
+      fontSize: '0.95rem',
+      color: '#444',
       margin: 0,
       lineHeight: '1.5'
     }}>
@@ -539,19 +481,19 @@ export default Button;
     boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
   }}
 >
-  <div style={{ 
-    display: 'flex', 
-    alignItems: 'center', 
-    marginBottom: '1.2rem' 
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '1.2rem'
   }}>
-    <div style={{ 
-      width: '36px', 
-      height: '36px', 
-      borderRadius: '50%', 
-      background: '#0046c0', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center', 
+    <div style={{
+      width: '36px',
+      height: '36px',
+      borderRadius: '50%',
+      background: '#0046c0',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       marginRight: '12px',
       flexShrink: 0
     }}>
@@ -560,26 +502,26 @@ export default Button;
         <path d="M11 21H7C5.89543 21 5 20.1046 5 19V5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <h2 style={{ 
-      color: '#0046c0', 
-      margin: '0', 
+    <h2 style={{
+      color: '#0046c0',
+      margin: '0',
       fontSize: '1.8rem',
       fontWeight: '600'
     }}>
       TypeScript
     </h2>
   </div>
-  
-  <p style={{ 
-    fontSize: '1.1rem', 
+
+  <p style={{
+    fontSize: '1.1rem',
     lineHeight: '1.6',
     color: '#333',
     marginBottom: '1.5rem'
   }}>
     O <strong>Ocean Design System</strong> é construído com TypeScript para garantir segurança de tipos e melhor experiência de desenvolvimento. A tipagem forte ajuda a prevenir erros comuns e melhora a documentação do código.
   </p>
-  
-  <div style={{ 
+
+  <div style={{
     background: 'white',
     padding: '1.5rem',
     borderRadius: '8px',
@@ -587,21 +529,21 @@ export default Button;
     border: '1px solid #e0f0ff',
     marginBottom: '1.5rem'
   }}>
-    <h3 style={{ 
-      color: '#0046c0', 
-      margin: '0 0 1rem 0', 
+    <h3 style={{
+      color: '#0046c0',
+      margin: '0 0 1rem 0',
       fontSize: '1.3rem',
       display: 'flex',
       alignItems: 'center',
       gap: '8px'
     }}>
-      <span style={{ 
-        width: '24px', 
-        height: '24px', 
-        borderRadius: '50%', 
-        background: '#0046c0', 
-        display: 'flex', 
-        alignItems: 'center', 
+      <span style={{
+        width: '24px',
+        height: '24px',
+        borderRadius: '50%',
+        background: '#0046c0',
+        display: 'flex',
+        alignItems: 'center',
         justifyContent: 'center',
         flexShrink: 0
       }}>
@@ -613,21 +555,21 @@ export default Button;
       </span>
       Diretrizes de TypeScript
     </h3>
-    
-    <div style={{ 
-      display: 'grid', 
-      gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', 
+
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
       gap: '1rem',
       marginBottom: '1rem'
     }}>
-      <div style={{ 
+      <div style={{
         background: '#f0f7ff',
         padding: '1rem',
         borderRadius: '8px',
         borderLeft: '3px solid #0046c0'
       }}>
-        <p style={{ 
-          margin: '0', 
+        <p style={{
+          margin: '0',
           fontSize: '0.95rem',
           color: '#444',
           lineHeight: '1.5'
@@ -635,15 +577,15 @@ export default Button;
           <strong>Defina tipos explícitos</strong> para todas as props de componentes
         </p>
       </div>
-      
-      <div style={{ 
+
+      <div style={{
         background: '#f0f7ff',
         padding: '1rem',
         borderRadius: '8px',
         borderLeft: '3px solid #0046c0'
       }}>
-        <p style={{ 
-          margin: '0', 
+        <p style={{
+          margin: '0',
           fontSize: '0.95rem',
           color: '#444',
           lineHeight: '1.5'
@@ -651,15 +593,15 @@ export default Button;
           <strong>Use interfaces</strong> para props de componentes
         </p>
       </div>
-      
-      <div style={{ 
+
+      <div style={{
         background: '#f0f7ff',
         padding: '1rem',
         borderRadius: '8px',
         borderLeft: '3px solid #0046c0'
       }}>
-        <p style={{ 
-          margin: '0', 
+        <p style={{
+          margin: '0',
           fontSize: '0.95rem',
           color: '#444',
           lineHeight: '1.5'
@@ -667,15 +609,15 @@ export default Button;
           <strong>Use tipos</strong> para enums e unions
         </p>
       </div>
-      
-      <div style={{ 
+
+      <div style={{
         background: '#f0f7ff',
         padding: '1rem',
         borderRadius: '8px',
         borderLeft: '3px solid #0046c0'
       }}>
-        <p style={{ 
-          margin: '0', 
+        <p style={{
+          margin: '0',
           fontSize: '0.95rem',
           color: '#444',
           lineHeight: '1.5'
@@ -683,15 +625,15 @@ export default Button;
           <strong>Evite o uso de</strong> <code style={{ background: '#e0f0ff', padding: '2px 4px', borderRadius: '4px' }}>any</code>; prefira <code style={{ background: '#e0f0ff', padding: '2px 4px', borderRadius: '4px' }}>unknown</code> quando necessário
         </p>
       </div>
-      
-      <div style={{ 
+
+      <div style={{
         background: '#f0f7ff',
         padding: '1rem',
         borderRadius: '8px',
         borderLeft: '3px solid #0046c0'
       }}>
-        <p style={{ 
-          margin: '0', 
+        <p style={{
+          margin: '0',
           fontSize: '0.95rem',
           color: '#444',
           lineHeight: '1.5'
@@ -699,15 +641,15 @@ export default Button;
           <strong>Use tipos genéricos</strong> quando apropriado
         </p>
       </div>
-      
-      <div style={{ 
+
+      <div style={{
         background: '#f0f7ff',
         padding: '1rem',
         borderRadius: '8px',
         borderLeft: '3px solid #0046c0'
       }}>
-        <p style={{ 
-          margin: '0', 
+        <p style={{
+          margin: '0',
           fontSize: '0.95rem',
           color: '#444',
           lineHeight: '1.5'
@@ -717,27 +659,27 @@ export default Button;
       </div>
     </div>
   </div>
-  
-  <h3 style={{ 
-    color: '#0046c0', 
-    fontSize: '1.3rem', 
+
+  <h3 style={{
+    color: '#0046c0',
+    fontSize: '1.3rem',
     marginBottom: '1rem',
     fontWeight: '600'
   }}>
     Exemplo de Tipos Bem Definidos
   </h3>
-  
-  <div style={{ 
+
+  <div style={{
     display: 'flex',
     flexDirection: 'column',
     gap: '1.5rem'
   }}>
-    <div style={{ 
+    <div style={{
       background: '#eef9ff',
       borderRadius: '8px',
       overflow: 'hidden'
     }}>
-      <div style={{ 
+      <div style={{
         background: '#0046c0',
         color: 'white',
         padding: '0.5rem 1rem',
@@ -753,7 +695,7 @@ export default Button;
         </svg>
         Bom: tipos bem definidos
       </div>
-      
+
 ```tsx
 interface CardContentProps {
   title: string;
@@ -771,13 +713,13 @@ interface CardContentProps {
 }
 ```
     </div>
-    
-    <div style={{ 
+
+    <div style={{
       background: '#fff8f8',
       borderRadius: '8px',
       overflow: 'hidden'
     }}>
-      <div style={{ 
+      <div style={{
         background: '#e53935',
         color: 'white',
         padding: '0.5rem 1rem',
@@ -792,7 +734,7 @@ interface CardContentProps {
         </svg>
         Evite: tipos vagos
       </div>
-      
+
 ```tsx
 interface PoorCardContentProps {
   title: any;
@@ -804,8 +746,8 @@ interface PoorCardContentProps {
 ```
     </div>
   </div>
-  
-  <div style={{ 
+
+  <div style={{
     background: '#eef9ff',
     padding: '1.2rem',
     borderRadius: '8px',
@@ -814,13 +756,13 @@ interface PoorCardContentProps {
     alignItems: 'flex-start',
     gap: '12px'
   }}>
-    <div style={{ 
-      width: '24px', 
-      height: '24px', 
-      borderRadius: '50%', 
-      background: '#0046c0', 
-      display: 'flex', 
-      alignItems: 'center', 
+    <div style={{
+      width: '24px',
+      height: '24px',
+      borderRadius: '50%',
+      background: '#0046c0',
+      display: 'flex',
+      alignItems: 'center',
       justifyContent: 'center',
       flexShrink: 0,
       marginTop: '2px'
@@ -831,9 +773,9 @@ interface PoorCardContentProps {
         <path d="M12 8H12.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <p style={{ 
-      fontSize: '0.95rem', 
-      color: '#444', 
+    <p style={{
+      fontSize: '0.95rem',
+      color: '#444',
       margin: 0,
       lineHeight: '1.5'
     }}>
@@ -853,19 +795,19 @@ interface PoorCardContentProps {
     boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
   }}
 >
-  <div style={{ 
-    display: 'flex', 
-    alignItems: 'center', 
-    marginBottom: '1.2rem' 
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '1.2rem'
   }}>
-    <div style={{ 
-      width: '36px', 
-      height: '36px', 
-      borderRadius: '50%', 
-      background: '#31b5fc', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center', 
+    <div style={{
+      width: '36px',
+      height: '36px',
+      borderRadius: '50%',
+      background: '#31b5fc',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       marginRight: '12px',
       flexShrink: 0
     }}>
@@ -873,53 +815,53 @@ interface PoorCardContentProps {
         <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <h2 style={{ 
-      color: '#31b5fc', 
-      margin: '0', 
+    <h2 style={{
+      color: '#31b5fc',
+      margin: '0',
       fontSize: '1.8rem',
       fontWeight: '600'
     }}>
       Testes
     </h2>
   </div>
-  
-  <p style={{ 
-    fontSize: '1.1rem', 
+
+  <p style={{
+    fontSize: '1.1rem',
     lineHeight: '1.6',
     color: '#333',
     marginBottom: '1.5rem'
   }}>
     Todos os componentes do <strong>Ocean Design System</strong> devem ser testados adequadamente para garantir qualidade, confiabilidade e manutenção a longo prazo.
   </p>
-  
-  <div style={{ 
-    display: 'grid', 
-    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
+
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
     gap: '1.5rem',
     marginBottom: '2rem'
   }}>
-    <div style={{ 
+    <div style={{
       background: 'white',
       padding: '1.5rem',
       borderRadius: '8px',
       boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
       border: '1px solid #e0f0ff'
     }}>
-      <h3 style={{ 
-        color: '#31b5fc', 
-        margin: '0 0 1rem 0', 
+      <h3 style={{
+        color: '#31b5fc',
+        margin: '0 0 1rem 0',
         fontSize: '1.3rem',
         display: 'flex',
         alignItems: 'center',
         gap: '8px'
       }}>
-        <span style={{ 
-          width: '28px', 
-          height: '28px', 
-          borderRadius: '50%', 
-          background: '#31b5fc', 
-          display: 'flex', 
-          alignItems: 'center', 
+        <span style={{
+          width: '28px',
+          height: '28px',
+          borderRadius: '50%',
+          background: '#31b5fc',
+          display: 'flex',
+          alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0
         }}>
@@ -930,8 +872,8 @@ interface PoorCardContentProps {
         </span>
         Tipos de Testes
       </h3>
-      <ul style={{ 
-        margin: '0', 
+      <ul style={{
+        margin: '0',
         paddingLeft: '1.2rem',
         fontSize: '0.95rem',
         color: '#444',
@@ -943,29 +885,29 @@ interface PoorCardContentProps {
         <li><strong>Testes Visuais</strong>: Garantir que os componentes sejam renderizados corretamente</li>
       </ul>
     </div>
-    
-    <div style={{ 
+
+    <div style={{
       background: 'white',
       padding: '1.5rem',
       borderRadius: '8px',
       boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
       border: '1px solid #e0f0ff'
     }}>
-      <h3 style={{ 
-        color: '#31b5fc', 
-        margin: '0 0 1rem 0', 
+      <h3 style={{
+        color: '#31b5fc',
+        margin: '0 0 1rem 0',
         fontSize: '1.3rem',
         display: 'flex',
         alignItems: 'center',
         gap: '8px'
       }}>
-        <span style={{ 
-          width: '28px', 
-          height: '28px', 
-          borderRadius: '50%', 
-          background: '#31b5fc', 
-          display: 'flex', 
-          alignItems: 'center', 
+        <span style={{
+          width: '28px',
+          height: '28px',
+          borderRadius: '50%',
+          background: '#31b5fc',
+          display: 'flex',
+          alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0
         }}>
@@ -979,8 +921,8 @@ interface PoorCardContentProps {
         </span>
         Ferramentas de Teste
       </h3>
-      <ul style={{ 
-        margin: '0', 
+      <ul style={{
+        margin: '0',
         paddingLeft: '1.2rem',
         fontSize: '0.95rem',
         color: '#444',
@@ -993,23 +935,23 @@ interface PoorCardContentProps {
       </ul>
     </div>
   </div>
-  
-  <h3 style={{ 
-    color: '#31b5fc', 
-    fontSize: '1.3rem', 
+
+  <h3 style={{
+    color: '#31b5fc',
+    fontSize: '1.3rem',
     marginBottom: '1rem',
     fontWeight: '600'
   }}>
     Exemplo de Teste
   </h3>
-  
-  <div style={{ 
+
+  <div style={{
     background: '#eef9ff',
     borderRadius: '8px',
     overflow: 'hidden',
     marginBottom: '1.5rem'
   }}>
-    <div style={{ 
+    <div style={{
       background: '#31b5fc',
       color: 'white',
       padding: '0.5rem 1rem',
@@ -1018,7 +960,7 @@ interface PoorCardContentProps {
     }}>
       src/components/Button/index.spec.tsx
     </div>
-    
+
 ```tsx
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
@@ -1061,8 +1003,8 @@ describe('Button', () => {
 });
 ```
   </div>
-  
-  <div style={{ 
+
+  <div style={{
     background: '#eef9ff',
     padding: '1.2rem',
     borderRadius: '8px',
@@ -1071,13 +1013,13 @@ describe('Button', () => {
     alignItems: 'flex-start',
     gap: '12px'
   }}>
-    <div style={{ 
-      width: '24px', 
-      height: '24px', 
-      borderRadius: '50%', 
-      background: '#31b5fc', 
-      display: 'flex', 
-      alignItems: 'center', 
+    <div style={{
+      width: '24px',
+      height: '24px',
+      borderRadius: '50%',
+      background: '#31b5fc',
+      display: 'flex',
+      alignItems: 'center',
       justifyContent: 'center',
       flexShrink: 0,
       marginTop: '2px'
@@ -1088,9 +1030,9 @@ describe('Button', () => {
         <path d="M12 8H12.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <p style={{ 
-      fontSize: '0.95rem', 
-      color: '#444', 
+    <p style={{
+      fontSize: '0.95rem',
+      color: '#444',
       margin: 0,
       lineHeight: '1.5'
     }}>
@@ -1110,19 +1052,19 @@ describe('Button', () => {
     boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
   }}
 >
-  <div style={{ 
-    display: 'flex', 
-    alignItems: 'center', 
-    marginBottom: '1.2rem' 
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '1.2rem'
   }}>
-    <div style={{ 
-      width: '36px', 
-      height: '36px', 
-      borderRadius: '50%', 
-      background: '#0046c0', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center', 
+    <div style={{
+      width: '36px',
+      height: '36px',
+      borderRadius: '50%',
+      background: '#0046c0',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       marginRight: '12px',
       flexShrink: 0
     }}>
@@ -1134,53 +1076,53 @@ describe('Button', () => {
         <path d="M10 9H9H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <h2 style={{ 
-      color: '#0046c0', 
-      margin: '0', 
+    <h2 style={{
+      color: '#0046c0',
+      margin: '0',
       fontSize: '1.8rem',
       fontWeight: '600'
     }}>
       Documentação
     </h2>
   </div>
-  
-  <p style={{ 
-    fontSize: '1.1rem', 
+
+  <p style={{
+    fontSize: '1.1rem',
     lineHeight: '1.6',
     color: '#333',
     marginBottom: '1.5rem'
   }}>
     Cada componente do <strong>Ocean Design System</strong> deve ser bem documentado para facilitar seu uso e manutenção. A documentação é mantida no Storybook, centralizada na pasta <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>.storybook/stories</code>.
   </p>
-  
-  <div style={{ 
-    display: 'grid', 
-    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
+
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
     gap: '1.5rem',
     marginBottom: '1.5rem'
   }}>
-    <div style={{ 
+    <div style={{
       background: 'white',
       padding: '1.5rem',
       borderRadius: '8px',
       boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
       border: '1px solid #e0f0ff'
     }}>
-      <h3 style={{ 
-        color: '#0046c0', 
-        margin: '0 0 1rem 0', 
+      <h3 style={{
+        color: '#0046c0',
+        margin: '0 0 1rem 0',
         fontSize: '1.3rem',
         display: 'flex',
         alignItems: 'center',
         gap: '8px'
       }}>
-        <span style={{ 
-          width: '28px', 
-          height: '28px', 
-          borderRadius: '50%', 
-          background: '#0046c0', 
-          display: 'flex', 
-          alignItems: 'center', 
+        <span style={{
+          width: '28px',
+          height: '28px',
+          borderRadius: '50%',
+          background: '#0046c0',
+          display: 'flex',
+          alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0
         }}>
@@ -1192,8 +1134,8 @@ describe('Button', () => {
         </span>
         Estrutura da Documentação
       </h3>
-      <ul style={{ 
-        margin: '0', 
+      <ul style={{
+        margin: '0',
         paddingLeft: '1.2rem',
         fontSize: '0.95rem',
         color: '#444',
@@ -1206,29 +1148,29 @@ describe('Button', () => {
         <li><strong>Acessibilidade</strong>: Considerações de acessibilidade</li>
       </ul>
     </div>
-    
-    <div style={{ 
+
+    <div style={{
       background: 'white',
       padding: '1.5rem',
       borderRadius: '8px',
       boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
       border: '1px solid #e0f0ff'
     }}>
-      <h3 style={{ 
-        color: '#0046c0', 
-        margin: '0 0 1rem 0', 
+      <h3 style={{
+        color: '#0046c0',
+        margin: '0 0 1rem 0',
         fontSize: '1.3rem',
         display: 'flex',
         alignItems: 'center',
         gap: '8px'
       }}>
-        <span style={{ 
-          width: '28px', 
-          height: '28px', 
-          borderRadius: '50%', 
-          background: '#0046c0', 
-          display: 'flex', 
-          alignItems: 'center', 
+        <span style={{
+          width: '28px',
+          height: '28px',
+          borderRadius: '50%',
+          background: '#0046c0',
+          display: 'flex',
+          alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0
         }}>
@@ -1240,8 +1182,8 @@ describe('Button', () => {
         </span>
         Organização no Storybook
       </h3>
-      <ul style={{ 
-        margin: '0', 
+      <ul style={{
+        margin: '0',
         paddingLeft: '1.2rem',
         fontSize: '0.95rem',
         color: '#444',
@@ -1254,8 +1196,8 @@ describe('Button', () => {
       </ul>
     </div>
   </div>
-  
-  <div style={{ 
+
+  <div style={{
     background: '#eef9ff',
     padding: '1.2rem',
     borderRadius: '8px',
@@ -1263,13 +1205,13 @@ describe('Button', () => {
     alignItems: 'flex-start',
     gap: '12px'
   }}>
-    <div style={{ 
-      width: '24px', 
-      height: '24px', 
-      borderRadius: '50%', 
-      background: '#0046c0', 
-      display: 'flex', 
-      alignItems: 'center', 
+    <div style={{
+      width: '24px',
+      height: '24px',
+      borderRadius: '50%',
+      background: '#0046c0',
+      display: 'flex',
+      alignItems: 'center',
       justifyContent: 'center',
       flexShrink: 0,
       marginTop: '2px'
@@ -1280,9 +1222,9 @@ describe('Button', () => {
         <path d="M12 12V20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <p style={{ 
-      fontSize: '0.95rem', 
-      color: '#444', 
+    <p style={{
+      fontSize: '0.95rem',
+      color: '#444',
       margin: 0,
       lineHeight: '1.5'
     }}>
@@ -1304,7 +1246,7 @@ describe('Button', () => {
     textAlign: 'center'
   }}
 >
-  <div 
+  <div
     style={{
       position: 'absolute',
       top: '15%',
@@ -1315,18 +1257,18 @@ describe('Button', () => {
       borderRadius: '50%'
     }}
   />
-  <h2 style={{ 
-    fontSize: '1.8rem', 
-    margin: '0 0 1rem 0', 
+  <h2 style={{
+    fontSize: '1.8rem',
+    margin: '0 0 1rem 0',
     fontWeight: 'bold',
     letterSpacing: '-0.5px',
     position: 'relative'
   }}>
     Contribua para o Ocean Design System
   </h2>
-  <p style={{ 
-    fontSize: '1.1rem', 
-    marginBottom: '0', 
+  <p style={{
+    fontSize: '1.1rem',
+    marginBottom: '0',
     maxWidth: '800px',
     lineHeight: '1.6',
     position: 'relative',
@@ -1351,7 +1293,7 @@ describe('Button', () => {
   }}
 >
   <p style={{ margin: 0 }}>
-    Ocean Design System &copy; {new Date().getFullYear()} | 
+    Ocean Design System &copy; {new Date().getFullYear()} |
     Desenvolvido com ❤️ para criar experiências consistentes e de alta qualidade
   </p>
 </div>

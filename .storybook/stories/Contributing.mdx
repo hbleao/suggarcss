@@ -1,73 +1,10 @@
 import { Meta } from '@storybook/blocks';
+import { BannerDOC } from '../components/Banner/index.jsx';
+
 
 <Meta title="Contribuindo" />
 
-<div
-  style={{
-    background: 'linear-gradient(135deg, #0046c0 0%, #31b5fc 100%)',
-    color: 'white',
-    padding: '3rem',
-    borderRadius: '12px',
-    marginBottom: '3rem',
-    boxShadow: '0 8px 24px rgba(0, 70, 192, 0.25)',
-    position: 'relative',
-    overflow: 'hidden',
-    minHeight: '280px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
-  }}
->
-  <div
-    style={{
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      width: '150px',
-      height: '150px',
-      background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)',
-      borderRadius: '50%',
-      transform: 'translate(30%, -30%)'
-    }}
-  />
-  <div
-    style={{
-      position: 'absolute',
-      bottom: 0,
-      left: '10%',
-      width: '120px',
-      height: '120px',
-      background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%)',
-      borderRadius: '50%',
-      transform: 'translate(-30%, 30%)'
-    }}
-  />
-
-  <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: '700' }}>
-    Contribuindo para o ocean
-  </h1>
-
-  <p style={{ fontSize: '1.2rem', maxWidth: '800px', lineHeight: '1.6' }}>
-    Como colaborar e contribuir com o ocean Design System
-  </p>
-</div>
-
-<div
-  style={{
-    background: '#f8fbff',
-    border: '1px solid #d0e8fd',
-    borderLeft: '5px solid #0046c0',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2.5rem',
-    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
-  }}
->
-  <h2 style={{ color: '#0046c0', marginTop: 0 }}>🍬 Sobre o ocean</h2>
-  <p style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
-    O ocean é um Design System construído para criar experiências digitais consistentes e de alta qualidade. Sua contribuição é fundamental para o crescimento e evolução do sistema.
-  </p>
-</div>
+<BannerDOC title="Contribuindo para o ocean" description="O ocean é um Design System construído para criar experiências digitais consistentes e de alta qualidade. Sua contribuição é fundamental para o crescimento e evolução do sistema." />
 
 <div
   style={{

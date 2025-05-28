@@ -1,68 +1,9 @@
 import { Meta } from '@storybook/blocks';
+import { BannerDOC } from '../components/Banner/index.jsx';
 
 <Meta title="Introdução" />
 
-<div
-  style={{
-    background: 'linear-gradient(135deg, #0046c0 0%, #31b5fc 100%)',
-    color: 'white',
-    padding: '3rem',
-    borderRadius: '12px',
-    marginBottom: '3rem',
-    boxShadow: '0 8px 24px rgba(0, 70, 192, 0.25)',
-    position: 'relative',
-    overflow: 'hidden',
-    minHeight: '280px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
-  }}
->
-  <div 
-    style={{
-      position: 'absolute',
-      top: '15%',
-      right: '8%',
-      width: '180px',
-      height: '180px',
-      background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)',
-      borderRadius: '50%'
-    }}
-  />
-  <div 
-    style={{
-      position: 'absolute',
-      bottom: '10%',
-      left: '15%',
-      width: '120px',
-      height: '120px',
-      background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)',
-      borderRadius: '50%'
-    }}
-  />
-  <h1 style={{ 
-    fontSize: '3.2rem', 
-    margin: '0 0 1.2rem 0', 
-    fontWeight: 'bold',
-    letterSpacing: '-0.5px',
-    position: 'relative',
-    textShadow: '0 2px 10px rgba(0, 0, 0, 0.15)'
-  }}>
-    Ocean Design System
-  </h1>
-  <p style={{ 
-    fontSize: '1.4rem', 
-    marginBottom: '0', 
-    maxWidth: '800px',
-    lineHeight: '1.6',
-    position: 'relative',
-    opacity: '0.9',
-    fontWeight: '300',
-    letterSpacing: '0.5px'
-  }}>
-    A biblioteca de componentes React da Porto Seguro
-  </p>
-</div>
+<BannerDOC title=" Ocean Design System" description="A biblioteca de componentes React da Porto Seguro." />
 
 <div
   style={{
@@ -75,19 +16,19 @@ import { Meta } from '@storybook/blocks';
     boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
   }}
 >
-  <div style={{ 
-    display: 'flex', 
-    alignItems: 'center', 
-    marginBottom: '1.2rem' 
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '1.2rem'
   }}>
-    <div style={{ 
-      width: '36px', 
-      height: '36px', 
-      borderRadius: '50%', 
-      background: '#0046c0', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center', 
+    <div style={{
+      width: '36px',
+      height: '36px',
+      borderRadius: '50%',
+      background: '#0046c0',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       marginRight: '12px',
       flexShrink: 0
     }}>
@@ -95,17 +36,17 @@ import { Meta } from '@storybook/blocks';
         <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 7H13V13H11V7ZM11 15H13V17H11V15Z" fill="white"/>
       </svg>
     </div>
-    <h2 style={{ 
-      color: '#0046c0', 
-      margin: '0', 
+    <h2 style={{
+      color: '#0046c0',
+      margin: '0',
       fontSize: '1.8rem',
       fontWeight: '600'
     }}>
       Visão Geral
     </h2>
   </div>
-  <p style={{ 
-    fontSize: '1.1rem', 
+  <p style={{
+    fontSize: '1.1rem',
     lineHeight: '1.6',
     color: '#333',
     margin: 0
@@ -125,19 +66,19 @@ import { Meta } from '@storybook/blocks';
     boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
   }}
 >
-  <div style={{ 
-    display: 'flex', 
-    alignItems: 'center', 
-    marginBottom: '1.2rem' 
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '1.2rem'
   }}>
-    <div style={{ 
-      width: '36px', 
-      height: '36px', 
-      borderRadius: '50%', 
-      background: '#1381e2', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center', 
+    <div style={{
+      width: '36px',
+      height: '36px',
+      borderRadius: '50%',
+      background: '#1381e2',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       marginRight: '12px',
       flexShrink: 0
     }}>
@@ -148,38 +89,38 @@ import { Meta } from '@storybook/blocks';
         <path d="M15 9H17V17H15V9Z" fill="white"/>
       </svg>
     </div>
-    <h2 style={{ 
-      color: '#1381e2', 
-      margin: '0', 
+    <h2 style={{
+      color: '#1381e2',
+      margin: '0',
       fontSize: '1.8rem',
       fontWeight: '600'
     }}>
       Principais Recursos
     </h2>
   </div>
-  
-  <div style={{ 
-    display: 'grid', 
+
+  <div style={{
+    display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
     gap: '1.5rem',
     marginTop: '1.5rem'
   }}>
-    <div style={{ 
-      display: 'flex', 
+    <div style={{
+      display: 'flex',
       alignItems: 'flex-start',
       padding: '1rem',
       background: '#eef9ff',
       borderRadius: '8px',
       boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
     }}>
-      <div style={{ 
-        width: '28px', 
-        height: '28px', 
-        borderRadius: '50%', 
-        background: '#0046c0', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
+      <div style={{
+        width: '28px',
+        height: '28px',
+        borderRadius: '50%',
+        background: '#0046c0',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         marginRight: '12px',
         flexShrink: 0
       }}>
@@ -192,23 +133,23 @@ import { Meta } from '@storybook/blocks';
         <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Uma coleção completa de componentes React prontos para uso</p>
       </div>
     </div>
-    
-    <div style={{ 
-      display: 'flex', 
+
+    <div style={{
+      display: 'flex',
       alignItems: 'flex-start',
       padding: '1rem',
       background: '#eef9ff',
       borderRadius: '8px',
       boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
     }}>
-      <div style={{ 
-        width: '28px', 
-        height: '28px', 
-        borderRadius: '50%', 
-        background: '#31b5fc', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
+      <div style={{
+        width: '28px',
+        height: '28px',
+        borderRadius: '50%',
+        background: '#31b5fc',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         marginRight: '12px',
         flexShrink: 0
       }}>
@@ -221,23 +162,23 @@ import { Meta } from '@storybook/blocks';
         <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Todos os componentes são totalmente responsivos e adaptáveis a diferentes tamanhos de tela</p>
       </div>
     </div>
-    
-    <div style={{ 
-      display: 'flex', 
+
+    <div style={{
+      display: 'flex',
       alignItems: 'flex-start',
       padding: '1rem',
       background: '#eef9ff',
       borderRadius: '8px',
       boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
     }}>
-      <div style={{ 
-        width: '28px', 
-        height: '28px', 
-        borderRadius: '50%', 
-        background: '#0046c0', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
+      <div style={{
+        width: '28px',
+        height: '28px',
+        borderRadius: '50%',
+        background: '#0046c0',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         marginRight: '12px',
         flexShrink: 0
       }}>
@@ -252,23 +193,23 @@ import { Meta } from '@storybook/blocks';
         <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Componentes desenvolvidos seguindo as diretrizes WCAG para garantir acessibilidade</p>
       </div>
     </div>
-    
-    <div style={{ 
-      display: 'flex', 
+
+    <div style={{
+      display: 'flex',
       alignItems: 'flex-start',
       padding: '1rem',
       background: '#eef9ff',
       borderRadius: '8px',
       boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
     }}>
-      <div style={{ 
-        width: '28px', 
-        height: '28px', 
-        borderRadius: '50%', 
-        background: '#66cafc', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
+      <div style={{
+        width: '28px',
+        height: '28px',
+        borderRadius: '50%',
+        background: '#66cafc',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         marginRight: '12px',
         flexShrink: 0
       }}>
@@ -281,23 +222,23 @@ import { Meta } from '@storybook/blocks';
         <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Suporte a diferentes temas e variantes para os diversos negócios da Porto</p>
       </div>
     </div>
-    
-    <div style={{ 
-      display: 'flex', 
+
+    <div style={{
+      display: 'flex',
       alignItems: 'flex-start',
       padding: '1rem',
       background: '#eef9ff',
       borderRadius: '8px',
       boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
     }}>
-      <div style={{ 
-        width: '28px', 
-        height: '28px', 
-        borderRadius: '50%', 
-        background: '#1381e2', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
+      <div style={{
+        width: '28px',
+        height: '28px',
+        borderRadius: '50%',
+        background: '#1381e2',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         marginRight: '12px',
         flexShrink: 0
       }}>
@@ -311,23 +252,23 @@ import { Meta } from '@storybook/blocks';
         <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Sistema tipográfico padronizado para manter a consistência visual</p>
       </div>
     </div>
-    
-    <div style={{ 
-      display: 'flex', 
+
+    <div style={{
+      display: 'flex',
       alignItems: 'flex-start',
       padding: '1rem',
       background: '#eef9ff',
       borderRadius: '8px',
       boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
     }}>
-      <div style={{ 
-        width: '28px', 
-        height: '28px', 
-        borderRadius: '50%', 
-        background: '#31b5fc', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
+      <div style={{
+        width: '28px',
+        height: '28px',
+        borderRadius: '50%',
+        background: '#31b5fc',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         marginRight: '12px',
         flexShrink: 0
       }}>
@@ -342,23 +283,23 @@ import { Meta } from '@storybook/blocks';
         <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Sistema de grid flexível e responsivo para layouts consistentes</p>
       </div>
     </div>
-    
-    <div style={{ 
-      display: 'flex', 
+
+    <div style={{
+      display: 'flex',
       alignItems: 'flex-start',
       padding: '1rem',
       background: '#eef9ff',
       borderRadius: '8px',
       boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
     }}>
-      <div style={{ 
-        width: '28px', 
-        height: '28px', 
-        borderRadius: '50%', 
-        background: '#66cafc', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
+      <div style={{
+        width: '28px',
+        height: '28px',
+        borderRadius: '50%',
+        background: '#66cafc',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         marginRight: '12px',
         flexShrink: 0
       }}>
@@ -385,19 +326,19 @@ import { Meta } from '@storybook/blocks';
     boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
   }}
 >
-  <div style={{ 
-    display: 'flex', 
-    alignItems: 'center', 
-    marginBottom: '1.2rem' 
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '1.2rem'
   }}>
-    <div style={{ 
-      width: '36px', 
-      height: '36px', 
-      borderRadius: '50%', 
-      background: '#0046c0', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center', 
+    <div style={{
+      width: '36px',
+      height: '36px',
+      borderRadius: '50%',
+      background: '#0046c0',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       marginRight: '12px',
       flexShrink: 0
     }}>
@@ -405,19 +346,19 @@ import { Meta } from '@storybook/blocks';
         <path d="M19.5 13.5L12 21L4.5 13.5L6 12L11.25 17.25V3H12.75V17.25L18 12L19.5 13.5Z" fill="white"/>
       </svg>
     </div>
-    <h2 style={{ 
-      color: '#0046c0', 
-      margin: '0', 
+    <h2 style={{
+      color: '#0046c0',
+      margin: '0',
       fontSize: '1.8rem',
       fontWeight: '600'
     }}>
       Instalação
     </h2>
   </div>
-  
+
   <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
     <div style={{ flex: '1', minWidth: '250px' }}>
-      <p style={{ 
+      <p style={{
         marginTop: 0,
         marginBottom: '1rem',
         fontSize: '1.05rem',
@@ -426,14 +367,14 @@ import { Meta } from '@storybook/blocks';
       }}>
         Usando npm:
       </p>
-      
+
 ```bash
 npm install @porto/js-library-corp-hubv-porto-ocean
 ```
     </div>
-    
+
     <div style={{ flex: '1', minWidth: '250px' }}>
-      <p style={{ 
+      <p style={{
         marginTop: 0,
         marginBottom: '1rem',
         fontSize: '1.05rem',
@@ -442,7 +383,7 @@ npm install @porto/js-library-corp-hubv-porto-ocean
       }}>
         Usando yarn:
       </p>
-      
+
 ```bash
 yarn add @porto/js-library-corp-hubv-porto-ocean
 ```
@@ -461,19 +402,19 @@ yarn add @porto/js-library-corp-hubv-porto-ocean
     boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
   }}
 >
-  <div style={{ 
-    display: 'flex', 
-    alignItems: 'center', 
-    marginBottom: '1.2rem' 
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '1.2rem'
   }}>
-    <div style={{ 
-      width: '36px', 
-      height: '36px', 
-      borderRadius: '50%', 
-      background: '#1381e2', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center', 
+    <div style={{
+      width: '36px',
+      height: '36px',
+      borderRadius: '50%',
+      background: '#1381e2',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       marginRight: '12px',
       flexShrink: 0
     }}>
@@ -484,23 +425,23 @@ yarn add @porto/js-library-corp-hubv-porto-ocean
         <path d="M6 14.25H12V15.75H6V14.25Z" fill="white"/>
       </svg>
     </div>
-    <h2 style={{ 
-      color: '#1381e2', 
-      margin: '0', 
+    <h2 style={{
+      color: '#1381e2',
+      margin: '0',
       fontSize: '1.8rem',
       fontWeight: '600'
     }}>
       Uso Básico
     </h2>
   </div>
-  
-  <div style={{ 
-    padding: '1.5rem', 
-    background: '#eef9ff', 
+
+  <div style={{
+    padding: '1.5rem',
+    background: '#eef9ff',
     borderRadius: '8px',
     marginBottom: '1rem'
   }}>
-  
+
 ```jsx
 import { Button, Card, Header } from '@porto/js-library-corp-hubv-porto-ocean';
 import '@porto/js-library-corp-hubv-porto-ocean/dist/styles.css';
@@ -519,10 +460,10 @@ function App() {
 }
 ```
   </div>
-  
-  <p style={{ 
-    fontSize: '0.95rem', 
-    color: '#555', 
+
+  <p style={{
+    fontSize: '0.95rem',
+    color: '#555',
     margin: 0,
     fontStyle: 'italic'
   }}>
@@ -541,19 +482,19 @@ function App() {
     boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
   }}
 >
-  <div style={{ 
-    display: 'flex', 
-    alignItems: 'center', 
-    marginBottom: '1.2rem' 
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '1.2rem'
   }}>
-    <div style={{ 
-      width: '36px', 
-      height: '36px', 
-      borderRadius: '50%', 
-      background: '#31b5fc', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center', 
+    <div style={{
+      width: '36px',
+      height: '36px',
+      borderRadius: '50%',
+      background: '#31b5fc',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       marginRight: '12px',
       flexShrink: 0
     }}>
@@ -563,135 +504,135 @@ function App() {
         <path d="M9 16H15V18H9V16Z" fill="white"/>
       </svg>
     </div>
-    <h2 style={{ 
-      color: '#31b5fc', 
-      margin: '0', 
+    <h2 style={{
+      color: '#31b5fc',
+      margin: '0',
       fontSize: '1.8rem',
       fontWeight: '600'
     }}>
       Estrutura da Documentação
     </h2>
   </div>
-  
-  <div style={{ 
-    display: 'grid', 
+
+  <div style={{
+    display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
     gap: '1rem',
     marginTop: '1rem'
   }}>
-    <div style={{ 
-      padding: '1rem', 
-      background: '#eef9ff', 
+    <div style={{
+      padding: '1rem',
+      background: '#eef9ff',
       borderRadius: '8px',
       borderLeft: '3px solid #0046c0'
     }}>
-      <h3 style={{ 
-        margin: '0 0 0.5rem 0', 
-        fontSize: '1.1rem', 
+      <h3 style={{
+        margin: '0 0 0.5rem 0',
+        fontSize: '1.1rem',
         color: '#0046c0',
         fontWeight: '600'
       }}>
         Introdução
       </h3>
-      <p style={{ 
-        margin: 0, 
-        fontSize: '0.95rem', 
+      <p style={{
+        margin: 0,
+        fontSize: '0.95rem',
         color: '#444',
         lineHeight: '1.4'
       }}>
         Visão geral e conceitos básicos
       </p>
     </div>
-    
-    <div style={{ 
-      padding: '1rem', 
-      background: '#eef9ff', 
+
+    <div style={{
+      padding: '1rem',
+      background: '#eef9ff',
       borderRadius: '8px',
       borderLeft: '3px solid #1381e2'
     }}>
-      <h3 style={{ 
-        margin: '0 0 0.5rem 0', 
-        fontSize: '1.1rem', 
+      <h3 style={{
+        margin: '0 0 0.5rem 0',
+        fontSize: '1.1rem',
         color: '#1381e2',
         fontWeight: '600'
       }}>
         Componentes
       </h3>
-      <p style={{ 
-        margin: 0, 
-        fontSize: '0.95rem', 
+      <p style={{
+        margin: 0,
+        fontSize: '0.95rem',
         color: '#444',
         lineHeight: '1.4'
       }}>
         Documentação detalhada de cada componente
       </p>
     </div>
-    
-    <div style={{ 
-      padding: '1rem', 
-      background: '#eef9ff', 
+
+    <div style={{
+      padding: '1rem',
+      background: '#eef9ff',
       borderRadius: '8px',
       borderLeft: '3px solid #66cafc'
     }}>
-      <h3 style={{ 
-        margin: '0 0 0.5rem 0', 
-        fontSize: '1.1rem', 
+      <h3 style={{
+        margin: '0 0 0.5rem 0',
+        fontSize: '1.1rem',
         color: '#66cafc',
         fontWeight: '600'
       }}>
         Hooks
       </h3>
-      <p style={{ 
-        margin: 0, 
-        fontSize: '0.95rem', 
+      <p style={{
+        margin: 0,
+        fontSize: '0.95rem',
         color: '#444',
         lineHeight: '1.4'
       }}>
         Documentação dos hooks personalizados
       </p>
     </div>
-    
-    <div style={{ 
-      padding: '1rem', 
-      background: '#eef9ff', 
+
+    <div style={{
+      padding: '1rem',
+      background: '#eef9ff',
       borderRadius: '8px',
       borderLeft: '3px solid #31b5fc'
     }}>
-      <h3 style={{ 
-        margin: '0 0 0.5rem 0', 
-        fontSize: '1.1rem', 
+      <h3 style={{
+        margin: '0 0 0.5rem 0',
+        fontSize: '1.1rem',
         color: '#31b5fc',
         fontWeight: '600'
       }}>
         Fundamentos
       </h3>
-      <p style={{ 
-        margin: 0, 
-        fontSize: '0.95rem', 
+      <p style={{
+        margin: 0,
+        fontSize: '0.95rem',
         color: '#444',
         lineHeight: '1.4'
       }}>
         Princípios de design, tipografia, cores e grid
       </p>
     </div>
-    
-    <div style={{ 
-      padding: '1rem', 
-      background: '#eef9ff', 
+
+    <div style={{
+      padding: '1rem',
+      background: '#eef9ff',
       borderRadius: '8px',
       borderLeft: '3px solid #0046c0'
     }}>
-      <h3 style={{ 
-        margin: '0 0 0.5rem 0', 
-        fontSize: '1.1rem', 
+      <h3 style={{
+        margin: '0 0 0.5rem 0',
+        fontSize: '1.1rem',
         color: '#0046c0',
         fontWeight: '600'
       }}>
         Padrões Técnicos
       </h3>
-      <p style={{ 
-        margin: 0, 
-        fontSize: '0.95rem', 
+      <p style={{
+        margin: 0,
+        fontSize: '0.95rem',
         color: '#444',
         lineHeight: '1.4'
       }}>
@@ -713,7 +654,7 @@ function App() {
     overflow: 'hidden'
   }}
 >
-  <div 
+  <div
     style={{
       position: 'absolute',
       top: '20%',
@@ -724,19 +665,19 @@ function App() {
       borderRadius: '50%'
     }}
   />
-  
-  <h2 style={{ 
-    fontSize: '2rem', 
-    margin: '0 0 1rem 0', 
+
+  <h2 style={{
+    fontSize: '2rem',
+    margin: '0 0 1rem 0',
     fontWeight: 'bold',
     position: 'relative'
   }}>
     Contribuição
   </h2>
-  
-  <p style={{ 
-    fontSize: '1.1rem', 
-    marginBottom: '1.5rem', 
+
+  <p style={{
+    fontSize: '1.1rem',
+    marginBottom: '1.5rem',
     maxWidth: '800px',
     lineHeight: '1.6',
     position: 'relative',
@@ -744,9 +685,9 @@ function App() {
   }}>
     O <strong>Ocean Design System</strong> é um projeto em constante evolução. Contribuições são bem-vindas através do repositório oficial.
   </p>
-  
-  <a 
-    href="./contributing.md" 
+
+  <a
+    href="./contributing.md"
     style={{
       display: 'inline-block',
       padding: '0.75rem 1.5rem',
