@@ -1,286 +1,592 @@
 import { Meta, Canvas, Story } from '@storybook/blocks';
 import * as TypographyStories from './Typography.stories';
+import { 
+  BannerDOC, 
+  ContentCard, 
+  SectionTitle, 
+  InfoBox, 
+  CodeBlock, 
+  FeatureGrid, 
+  FeatureItem,
+  ExampleBlock
+} from '../../components';
 
 <Meta title="Components/Typography" of={TypographyStories} />
 
-# Typography
-
-O componente Typography é usado para exibir texto de forma consistente em toda a aplicação, seguindo a hierarquia tipográfica definida no sistema de design.
-
-## Exemplos Interativos
-
-### Variantes de Título
-<Canvas>
-  <Story of={TypographyStories.TitleVariants} />
-</Canvas>
-
-### Variantes de Corpo de Texto
-<Canvas>
-  <Story of={TypographyStories.BodyVariants} />
-</Canvas>
-
-### Outras Variantes
-<Canvas>
-  <Story of={TypographyStories.OtherVariants} />
-</Canvas>
-
-### Pesos de Fonte
-<Canvas>
-  <Story of={TypographyStories.WeightVariants} />
-</Canvas>
-
-### Estilos de Fonte
-<Canvas>
-  <Story of={TypographyStories.FontStyleVariants} />
-</Canvas>
-
-### Variantes de Cor
-<Canvas>
-  <Story of={TypographyStories.ColorVariants} />
-</Canvas>
-
-### Combinações Personalizadas
-<Canvas>
-  <Story of={TypographyStories.CustomCombinations} />
-</Canvas>
-
-## Importação
-
-```jsx
-import { Typography } from '@porto/js-library-corp-hubv-porto-ocean';
-```
-
-## Uso Básico
-
-```jsx
-<Typography variant="title1">Título Principal</Typography>
-<Typography variant="body1">Este é um texto de corpo padrão.</Typography>
-```
-
-## Variantes
-
-O Typography suporta diferentes variantes para representar diferentes níveis de hierarquia:
-
-```jsx
-// Títulos
-<Typography variant="title1">Título 1</Typography>
-<Typography variant="title2">Título 2</Typography>
-<Typography variant="title3">Título 3</Typography>
-<Typography variant="title4">Título 4</Typography>
-<Typography variant="title5">Título 5</Typography>
-
-// Corpo de texto
-<Typography variant="body1">Corpo de texto principal</Typography>
-<Typography variant="body2">Corpo de texto secundário</Typography>
-
-// Outros
-<Typography variant="caption">Texto de legenda</Typography>
-<Typography variant="overline">TEXTO OVERLINE</Typography>
-```
-
-## Cores
-
-O Typography suporta diferentes cores para o texto:
-
-```jsx
-// Cor neutra padrão (escura)
-<Typography color="neutral-900">Texto em cor neutra escura</Typography>
-
-// Cor neutra clara (para fundos escuros)
-<Typography color="neutral-0">Texto em cor neutra clara</Typography>
-
-// Cor primária da marca
-<Typography color="brand-primary">Texto em cor primária</Typography>
-
-// Cor secundária da marca
-<Typography color="brand-secondary">Texto em cor secundária</Typography>
-
-// Outras cores
-<Typography color="neutral-700">Texto em cinza médio</Typography>
-<Typography color="error">Texto de erro</Typography>
-<Typography color="success">Texto de sucesso</Typography>
-```
-
-## Pesos de Fonte
-
-O Typography suporta diferentes pesos de fonte:
-
-```jsx
-// Peso regular (padrão)
-<Typography weight="regular">Texto com peso regular</Typography>
-
-// Peso médio
-<Typography weight="medium">Texto com peso médio</Typography>
-
-// Peso negrito
-<Typography weight="bold">Texto em negrito</Typography>
-```
-
-## Elemento HTML
-
-Você pode especificar qual elemento HTML deve ser renderizado:
-
-```jsx
-// Renderiza como um h1 (padrão para title1)
-<Typography variant="title1" as="h1">Título Principal</Typography>
-
-// Renderiza como um h2
-<Typography variant="title1" as="h2">Título Principal como h2</Typography>
-
-// Renderiza como um parágrafo (padrão para body1)
-<Typography variant="body1" as="p">Parágrafo de texto</Typography>
-
-// Renderiza como um span
-<Typography variant="body1" as="span">Texto inline</Typography>
-
-// Outros elementos
-<Typography variant="body1" as="label">Label de formulário</Typography>
-<Typography variant="caption" as="figcaption">Legenda de figura</Typography>
-```
-
-## Props
-
-| Prop | Tipo | Padrão | Descrição |
-|------|------|--------|-----------|
-| `variant` | `"title1" \| "title2" \| "title3" \| "title4" \| "title5" \| "body1" \| "body2" \| "caption" \| "overline"` | `"title1"` | Variante tipográfica |
-| `as` | `string` | Depende da variante | Elemento HTML a ser renderizado |
-| `color` | `string` | `"neutral-900"` | Cor do texto |
-| `weight` | `"regular" \| "medium" \| "bold"` | `"regular"` | Peso da fonte |
-| `children` | `ReactNode` | - | Conteúdo do texto |
-| `...restProps` | `HTMLAttributes<HTMLElement>` | - | Todas as props nativas do elemento HTML |
-
-## Combinações
-
-Você pode combinar diferentes propriedades para criar estilos tipográficos personalizados:
-
-```jsx
-<Typography 
-  variant="title1" 
-  weight="bold" 
-  color="brand-primary"
-  style={{ letterSpacing: '0.5px' }}
->
-  Título personalizado
-</Typography>
-```
-
-## Alinhamento de Texto
-
-O componente Typography suporta diferentes alinhamentos de texto:
-
-```jsx
-// Alinhamento à esquerda (padrão)
-<Typography style={{ textAlign: 'left' }}>Texto alinhado à esquerda</Typography>
-
-// Alinhamento ao centro
-<Typography style={{ textAlign: 'center' }}>Texto alinhado ao centro</Typography>
-
-// Alinhamento à direita
-<Typography style={{ textAlign: 'right' }}>Texto alinhado à direita</Typography>
-
-// Alinhamento justificado
-<Typography style={{ textAlign: 'justify' }}>
-  Texto justificado que se estende por várias linhas para demonstrar 
-  como o alinhamento justificado distribui o texto uniformemente.
-</Typography>
-```
-
-## Truncamento e Quebra de Linha
-
-```jsx
-// Texto truncado com elipse
-<Typography style={{ 
-  whiteSpace: 'nowrap', 
-  overflow: 'hidden', 
-  textOverflow: 'ellipsis',
-  maxWidth: '200px'
-}}>
-  Este é um texto muito longo que será truncado quando exceder o tamanho máximo disponível.
-</Typography>
-
-// Quebra de palavra
-<Typography style={{ wordBreak: 'break-word' }}>
-  Textomuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuitolongosemespaçosquequebraráquandonecessário
-</Typography>
-```
-
-## Exemplos
-
-### Exemplo Básico
-
-```jsx
-<Typography />
-```
-
-### Exemplo com Props
-
-```jsx
-<Typography 
-  // Adicione props específicas do componente aqui
+<BannerDOC 
+  title="Typography" 
+  description="O componente Typography fornece um sistema tipográfico consistente para toda a aplicação, garantindo legibilidade e hierarquia visual." 
 />
-``` de Uso
 
-### Cabeçalho de Página
+<ContentCard 
+  title="Visão Geral"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 7H13V13H11V7ZM11 15H13V17H11V15Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ 
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    O sistema tipográfico do Ocean foi projetado para garantir legibilidade, acessibilidade e hierarquia visual em todas as aplicações. O componente Typography encapsula as melhores práticas de tipografia e permite a aplicação consistente de estilos de texto em toda a interface.
+  </p>
+</ContentCard>
 
+<SectionTitle>Exemplos Interativos</SectionTitle>
+
+<ExampleBlock 
+  title="Variantes de Tipografia" 
+  preview={<Canvas><Story of={TypographyStories.AllVariants} /></Canvas>}
+>
+  <CodeBlock>
 ```jsx
-<div className="page-header">
-  <Typography variant="title1" weight="bold">
-    Título da Página
+// Exemplos de variantes tipográficas
+<Typography as="h1">Heading 1</Typography>
+<Typography as="h2">Heading 2</Typography>
+<Typography as="h3">Heading 3</Typography>
+<Typography as="h4">Heading 4</Typography>
+<Typography as="h5">Heading 5</Typography>
+<Typography as="h6">Heading 6</Typography>
+<Typography as="p">Parágrafo normal</Typography>
+<Typography as="span">Texto em span</Typography>
+<Typography as="p" variant="body2">Corpo de texto secundário</Typography>
+<Typography as="p" variant="caption">Texto de legenda</Typography>
+```
+  </CodeBlock>
+</ExampleBlock>
+
+<ContentCard 
+  title="Hierarquia Tipográfica"
+  borderColor="#1381e2"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 18H14V16H10V18ZM3 6V8H21V6H3ZM6 13H18V11H6V13Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ 
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    marginBottom: '1.5rem'
+  }}>
+    A hierarquia tipográfica ajuda os usuários a entenderem a estrutura e a importância relativa das informações apresentadas:
+  </p>
+
+  <ExampleBlock 
+    preview={
+      <Canvas>
+        <Story of={TypographyStories.HeadingVariants} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
+```jsx
+// Hierarquia de títulos
+<Typography as="h1">Heading 1 - Título principal da página</Typography>
+<Typography as="h2">Heading 2 - Título de seção</Typography>
+<Typography as="h3">Heading 3 - Subtítulo de seção</Typography>
+<Typography as="h4">Heading 4 - Título de card ou componente</Typography>
+<Typography as="h5">Heading 5 - Subtítulo de componente</Typography>
+<Typography as="h6">Heading 6 - Título menor para conteúdo específico</Typography>
+```
+    </CodeBlock>
+  </ExampleBlock>
+
+  <FeatureGrid>
+    <InfoBox
+      title="Títulos (h1-h6)"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Os títulos estabelecem a hierarquia visual e estrutural do conteúdo. O Ocean oferece seis níveis de títulos, cada um com tamanho, peso e espaçamento específicos.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Corpo de Texto"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        O corpo de texto é otimizado para legibilidade em blocos de conteúdo. Disponível em duas variantes: body1 (padrão) e body2 (ligeiramente menor).
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Texto Utilitário"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Inclui variantes como caption (para legendas), overline (para rótulos pequenos acima de conteúdo) e subtitle (para subtítulos).
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
+
+<ContentCard 
+  title="Estilos de Texto"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" fill="white"/>
+    </svg>
+  }
+>
+  <ExampleBlock 
+    preview={
+      <Canvas>
+        <Story of={TypographyStories.TextStyles} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
+```jsx
+// Estilos de texto
+<Typography as="p">Texto normal</Typography>
+<Typography as="p" bold>Texto em negrito</Typography>
+<Typography as="p" italic>Texto em itálico</Typography>
+<Typography as="p" underline>Texto sublinhado</Typography>
+<Typography as="p" color="primary">Texto com cor primária</Typography>
+<Typography as="p" color="secondary">Texto com cor secundária</Typography>
+<Typography as="p" color="error">Texto com cor de erro</Typography>
+<Typography as="p" align="center">Texto centralizado</Typography>
+<Typography as="p" truncate>Texto muito longo que será truncado com reticências quando exceder o espaço disponível...</Typography>
+```
+    </CodeBlock>
+  </ExampleBlock>
+
+  <FeatureGrid>
+    <InfoBox
+      title="Peso da Fonte"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        O Ocean oferece diferentes pesos de fonte para criar ênfase e hierarquia. Use a propriedade <code>bold</code> para texto em negrito ou <code>fontWeight</code> para valores específicos.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Estilo da Fonte"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Use <code>italic</code> para texto em itálico, útil para ênfase ou para termos específicos. Use <code>underline</code> para texto sublinhado, geralmente reservado para links.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Cores de Texto"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        O Ocean oferece um conjunto de cores semânticas para texto, incluindo cores primárias, secundárias, de sucesso, erro, aviso e informação.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Alinhamento"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Controle o alinhamento do texto com a propriedade <code>align</code>, que aceita valores como "left", "center", "right" e "justify".
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
+
+<ContentCard 
+  title="Responsividade"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 8H8V4H4V8ZM10 20H14V16H10V20ZM4 20H8V16H4V20ZM4 14H8V10H4V14ZM10 14H14V10H10V14ZM16 4V8H20V4H16ZM10 8H14V4H10V8ZM16 14H20V10H16V14ZM16 20H20V16H16V20Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ 
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    marginBottom: '1.5rem'
+  }}>
+    O sistema tipográfico do Ocean é totalmente responsivo, ajustando-se automaticamente a diferentes tamanhos de tela:
+  </p>
+
+  <ExampleBlock 
+    preview={
+      <Canvas>
+        <Story of={TypographyStories.ResponsiveTypography} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
+```jsx
+// Tipografia responsiva
+<Typography 
+  as="h1" 
+  responsiveSize={{
+    xs: '1.5rem',
+    sm: '1.8rem',
+    md: '2.2rem',
+    lg: '2.5rem',
+    xl: '3rem'
+  }}
+>
+  Título Responsivo
+</Typography>
+
+<Typography 
+  as="p" 
+  responsiveSize={{
+    xs: '0.875rem',
+    sm: '1rem',
+    md: '1.1rem',
+    lg: '1.2rem'
+  }}
+>
+  Parágrafo com tamanho responsivo que se ajusta a diferentes breakpoints.
+</Typography>
+```
+    </CodeBlock>
+  </ExampleBlock>
+
+  <div style={{
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    padding: '1rem',
+    background: '#eef9ff',
+    borderRadius: '8px',
+    borderLeft: '3px solid #31b5fc',
+    marginTop: '1.5rem'
+  }}>
+    <strong>Dica:</strong> Para a maioria dos casos, os tamanhos responsivos padrão do Ocean são suficientes. Use a propriedade <code>responsiveSize</code> apenas quando precisar de controle mais granular sobre o comportamento responsivo.
+  </div>
+</ContentCard>
+
+<ContentCard 
+  title="Casos de Uso Comuns"
+  borderColor="#1381e2"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 4v2.67l-1 1-1-1V4h2m7 7v2h-2.67l-1-1 1-1H20M6.67 11l1 1-1 1H4v-2h2.67M12 16.33l1 1V20h-2v-2.67l1-1M15 2H9v5.5l3 3 3-3V2zm7 7h-5.5l-3 3 3 3H22V9zM7.5 9H2v6h5.5l3-3-3-3zm4.5 4.5l-3 3V22h6v-5.5l-3-3z" fill="white"/>
+    </svg>
+  }
+>
+  <ExampleBlock 
+    title="Página de Produto" 
+    preview={
+      <Canvas>
+        <Story of={TypographyStories.ProductPage} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
+```jsx
+// Exemplo de uso em uma página de produto
+<div style={{ maxWidth: '600px' }}>
+  <Typography as="h1" color="primary">Seguro Auto</Typography>
+  
+  <Typography as="h4" color="secondary" style={{ marginTop: '8px', marginBottom: '24px' }}>
+    Proteção completa para seu veículo
   </Typography>
-  <Typography variant="body1" color="neutral-700">
-    Descrição ou subtítulo da página que fornece contexto adicional.
+  
+  <Typography as="p" style={{ marginBottom: '16px' }}>
+    O Seguro Auto da Porto oferece proteção completa para seu veículo, com coberturas 
+    personalizadas de acordo com suas necessidades.
+  </Typography>
+  
+  <Typography as="h3" style={{ marginTop: '32px', marginBottom: '16px' }}>
+    Principais Coberturas
+  </Typography>
+  
+  <Typography as="p" variant="body2" style={{ marginBottom: '8px' }}>
+    • Cobertura contra colisão, incêndio, roubo e furto
+  </Typography>
+  <Typography as="p" variant="body2" style={{ marginBottom: '8px' }}>
+    • Assistência 24 horas em todo o território nacional
+  </Typography>
+  <Typography as="p" variant="body2" style={{ marginBottom: '8px' }}>
+    • Carro reserva por até 30 dias
+  </Typography>
+  <Typography as="p" variant="body2" style={{ marginBottom: '8px' }}>
+    • Cobertura para terceiros
+  </Typography>
+  
+  <Typography as="p" variant="caption" color="secondary" style={{ marginTop: '24px' }}>
+    Consulte as condições gerais do produto para mais informações sobre coberturas e exclusões.
   </Typography>
 </div>
 ```
+    </CodeBlock>
+  </ExampleBlock>
 
-### Card de Conteúdo
-
+  <ExampleBlock 
+    title="Formulário" 
+    preview={
+      <Canvas>
+        <Story of={TypographyStories.FormExample} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
 ```jsx
-<div className="card">
-  <Typography variant="title3" weight="medium">
-    Título do Card
-  </Typography>
-  <Typography variant="body1" style={{ marginTop: '8px' }}>
-    Conteúdo principal do card com informações detalhadas.
-  </Typography>
-  <Typography variant="caption" color="neutral-700" style={{ marginTop: '16px' }}>
-    Última atualização: 26 de maio de 2025
-  </Typography>
-</div>
-```
-
-### Formulário
-
-```jsx
-<form>
-  <div className="form-field">
-    <Typography variant="body2" weight="medium" as="label" htmlFor="nome">
-      Nome Completo
-    </Typography>
-    <input id="nome" type="text" />
-    <Typography variant="caption" color="error">
-      Este campo é obrigatório
+// Exemplo de uso em um formulário
+<div style={{ maxWidth: '400px' }}>
+  <Typography as="h2" style={{ marginBottom: '24px' }}>Cadastre-se</Typography>
+  
+  <div style={{ marginBottom: '16px' }}>
+    <Typography as="label" variant="body2" bold>Nome completo</Typography>
+    <input type="text" style={{ width: '100%', marginTop: '4px', padding: '8px' }} />
+  </div>
+  
+  <div style={{ marginBottom: '16px' }}>
+    <Typography as="label" variant="body2" bold>E-mail</Typography>
+    <input type="email" style={{ width: '100%', marginTop: '4px', padding: '8px' }} />
+    <Typography as="p" variant="caption" color="secondary">
+      Usaremos seu e-mail para enviar informações sobre sua conta.
     </Typography>
   </div>
-</form>
+  
+  <div style={{ marginBottom: '24px' }}>
+    <Typography as="label" variant="body2" bold>Senha</Typography>
+    <input type="password" style={{ width: '100%', marginTop: '4px', padding: '8px' }} />
+    <Typography as="p" variant="caption" color="error">
+      A senha deve ter pelo menos 8 caracteres.
+    </Typography>
+  </div>
+  
+  <button style={{ padding: '8px 16px', background: '#0046c0', color: 'white', border: 'none', borderRadius: '4px' }}>
+    Cadastrar
+  </button>
+</div>
 ```
+    </CodeBlock>
+  </ExampleBlock>
+</ContentCard>
 
-## Acessibilidade
+<ContentCard 
+  title="API do Componente"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z" fill="white"/>
+    </svg>
+  }
+>
+  <CodeBlock title="Propriedades do Typography">
+```typescript
+interface TypographyProps {
+  /**
+   * Conteúdo do componente
+   */
+  children: React.ReactNode;
+  
+  /**
+   * Elemento HTML a ser renderizado
+   * @default "p"
+   */
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div' | 'label';
+  
+  /**
+   * Variante tipográfica
+   * Se não for especificada, será determinada automaticamente com base no elemento 'as'
+   */
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2' | 'subtitle1' | 'subtitle2' | 'caption' | 'overline';
+  
+  /**
+   * Cor do texto
+   * @default "inherit"
+   */
+  color?: 'inherit' | 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'textPrimary' | 'textSecondary';
+  
+  /**
+   * Alinhamento do texto
+   * @default "inherit"
+   */
+  align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
+  
+  /**
+   * Se verdadeiro, o texto será renderizado em negrito
+   * @default false
+   */
+  bold?: boolean;
+  
+  /**
+   * Se verdadeiro, o texto será renderizado em itálico
+   * @default false
+   */
+  italic?: boolean;
+  
+  /**
+   * Se verdadeiro, o texto será renderizado sublinhado
+   * @default false
+   */
+  underline?: boolean;
+  
+  /**
+   * Peso da fonte
+   */
+  fontWeight?: 'normal' | 'bold' | 'lighter' | 'bolder' | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+  
+  /**
+   * Se verdadeiro, o texto será truncado com reticências quando exceder uma linha
+   * @default false
+   */
+  truncate?: boolean;
+  
+  /**
+   * Número máximo de linhas a serem exibidas antes de truncar
+   * Só funciona quando truncate=true
+   * @default 1
+   */
+  maxLines?: number;
+  
+  /**
+   * Configuração de tamanho responsivo para diferentes breakpoints
+   */
+  responsiveSize?: {
+    xs?: string | number;
+    sm?: string | number;
+    md?: string | number;
+    lg?: string | number;
+    xl?: string | number;
+  };
+  
+  /**
+   * Propriedades HTML adicionais
+   */
+  [x: string]: any;
+}
+```
+  </CodeBlock>
+</ContentCard>
 
-O componente Typography implementa as melhores práticas de acessibilidade:
+<ContentCard 
+  title="Acessibilidade"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z" fill="white"/>
+    </svg>
+  }
+>
+  <FeatureGrid>
+    <InfoBox
+      title="Semântica"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        O componente Typography utiliza elementos HTML semânticos apropriados (h1-h6, p, span, etc.) para garantir que a estrutura do conteúdo seja compreendida por tecnologias assistivas.
+      </p>
+    </InfoBox>
 
-- Usa elementos HTML semânticos apropriados para cada variante
-- Mantém contraste adequado entre texto e fundo
-- Preserva a hierarquia de cabeçalhos (h1, h2, etc.) quando apropriado
-- Permite personalização para atender a requisitos específicos de acessibilidade
+    <InfoBox
+      title="Contraste"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Todas as combinações de cores de texto e fundo no Ocean atendem ou excedem as diretrizes de contraste WCAG 2.1 AA, garantindo legibilidade para usuários com baixa visão.
+      </p>
+    </InfoBox>
 
-## Boas Práticas
+    <InfoBox
+      title="Tamanho de Fonte"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Os tamanhos de fonte padrão são otimizados para legibilidade e podem ser aumentados pelo usuário sem quebrar o layout, garantindo acessibilidade para usuários que precisam de texto maior.
+      </p>
+    </InfoBox>
 
-- Mantenha a hierarquia tipográfica consistente em toda a aplicação
-- Use variantes de título (title1-title5) para cabeçalhos e títulos
-- Use variantes de corpo (body1-body2) para texto de conteúdo principal
-- Use caption para texto auxiliar e legendas
-- Evite usar muitas variantes diferentes na mesma tela
-- Mantenha o contraste adequado entre o texto e o fundo
-- Respeite a hierarquia de cabeçalhos HTML para melhorar a acessibilidade
-- Evite usar estilos inline excessivos que possam comprometer a consistência
+    <InfoBox
+      title="Espaçamento"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        O espaçamento entre linhas (line-height) é otimizado para melhorar a legibilidade, especialmente para usuários com dislexia ou deficiências cognitivas.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+
+  <div style={{
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    padding: '1rem',
+    background: '#eef9ff',
+    borderRadius: '8px',
+    borderLeft: '3px solid #31b5fc',
+    marginTop: '1.5rem'
+  }}>
+    <strong>Dica:</strong> Mantenha a hierarquia de títulos (h1-h6) em ordem lógica e não pule níveis. Isso ajuda usuários de leitores de tela a entenderem a estrutura do conteúdo.
+  </div>
+</ContentCard>
+
+<ContentCard 
+  title="Boas Práticas"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="white"/>
+    </svg>
+  }
+>
+  <FeatureGrid>
+    <InfoBox
+      title="Hierarquia Clara"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Estabeleça uma hierarquia tipográfica clara e consistente em toda a aplicação. Use h1 para o título principal da página, h2 para seções principais, h3 para subseções, e assim por diante.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Legibilidade"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Priorize a legibilidade sobre a estética. Evite textos muito pequenos, com pouco contraste ou com espaçamento inadequado. Mantenha parágrafos curtos e use listas quando apropriado.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Consistência"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Seja consistente no uso de estilos tipográficos. Use as mesmas variantes para elementos similares em toda a aplicação, criando uma experiência previsível para os usuários.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Responsividade"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Certifique-se de que o texto seja legível em todos os tamanhos de tela. Ajuste o tamanho da fonte e o espaçamento para diferentes breakpoints quando necessário.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>

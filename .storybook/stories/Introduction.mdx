@@ -1,50 +1,28 @@
 import { Meta } from '@storybook/blocks';
-import { BannerDOC } from '../components/Banner/index.jsx';
+import { 
+  BannerDOC, 
+  ContentCard, 
+  SectionTitle, 
+  InfoBox, 
+  CodeBlock, 
+  FeatureGrid, 
+  FeatureItem,
+  BannerFooter
+} from '../components';
 
 <Meta title="Introdução" />
 
-<BannerDOC title=" Ocean Design System" description="A biblioteca de componentes React da Porto Seguro." />
+<BannerDOC title="Ocean Design System" description="A biblioteca de componentes React da Porto Seguro." />
 
-<div
-  style={{
-    background: '#f8fbff',
-    border: '1px solid #d0e8fd',
-    borderLeft: '5px solid #0046c0',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2.5rem',
-    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
-  }}
+<ContentCard 
+  title="Visão Geral"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 7H13V13H11V7ZM11 15H13V17H11V15Z" fill="white"/>
+    </svg>
+  }
 >
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '1.2rem'
-  }}>
-    <div style={{
-      width: '36px',
-      height: '36px',
-      borderRadius: '50%',
-      background: '#0046c0',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginRight: '12px',
-      flexShrink: 0
-    }}>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 7H13V13H11V7ZM11 15H13V17H11V15Z" fill="white"/>
-      </svg>
-    </div>
-    <h2 style={{
-      color: '#0046c0',
-      margin: '0',
-      fontSize: '1.8rem',
-      fontWeight: '600'
-    }}>
-      Visão Geral
-    </h2>
-  </div>
   <p style={{
     fontSize: '1.1rem',
     lineHeight: '1.6',
@@ -53,654 +31,271 @@ import { BannerDOC } from '../components/Banner/index.jsx';
   }}>
     O <strong>Ocean Design System</strong> é uma biblioteca de componentes React com SASS que implementa a linguagem visual da Porto Seguro. Foi projetada para criar experiências digitais consistentes, acessíveis e de alta qualidade em todos os produtos e serviços da Porto.
   </p>
-</div>
+</ContentCard>
 
-<div
-  style={{
-    background: '#f8fbff',
-    border: '1px solid #d0e8fd',
-    borderLeft: '5px solid #1381e2',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2.5rem',
-    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
-  }}
+<ContentCard 
+  title="Principais Recursos"
+  borderColor="#1381e2"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z" fill="white"/>
+      <path d="M7 12H9V17H7V12Z" fill="white"/>
+      <path d="M11 7H13V17H11V7Z" fill="white"/>
+      <path d="M15 9H17V17H15V9Z" fill="white"/>
+    </svg>
+  }
 >
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '1.2rem'
-  }}>
-    <div style={{
-      width: '36px',
-      height: '36px',
-      borderRadius: '50%',
-      background: '#1381e2',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginRight: '12px',
-      flexShrink: 0
-    }}>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z" fill="white"/>
-        <path d="M7 12H9V17H7V12Z" fill="white"/>
-        <path d="M11 7H13V17H11V7Z" fill="white"/>
-        <path d="M15 9H17V17H15V9Z" fill="white"/>
-      </svg>
-    </div>
-    <h2 style={{
-      color: '#1381e2',
-      margin: '0',
-      fontSize: '1.8rem',
-      fontWeight: '600'
-    }}>
-      Principais Recursos
-    </h2>
-  </div>
-
-  <div style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-    gap: '1.5rem',
-    marginTop: '1.5rem'
-  }}>
-    <div style={{
-      display: 'flex',
-      alignItems: 'flex-start',
-      padding: '1rem',
-      background: '#eef9ff',
-      borderRadius: '8px',
-      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
-    }}>
-      <div style={{
-        width: '28px',
-        height: '28px',
-        borderRadius: '50%',
-        background: '#0046c0',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: '12px',
-        flexShrink: 0
-      }}>
+  <FeatureGrid>
+    <FeatureItem
+      title="Componentes React"
+      borderColor="#0046c0"
+      icon={
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M4 8H8V4H4V8ZM10 20H14V16H10V20ZM4 20H8V16H4V20ZM4 14H8V10H4V14ZM10 14H14V10H10V14ZM16 4V8H20V4H16ZM10 8H14V4H10V8ZM16 14H20V10H16V14ZM16 20H20V16H16V20Z" fill="white"/>
         </svg>
-      </div>
-      <div>
-        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#0046c0' }}>Componentes React</h3>
-        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Uma coleção completa de componentes React prontos para uso</p>
-      </div>
-    </div>
+      }
+      description="Uma coleção completa de componentes React prontos para uso"
+    />
 
-    <div style={{
-      display: 'flex',
-      alignItems: 'flex-start',
-      padding: '1rem',
-      background: '#eef9ff',
-      borderRadius: '8px',
-      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
-    }}>
-      <div style={{
-        width: '28px',
-        height: '28px',
-        borderRadius: '50%',
-        background: '#31b5fc',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: '12px',
-        flexShrink: 0
-      }}>
+    <FeatureItem
+      title="Design Responsivo"
+      borderColor="#31b5fc"
+      titleColor="#31b5fc"
+      icon={
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M10 18H14V16H10V18ZM3 6V8H21V6H3ZM6 13H18V11H6V13Z" fill="white"/>
         </svg>
-      </div>
-      <div>
-        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#31b5fc' }}>Design Responsivo</h3>
-        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Todos os componentes são totalmente responsivos e adaptáveis a diferentes tamanhos de tela</p>
-      </div>
-    </div>
+      }
+      description="Todos os componentes são totalmente responsivos e adaptáveis a diferentes tamanhos de tela"
+    />
 
-    <div style={{
-      display: 'flex',
-      alignItems: 'flex-start',
-      padding: '1rem',
-      background: '#eef9ff',
-      borderRadius: '8px',
-      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
-    }}>
-      <div style={{
-        width: '28px',
-        height: '28px',
-        borderRadius: '50%',
-        background: '#0046c0',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: '12px',
-        flexShrink: 0
-      }}>
+    <FeatureItem
+      title="Acessibilidade"
+      borderColor="#0046c0"
+      icon={
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" fill="white"/>
           <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="white"/>
           <circle cx="12" cy="12" r="2" fill="white"/>
         </svg>
-      </div>
-      <div>
-        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#0046c0' }}>Acessibilidade</h3>
-        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Componentes desenvolvidos seguindo as diretrizes WCAG para garantir acessibilidade</p>
-      </div>
-    </div>
+      }
+      description="Componentes desenvolvidos seguindo as diretrizes WCAG para garantir acessibilidade"
+    />
 
-    <div style={{
-      display: 'flex',
-      alignItems: 'flex-start',
-      padding: '1rem',
-      background: '#eef9ff',
-      borderRadius: '8px',
-      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
-    }}>
-      <div style={{
-        width: '28px',
-        height: '28px',
-        borderRadius: '50%',
-        background: '#66cafc',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: '12px',
-        flexShrink: 0
-      }}>
+    <FeatureItem
+      title="Customização"
+      borderColor="#66cafc"
+      titleColor="#66cafc"
+      icon={
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C16.97 21 21 16.97 21 12C21 7.03 16.97 3 12 3ZM19 12C19 16.08 15.67 19.44 11.59 19.95V4.05C15.67 4.56 19 7.92 19 12Z" fill="white"/>
+          <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" fill="white"/>
         </svg>
-      </div>
-      <div>
-        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#66cafc' }}>Temas e Variantes</h3>
-        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Suporte a diferentes temas e variantes para os diversos negócios da Porto</p>
-      </div>
-    </div>
+      }
+      description="Tokens de design personalizáveis para adaptar os componentes à sua marca"
+    />
 
-    <div style={{
-      display: 'flex',
-      alignItems: 'flex-start',
-      padding: '1rem',
-      background: '#eef9ff',
-      borderRadius: '8px',
-      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
-    }}>
-      <div style={{
-        width: '28px',
-        height: '28px',
-        borderRadius: '50%',
-        background: '#1381e2',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: '12px',
-        flexShrink: 0
-      }}>
+    <FeatureItem
+      title="Documentação Detalhada"
+      borderColor="#0046c0"
+      icon={
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 4V7H14V19H17V7H22V4H9Z" fill="white"/>
-          <path d="M3 12H6V19H9V12H12V9H3V12Z" fill="white"/>
+          <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="white"/>
         </svg>
-      </div>
-      <div>
-        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#1381e2' }}>Tipografia Consistente</h3>
-        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Sistema tipográfico padronizado para manter a consistência visual</p>
-      </div>
-    </div>
+      }
+      description="Guias completos, exemplos de código e documentação de API para todos os componentes"
+    />
 
-    <div style={{
-      display: 'flex',
-      alignItems: 'flex-start',
-      padding: '1rem',
-      background: '#eef9ff',
-      borderRadius: '8px',
-      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
-    }}>
-      <div style={{
-        width: '28px',
-        height: '28px',
-        borderRadius: '50%',
-        background: '#31b5fc',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: '12px',
-        flexShrink: 0
-      }}>
+    <FeatureItem
+      title="TypeScript"
+      borderColor="#31b5fc"
+      titleColor="#31b5fc"
+      icon={
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 3V21H21V3H3ZM19 19H5V5H19V19Z" fill="white"/>
-          <path d="M11 7H13V17H11V7Z" fill="white"/>
-          <path d="M7 11H17V13H7V11Z" fill="white"/>
+          <path d="M3 3h18v18H3V3zm10 4v2h3v8h2V9h3V7h-8zm-4 2h2.5v2H9v2h2v4H9v2h4v-2h-2v-4h2v-2H9V9z" fill="white"/>
         </svg>
-      </div>
-      <div>
-        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#31b5fc' }}>Sistema de Grid</h3>
-        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Sistema de grid flexível e responsivo para layouts consistentes</p>
-      </div>
-    </div>
+      }
+      description="Suporte completo a TypeScript com tipos e interfaces bem definidos"
+    />
+  </FeatureGrid>
+</ContentCard>
 
-    <div style={{
-      display: 'flex',
-      alignItems: 'flex-start',
-      padding: '1rem',
-      background: '#eef9ff',
-      borderRadius: '8px',
-      boxShadow: '0 1px 3px rgba(0, 70, 192, 0.08)'
-    }}>
-      <div style={{
-        width: '28px',
-        height: '28px',
-        borderRadius: '50%',
-        background: '#66cafc',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: '12px',
-        flexShrink: 0
-      }}>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16.5 9c-1.5 0-2.91.38-4.13 1.03l.67-2.68c.15-.59-.33-1.15-.94-1.15H8.5c-.38 0-.73.27-.83.64L6.21 13.75c-.14.53.25 1.05.8 1.05h2.29l-.67 4.32c-.08.49.31.91.8.91.28 0 .55-.15.7-.39l5.18-7.18C14.09 9.75 11.25 9 9 9c-1.39 0-2.67.27-3.82.72l.58-2.32C5.9 6.86 5.37 6.3 4.76 6.3H2.25c-.38 0-.73.27-.83.64L.17 11.81c-.14.53.25 1.05.8 1.05h2.29l-1.23 7.94c-.08.49.31.91.8.91.28 0 .55-.15.7-.39L7.8 14.5c1.43.5 3.01.78 4.7.78 2.7 0 5.15-.67 7.25-1.82l.63-.88c.35-.48.23-1.16-.27-1.5-.86-.57-1.86-.99-2.93-1.21l-1.28-.35c.02-.01.05-.02.07-.02.84-.23 1.72-.37 2.66-.37.84 0 1.67.11 2.44.32.5.14 1.03-.11 1.14-.62.1-.5-.22-1-.72-1.14-1-.28-2.07-.42-3.17-.42z" fill="white"/>
-        </svg>
-      </div>
-      <div>
-        <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem', color: '#66cafc' }}>Hooks Personalizados</h3>
-        <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5', color: '#444' }}>Coleção de hooks React para funcionalidades comuns</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div
-  style={{
-    background: '#f8fbff',
-    border: '1px solid #d0e8fd',
-    borderLeft: '5px solid #0046c0',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2.5rem',
-    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
-  }}
+<ContentCard 
+  title="Princípios de Design"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z" fill="white"/>
+    </svg>
+  }
 >
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '1.2rem'
-  }}>
-    <div style={{
-      width: '36px',
-      height: '36px',
-      borderRadius: '50%',
-      background: '#0046c0',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginRight: '12px',
-      flexShrink: 0
-    }}>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19.5 13.5L12 21L4.5 13.5L6 12L11.25 17.25V3H12.75V17.25L18 12L19.5 13.5Z" fill="white"/>
-      </svg>
-    </div>
-    <h2 style={{
-      color: '#0046c0',
-      margin: '0',
-      fontSize: '1.8rem',
-      fontWeight: '600'
-    }}>
-      Instalação
-    </h2>
-  </div>
-
-  <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-    <div style={{ flex: '1', minWidth: '250px' }}>
-      <p style={{
-        marginTop: 0,
-        marginBottom: '1rem',
-        fontSize: '1.05rem',
-        fontWeight: '500',
-        color: '#333'
-      }}>
-        Usando npm:
+  <FeatureGrid>
+    <InfoBox
+      title="Consistência"
+      titleColor="#0046c0"
+      backgroundColor="white"
+      icon={
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 11h16v2H4z" fill="#0046c0"/>
+        </svg>
+      }
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Interfaces previsíveis que seguem padrões consistentes, facilitando o aprendizado e uso.
       </p>
+    </InfoBox>
 
-```bash
-npm install @porto/js-library-corp-hubv-porto-ocean
-```
-    </div>
-
-    <div style={{ flex: '1', minWidth: '250px' }}>
-      <p style={{
-        marginTop: 0,
-        marginBottom: '1rem',
-        fontSize: '1.05rem',
-        fontWeight: '500',
-        color: '#333'
-      }}>
-        Usando yarn:
+    <InfoBox
+      title="Acessibilidade"
+      titleColor="#31b5fc"
+      backgroundColor="white"
+      icon={
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z" fill="#31b5fc"/>
+        </svg>
+      }
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Interfaces inclusivas que podem ser utilizadas por pessoas com diferentes habilidades e necessidades.
       </p>
+    </InfoBox>
 
-```bash
-yarn add @porto/js-library-corp-hubv-porto-ocean
-```
-    </div>
-  </div>
-</div>
+    <InfoBox
+      title="Eficiência"
+      titleColor="#66cafc"
+      backgroundColor="white"
+      icon={
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z" fill="#66cafc"/>
+        </svg>
+      }
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Interfaces que permitem aos usuários completar tarefas com o mínimo de esforço e tempo.
+      </p>
+    </InfoBox>
 
-<div
-  style={{
-    background: '#f8fbff',
-    border: '1px solid #d0e8fd',
-    borderLeft: '5px solid #1381e2',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2.5rem',
-    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
-  }}
+    <InfoBox
+      title="Feedback"
+      titleColor="#0046c0"
+      backgroundColor="white"
+      icon={
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z" fill="#0046c0"/>
+        </svg>
+      }
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Interfaces que comunicam claramente o estado do sistema e o resultado das ações dos usuários.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
+
+<ContentCard 
+  title="Arquitetura"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.36 18.78L6.61 21l1.62-1.54 2.77-7.6c-.68-.17-1.28-.51-1.77-.98L6.36 18.78z" fill="white"/>
+      <path d="M14.77 10.88c-.49.47-1.1.81-1.77.98l2.77 7.6L17.39 21l.26-2.22-2.88-7.9zM15 8c0-1.3-.84-2.4-2-2.82V3h-2v2.18C9.84 5.6 9 6.7 9 8c0 1.66 1.34 3 3 3s3-1.34 3-3zm-3 1c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" fill="white"/>
+    </svg>
+  }
 >
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '1.2rem'
-  }}>
-    <div style={{
-      width: '36px',
-      height: '36px',
-      borderRadius: '50%',
-      background: '#1381e2',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginRight: '12px',
-      flexShrink: 0
-    }}>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 18H4V6H20V18Z" fill="white"/>
-        <path d="M6 8.25H18V9.75H6V8.25Z" fill="white"/>
-        <path d="M6 11.25H18V12.75H6V11.25Z" fill="white"/>
-        <path d="M6 14.25H12V15.75H6V14.25Z" fill="white"/>
-      </svg>
-    </div>
-    <h2 style={{
-      color: '#1381e2',
-      margin: '0',
-      fontSize: '1.8rem',
-      fontWeight: '600'
-    }}>
-      Uso Básico
-    </h2>
-  </div>
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginBottom: '1.5rem' }}>
+    O Ocean foi projetado com uma arquitetura modular e flexível:
+  </p>
+
+  <FeatureGrid>
+    <InfoBox
+      title="Componentes"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Blocos de construção independentes e reutilizáveis que podem ser combinados para criar interfaces complexas.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Tokens de Design"
+      titleColor="#31b5fc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Valores fundamentais para cores, tipografia, espaçamento e outros aspectos visuais que garantem consistência.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Hooks"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Funções reutilizáveis que encapsulam lógica comum, facilitando o desenvolvimento de interfaces interativas.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
 
   <div style={{
-    padding: '1.5rem',
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    padding: '1rem',
     background: '#eef9ff',
     borderRadius: '8px',
-    marginBottom: '1rem'
+    borderLeft: '3px solid #31b5fc',
+    marginTop: '1.5rem'
   }}>
+    <strong>Dica:</strong> O Ocean segue uma abordagem monolítica para seus componentes, consolidando todos os subcomponentes em um único componente React para facilitar o uso e a manutenção.
+  </div>
+</ContentCard>
 
-```jsx
-import { Button, Card, Header } from '@porto/js-library-corp-hubv-porto-ocean';
+<ContentCard 
+  title="Começando"
+  borderColor="#66cafc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 4v2.67l-1 1-1-1V4h2m7 7v2h-2.67l-1-1 1-1H20M6.67 11l1 1-1 1H4v-2h2.67M12 16.33l1 1V20h-2v-2.67l1-1M15 2H9v5.5l3 3 3-3V2zm7 7h-5.5l-3 3 3 3H22V9zM7.5 9H2v6h5.5l3-3-3-3zm4.5 4.5l-3 3V22h6v-5.5l-3-3z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginBottom: '1.5rem' }}>
+    Para começar a usar o Ocean em seu projeto:
+  </p>
+
+  <CodeBlock>
+```bash
+# Instalar o pacote
+npm install @porto/js-library-corp-hubv-porto-ocean
+
+# Importar os estilos
 import '@porto/js-library-corp-hubv-porto-ocean/dist/styles.css';
 
-function App() {
-  return (
-    <div>
-      <Header variant="insurance" />
-      <Card>
-        <h2>Bem-vindo ao Ocean Design System</h2>
-        <p>Comece a construir interfaces incríveis!</p>
-        <Button variant="primary">Começar</Button>
-      </Card>
-    </div>
-  );
-}
+# Usar os componentes
+import { Button, Card } from '@porto/js-library-corp-hubv-porto-ocean';
 ```
-  </div>
+  </CodeBlock>
 
-  <p style={{
-    fontSize: '0.95rem',
-    color: '#555',
-    margin: 0,
-    fontStyle: 'italic'
-  }}>
-    Lembre-se de importar os estilos CSS para garantir a aparência correta dos componentes.
-  </p>
-</div>
-
-<div
-  style={{
-    background: '#f8fbff',
-    border: '1px solid #d0e8fd',
-    borderLeft: '5px solid #31b5fc',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2.5rem',
-    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
-  }}
->
   <div style={{
     display: 'flex',
-    alignItems: 'center',
-    marginBottom: '1.2rem'
+    justifyContent: 'center',
+    marginTop: '2rem'
   }}>
-    <div style={{
-      width: '36px',
-      height: '36px',
-      borderRadius: '50%',
-      background: '#31b5fc',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginRight: '12px',
-      flexShrink: 0
-    }}>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM18 20H6V4H13V9H18V20Z" fill="white"/>
-        <path d="M9 13H15V15H9V13Z" fill="white"/>
-        <path d="M9 16H15V18H9V16Z" fill="white"/>
-      </svg>
-    </div>
-    <h2 style={{
-      color: '#31b5fc',
-      margin: '0',
-      fontSize: '1.8rem',
-      fontWeight: '600'
-    }}>
-      Estrutura da Documentação
-    </h2>
-  </div>
-
-  <div style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-    gap: '1rem',
-    marginTop: '1rem'
-  }}>
-    <div style={{
-      padding: '1rem',
-      background: '#eef9ff',
-      borderRadius: '8px',
-      borderLeft: '3px solid #0046c0'
-    }}>
-      <h3 style={{
-        margin: '0 0 0.5rem 0',
-        fontSize: '1.1rem',
-        color: '#0046c0',
-        fontWeight: '600'
-      }}>
-        Introdução
-      </h3>
-      <p style={{
-        margin: 0,
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.4'
-      }}>
-        Visão geral e conceitos básicos
-      </p>
-    </div>
-
-    <div style={{
-      padding: '1rem',
-      background: '#eef9ff',
-      borderRadius: '8px',
-      borderLeft: '3px solid #1381e2'
-    }}>
-      <h3 style={{
-        margin: '0 0 0.5rem 0',
-        fontSize: '1.1rem',
-        color: '#1381e2',
-        fontWeight: '600'
-      }}>
-        Componentes
-      </h3>
-      <p style={{
-        margin: 0,
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.4'
-      }}>
-        Documentação detalhada de cada componente
-      </p>
-    </div>
-
-    <div style={{
-      padding: '1rem',
-      background: '#eef9ff',
-      borderRadius: '8px',
-      borderLeft: '3px solid #66cafc'
-    }}>
-      <h3 style={{
-        margin: '0 0 0.5rem 0',
-        fontSize: '1.1rem',
-        color: '#66cafc',
-        fontWeight: '600'
-      }}>
-        Hooks
-      </h3>
-      <p style={{
-        margin: 0,
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.4'
-      }}>
-        Documentação dos hooks personalizados
-      </p>
-    </div>
-
-    <div style={{
-      padding: '1rem',
-      background: '#eef9ff',
-      borderRadius: '8px',
-      borderLeft: '3px solid #31b5fc'
-    }}>
-      <h3 style={{
-        margin: '0 0 0.5rem 0',
-        fontSize: '1.1rem',
-        color: '#31b5fc',
-        fontWeight: '600'
-      }}>
-        Fundamentos
-      </h3>
-      <p style={{
-        margin: 0,
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.4'
-      }}>
-        Princípios de design, tipografia, cores e grid
-      </p>
-    </div>
-
-    <div style={{
-      padding: '1rem',
-      background: '#eef9ff',
-      borderRadius: '8px',
-      borderLeft: '3px solid #0046c0'
-    }}>
-      <h3 style={{
-        margin: '0 0 0.5rem 0',
-        fontSize: '1.1rem',
-        color: '#0046c0',
-        fontWeight: '600'
-      }}>
-        Padrões Técnicos
-      </h3>
-      <p style={{
-        margin: 0,
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.4'
-      }}>
-        Guias e boas práticas para desenvolvedores
-      </p>
-    </div>
-  </div>
-</div>
-
-<div
-  style={{
-    background: 'linear-gradient(135deg, #0046c0 0%, #31b5fc 100%)',
-    color: 'white',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2rem',
-    boxShadow: '0 4px 12px rgba(0, 70, 192, 0.2)',
-    position: 'relative',
-    overflow: 'hidden'
-  }}
->
-  <div
-    style={{
-      position: 'absolute',
-      top: '20%',
-      right: '5%',
-      width: '100px',
-      height: '100px',
-      background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)',
-      borderRadius: '50%'
-    }}
-  />
-
-  <h2 style={{
-    fontSize: '2rem',
-    margin: '0 0 1rem 0',
-    fontWeight: 'bold',
-    position: 'relative'
-  }}>
-    Contribuição
-  </h2>
-
-  <p style={{
-    fontSize: '1.1rem',
-    marginBottom: '1.5rem',
-    maxWidth: '800px',
-    lineHeight: '1.6',
-    position: 'relative',
-    opacity: '0.9'
-  }}>
-    O <strong>Ocean Design System</strong> é um projeto em constante evolução. Contribuições são bem-vindas através do repositório oficial.
-  </p>
-
-  <a
-    href="./contributing.md"
-    style={{
+    <a href="/?path=/docs/come%C3%A7ando--docs" style={{
       display: 'inline-block',
-      padding: '0.75rem 1.5rem',
-      background: 'rgba(255, 255, 255, 0.15)',
+      padding: '0.8rem 1.5rem',
+      background: '#0046c0',
       color: 'white',
       borderRadius: '4px',
       textDecoration: 'none',
       fontWeight: '500',
-      transition: 'background 0.2s',
-      border: '1px solid rgba(255, 255, 255, 0.3)',
-      fontSize: '1rem'
-    }}
-  >
-    Consulte o Guia de Contribuição
-  </a>
-</div>
+      fontSize: '1.1rem',
+      boxShadow: '0 2px 4px rgba(0, 70, 192, 0.2)'
+    }}>
+      Ver Guia Completo de Instalação
+    </a>
+  </div>
+</ContentCard>
+
+<BannerFooter />

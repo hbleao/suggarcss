@@ -1,213 +1,526 @@
 import { Meta, Canvas, Story } from '@storybook/blocks';
 import * as ButtonStories from './Button.stories';
+import {
+  BannerDOC,
+  ContentCard,
+  SectionTitle,
+  InfoBox,
+  CodeBlock,
+  FeatureGrid,
+  FeatureItem,
+  ExampleBlock
+} from '../../components';
 
 <Meta title="Components/Button" of={ButtonStories} />
 
-# Button
+<BannerDOC
+  title="Button"
+  description="O componente Button é usado para iniciar ações e navegações na interface, fornecendo uma maneira consistente para os usuários interagirem com a aplicação."
+/>
 
-O componente `Button` é usado para iniciar ações e navegações na interface, fornecendo uma maneira consistente para os usuários interagirem com a aplicação.
+<ContentCard
+  title="Visão Geral"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 7H13V13H11V7ZM11 15H13V17H11V15Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    Os botões são elementos de interface fundamentais que permitem aos usuários realizar ações específicas. O Ocean Design System oferece uma variedade de estilos, tamanhos e estados para botões, garantindo consistência visual e comportamental em toda a aplicação.
+  </p>
+</ContentCard>
 
-## Exemplos Interativos
+<SectionTitle>Exemplos Interativos</SectionTitle>
 
-### Todas as Variantes
-<Canvas>
-  <Story of={ButtonStories.ButtonShowcase} />
-</Canvas>
-
-### Variantes de Estilo
-<Canvas>
-  <Story of={ButtonStories.PrimaryButton} />
-  <Story of={ButtonStories.SecondaryButton} />
-  <Story of={ButtonStories.GhostButton} />
-</Canvas>
-
-### Variantes de Produto
-<Canvas>
-  <Story of={ButtonStories.InsuranceButton} />
-  <Story of={ButtonStories.BankingButton} />
-  <Story of={ButtonStories.HealthButton} />
-  <Story of={ButtonStories.NegativeButton} />
-</Canvas>
-
-### Tamanhos
-<Canvas>
-  <Story of={ButtonStories.SmallButton} />
-  <Story of={ButtonStories.LargeButton} />
-</Canvas>
-
-### Larguras
-<Canvas>
-  <Story of={ButtonStories.BasicButton} />
-  <Story of={ButtonStories.FluidButton} />
-</Canvas>
-
-### Estados
-<Canvas>
-  <Story of={ButtonStories.DisabledButton} />
-  <Story of={ButtonStories.LoadingButton} />
-</Canvas>
-
-## Exemplos de Código
-
-### Variantes de Estilo
-
+<ExampleBlock
+  title="Todas as Variantes"
+  preview={<Canvas><Story of={ButtonStories.ButtonShowcase} /></Canvas>}
+>
+  <CodeBlock>
 ```jsx
-<div style={{ display: 'flex', gap: '16px' }}>
-  <Button variant="insurance" styles="primary">Primário</Button>
-  <Button variant="insurance" styles="secondary">Secundário</Button>
+// Exemplo de todas as variantes de botões
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+  <Button variant="insurance" styles="primary">Primary</Button>
+  <Button variant="insurance" styles="secondary">Secondary</Button>
   <Button variant="insurance" styles="ghost">Ghost</Button>
+  <Button variant="banking" styles="primary">Banking</Button>
+  <Button variant="health" styles="primary">Health</Button>
+  <Button variant="negative" styles="primary">Negative</Button>
 </div>
 ```
+  </CodeBlock>
+</ExampleBlock>
 
-### Variantes de Produto
+<ContentCard
+  title="Variantes de Estilo"
+  borderColor="#1381e2"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    marginBottom: '1.5rem'
+  }}>
+    O Ocean oferece três estilos principais de botões para atender a diferentes necessidades de hierarquia visual:
+  </p>
 
+  <ExampleBlock
+    preview={
+      <Canvas>
+        <Story of={ButtonStories.PrimaryButton} />
+        <Story of={ButtonStories.SecondaryButton} />
+        <Story of={ButtonStories.GhostButton} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
 ```jsx
-<div style={{ display: 'flex', gap: '16px' }}>
-  <Button variant="insurance">Seguro</Button>
-  <Button variant="banking">Banco</Button>
-  <Button variant="health">Saúde</Button>
-</div>
+// Variantes de estilo
+<Button variant="insurance" styles="primary">Primário</Button>
+<Button variant="insurance" styles="secondary">Secundário</Button>
+<Button variant="insurance" styles="ghost">Ghost</Button>
 ```
+    </CodeBlock>
+  </ExampleBlock>
 
-### Tamanhos
+  <FeatureGrid>
+    <InfoBox
+      title="Primary"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Botões primários são usados para a ação principal em uma seção ou tela. Eles têm alta visibilidade e devem ser usados com moderação.
+      </p>
+    </InfoBox>
 
+    <InfoBox
+      title="Secondary"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Botões secundários são usados para ações importantes, mas não primárias. Eles têm uma aparência mais sutil que os botões primários.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Ghost"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Botões ghost são usados para ações terciárias ou em áreas onde um botão com menos destaque visual é necessário.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
+
+<ContentCard
+  title="Variantes de Produto"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 8H8V4H4V8ZM10 20H14V16H10V20ZM4 20H8V16H4V20ZM4 14H8V10H4V14ZM10 14H14V10H10V14ZM16 4V8H20V4H16ZM10 8H14V4H10V8ZM16 14H20V10H16V14ZM16 20H20V16H16V20Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    marginBottom: '1.5rem'
+  }}>
+    O Ocean oferece variantes de botões específicas para diferentes produtos da Porto Seguro:
+  </p>
+
+  <ExampleBlock
+    preview={
+      <Canvas>
+        <Story of={ButtonStories.InsuranceButton} />
+        <Story of={ButtonStories.BankingButton} />
+        <Story of={ButtonStories.HealthButton} />
+        <Story of={ButtonStories.NegativeButton} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
 ```jsx
-<div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-  <Button variant="insurance" size="small">Pequeno</Button>
-  <Button variant="insurance">Médio (Padrão)</Button>
-  <Button variant="insurance" size="large">Grande</Button>
-</div>
+// Variantes de produto
+<Button variant="insurance" styles="primary">Seguro</Button>
+<Button variant="banking" styles="primary">Banco</Button>
+<Button variant="health" styles="primary">Saúde</Button>
+<Button variant="negative" styles="primary">Negativo</Button>
 ```
+    </CodeBlock>
+  </ExampleBlock>
 
-### Estados
+  <FeatureGrid>
+    <InfoBox
+      title="Insurance"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Variante padrão para produtos de seguro, utilizando a cor principal da Porto Seguro.
+      </p>
+    </InfoBox>
 
+    <InfoBox
+      title="Banking"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Variante específica para produtos bancários, utilizando cores que representam essa vertical.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Health"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Variante para produtos de saúde, com cores que representam essa vertical de negócios.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Negative"
+      titleColor="#e63946"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Variante para ações destrutivas ou que precisam de atenção especial do usuário.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
+
+<ContentCard
+  title="Tamanhos"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 15h2v2h-2v-2zm0-4h2v2h-2v-2zm2 8h-2v2c1 0 2-1 2-2zM13 3h2v2h-2V3zm8 4h2v2h-2V7zm0-4v2h2c0-1-1-2-2-2zM1 7h2v2H1V7zm16-4h2v2h-2V3zm0 16h2v2h-2v-2zM3 3C2 3 1 4 1 5h2V3zm6 0h2v2H9V3zM5 3h2v2H5V3zm-4 8v8c0 1.1.9 2 2 2h12V11H1zm2 8l2.5-3.21 1.79 2.15 2.5-3.22L13 19H3z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    marginBottom: '1.5rem'
+  }}>
+    O Ocean oferece diferentes tamanhos de botões para atender a diversas necessidades de layout:
+  </p>
+
+  <ExampleBlock
+    preview={
+      <Canvas>
+        <Story of={ButtonStories.SmallButton} />
+        <Story of={ButtonStories.LargeButton} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
 ```jsx
-<div style={{ display: 'flex', gap: '16px' }}>
-  <Button variant="insurance">Normal</Button>
-  <Button variant="insurance" disabled>Desabilitado</Button>
-  <Button variant="negative">Negativo</Button>
-</div>
+// Tamanhos de botões
+<Button variant="insurance" size="small">Pequeno</Button>
+<Button variant="insurance">Médio (Padrão)</Button>
+<Button variant="insurance" size="large">Grande</Button>
 ```
+    </CodeBlock>
+  </ExampleBlock>
+</ContentCard>
 
-## Variantes
-
-<Canvas>
-  <Story name="Insurance">
-    <Button variant="insurance">Seguro</Button>
-  </Story>
-  <Story name="Banking">
-    <Button variant="banking">Banco</Button>
-  </Story>
-  <Story name="Health">
-    <Button variant="health">Saúde</Button>
-  </Story>
-</Canvas>
-
-## Importação
-
+<ContentCard
+  title="Larguras"
+  borderColor="#1381e2"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 18H14V16H10V18ZM3 6V8H21V6H3ZM6 13H18V11H6V13Z" fill="white"/>
+    </svg>
+  }
+>
+  <ExampleBlock
+    preview={
+      <Canvas>
+        <Story of={ButtonStories.BasicButton} />
+        <Story of={ButtonStories.FluidButton} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
 ```jsx
-import { Button } from '@porto/js-library-corp-hubv-porto-ocean';
+// Larguras de botões
+<Button variant="insurance">Largura Automática</Button>
+<Button variant="insurance" fluid>Largura Fluida</Button>
 ```
+    </CodeBlock>
+  </ExampleBlock>
 
-## Uso Básico
+  <FeatureGrid>
+    <InfoBox
+      title="Automática"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        A largura do botão é determinada pelo conteúdo, com padding consistente nas laterais.
+      </p>
+    </InfoBox>
 
+    <InfoBox
+      title="Fluida"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        O botão ocupa 100% da largura do contêiner pai, útil para layouts responsivos e mobile.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
+
+<ContentCard
+  title="Estados"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 15.5h-2V14h-2v-2h4v6.5zm0-9.5h-2V7h2v2zm4 9.5h-2v-2h2v2zm0-5h-4v-2h4v2zm0-4h-2V7h2v2z" fill="white"/>
+    </svg>
+  }
+>
+  <ExampleBlock
+    preview={
+      <Canvas>
+        <Story of={ButtonStories.DisabledButton} />
+        <Story of={ButtonStories.LoadingButton} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
 ```jsx
-<Button>Botão Padrão</Button>
+// Estados de botões
+<Button variant="insurance" disabled>Desabilitado</Button>
+<Button variant="insurance" loading>Carregando</Button>
 ```
+    </CodeBlock>
+  </ExampleBlock>
 
-## Variantes
+  <FeatureGrid>
+    <InfoBox
+      title="Desabilitado"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Indica que a ação não está disponível no momento. O botão não pode ser clicado e tem aparência visual reduzida.
+      </p>
+    </InfoBox>
 
-O Button suporta diferentes variantes que representam contextos específicos:
+    <InfoBox
+      title="Carregando"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Indica que a ação está em processamento. O botão exibe um indicador de carregamento e não pode ser clicado novamente até que o processo seja concluído.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
 
-```jsx
-// Variante de seguro (padrão)
-<Button variant="insurance">Seguro</Button>
+<ContentCard
+  title="API do Componente"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z" fill="white"/>
+    </svg>
+  }
+>
+  <CodeBlock title="Propriedades do Button">
+```typescript
+interface ButtonProps {
+  /**
+   * Conteúdo do botão
+   */
+  children: React.ReactNode;
 
-// Variante bancária
-<Button variant="banking">Banco</Button>
+  /**
+   * Variante de produto do botão
+   * @default "insurance"
+   */
+  variant?: "insurance" | "banking" | "health" | "negative";
 
-// Variante de saúde
-<Button variant="health">Saúde</Button>
+  /**
+   * Estilo visual do botão
+   * @default "primary"
+   */
+  styles?: "primary" | "secondary" | "ghost";
 
-// Variante negativa (geralmente para ações destrutivas)
-<Button variant="negative">Cancelar</Button>
+  /**
+   * Tamanho do botão
+   * @default "medium"
+   */
+  size?: "small" | "medium" | "large";
 
-// Variante desabilitada
-<Button variant="disabled">Indisponível</Button>
+  /**
+   * Se verdadeiro, o botão ocupará 100% da largura do contêiner
+   * @default false
+   */
+  fluid?: boolean;
+
+  /**
+   * Se verdadeiro, o botão será desabilitado
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
+   * Se verdadeiro, o botão exibirá um indicador de carregamento
+   * @default false
+   */
+  loading?: boolean;
+
+  /**
+   * Função chamada quando o botão é clicado
+   */
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+
+  /**
+   * Tipo do botão HTML nativo
+   * @default "button"
+   */
+  type?: "button" | "submit" | "reset";
+
+  /**
+   * Propriedades HTML adicionais
+   */
+  [x: string]: any;
+}
 ```
+  </CodeBlock>
+</ContentCard>
 
-## Estilos
+<ContentCard
+  title="Acessibilidade"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z" fill="white"/>
+    </svg>
+  }
+>
+  <FeatureGrid>
+    <InfoBox
+      title="Implementação Nativa"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        O componente Button é implementado usando o elemento nativo <code>&lt;button&gt;</code>, garantindo comportamento acessível por padrão, incluindo foco via teclado e ativação por teclas.
+      </p>
+    </InfoBox>
 
-O Button oferece diferentes estilos visuais:
+    <InfoBox
+      title="Estados Comunicados"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Quando desabilitado, o atributo <code>disabled</code> é aplicado para informar tecnologias assistivas. O estado de carregamento é comunicado através de texto alternativo para leitores de tela.
+      </p>
+    </InfoBox>
 
-```jsx
-// Estilo primário (padrão)
-<Button styles="primary">Primário</Button>
+    <InfoBox
+      title="Contraste"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Todas as combinações de cores dos botões atendem aos requisitos de contraste WCAG 2.1 AA, garantindo legibilidade para usuários com baixa visão.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
 
-// Estilo secundário
-<Button styles="secondary">Secundário</Button>
+  <div style={{
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    padding: '1rem',
+    background: '#eef9ff',
+    borderRadius: '8px',
+    borderLeft: '3px solid #31b5fc',
+    marginTop: '1.5rem'
+  }}>
+    <strong>Dica:</strong> Ao usar botões, sempre forneça textos descritivos que indiquem claramente a ação que será realizada. Evite textos genéricos como "Clique Aqui" ou "Enviar".
+  </div>
+</ContentCard>
 
-// Estilo ghost (apenas contorno)
-<Button styles="ghost">Ghost</Button>
-```
+<ContentCard
+  title="Boas Práticas"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="white"/>
+    </svg>
+  }
+>
+  <FeatureGrid>
+    <InfoBox
+      title="Hierarquia Visual"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Use botões primários para a ação principal em uma tela ou seção. Limite a um botão primário por contexto para evitar competição visual.
+      </p>
+    </InfoBox>
 
-## Tamanhos
+    <InfoBox
+      title="Posicionamento"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Em formulários, posicione os botões de ação no final, alinhados à direita ou centralizados. Em diálogos, posicione botões de confirmação à direita e de cancelamento à esquerda.
+      </p>
+    </InfoBox>
 
-O Button está disponível em diferentes tamanhos:
+    <InfoBox
+      title="Rótulos Claros"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Use verbos de ação que descrevam claramente o que acontecerá quando o botão for clicado. Mantenha os rótulos concisos e diretos.
+      </p>
+    </InfoBox>
 
-```jsx
-// Tamanho grande (padrão)
-<Button size="large">Grande</Button>
-
-// Tamanho pequeno
-<Button size="small">Pequeno</Button>
-```
-
-## Largura
-
-O Button pode ter largura fixa ou se adaptar ao conteúdo:
-
-```jsx
-// Largura contida ao conteúdo (padrão)
-<Button width="contain">Contido</Button>
-
-// Largura fluida (ocupa todo o espaço disponível)
-<Button width="fluid">Fluido</Button>
-```
-
-## Estado de Carregamento
-
-O Button pode exibir um indicador de carregamento:
-
-```jsx
-<Button isLoading={true}>Carregando</Button>
-```
-
-## Props
-
-| Prop | Tipo | Padrão | Descrição |
-|------|------|--------|-----------|
-| `variant` | `"insurance" \| "banking" \| "health" \| "negative" \| "disabled"` | `"insurance"` | Define a variante visual do botão |
-| `styles` | `"primary" \| "secondary" \| "ghost"` | `"primary"` | Define o estilo visual do botão |
-| `size` | `"small" \| "large"` | `"large"` | Define o tamanho do botão |
-| `width` | `"contain" \| "fluid"` | `"contain"` | Define como o botão se comporta em relação à largura |
-| `isLoading` | `boolean` | `false` | Exibe um indicador de carregamento |
-| `disabled` | `boolean` | `false` | Desabilita o botão |
-| `className` | `string` | `""` | Classes CSS adicionais |
-| `children` | `React.ReactNode` | - | Conteúdo do botão |
-| `...restProps` | `HTMLButtonProps` | - | Outras props de botão HTML nativo |
-
-## Acessibilidade
-
-- O componente Button é implementado usando o elemento nativo `<button>`, garantindo comportamento acessível
-- Quando desabilitado, o atributo `disabled` é aplicado para informar tecnologias assistivas
-- O estado de carregamento é comunicado através de texto alternativo para leitores de tela
-- O componente mantém contraste adequado em todas as variantes e estados
-
-## Boas Práticas
-
-- Use texto conciso e claro que descreva a ação que o botão executa
-- Escolha a variante apropriada para o contexto (ex: use "negative" para ações destrutivas)
-- Evite usar muitos botões primários na mesma tela
-- Mantenha consistência no uso de variantes em toda a aplicação
-- Use o estado de carregamento para operações assíncronas
+    <InfoBox
+      title="Feedback Visual"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Sempre forneça feedback visual para interações com botões, como estados de hover, focus, active e loading.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>

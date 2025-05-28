@@ -1,21 +1,27 @@
 import { Meta } from '@storybook/blocks';
-import { BannerDOC } from '../components/Banner/index.jsx';
+import { 
+  BannerDOC, 
+  ContentCard, 
+  SectionTitle, 
+  InfoBox, 
+  CodeBlock, 
+  FeatureGrid, 
+  FeatureItem,
+  BannerFooter
+} from '../components';
 
 <Meta title="Padrões Técnicos" />
 
 <BannerDOC title="Padrões Técnicos" description="O Ocean possui uma serie de convenções e práticas para garantir consistência e qualidade no Ocean" />
 
-
-<div
-  style={{
-    background: '#f8fbff',
-    border: '1px solid #d0e8fd',
-    borderLeft: '5px solid #0046c0',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2.5rem',
-    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
-  }}
+<ContentCard 
+  title="Estrutura de Componentes"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 8H8V4H4V8ZM10 20H14V16H10V20ZM4 20H8V16H4V20ZM4 14H8V10H4V14ZM10 14H14V10H10V14ZM16 4V8H20V4H16ZM10 8H14V4H10V8ZM16 14H20V10H16V14ZM16 20H20V16H16V20Z" fill="white" />
+    </svg>
+  }
 >
   <p style={{
     fontSize: '1.1rem',
@@ -26,90 +32,54 @@ import { BannerDOC } from '../components/Banner/index.jsx';
     Cada componente no Ocean segue uma estrutura monolítica consistente, consolidando todos os subcomponentes em um único componente React:
   </p>
 
-  <div style={{
-    background: '#eef9ff',
-    padding: '1.5rem',
-    borderRadius: '8px',
-    fontFamily: 'monospace',
-    fontSize: '0.9rem',
-    lineHeight: '1.5',
-    marginBottom: '1.5rem',
-    color: '#333',
-    overflow: 'auto'
-  }}>
-    <pre style={{ margin: 0 }}>
+  <CodeBlock title="Estrutura de Diretórios">
 src/components/ComponentName/
 ├─ index.tsx         # Exportação principal do componente
 ├─ types.ts          # Tipos e interfaces relacionados ao componente
 ├─ styles.scss       # Estilos específicos do componente
 └─ index.spec.tsx    # Testes do componente
-</pre>
-  </div>
+  </CodeBlock>
 
-  <div style={{
-    display: 'flex',
-    gap: '1.5rem',
-    flexWrap: 'wrap',
-    marginBottom: '1.5rem'
-  }}>
-    <div style={{
-      flex: '1',
-      minWidth: '250px',
-      background: '#eef9ff',
-      padding: '1rem',
-      borderRadius: '8px',
-      borderLeft: '3px solid #0046c0'
-    }}>
-      <h4 style={{
-        margin: '0 0 0.5rem 0',
-        color: '#0046c0',
-        fontSize: '1.1rem'
-      }}>
-        Abordagem Monolítica
-      </h4>
-      <ul style={{
-        margin: '0',
-        paddingLeft: '1.2rem',
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.5'
-      }}>
-        <li>Consolidar todos os subcomponentes em um único componente React</li>
-        <li>Criar uma interface de props clara e direta</li>
-        <li>Padronizar os nomes dos componentes para camelCase</li>
-        <li>Implementar renderização condicional para diferentes partes do componente</li>
-      </ul>
-    </div>
+  <FeatureGrid>
+    <FeatureItem
+      title="Abordagem Monolítica"
+      borderColor="#0046c0"
+      description={
+        <ul style={{
+          margin: '0',
+          paddingLeft: '1.2rem',
+          fontSize: '0.95rem',
+          color: '#444',
+          lineHeight: '1.5'
+        }}>
+          <li>Consolidar todos os subcomponentes em um único componente React</li>
+          <li>Criar uma interface de props clara e direta</li>
+          <li>Padronizar os nomes dos componentes para camelCase</li>
+          <li>Implementar renderização condicional para diferentes partes do componente</li>
+        </ul>
+      }
+    />
 
-    <div style={{
-      flex: '1',
-      minWidth: '250px',
-      background: '#eef9ff',
-      padding: '1rem',
-      borderRadius: '8px',
-      borderLeft: '3px solid #31b5fc'
-    }}>
-      <h4 style={{
-        margin: '0 0 0.5rem 0',
-        color: '#31b5fc',
-        fontSize: '1.1rem'
-      }}>
-        Benefícios
-      </h4>
-      <ul style={{
-        margin: '0',
-        paddingLeft: '1.2rem',
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.5'
-      }}>
-        <li>Melhor manutenibilidade do código</li>
-        <li>Maior consistência entre componentes</li>
-        <li>Interface mais intuitiva para os desenvolvedores</li>
-        <li>Redução da complexidade da árvore de componentes</li>
-      </ul>
-    </div>
-  </div>
+    <FeatureItem
+      title="Benefícios"
+      borderColor="#31b5fc"
+      titleColor="#31b5fc"
+      description={
+        <ul style={{
+          margin: '0',
+          paddingLeft: '1.2rem',
+          fontSize: '0.95rem',
+          color: '#444',
+          lineHeight: '1.5'
+        }}>
+          <li>Melhor manutenibilidade do código</li>
+          <li>Maior consistência entre componentes</li>
+          <li>Interface mais intuitiva para os desenvolvedores</li>
+          <li>Redução da complexidade da árvore de componentes</li>
+        </ul>
+      }
+    />
+  </FeatureGrid>
 
   <h3 style={{
     color: '#1381e2',
@@ -121,22 +91,7 @@ src/components/ComponentName/
     Exemplo de Implementação
   </h3>
 
-  <div style={{
-    background: '#eef9ff',
-    borderRadius: '8px',
-    overflow: 'hidden',
-    marginBottom: '1rem'
-  }}>
-    <div style={{
-      background: '#1381e2',
-      color: 'white',
-      padding: '0.5rem 1rem',
-      fontSize: '0.9rem',
-      fontWeight: '500'
-    }}>
-      src/components/Button/index.tsx
-    </div>
-
+  <CodeBlock title="src/components/Button/index.tsx">
 ```tsx
 import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 
@@ -176,7 +131,7 @@ const Button = ({
 
 export default Button;
 ```
-  </div>
+  </CodeBlock>
 
   <p style={{
     fontSize: '0.95rem',
@@ -186,1114 +141,348 @@ export default Button;
   }}>
     Note que todos os tipos e a implementação estão no mesmo arquivo, seguindo a abordagem monolítica.
   </p>
-</div>
+</ContentCard>
 
-<div
-  style={{
-    background: '#f8fbff',
-    border: '1px solid #d0e8fd',
-    borderLeft: '5px solid #31b5fc',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2.5rem',
-    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
-  }}
+<ContentCard 
+  title="Convenções de Nomenclatura"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" fill="white" />
+    </svg>
+  }
 >
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '1.2rem'
-  }}>
-    <div style={{
-      width: '36px',
-      height: '36px',
-      borderRadius: '50%',
-      background: '#31b5fc',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginRight: '12px',
-      flexShrink: 0
-    }}>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17 7H7C4.79086 7 3 8.79086 3 11V17C3 19.2091 4.79086 21 7 21H17C19.2091 21 21 19.2091 21 17V11C21 8.79086 19.2091 7 17 7Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M16 3L8 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 12V16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 12H15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <h2 style={{
-      color: '#31b5fc',
-      margin: '0',
-      fontSize: '1.8rem',
-      fontWeight: '600'
-    }}>
-      Convenções de Nomenclatura
-    </h2>
-  </div>
+  <FeatureGrid>
+    <InfoBox
+      title="Componentes"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>PascalCase</strong> para nomes de componentes: <code>Button</code>, <code>CardContent</code></li>
+        <li><strong>camelCase</strong> para props: <code>isLoading</code>, <code>onButtonClick</code></li>
+        <li>Prefixos descritivos: <code>handle</code> para manipuladores de eventos, <code>is</code> para booleanos</li>
+      </ul>
+    </InfoBox>
+
+    <InfoBox
+      title="Estilos"
+      titleColor="#31b5fc"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>kebab-case</strong> para classes CSS: <code>.card-content</code>, <code>.button-primary</code></li>
+        <li>Prefixo de componente para classes: <code>.button</code>, <code>.button--primary</code></li>
+        <li>Modificadores com duplo hífen: <code>.button--large</code>, <code>.card--featured</code></li>
+      </ul>
+    </InfoBox>
+
+    <InfoBox
+      title="Arquivos"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>index.tsx</strong> para o componente principal</li>
+        <li><strong>types.ts</strong> para tipos e interfaces</li>
+        <li><strong>styles.scss</strong> para estilos</li>
+        <li><strong>index.spec.tsx</strong> para testes</li>
+      </ul>
+    </InfoBox>
+
+    <InfoBox
+      title="Tipos e Interfaces"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>PascalCase</strong> para interfaces e tipos: <code>ButtonProps</code>, <code>CardContentProps</code></li>
+        <li>Sufixo <code>Props</code> para props de componentes</li>
+        <li>Sufixo <code>Type</code> para tipos de união: <code>ButtonVariantType</code></li>
+      </ul>
+    </InfoBox>
+  </FeatureGrid>
 
   <p style={{
     fontSize: '1.1rem',
     lineHeight: '1.6',
     color: '#333',
-    marginBottom: '1.5rem'
-  }}>
-    Seguir convenções de nomenclatura consistentes é essencial para manter a qualidade e legibilidade do código no Ocean Design System.
-  </p>
-
-  <div style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-    gap: '1.5rem',
-    marginBottom: '1rem'
-  }}>
-    <div style={{
-      background: 'white',
-      padding: '1.5rem',
-      borderRadius: '8px',
-      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
-      border: '1px solid #e0f0ff'
-    }}>
-      <h3 style={{
-        color: '#0046c0',
-        margin: '0 0 1rem 0',
-        fontSize: '1.3rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}>
-        <span style={{
-          width: '24px',
-          height: '24px',
-          borderRadius: '50%',
-          background: '#0046c0',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0
-        }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 4V20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M4 12H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        Componentes
-      </h3>
-      <ul style={{
-        margin: '0',
-        paddingLeft: '1.2rem',
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.6'
-      }}>
-        <li>Use <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>PascalCase</code> para nomes de componentes: <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>Button</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>CardContent</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>Typography</code></li>
-        <li>Use nomes descritivos que indiquem a função do componente</li>
-        <li>Evite abreviações, exceto quando amplamente reconhecidas</li>
-      </ul>
-    </div>
-
-    <div style={{
-      background: 'white',
-      padding: '1.5rem',
-      borderRadius: '8px',
-      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
-      border: '1px solid #e0f0ff'
-    }}>
-      <h3 style={{
-        color: '#0046c0',
-        margin: '0 0 1rem 0',
-        fontSize: '1.3rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}>
-        <span style={{
-          width: '24px',
-          height: '24px',
-          borderRadius: '50%',
-          background: '#0046c0',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0
-        }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 16V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 8H12.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        Props
-      </h3>
-      <ul style={{
-        margin: '0',
-        paddingLeft: '1.2rem',
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.6'
-      }}>
-        <li>Use <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>camelCase</code> para nomes de props: <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>onClick</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>isDisabled</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>hasError</code></li>
-        <li>Use nomes descritivos e consistentes em todos os componentes</li>
-        <li>Prefixe props booleanas com <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>is</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>has</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>should</code> ou similar: <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>isOpen</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>hasIcon</code></li>
-      </ul>
-    </div>
-
-    <div style={{
-      background: 'white',
-      padding: '1.5rem',
-      borderRadius: '8px',
-      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
-      border: '1px solid #e0f0ff'
-    }}>
-      <h3 style={{
-        color: '#0046c0',
-        margin: '0 0 1rem 0',
-        fontSize: '1.3rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}>
-        <span style={{
-          width: '24px',
-          height: '24px',
-          borderRadius: '50%',
-          background: '#0046c0',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0
-        }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 2V8H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 13H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 17H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 9H9H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        Tipos e Interfaces
-      </h3>
-      <ul style={{
-        margin: '0',
-        paddingLeft: '1.2rem',
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.6'
-      }}>
-        <li>Use <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>PascalCase</code> para tipos e interfaces: <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>ButtonProps</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>TypographyVariant</code></li>
-        <li>Sufixe interfaces de props com <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>Props</code>: <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>ButtonProps</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>ModalProps</code></li>
-        <li>Sufixe tipos de variantes com <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>Variant</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>Style</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>Size</code>, etc.</li>
-      </ul>
-    </div>
-
-    <div style={{
-      background: 'white',
-      padding: '1.5rem',
-      borderRadius: '8px',
-      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
-      border: '1px solid #e0f0ff'
-    }}>
-      <h3 style={{
-        color: '#0046c0',
-        margin: '0 0 1rem 0',
-        fontSize: '1.3rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}>
-        <span style={{
-          width: '24px',
-          height: '24px',
-          borderRadius: '50%',
-          background: '#0046c0',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0
-        }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20.24 12.24C21.3658 11.1142 21.9983 9.58722 21.9983 7.99504C21.9983 6.40285 21.3658 4.87588 20.24 3.75004C19.1142 2.62419 17.5872 1.9917 15.995 1.9917C14.4028 1.9917 12.8758 2.62419 11.75 3.75004L5 10.5V19H13.5L20.24 12.24Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 8L2 22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M17.5 15H9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        CSS
-      </h3>
-      <ul style={{
-        margin: '0',
-        paddingLeft: '1.2rem',
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.6'
-      }}>
-        <li>Use <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>kebab-case</code> para classes CSS: <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>btn</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>card-content</code></li>
-        <li>Use prefixos de dois hífens para modificadores: <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>--primary</code>, <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>--large</code></li>
-        <li>Use BEM (Block Element Modifier) para estruturar classes CSS</li>
-      </ul>
-    </div>
-  </div>
-
-  <div style={{
+    padding: '1rem',
     background: '#eef9ff',
-    padding: '1.2rem',
     borderRadius: '8px',
-    marginTop: '1.5rem',
-    display: 'flex',
-    alignItems: 'flex-start',
-    gap: '12px'
+    borderLeft: '3px solid #31b5fc',
+    marginTop: '1.5rem'
   }}>
-    <div style={{
-      width: '24px',
-      height: '24px',
-      borderRadius: '50%',
-      background: '#31b5fc',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexShrink: 0,
-      marginTop: '2px'
-    }}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 16V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 8H12.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <p style={{
-      fontSize: '0.95rem',
-      color: '#444',
-      margin: 0,
-      lineHeight: '1.5'
-    }}>
-      <strong>Dica:</strong> Manter a consistência na nomenclatura é fundamental para a colaboração em equipe e para a manutenção a longo prazo do Ocean Design System. Estas convenções facilitam a compreensão do código por novos desenvolvedores e garantem uma experiência de desenvolvimento mais fluida.
-    </p>
-  </div>
-</div>
-
-<div
-  style={{
-    background: '#f8fbff',
-    border: '1px solid #d0e8fd',
-    borderLeft: '5px solid #0046c0',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2.5rem',
-    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
-  }}
->
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '1.2rem'
-  }}>
-    <div style={{
-      width: '36px',
-      height: '36px',
-      borderRadius: '50%',
-      background: '#0046c0',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginRight: '12px',
-      flexShrink: 0
-    }}>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16 18L18 20L22 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M11 21H7C5.89543 21 5 20.1046 5 19V5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <h2 style={{
-      color: '#0046c0',
-      margin: '0',
-      fontSize: '1.8rem',
-      fontWeight: '600'
-    }}>
-      TypeScript
-    </h2>
-  </div>
-
-  <p style={{
-    fontSize: '1.1rem',
-    lineHeight: '1.6',
-    color: '#333',
-    marginBottom: '1.5rem'
-  }}>
-    O <strong>Ocean Design System</strong> é construído com TypeScript para garantir segurança de tipos e melhor experiência de desenvolvimento. A tipagem forte ajuda a prevenir erros comuns e melhora a documentação do código.
+    <strong>Dica:</strong> Manter a consistência na nomenclatura é fundamental para a colaboração em equipe e para a manutenção a longo prazo do Ocean Design System. Estas convenções facilitam a compreensão do código por novos desenvolvedores e garantem uma experiência de desenvolvimento mais fluida.
   </p>
+</ContentCard>
 
-  <div style={{
-    background: 'white',
-    padding: '1.5rem',
-    borderRadius: '8px',
-    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
-    border: '1px solid #e0f0ff',
-    marginBottom: '1.5rem'
-  }}>
-    <h3 style={{
-      color: '#0046c0',
-      margin: '0 0 1rem 0',
-      fontSize: '1.3rem',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '8px'
-    }}>
-      <span style={{
-        width: '24px',
-        height: '24px',
-        borderRadius: '50%',
-        background: '#0046c0',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexShrink: 0
-      }}>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15849 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M12 17H12.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-      Diretrizes de TypeScript
-    </h3>
-
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-      gap: '1rem',
-      marginBottom: '1rem'
-    }}>
-      <div style={{
-        background: '#f0f7ff',
-        padding: '1rem',
-        borderRadius: '8px',
-        borderLeft: '3px solid #0046c0'
-      }}>
-        <p style={{
-          margin: '0',
-          fontSize: '0.95rem',
-          color: '#444',
-          lineHeight: '1.5'
-        }}>
-          <strong>Defina tipos explícitos</strong> para todas as props de componentes
-        </p>
-      </div>
-
-      <div style={{
-        background: '#f0f7ff',
-        padding: '1rem',
-        borderRadius: '8px',
-        borderLeft: '3px solid #0046c0'
-      }}>
-        <p style={{
-          margin: '0',
-          fontSize: '0.95rem',
-          color: '#444',
-          lineHeight: '1.5'
-        }}>
-          <strong>Use interfaces</strong> para props de componentes
-        </p>
-      </div>
-
-      <div style={{
-        background: '#f0f7ff',
-        padding: '1rem',
-        borderRadius: '8px',
-        borderLeft: '3px solid #0046c0'
-      }}>
-        <p style={{
-          margin: '0',
-          fontSize: '0.95rem',
-          color: '#444',
-          lineHeight: '1.5'
-        }}>
-          <strong>Use tipos</strong> para enums e unions
-        </p>
-      </div>
-
-      <div style={{
-        background: '#f0f7ff',
-        padding: '1rem',
-        borderRadius: '8px',
-        borderLeft: '3px solid #0046c0'
-      }}>
-        <p style={{
-          margin: '0',
-          fontSize: '0.95rem',
-          color: '#444',
-          lineHeight: '1.5'
-        }}>
-          <strong>Evite o uso de</strong> <code style={{ background: '#e0f0ff', padding: '2px 4px', borderRadius: '4px' }}>any</code>; prefira <code style={{ background: '#e0f0ff', padding: '2px 4px', borderRadius: '4px' }}>unknown</code> quando necessário
-        </p>
-      </div>
-
-      <div style={{
-        background: '#f0f7ff',
-        padding: '1rem',
-        borderRadius: '8px',
-        borderLeft: '3px solid #0046c0'
-      }}>
-        <p style={{
-          margin: '0',
-          fontSize: '0.95rem',
-          color: '#444',
-          lineHeight: '1.5'
-        }}>
-          <strong>Use tipos genéricos</strong> quando apropriado
-        </p>
-      </div>
-
-      <div style={{
-        background: '#f0f7ff',
-        padding: '1rem',
-        borderRadius: '8px',
-        borderLeft: '3px solid #0046c0'
-      }}>
-        <p style={{
-          margin: '0',
-          fontSize: '0.95rem',
-          color: '#444',
-          lineHeight: '1.5'
-        }}>
-          <strong>Documente interfaces</strong> e tipos complexos
-        </p>
-      </div>
-    </div>
-  </div>
+<ContentCard 
+  title="Padrões de Testes"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z" fill="white"/>
+      <path d="M11 17H13V15H11V17ZM12 7C10.9 7 10 7.9 10 9H12C12 8.45 12.45 8 13 8C13.55 8 14 8.45 14 9C14 9.55 13.55 10 13 10H12V12H13C14.1 12 15 11.1 15 10C15 8.9 14.1 8 13 8C12.45 8 12 7.55 12 7Z" fill="white"/>
+    </svg>
+  }
+>
+  <InfoBox
+    title="Estrutura de Testes"
+    titleColor="#0046c0"
+    backgroundColor="white"
+  >
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      Cada componente deve ter seus testes em um arquivo <code>index.spec.tsx</code> adjacente ao arquivo do componente.
+      Os testes devem seguir a metodologia AAA (Arrange, Act, Assert):
+    </p>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li><strong>Arrange:</strong> Configurar o ambiente de teste</li>
+      <li><strong>Act:</strong> Executar a ação a ser testada</li>
+      <li><strong>Assert:</strong> Verificar os resultados esperados</li>
+    </ul>
+  </InfoBox>
 
   <h3 style={{
     color: '#0046c0',
     fontSize: '1.3rem',
     marginBottom: '1rem',
+    marginTop: '1.5rem',
     fontWeight: '600'
   }}>
-    Exemplo de Tipos Bem Definidos
+    Cobertura de Testes
   </h3>
 
-  <div style={{
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1.5rem'
-  }}>
-    <div style={{
-      background: '#eef9ff',
-      borderRadius: '8px',
-      overflow: 'hidden'
-    }}>
-      <div style={{
-        background: '#0046c0',
-        color: 'white',
-        padding: '0.5rem 1rem',
-        fontSize: '0.9rem',
-        fontWeight: '500',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="white" stroke-width="2"/>
-        </svg>
-        Bom: tipos bem definidos
-      </div>
-
-```tsx
-interface CardContentProps {
-  title: string;
-  description: string;
-  image?: {
-    url: string;
-    alt: string;
-  };
-  links?: Array<{
-    href: string;
-    label: string;
-    target?: '_blank' | '_self';
-  }>;
-  onAction?: (actionType: 'click' | 'hover') => void;
-}
-```
-    </div>
-
-    <div style={{
-      background: '#fff8f8',
-      borderRadius: '8px',
-      overflow: 'hidden'
-    }}>
-      <div style={{
-        background: '#e53935',
-        color: 'white',
-        padding: '0.5rem 1rem',
-        fontSize: '0.9rem',
-        fontWeight: '500',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        Evite: tipos vagos
-      </div>
-
-```tsx
-interface PoorCardContentProps {
-  title: any;
-  description: any;
-  image?: any;
-  links?: any[];
-  onAction?: Function;
-}
-```
-    </div>
-  </div>
-
-  <div style={{
-    background: '#eef9ff',
-    padding: '1.2rem',
-    borderRadius: '8px',
-    marginTop: '1.5rem',
-    display: 'flex',
-    alignItems: 'flex-start',
-    gap: '12px'
-  }}>
-    <div style={{
-      width: '24px',
-      height: '24px',
-      borderRadius: '50%',
-      background: '#0046c0',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexShrink: 0,
-      marginTop: '2px'
-    }}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 16V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 8H12.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <p style={{
-      fontSize: '0.95rem',
-      color: '#444',
-      margin: 0,
-      lineHeight: '1.5'
-    }}>
-      <strong>Benefícios:</strong> Usar tipos bem definidos melhora a autocompletar da IDE, facilita a detecção de erros durante o desenvolvimento e torna a documentação mais clara para outros desenvolvedores que usam seus componentes.
-    </p>
-  </div>
-</div>
-
-<div
-  style={{
-    background: '#f8fbff',
-    border: '1px solid #d0e8fd',
-    borderLeft: '5px solid #31b5fc',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2.5rem',
-    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
-  }}
->
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '1.2rem'
-  }}>
-    <div style={{
-      width: '36px',
-      height: '36px',
-      borderRadius: '50%',
-      background: '#31b5fc',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginRight: '12px',
-      flexShrink: 0
-    }}>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <h2 style={{
-      color: '#31b5fc',
-      margin: '0',
-      fontSize: '1.8rem',
-      fontWeight: '600'
-    }}>
-      Testes
-    </h2>
-  </div>
-
-  <p style={{
-    fontSize: '1.1rem',
-    lineHeight: '1.6',
-    color: '#333',
-    marginBottom: '1.5rem'
-  }}>
-    Todos os componentes do <strong>Ocean Design System</strong> devem ser testados adequadamente para garantir qualidade, confiabilidade e manutenção a longo prazo.
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginBottom: '1rem' }}>
+    Todos os componentes devem ter uma cobertura mínima de 80% para:
   </p>
 
-  <div style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-    gap: '1.5rem',
-    marginBottom: '2rem'
-  }}>
-    <div style={{
-      background: 'white',
-      padding: '1.5rem',
-      borderRadius: '8px',
-      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
-      border: '1px solid #e0f0ff'
-    }}>
-      <h3 style={{
-        color: '#31b5fc',
-        margin: '0 0 1rem 0',
-        fontSize: '1.3rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}>
-        <span style={{
-          width: '28px',
-          height: '28px',
-          borderRadius: '50%',
-          background: '#31b5fc',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0
-        }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16.24 7.76001L14.12 14.12L7.76001 16.24L9.88001 9.88001L16.24 7.76001Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        Tipos de Testes
-      </h3>
-      <ul style={{
-        margin: '0',
-        paddingLeft: '1.2rem',
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.6'
-      }}>
-        <li><strong>Testes Unitários</strong>: Testar componentes isoladamente</li>
-        <li><strong>Testes de Integração</strong>: Testar interações entre componentes</li>
-        <li><strong>Testes de Acessibilidade</strong>: Garantir que os componentes sejam acessíveis</li>
-        <li><strong>Testes Visuais</strong>: Garantir que os componentes sejam renderizados corretamente</li>
-      </ul>
-    </div>
-
-    <div style={{
-      background: 'white',
-      padding: '1.5rem',
-      borderRadius: '8px',
-      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
-      border: '1px solid #e0f0ff'
-    }}>
-      <h3 style={{
-        color: '#31b5fc',
-        margin: '0 0 1rem 0',
-        fontSize: '1.3rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}>
-        <span style={{
-          width: '28px',
-          height: '28px',
-          borderRadius: '50%',
-          background: '#31b5fc',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0
-        }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 7H4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 12H4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 17H4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M17 9L19 7L21 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M19 7V17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        Ferramentas de Teste
-      </h3>
-      <ul style={{
-        margin: '0',
-        paddingLeft: '1.2rem',
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.6'
-      }}>
-        <li><strong>Jest</strong> para testes unitários e de integração</li>
-        <li><strong>React Testing Library</strong> para testes de componentes</li>
-        <li><strong>Axe</strong> para testes de acessibilidade</li>
-        <li><strong>Storybook</strong> para testes visuais</li>
-      </ul>
-    </div>
-  </div>
+  <FeatureGrid columns="repeat(auto-fill, minmax(220px, 1fr))">
+    <FeatureItem
+      title="Renderização"
+      borderColor="#0046c0"
+      description="Verificar se o componente renderiza corretamente com props padrão e personalizadas"
+    />
+    <FeatureItem
+      title="Interações"
+      borderColor="#31b5fc"
+      titleColor="#31b5fc"
+      description="Testar cliques, inputs e outras interações do usuário"
+    />
+    <FeatureItem
+      title="Estados"
+      borderColor="#66cafc"
+      titleColor="#66cafc"
+      description="Validar diferentes estados do componente (loading, disabled, etc.)"
+    />
+    <FeatureItem
+      title="Acessibilidade"
+      borderColor="#0046c0"
+      description="Garantir que o componente seja acessível (ARIA roles, keyboard navigation)"
+    />
+  </FeatureGrid>
 
   <h3 style={{
     color: '#31b5fc',
     fontSize: '1.3rem',
     marginBottom: '1rem',
+    marginTop: '1.5rem',
     fontWeight: '600'
   }}>
     Exemplo de Teste
   </h3>
 
-  <div style={{
-    background: '#eef9ff',
-    borderRadius: '8px',
-    overflow: 'hidden',
-    marginBottom: '1.5rem'
-  }}>
-    <div style={{
-      background: '#31b5fc',
-      color: 'white',
-      padding: '0.5rem 1rem',
-      fontSize: '0.9rem',
-      fontWeight: '500'
-    }}>
-      src/components/Button/index.spec.tsx
-    </div>
-
+  <CodeBlock title="src/components/Button/index.spec.tsx">
 ```tsx
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Button from '.';
 
-describe('Button', () => {
-  it('renders correctly with default props', () => {
+describe('Button Component', () => {
+  it('should render correctly with default props', () => {
     render(<Button>Click me</Button>);
-    const button = screen.getByText('Click me');
-
+    
+    const button = screen.getByRole('button', { name: /click me/i });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveClass('btn --insurance-primary --large');
+    expect(button).toHaveClass('btn --insurance-primary --large --contain');
+    expect(button).not.toBeDisabled();
   });
 
-  it('applies custom variant, style and size', () => {
+  it('should apply custom styles based on props', () => {
     render(
-      <Button variant="banking" styles="secondary" size="small">
+      <Button 
+        variant="banking" 
+        styles="secondary" 
+        size="small" 
+        width="fluid"
+      >
         Custom Button
       </Button>
     );
-
-    const button = screen.getByText('Custom Button');
-    expect(button).toHaveClass('btn --banking-secondary --small');
+    
+    const button = screen.getByRole('button', { name: /custom button/i });
+    expect(button).toHaveClass('btn --banking-secondary --small --fluid');
   });
 
-  it('handles click events', () => {
-    const handleClick = jest.fn();
-    render(<Button onClick={handleClick}>Click me</Button>);
-
-    fireEvent.click(screen.getByText('Click me'));
-    expect(handleClick).toHaveBeenCalledTimes(1);
-  });
-
-  it('is disabled when disabled prop is true', () => {
+  it('should be disabled when disabled prop is true', () => {
     render(<Button disabled>Disabled Button</Button>);
-
-    const button = screen.getByText('Disabled Button');
+    
+    const button = screen.getByRole('button', { name: /disabled button/i });
     expect(button).toBeDisabled();
+  });
+
+  it('should show loading state when isLoading is true', () => {
+    render(<Button isLoading>Loading Button</Button>);
+    
+    const button = screen.getByRole('button', { name: /loading button/i });
+    expect(button).toHaveClass('--loading');
+    expect(button).toBeDisabled();
+    expect(screen.getByText('Loading Button')).toBeInTheDocument();
+    expect(button.querySelector('.loader')).toBeInTheDocument();
+  });
+
+  it('should call onClick handler when clicked', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick}>Clickable Button</Button>);
+    
+    const button = screen.getByRole('button', { name: /clickable button/i });
+    fireEvent.click(button);
+    
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });
 ```
-  </div>
-
-  <div style={{
-    background: '#eef9ff',
-    padding: '1.2rem',
-    borderRadius: '8px',
-    marginTop: '1.5rem',
-    display: 'flex',
-    alignItems: 'flex-start',
-    gap: '12px'
-  }}>
-    <div style={{
-      width: '24px',
-      height: '24px',
-      borderRadius: '50%',
-      background: '#31b5fc',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexShrink: 0,
-      marginTop: '2px'
-    }}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 16V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 8H12.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <p style={{
-      fontSize: '0.95rem',
-      color: '#444',
-      margin: 0,
-      lineHeight: '1.5'
-    }}>
-      <strong>Cobertura de testes:</strong> Busque alcançar uma cobertura de testes de pelo menos 80% para todos os componentes. Priorize testar comportamentos e funcionalidades em vez de detalhes de implementação.
-    </p>
-  </div>
-</div>
-
-<div
-  style={{
-    background: '#f8fbff',
-    border: '1px solid #d0e8fd',
-    borderLeft: '5px solid #0046c0',
-    padding: '2rem',
-    borderRadius: '8px',
-    marginBottom: '2.5rem',
-    boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)'
-  }}
->
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '1.2rem'
-  }}>
-    <div style={{
-      width: '36px',
-      height: '36px',
-      borderRadius: '50%',
-      background: '#0046c0',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginRight: '12px',
-      flexShrink: 0
-    }}>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M14 2V8H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M16 13H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M16 17H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M10 9H9H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <h2 style={{
-      color: '#0046c0',
-      margin: '0',
-      fontSize: '1.8rem',
-      fontWeight: '600'
-    }}>
-      Documentação
-    </h2>
-  </div>
+  </CodeBlock>
 
   <p style={{
     fontSize: '1.1rem',
     lineHeight: '1.6',
     color: '#333',
-    marginBottom: '1.5rem'
-  }}>
-    Cada componente do <strong>Ocean Design System</strong> deve ser bem documentado para facilitar seu uso e manutenção. A documentação é mantida no Storybook, centralizada na pasta <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>.storybook/stories</code>.
-  </p>
-
-  <div style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-    gap: '1.5rem',
-    marginBottom: '1.5rem'
-  }}>
-    <div style={{
-      background: 'white',
-      padding: '1.5rem',
-      borderRadius: '8px',
-      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
-      border: '1px solid #e0f0ff'
-    }}>
-      <h3 style={{
-        color: '#0046c0',
-        margin: '0 0 1rem 0',
-        fontSize: '1.3rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}>
-        <span style={{
-          width: '28px',
-          height: '28px',
-          borderRadius: '50%',
-          background: '#0046c0',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0
-        }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 16V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 8H12.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        Estrutura da Documentação
-      </h3>
-      <ul style={{
-        margin: '0',
-        paddingLeft: '1.2rem',
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.6'
-      }}>
-        <li><strong>Descrição do componente</strong>: Visão geral e propósito</li>
-        <li><strong>Exemplos de uso</strong>: Código e demonstrações interativas</li>
-        <li><strong>API</strong>: Documentação detalhada de props</li>
-        <li><strong>Variações</strong>: Diferentes configurações e estilos</li>
-        <li><strong>Acessibilidade</strong>: Considerações de acessibilidade</li>
-      </ul>
-    </div>
-
-    <div style={{
-      background: 'white',
-      padding: '1.5rem',
-      borderRadius: '8px',
-      boxShadow: '0 2px 12px rgba(0, 70, 192, 0.08)',
-      border: '1px solid #e0f0ff'
-    }}>
-      <h3 style={{
-        color: '#0046c0',
-        margin: '0 0 1rem 0',
-        fontSize: '1.3rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}>
-        <span style={{
-          width: '28px',
-          height: '28px',
-          borderRadius: '50%',
-          background: '#0046c0',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0
-        }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 7V17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 7V17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        Organização no Storybook
-      </h3>
-      <ul style={{
-        margin: '0',
-        paddingLeft: '1.2rem',
-        fontSize: '0.95rem',
-        color: '#444',
-        lineHeight: '1.6'
-      }}>
-        <li><strong>Componentes</strong>: <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>.storybook/stories/components/</code></li>
-        <li><strong>Fundamentos</strong>: <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>.storybook/stories/Foundations/</code></li>
-        <li><strong>Páginas introdutórias</strong>: <code style={{ background: '#f0f7ff', padding: '2px 4px', borderRadius: '4px' }}>.storybook/stories/</code></li>
-        <li><strong>Padrões Técnicos</strong>: Documentação de convenções e práticas</li>
-      </ul>
-    </div>
-  </div>
-
-  <div style={{
+    padding: '1rem',
     background: '#eef9ff',
-    padding: '1.2rem',
     borderRadius: '8px',
-    display: 'flex',
-    alignItems: 'flex-start',
-    gap: '12px'
+    borderLeft: '3px solid #0046c0',
+    marginTop: '1rem'
   }}>
-    <div style={{
-      width: '24px',
-      height: '24px',
-      borderRadius: '50%',
-      background: '#0046c0',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexShrink: 0,
-      marginTop: '2px'
-    }}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M9 17L12 20L15 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 12V20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <p style={{
-      fontSize: '0.95rem',
-      color: '#444',
-      margin: 0,
-      lineHeight: '1.5'
-    }}>
-      <strong>Formato MDX:</strong> A documentação utiliza o formato MDX para combinar Markdown com componentes React interativos, permitindo exemplos dinâmicos e uma melhor experiência para os desenvolvedores que consultam a documentação.
-    </p>
-  </div>
-</div>
+    <strong>Importante:</strong> Sempre use mocks para dependências externas e componentes filhos complexos para garantir que os testes sejam isolados e confiáveis.
+  </p>
+</ContentCard>
 
-<div
-  style={{
-    background: 'linear-gradient(135deg, #0046c0 0%, #31b5fc 100%)',
-    color: 'white',
-    padding: '2rem',
-    borderRadius: '12px',
+<ContentCard 
+  title="Documentação"
+  borderColor="#66cafc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM18 20H6V4H13V9H18V20Z" fill="white"/>
+      <path d="M8 16H16V18H8V16ZM8 12H16V14H8V12Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginBottom: '1.5rem' }}>
+    A documentação é uma parte essencial do Ocean Design System. Cada componente deve ser documentado seguindo estas diretrizes:
+  </p>
+
+  <FeatureGrid>
+    <InfoBox
+      title="JSDoc"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        Todos os componentes e funções públicas devem ter documentação JSDoc completa:
+      </p>
+      <CodeBlock>
+```tsx
+/**
+ * Componente Button do Ocean Design System
+ * 
+ * @component
+ * @example
+ * <Button variant="insurance" styles="primary" size="large">
+ *   Clique Aqui
+ * </Button>
+ * 
+ * @param {ButtonProps} props - Propriedades do componente
+ * @returns {React.ReactElement} Componente Button renderizado
+ */
+```
+      </CodeBlock>
+    </InfoBox>
+
+    <InfoBox
+      title="Documentação de Props"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        Cada prop deve ser documentada com seu tipo, valor padrão e descrição:
+      </p>
+      <CodeBlock>
+```tsx
+/**
+ * Props do componente Button
+ * 
+ * @interface ButtonProps
+ * @extends {ButtonHTMLAttributes<HTMLButtonElement>}
+ */
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Variante de cor do botão @default 'insurance' */
+  variant?: ButtonVariant;
+  
+  /** Estilo visual do botão @default 'primary' */
+  styles?: ButtonStyle;
+  
+  /** Tamanho do botão @default 'large' */
+  size?: ButtonSize;
+  
+  /** Largura do botão @default 'contain' */
+  width?: ButtonWidth;
+  
+  /** Se o botão está em estado de carregamento @default false */
+  isLoading?: boolean;
+  
+  /** Conteúdo do botão */
+  children: ReactNode;
+}
+```
+      </CodeBlock>
+    </InfoBox>
+  </FeatureGrid>
+
+  <h3 style={{
+    color: '#66cafc',
+    fontSize: '1.3rem',
     marginBottom: '1rem',
-    boxShadow: '0 8px 24px rgba(0, 70, 192, 0.25)',
-    position: 'relative',
-    overflow: 'hidden',
-    textAlign: 'center'
-  }}
->
-  <div
-    style={{
-      position: 'absolute',
-      top: '15%',
-      right: '8%',
-      width: '120px',
-      height: '120px',
-      background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)',
-      borderRadius: '50%'
-    }}
-  />
-  <h2 style={{
-    fontSize: '1.8rem',
-    margin: '0 0 1rem 0',
-    fontWeight: 'bold',
-    letterSpacing: '-0.5px',
-    position: 'relative'
+    marginTop: '1.5rem',
+    fontWeight: '600'
   }}>
-    Contribua para o Ocean Design System
-  </h2>
-  <p style={{
-    fontSize: '1.1rem',
-    marginBottom: '0',
-    maxWidth: '800px',
-    lineHeight: '1.6',
-    position: 'relative',
-    opacity: '0.9',
-    margin: '0 auto'
-  }}>
-    Seguir estes padrões técnicos ajuda a manter a consistência e qualidade do Ocean Design System.
-    Consulte a documentação de contribuição para mais detalhes sobre como participar do projeto.
-  </p>
-</div>
+    Storybook
+  </h3>
 
-<div
-  style={{
-    background: '#f0f7ff',
-    padding: '1.5rem',
-    borderRadius: '8px',
-    marginTop: '2rem',
-    textAlign: 'center',
-    color: '#444',
-    fontSize: '0.9rem',
-    lineHeight: '1.5'
-  }}
->
-  <p style={{ margin: 0 }}>
-    Ocean Design System &copy; {new Date().getFullYear()} |
-    Desenvolvido com ❤️ para criar experiências consistentes e de alta qualidade
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginBottom: '1rem' }}>
+    Cada componente deve ter sua documentação no Storybook com:
   </p>
-</div>
+
+  <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginBottom: '1.5rem' }}>
+    <li>Descrição geral do componente e seu propósito</li>
+    <li>Exemplos de uso para diferentes variações</li>
+    <li>Documentação completa de todas as props</li>
+    <li>Guias de acessibilidade específicos para o componente</li>
+    <li>Exemplos interativos que demonstram o comportamento do componente</li>
+  </ul>
+
+  <div style={{
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    padding: '1rem',
+    background: '#eef9ff',
+    borderRadius: '8px',
+    borderLeft: '3px solid #66cafc',
+    marginTop: '1rem'
+  }}>
+    <strong>Dica:</strong> Utilize o formato MDX para criar documentação rica e interativa no Storybook, combinando markdown com exemplos de código executáveis.
+  </div>
+</ContentCard>
+
+<BannerFooter />
