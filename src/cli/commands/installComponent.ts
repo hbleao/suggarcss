@@ -81,26 +81,18 @@ export async function installComponent(
 	}
 
 	try {
-		// Detectar se estamos no ambiente de desenvolvimento ou no pacote instalado
-		const isDevEnvironment = process.cwd().includes("ocean");
-
 		// Possíveis caminhos do componente
-		let possiblePaths = [];
-
-		if (isDevEnvironment) {
-			// No ambiente de desenvolvimento, usar caminhos relativos ao diretório atual
-			possiblePaths = [
-				path.join(process.cwd(), `src/components/${componentName}`),
-				path.join(process.cwd(), `dist/components/${componentName}`),
-			];
-		} else {
-			// No pacote instalado, usar caminhos relativos ao diretório do pacote
-			const pkgPath = path.dirname(path.dirname(__dirname));
-			possiblePaths = [
-				path.join(pkgPath, `dist/components/${componentName}`),
-				path.join(pkgPath, `src/components/${componentName}`),
-			];
-		}
+		const possiblePaths = [
+			// Caminhos relativos ao diretório atual
+			path.join(process.cwd(), `src/components/${componentName}`),
+			path.join(process.cwd(), `dist/components/${componentName}`),
+			// Caminhos absolutos para o caso de estarmos em um diretório diferente
+			path.join("/Users/henrique/dev/sugarcss/src/components/", componentName),
+			path.join("/Users/henrique/dev/sugarcss/dist/components/", componentName),
+			// Caminhos relativos ao diretório do pacote
+			path.join(path.dirname(path.dirname(__dirname)), `dist/components/${componentName}`),
+			path.join(path.dirname(path.dirname(__dirname)), `src/components/${componentName}`)
+		]
 
 		// Encontrar o caminho do componente
 		let src = "";
