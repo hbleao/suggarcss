@@ -17,11 +17,18 @@ export async function installStyles(initialDestDir?: string): Promise<void> {
     });
   }
 
-  // Confirmação antes da instalação
-  const confirmInstall = await confirm({
-    message: `Confirma a instalação dos estilos base em ${path.resolve(process.cwd(), destDir)}?`,
-    default: true,
-  });
+  // Confirmação antes da instalação (pular se o diretório foi fornecido como parâmetro)
+  let confirmInstall = true;
+
+  // Se o diretório não foi fornecido como parâmetro inicial, pedir confirmação
+  if (destDir !== initialDestDir) {
+    confirmInstall = await confirm({
+      message: `Confirma a instalação dos estilos base em ${path.resolve(process.cwd(), destDir)}?`,
+      default: true,
+    });
+  } else {
+    console.log(`\n📦 Instalando estilos base em ${path.resolve(process.cwd(), destDir)}...\n`);
+  }
 
   if (!confirmInstall) {
     console.log("\n⚠️ Instalação cancelada pelo usuário.\n");
@@ -29,13 +36,17 @@ export async function installStyles(initialDestDir?: string): Promise<void> {
   }
 
   try {
-    // Caminho para a raiz do pacote instalado
-    const pkgPath = path.dirname(path.dirname(__dirname));
-
     // Possíveis caminhos dos estilos
     const possiblePaths = [
-      path.join(pkgPath, "dist/styles"),
-      path.join(pkgPath, "src/styles"),
+      // Caminhos relativos ao diretório atual
+      path.join(process.cwd(), "dist/styles"),
+      path.join(process.cwd(), "src/styles"),
+      // Caminhos absolutos para o caso de estarmos em um diretório diferente
+      path.join("/Users/henrique/dev/sugarcss/dist/styles"),
+      path.join("/Users/henrique/dev/sugarcss/src/styles"),
+      // Caminhos relativos ao diretório do pacote
+      path.join(path.dirname(path.dirname(__dirname)), "dist/styles"),
+      path.join(path.dirname(path.dirname(__dirname)), "src/styles")
     ];
 
     // Encontrar o caminho dos estilos

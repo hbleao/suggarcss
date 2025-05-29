@@ -28,11 +28,18 @@ export async function installHooks(initialDestDir?: string): Promise<void> {
     });
   }
 
-  // Confirmação antes da instalação
-  const confirmInstall = await confirm({
-    message: `Confirma a instalação dos hooks em ${path.resolve(process.cwd(), destDir)}?`,
-    default: true,
-  });
+  // Confirmação antes da instalação (pular se o diretório foi fornecido como parâmetro)
+  let confirmInstall = true;
+
+  // Se o diretório não foi fornecido como parâmetro inicial, pedir confirmação
+  if (destDir !== initialDestDir) {
+    confirmInstall = await confirm({
+      message: `Confirma a instalação dos hooks em ${path.resolve(process.cwd(), destDir)}?`,
+      default: true,
+    });
+  } else {
+    console.log(`\n📦 Instalando hooks em ${path.resolve(process.cwd(), destDir)}...\n`);
+  }
 
   if (!confirmInstall) {
     console.log("\n⚠️ Instalação cancelada pelo usuário.\n");
@@ -40,13 +47,17 @@ export async function installHooks(initialDestDir?: string): Promise<void> {
   }
 
   try {
-    // Caminho para a raiz do pacote instalado
-    const pkgPath = path.dirname(path.dirname(__dirname));
-    
     // Possíveis caminhos dos hooks
     const possiblePaths = [
-      path.join(pkgPath, "dist/hooks"),
-      path.join(pkgPath, "src/hooks"),
+      // Caminhos relativos ao diretório atual
+      path.join(process.cwd(), "dist/hooks"),
+      path.join(process.cwd(), "src/hooks"),
+      // Caminhos absolutos para o caso de estarmos em um diretório diferente
+      path.join("/Users/henrique/dev/sugarcss/dist/hooks"),
+      path.join("/Users/henrique/dev/sugarcss/src/hooks"),
+      // Caminhos relativos ao diretório do pacote
+      path.join(path.dirname(path.dirname(__dirname)), "dist/hooks"),
+      path.join(path.dirname(path.dirname(__dirname)), "src/hooks")
     ];
     
     // Encontrar o caminho dos hooks

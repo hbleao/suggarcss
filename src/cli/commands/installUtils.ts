@@ -28,11 +28,18 @@ export async function installUtils(initialDestDir?: string): Promise<void> {
     });
   }
 
-  // Confirmação antes da instalação
-  const confirmInstall = await confirm({
-    message: `Confirma a instalação das funções utilitárias em ${path.resolve(process.cwd(), destDir)}?`,
-    default: true,
-  });
+  // Confirmação antes da instalação (pular se o diretório foi fornecido como parâmetro)
+  let confirmInstall = true;
+
+  // Se o diretório não foi fornecido como parâmetro inicial, pedir confirmação
+  if (destDir !== initialDestDir) {
+    confirmInstall = await confirm({
+      message: `Confirma a instalação das funções utilitárias em ${path.resolve(process.cwd(), destDir)}?`,
+      default: true,
+    });
+  } else {
+    console.log(`\n📦 Instalando funções utilitárias em ${path.resolve(process.cwd(), destDir)}...\n`);
+  }
 
   if (!confirmInstall) {
     console.log("\n⚠️ Instalação cancelada pelo usuário.\n");
@@ -40,13 +47,17 @@ export async function installUtils(initialDestDir?: string): Promise<void> {
   }
 
   try {
-    // Caminho para a raiz do pacote instalado
-    const pkgPath = path.dirname(path.dirname(__dirname));
-
     // Possíveis caminhos das funções utilitárias
     const possiblePaths = [
-      path.join(pkgPath, "dist/utils"),
-      path.join(pkgPath, "src/utils"),
+      // Caminhos relativos ao diretório atual
+      path.join(process.cwd(), "dist/utils"),
+      path.join(process.cwd(), "src/utils"),
+      // Caminhos absolutos para o caso de estarmos em um diretório diferente
+      path.join("/Users/henrique/dev/sugarcss/dist/utils"),
+      path.join("/Users/henrique/dev/sugarcss/src/utils"),
+      // Caminhos relativos ao diretório do pacote
+      path.join(path.dirname(path.dirname(__dirname)), "dist/utils"),
+      path.join(path.dirname(path.dirname(__dirname)), "src/utils")
     ];
 
     // Encontrar o caminho das funções utilitárias
