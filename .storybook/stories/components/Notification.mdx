@@ -1,0 +1,142 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as NotificationStories from './Notification.stories';
+
+<Meta title="Components/Notification" of={NotificationStories} />
+
+# Notification
+
+O componente `Notification` exibe mensagens informativas, de alerta ou de feedback que aparecem temporariamente na interface do usuário, geralmente em resposta a uma ação do usuário ou a um evento do sistema.
+
+## Exemplos Interativos
+
+### Notificação Padrão
+<Canvas>
+  <Story of={NotificationStories.DefaultNotification} />
+</Canvas>
+
+### Notificação com Borda
+<Canvas>
+  <Story of={NotificationStories.OutlinedNotification} />
+</Canvas>
+
+### Notificação Informativa
+<Canvas>
+  <Story of={NotificationStories.InformationNotification} />
+</Canvas>
+
+### Notificação de Atenção
+<Canvas>
+  <Story of={NotificationStories.AttentionNotification} />
+</Canvas>
+
+### Notificação de Sucesso
+<Canvas>
+  <Story of={NotificationStories.SuccessNotification} />
+</Canvas>
+
+### Notificação de Erro
+<Canvas>
+  <Story of={NotificationStories.ErrorNotification} />
+</Canvas>
+
+### Notificação com Link
+<Canvas>
+  <Story of={NotificationStories.NotificationWithLink} />
+</Canvas>
+
+### Múltiplas Notificações
+<Canvas>
+  <Story of={NotificationStories.MultipleNotifications} />
+</Canvas>
+
+## Importação
+
+```jsx
+import { Notification } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Notification, Button } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const [visible, setVisible] = React.useState(false);
+
+  const showNotification = () => {
+    setVisible(true);
+  };
+
+  const handleClose = () => {
+    setVisible(false);
+  };
+
+  return (
+    <div>
+      <Button onClick={showNotification}>
+        Mostrar Notificação
+      </Button>
+
+      <Notification
+        visible={visible}
+        onClose={handleClose}
+        title="Operação concluída"
+        message="Sua ação foi processada com sucesso."
+        type="success"
+        duration={3000}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `visible` | `boolean` | `false` | Controla a visibilidade da notificação |
+| `onClose` | `() => void` | - | Função chamada quando a notificação é fechada |
+| `title` | `string` | - | Título da notificação |
+| `message` | `string \| ReactNode` | - | Conteúdo principal da notificação |
+| `type` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Tipo da notificação, afeta o ícone e a cor |
+| `icon` | `ReactNode` | - | Ícone personalizado (substitui o ícone padrão do tipo) |
+| `duration` | `number \| null` | `4500` | Duração em milissegundos antes do fechamento automático (null para não fechar automaticamente) |
+| `position` | `'top-right' \| 'top-left' \| 'bottom-right' \| 'bottom-left' \| 'top-center' \| 'bottom-center'` | `'top-right'` | Posição na tela |
+| `showCloseButton` | `boolean` | `true` | Se deve exibir o botão de fechar |
+| `closable` | `boolean` | `true` | Se a notificação pode ser fechada pelo usuário |
+| `actions` | `ReactNode` | - | Ações adicionais a serem exibidas (botões, links) |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `zIndex` | `number` | `1000` | Valor z-index para controlar a sobreposição |
+| `maxWidth` | `number \| string` | `'400px'` | Largura máxima da notificação |
+| `animation` | `'slide' \| 'fade' \| 'none'` | `'slide'` | Tipo de animação ao aparecer/desaparecer |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Notification nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-notification-examples--default)
+- [Com Props Personalizadas](/story/components-notification-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-notification-examples--custom-example)
+## Acessibilidade
+
+O componente `Notification` segue as práticas recomendadas de acessibilidade:
+
+- Utiliza o atributo `role="alert"` para indicar aos leitores de tela que a informação é importante
+- Inclui `aria-live="polite"` para anunciar o conteúdo da notificação sem interromper o usuário
+- Fornece contraste adequado entre o texto e o fundo para garantir legibilidade
+- Permite fechar a notificação com a tecla ESC
+- Inclui foco adequado para os elementos interativos dentro da notificação
+- Utiliza cores semânticas para indicar o tipo de notificação, mas não depende apenas da cor para transmitir informações
+
+## Boas Práticas
+
+- Use notificações para fornecer feedback imediato sobre ações do usuário
+- Mantenha as mensagens concisas e diretas
+- Use o tipo apropriado para cada situação (info, success, warning, error)
+- Posicione as notificações de forma consistente em toda a aplicação
+- Defina uma duração apropriada - notificações informativas podem ser mais breves, enquanto alertas importantes podem permanecer por mais tempo
+- Para notificações que requerem ação do usuário, considere definir `duration={null}` para que não desapareçam automaticamente
+- Limite o número de notificações exibidas simultaneamente para evitar sobrecarregar o usuário
+- Considere implementar um sistema centralizado de notificações para gerenciar todas as notificações da aplicação

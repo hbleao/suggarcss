@@ -1,0 +1,31 @@
+.tooltip__header-category {
+  color: #404040;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 2rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background-color: transparent;
+  padding: 4px 8px;
+  cursor: pointer;
+  outline-offset: -2px;
+  display: flex;
+  gap: 14px;
+  transition:
+    border,
+    color,
+    0.3s ease;
+
+  &:hover {
+    color: #404040;
+    background: #e0e0e0;
+    border: 1px solid transparent;
+  }
+
+  &.isSelected {
+    border: 1px solid #0046c0;
+    color: #0046c0;
+    background-color: transparent;
+  }
+}

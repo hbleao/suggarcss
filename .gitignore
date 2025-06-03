@@ -1,0 +1,17 @@
+# dependencies
+/node_modules
+test-project
+
+# build
+/dist
+
+# testing
+/coverage
+
+# misc
+.DS_Store
+
+# vscode
+.vscode
+
+*storybook.log

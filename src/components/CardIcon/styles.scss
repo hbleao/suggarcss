@@ -1,0 +1,89 @@
+.card-icon {
+  width: 288px;
+  height: 100%;
+  border-radius: var(--space-lg);
+  padding: var(--space-lg);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-decoration: none;
+  transition: 0.2s border ease;
+
+  &:hover,
+  :focus {
+    border: 1px solid var(--color-brand-insurance-900);
+  }
+
+  &.--light {
+    background-color: var(--color-neutral-0);
+
+    .card-icon__pretitle {
+      color: var(--color-neutral-550);
+    }
+
+    .card-icon__title {
+      color: var(--color-neutral-800);
+    }
+
+    .card-icon__description {
+      color: var(--color-neutral-700);
+    }
+
+    .card-icon__icon {
+      color: var(--color-neutral-900);
+    }
+  }
+
+  &.--dark {
+    background-color: var(--color-neutral-900);
+
+    .card-icon__pretitle,
+    .card-icon__title,
+    .card-icon__description,
+    .card-icon__icon {
+      color: var(--color-neutral-0);
+    }
+  }
+
+  &.--link {
+    border: 1px solid var(--color-neutral-200);
+  }
+
+  &.--withoutLink {
+    border: none;
+    cursor: initial;
+    pointer-events: none;
+
+    >div span {
+      background-color: var(--color-alpha-transparent);
+    }
+
+    &:hover,
+    :focus {
+      border: none;
+    }
+  }
+
+  &__icon {
+    margin-bottom: var(--space-lg);
+  }
+
+  &__pretitle {
+    margin-bottom: 14px;
+  }
+
+  &__title {
+    margin-bottom: 14px;
+  }
+
+  &__description {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-icon {
+    padding: 1rem var(--space-md) var(--space-md);
+  }
+}

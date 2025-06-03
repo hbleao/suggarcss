@@ -1,0 +1,488 @@
+import { Meta } from '@storybook/blocks';
+import { 
+  BannerDOC, 
+  ContentCard, 
+  SectionTitle, 
+  InfoBox, 
+  CodeBlock, 
+  FeatureGrid, 
+  FeatureItem,
+  BannerFooter
+} from '../components';
+
+<Meta title="Padrões Técnicos" />
+
+<BannerDOC title="Padrões Técnicos" description="O Ocean possui uma serie de convenções e práticas para garantir consistência e qualidade no Ocean" />
+
+<ContentCard 
+  title="Estrutura de Componentes"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 8H8V4H4V8ZM10 20H14V16H10V20ZM4 20H8V16H4V20ZM4 14H8V10H4V14ZM10 14H14V10H10V14ZM16 4V8H20V4H16ZM10 8H14V4H10V8ZM16 14H20V10H16V14ZM16 20H20V16H16V20Z" fill="white" />
+    </svg>
+  }
+>
+  <p style={{
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    marginBottom: '1.5rem'
+  }}>
+    Cada componente no Ocean segue uma estrutura monolítica consistente, consolidando todos os subcomponentes em um único componente React:
+  </p>
+
+  <CodeBlock title="Estrutura de Diretórios">
+src/components/ComponentName/
+├─ index.tsx         # Exportação principal do componente
+├─ types.ts          # Tipos e interfaces relacionados ao componente
+├─ styles.scss       # Estilos específicos do componente
+└─ index.spec.tsx    # Testes do componente
+  </CodeBlock>
+
+  <FeatureGrid>
+    <FeatureItem
+      title="Abordagem Monolítica"
+      borderColor="#0046c0"
+      description={
+        <ul style={{
+          margin: '0',
+          paddingLeft: '1.2rem',
+          fontSize: '0.95rem',
+          color: '#444',
+          lineHeight: '1.5'
+        }}>
+          <li>Consolidar todos os subcomponentes em um único componente React</li>
+          <li>Criar uma interface de props clara e direta</li>
+          <li>Padronizar os nomes dos componentes para camelCase</li>
+          <li>Implementar renderização condicional para diferentes partes do componente</li>
+        </ul>
+      }
+    />
+
+    <FeatureItem
+      title="Benefícios"
+      borderColor="#31b5fc"
+      titleColor="#31b5fc"
+      description={
+        <ul style={{
+          margin: '0',
+          paddingLeft: '1.2rem',
+          fontSize: '0.95rem',
+          color: '#444',
+          lineHeight: '1.5'
+        }}>
+          <li>Melhor manutenibilidade do código</li>
+          <li>Maior consistência entre componentes</li>
+          <li>Interface mais intuitiva para os desenvolvedores</li>
+          <li>Redução da complexidade da árvore de componentes</li>
+        </ul>
+      }
+    />
+  </FeatureGrid>
+
+  <h3 style={{
+    color: '#1381e2',
+    fontSize: '1.3rem',
+    marginBottom: '1rem',
+    marginTop: '2rem',
+    fontWeight: '600'
+  }}>
+    Exemplo de Implementação
+  </h3>
+
+  <CodeBlock title="src/components/Button/index.tsx">
+```tsx
+import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+
+export type ButtonVariant = 'insurance' | 'banking' | 'health' | 'negative' | 'disabled';
+export type ButtonStyle = 'primary' | 'secondary' | 'ghost';
+export type ButtonSize = 'small' | 'large';
+export type ButtonWidth = 'contain' | 'fluid';
+
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant;
+  styles?: ButtonStyle;
+  size?: ButtonSize;
+  width?: ButtonWidth;
+  isLoading?: boolean;
+  children: ReactNode;
+}
+
+const Button = ({
+  variant = 'insurance',
+  styles = 'primary',
+  size = 'large',
+  width = 'contain',
+  isLoading = false,
+  children,
+  disabled,
+  ...restProps
+}: ButtonProps) => {
+  const composedClassName = `btn --${variant}-${styles} --${size} --${width} ${isLoading ? '--loading' : ''}`;
+
+  return (
+    <button className={composedClassName} disabled={disabled || isLoading} {...restProps}>
+      {isLoading ? <span className="loader"></span> : null}
+      {children}
+    </button>
+  );
+};
+
+export default Button;
+```
+  </CodeBlock>
+
+  <p style={{
+    fontSize: '0.95rem',
+    color: '#555',
+    fontStyle: 'italic',
+    margin: 0
+  }}>
+    Note que todos os tipos e a implementação estão no mesmo arquivo, seguindo a abordagem monolítica.
+  </p>
+</ContentCard>
+
+<ContentCard 
+  title="Convenções de Nomenclatura"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" fill="white" />
+    </svg>
+  }
+>
+  <FeatureGrid>
+    <InfoBox
+      title="Componentes"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>PascalCase</strong> para nomes de componentes: <code>Button</code>, <code>CardContent</code></li>
+        <li><strong>camelCase</strong> para props: <code>isLoading</code>, <code>onButtonClick</code></li>
+        <li>Prefixos descritivos: <code>handle</code> para manipuladores de eventos, <code>is</code> para booleanos</li>
+      </ul>
+    </InfoBox>
+
+    <InfoBox
+      title="Estilos"
+      titleColor="#31b5fc"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>kebab-case</strong> para classes CSS: <code>.card-content</code>, <code>.button-primary</code></li>
+        <li>Prefixo de componente para classes: <code>.button</code>, <code>.button--primary</code></li>
+        <li>Modificadores com duplo hífen: <code>.button--large</code>, <code>.card--featured</code></li>
+      </ul>
+    </InfoBox>
+
+    <InfoBox
+      title="Arquivos"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>index.tsx</strong> para o componente principal</li>
+        <li><strong>types.ts</strong> para tipos e interfaces</li>
+        <li><strong>styles.scss</strong> para estilos</li>
+        <li><strong>index.spec.tsx</strong> para testes</li>
+      </ul>
+    </InfoBox>
+
+    <InfoBox
+      title="Tipos e Interfaces"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>PascalCase</strong> para interfaces e tipos: <code>ButtonProps</code>, <code>CardContentProps</code></li>
+        <li>Sufixo <code>Props</code> para props de componentes</li>
+        <li>Sufixo <code>Type</code> para tipos de união: <code>ButtonVariantType</code></li>
+      </ul>
+    </InfoBox>
+  </FeatureGrid>
+
+  <p style={{
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    padding: '1rem',
+    background: '#eef9ff',
+    borderRadius: '8px',
+    borderLeft: '3px solid #31b5fc',
+    marginTop: '1.5rem'
+  }}>
+    <strong>Dica:</strong> Manter a consistência na nomenclatura é fundamental para a colaboração em equipe e para a manutenção a longo prazo do Ocean Design System. Estas convenções facilitam a compreensão do código por novos desenvolvedores e garantem uma experiência de desenvolvimento mais fluida.
+  </p>
+</ContentCard>
+
+<ContentCard 
+  title="Padrões de Testes"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z" fill="white"/>
+      <path d="M11 17H13V15H11V17ZM12 7C10.9 7 10 7.9 10 9H12C12 8.45 12.45 8 13 8C13.55 8 14 8.45 14 9C14 9.55 13.55 10 13 10H12V12H13C14.1 12 15 11.1 15 10C15 8.9 14.1 8 13 8C12.45 8 12 7.55 12 7Z" fill="white"/>
+    </svg>
+  }
+>
+  <InfoBox
+    title="Estrutura de Testes"
+    titleColor="#0046c0"
+    backgroundColor="white"
+  >
+    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      Cada componente deve ter seus testes em um arquivo <code>index.spec.tsx</code> adjacente ao arquivo do componente.
+      Os testes devem seguir a metodologia AAA (Arrange, Act, Assert):
+    </p>
+    <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+      <li><strong>Arrange:</strong> Configurar o ambiente de teste</li>
+      <li><strong>Act:</strong> Executar a ação a ser testada</li>
+      <li><strong>Assert:</strong> Verificar os resultados esperados</li>
+    </ul>
+  </InfoBox>
+
+  <h3 style={{
+    color: '#0046c0',
+    fontSize: '1.3rem',
+    marginBottom: '1rem',
+    marginTop: '1.5rem',
+    fontWeight: '600'
+  }}>
+    Cobertura de Testes
+  </h3>
+
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginBottom: '1rem' }}>
+    Todos os componentes devem ter uma cobertura mínima de 80% para:
+  </p>
+
+  <FeatureGrid columns="repeat(auto-fill, minmax(220px, 1fr))">
+    <FeatureItem
+      title="Renderização"
+      borderColor="#0046c0"
+      description="Verificar se o componente renderiza corretamente com props padrão e personalizadas"
+    />
+    <FeatureItem
+      title="Interações"
+      borderColor="#31b5fc"
+      titleColor="#31b5fc"
+      description="Testar cliques, inputs e outras interações do usuário"
+    />
+    <FeatureItem
+      title="Estados"
+      borderColor="#66cafc"
+      titleColor="#66cafc"
+      description="Validar diferentes estados do componente (loading, disabled, etc.)"
+    />
+    <FeatureItem
+      title="Acessibilidade"
+      borderColor="#0046c0"
+      description="Garantir que o componente seja acessível (ARIA roles, keyboard navigation)"
+    />
+  </FeatureGrid>
+
+  <h3 style={{
+    color: '#31b5fc',
+    fontSize: '1.3rem',
+    marginBottom: '1rem',
+    marginTop: '1.5rem',
+    fontWeight: '600'
+  }}>
+    Exemplo de Teste
+  </h3>
+
+  <CodeBlock title="src/components/Button/index.spec.tsx">
+```tsx
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import Button from '.';
+
+describe('Button Component', () => {
+  it('should render correctly with default props', () => {
+    render(<Button>Click me</Button>);
+    
+    const button = screen.getByRole('button', { name: /click me/i });
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass('btn --insurance-primary --large --contain');
+    expect(button).not.toBeDisabled();
+  });
+
+  it('should apply custom styles based on props', () => {
+    render(
+      <Button 
+        variant="banking" 
+        styles="secondary" 
+        size="small" 
+        width="fluid"
+      >
+        Custom Button
+      </Button>
+    );
+    
+    const button = screen.getByRole('button', { name: /custom button/i });
+    expect(button).toHaveClass('btn --banking-secondary --small --fluid');
+  });
+
+  it('should be disabled when disabled prop is true', () => {
+    render(<Button disabled>Disabled Button</Button>);
+    
+    const button = screen.getByRole('button', { name: /disabled button/i });
+    expect(button).toBeDisabled();
+  });
+
+  it('should show loading state when isLoading is true', () => {
+    render(<Button isLoading>Loading Button</Button>);
+    
+    const button = screen.getByRole('button', { name: /loading button/i });
+    expect(button).toHaveClass('--loading');
+    expect(button).toBeDisabled();
+    expect(screen.getByText('Loading Button')).toBeInTheDocument();
+    expect(button.querySelector('.loader')).toBeInTheDocument();
+  });
+
+  it('should call onClick handler when clicked', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick}>Clickable Button</Button>);
+    
+    const button = screen.getByRole('button', { name: /clickable button/i });
+    fireEvent.click(button);
+    
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
+```
+  </CodeBlock>
+
+  <p style={{
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    padding: '1rem',
+    background: '#eef9ff',
+    borderRadius: '8px',
+    borderLeft: '3px solid #0046c0',
+    marginTop: '1rem'
+  }}>
+    <strong>Importante:</strong> Sempre use mocks para dependências externas e componentes filhos complexos para garantir que os testes sejam isolados e confiáveis.
+  </p>
+</ContentCard>
+
+<ContentCard 
+  title="Documentação"
+  borderColor="#66cafc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM18 20H6V4H13V9H18V20Z" fill="white"/>
+      <path d="M8 16H16V18H8V16ZM8 12H16V14H8V12Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginBottom: '1.5rem' }}>
+    A documentação é uma parte essencial do Ocean Design System. Cada componente deve ser documentado seguindo estas diretrizes:
+  </p>
+
+  <FeatureGrid>
+    <InfoBox
+      title="JSDoc"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        Todos os componentes e funções públicas devem ter documentação JSDoc completa:
+      </p>
+      <CodeBlock>
+```tsx
+/**
+ * Componente Button do Ocean Design System
+ * 
+ * @component
+ * @example
+ * <Button variant="insurance" styles="primary" size="large">
+ *   Clique Aqui
+ * </Button>
+ * 
+ * @param {ButtonProps} props - Propriedades do componente
+ * @returns {React.ReactElement} Componente Button renderizado
+ */
+```
+      </CodeBlock>
+    </InfoBox>
+
+    <InfoBox
+      title="Documentação de Props"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        Cada prop deve ser documentada com seu tipo, valor padrão e descrição:
+      </p>
+      <CodeBlock>
+```tsx
+/**
+ * Props do componente Button
+ * 
+ * @interface ButtonProps
+ * @extends {ButtonHTMLAttributes<HTMLButtonElement>}
+ */
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Variante de cor do botão @default 'insurance' */
+  variant?: ButtonVariant;
+  
+  /** Estilo visual do botão @default 'primary' */
+  styles?: ButtonStyle;
+  
+  /** Tamanho do botão @default 'large' */
+  size?: ButtonSize;
+  
+  /** Largura do botão @default 'contain' */
+  width?: ButtonWidth;
+  
+  /** Se o botão está em estado de carregamento @default false */
+  isLoading?: boolean;
+  
+  /** Conteúdo do botão */
+  children: ReactNode;
+}
+```
+      </CodeBlock>
+    </InfoBox>
+  </FeatureGrid>
+
+  <h3 style={{
+    color: '#66cafc',
+    fontSize: '1.3rem',
+    marginBottom: '1rem',
+    marginTop: '1.5rem',
+    fontWeight: '600'
+  }}>
+    Storybook
+  </h3>
+
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginBottom: '1rem' }}>
+    Cada componente deve ter sua documentação no Storybook com:
+  </p>
+
+  <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginBottom: '1.5rem' }}>
+    <li>Descrição geral do componente e seu propósito</li>
+    <li>Exemplos de uso para diferentes variações</li>
+    <li>Documentação completa de todas as props</li>
+    <li>Guias de acessibilidade específicos para o componente</li>
+    <li>Exemplos interativos que demonstram o comportamento do componente</li>
+  </ul>
+
+  <div style={{
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    padding: '1rem',
+    background: '#eef9ff',
+    borderRadius: '8px',
+    borderLeft: '3px solid #66cafc',
+    marginTop: '1rem'
+  }}>
+    <strong>Dica:</strong> Utilize o formato MDX para criar documentação rica e interativa no Storybook, combinando markdown com exemplos de código executáveis.
+  </div>
+</ContentCard>
+
+<BannerFooter />

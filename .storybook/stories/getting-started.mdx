@@ -1,0 +1,409 @@
+import { Meta } from '@storybook/blocks';
+import { 
+  BannerDOC, 
+  ContentCard, 
+  SectionTitle, 
+  InfoBox, 
+  CodeBlock, 
+  FeatureGrid, 
+  FeatureItem,
+  BannerFooter
+} from '../components';
+
+<Meta title="Começando" />
+
+<BannerDOC 
+  title="Começando com o Ocean" 
+  description="Este guia irá ajudá-lo a instalar e começar a usar o Ocean em seu projeto, fornecendo componentes modernos e acessíveis para suas aplicações." 
+/>
+
+<ContentCard 
+  title="Instalação"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.5 13.5L12 21L4.5 13.5L6 12L11.25 17.25V3H12.75V17.25L18 12L19.5 13.5Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    Para instalar o Ocean em seu projeto, use npm ou yarn:
+  </p>
+
+  <CodeBlock>
+```bash
+# Usando npm
+npm install @porto/js-library-corp-hubv-porto-ocean
+
+# Usando yarn
+yarn add @porto/js-library-corp-hubv-porto-ocean
+```
+  </CodeBlock>
+</ContentCard>
+
+<ContentCard 
+  title="Configuração"
+  borderColor="#2662c9"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="white"/>
+      <path d="M13 3H11V7H13V3Z" fill="white"/>
+      <path d="M13 17H11V21H13V17Z" fill="white"/>
+      <path d="M21 11H17V13H21V11Z" fill="white"/>
+      <path d="M7 11H3V13H7V11Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    Para usar os componentes do Ocean, importe os tokens CSS em seu arquivo principal:
+  </p>
+
+  <CodeBlock>
+```javascript
+// Em seu arquivo principal (por exemplo, _app.js ou index.js)
+import '@porto/js-library-corp-hubv-porto-ocean/dist/styles.css';
+```
+  </CodeBlock>
+</ContentCard>
+
+<ContentCard 
+  title="Uso Básico"
+  borderColor="#1381e2"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 8H8V4H4V8ZM10 20H14V16H10V20ZM4 20H8V16H4V20ZM4 14H8V10H4V14ZM10 14H14V10H10V14ZM16 4V8H20V4H16ZM10 8H14V4H10V8ZM16 14H20V10H16V14ZM16 20H20V16H16V20Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    Importe e use os componentes do Ocean em seus arquivos React:
+  </p>
+
+  <CodeBlock>
+```jsx
+import React from 'react';
+import { Button, Card, Typography } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function MyComponent() {
+  return (
+    <div>
+      <Typography as="h1">Meu App com Ocean</Typography>
+      
+      <Card>
+        <Typography as="h2">Bem-vindo ao Ocean</Typography>
+        <Typography as="p">
+          Este é um exemplo de uso dos componentes do Ocean Design System.
+        </Typography>
+        <Button variant="insurance" styles="primary">
+          Clique Aqui
+        </Button>
+      </Card>
+    </div>
+  );
+}
+
+export default MyComponent;
+```
+  </CodeBlock>
+</ContentCard>
+
+<ContentCard 
+  title="Componentes Disponíveis"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 8H8V4H4V8ZM10 20H14V16H10V20ZM4 20H8V16H4V20ZM4 14H8V10H4V14ZM10 14H14V10H10V14ZM16 4V8H20V4H16ZM10 8H14V4H10V8ZM16 14H20V10H16V14ZM16 20H20V16H16V20Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    O Ocean oferece uma ampla gama de componentes prontos para uso. Aqui estão alguns dos principais:
+  </p>
+
+  <FeatureGrid columns="repeat(auto-fill, minmax(250px, 1fr))">
+    <InfoBox
+      title="Componentes de Layout"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>Grid</strong>: Sistema de grid flexível</li>
+        <li><strong>Column</strong>: Colunas para uso com Grid</li>
+        <li><strong>Flex</strong>: Layout flexível</li>
+        <li><strong>Spacing</strong>: Espaçamentos consistentes</li>
+      </ul>
+    </InfoBox>
+
+    <InfoBox
+      title="Componentes de Formulário"
+      titleColor="#31b5fc"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>Button</strong>: Botões com várias variantes</li>
+        <li><strong>Input</strong>: Campos de entrada de texto</li>
+        <li><strong>Checkbox</strong>: Caixas de seleção</li>
+        <li><strong>Radio</strong>: Botões de opção</li>
+        <li><strong>Dropdown</strong>: Menus suspensos</li>
+        <li><strong>Textarea</strong>: Áreas de texto</li>
+      </ul>
+    </InfoBox>
+
+    <InfoBox
+      title="Componentes de Feedback"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>Modal</strong>: Janelas modais</li>
+        <li><strong>Notification</strong>: Notificações e alertas</li>
+        <li><strong>ProgressBar</strong>: Barras de progresso</li>
+        <li><strong>Loader</strong>: Indicadores de carregamento</li>
+        <li><strong>Tooltip</strong>: Dicas contextuais</li>
+      </ul>
+    </InfoBox>
+
+    <InfoBox
+      title="Componentes de Navegação"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>Header</strong>: Cabeçalhos de página</li>
+        <li><strong>Footer</strong>: Rodapés de página</li>
+        <li><strong>Breadcrumb</strong>: Navegação hierárquica</li>
+        <li><strong>Link</strong>: Links estilizados</li>
+      </ul>
+    </InfoBox>
+
+    <InfoBox
+      title="Componentes de Conteúdo"
+      titleColor="#31b5fc"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>Card</strong>: Cartões de conteúdo</li>
+        <li><strong>Typography</strong>: Elementos tipográficos</li>
+        <li><strong>Accordion</strong>: Painéis expansíveis</li>
+        <li><strong>TextBody</strong>: Blocos de texto formatados</li>
+        <li><strong>Carousel</strong>: Carrosséis de conteúdo</li>
+      </ul>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
+
+<ContentCard 
+  title="Hooks Personalizados"
+  borderColor="#66cafc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16.5 9c-1.5 0-2.91.38-4.13 1.03l.67-2.68c.15-.59-.33-1.15-.94-1.15H8.5c-.38 0-.73.27-.83.64L6.21 13.75c-.14.53.25 1.05.8 1.05h2.29l-.67 4.32c-.08.49.31.91.8.91.28 0 .55-.15.7-.39l5.18-7.18C14.09 9.75 11.25 9 9 9c-1.39 0-2.67.27-3.82.72l.58-2.32C5.9 6.86 5.37 6.3 4.76 6.3H2.25c-.38 0-.73.27-.83.64L.17 11.81c-.14.53.25 1.05.8 1.05h2.29l-1.23 7.94c-.08.49.31.91.8.91.28 0 .55-.15.7-.39L7.8 14.5c1.43.5 3.01.78 4.7.78 2.7 0 5.15-.67 7.25-1.82l.63-.88c.35-.48.23-1.16-.27-1.5-.86-.57-1.86-.99-2.93-1.21l-1.28-.35c.02-.01.05-.02.07-.02.84-.23 1.72-.37 2.66-.37.84 0 1.67.11 2.44.32.5.14 1.03-.11 1.14-.62.1-.5-.22-1-.72-1.14-1-.28-2.07-.42-3.17-.42z" fill="#66cafc" />
+    </svg>
+  }
+>
+  <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    O Ocean também fornece hooks React personalizados para facilitar o desenvolvimento:
+  </p>
+
+  <FeatureGrid columns="repeat(auto-fill, minmax(250px, 1fr))">
+    <InfoBox
+      title="Hooks de UI"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>useMediaQuery</strong>: Detecta media queries</li>
+        <li><strong>useWindowSize</strong>: Monitora o tamanho da janela</li>
+        <li><strong>useOutsideClick</strong>: Detecta cliques fora de um elemento</li>
+        <li><strong>useToggle</strong>: Alterna entre estados</li>
+      </ul>
+    </InfoBox>
+
+    <InfoBox
+      title="Hooks de Dados"
+      titleColor="#31b5fc"
+      backgroundColor="white"
+    >
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li><strong>useAsync</strong>: Gerencia operações assíncronas</li>
+        <li><strong>useForm</strong>: Gerencia estados de formulário</li>
+        <li><strong>useCookie</strong>: Gerencia cookies</li>
+        <li><strong>useCopyToClipboard</strong>: Copia texto para a área de transferência</li>
+      </ul>
+    </InfoBox>
+  </FeatureGrid>
+
+  <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    Exemplo de uso do hook useMediaQuery:
+  </p>
+
+  <CodeBlock>
+```jsx
+import React from 'react';
+import { useMediaQuery } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function ResponsiveComponent() {
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  
+  return (
+    <div>
+      {isMobile ? (
+        <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>Versão mobile</p>
+      ) : (
+        <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>Versão desktop</p>
+      )}
+    </div>
+  );
+}
+```
+  </CodeBlock>
+</ContentCard>
+
+<ContentCard 
+  title="CLI do Ocean"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    O Ocean inclui uma CLI para facilitar a instalação de componentes em seu projeto:
+  </p>
+
+  <CodeBlock>
+```bash
+# Listar todos os componentes disponíveis
+npx porto-ocean list
+
+# Instalar um componente específico
+npx porto-ocean install Button
+
+# Instalar múltiplos componentes
+npx porto-ocean install Button Card Typography
+```
+  </CodeBlock>
+
+  <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    A CLI irá copiar os arquivos do componente para o seu projeto, permitindo personalizações específicas para seu caso de uso.
+  </p>
+</ContentCard>
+
+<ContentCard 
+  title="Próximos Passos"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    Agora que você instalou o Ocean, explore os seguintes recursos para aprofundar seu conhecimento:
+  </p>
+
+  <FeatureGrid>
+    <InfoBox
+      title="Documentação de Componentes"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+        Explore a documentação detalhada de cada componente para entender suas propriedades, variantes e exemplos de uso.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Fundamentos de Design"
+      titleColor="#31b5fc"
+      backgroundColor="white"
+    >
+      <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+        Conheça os fundamentos de design do Ocean, incluindo tipografia, cores, espaçamento e outros tokens de design.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Exemplos de Integração"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ 
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+        Veja exemplos de como integrar o Ocean em diferentes frameworks e ambientes, como Next.js, Create React App e outros.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
+
+<BannerFooter />

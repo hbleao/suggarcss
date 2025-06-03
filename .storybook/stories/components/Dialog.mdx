@@ -1,0 +1,130 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as DialogStories from './Dialog.stories';
+
+<Meta title="Components/Dialog" of={DialogStories} />
+
+# Dialog
+
+O componente `Dialog` é utilizado para criar janelas modais que aparecem sobre o conteúdo principal da página, exigindo atenção ou interação do usuário antes de prosseguir. É ideal para confirmações, alertas, formulários curtos e outras interações focadas.
+
+## Exemplos Interativos
+
+### Dialog Padrão
+<Canvas>
+  <Story of={DialogStories.DefaultDialog} />
+</Canvas>
+
+### Dialog sem Título
+<Canvas>
+  <Story of={DialogStories.WithoutTitle} />
+</Canvas>
+
+### Dialog sem Descrição
+<Canvas>
+  <Story of={DialogStories.WithoutDescription} />
+</Canvas>
+
+### Dialog sem Botão de Fechar
+<Canvas>
+  <Story of={DialogStories.WithoutCloseButton} />
+</Canvas>
+
+### Dialog com Largura Personalizada
+<Canvas>
+  <Story of={DialogStories.CustomWidth} />
+</Canvas>
+
+### Dialog com Estilos Personalizados
+<Canvas>
+  <Story of={DialogStories.CustomStyles} />
+</Canvas>
+
+## Importação
+
+```jsx
+import { Dialog } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React, { useState } from 'react';
+import { Dialog, Button } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button onClick={handleOpen}>Abrir Dialog</Button>
+      
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        title="Título do Dialog"
+        content="Este é o conteúdo do dialog. Você pode incluir qualquer texto ou componentes aqui."
+        actions={[
+          { label: 'Cancelar', onClick: handleClose },
+          { label: 'Confirmar', onClick: () => {
+            console.log('Confirmado!');
+            handleClose();
+          }}
+        ]}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Obrigatório | Padrão | Descrição |
+|------|------|-------------|--------|-----------|
+| `open` | `boolean` | Sim | - | Controla a visibilidade do dialog |
+| `onClose` | `function` | Sim | - | Função chamada quando o dialog é fechado |
+| `title` | `string \| ReactNode` | Não | - | Título do dialog |
+| `content` | `string \| ReactNode` | Não | - | Conteúdo do dialog |
+| `actions` | `Array<{label: string, onClick: function, variant?: string}>` | Não | `[]` | Botões de ação no rodapé do dialog |
+| `width` | `string \| number` | Não | `'500px'` | Largura do dialog |
+| `height` | `string \| number` | Não | `'auto'` | Altura do dialog |
+| `fullScreen` | `boolean` | Não | `false` | Se verdadeiro, o dialog ocupa toda a tela |
+| `disableBackdropClick` | `boolean` | Não | `false` | Se verdadeiro, clicar no backdrop não fecha o dialog |
+| `disableEscapeKeyDown` | `boolean` | Não | `false` | Se verdadeiro, pressionar ESC não fecha o dialog |
+| `showCloseButton` | `boolean` | Não | `true` | Controla a exibição do botão de fechar no canto superior direito |
+| `variant` | `'default' \| 'insurance' \| 'banking' \| 'health'` | Não | `'default'` | Variante visual do dialog |
+| `children` | `ReactNode` | Não | - | Conteúdo alternativo ao prop `content` |
+| `className` | `string` | Não | - | Classes CSS adicionais |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Dialog nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-dialog-examples--default)
+- [Com Props Personalizadas](/story/components-dialog-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-dialog-examples--custom-example)
+## Acessibilidade
+
+O componente Dialog implementa as seguintes práticas de acessibilidade:
+
+- Foco automático no primeiro elemento interativo quando o dialog é aberto
+- Armadilha de foco (focus trap) para manter o foco dentro do dialog enquanto estiver aberto
+- Suporte a navegação por teclado (Tab para navegação, Esc para fechar)
+- Atributos ARIA apropriados (role="dialog", aria-modal="true", aria-labelledby, aria-describedby)
+- Anúncio para leitores de tela quando o dialog é aberto
+
+## Boas Práticas
+
+- Use títulos claros e concisos que descrevam o propósito do dialog
+- Mantenha o conteúdo focado e evite sobrecarregar o dialog com muitas informações
+- Forneça ações claras, com botões bem rotulados
+- Use o dialog para interações que requerem atenção imediata do usuário
+- Evite dialogs aninhados quando possível
+- Para conteúdo extenso, considere usar um layout de página completo em vez de um dialog

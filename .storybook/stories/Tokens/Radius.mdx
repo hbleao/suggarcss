@@ -1,0 +1,167 @@
+import { Meta } from '@storybook/blocks';
+import { BannerTokens } from '../../components';
+
+<Meta title="Tokens/Radius" />
+
+<BannerTokens title="Arredondamento (Border Radius)" description="Tokens de arredondamento (border radius) são variáveis predefinidas que representam o grau de curvatura aplicado aos cantos de elementos da interface. Eles ajudam a manter a consistência visual e definem parte da personalidade do design system." />
+
+
+## O que são tokens de arredondamento?
+
+Tokens de arredondamento (border radius) são variáveis predefinidas que representam o grau de curvatura aplicado aos cantos de elementos da interface. Eles ajudam a manter a consistência visual e definem parte da personalidade do design system.
+
+## Escala de Arredondamento
+
+O Ocean oferece uma escala de arredondamento que vai de nenhum arredondamento até o arredondamento completo (circular):
+
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', marginBottom: '2rem' }}>
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      height: '100px',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '0px',
+      border: '1px solid #e0e0e0'
+    }}></div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$radius-none</p>
+    <p style={{ margin: '0', color: '#666' }}>0px</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Sem arredondamento</p>
+  </div>
+
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      height: '100px',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '2px',
+      border: '1px solid #e0e0e0'
+    }}></div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$radius-sm</p>
+    <p style={{ margin: '0', color: '#666' }}>2px</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Arredondamento pequeno</p>
+  </div>
+
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      height: '100px',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      border: '1px solid #e0e0e0'
+    }}></div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$radius-md</p>
+    <p style={{ margin: '0', color: '#666' }}>4px</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Arredondamento médio</p>
+  </div>
+
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      height: '100px',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '8px',
+      border: '1px solid #e0e0e0'
+    }}></div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$radius-lg</p>
+    <p style={{ margin: '0', color: '#666' }}>8px</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Arredondamento grande</p>
+  </div>
+
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      height: '100px',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '12px',
+      border: '1px solid #e0e0e0'
+    }}></div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$radius-xl</p>
+    <p style={{ margin: '0', color: '#666' }}>12px</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Arredondamento extra grande</p>
+  </div>
+
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      height: '100px',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '16px',
+      border: '1px solid #e0e0e0'
+    }}></div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$radius-2xl</p>
+    <p style={{ margin: '0', color: '#666' }}>16px</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Arredondamento extra extra grande</p>
+  </div>
+
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      height: '100px',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '24px',
+      border: '1px solid #e0e0e0'
+    }}></div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$radius-3xl</p>
+    <p style={{ margin: '0', color: '#666' }}>24px</p>
+    <p style={{ margin: '0', fontSize: '0.8rem' }}>Arredondamento ultra grande</p>
+  </div>
+
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      height: '100px',
+      width: '100px',
+      margin: '0 auto',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '9999px',
+      border: '1px solid #e0e0e0'
+    }}></div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold', textAlign: 'center' }}>$radius-full</p>
+    <p style={{ margin: '0', color: '#666', textAlign: 'center' }}>9999px</p>
+    <p style={{ margin: '0', fontSize: '0.8rem', textAlign: 'center' }}>Arredondamento completo (círculo)</p>
+  </div>
+</div>
+
+## Uso dos Tokens de Arredondamento
+
+Os tokens de arredondamento devem ser aplicados de forma consistente em componentes similares para manter a coerência visual da interface.
+
+### Aplicação Comum
+
+- **Botões**: Geralmente usam $radius-md (4px)
+- **Cards**: Podem usar $radius-lg (8px) ou $radius-xl (12px)
+- **Modais**: Geralmente usam $radius-xl (12px) ou $radius-2xl (16px)
+- **Chips/Tags**: Podem usar $radius-full para um visual mais arredondado
+- **Campos de formulário**: Geralmente usam $radius-md (4px)
+
+### Como usar os tokens de arredondamento
+
+Em SCSS:
+```scss
+.button {
+  border-radius: $radius-md;
+}
+
+.card {
+  border-radius: $radius-lg;
+}
+
+.avatar {
+  border-radius: $radius-full;
+}
+```
+
+Em CSS:
+```css
+.button {
+  border-radius: var(--ocean-radius-md);
+}
+
+.card {
+  border-radius: var(--ocean-radius-lg);
+}
+
+.avatar {
+  border-radius: var(--ocean-radius-full);
+}
+```
+
+## Boas Práticas
+
+- Mantenha a consistência usando o mesmo arredondamento para componentes similares
+- Use arredondamentos maiores para elementos que deseja destacar ou tornar mais amigáveis
+- Use arredondamentos menores ou nenhum arredondamento para interfaces mais sérias ou técnicas
+- Considere a personalidade da marca ao escolher o grau de arredondamento
+- Lembre-se que o arredondamento pode afetar a percepção de tamanho dos elementos

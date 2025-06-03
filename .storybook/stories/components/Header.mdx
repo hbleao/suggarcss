@@ -1,0 +1,139 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as HeaderStories from './Header.stories';
+
+<Meta title="Components/Header" of={HeaderStories} />
+
+# Header
+
+O componente `Header` é usado para criar cabeçalhos de página consistentes, fornecendo navegação principal, logo da marca, funcionalidades de pesquisa e outros elementos de interação importantes que devem estar presentes em todas as páginas do site.
+
+## Exemplos Interativos
+
+### Header Padrão
+<Canvas>
+  <Story of={HeaderStories.DefaultHeader} />
+</Canvas>
+
+### Header sem Botão de Login
+<Canvas>
+  <Story of={HeaderStories.WithoutLoginButton} />
+</Canvas>
+
+### Header sem Submenus
+<Canvas>
+  <Story of={HeaderStories.WithoutSubmenus} />
+</Canvas>
+
+### Header com Links Personalizados
+<Canvas>
+  <Story of={HeaderStories.WithCustomLinks} />
+</Canvas>
+
+### Header com Links Externos
+<Canvas>
+  <Story of={HeaderStories.WithExternalLinks} />
+</Canvas>
+
+## Importação
+
+```jsx
+import { Header } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Header } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const menuItems = [
+    { label: 'Início', href: '/' },
+    { label: 'Produtos', href: '/produtos' },
+    { label: 'Serviços', href: '/servicos' },
+    { label: 'Sobre', href: '/sobre' },
+    { label: 'Contato', href: '/contato' }
+  ];
+
+  return (
+    <Header
+      logo="/path/to/logo.svg"
+      logoAlt="Empresa XYZ"
+      menuItems={menuItems}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Obrigatório | Padrão | Descrição |
+|------|------|-------------|--------|-----------|
+| `variant` | `'default' \| 'insurance' \| 'banking' \| 'health'` | Não | `'default'` | Variante visual do header |
+| `logo` | `string` | Não | - | URL da imagem do logo |
+| `logoAlt` | `string` | Não | `'Logo'` | Texto alternativo para o logo |
+| `menuItems` | `Array<MenuItem>` | Não | `[]` | Itens do menu principal |
+| `actions` | `Array<ActionItem>` | Não | `[]` | Ações secundárias (ex: login, carrinho) |
+| `searchEnabled` | `boolean` | Não | `false` | Habilita a funcionalidade de pesquisa |
+| `onSearch` | `function` | Não | - | Função chamada ao submeter a pesquisa |
+| `onLogoClick` | `function` | Não | - | Função chamada ao clicar no logo |
+| `sticky` | `boolean` | Não | `false` | Se verdadeiro, o header fica fixo no topo da página |
+| `transparent` | `boolean` | Não | `false` | Se verdadeiro, o header tem fundo transparente |
+| `className` | `string` | Não | - | Classes CSS adicionais |
+
+## Tipos
+
+### MenuItem
+
+| Propriedade | Tipo | Obrigatório | Descrição |
+|-------------|------|-------------|-----------|
+| `label` | `string` | Sim | Texto do item de menu |
+| `href` | `string` | Não | URL para navegação |
+| `onClick` | `function` | Não | Função chamada ao clicar no item |
+| `active` | `boolean` | Não | Indica se o item está ativo |
+| `children` | `Array<MenuItem>` | Não | Subitens para menus multinível |
+| `icon` | `ReactNode` | Não | Ícone opcional para o item |
+
+### ActionItem
+
+| Propriedade | Tipo | Obrigatório | Descrição |
+|-------------|------|-------------|-----------|
+| `label` | `string` | Sim | Texto da ação |
+| `icon` | `ReactNode` | Não | Ícone da ação |
+| `onClick` | `function` | Não | Função chamada ao clicar na ação |
+| `href` | `string` | Não | URL para navegação |
+| `badge` | `number \| string` | Não | Badge numérico ou texto (ex: notificações) |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Header nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-header-examples--default)
+- [Com Props Personalizadas](/story/components-header-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-header-examples--custom-example)
+## Variantes
+
+O componente `Header` suporta diferentes variantes visuais:
+
+- `default`: Estilo padrão
+- `insurance`: Estilo específico para produtos de seguro
+- `banking`: Estilo específico para produtos bancários
+- `health`: Estilo específico para produtos de saúde
+
+## Responsividade
+
+O componente `Header` é totalmente responsivo:
+
+- Em dispositivos móveis, o menu é colapsado em um menu hambúrguer
+- A pesquisa pode ser expandida/colapsada em telas menores
+- As ações são adaptadas para economizar espaço em dispositivos móveis
+
+## Acessibilidade
+
+O componente `Header` implementa as seguintes práticas de acessibilidade:
+
+- Estrutura semântica usando elementos HTML apropriados (header, nav, etc.)
+- Suporte a navegação por teclado
+- Menus dropdown acessíveis via teclado
+- Contraste adequado entre texto e fundo
+- Textos alternativos para ícones e imagens

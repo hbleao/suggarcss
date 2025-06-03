@@ -1,0 +1,139 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as UseDebounceValueStories from './useDebounceValue.stories';
+
+<Meta title="Hooks/useDebounceValue" of={UseDebounceValueStories} />
+
+# useDebounceValue
+
+O hook `useDebounceValue` cria uma versão "debounced" de um valor, útil para melhorar a performance em campos de busca, filtros e outras operações que não precisam ser executadas a cada mudança de estado.
+
+## Exemplos Interativos
+
+### Campo de Busca com Debounce
+<Canvas>
+  <Story of={UseDebounceValueStories.SearchExample} />
+</Canvas>
+
+### Filtro de Tabela com Debounce
+<Canvas>
+  <Story of={UseDebounceValueStories.FilterExample} />
+</Canvas>
+
+### Comparação de Diferentes Delays
+<Canvas>
+  <Story of={UseDebounceValueStories.CompareDelays} />
+</Canvas>
+
+## Importação
+
+```jsx
+import { useDebounceValue } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## API
+
+```typescript
+function useDebounceValue<T>(value: T, delay?: number): T
+```
+
+### Parâmetros
+
+| Parâmetro | Tipo | Obrigatório | Padrão | Descrição |
+|-----------|------|-------------|--------|-----------|
+| `value` | `T` | Sim | - | O valor a ser "debounced" |
+| `delay` | `number` | Não | `500` | O tempo de espera em milissegundos antes de atualizar o valor |
+
+### Retorno
+
+| Tipo | Descrição |
+|------|-----------|
+| `T` | O valor debounced que será atualizado após o delay |
+
+## Exemplos
+
+### Campo de busca com debounce
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import { useDebounceValue } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function SearchField() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearchTerm = useDebounceValue(searchTerm, 300);
+  
+  useEffect(() => {
+    // Esta função só será chamada 300ms após a última mudança no searchTerm
+    if (debouncedSearchTerm) {
+      fetchSearchResults(debouncedSearchTerm);
+    }
+  }, [debouncedSearchTerm]);
+  
+  return (
+    <input
+      type="text"
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      placeholder="Buscar..."
+    />
+  );
+}
+```
+
+### Filtro de tabela com debounce
+
+```jsx
+import React, { useState, useMemo } from 'react';
+import { useDebounceValue } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function FilterableTable({ data }) {
+  const [filter, setFilter] = useState('');
+  const debouncedFilter = useDebounceValue(filter, 250);
+  
+  // A tabela só será filtrada 250ms após o usuário parar de digitar
+  const filteredData = useMemo(() => {
+    return data.filter(item => 
+      item.name.toLowerCase().includes(debouncedFilter.toLowerCase())
+    );
+  }, [data, debouncedFilter]);
+  
+  return (
+    <>
+      <input 
+        type="text" 
+        value={filter} 
+        onChange={(e) => setFilter(e.target.value)} 
+        placeholder="Filtrar..."
+      />
+      <Table data={filteredData} />
+    </>
+  );
+}
+```
+
+## Casos de uso
+
+O hook `useDebounceValue` é especialmente útil nos seguintes cenários:
+
+1. **Campos de busca**: Evita fazer requisições desnecessárias enquanto o usuário ainda está digitando.
+
+2. **Filtros de tabela**: Melhora a performance ao aplicar filtros apenas quando o usuário termina de digitar.
+
+3. **Validação de formulários**: Executa validações complexas apenas quando o usuário termina de editar um campo.
+
+4. **Sincronização de dados**: Sincroniza dados com um servidor apenas quando o usuário termina de fazer alterações.
+
+5. **Redimensionamento de elementos**: Responde a eventos de redimensionamento de forma mais eficiente.
+
+## Considerações de performance
+
+- O valor debounced só é atualizado após o delay especificado, o que pode introduzir uma pequena latência na interface.
+- Para operações que precisam de feedback imediato, considere usar o valor original junto com o valor debounced.
+- Ajuste o valor do delay conforme necessário: valores menores para maior responsividade, valores maiores para maior eficiência.
+
+## Compatibilidade
+
+Este hook é compatível com:
+
+- React 16.8 ou superior (requer Hooks API)
+- Todos os navegadores modernos
+- React Native

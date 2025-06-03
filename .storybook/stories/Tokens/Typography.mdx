@@ -1,0 +1,405 @@
+import { Meta } from '@storybook/blocks';
+import { BannerTokens } from '../../components';
+
+<Meta title="Tokens/Typography" />
+
+<BannerTokens title="Tipografia" description="Tokens de tipografia são variáveis que definem as características visuais do texto em um sistema de design, como família de fonte, tamanho, peso e estilo. Eles garantem consistência tipográfica em toda a aplicação e facilitam a manutenção do design." />
+
+## O que são tokens de tipografia?
+
+Tokens de tipografia são variáveis que definem as características visuais do texto em um sistema de design, como família de fonte, tamanho, peso e estilo. Eles garantem consistência tipográfica em toda a aplicação e facilitam a manutenção do design.
+
+## Famílias de Fontes
+
+O Ocean utiliza duas famílias de fontes principais:
+
+## O que são tokens de tipografia?
+
+Tokens de tipografia são variáveis que definem as características visuais do texto em um sistema de design, como família de fonte, tamanho, peso e estilo. Eles garantem consistência tipográfica em toda a aplicação e facilitam a manutenção do design.
+
+## Famílias de Fontes
+
+O Ocean utiliza duas famílias de fontes principais:
+
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', marginBottom: '2rem' }}>
+  <div style={{ flex: '1', minWidth: '300px' }}>
+    <h3 style={{ fontFamily: '"Open Sans", sans-serif', marginBottom: '0.5rem' }}>Open Sans</h3>
+    <p style={{ margin: '0', color: '#666' }}>$font-family-primary</p>
+    <div style={{
+      fontFamily: '"Open Sans", sans-serif',
+      marginTop: '1rem',
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px'
+    }}>
+      <p style={{ fontWeight: '300' }}>Open Sans Light (300)</p>
+      <p style={{ fontWeight: '400' }}>Open Sans Regular (400)</p>
+      <p style={{ fontWeight: '500' }}>Open Sans Medium (500)</p>
+      <p style={{ fontWeight: '600' }}>Open Sans SemiBold (600)</p>
+      <p style={{ fontWeight: '700' }}>Open Sans Bold (700)</p>
+    </div>
+    <p style={{ marginTop: '1rem' }}>Usada principalmente para textos de corpo, legendas e elementos de interface.</p>
+  </div>
+
+  <div style={{ flex: '1', minWidth: '300px' }}>
+    <h3 style={{ fontFamily: '"Porto Roobert", sans-serif', marginBottom: '0.5rem' }}>Porto Roobert</h3>
+    <p style={{ margin: '0', color: '#666' }}>$font-family-secondary</p>
+    <div style={{
+      fontFamily: '"Porto Roobert", sans-serif',
+      marginTop: '1rem',
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px'
+    }}>
+      <p style={{ fontWeight: '300' }}>Porto Roobert Light (300)</p>
+      <p style={{ fontWeight: '400' }}>Porto Roobert Regular (400)</p>
+      <p style={{ fontWeight: '500' }}>Porto Roobert Medium (500)</p>
+      <p style={{ fontWeight: '600' }}>Porto Roobert SemiBold (600)</p>
+      <p style={{ fontWeight: '700' }}>Porto Roobert Bold (700)</p>
+    </div>
+    <p style={{ marginTop: '1rem' }}>Usada principalmente para títulos e elementos de destaque.</p>
+  </div>
+</div>
+
+## Pesos de Fonte
+
+Os pesos de fonte definem a espessura dos caracteres e ajudam a criar hierarquia visual e ênfase no texto.
+
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontWeight: '300'
+    }}>
+      Light
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$font-weight-light</p>
+    <p style={{ margin: '0', color: '#666' }}>300</p>
+  </div>
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontWeight: '400'
+    }}>
+      Regular
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$font-weight-regular</p>
+    <p style={{ margin: '0', color: '#666' }}>400</p>
+  </div>
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontWeight: '500'
+    }}>
+      Medium
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$font-weight-medium</p>
+    <p style={{ margin: '0', color: '#666' }}>500</p>
+  </div>
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontWeight: '600'
+    }}>
+      SemiBold
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$font-weight-semibold</p>
+    <p style={{ margin: '0', color: '#666' }}>600</p>
+  </div>
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontWeight: '700'
+    }}>
+      Bold
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$font-weight-bold</p>
+    <p style={{ margin: '0', color: '#666' }}>700</p>
+  </div>
+</div>
+
+## Estilos de Fonte
+
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontStyle: 'normal'
+    }}>
+      Texto normal
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$font-style-normal</p>
+    <p style={{ margin: '0', color: '#666' }}>normal</p>
+  </div>
+  <div style={{ width: '200px', marginBottom: '1rem' }}>
+    <div style={{
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontStyle: 'italic'
+    }}>
+      Texto em itálico
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>$font-style-italic</p>
+    <p style={{ margin: '0', color: '#666' }}>italic</p>
+  </div>
+</div>
+
+## Tamanhos de Fonte
+
+O Ocean utiliza uma escala de tamanhos de fonte que vai de XS a 9XL, proporcionando flexibilidade para diferentes contextos de uso.
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <div style={{ width: '80px', textAlign: 'right', fontWeight: 'bold' }}>XS</div>
+    <div style={{
+      padding: '0.5rem 1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontSize: '0.8rem'
+    }}>
+      Texto de exemplo em tamanho XS
+    </div>
+    <div style={{ color: '#666' }}>$font-size-xs: 0.8rem (12.8px)</div>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <div style={{ width: '80px', textAlign: 'right', fontWeight: 'bold' }}>SM</div>
+    <div style={{
+      padding: '0.5rem 1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontSize: '1rem'
+    }}>
+      Texto de exemplo em tamanho SM
+    </div>
+    <div style={{ color: '#666' }}>$font-size-sm: 1rem (16px)</div>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <div style={{ width: '80px', textAlign: 'right', fontWeight: 'bold' }}>MD</div>
+    <div style={{
+      padding: '0.5rem 1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontSize: '1.2rem'
+    }}>
+      Texto de exemplo em tamanho MD
+    </div>
+    <div style={{ color: '#666' }}>$font-size-md: 1.2rem (19.2px)</div>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <div style={{ width: '80px', textAlign: 'right', fontWeight: 'bold' }}>LG</div>
+    <div style={{
+      padding: '0.5rem 1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontSize: '1.4rem'
+    }}>
+      Texto de exemplo em tamanho LG
+    </div>
+    <div style={{ color: '#666' }}>$font-size-lg: 1.4rem (22.4px)</div>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <div style={{ width: '80px', textAlign: 'right', fontWeight: 'bold' }}>XL</div>
+    <div style={{
+      padding: '0.5rem 1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontSize: '1.6rem'
+    }}>
+      Texto de exemplo em tamanho XL
+    </div>
+    <div style={{ color: '#666' }}>$font-size-xl: 1.6rem (25.6px)</div>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <div style={{ width: '80px', textAlign: 'right', fontWeight: 'bold' }}>2XL</div>
+    <div style={{
+      padding: '0.5rem 1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontSize: '2rem'
+    }}>
+      Texto de exemplo em tamanho 2XL
+    </div>
+    <div style={{ color: '#666' }}>$font-size-2xl: 2rem (32px)</div>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <div style={{ width: '80px', textAlign: 'right', fontWeight: 'bold' }}>3XL</div>
+    <div style={{
+      padding: '0.5rem 1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px',
+      fontSize: '2.4rem'
+    }}>
+      Texto em tamanho 3XL
+    </div>
+    <div style={{ color: '#666' }}>$font-size-3xl: 2.4rem (38.4px)</div>
+  </div>
+</div>
+
+## Variantes Tipográficas
+
+O componente Typography do Ocean oferece várias variantes pré-definidas que combinam família, tamanho e altura de linha para diferentes contextos de uso.
+
+### Títulos
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginBottom: '2rem' }}>
+  <div>
+    <div style={{
+      fontFamily: '"Porto Roobert", sans-serif',
+      fontSize: '4rem',
+      lineHeight: '4.4rem',
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px'
+    }}>
+      Title1
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>title1</p>
+    <p style={{ margin: '0', color: '#666' }}>Família: Porto Roobert</p>
+    <p style={{ margin: '0', color: '#666' }}>Tamanho: 4rem (64px), 5.6rem (89.6px) em telas maiores</p>
+    <p style={{ margin: '0', color: '#666' }}>Altura da linha: 4.4rem, 6rem em telas maiores</p>
+  </div>
+
+  <div>
+    <div style={{
+      fontFamily: '"Porto Roobert", sans-serif',
+      fontSize: '3.6rem',
+      lineHeight: '4rem',
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px'
+    }}>
+      Title2
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>title2</p>
+    <p style={{ margin: '0', color: '#666' }}>Família: Porto Roobert</p>
+    <p style={{ margin: '0', color: '#666' }}>Tamanho: 3.6rem (57.6px), 4.8rem (76.8px) em telas maiores</p>
+    <p style={{ margin: '0', color: '#666' }}>Altura da linha: 4rem, 5.2rem em telas maiores</p>
+  </div>
+
+  <div>
+    <div style={{
+      fontFamily: '"Porto Roobert", sans-serif',
+      fontSize: '3.2rem',
+      lineHeight: '3.6rem',
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px'
+    }}>
+      Title3
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>title3</p>
+    <p style={{ margin: '0', color: '#666' }}>Família: Porto Roobert</p>
+    <p style={{ margin: '0', color: '#666' }}>Tamanho: 3.2rem (51.2px), 3.6rem (57.6px) em telas maiores</p>
+    <p style={{ margin: '0', color: '#666' }}>Altura da linha: 3.6rem, 4.4rem em telas maiores</p>
+  </div>
+
+  <div>
+    <div style={{
+      fontFamily: '"Porto Roobert", sans-serif',
+      fontSize: '2.8rem',
+      lineHeight: '3.2rem',
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px'
+    }}>
+      Title4
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>title4</p>
+    <p style={{ margin: '0', color: '#666' }}>Família: Porto Roobert</p>
+    <p style={{ margin: '0', color: '#666' }}>Tamanho: 2.8rem (44.8px), 3.2rem (51.2px) em telas maiores</p>
+    <p style={{ margin: '0', color: '#666' }}>Altura da linha: 3.2rem, 3.6rem em telas maiores</p>
+  </div>
+</div>
+
+### Corpo de Texto
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginBottom: '2rem' }}>
+  <div>
+    <div style={{
+      fontFamily: '"Open Sans", sans-serif',
+      fontSize: '1.6rem',
+      lineHeight: '2.4rem',
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px'
+    }}>
+      Body1 - Texto de corpo principal usado para parágrafos e conteúdo principal. Oferece boa legibilidade e conforto para leitura de textos longos.
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>body1</p>
+    <p style={{ margin: '0', color: '#666' }}>Família: Open Sans</p>
+    <p style={{ margin: '0', color: '#666' }}>Tamanho: 1.6rem (25.6px)</p>
+    <p style={{ margin: '0', color: '#666' }}>Altura da linha: 2.4rem</p>
+  </div>
+
+  <div>
+    <div style={{
+      fontFamily: '"Open Sans", sans-serif',
+      fontSize: '1.4rem',
+      lineHeight: '2rem',
+      padding: '1rem',
+      backgroundColor: '#f7f7f7',
+      borderRadius: '4px'
+    }}>
+      Body2 - Texto secundário usado para descrições, subtextos e informações complementares. Ligeiramente menor que o Body1.
+    </div>
+    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold' }}>body2</p>
+    <p style={{ margin: '0', color: '#666' }}>Família: Open Sans</p>
+    <p style={{ margin: '0', color: '#666' }}>Tamanho: 1.4rem (22.4px)</p>
+    <p style={{ margin: '0', color: '#666' }}>Altura da linha: 2rem</p>
+  </div>
+</div>
+
+## Componente Typography
+
+O componente Typography é a maneira recomendada de aplicar estilos tipográficos consistentes em toda a aplicação.
+
+### Exemplo de Uso
+
+```jsx
+// Título principal
+<Typography variant="title1" as="h1" color="neutral-900" weight="bold">
+  Bem-vindo ao portal
+</Typography>
+
+// Texto de apoio com cor personalizada
+<Typography variant="body2" color="neutral-500">
+  Preencha os campos obrigatórios
+</Typography>
+
+// Componente com estilo itálico
+<Typography variant="body1" fontStyle="italic" as="span">
+  Este é um texto em itálico.
+</Typography>
+```
+
+### Propriedades do Componente
+
+| Propriedade | Tipo | Padrão | Descrição |
+|-------------|------|--------|-----------|
+| variant | string | 'title1' | Define o estilo visual da tipografia ('title1', 'title2', 'body1', etc.) |
+| as | string | 'h1' | Define o elemento HTML a ser renderizado ('h1', 'p', 'span', etc.) |
+| color | string | 'neutral-900' | Define a cor do texto (usando os tokens de cor) |
+| weight | string | 'regular' | Define o peso da fonte ('light', 'regular', 'medium', 'semibold', 'bold') |
+| fontStyle | string | 'normal' | Define o estilo da fonte ('normal', 'italic') |
+| className | string | '' | Permite adicionar classes CSS personalizadas |
+
+## Boas Práticas
+
+- Use as variantes tipográficas pré-definidas sempre que possível para manter a consistência
+- Limite o número de tamanhos e pesos de fonte em uma única tela para evitar poluição visual
+- Mantenha um bom contraste entre o texto e o fundo para garantir a acessibilidade
+- Use pesos de fonte para criar hierarquia, não apenas tamanhos diferentes
+- Respeite a hierarquia tipográfica: títulos maiores para conteúdo mais importante, textos menores para conteúdo secundário

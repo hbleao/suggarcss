@@ -1,0 +1,107 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as ProgressBarStories from './ProgressBar.stories';
+
+<Meta title="Components/ProgressBar" of={ProgressBarStories} />
+
+# ProgressBar
+
+O componente `ProgressBar` exibe visualmente o progresso de uma operação, permitindo que os usuários acompanhem o status de processos como carregamentos, uploads, downloads ou qualquer tarefa que tenha um início e fim definidos.
+
+## Exemplos Interativos
+
+### Barra de Progresso Padrão
+<Canvas>
+  <Story of={ProgressBarStories.Default} />
+</Canvas>
+
+### Barra de Progresso com Cor Personalizada
+<Canvas>
+  <Story of={ProgressBarStories.WithCustomColor} />
+</Canvas>
+
+### Barra de Progresso com Valor Inicial
+<Canvas>
+  <Story of={ProgressBarStories.WithInitialValue} />
+</Canvas>
+
+### Barra de Progresso Completa
+<Canvas>
+  <Story of={ProgressBarStories.FullProgress} />
+</Canvas>
+
+### Barra de Progresso Vazia
+<Canvas>
+  <Story of={ProgressBarStories.NoProgress} />
+</Canvas>
+
+### Barra de Progresso Animada
+<Canvas>
+  <Story of={ProgressBarStories.AnimatedProgress} />
+</Canvas>
+
+### Barras de Progresso com Estilo Personalizado
+<Canvas>
+  <Story of={ProgressBarStories.CustomStyling} />
+</Canvas>
+
+### Múltiplas Barras de Progresso
+<Canvas>
+  <Story of={ProgressBarStories.MultipleProgressBars} />
+</Canvas>
+
+## Importação
+
+```jsx
+import { ProgressBar } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { ProgressBar } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <div style={{ padding: '24px' }}>
+      <ProgressBar value={60} />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `value` | `number` | `0` | Valor atual do progresso (0-100) |
+| `max` | `number` | `100` | Valor máximo do progresso |
+| `min` | `number` | `0` | Valor mínimo do progresso |
+| `variant` | `'default' \| 'success' \| 'warning' \| 'error' \| 'info'` | `'default'` | Variante de cor do progresso |
+| `color` | `string` | - | Cor personalizada (substitui a variante) |
+| `height` | `number \| string` | `8` | Altura da barra de progresso |
+| `showLabel` | `boolean` | `false` | Se deve exibir o rótulo de porcentagem |
+| `labelPosition` | `'inside' \| 'outside'` | `'outside'` | Posição do rótulo |
+| `labelFormat` | `(value: number) => string` | - | Função para formatar o rótulo |
+| `animated` | `boolean` | `false` | Se deve exibir animação de progresso |
+| `striped` | `boolean` | `false` | Se deve exibir padrão listrado |
+| `rounded` | `boolean` | `true` | Se as bordas devem ser arredondadas |
+| `indeterminate` | `boolean` | `false` | Se o progresso é indeterminado (animação contínua) |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `barClassName` | `string` | - | Classe CSS adicional para a barra interna |
+| `barStyle` | `CSSProperties` | - | Estilos inline adicionais para a barra interna |
+| `labelClassName` | `string` | - | Classe CSS adicional para o rótulo |
+| `labelStyle` | `CSSProperties` | - | Estilos inline adicionais para o rótulo |
+
+
+
+## Boas Práticas
+
+- Use o ProgressBar para operações que têm um início e fim definidos e cujo progresso pode ser medido
+- Para operações de duração desconhecida, use a variante `indeterminate`
+- Combine com texto descritivo para explicar o que está sendo processado
+- Use cores semânticas para indicar o status (sucesso, aviso, erro)
+- Para processos longos, considere adicionar um indicador de tempo estimado
+- Mantenha a altura da barra apropriada para o contexto - barras mais finas para indicadores sutis e mais grossas para destaque
+- Para processos com múltiplas etapas, considere usar múltiplos ProgressBars ou um indicador de etapas

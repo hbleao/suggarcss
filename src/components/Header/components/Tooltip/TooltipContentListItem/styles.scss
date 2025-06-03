@@ -1,0 +1,31 @@
+.tooltip__content-list-item {
+  width: 24rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  i {
+    color: #000;
+  }
+
+  &:hover {
+    i {
+      color: #0046c0;
+    }
+  }
+
+  a {
+    color: #1f1f1f;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 2rem;
+    text-decoration: none;
+    position: relative;
+
+    &:hover {
+      color: #0046c0;
+    }
+  }
+}

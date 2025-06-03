@@ -1,0 +1,128 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as RadioStories from './Radio.stories';
+
+<Meta title="Components/Radio" of={RadioStories} />
+
+# Radio
+
+O componente `Radio` permite criar botões de opção para seleção única entre múltiplas alternativas, sendo ideal para formulários onde apenas uma opção pode ser selecionada.
+
+## Exemplos Interativos
+
+### Radio Padrão
+<Canvas>
+  <Story of={RadioStories.Default} />
+</Canvas>
+
+### Radio Selecionado
+<Canvas>
+  <Story of={RadioStories.Checked} />
+</Canvas>
+
+### Radio Desabilitado
+<Canvas>
+  <Story of={RadioStories.Disabled} />
+</Canvas>
+
+### Radio com Descrição
+<Canvas>
+  <Story of={RadioStories.WithDescription} />
+</Canvas>
+
+### Grupo de Radio Buttons
+<Canvas>
+  <Story of={RadioStories.RadioGroup} />
+</Canvas>
+
+### Radio com Estilo Personalizado
+<Canvas>
+  <Story of={RadioStories.RadioWithCustomStyling} />
+</Canvas>
+
+### Radio com Texto Longo
+<Canvas>
+  <Story of={RadioStories.RadioWithLongText} />
+</Canvas>
+
+## Importação
+
+```jsx
+import { Radio } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React, { useState } from 'react';
+import { Radio } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const [selected, setSelected] = useState('option1');
+  
+  return (
+    <div>
+      <Radio
+        label="Opção 1"
+        value="option1"
+        checked={selected === 'option1'}
+        onChange={() => setSelected('option1')}
+      />
+      
+      <Radio
+        label="Opção 2"
+        value="option2"
+        checked={selected === 'option2'}
+        onChange={() => setSelected('option2')}
+      />
+      
+      <Radio
+        label="Opção 3"
+        value="option3"
+        checked={selected === 'option3'}
+        onChange={() => setSelected('option3')}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `label` | `string` | - | Rótulo do botão de opção |
+| `value` | `string` | - | Valor associado ao botão de opção |
+| `checked` | `boolean` | `false` | Se o botão de opção está selecionado |
+| `onChange` | `(e: ChangeEvent<HTMLInputElement>) => void` | - | Função chamada quando o estado muda |
+| `disabled` | `boolean` | `false` | Desativa o botão de opção |
+| `name` | `string` | - | Nome do grupo de botões de opção |
+| `required` | `boolean` | `false` | Indica se a seleção é obrigatória |
+| `error` | `string` | - | Mensagem de erro a ser exibida |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `labelClassName` | `string` | - | Classe CSS adicional para o rótulo |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Radio nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-radio-examples--default)
+- [Com Props Personalizadas](/story/components-radio-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-radio-examples--custom-example)
+## Acessibilidade
+
+O componente `Radio` segue as práticas recomendadas de acessibilidade:
+
+- Associa corretamente os rótulos (`label`) aos botões de opção
+- Agrupa botões relacionados usando o atributo `name`
+- Suporta navegação por teclado (Tab para focar, Space para selecionar)
+- Fornece feedback visual claro para os estados de foco, seleção e desabilitado
+- Mantém contraste adequado entre os elementos visuais
+
+## Boas Práticas
+
+- Agrupe botões de opção relacionados usando o mesmo valor para o atributo `name`
+- Forneça rótulos claros e descritivos para cada opção
+- Use o componente `Radio` quando apenas uma opção pode ser selecionada de um grupo
+- Para seleção múltipla, use o componente `Checkbox` em vez de `Radio`
+- Considere fornecer uma opção selecionada por padrão quando apropriado
+- Em formulários longos, agrupe os botões de opção em seções lógicas

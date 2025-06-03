@@ -1,0 +1,72 @@
+.chip {
+  width: max-content;
+  background-color: transparent;
+  border-radius: 1.2rem;
+  padding: var(--space-sm) var(--space-lg);
+  text-wrap: nowrap;
+  cursor: pointer;
+  transition: all 300ms ease;
+  display: flex;
+  align-items: center;
+
+  i {
+    font-size: 1.6rem;
+  }
+
+  &:hover {
+    background-color: var(--color-neutral-200);
+    border: 1px solid var(--color-neutral-0);
+  }
+
+  &:active {
+    background-color: var(--color-brand-insurance-200);
+    border: 1px solid var(--color-brand-insurance-200);
+  }
+
+  &.--light {
+    border: 1px solid var(--color-neutral-200);
+    color: var(--color-neutral-800);
+
+    i {
+      color: var(--color-neutral-800);
+    }
+
+    &.--selected {
+      border: 1px solid var(--color-brand-insurance-200);
+      background-color: var(--color-brand-insurance-200);
+    }
+  }
+
+  &.--dark {
+    border: 1px solid var(--color-neutral-600);
+    color: var(--offWhite);
+
+    i {
+      color: var(--offWhite);
+    }
+
+    &:hover,
+    &:active {
+      color: var(--color-neutral-800);
+
+      i {
+        color: var(--color-neutral-800);
+      }
+    }
+  }
+}
+
+
+.chip__text {
+  text-decoration: none;
+  font-size: var(--font-size-md);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  gap: 0.8rem;
+  align-items: center;
+  display: flex;
+
+  @media (min-width: var(--breakpoint-sm)) {
+    font-size: var(--font-size-lg);
+  }
+}

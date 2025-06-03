@@ -1,0 +1,12 @@
+.header__menu {
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 100;
+
+  @media (min-width: 1024px) {
+
+    i {
+      color: #0046c0;
+    }
+  }
+}

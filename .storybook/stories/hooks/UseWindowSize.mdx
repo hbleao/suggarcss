@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Hooks/UseWindowSize" />
+
+# useWindowSize
+
+O hook `useWindowSize` monitora as dimensões da janela do navegador em tempo real, retornando largura e altura atualizadas automaticamente quando o tamanho da janela muda.
+
+## Importação
+
+```jsx
+import { useWindowSize } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { useWindowSize } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+
+function WindowSizeDemo() {
+  const { width, height } = useWindowSize();
+
+  return (
+    <div>
+      <h2>Tamanho da Janela</h2>
+      <p>Largura: {width}px</p>
+      <p>Altura: {height}px</p>
+      <p>Redimensione a janela para ver os valores mudarem em tempo real.</p>
+    </div>
+  );
+}
+```
+
+## Retorno
+
+O hook `useWindowSize` retorna um objeto com as seguintes propriedades:
+
+| Propriedade | Tipo | Descrição |
+|-------------|------|-----------|
+| `width` | `number` | Largura atual da janela em pixels |
+| `height` | `number` | Altura atual da janela em pixels |
+
+
+
+## Boas Práticas
+
+- Use `useWindowSize` para criar layouts e componentes que se adaptam dinamicamente ao tamanho da janela
+- Combine com outros hooks como `useEffect` para executar ações quando o tamanho da janela mudar
+- Defina breakpoints consistentes em toda a sua aplicação para manter uma experiência de usuário coesa
+- Considere a performance em dispositivos móveis, onde eventos de redimensionamento podem ocorrer durante a rolagem (por exemplo, quando a barra de endereço do navegador aparece/desaparece)
+- Para aplicações complexas, considere usar este hook em um contexto React para disponibilizar o tamanho da janela para toda a árvore de componentes

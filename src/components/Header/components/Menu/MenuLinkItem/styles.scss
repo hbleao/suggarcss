@@ -1,0 +1,20 @@
+.menu__link-item {
+  width: max-content;
+  display: block;
+  color: #5F5F5F;
+  text-decoration: none;
+  font-family: "Porto Roobert", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  @media (min-width: 1024px) {
+    font-weight: 500;
+    line-height: 2rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #0046c0;
+    }
+  }
+}

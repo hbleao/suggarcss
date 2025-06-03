@@ -1,0 +1,68 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as BreadcrumbStories from './Breadcrumb.stories';
+
+<Meta title="Components/Breadcrumb" of={BreadcrumbStories} />
+
+# Breadcrumb
+
+O componente `Breadcrumb` fornece uma trilha de navegação que mostra a localização atual do usuário dentro da hierarquia do site, facilitando a navegação entre níveis.
+
+## Exemplos Interativos
+
+### Breadcrumb Padrão
+<Canvas>
+  <Story of={BreadcrumbStories.Default} />
+</Canvas>
+
+### Breadcrumb com Item Único
+<Canvas>
+  <Story of={BreadcrumbStories.SingleItem} />
+</Canvas>
+
+### Breadcrumb com Caminho Longo
+<Canvas>
+  <Story of={BreadcrumbStories.LongPath} />
+</Canvas>
+
+## Importação
+
+```jsx
+import { Breadcrumb } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Breadcrumb } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <Breadcrumb>
+      <Breadcrumb.Item href="/">Início</Breadcrumb.Item>
+      <Breadcrumb.Item href="/produtos">Produtos</Breadcrumb.Item>
+      <Breadcrumb.Item>Detalhes do Produto</Breadcrumb.Item>
+    </Breadcrumb>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `breadcrumbList` | `Array<{label: string, link: string}>` | - | Lista de itens do breadcrumb, cada um com label e link |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| ...props | `HTMLAttributes<HTMLDivElement>` | - | Outras props HTML válidas para divs |
+
+
+
+## Boas Práticas
+
+- Use breadcrumbs para sites com hierarquia clara e múltiplos níveis de navegação
+- Mantenha os rótulos dos itens curtos e descritivos
+- Coloque o breadcrumb no topo da página, geralmente abaixo do cabeçalho principal
+- Considere usar ícones para melhorar a compreensão visual
+- Em dispositivos móveis, considere simplificar o breadcrumb para economizar espaço
+- Sempre inclua um link para a página inicial como primeiro item
+- O último item geralmente representa a página atual e não deve ser clicável

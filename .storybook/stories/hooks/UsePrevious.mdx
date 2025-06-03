@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Hooks/UsePrevious" />
+
+# usePrevious
+
+O hook `usePrevious` armazena e permite acessar o valor anterior de uma variável de estado ou prop, sendo útil para detectar mudanças e implementar efeitos baseados em alterações.
+
+## Importação
+
+```jsx
+import { usePrevious } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+```
+
+## Uso Básico
+
+```jsx
+import React, { useState } from 'react';
+import { Button } from '@porto/js-library-corp-hubv-porto-ocean';
+import { usePrevious } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  const previousCount = usePrevious(count);
+
+  return (
+    <div>
+      <h2>Contador</h2>
+      <p>Valor atual: {count}</p>
+      <p>Valor anterior: {previousCount !== undefined ? previousCount : 'Nenhum'}</p>
+      <Button onClick={() => setCount(count + 1)}>Incrementar</Button>
+    </div>
+  );
+}
+```
+
+## Parâmetros
+
+O hook `usePrevious` aceita um único parâmetro:
+
+| Parâmetro | Tipo | Obrigatório | Descrição |
+|-----------|------|-------------|-----------|
+| `value` | `any` | Sim | O valor atual que você deseja rastrear |
+
+## Retorno
+
+O hook `usePrevious` retorna o valor anterior do parâmetro fornecido. Na primeira renderização, retorna `undefined`.
+
+
+
+## Boas Práticas
+
+- Use `usePrevious` quando precisar comparar valores atuais com valores anteriores para detectar mudanças
+- Combine com `useEffect` para executar efeitos colaterais baseados em mudanças de estado
+- Para formulários, use para detectar mudanças não salvas e avisar o usuário antes de sair da página
+- Em visualizações de dados, use para animar transições quando os valores mudam
+- Lembre-se que na primeira renderização, o valor anterior será `undefined`

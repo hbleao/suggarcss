@@ -1,0 +1,280 @@
+import { Meta } from '@storybook/blocks';
+import { BannerTokens } from '../../components';
+
+<Meta title="Tokens/Layers" />
+
+<BannerTokens title="Camadas" description="Tokens de camadas (z-index) são variáveis predefinidas que representam a ordem de empilhamento dos elementos na interface. Eles determinam quais elementos aparecem na frente ou atrás de outros quando há sobreposição." />
+
+## O que são tokens de camadas?
+
+Tokens de camadas (z-index) são variáveis predefinidas que representam a ordem de empilhamento dos elementos na interface. Eles determinam quais elementos aparecem na frente ou atrás de outros quando há sobreposição.
+
+## Escala de Camadas do Ocean
+
+O Ocean define uma escala progressiva de camadas que vai de elementos base até modais e elementos que devem sempre aparecer no topo:
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '2rem' }}>
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    padding: '1rem',
+    backgroundColor: '#f7f7f7',
+    borderRadius: '4px',
+    position: 'relative',
+    zIndex: '1'
+  }}>
+    <div style={{ flex: '1' }}>
+      <p style={{ margin: '0', fontWeight: 'bold' }}>$z-index-base</p>
+      <p style={{ margin: '0', color: '#666' }}>Valor: 10</p>
+    </div>
+    <div style={{
+      width: '100px',
+      height: '50px',
+      backgroundColor: '#0046c0',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      borderRadius: '4px'
+    }}>
+      Base
+    </div>
+  </div>
+
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    padding: '1rem',
+    backgroundColor: '#f7f7f7',
+    borderRadius: '4px',
+    position: 'relative',
+    zIndex: '2',
+    marginTop: '-20px',
+    marginLeft: '20px'
+  }}>
+    <div style={{ flex: '1' }}>
+      <p style={{ margin: '0', fontWeight: 'bold' }}>$z-index-menu</p>
+      <p style={{ margin: '0', color: '#666' }}>Valor: 20</p>
+    </div>
+    <div style={{
+      width: '100px',
+      height: '50px',
+      backgroundColor: '#2662c9',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      borderRadius: '4px'
+    }}>
+      Menu
+    </div>
+  </div>
+
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    padding: '1rem',
+    backgroundColor: '#f7f7f7',
+    borderRadius: '4px',
+    position: 'relative',
+    zIndex: '3',
+    marginTop: '-20px',
+    marginLeft: '40px'
+  }}>
+    <div style={{ flex: '1' }}>
+      <p style={{ margin: '0', fontWeight: 'bold' }}>$z-index-overlay-tooltip</p>
+      <p style={{ margin: '0', color: '#666' }}>Valor: 30</p>
+    </div>
+    <div style={{
+      width: '100px',
+      height: '50px',
+      backgroundColor: '#1381e2',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      borderRadius: '4px'
+    }}>
+      Overlay Tooltip
+    </div>
+  </div>
+
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    padding: '1rem',
+    backgroundColor: '#f7f7f7',
+    borderRadius: '4px',
+    position: 'relative',
+    zIndex: '4',
+    marginTop: '-20px',
+    marginLeft: '60px'
+  }}>
+    <div style={{ flex: '1' }}>
+      <p style={{ margin: '0', fontWeight: 'bold' }}>$z-index-tooltip</p>
+      <p style={{ margin: '0', color: '#666' }}>Valor: 40</p>
+    </div>
+    <div style={{
+      width: '100px',
+      height: '50px',
+      backgroundColor: '#00a1fc',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      borderRadius: '4px'
+    }}>
+      Tooltip
+    </div>
+  </div>
+
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    padding: '1rem',
+    backgroundColor: '#f7f7f7',
+    borderRadius: '4px',
+    position: 'relative',
+    zIndex: '5',
+    marginTop: '-20px',
+    marginLeft: '80px'
+  }}>
+    <div style={{ flex: '1' }}>
+      <p style={{ margin: '0', fontWeight: 'bold' }}>$z-index-always-on-top</p>
+      <p style={{ margin: '0', color: '#666' }}>Valor: 50</p>
+    </div>
+    <div style={{
+      width: '100px',
+      height: '50px',
+      backgroundColor: '#31b5fc',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      borderRadius: '4px'
+    }}>
+      Always on Top
+    </div>
+  </div>
+
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    padding: '1rem',
+    backgroundColor: '#f7f7f7',
+    borderRadius: '4px',
+    position: 'relative',
+    zIndex: '6',
+    marginTop: '-20px',
+    marginLeft: '100px'
+  }}>
+    <div style={{ flex: '1' }}>
+      <p style={{ margin: '0', fontWeight: 'bold' }}>$z-index-overlay-modal</p>
+      <p style={{ margin: '0', color: '#666' }}>Valor: 60</p>
+    </div>
+    <div style={{
+      width: '100px',
+      height: '50px',
+      backgroundColor: '#66cafc',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      borderRadius: '4px'
+    }}>
+      Overlay Modal
+    </div>
+  </div>
+
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    padding: '1rem',
+    backgroundColor: '#f7f7f7',
+    borderRadius: '4px',
+    position: 'relative',
+    zIndex: '7',
+    marginTop: '-20px',
+    marginLeft: '120px'
+  }}>
+    <div style={{ flex: '1' }}>
+      <p style={{ margin: '0', fontWeight: 'bold' }}>$z-index-modal</p>
+      <p style={{ margin: '0', color: '#666' }}>Valor: 70</p>
+    </div>
+    <div style={{
+      width: '100px',
+      height: '50px',
+      backgroundColor: '#8cd7fd',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      borderRadius: '4px'
+    }}>
+      Modal
+    </div>
+  </div>
+</div>
+
+## Uso dos Tokens de Camadas
+
+Os tokens de camadas devem ser usados para controlar a ordem de empilhamento dos elementos na interface.
+
+### Aplicação Comum
+
+- **$z-index-base (10)**: Elementos base da interface, como cabeçalhos, rodapés, cards
+- **$z-index-menu (20)**: Menus de navegação, dropdowns
+- **$z-index-overlay-tooltip (30)**: Overlay para tooltips
+- **$z-index-tooltip (40)**: Tooltips, popovers
+- **$z-index-always-on-top (50)**: Elementos que devem sempre aparecer acima de outros, como notificações
+- **$z-index-overlay-modal (60)**: Overlay escuro para modais
+- **$z-index-modal (70)**: Modais, diálogos
+
+### Como usar os tokens de camadas
+
+Em SCSS:
+```scss
+.header {
+  z-index: $z-index-base;
+}
+
+.dropdown-menu {
+  z-index: $z-index-menu;
+}
+
+.modal-overlay {
+  z-index: $z-index-overlay-modal;
+}
+
+.modal {
+  z-index: $z-index-modal;
+}
+```
+
+Em CSS:
+```css
+.header {
+  z-index: var(--ocean-z-index-base);
+}
+
+.dropdown-menu {
+  z-index: var(--ocean-z-index-menu);
+}
+
+.modal-overlay {
+  z-index: var(--ocean-z-index-overlay-modal);
+}
+
+.modal {
+  z-index: var(--ocean-z-index-modal);
+}
+```
+
+## Boas Práticas
+
+- Use sempre os tokens de camadas predefinidos em vez de valores arbitrários
+- Mantenha a consistência usando os mesmos tokens para elementos com funções similares
+- Evite criar novos valores de z-index; use os tokens existentes sempre que possível
+- Lembre-se que o z-index só funciona em elementos posicionados (position: relative, absolute, fixed ou sticky)
+- Considere o contexto de empilhamento: elementos com z-index só competem dentro do mesmo contexto
+- Evite "guerras de z-index" mantendo uma hierarquia clara e consistente

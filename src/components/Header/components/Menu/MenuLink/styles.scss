@@ -1,0 +1,14 @@
+.menu__link {
+  list-style: none;
+  height: min-content;
+  width: max-content;
+  border-radius: 8px;
+  background: #f7f7f7;
+  padding: 4px 8px;
+  cursor: pointer;
+
+  @media (min-width: 1024px) {
+    border-radius: none;
+    background-color: inherit;
+  }
+}

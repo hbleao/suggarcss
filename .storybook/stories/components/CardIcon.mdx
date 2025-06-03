@@ -1,0 +1,115 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as CardIconStories from './CardIcon.stories';
+
+<Meta title="Components/CardIcon" of={CardIconStories} />
+
+# CardIcon
+
+O componente `CardIcon` é uma variação especializada do componente Card que combina um ícone proeminente com conteúdo textual, criando um elemento visual atraente para destacar recursos, serviços ou categorias.
+
+## Exemplos Interativos
+
+### Card com Ícone Padrão
+<Canvas>
+  <Story of={CardIconStories.DefaultCardIcon} />
+</Canvas>
+
+### Card com Pré-Título
+<Canvas>
+  <Story of={CardIconStories.WithPreTitle} />
+</Canvas>
+
+### Card como Link
+<Canvas>
+  <Story of={CardIconStories.AsLink} />
+</Canvas>
+
+### Card sem Ícone
+<Canvas>
+  <Story of={CardIconStories.WithoutIcon} />
+</Canvas>
+
+### Card sem Descrição
+<Canvas>
+  <Story of={CardIconStories.WithoutDescription} />
+</Canvas>
+
+### Card com Estilo Personalizado
+<Canvas>
+  <Story of={CardIconStories.CustomStyling} />
+</Canvas>
+
+## Importação
+
+```jsx
+import { CardIcon } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { CardIcon } from '@porto/js-library-corp-hubv-porto-ocean';
+import { FaStar } from 'react-icons/fa';
+
+function Example() {
+  return (
+    <CardIcon
+      icon={<FaStar size={24} />}
+      title="Recurso Premium"
+      description="Este é um recurso exclusivo disponível apenas para usuários premium."
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `icon` | `ReactNode` | - | Ícone a ser exibido no topo do card |
+| `preTitle` | `ReactNode` | - | Texto auxiliar exibido antes do título |
+| `title` | `ReactNode` | - | Título principal do card |
+| `description` | `ReactNode` | - | Descrição complementar |
+| `variant` | `'link' \| 'static'` | `'static'` | Variante visual (interativa ou estática) |
+| `href` | `string` | - | URL para tornar o card clicável |
+| `titleProps` | `Record<string, unknown>` | - | Propriedades adicionais para o título |
+| `descriptionProps` | `Record<string, unknown>` | - | Propriedades adicionais para a descrição |
+| `hoverElevation` | `number` | `3` | Nível de elevação ao passar o mouse sobre o card |
+| `bordered` | `boolean` | `false` | Se verdadeiro, exibe uma borda em vez de sombra |
+| `className` | `string` | - | Classe CSS adicional para o componente |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+| `iconClassName` | `string` | - | Classe CSS adicional para o ícone |
+| `iconStyle` | `CSSProperties` | - | Estilos inline adicionais para o ícone |
+| `titleClassName` | `string` | - | Classe CSS adicional para o título |
+| `titleStyle` | `CSSProperties` | - | Estilos inline adicionais para o título |
+| `descriptionClassName` | `string` | - | Classe CSS adicional para a descrição |
+| `descriptionStyle` | `CSSProperties` | - | Estilos inline adicionais para a descrição |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente CardIcon nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-cardicon-examples--default)
+- [Com Props Personalizadas](/story/components-cardicon-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-cardicon-examples--custom-example)
+## Acessibilidade
+
+O componente `CardIcon` segue as práticas recomendadas de acessibilidade:
+
+- Quando usado como link (`href` fornecido), implementa corretamente os atributos de acessibilidade
+- Quando clicável (`onClick` fornecido), implementa `role="button"` e suporte a navegação por teclado
+- Mantém contraste adequado entre texto e fundo
+- Garante que os ícones tenham texto alternativo ou sejam decorativos
+- Preserva a ordem de tabulação lógica para navegação por teclado
+
+## Boas Práticas
+
+- Use ícones claros e reconhecíveis que representem bem o conteúdo ou função do card
+- Mantenha títulos concisos e descrições claras
+- Use cores de ícone que contrastem bem com o fundo do ícone
+- Para cards clicáveis, forneça feedback visual ao passar o mouse (já implementado pelo componente)
+- Agrupe cards relacionados em seções com títulos descritivos
+- Mantenha consistência no estilo e tamanho dos cards em uma mesma seção
+- Para melhor responsividade, use um sistema de grid ou flexbox para organizar os cards
+- Considere usar a posição de ícone "left" para layouts horizontais e "top" para layouts verticais

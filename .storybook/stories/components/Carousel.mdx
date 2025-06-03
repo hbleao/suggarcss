@@ -1,0 +1,139 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as CarouselStories from './Carousel.stories';
+
+<Meta title="Components/Carousel" of={CarouselStories} />
+
+# Carousel
+
+O componente `Carousel` permite exibir uma coleção de elementos em um formato de slideshow, permitindo que o usuário navegue entre os itens através de controles de navegação ou gestos de deslize.
+
+## Exemplos Interativos
+
+### Carousel Padrão
+<Canvas>
+  <Story of={CarouselStories.DefaultCarousel} />
+</Canvas>
+
+### Com Indicadores (Dots)
+<Canvas>
+  <Story of={CarouselStories.WithDots} />
+</Canvas>
+
+### Com Setas de Navegação
+<Canvas>
+  <Story of={CarouselStories.WithArrows} />
+</Canvas>
+
+### Com Indicadores e Setas
+<Canvas>
+  <Story of={CarouselStories.WithDotsAndArrows} />
+</Canvas>
+
+### Com Reprodução Automática
+<Canvas>
+  <Story of={CarouselStories.AutoPlay} />
+</Canvas>
+
+### Múltiplos Slides Visíveis
+<Canvas>
+  <Story of={CarouselStories.MultipleSlides} />
+</Canvas>
+
+### Com Espaçamento Personalizado
+<Canvas>
+  <Story of={CarouselStories.CustomGap} />
+</Canvas>
+
+## Importação
+
+```jsx
+import { Carousel } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Carousel } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const items = [
+    {
+      id: 1,
+      image: 'https://via.placeholder.com/800x400?text=Slide+1',
+      title: 'Slide 1',
+      description: 'Descrição do slide 1'
+    },
+    {
+      id: 2,
+      image: 'https://via.placeholder.com/800x400?text=Slide+2',
+      title: 'Slide 2',
+      description: 'Descrição do slide 2'
+    },
+    {
+      id: 3,
+      image: 'https://via.placeholder.com/800x400?text=Slide+3',
+      title: 'Slide 3',
+      description: 'Descrição do slide 3'
+    }
+  ];
+
+  return (
+    <Carousel>
+      {items.map(item => (
+        <Carousel.Item key={item.id}>
+          <img src={item.image} alt={item.title} />
+          <Carousel.Caption>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      ))}
+    </Carousel>
+  );
+}
+```
+
+## Props
+
+### Carousel
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `React.ReactNode[]` | Obrigatório | Array de elementos React que serão exibidos como slides |
+| `autoPlay` | `boolean` | `false` | Se verdadeiro, o carousel avançará automaticamente |
+| `autoPlayInterval` | `number` | `3000` | Intervalo em milissegundos entre os slides quando autoPlay está ativado |
+| `slidesToShow` | `number` | `1` | Número de slides a serem exibidos simultaneamente |
+| `slidesToScroll` | `number` | `1` | Número de slides a serem percorridos por vez ao navegar |
+| `dots` | `boolean` | `false` | Se verdadeiro, exibe os indicadores de posição (dots) |
+| `arrows` | `boolean` | `false` | Se verdadeiro, exibe as setas de navegação (anterior/próximo) |
+| `gap` | `number` | `16` | Espaçamento em pixels entre os slides |
+
+### Carousel.Item
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo do slide |
+| `className` | `string` | - | Classe CSS adicional para o item |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+### Carousel.Caption
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Conteúdo da legenda |
+| `className` | `string` | - | Classe CSS adicional para a legenda |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+
+
+## Boas Práticas
+
+- Limite o número de slides para evitar sobrecarga de informações
+- Forneça controles de navegação claros e visíveis
+- Use autoPlay com moderação e sempre permita que o usuário pause a animação
+- Inclua indicadores de progresso para mostrar a posição atual e o total de slides
+- Considere a responsividade, ajustando o número de slides visíveis em diferentes tamanhos de tela
+- Mantenha o tempo de transição entre slides curto (300-500ms) para uma experiência fluida
+- Para carousels com muitos itens, considere adicionar uma opção "Ver Todos"
+- Evite usar múltiplos carousels na mesma página para não confundir o usuário

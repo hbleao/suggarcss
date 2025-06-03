@@ -1,0 +1,121 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as FooterStories from './Footer.stories';
+
+<Meta title="Components/Footer" of={FooterStories} />
+
+# Footer
+
+O componente `Footer` é usado para criar rodapés de página consistentes, fornecendo navegação secundária, informações de contato, links para redes sociais e outras informações importantes que devem estar presentes em todas as páginas do site.
+
+## Exemplos Interativos
+
+### Footer Padrão
+<Canvas>
+  <Story of={FooterStories.DefaultFooter} />
+</Canvas>
+
+### Footer sem Logo
+<Canvas>
+  <Story of={FooterStories.WithoutLogo} />
+</Canvas>
+
+### Footer sem Links
+<Canvas>
+  <Story of={FooterStories.WithoutLinks} />
+</Canvas>
+
+### Footer sem Redes Sociais
+<Canvas>
+  <Story of={FooterStories.WithoutSocialMedia} />
+</Canvas>
+
+### Footer com Fundo Personalizado
+<Canvas>
+  <Story of={FooterStories.WithCustomBackground} />
+</Canvas>
+
+### Footer com Cores de Texto Personalizadas
+<Canvas>
+  <Story of={FooterStories.WithCustomTextColor} />
+</Canvas>
+
+### Footer com Conteúdo Adicional
+<Canvas>
+  <Story of={FooterStories.WithAdditionalContent} />
+</Canvas>
+
+## Importação
+
+```jsx
+import { Footer } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Footer } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <Footer
+      logo="/path/to/logo.svg"
+      copyright="© 2025 Empresa. Todos os direitos reservados."
+      links={[
+        { label: 'Termos de Uso', href: '/termos' },
+        { label: 'Política de Privacidade', href: '/privacidade' },
+        { label: 'Cookies', href: '/cookies' }
+      ]}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Obrigatório | Padrão | Descrição |
+|------|------|-------------|--------|-----------|
+| `variant` | `'default' \| 'insurance' \| 'banking' \| 'health'` | Não | `'default'` | Variante visual do footer |
+| `logo` | `string` | Não | - | URL da imagem do logo |
+| `logoAlt` | `string` | Não | `'Logo'` | Texto alternativo para o logo |
+| `copyright` | `string` | Não | - | Texto de copyright |
+| `links` | `Array<{label: string, href: string}>` | Não | `[]` | Links simples no footer |
+| `columns` | `Array<{title: string, links: Array<{label: string, href: string}>}>` | Não | `[]` | Colunas de links organizados por categoria |
+| `socialLinks` | `Array<{icon: ReactNode, href: string}>` | Não | `[]` | Links para redes sociais com ícones |
+| `contactInfo` | `{phone?: string, email?: string, address?: string}` | Não | - | Informações de contato |
+| `className` | `string` | Não | - | Classes CSS adicionais |
+| `onLogoClick` | `function` | Não | - | Função chamada ao clicar no logo |
+
+## Exemplos Interativos
+
+Você pode ver exemplos interativos do componente Footer nas seguintes páginas:
+
+- [Exemplo Básico](/story/components-footer-examples--default)
+- [Com Props Personalizadas](/story/components-footer-examples--with-custom-props)
+- [Exemplo Personalizado](/story/components-footer-examples--custom-example)
+## Variantes
+
+O componente `Footer` suporta diferentes variantes visuais:
+
+- `default`: Estilo padrão
+- `insurance`: Estilo específico para produtos de seguro
+- `banking`: Estilo específico para produtos bancários
+- `health`: Estilo específico para produtos de saúde
+
+## Acessibilidade
+
+O componente `Footer` implementa as seguintes práticas de acessibilidade:
+
+- Estrutura semântica usando elementos HTML apropriados (footer, nav, etc.)
+- Links com textos descritivos
+- Ícones de redes sociais com textos alternativos
+- Contraste adequado entre texto e fundo
+- Navegação por teclado facilitada
+
+## Boas Práticas
+
+- Mantenha o footer consistente em todas as páginas do site
+- Organize os links em categorias lógicas para facilitar a navegação
+- Inclua informações de contato importantes
+- Mantenha o copyright atualizado
+- Evite sobrecarregar o footer com muitos links

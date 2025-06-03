@@ -10,7 +10,16 @@
 		"jsx": "react-jsx",
 		"declaration": true,
 		"skipLibCheck": true,
-		"outDir": "dist"
+		"outDir": "dist",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx"]
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"/src/@types"
+	]
 }

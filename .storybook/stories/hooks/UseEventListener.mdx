@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Hooks/UseEventListener" />
+
+# useEventListener
+
+O hook `useEventListener` simplifica a adição e remoção de event listeners, gerenciando automaticamente o ciclo de vida dos listeners e evitando memory leaks.
+
+## Importação
+
+```jsx
+import { useEventListener } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+```
+
+## Uso Básico
+
+```jsx
+import React, { useState, useRef } from 'react';
+import { Typography } from '@porto/js-library-corp-hubv-porto-ocean';
+import { useEventListener } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+
+function KeyPressExample() {
+  const [lastKey, setLastKey] = useState('');
+
+  // Adiciona um event listener ao documento para o evento 'keydown'
+  useEventListener('keydown', (event) => {
+    setLastKey(event.key);
+  });
+
+  return (
+    <div>
+      <Typography variant="title2">Detector de Teclas</Typography>
+
+      <Typography variant="body1" style={{ marginTop: '16px' }}>
+        Pressione qualquer tecla para detectar
+      </Typography>
+
+      {lastKey && (
+        <div style={{
+          marginTop: '24px',
+          padding: '24px',
+          background: '#f0f0f0',
+          borderRadius: '8px',
+          textAlign: 'center'
+        }}>
+          <Typography variant="title1">{lastKey}</Typography>
+          <Typography variant="body2" style={{ marginTop: '8px' }}>
+            Última tecla pressionada
+          </Typography>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## Parâmetros
+
+O hook `useEventListener` aceita os seguintes parâmetros:
+
+| Parâmetro | Tipo | Obrigatório | Descrição |
+|-----------|------|-------------|-----------|
+| `eventName` | `string` | Sim | Nome do evento a ser escutado (ex: 'click', 'keydown') |
+| `handler` | `(event: Event) => void` | Sim | Função de callback a ser executada quando o evento ocorrer |
+| `element` | `RefObject<T> \| T \| Window \| Document \| null` | Não | Elemento ao qual o evento será anexado (padrão: `window`) |
+| `options` | `AddEventListenerOptions` | Não | Opções adicionais para o addEventListener |
+
+
+
+## Boas Práticas
+
+- Use `useEventListener` para substituir a adição manual de event listeners com `addEventListener` e `removeEventListener`
+- Prefira anexar event listeners a elementos específicos em vez do `window` ou `document` quando possível, para melhor performance e escopo
+- Combine com outros hooks como `useCallback` para memoizar funções de callback complexas
+- Para eventos de teclado globais, considere verificar se o foco está em um elemento de entrada antes de processar o evento
+- Use as opções do `addEventListener` (como `passive: true`) para eventos de toque em interfaces móveis, melhorando a performance de rolagem
+- Para eventos personalizados, certifique-se de que eles são disparados corretamente e considere usar uma biblioteca de gerenciamento de eventos se necessário

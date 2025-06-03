@@ -1,0 +1,232 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as ModalStories from './Modal.stories';
+
+<Meta title="Components/Modal" of={ModalStories} />
+
+# Modal
+
+O componente Modal é usado para exibir conteúdo em uma camada sobreposta à interface principal, focando a atenção do usuário em uma tarefa ou informação específica.
+
+## Exemplos Interativos
+
+### Modal Básico
+<Canvas>
+  <Story of={ModalStories.BasicModal} />
+</Canvas>
+
+### Modal com Subtítulo
+<Canvas>
+  <Story of={ModalStories.ModalWithSubtitle} />
+</Canvas>
+
+### Modal com Formulário
+<Canvas>
+  <Story of={ModalStories.ModalWithForm} />
+</Canvas>
+
+### Modal com Conteúdo Extenso
+<Canvas>
+  <Story of={ModalStories.LargeModal} />
+</Canvas>
+## Importação
+
+```jsx
+import { Modal } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import { useState } from 'react';
+import { Modal, Button } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Abrir Modal</Button>
+      
+      <Modal 
+        title="Título do Modal"
+        subtitle="Subtítulo opcional do modal"
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      >
+        <p>Conteúdo do modal vai aqui.</p>
+        <Button onClick={() => setIsOpen(false)}>Fechar</Button>
+      </Modal>
+    </>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Obrigatório | Descrição |
+|------|------|-------------|-----------|
+| `title` | `string` | Sim | Título principal do modal |
+| `subtitle` | `string` | Não | Subtítulo descritivo (opcional) |
+| `children` | `ReactNode` | Sim | Conteúdo a ser exibido dentro do modal |
+| `isOpen` | `boolean` | Sim | Controla se o modal está visível |
+| `onClose` | `() => void` | Sim | Função chamada quando o modal é fechado |
+| `size` | `'small' \| 'medium' \| 'large' \| 'full'` | Não | Tamanho do modal (padrão: 'medium') |
+| `closeOnOverlayClick` | `boolean` | Não | Se o modal deve fechar ao clicar no overlay (padrão: true) |
+| `closeOnEsc` | `boolean` | Não | Se o modal deve fechar ao pressionar a tecla ESC (padrão: true) |
+| `showCloseButton` | `boolean` | Não | Se deve mostrar o botão de fechar no canto superior (padrão: true) |
+| `preventScroll` | `boolean` | Não | Se deve impedir o scroll da página quando o modal estiver aberto (padrão: true) |
+
+## Variações
+
+### Tamanhos de Modal
+
+O componente Modal suporta diferentes tamanhos para atender a diferentes necessidades:
+
+```jsx
+// Modal pequeno (ideal para mensagens simples ou confirmações)
+<Modal size="small" title="Confirmação" isOpen={isOpen} onClose={handleClose}>
+  <p>Tem certeza que deseja continuar?</p>
+  <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+    <Button styles="ghost" onClick={handleClose}>Cancelar</Button>
+    <Button onClick={handleConfirm}>Confirmar</Button>
+  </div>
+</Modal>
+
+// Modal médio (padrão, adequado para a maioria dos conteúdos)
+<Modal size="medium" title="Detalhes do Produto" isOpen={isOpen} onClose={handleClose}>
+  {/* Conteúdo do modal */}
+</Modal>
+
+// Modal grande (para conteúdos mais extensos)
+<Modal size="large" title="Termos de Uso" isOpen={isOpen} onClose={handleClose}>
+  {/* Conteúdo extenso */}
+</Modal>
+
+// Modal em tela cheia (para experiências imersivas)
+<Modal size="full" title="Galeria de Imagens" isOpen={isOpen} onClose={handleClose}>
+  {/* Conteúdo em tela cheia */}
+</Modal>
+```
+
+### Modal sem Botão de Fechar
+
+Em alguns casos, você pode querer controlar explicitamente como o modal é fechado:
+
+```jsx
+<Modal 
+  title="Atenção"
+  isOpen={isOpen}
+  onClose={handleClose}
+  showCloseButton={false}
+  closeOnOverlayClick={false}
+  closeOnEsc={false}
+>
+  <p>Esta ação não pode ser desfeita. Por favor, confirme para continuar.</p>
+  <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+    <Button styles="ghost" onClick={handleClose}>Cancelar</Button>
+    <Button variant="negative" onClick={handleConfirmDelete}>Excluir Permanentemente</Button>
+  </div>
+</Modal>
+```
+
+## Casos de Uso Comuns
+
+### Modal de Confirmação
+
+```jsx
+<Modal 
+  title="Confirmação"
+  size="small"
+  isOpen={isConfirmOpen}
+  onClose={() => setIsConfirmOpen(false)}
+>
+  <p>Tem certeza que deseja excluir este item?</p>
+  <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end', marginTop: '16px' }}>
+    <Button styles="ghost" onClick={() => setIsConfirmOpen(false)}>Cancelar</Button>
+    <Button variant="negative" onClick={handleDelete}>Excluir</Button>
+  </div>
+</Modal>
+```
+
+### Modal de Formulário
+
+```jsx
+<Modal 
+  title="Adicionar Novo Usuário"
+  isOpen={isFormOpen}
+  onClose={() => setIsFormOpen(false)}
+>
+  <form onSubmit={handleSubmit}>
+    <div style={{ marginBottom: '16px' }}>
+      <label htmlFor="name">Nome</label>
+      <input id="name" type="text" value={name} onChange={e => setName(e.target.value)} />
+    </div>
+    <div style={{ marginBottom: '16px' }}>
+      <label htmlFor="email">Email</label>
+      <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
+    </div>
+    <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+      <Button type="button" styles="ghost" onClick={() => setIsFormOpen(false)}>Cancelar</Button>
+      <Button type="submit">Salvar</Button>
+    </div>
+  </form>
+</Modal>
+```
+
+### Modal de Conteúdo Rico
+
+```jsx
+<Modal 
+  title="Detalhes do Produto"
+  size="large"
+  isOpen={isDetailOpen}
+  onClose={() => setIsDetailOpen(false)}
+>
+  <div style={{ display: 'flex', gap: '24px' }}>
+    <div style={{ flex: '0 0 40%' }}>
+      <img src="/product-image.jpg" alt="Produto" style={{ width: '100%' }} />
+    </div>
+    <div>
+      <h3>Nome do Produto</h3>
+      <p>Descrição detalhada do produto com todas as suas características e benefícios.</p>
+      <div style={{ marginTop: '16px' }}>
+        <h4>Especificações</h4>
+        <ul>
+          <li>Característica 1</li>
+          <li>Característica 2</li>
+          <li>Característica 3</li>
+        </ul>
+      </div>
+      <div style={{ marginTop: '24px' }}>
+        <Button>Adicionar ao Carrinho</Button>
+      </div>
+    </div>
+  </div>
+</Modal>
+```
+
+## Acessibilidade
+
+O componente Modal implementa as melhores práticas de acessibilidade:
+
+- Usa `role="dialog"` e `aria-modal="true"` para indicar que é um modal
+- Inclui `aria-labelledby` referenciando o título do modal
+- Gerencia o foco corretamente, mantendo-o dentro do modal quando aberto
+- Suporta navegação por teclado, incluindo fechamento com a tecla ESC
+- Impede o scroll da página subjacente quando o modal está aberto
+- Retorna o foco ao elemento que abriu o modal quando este é fechado
+
+## Considerações de Performance
+
+- O Modal é renderizado condicionalmente para evitar impacto no DOM quando fechado
+- Para modais com conteúdo complexo, considere usar lazy loading ou memoização
+
+## Boas Práticas
+
+- Use títulos claros e descritivos
+- Mantenha o conteúdo do modal focado em uma única tarefa ou tópico
+- Forneça feedback visual claro para ações dentro do modal
+- Sempre inclua uma forma óbvia de fechar o modal
+- Considere o tamanho do modal em relação ao conteúdo e ao dispositivo
+- Evite modais aninhados (um modal dentro de outro)
+- Use modais com moderação, apenas quando realmente necessário para focar a atenção do usuário

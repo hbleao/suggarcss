@@ -1,0 +1,97 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as TextBodyStories from './TextBody.stories';
+
+<Meta title="Components/TextBody" of={TextBodyStories} />
+
+# TextBody
+
+O componente `TextBody` é utilizado para exibir blocos de texto com título, subtítulo, descrição e botões, seguindo o sistema de design. É ideal para seções informativas, mensagens promocionais ou chamadas para ação.
+
+## Exemplos Interativos
+
+### TextBody Padrão
+<Canvas>
+  <Story of={TextBodyStories.DefaultTextBody} />
+</Canvas>
+
+### Sem Subtítulo
+<Canvas>
+  <Story of={TextBodyStories.WithoutSubtitle} />
+</Canvas>
+
+### Sem Texto
+<Canvas>
+  <Story of={TextBodyStories.WithoutText} />
+</Canvas>
+
+### Com Conteúdo HTML
+<Canvas>
+  <Story of={TextBodyStories.WithHTMLContent} />
+</Canvas>
+
+### Com Um Botão
+<Canvas>
+  <Story of={TextBodyStories.SingleButton} />
+</Canvas>
+
+### Com Múltiplos Botões
+<Canvas>
+  <Story of={TextBodyStories.MultipleButtons} />
+</Canvas>
+
+### Diferentes Variantes
+<Canvas>
+  <Story of={TextBodyStories.DifferentVariants} />
+</Canvas>
+
+### Estilos Personalizados
+<Canvas>
+  <Story of={TextBodyStories.CustomStyles} />
+</Canvas>
+
+## Importação
+
+```jsx
+import { TextBody } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { TextBody } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <TextBody>
+      Este é um texto padrão usando o componente TextBody.
+    </TextBody>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `title` | `string` | `'title'` | Título principal do bloco |
+| `subtitle` | `string` | `''` | Subtítulo ou destaque complementar |
+| `text` | `string` | `''` | Texto descritivo principal (aceita HTML via `dangerouslySetInnerHTML`) |
+| `buttons` | `Array<{ label: string } & React.ComponentProps<typeof Button>>` | Obrigatório | Lista de botões renderizados abaixo do texto |
+| `className` | `string` | `''` | Classe CSS adicional para personalização externa |
+| `style` | `CSSProperties` | - | Estilos inline adicionais |
+
+
+
+## Boas Práticas
+
+- Use a variante `body1` para o texto principal do conteúdo
+- Use a variante `body2` para texto secundário ou de suporte
+- Use a variante `caption` para legendas, notas de rodapé e informações auxiliares
+- Use a variante `overline` para rótulos, cabeçalhos de seção e categorias
+- Mantenha a consistência no uso das variantes em toda a aplicação
+- Use a prop `paragraph` para criar espaçamento adequado entre parágrafos
+- Evite usar texto justificado (`align="justify"`) em blocos estreitos, pois pode criar espaçamentos irregulares entre palavras
+- Prefira alinhamento à esquerda (`align="left"`) para blocos de texto longos, pois é mais legível
+- Use a prop `component` para garantir que o elemento HTML correto seja usado para o contexto
+- Evite usar a prop `truncate` para informações críticas, pois parte do conteúdo ficará oculta

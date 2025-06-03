@@ -1,0 +1,271 @@
+import { Meta } from '@storybook/blocks';
+import {
+  BannerDOC,
+  ContentCard,
+  SectionTitle,
+  InfoBox,
+  CodeBlock,
+  FeatureGrid,
+  FeatureItem,
+  BannerFooter
+} from '../components';
+
+<Meta title="Introdução" />
+
+<BannerDOC title="Introdução ao Ocean" description="A biblioteca de componentes React da Porto Seguro." />
+
+<ContentCard
+  title="Visão Geral"
+  borderColor="#fff"
+>
+  <p style={{
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    O <strong>Ocean Design System</strong> é uma biblioteca de componentes React com SASS que implementa a linguagem visual da Porto Seguro. Foi projetada para criar experiências digitais consistentes, acessíveis e de alta qualidade em todos os produtos e serviços da Porto.
+  </p>
+</ContentCard>
+
+<ContentCard
+  title="Principais Recursos"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="#0046c0" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z" fill="#0046c0"/>
+      <path d="M7 12H9V17H7V12Z" fill="#0046c0"/>
+      <path d="M11 7H13V17H11V7Z" fill="#0046c0"/>
+      <path d="M15 9H17V17H15V9Z" fill="#0046c0"/>
+    </svg>
+  }
+>
+  <FeatureGrid>
+    <FeatureItem
+      title="Componentes React"
+      borderColor="#0046c0"
+      icon={
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 8H8V4H4V8ZM10 20H14V16H10V20ZM4 20H8V16H4V20ZM4 14H8V10H4V14ZM10 14H14V10H10V14ZM16 4V8H20V4H16ZM10 8H14V4H10V8ZM16 14H20V10H16V14ZM16 20H20V16H16V20Z" fill="white"/>
+        </svg>
+      }
+      description="Uma coleção completa de componentes React prontos para uso"
+    />
+
+    <FeatureItem
+      title="Design Responsivo"
+      borderColor="#0046c0"
+      titleColor="#31b5fc"
+      description="Todos os componentes são totalmente responsivos e adaptáveis a diferentes tamanhos de tela"
+    />
+
+    <FeatureItem
+      title="Acessibilidade"
+      borderColor="#0046c0"
+      icon={
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" fill="white"/>
+          <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="white"/>
+          <circle cx="12" cy="12" r="2" fill="white"/>
+        </svg>
+      }
+      description="Componentes desenvolvidos seguindo as diretrizes WCAG para garantir acessibilidade"
+    />
+
+    <FeatureItem
+      title="Customização"
+      borderColor="#66cafc"
+      titleColor="#66cafc"
+      icon={
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" fill="white"/>
+        </svg>
+      }
+      description="Tokens de design personalizáveis para adaptar os componentes à sua marca"
+    />
+
+    <FeatureItem
+      title="Documentação Detalhada"
+      borderColor="#0046c0"
+      icon={
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="white"/>
+        </svg>
+      }
+      description="Guias completos, exemplos de código e documentação de API para todos os componentes"
+    />
+
+    <FeatureItem
+      title="TypeScript"
+      borderColor="#31b5fc"
+      titleColor="#31b5fc"
+      icon={
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 3h18v18H3V3zm10 4v2h3v8h2V9h3V7h-8zm-4 2h2.5v2H9v2h2v4H9v2h4v-2h-2v-4h2v-2H9V9z" fill="white"/>
+        </svg>
+      }
+      description="Suporte completo a TypeScript com tipos e interfaces bem definidos"
+    />
+  </FeatureGrid>
+</ContentCard>
+
+<ContentCard
+  title="Princípios de Design"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z" fill="white"/>
+    </svg>
+  }
+>
+  <FeatureGrid>
+    <InfoBox
+      title="Consistência"
+      titleColor="#0046c0"
+      backgroundColor="white"
+      icon={
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 11h16v2H4z" fill="#0046c0"/>
+        </svg>
+      }
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Interfaces previsíveis que seguem padrões consistentes, facilitando o aprendizado e uso.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Acessibilidade"
+      titleColor="#31b5fc"
+      backgroundColor="white"
+      icon={
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z" fill="#31b5fc"/>
+        </svg>
+      }
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Interfaces inclusivas que podem ser utilizadas por pessoas com diferentes habilidades e necessidades.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Eficiência"
+      titleColor="#66cafc"
+      backgroundColor="white"
+      icon={
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z" fill="#66cafc"/>
+        </svg>
+      }
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Interfaces que permitem aos usuários completar tarefas com o mínimo de esforço e tempo.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Feedback"
+      titleColor="#0046c0"
+      backgroundColor="white"
+      icon={
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z" fill="#0046c0"/>
+        </svg>
+      }
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Interfaces que comunicam claramente o estado do sistema e o resultado das ações dos usuários.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
+
+<ContentCard
+  title="Arquitetura"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.36 18.78L6.61 21l1.62-1.54 2.77-7.6c-.68-.17-1.28-.51-1.77-.98L6.36 18.78z" fill="white"/>
+      <path d="M14.77 10.88c-.49.47-1.1.81-1.77.98l2.77 7.6L17.39 21l.26-2.22-2.88-7.9zM15 8c0-1.3-.84-2.4-2-2.82V3h-2v2.18C9.84 5.6 9 6.7 9 8c0 1.66 1.34 3 3 3s3-1.34 3-3zm-3 1c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginBottom: '1.5rem' }}>
+    O Ocean foi projetado com uma arquitetura modular e flexível:
+  </p>
+
+  <FeatureGrid>
+    <InfoBox
+      title="Componentes"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Blocos de construção independentes e reutilizáveis que podem ser combinados para criar interfaces complexas.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Tokens de Design"
+      titleColor="#31b5fc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Valores fundamentais para cores, tipografia, espaçamento e outros aspectos visuais que garantem consistência.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Hooks"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#333' }}>
+        Funções reutilizáveis que encapsulam lógica comum, facilitando o desenvolvimento de interfaces interativas.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+  <div style={{
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    color: '#333',
+    padding: '1rem',
+    background: '#eef9ff',
+    borderRadius: '8px',
+    borderLeft: '3px solid #31b5fc',
+    marginTop: '1.5rem'
+  }}>
+    <strong>Dica:</strong> O Ocean segue uma abordagem monolítica para seus componentes, consolidando todos os subcomponentes em um único componente React para facilitar o uso e a manutenção.
+  </div>
+</ContentCard>
+
+<ContentCard
+  title="Começando"
+  borderColor="#66cafc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 4v2.67l-1 1-1-1V4h2m7 7v2h-2.67l-1-1 1-1H20M6.67 11l1 1-1 1H4v-2h2.67M12 16.33l1 1V20h-2v-2.67l1-1M15 2H9v5.5l3 3 3-3V2zm7 7h-5.5l-3 3 3 3H22V9zM7.5 9H2v6h5.5l3-3-3-3zm4.5 4.5l-3 3V22h6v-5.5l-3-3z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333', marginBottom: '1.5rem' }}>
+    Para começar a usar o Ocean em seu projeto:
+  </p>
+
+  <CodeBlock>
+```bash
+# Instalar o pacote
+npm install @porto/js-library-corp-hubv-porto-ocean
+
+# Importar os estilos
+import '@porto/js-library-corp-hubv-porto-ocean/dist/styles.css';
+
+# Usar os componentes
+import { Button, Card } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+  </CodeBlock>
+
+</ContentCard>
+
+<BannerFooter />

@@ -1,0 +1,276 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as TooltipStories from './Tooltip.stories';
+
+<Meta title="Components/Tooltip" of={TooltipStories} />
+
+# Tooltip
+
+O componente Tooltip exibe informações contextuais ou explicativas quando o usuário passa o mouse sobre, foca ou toca em um elemento, ajudando a esclarecer funcionalidades sem sobrecarregar a interface.
+
+## Exemplos Interativos
+
+### Tooltip Padrão
+<Canvas>
+  <Story of={TooltipStories.DefaultTooltip} />
+</Canvas>
+
+### Posição Superior
+<Canvas>
+  <Story of={TooltipStories.PositionTop} />
+</Canvas>
+
+### Posição Direita
+<Canvas>
+  <Story of={TooltipStories.PositionRight} />
+</Canvas>
+
+### Posição Inferior
+<Canvas>
+  <Story of={TooltipStories.PositionBottom} />
+</Canvas>
+
+### Posição Esquerda
+<Canvas>
+  <Story of={TooltipStories.PositionLeft} />
+</Canvas>
+
+### Tooltip com Conteúdo HTML
+<Canvas>
+  <Story of={TooltipStories.WithHTMLContent} />
+</Canvas>
+
+### Tooltip Controlado
+<Canvas>
+  <Story of={TooltipStories.ControlledTooltip} />
+</Canvas>
+
+### Tooltip com Estilos Personalizados
+<Canvas>
+  <Story of={TooltipStories.TooltipWithCustomStyles} />
+</Canvas>
+
+### Tooltip em Diferentes Elementos
+<Canvas>
+  <Story of={TooltipStories.TooltipOnDifferentElements} />
+</Canvas>
+## Importação
+
+```jsx
+import { Tooltip } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import { Tooltip, Button } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <Tooltip content="Esta ação não pode ser desfeita">
+      <Button variant="negative">Excluir</Button>
+    </Tooltip>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Obrigatório | Descrição |
+|------|------|-------------|-----------|
+| `children` | `ReactNode` | Sim | Elemento que acionará o tooltip |
+| `content` | `string \| ReactNode` | Sim | Conteúdo a ser exibido no tooltip |
+| `position` | `'top' \| 'right' \| 'bottom' \| 'left'` | Não | Posição do tooltip em relação ao elemento (padrão: 'top') |
+| `variant` | `'light' \| 'dark'` | Não | Variante visual do tooltip (padrão: 'dark') |
+| `delay` | `number` | Não | Atraso em milissegundos antes de exibir o tooltip (padrão: 300) |
+| `offset` | `number` | Não | Distância em pixels entre o tooltip e o elemento (padrão: 8) |
+| `maxWidth` | `number \| string` | Não | Largura máxima do tooltip (padrão: '250px') |
+| `showArrow` | `boolean` | Não | Se deve mostrar a seta apontando para o elemento (padrão: true) |
+| `disabled` | `boolean` | Não | Desativa o tooltip quando true (padrão: false) |
+| `trigger` | `'hover' \| 'click' \| 'focus' \| 'manual'` | Não | Evento que aciona o tooltip (padrão: 'hover') |
+| `isOpen` | `boolean` | Não | Controla manualmente a visibilidade (necessário quando trigger='manual') |
+| `onOpen` | `() => void` | Não | Callback chamado quando o tooltip é aberto |
+| `onClose` | `() => void` | Não | Callback chamado quando o tooltip é fechado |
+
+## Variações
+
+### Posições
+
+O Tooltip pode ser posicionado em quatro direções principais em relação ao elemento:
+
+```jsx
+// Tooltip acima do elemento (padrão)
+<Tooltip position="top" content="Tooltip acima">
+  <Button>Passe o mouse</Button>
+</Tooltip>
+
+// Tooltip à direita do elemento
+<Tooltip position="right" content="Tooltip à direita">
+  <Button>Passe o mouse</Button>
+</Tooltip>
+
+// Tooltip abaixo do elemento
+<Tooltip position="bottom" content="Tooltip abaixo">
+  <Button>Passe o mouse</Button>
+</Tooltip>
+
+// Tooltip à esquerda do elemento
+<Tooltip position="left" content="Tooltip à esquerda">
+  <Button>Passe o mouse</Button>
+</Tooltip>
+```
+
+### Variantes Visuais
+
+O Tooltip suporta diferentes estilos visuais:
+
+```jsx
+// Variante escura (padrão)
+<Tooltip variant="dark" content="Tooltip com fundo escuro">
+  <Button>Passe o mouse</Button>
+</Tooltip>
+
+// Variante clara
+<Tooltip variant="light" content="Tooltip com fundo claro">
+  <Button>Passe o mouse</Button>
+</Tooltip>
+```
+
+### Gatilhos
+
+O Tooltip pode ser acionado de diferentes maneiras:
+
+```jsx
+// Acionado ao passar o mouse (padrão)
+<Tooltip trigger="hover" content="Acionado ao passar o mouse">
+  <Button>Passe o mouse</Button>
+</Tooltip>
+
+// Acionado ao clicar
+<Tooltip trigger="click" content="Acionado ao clicar">
+  <Button>Clique</Button>
+</Tooltip>
+
+// Acionado ao focar (útil para acessibilidade)
+<Tooltip trigger="focus" content="Acionado ao focar">
+  <input type="text" placeholder="Foque neste campo" />
+</Tooltip>
+
+// Controle manual
+function ManualExample() {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <>
+      <Button onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? 'Fechar' : 'Abrir'} Tooltip
+      </Button>
+      
+      <Tooltip 
+        trigger="manual" 
+        isOpen={isOpen} 
+        content="Controlado manualmente"
+      >
+        <div style={{ marginLeft: '16px', padding: '8px', border: '1px dashed #ccc' }}>
+          Elemento com tooltip
+        </div>
+      </Tooltip>
+    </>
+  );
+}
+```
+
+## Conteúdo Rico
+
+O Tooltip suporta conteúdo rico, não apenas texto simples:
+
+```jsx
+<Tooltip
+  content={
+    <div>
+      <h4 style={{ margin: '0 0 8px 0' }}>Título do Tooltip</h4>
+      <p style={{ margin: '0 0 8px 0' }}>Descrição detalhada com múltiplas linhas de explicação.</p>
+      <a href="/help" style={{ color: 'inherit', textDecoration: 'underline' }}>Saiba mais</a>
+    </div>
+  }
+  maxWidth="300px"
+>
+  <Button>Tooltip com conteúdo rico</Button>
+</Tooltip>
+```
+
+## Casos de Uso Comuns
+
+### Explicação de Campo de Formulário
+
+```jsx
+<div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+  <label htmlFor="cpf">CPF</label>
+  <Tooltip content="Digite apenas os números do seu CPF, sem pontos ou traços">
+    <span style={{ cursor: 'help', color: '#666' }}>ℹ️</span>
+  </Tooltip>
+</div>
+<input id="cpf" type="text" placeholder="000.000.000-00" />
+```
+
+### Ícones com Tooltip
+
+```jsx
+import { IconButton } from '@porto/js-library-corp-hubv-porto-ocean';
+
+<div style={{ display: 'flex', gap: '16px' }}>
+  <Tooltip content="Adicionar item">
+    <IconButton icon="add" />
+  </Tooltip>
+  
+  <Tooltip content="Editar item">
+    <IconButton icon="edit" />
+  </Tooltip>
+  
+  <Tooltip content="Excluir item">
+    <IconButton icon="delete" />
+  </Tooltip>
+</div>
+```
+
+### Texto Truncado com Tooltip
+
+```jsx
+const longText = "Este é um texto muito longo que será truncado na interface e exibido completamente no tooltip quando o usuário passar o mouse.";
+
+<div style={{ width: '200px' }}>
+  <Tooltip content={longText}>
+    <p style={{ 
+      whiteSpace: 'nowrap', 
+      overflow: 'hidden', 
+      textOverflow: 'ellipsis' 
+    }}>
+      {longText}
+    </p>
+  </Tooltip>
+</div>
+```
+
+## Acessibilidade
+
+O componente Tooltip implementa as melhores práticas de acessibilidade:
+
+- Usa atributos ARIA apropriados (`aria-describedby`) para associar o tooltip ao elemento
+- Suporta navegação por teclado, permitindo que o tooltip seja acionado ao focar no elemento
+- Fornece contraste adequado entre o texto e o fundo do tooltip
+- Permite tempo suficiente para ler o conteúdo antes de fechá-lo
+- Evita depender apenas de hover para acionar tooltips importantes
+
+## Considerações de Performance
+
+- Os tooltips são renderizados apenas quando necessário, usando portal para evitar problemas de z-index
+- Para conteúdo complexo, considere usar memoização para evitar re-renderizações desnecessárias
+
+## Boas Práticas
+
+- Use tooltips para informações complementares, não para informações essenciais
+- Mantenha o conteúdo do tooltip conciso e direto
+- Evite usar tooltips para elementos que já têm um propósito claro
+- Não coloque tooltips em elementos não interativos, a menos que tenham um estilo que indique interatividade
+- Considere o tempo de delay apropriado: curto o suficiente para ser responsivo, mas longo o suficiente para evitar acionamentos acidentais
+- Posicione o tooltip de forma que não obscureça outros elementos importantes da interface
+- Use tooltips consistentemente em toda a aplicação para criar uma experiência previsível

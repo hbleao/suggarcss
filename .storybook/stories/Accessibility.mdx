@@ -1,0 +1,375 @@
+import { Meta } from '@storybook/blocks';
+import { BannerDOC } from '../components/Banner/index.jsx';
+import { BannerFooter } from '../components/BannerFooter/index.jsx';
+
+<Meta title="Acessibilidade" />
+
+<BannerDOC
+  title="Acessibilidade"
+  description="A acessibilidade é um pilar fundamental do ocean. Nosso objetivo é garantir que todos os componentes e interfaces construídos com nossa biblioteca sejam acessíveis a todos os usuários, independentemente de suas habilidades ou deficiências."
+/>
+
+<div style={{ marginBottom: '64px' }}>
+  <h2 style={{
+    fontSize: '2.2rem',
+    color: '#404040',
+    marginBottom: '1.6rem',
+    position: 'relative',
+    paddingBottom: '0.5rem',
+    display: 'inline-block',
+    borderBottom: '3px solid #00a1fc'
+  }}>
+    Princípios de Acessibilidade
+  </h2>
+
+  <p style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
+    O ocean segue os princípios do WCAG 2.1 (Web Content Accessibility Guidelines) e visa atender ao nível AA de conformidade. Nossos princípios fundamentais são:
+  </p>
+
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+    gap: '1.5rem',
+    marginBottom: '2rem'
+  }}>
+    <div style={{
+      padding: '1.5rem',
+      background: '#f8fbff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #1381e2'
+    }}>
+      <h3 style={{
+        color: '#0046c0',
+        margin: '0 0 1rem 0',
+        fontSize: '1.3rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px'
+      }}>
+        <span style={{
+          width: '28px',
+          height: '28px',
+          borderRadius: '50%',
+          background: '#0046c0',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0
+        }}>
+          <span style={{color: 'white', fontWeight: 'bold'}}>1</span>
+        </span>
+        Perceptível
+      </h3>
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li>Fornecer alternativas em texto para conteúdo não textual</li>
+        <li>Criar conteúdo que possa ser apresentado de diferentes maneiras</li>
+        <li>Tornar mais fácil para os usuários ver e ouvir o conteúdo</li>
+      </ul>
+    </div>
+
+    <div style={{
+      padding: '1.5rem',
+      background: '#f8fbff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #1381e2'
+    }}>
+      <h3 style={{
+        color: '#0046c0',
+        margin: '0 0 1rem 0',
+        fontSize: '1.3rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px'
+      }}>
+        <span style={{
+          width: '28px',
+          height: '28px',
+          borderRadius: '50%',
+          background: '#0046c0',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0
+        }}>
+          <span style={{color: 'white', fontWeight: 'bold'}}>2</span>
+        </span>
+        Operável
+      </h3>
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li>Tornar todas as funcionalidades disponíveis a partir do teclado</li>
+        <li>Dar aos usuários tempo suficiente para ler e usar o conteúdo</li>
+        <li>Não projetar conteúdo de uma forma conhecida por causar convulsões</li>
+        <li>Ajudar os usuários a navegar e encontrar conteúdo</li>
+      </ul>
+    </div>
+
+    <div style={{
+      padding: '1.5rem',
+      background: '#f8fbff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #1381e2'
+    }}>
+      <h3 style={{
+        color: '#0046c0',
+        margin: '0 0 1rem 0',
+        fontSize: '1.3rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px'
+      }}>
+        <span style={{
+          width: '28px',
+          height: '28px',
+          borderRadius: '50%',
+          background: '#0046c0',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0
+        }}>
+          <span style={{color: 'white', fontWeight: 'bold'}}>3</span>
+        </span>
+        Compreensível
+      </h3>
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li>Tornar o texto legível e compreensível</li>
+        <li>Fazer com que as páginas funcionem de maneira previsível</li>
+        <li>Ajudar os usuários a evitar e corrigir erros</li>
+      </ul>
+    </div>
+
+    <div style={{
+      padding: '1.5rem',
+      background: '#f8fbff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #1381e2'
+    }}>
+      <h3 style={{
+        color: '#0046c0',
+        margin: '0 0 1rem 0',
+        fontSize: '1.3rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px'
+      }}>
+        <span style={{
+          width: '28px',
+          height: '28px',
+          borderRadius: '50%',
+          background: '#0046c0',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0
+        }}>
+          <span style={{color: 'white', fontWeight: 'bold'}}>4</span>
+        </span>
+        Robusto
+      </h3>
+      <ul style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+        <li>Maximizar a compatibilidade com ferramentas assistivas atuais e futuras</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div style={{ marginBottom: '64px' }}>
+  <h2 style={{
+    fontSize: '2.2rem',
+    color: '#404040',
+    marginBottom: '1.6rem',
+    position: 'relative',
+    paddingBottom: '0.5rem',
+    display: 'inline-block',
+    borderBottom: '3px solid #00a1fc'
+  }}>
+    Diretrizes de Acessibilidade
+  </h2>
+
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+    gap: '1.5rem',
+    marginBottom: '2rem'
+  }}>
+    <a href="#" style={{
+      padding: '1.5rem',
+      background: '#f8fbff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #1381e2',
+      textDecoration: 'none'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: '16px' }}>
+          <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.5 3.5 0 1 1 13 13.355z" fill="#1381e2"/>
+        </svg>
+
+        <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '600', color: '#404040', marginBottom: '8px' }}>
+          Contraste e Cores
+        </h3>
+      </div>
+      <p style={{ margin: 0, fontSize: '1rem', lineHeight: '1.5', color: '#444' }}>
+        Diretrizes para garantir contraste adequado e uso de cores acessíveis
+      </p>
+    </a>
+
+    <a href="#" style={{
+      padding: '1.5rem',
+      background: '#f8fbff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #1381e2',
+      textDecoration: 'none'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: '16px' }}>
+          <path d="M12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm7.3-2a7.3 7.3 0 1 1-14.6 0 7.3 7.3 0 0 1 14.6 0zm-2 0a5.3 5.3 0 1 0-10.6 0 5.3 5.3 0 0 0 10.6 0zm1-9.3v2H5.7v-2h12.6z" fill="#1381e2"/>
+        </svg>
+
+        <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '600', color: '#404040', marginBottom: '8px' }}>
+          Navegação por Teclado
+        </h3>
+      </div>
+      <p style={{ margin: 0, fontSize: '1rem', lineHeight: '1.5', color: '#444' }}>
+        Como garantir que todos os componentes sejam acessíveis via teclado
+      </p>
+    </a>
+
+    <a href="#" style={{
+      padding: '1.5rem',
+      background: '#f8fbff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #1381e2',
+      textDecoration: 'none'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: '16px' }}>
+          <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-5-7h10v2H7v-2zm0-4h10v2H7V9z" fill="#1381e2"/>
+        </svg>
+
+        <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '600', color: '#404040', marginBottom: '8px' }}>
+          Textos Alternativos
+        </h3>
+      </div>
+      <p style={{ margin: 0, fontSize: '1rem', lineHeight: '1.5', color: '#444' }}>
+        Como usar textos alternativos para imagens e elementos não textuais
+      </p>
+    </a>
+
+    <a href="#" style={{
+      padding: '1.5rem',
+      background: '#f8fbff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #1381e2',
+      textDecoration: 'none'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: '16px' }}>
+          <path d="M20 17h2v2H2v-2h2v-7a8 8 0 1 1 16 0v7zm-2 0v-7a6 6 0 1 0-12 0v7h12zm-9 4h6v2H9v-2z" fill="#1381e2"/>
+        </svg>
+
+        <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '600', color: '#404040', marginBottom: '8px' }}>
+          ARIA e Leitores de Tela
+        </h3>
+      </div>
+      <p style={{ margin: 0, fontSize: '1rem', lineHeight: '1.5', color: '#444' }}>
+        Implementação de ARIA para melhorar a experiência com leitores de tela
+      </p>
+    </a>
+  </div>
+</div>
+
+<div style={{ marginBottom: '64px' }}>
+  <h2 style={{
+    fontSize: '2.2rem',
+    color: '#404040',
+    marginBottom: '1.6rem',
+    position: 'relative',
+    paddingBottom: '0.5rem',
+    display: 'inline-block',
+    borderBottom: '3px solid #00a1fc'
+  }}>
+    Ferramentas e Recursos
+  </h2>
+
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+    gap: '1.5rem'
+  }}>
+    <a href="https://wave.webaim.org/" target="_blank" style={{
+      padding: '1.5rem',
+      background: '#f8fbff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #1381e2',
+      textDecoration: 'none'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: '16px' }}>
+          <path d="M13.06 8.11l1.415 1.415a7 7 0 0 1 0 9.9l-.354.353a7 7 0 0 1-9.9-9.9l1.415 1.415a5 5 0 1 0 7.07 7.07l.354-.353a5 5 0 0 0 0-7.07l-1.415-1.415 1.415-1.414zm6.718 6.011l-1.414-1.414a5 5 0 1 0-7.071-7.071l-.354.354a5 5 0 0 0 0 7.07l1.415 1.415-1.415 1.414-1.414-1.414a7 7 0 0 1 0-9.9l.354-.353a7 7 0 0 1 9.9 9.9z" fill="#1381e2"/>
+        </svg>
+
+        <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '600', color: '#404040', marginBottom: '8px' }}>
+          WAVE
+        </h3>
+      </div>
+      <p style={{ margin: 0, fontSize: '1rem', lineHeight: '1.5', color: '#444' }}>
+        Ferramenta de avaliação de acessibilidade web
+      </p>
+    </a>
+
+    <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" style={{
+      padding: '1.5rem',
+      background: '#f8fbff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #1381e2',
+      textDecoration: 'none'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: '16px' }}>
+          <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z" fill="#1381e2"/>
+        </svg>
+
+        <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '600', color: '#404040', marginBottom: '8px' }}>
+          WCAG 2.1
+        </h3>
+      </div>
+      <p style={{ margin: 0, fontSize: '1rem', lineHeight: '1.5', color: '#444' }}>
+        Diretrizes de Acessibilidade para Conteúdo Web
+      </p>
+    </a>
+
+    <a href="https://www.deque.com/axe/" target="_blank" style={{
+      padding: '1.5rem',
+      background: '#f8fbff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 70, 192, 0.08)',
+      border: '1px solid #1381e2',
+      textDecoration: 'none'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: '16px' }}>
+          <path d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8zm0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm9 6h1v5h-8v-5h1v-1a3 3 0 0 1 6 0v1zm-2 0v-1a1 1 0 0 0-2 0v1h2z" fill="#1381e2"/>
+        </svg>
+
+        <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '600', color: '#404040', marginBottom: '8px' }}>
+          Axe DevTools
+        </h3>
+      </div>
+      <p style={{ margin: 0, fontSize: '1rem', lineHeight: '1.5', color: '#444' }}>
+        Ferramenta de teste de acessibilidade para desenvolvedores
+      </p>
+    </a>
+  </div>
+</div>
+
+<BannerFooter />

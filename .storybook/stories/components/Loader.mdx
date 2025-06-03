@@ -1,0 +1,82 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as LoaderStories from './Loader.stories';
+
+<Meta title="Components/Loader" of={LoaderStories} />
+
+# Loader
+
+O componente `Loader` é usado para indicar ao usuário que uma operação está em andamento, fornecendo feedback visual durante processos de carregamento, envio de dados ou qualquer operação assíncrona.
+
+## Exemplos Interativos
+
+### Loader Padrão
+<Canvas>
+  <Story of={LoaderStories.DefaultLoader} />
+</Canvas>
+
+### Loader com Diferentes Tamanhos
+<Canvas>
+  <Story of={LoaderStories.WithDifferentSizes} />
+</Canvas>
+
+### Loader com Diferentes Cores
+<Canvas>
+  <Story of={LoaderStories.WithDifferentColors} />
+</Canvas>
+
+### Loader com Classes Personalizadas
+<Canvas>
+  <Story of={LoaderStories.WithCustomClasses} />
+</Canvas>
+
+### Loader com Estilos Inline
+<Canvas>
+  <Story of={LoaderStories.WithCustomStyles} />
+</Canvas>
+
+### Loader em Contexto
+<Canvas>
+  <Story of={LoaderStories.LoaderInContext} />
+</Canvas>
+
+## Importação
+
+```jsx
+import { Loader } from '@porto/js-library-corp-hubv-porto-ocean';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { Loader } from '@porto/js-library-corp-hubv-porto-ocean';
+
+function Example() {
+  return (
+    <div style={{ padding: '24px', textAlign: 'center' }}>
+      <Loader />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `color` | `string` | `'neutral-900'` | Cor do loader, usando tokens de cor do sistema |
+| `size` | `number` | `24` | Tamanho do loader em pixels |
+| `className` | `string` | - | Classes CSS adicionais para o loader |
+| `style` | `CSSProperties` | - | Estilos inline adicionais para o loader |
+
+
+
+## Boas Práticas
+
+- Use o Loader para operações que levam mais de 300ms para concluir
+- Para operações muito rápidas, considere não mostrar um loader para evitar flashs na interface
+- Combine com mensagens descritivas para informar o usuário sobre o que está sendo carregado
+- Para operações longas, considere usar um loader com progresso determinado
+- Use o tamanho apropriado para o contexto - loaders menores para componentes individuais e maiores para seções inteiras
+- Quando usar overlay, certifique-se de que o contraste entre o loader e o fundo é adequado
+- Em formulários, desative os botões de envio durante o carregamento para evitar envios duplicados

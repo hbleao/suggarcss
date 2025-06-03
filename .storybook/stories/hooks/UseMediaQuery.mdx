@@ -1,0 +1,63 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Hooks/UseMediaQuery" />
+
+# useMediaQuery
+
+O hook `useMediaQuery` permite detectar se uma media query CSS corresponde ao estado atual da tela, facilitando a criação de componentes responsivos.
+
+## Importação
+
+```jsx
+import { useMediaQuery } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+```
+
+## Uso Básico
+
+```jsx
+import React from 'react';
+import { useMediaQuery } from '@porto/js-library-corp-hubv-porto-ocean/hooks';
+
+function ResponsiveComponent() {
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
+  return (
+    <div>
+      <h2>Componente Responsivo</h2>
+      <p>Você está usando um dispositivo {isMobile ? 'móvel' : 'desktop'}</p>
+      {isMobile ? (
+        <div className="mobile-layout">Layout para dispositivos móveis</div>
+      ) : (
+        <div className="desktop-layout">Layout para desktop</div>
+      )}
+    </div>
+  );
+}
+```
+
+## Parâmetros
+
+O hook `useMediaQuery` aceita os seguintes parâmetros:
+
+| Parâmetro | Tipo | Obrigatório | Descrição |
+|-----------|------|-------------|-----------|
+| `query` | `string` | Sim | A media query CSS a ser avaliada |
+| `defaultValue` | `boolean` | Não | Valor padrão a ser retornado antes da avaliação da media query (padrão: `false`) |
+
+## Retorno
+
+O hook `useMediaQuery` retorna um valor booleano que indica se a media query corresponde ao estado atual:
+
+```jsx
+const matches = useMediaQuery(query, defaultValue);
+```
+
+
+
+## Boas Práticas
+
+- Use media queries semânticas que descrevem o propósito em vez de valores específicos
+- Combine com outros hooks como `useEffect` para executar ações quando a media query mudar
+- Considere criar hooks personalizados baseados em `useMediaQuery` para casos de uso comuns, como `useIsMobile`, `useIsTablet`, etc.
+- Prefira a abordagem "mobile-first" ao definir suas media queries

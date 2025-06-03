@@ -1,0 +1,557 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as CardStories from './Card.stories';
+import {
+  BannerDOC,
+  ContentCard,
+  SectionTitle,
+  InfoBox,
+  CodeBlock,
+  FeatureGrid,
+  FeatureItem,
+  ExampleBlock
+} from '../../components';
+
+<Meta title="Components/Card" of={CardStories} />
+
+<BannerDOC
+  title="Card"
+  description="O componente Card é usado para agrupar informações relacionadas e criar unidades distintas de conteúdo na interface."
+/>
+
+<ContentCard
+  title="Visão Geral"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 7H13V13H11V7ZM11 15H13V17H11V15Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    margin: 0
+  }}>
+    Os Cards são contêineres flexíveis que ajudam a organizar e apresentar conteúdo de forma clara e concisa. Eles são amplamente utilizados para exibir informações relacionadas, criar layouts de grade e fornecer pontos de entrada para conteúdo mais detalhado.
+  </p>
+</ContentCard>
+
+<SectionTitle>Exemplos Interativos</SectionTitle>
+
+<ExampleBlock
+  title="Card Básico"
+  preview={<Canvas><Story of={CardStories.BasicCard} /></Canvas>}
+>
+  <CodeBlock>
+```jsx
+<Card>
+  <Card.Header>
+    <Typography as="h3">Título do Card</Typography>
+  </Card.Header>
+  <Card.Content>
+    <Typography as="p">
+      Este é um exemplo de conteúdo dentro de um card básico. Os cards podem conter
+      diversos tipos de conteúdo, incluindo texto, imagens e ações.
+    </Typography>
+  </Card.Content>
+  <Card.Footer>
+    <Button variant="insurance" styles="primary">Ação Principal</Button>
+  </Card.Footer>
+</Card>
+```
+  </CodeBlock>
+</ExampleBlock>
+
+<ContentCard
+  title="Variantes de Estilo"
+  borderColor="#1381e2"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    marginBottom: '1.5rem'
+  }}>
+    O Ocean oferece diferentes variantes de cards para atender a diversos casos de uso:
+  </p>
+
+  <ExampleBlock
+    preview={
+      <Canvas>
+        <Story of={CardStories.ElevatedCard} />
+        <Story of={CardStories.BorderedCard} />
+        <Story of={CardStories.FlatCard} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
+```jsx
+// Card com elevação
+<Card variant="elevated">
+  <Card.Content>
+    <Typography as="p">Card com sombra e elevação</Typography>
+  </Card.Content>
+</Card>
+
+// Card com borda
+<Card variant="bordered">
+  <Card.Content>
+    <Typography as="p">Card com borda definida</Typography>
+  </Card.Content>
+</Card>
+
+// Card plano
+<Card variant="flat">
+  <Card.Content>
+    <Typography as="p">Card sem elevação ou borda</Typography>
+  </Card.Content>
+</Card>
+```
+    </CodeBlock>
+  </ExampleBlock>
+
+  <FeatureGrid>
+    <InfoBox
+      title="Elevated"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Cards com elevação utilizam sombras para criar uma sensação de profundidade e hierarquia na interface. São úteis para destacar conteúdo importante.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Bordered"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Cards com borda utilizam linhas para delimitar seu conteúdo. São uma alternativa mais sutil aos cards com elevação, mantendo a clareza visual.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Flat"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Cards planos não possuem sombras ou bordas visíveis. São úteis quando você deseja agrupar conteúdo sem adicionar elementos visuais extras.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
+
+<ContentCard
+  title="Estrutura do Card"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 8H8V4H4V8ZM10 20H14V16H10V20ZM4 20H8V16H4V20ZM4 14H8V10H4V14ZM10 14H14V10H10V14ZM16 4V8H20V4H16ZM10 8H14V4H10V8ZM16 14H20V10H16V14ZM16 20H20V16H16V20Z" fill="white"/>
+    </svg>
+  }
+>
+  <p style={{
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    marginBottom: '1.5rem'
+  }}>
+    Os cards do Ocean são compostos por subcomponentes que facilitam a organização do conteúdo:
+  </p>
+
+  <ExampleBlock
+    preview={
+      <Canvas>
+        <Story of={CardStories.StructuredCard} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
+```jsx
+<Card>
+  <Card.Header>
+    <Typography as="h3">Cabeçalho do Card</Typography>
+  </Card.Header>
+  <Card.Media>
+    <img
+      src="https://via.placeholder.com/800x400"
+      alt="Imagem de exemplo"
+      style={{ width: '100%', height: 'auto' }}
+    />
+  </Card.Media>
+  <Card.Content>
+    <Typography as="p">
+      Este é o conteúdo principal do card. Aqui você pode incluir textos,
+      listas, tabelas e outros elementos.
+    </Typography>
+  </Card.Content>
+  <Card.Footer>
+    <Button variant="insurance" styles="secondary">Cancelar</Button>
+    <Button variant="insurance" styles="primary">Confirmar</Button>
+  </Card.Footer>
+</Card>
+```
+    </CodeBlock>
+  </ExampleBlock>
+
+  <FeatureGrid>
+    <InfoBox
+      title="Card.Header"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Contém o título do card e, opcionalmente, ações relacionadas ao card como um todo (como fechar ou expandir).
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Card.Media"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Área destinada a conteúdo de mídia, como imagens ou vídeos. Geralmente posicionada no topo do card ou entre o cabeçalho e o conteúdo.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Card.Content"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Contém o conteúdo principal do card, como textos, listas, tabelas e outros elementos.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Card.Footer"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Contém ações relacionadas ao conteúdo do card, como botões de confirmação, cancelamento ou links para mais informações.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
+
+<ContentCard
+  title="Cards Interativos"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 4v2.67l-1 1-1-1V4h2m7 7v2h-2.67l-1-1 1-1H20M6.67 11l1 1-1 1H4v-2h2.67M12 16.33l1 1V20h-2v-2.67l1-1M15 2H9v5.5l3 3 3-3V2zm7 7h-5.5l-3 3 3 3H22V9zM7.5 9H2v6h5.5l3-3-3-3zm4.5 4.5l-3 3V22h6v-5.5l-3-3z" fill="white"/>
+    </svg>
+  }
+>
+  <ExampleBlock
+    preview={
+      <Canvas>
+        <Story of={CardStories.ClickableCard} />
+        <Story of={CardStories.HoverableCard} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
+```jsx
+// Card clicável
+<Card clickable onClick={() => alert('Card clicado!')}>
+  <Card.Content>
+    <Typography as="p">Clique neste card para ativar uma ação</Typography>
+  </Card.Content>
+</Card>
+
+// Card com efeito hover
+<Card hoverable>
+  <Card.Content>
+    <Typography as="p">Passe o mouse sobre este card para ver o efeito</Typography>
+  </Card.Content>
+</Card>
+```
+    </CodeBlock>
+  </ExampleBlock>
+
+  <FeatureGrid>
+    <InfoBox
+      title="Clicável"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Cards clicáveis funcionam como botões grandes, permitindo que todo o card seja clicável. Útil para navegação ou para acionar ações específicas.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Hover"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Cards com efeito hover fornecem feedback visual quando o usuário passa o mouse sobre eles, indicando interatividade.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
+
+<ContentCard
+  title="Layouts com Cards"
+  borderColor="#1381e2"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 18H14V16H10V18ZM3 6V8H21V6H3ZM6 13H18V11H6V13Z" fill="white"/>
+    </svg>
+  }
+>
+  <ExampleBlock
+    preview={
+      <Canvas>
+        <Story of={CardStories.CardGrid} />
+      </Canvas>
+    }
+  >
+    <CodeBlock>
+```jsx
+// Grid de cards
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '16px' }}>
+  <Card>
+    <Card.Header>
+      <Typography as="h3">Card 1</Typography>
+    </Card.Header>
+    <Card.Content>
+      <Typography as="p">Conteúdo do primeiro card</Typography>
+    </Card.Content>
+  </Card>
+
+  <Card>
+    <Card.Header>
+      <Typography as="h3">Card 2</Typography>
+    </Card.Header>
+    <Card.Content>
+      <Typography as="p">Conteúdo do segundo card</Typography>
+    </Card.Content>
+  </Card>
+
+  <Card>
+    <Card.Header>
+      <Typography as="h3">Card 3</Typography>
+    </Card.Header>
+    <Card.Content>
+      <Typography as="p">Conteúdo do terceiro card</Typography>
+    </Card.Content>
+  </Card>
+</div>
+```
+    </CodeBlock>
+  </ExampleBlock>
+
+  <div style={{
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    padding: '1rem',
+    background: '#eef9ff',
+    borderRadius: '8px',
+    borderLeft: '3px solid #31b5fc',
+    marginTop: '1.5rem'
+  }}>
+    <strong>Dica:</strong> Para criar layouts responsivos com cards, utilize CSS Grid ou Flexbox. O exemplo acima usa CSS Grid com a propriedade <code>minmax</code> para garantir que os cards se ajustem automaticamente ao tamanho da tela.
+  </div>
+</ContentCard>
+
+<ContentCard
+  title="API do Componente"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z" fill="white"/>
+    </svg>
+  }
+>
+  <CodeBlock title="Propriedades do Card">
+```typescript
+interface CardProps {
+  /**
+   * Conteúdo do card
+   */
+  children: React.ReactNode;
+
+  /**
+   * Variante visual do card
+   * @default "elevated"
+   */
+  variant?: "elevated" | "bordered" | "flat";
+
+  /**
+   * Se verdadeiro, o card terá efeitos visuais ao passar o mouse
+   * @default false
+   */
+  hoverable?: boolean;
+
+  /**
+   * Se verdadeiro, o card inteiro será clicável
+   * @default false
+   */
+  clickable?: boolean;
+
+  /**
+   * Função chamada quando o card é clicado (quando clickable=true)
+   */
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+
+  /**
+   * Largura do card
+   */
+  width?: string | number;
+
+  /**
+   * Altura do card
+   */
+  height?: string | number;
+
+  /**
+   * Propriedades HTML adicionais
+   */
+  [x: string]: any;
+}
+
+// Subcomponentes
+interface CardHeaderProps {
+  children: React.ReactNode;
+  [x: string]: any;
+}
+
+interface CardContentProps {
+  children: React.ReactNode;
+  [x: string]: any;
+}
+
+interface CardMediaProps {
+  children: React.ReactNode;
+  [x: string]: any;
+}
+
+interface CardFooterProps {
+  children: React.ReactNode;
+  [x: string]: any;
+}
+```
+  </CodeBlock>
+</ContentCard>
+
+<ContentCard
+  title="Acessibilidade"
+  borderColor="#31b5fc"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z" fill="white"/>
+    </svg>
+  }
+>
+  <FeatureGrid>
+    <InfoBox
+      title="Semântica"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Os cards utilizam elementos semânticos apropriados, como <code>&lt;article&gt;</code> ou <code>&lt;section&gt;</code>, para garantir que tecnologias assistivas compreendam a estrutura do conteúdo.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Interatividade"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Cards clicáveis incluem atributos <code>role="button"</code> e <code>tabindex="0"</code> para garantir acessibilidade via teclado e tecnologias assistivas. Também incluem feedback visual claro para estados de foco.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Contraste"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        As cores utilizadas nos cards garantem contraste suficiente entre o conteúdo e o fundo, seguindo as diretrizes WCAG 2.1 AA.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+
+  <div style={{
+    fontSize: '1.05rem',
+    lineHeight: '1.6',
+    color: '#333',
+    padding: '1rem',
+    background: '#eef9ff',
+    borderRadius: '8px',
+    borderLeft: '3px solid #31b5fc',
+    marginTop: '1.5rem'
+  }}>
+    <strong>Dica:</strong> Ao usar cards clicáveis, certifique-se de que o propósito do card seja claro para todos os usuários, incluindo aqueles que utilizam tecnologias assistivas. Considere adicionar um texto descritivo ou um rótulo ARIA quando necessário.
+  </div>
+</ContentCard>
+
+<ContentCard
+  title="Boas Práticas"
+  borderColor="#0046c0"
+  icon={
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="white"/>
+    </svg>
+  }
+>
+  <FeatureGrid>
+    <InfoBox
+      title="Consistência"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Mantenha a estrutura e o estilo dos cards consistentes em toda a aplicação. Cards similares devem ter aparência e comportamento similares.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Conteúdo Conciso"
+      titleColor="#1381e2"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Cards são mais eficazes quando contêm informações concisas e focadas. Evite sobrecarregar um card com muito conteúdo ou funcionalidades.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Hierarquia Visual"
+      titleColor="#66cafc"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Utilize a estrutura do card para criar uma hierarquia visual clara. O título deve ser o elemento mais proeminente, seguido pelo conteúdo principal e, por fim, pelas ações.
+      </p>
+    </InfoBox>
+
+    <InfoBox
+      title="Espaçamento"
+      titleColor="#0046c0"
+      backgroundColor="white"
+    >
+      <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#333' }}>
+        Utilize espaçamento adequado dentro e entre os cards para melhorar a legibilidade e a organização visual. Evite cards muito densos ou muito espaçados.
+      </p>
+    </InfoBox>
+  </FeatureGrid>
+</ContentCard>
