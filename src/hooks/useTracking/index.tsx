@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 
 import { buttons } from "./buttons";
+import { carousel } from "./carousel";
 import { checkbox } from "./checkbox";
 import { inputs } from "./inputs";
 import { link } from "./link";
@@ -32,6 +33,7 @@ export const useTracking = () => {
 		selects();
 		link();
 		modals();
+		carousel();
 
 		const observer = new MutationObserver(() => {
 			buttons();
@@ -39,6 +41,7 @@ export const useTracking = () => {
 			checkbox();
 			link();
 			modals();
+			carousel();
 		});
 
 		observer.observe(document.body, {

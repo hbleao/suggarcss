@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTracking } from '../../hooks/useTracking';
 
 import './styles.scss';
 
@@ -14,6 +15,8 @@ export function Carousel({
 	arrows = false,
 	gap = 16,
 }: CarouselProps) {
+	// Inicializa o tracking para o carousel
+	useTracking();
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const slideCount = children.length;
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -99,6 +102,9 @@ export function Carousel({
 						type="button"
 						onClick={() => goToSlide(currentSlide - slidesToScroll)}
 						className="carousel__button"
+						data-gtm-component="carousel"
+						data-gtm-clicktype="carousel-navigation"
+						data-gtm-subname="navegacao-anterior"
 					>
 						<svg
 							width="48"
@@ -132,6 +138,9 @@ export function Carousel({
 						type="button"
 						onClick={() => goToSlide(currentSlide + slidesToScroll)}
 						className="carousel__button"
+						data-gtm-component="carousel"
+						data-gtm-clicktype="carousel-navigation"
+						data-gtm-subname="navegacao-proximo"
 					>
 						<svg
 							width="48"
@@ -163,11 +172,12 @@ export function Carousel({
 					</button>
 				</div>
 			)}
-			<div className="carousel" ref={wrapperRef} data-testid="carousel-wrapper">
+			<div className="carousel" ref={wrapperRef} data-testid="carousel-wrapper" data-gtm-component="carousel">
 				<div
 					ref={containerRef}
 					className="carousel__track"
 					data-testid="carousel-track"
+					data-gtm-component="carousel-track"
 					style={{
 						width: `${(slideCount * 100) / slidesToShow}%`,
 						gap: `${gap}px`,
@@ -182,6 +192,8 @@ export function Carousel({
 						<div
 							key={index}
 							className="carousel__slide"
+							data-gtm-component="carousel-slide"
+							data-gtm-position={`${index + 1}`}
 							style={{
 								width: `${100 / slideCount}%`,
 								padding: `0 ${gap / 2}px`,
@@ -199,6 +211,9 @@ export function Carousel({
 							(_, index) => (
 								<button
 									type="button"
+									data-gtm-component="carousel"
+									data-gtm-clicktype="carousel-dot"
+									data-gtm-position={`${index + 1}`}
 									key={index}
 									onClick={() => goToSlide(index * slidesToScroll)}
 									className={`carousel__dot ${index * slidesToScroll === currentSlide ? 'active' : ''}`}
