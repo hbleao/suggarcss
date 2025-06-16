@@ -1,5 +1,55 @@
 import fs from "fs-extra";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+// Obter o caminho do arquivo atual
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+/**
+ * Encontra os possíveis caminhos para um tipo de recurso
+ * @param resourceType Tipo de recurso (components, styles, hooks, utils)
+ * @returns Array de possíveis caminhos para o recurso
+ */
+function findPossiblePaths(resourceType: string): string[] {
+	// Determinar o caminho base do pacote (onde o código está sendo executado)
+	// Subir até 3 níveis de diretórios para encontrar a raiz do pacote
+	const possibleBasePaths = [];
+	
+	// Adicionar o diretório atual do processo
+	possibleBasePaths.push(process.cwd());
+	
+	// Adicionar caminhos relativos ao arquivo atual
+	let currentDir = __dirname;
+	for (let i = 0; i < 5; i++) {
+		possibleBasePaths.push(currentDir);
+		currentDir = path.dirname(currentDir);
+	}
+	
+	// Gerar todos os possíveis caminhos para o recurso
+	const possiblePaths: string[] = [];
+	
+	// Para cada caminho base possível, adicionar as variações src/ e dist/
+	for (const basePath of possibleBasePaths) {
+		possiblePaths.push(
+			path.join(basePath, `src/${resourceType}`),
+			path.join(basePath, `dist/${resourceType}`)
+		);
+	}
+	
+	// Se o Node.js estiver sendo executado em um ambiente global, verificar o diretório global
+	if (process.env.NODE_PATH) {
+		const nodePaths = process.env.NODE_PATH.split(path.delimiter);
+		for (const nodePath of nodePaths) {
+			possiblePaths.push(
+				path.join(nodePath, `@porto/js-library-corp-hubv-porto-ocean/src/${resourceType}`),
+				path.join(nodePath, `@porto/js-library-corp-hubv-porto-ocean/dist/${resourceType}`)
+			);
+		}
+	}
+	
+	return possiblePaths;
+}
 
 /**
  * Retorna a lista de todos os componentes disponíveis
@@ -7,18 +57,8 @@ import path from "node:path";
  */
 export function getAvailableComponents(): string[] {
 	try {
-		// Possíveis caminhos dos componentes
-		let possiblePaths = [
-			// Caminhos relativos ao diretório atual
-			path.join(process.cwd(), "src/components"),
-			path.join(process.cwd(), "dist/components"),
-			// Caminhos absolutos para o caso de estarmos em um diretório diferente
-			path.join("/Users/henrique/dev/sugarcss/src/components"),
-			path.join("/Users/henrique/dev/sugarcss/dist/components"),
-			// Caminhos relativos ao diretório do pacote
-			path.join(path.dirname(path.dirname(__dirname)), "dist/components"),
-			path.join(path.dirname(path.dirname(__dirname)), "src/components")
-		]
+		// Obter possíveis caminhos para os componentes
+		const possiblePaths = findPossiblePaths("components");
 
 		// Encontrar o caminho dos componentes
 		let componentsPath = "";
@@ -30,7 +70,7 @@ export function getAvailableComponents(): string[] {
 		}
 
 		if (!componentsPath) {
-			console.log("Nenhum caminho de componentes encontrado. Caminhos verificados:", possiblePaths);
+			console.error("Nenhum caminho de componentes encontrado. Caminhos verificados:", possiblePaths);
 			return [];
 		}
 
@@ -38,7 +78,8 @@ export function getAvailableComponents(): string[] {
 		const directories = fs.readdirSync(componentsPath).filter((dir) => {
 			try {
 				return fs.statSync(path.join(componentsPath, dir)).isDirectory();
-			} catch (error) {
+			} catch (_error) {
+				// Ignorar erros ao verificar se é um diretório
 				return false;
 			}
 		});
@@ -65,18 +106,8 @@ export function getImplementedComponents(): string[] {
  * @returns Caminho para o recurso ou string vazia se não encontrado
  */
 export function findResourcePath(resourceType: string): string {
-	// Possíveis caminhos do recurso
-	const possiblePaths = [
-		// Caminhos relativos ao diretório atual
-		path.join(process.cwd(), `src/${resourceType}`),
-		path.join(process.cwd(), `dist/${resourceType}`),
-		// Caminhos absolutos para o caso de estarmos em um diretório diferente
-		path.join("/Users/henrique/dev/sugarcss/src/", resourceType),
-		path.join("/Users/henrique/dev/sugarcss/dist/", resourceType),
-		// Caminhos relativos ao diretório do pacote
-		path.join(path.dirname(path.dirname(__dirname)), `dist/${resourceType}`),
-		path.join(path.dirname(path.dirname(__dirname)), `src/${resourceType}`)
-	]
+	// Obter possíveis caminhos para o recurso usando a função genérica
+	const possiblePaths = findPossiblePaths(resourceType);
 
 	// Encontrar o caminho do recurso
 	for (const possiblePath of possiblePaths) {
@@ -85,7 +116,8 @@ export function findResourcePath(resourceType: string): string {
 		}
 	}
 
-	console.log(
+	// Usar console.error em vez de console.log para mensagens de erro
+	console.error(
 		`Nenhum caminho para ${resourceType} encontrado. Caminhos verificados:`,
 		possiblePaths
 	);
