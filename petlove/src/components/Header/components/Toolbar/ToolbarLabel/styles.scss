@@ -1,0 +1,15 @@
+.toolbar__label {
+  display: block;
+  width: max-content;
+  text-decoration: none;
+  color: #000;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 8px;
+  cursor: pointer;
+
+  &:hover {
+    color: #0046c0;
+  }
+}

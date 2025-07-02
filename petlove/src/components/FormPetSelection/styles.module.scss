@@ -1,0 +1,14 @@
+.form {
+  width: 100%;
+  padding: 0 8px;
+  animation: visibility-from-right 700ms ease 0s 1 normal forwards;
+}
+
+@media screen and (min-width: 600px) {
+  .form {
+    width: 100%;
+    max-width: 600px;
+    padding: 0;
+    margin: 0 auto;
+  }
+}

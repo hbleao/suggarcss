@@ -1,0 +1,27 @@
+.drawer__subcategory-item {
+  width: max-content;
+  padding: 4px 8px;
+  color: #404040;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 2rem;
+  transition:
+    border,
+    color,
+    0.3s ease;
+
+  &:hover {
+    color: #404040;
+    background: #e0e0e0;
+    border: 1px solid transparent;
+  }
+
+  &.selected {
+    border: 1px solid #0046c0;
+    color: #0046c0;
+    background: transparent;
+  }
+}

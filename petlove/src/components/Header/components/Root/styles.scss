@@ -1,0 +1,14 @@
+.header__root {
+  background: #fff;
+  position: relative;
+
+  .header__overlay {
+    &-active {
+      display: block;
+    }
+
+    &-disable {
+      display: none;
+    }
+  }
+}

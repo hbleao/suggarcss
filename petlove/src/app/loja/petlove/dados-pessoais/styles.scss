@@ -1,0 +1,52 @@
+.page__personal-data {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 32px;
+  padding: 0 8px;
+  animation: slide-in-right 700ms ease 0s 1 normal forwards;
+  display: flex;
+  flex-direction: column;
+}
+
+.personal-data {
+  &__title {
+    margin-bottom: 3.2rem;
+  }
+
+  &__subtitle {
+    margin-bottom: 1.6rem;
+  }
+
+  &__form {
+    >div {
+      margin-bottom: 1.6rem;
+
+    }
+  }
+
+  &__checkbox {
+    color: var(--color-neutral-700);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-lg);
+    line-height: 2rem;
+    margin-top: 3.2rem;
+  }
+
+  &__policy {
+    color: var(--color-brand-insurance-900);
+  }
+
+  &__link-checkout {
+    margin-top: 3.2rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .page__personal-data {
+    width: 100%;
+    max-width: 600px;
+    padding: 0;
+    margin: 0 auto;
+    margin-top: 32px;
+  }
+}

@@ -1,0 +1,28 @@
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.9) translateY(8rem);
+  }
+
+  100% {
+    transform: scale(1) translateY(0px);
+  }
+}
+
+.tooltip__container {
+  width: 100%;
+  min-width: 66rem;
+  max-width: 85rem;
+  margin-top: -1px;
+  position: absolute;
+  top: 7.5rem;
+  left: 12px;
+  z-index: 100;
+  animation: scaleUp 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  background-color: #fff;
+  padding: 24px;
+  padding-top: 32px;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+}

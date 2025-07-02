@@ -1,0 +1,72 @@
+// Font Families
+$font-family-primary: "Open Sans", sans-serif;
+$font-family-secondary: "Porto Roobert", sans-serif;
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Font Styles
+$font-style-normal: normal;
+$font-style-italic: italic;
+
+// Font Sizes
+$font-size-xs: 0.8rem;
+$font-size-sm: 1rem;
+$font-size-md: 1.2rem;
+$font-size-lg: 1.4rem;
+$font-size-xl: 1.6rem;
+$font-size-2xl: 2rem;
+$font-size-3xl: 2.4rem;
+$font-size-4xl: 2.8rem;
+$font-size-5xl: 3.2rem;
+$font-size-6xl: 3.6rem;
+$font-size-7xl: 4rem;
+$font-size-8xl: 4.8rem;
+$font-size-9xl: 5.6rem;
+
+// Helper classes
+$fonts: (
+  "open-sans": $font-family-primary,
+  "porto": $font-family-primary,
+);
+
+.--font-family {
+  @each $name, $value in $fonts {
+    &-#{$name} {
+      font-family: #{$value};
+    }
+  }
+}
+
+$weights: (
+  "light": $font-weight-light,
+  "regular": $font-weight-regular,
+  "medium": $font-weight-medium,
+  "semibold": $font-weight-semibold,
+  "bold": $font-weight-bold,
+);
+
+.--font-weight {
+  @each $name, $value in $weights {
+    &-#{$name} {
+      font-weight: #{$value};
+    }
+  }
+}
+
+$styles: (
+  'normal': $font-style-normal,
+  'italic': $font-style-italic,
+);
+
+.--font-style {
+  @each $name, $value in $styles {
+    &-#{$name} {
+      font-style: #{$value};
+    }
+  }
+}

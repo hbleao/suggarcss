@@ -1,0 +1,9 @@
+.drawer__subcategory-list {
+  height: calc(100vh - 18rem);
+  margin-top: 16px;
+  padding-bottom: 12rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}

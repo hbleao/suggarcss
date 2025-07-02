@@ -1,0 +1,28 @@
+.cep__address-container {
+  margin-bottom: 1.6rem;
+
+  h5 {
+    margin-bottom: 1.6rem;
+  }
+}
+
+.cep {
+  &__address-list {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  &__address-item {
+    width: max-content;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    background-color: var(--color-neutral-100);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--color-brand-insurance-200);
+    }
+  }
+}

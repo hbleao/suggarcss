@@ -1,0 +1,41 @@
+appFramework: react
+ingress:
+  enabled: true
+  contextURL: /
+  host: "petlove.hub-de-vendas-ecommerce.hml.awsporto"
+
+namespace: corp-hubv
+containerPort: 3000
+
+hpa:
+  #Número mínimo de PODS
+  minReplicas: 1
+  #Número máximo de PODS
+  maxReplicas: 5
+  #Porcentagem de média para escalar o POD (Quando bater a média de consumo o POD escala!), melhores detalhes consultar a documentação.
+  targetMemoryUtilizationPercentage: 70
+
+# Habilita ou não as secrets que são "puxadas" através do Backstage
+enable_secrets: true
+secrets:
+  CREDENTIALS: 515e1d6a-7290-4f65-bf94-fe48ec541283
+
+configmap:
+  profile: 'hml'
+  # SENSEDIA BASE PATH
+  NEXT_PUBLIC_SENSEDIA_CLOUD_URL: https://portoapicloud-hml.portoseguro.com.br
+  # ASSISTANT SERVICE
+  NEXT_PUBLIC_ASSISTANT_SERVICE_PATH: "hub-vendas-carbon/auxiliar/v1"
+  # PROVISION SERVICE
+  NEXT_PUBLIC_PROVISION_SERVICE_PATH: "hub-vendas-carbon/prestacao-servico/v1"
+  # ACQUISITION SERVICE
+  NEXT_PUBLIC_ACQUISITION_SERVICE_PATH: hub-vendas-carbon/aquisicao/v1
+  # CLIENT SERVICE
+  NEXT_PUBLIC_DATA_QUALITY_SERVICE_PATH: hub-vendas/cliente/v1
+  # AUTHORIZATION
+  NEXT_PUBLIC_SERVICE_AUTHORIZATION_PATH: '/oauth/v2'
+  # APPLICATION
+  NEXT_PUBLIC_ENVIRONMENT: 'stagging'
+  NEXT_PUBLIC_CART_COOKIE_DOMAIN: .portoseguro.com.br
+  NEXT_PUBLIC_ORGANIZATION_ID: '6T4XUGKR'
+  NEXT_PUBLIC_ENCRYPTION_KEY: chave

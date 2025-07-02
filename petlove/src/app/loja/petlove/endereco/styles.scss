@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 32px;
+  padding: 0 8px;
+  animation: slide-in-right 700ms ease 0s 1 normal forwards;
+  display: flex;
+  flex-direction: column;
+
+  .input__root,
+  .checkbox__root {
+    margin-bottom: 2.4rem;
+  }
+}
+
+.title {
+  margin-bottom: 1.6rem;
+}
+
+.subtitle {
+  margin-bottom: 3.2rem;
+}
+
+@media screen and (min-width: 600px) {
+  .container {
+    width: 100%;
+    max-width: 600px;
+    padding: 0;
+    margin: 0 auto;
+    margin-top: 32px;
+  }
+}

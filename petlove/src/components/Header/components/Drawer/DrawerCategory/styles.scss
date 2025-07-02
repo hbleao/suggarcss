@@ -1,0 +1,22 @@
+.drawer__category {
+  max-width: 100%;
+  width: 100vw;
+  height: calc(100vh - 6rem);
+  padding: 0 16px;
+  background-color: #fff;
+  position: absolute;
+  left: -110rem;
+  top: 0rem;
+  transition: left 0.4s ease;
+
+  &.opened {
+    left: 0;
+    z-index: 100;
+
+    .drawer__category-header,
+    .drawer__category-list {
+      opacity: 1;
+      transform: translate(0px);
+    }
+  }
+}
