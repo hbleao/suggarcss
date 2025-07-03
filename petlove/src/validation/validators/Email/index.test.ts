@@ -3,7 +3,7 @@ import { EmailValidation } from './index';
 
 describe('EmailValidation', () => {
   const field = 'email';
-  const errorMessage = 'Email inválido';
+  const errorMessage = 'Invalid email';
   const validator = new EmailValidation(field, errorMessage);
 
   it('should return null for a valid email', () => {

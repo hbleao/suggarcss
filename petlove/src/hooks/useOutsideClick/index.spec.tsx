@@ -25,7 +25,7 @@ describe("useOutsideClick", () => {
 		}
 	});
 
-	it("deve chamar o callback quando ocorre um clique fora do elemento", () => {
+	it("should call the callback when a click occurs outside the element", () => {
 		const callback = jest.fn();
 
 		const { result } = renderHook(() => useOutsideClick(callback));
@@ -42,7 +42,7 @@ describe("useOutsideClick", () => {
 		expect(callback).toHaveBeenCalledTimes(1);
 	});
 
-	it("não deve chamar o callback quando ocorre um clique dentro do elemento", () => {
+	it("should not call the callback when a click occurs inside the element", () => {
 		const callback = jest.fn();
 
 		const { result } = renderHook(() => useOutsideClick(callback));
@@ -57,7 +57,7 @@ describe("useOutsideClick", () => {
 		expect(callback).not.toHaveBeenCalled();
 	});
 
-	it("deve responder a eventos de toque", () => {
+	it("should respond to touch events", () => {
 		const callback = jest.fn();
 
 		const { result } = renderHook(() => useOutsideClick(callback));
@@ -74,7 +74,7 @@ describe("useOutsideClick", () => {
 		expect(callback).toHaveBeenCalledTimes(1);
 	});
 
-	it("deve remover os event listeners quando o componente é desmontado", () => {
+	it("should remove event listeners when the component is unmounted", () => {
 		const removeEventListenerSpy = jest.spyOn(document, "removeEventListener");
 		const callback = jest.fn();
 
@@ -94,7 +94,7 @@ describe("useOutsideClick", () => {
 		removeEventListenerSpy.mockRestore();
 	});
 
-	it("deve funcionar com a implementação alternativa useOutsideClickAlt", () => {
+	it("should work with the alternative implementation useOutsideClickAlt", () => {
 		const { useOutsideClickAlt } = require("./index");
 
 		const callback = jest.fn();

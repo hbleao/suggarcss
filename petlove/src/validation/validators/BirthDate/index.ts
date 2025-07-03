@@ -23,10 +23,10 @@ export class BirthDateValidation implements FieldValidation {
       }
       const age = differenceInYears(now, parsedDate);
       if (age < 18 || age > 80) {
-        return new CustomError('Idade menor 18 ou maior que 80');
+        return new CustomError('Age less than 18 or greater than 80');
       }
       return null;
     }
-    return new CustomError('Campo Obrigatório');
+    return new CustomError('Required field');
   }
 }

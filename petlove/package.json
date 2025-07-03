@@ -11,7 +11,7 @@
     "copy:static": "copyfiles -u 2 \"dist/react-ssr-corp-hubv-petlove/static/**/*\" \"dist/react-ssr-corp-hubv-petlove/standalone/dist/react-ssr-corp-hubv-petlove\"",
     "start": "next start",
     "lint": "next lint",
-    "test": "echo test ok",
+    "test": "npx jest ./src",
     "test:ci": "npx jest ./src",
     "test:watch": "jest ./src --watch",
     "test:coverage": "jest ./src --coverage",

@@ -3,11 +3,11 @@ import { CPFValidation } from './index';
 
 describe('CPFValidation', () => {
   const field = 'cpf';
-  const errorMessage = 'CPF inválido';
+  const errorMessage = 'Invalid CPF';
   const validator = new CPFValidation(field, errorMessage);
 
   it('should return null for a valid CPF', () => {
-    const validCpf = '12345678909';
+    const validCpf = '52998224725';
     expect(validator.validate(validCpf)).toBeNull();
   });
 

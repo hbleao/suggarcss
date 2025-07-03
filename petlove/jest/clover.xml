@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1751566080606" clover="3.2.0">
+  <project timestamp="1751566080606" name="All files">
+    <metrics statements="208" coveredstatements="105" conditionals="56" coveredconditionals="5" methods="50" coveredmethods="25" elements="314" coveredelements="135" complexity="0" loc="208" ncloc="208" packages="22" files="22" classes="22"/>
+    <package name="errors">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/errors/index.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="errors.CustomError">
+      <metrics statements="3" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/errors/CustomError/index.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="3" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="errors.RequiredError">
+      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/errors/RequiredError/index.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="helpers">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/helpers/index.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="helpers.extractCheckDigits">
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/helpers/extractCheckDigits/index.ts">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="helpers.isRepeatedNumbers">
+      <metrics statements="11" coveredstatements="1" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/helpers/isRepeatedNumbers/index.ts">
+        <metrics statements="11" coveredstatements="1" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="helpers.isValidLength">
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/helpers/isValidLength/index.ts">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="helpers.removeSpecialCharacters">
+      <metrics statements="3" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/helpers/removeSpecialCharacters/index.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="3" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="validators">
+      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/index.ts">
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="2" count="6" type="stmt"/>
+        <line num="3" count="6" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="11" count="8" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="validators.BirthDate">
+      <metrics statements="19" coveredstatements="5" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/BirthDate/index.ts">
+        <metrics statements="19" coveredstatements="5" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="12" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="validators.CEP">
+      <metrics statements="9" coveredstatements="4" conditionals="3" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/CEP/index.ts">
+        <metrics statements="9" coveredstatements="4" conditionals="3" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="validators.CNPJ">
+      <metrics statements="23" coveredstatements="8" conditionals="8" coveredconditionals="0" methods="5" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/CNPJ/index.ts">
+        <metrics statements="23" coveredstatements="8" conditionals="8" coveredconditionals="0" methods="5" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="33" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="54" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="validators.CPF">
+      <metrics statements="20" coveredstatements="7" conditionals="9" coveredconditionals="0" methods="4" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/CPF/index.ts">
+        <metrics statements="20" coveredstatements="7" conditionals="9" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="31" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="validators.CpfOrCnpjValidation">
+      <metrics statements="12" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/CpfOrCnpjValidation/index.ts">
+        <metrics statements="12" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="23" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="27" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="validators.Email">
+      <metrics statements="7" coveredstatements="4" conditionals="3" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/Email/index.ts">
+        <metrics statements="7" coveredstatements="4" conditionals="3" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="validators.MaxLength">
+      <metrics statements="8" coveredstatements="5" conditionals="4" coveredconditionals="1" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/MaxLength/index.ts">
+        <metrics statements="8" coveredstatements="5" conditionals="4" coveredconditionals="1" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="12" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="validators.MinLength">
+      <metrics statements="8" coveredstatements="5" conditionals="4" coveredconditionals="1" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/MinLength/index.ts">
+        <metrics statements="8" coveredstatements="5" conditionals="4" coveredconditionals="1" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="12" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="validators.MinValue">
+      <metrics statements="10" coveredstatements="5" conditionals="4" coveredconditionals="1" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/MinValue/index.ts">
+        <metrics statements="10" coveredstatements="5" conditionals="4" coveredconditionals="1" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="18" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="validators.MinWords">
+      <metrics statements="9" coveredstatements="5" conditionals="3" coveredconditionals="1" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/MinWords/index.ts">
+        <metrics statements="9" coveredstatements="5" conditionals="3" coveredconditionals="1" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="validators.RequiredField">
+      <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/RequiredField/index.ts">
+        <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="validators.ValidationBuilder">
+      <metrics statements="28" coveredstatements="28" conditionals="1" coveredconditionals="1" methods="14" coveredmethods="14"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/ValidationBuilder/index.ts">
+        <metrics statements="28" coveredstatements="28" conditionals="1" coveredconditionals="1" methods="14" coveredmethods="14"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="27" type="stmt"/>
+        <line num="19" count="26" type="stmt"/>
+        <line num="20" count="26" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="26" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="38" count="4" type="stmt"/>
+        <line num="41" count="4" type="stmt"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="48" count="3" type="stmt"/>
+        <line num="52" count="3" type="stmt"/>
+        <line num="55" count="3" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="60" count="3" type="stmt"/>
+        <line num="64" count="3" type="stmt"/>
+        <line num="65" count="3" type="stmt"/>
+        <line num="69" count="3" type="stmt"/>
+        <line num="70" count="3" type="stmt"/>
+        <line num="74" count="3" type="stmt"/>
+        <line num="77" count="3" type="stmt"/>
+        <line num="81" count="3" type="stmt"/>
+        <line num="84" count="3" type="stmt"/>
+        <line num="88" count="3" type="stmt"/>
+        <line num="91" count="3" type="stmt"/>
+        <line num="95" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="validators.ValidationComposite">
+      <metrics statements="8" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/henriquebragaleao/Dev/suggarcss/petlove/src/validation/validators/ValidationComposite/index.ts">
+        <metrics statements="8" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="17" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

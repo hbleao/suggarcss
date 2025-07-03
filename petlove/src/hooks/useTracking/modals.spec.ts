@@ -16,7 +16,7 @@ afterEach(() => {
 });
 
 describe('modals tracking', () => {
-  it('deve inicializar o dataLayer e verificar o modal na URL atual', () => {
+  it('should track modals when there is a modal parameter in the URL', () => {
     // Configurar URL com um modal
     const searchParams = new URLSearchParams(window.location.search);
     searchParams.set('modal', 'teste');
@@ -33,19 +33,25 @@ describe('modals tracking', () => {
     });
   });
 
-  it('deve monitorar eventos de navegação', () => {
+  it('should track modals with custom values', () => {
     // Executar a função modals
     modals();
     
     // Limpar as chamadas anteriores
     jest.clearAllMocks();
     
+    // Configurar o localStorage para simular um modal atual
+    window.localStorage.setItem('@petlove:current-modal', 'teste');
+    
     // Disparar evento popstate
     window.dispatchEvent(new Event('popstate'));
     
-    // Verificar se a função de verificação é chamada
-    // Não podemos testar diretamente o comportamento interno,
-    // mas podemos verificar se o evento foi processado
-    expect(window.dataLayer.push).not.toHaveBeenCalled();
+    // Verificar se o evento foi processado e o dataLayer.push foi chamado
+    // com o evento de abertura do modal
+    expect(window.dataLayer.push).toHaveBeenCalledWith({
+      event: 'modal',
+      action: 'open',
+      name: 'teste'
+    });
   });
 });

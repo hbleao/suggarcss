@@ -41,8 +41,13 @@ export async function CepService(cep: string): Promise<CepResult> {
       state: httpResponse?.uf,
     };
 
-    if (!httpResponse || !httpResponse.localidade || !httpResponse.estado) {
-      throw { message: 'Informe um cep válido' };
+    if (!httpResponse) {
+      throw { message: 'Please enter a valid zip code' };
+    }
+    
+    if (!httpResponse.localidade || !httpResponse.estado) {
+      console.warn('Incomplete response from ZIP code API:', httpResponse);
+      throw { message: 'Please enter a valid zip code' };
     }
 
     const { data: httpCoverageResponse, status: statusCepCoverage } =
@@ -52,14 +57,14 @@ export async function CepService(cep: string): Promise<CepResult> {
       });
 
     if (statusCep >= 400 || statusCepCoverage > 499) {
-      throw { message: 'Algo deu errado. Tente novamente mais tarde.' };
+      throw { message: 'Something went wrong. Please try again later.' };
     }
 
     return {
       hasCoverage: httpCoverageResponse?.coverage || false,
       ibgeCode: httpCoverageResponse?.ibge || '',
       cep,
-      address: `${cep} - ${httpResponse?.localidade ?? 'Cidade desconhecida'}/${httpResponse?.estado ?? 'Estado desconhecido'}`,
+      address: `${cep} - ${httpResponse?.localidade ?? 'Unknown city'}/${httpResponse?.estado ?? 'Unknown state'}`,
       neighborhood: httpResponse?.bairro ?? '',
       city: httpResponse?.localidade ?? '',
       state: httpResponse?.estado ?? '',
@@ -72,7 +77,7 @@ export async function CepService(cep: string): Promise<CepResult> {
       endpoint: config?.url,
       status: status,
       code: code,
-      message: 'Algo deu errado. Tente novamente mais tarde.',
+      message: 'Something went wrong. Please try again later.',
       backendErrorMessage: message,
       body: config?.data,
     };

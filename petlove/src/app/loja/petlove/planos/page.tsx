@@ -31,7 +31,7 @@ export default function Plans() {
   const [plans, setPlans] = useState<PlanType[]>([]);
   const [isLoadingPlans, setIsLoadingPlans] = useState(false);
   const [isErrorFetchPlans, setIsErrorFetchPlans] = useState(false);
-  const state = useAquisitionStore((state) => state);
+  const state = useAquisitionStore((state: any) => state);
 
   const fetchPlans = async () => {
     try {
@@ -44,7 +44,7 @@ export default function Plans() {
       pushPlansToDataLayer(data, state?.data?.pet?.type);
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
-      console.error('Erro na API de fetchPlans:', error);
+      console.error('Error in fetchPlans API:', error);
       setIsErrorFetchPlans(true);
       pushErrorPlansToDataLayer({
         endpoint: error?.url,

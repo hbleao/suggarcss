@@ -1,75 +1,75 @@
 import { inputs } from "./inputs";
 import { formatGtmText } from "./utils";
 
-// Mock da função formatGtmText
+// Mock of the formatGtmText function
 jest.mock("./utils", () => ({
   formatGtmText: jest.fn((text) => `formatted-${text}`),
 }));
 
 describe("inputs tracking", () => {
-  // Setup do DOM para os testes
+  // DOM setup for tests
   beforeEach(() => {
-    // Limpar o DOM antes de cada teste
+    // Clear the DOM before each test
     document.body.innerHTML = "";
     
-    // Resetar os mocks
+    // Reset mocks
     jest.clearAllMocks();
   });
 
-  it("deve adicionar atributos data-gtm aos inputs", () => {
-    // Configurar o DOM com elementos para teste
+  it("should add data-gtm attributes to inputs", () => {
+    // Configure the DOM with elements for testing
     document.body.innerHTML = `
       <div id="gtm-title">Formulário de Cadastro</div>
       <input class="input__field" type="text" name="nome" placeholder="Nome" />
       <input class="input__field" type="email" name="email" placeholder="Email" />
     `;
 
-    // Executar a função de rastreamento
+    // Execute the tracking function
     inputs();
 
-    // Obter todos os inputs
+    // Get all inputs
     const inputElements = document.querySelectorAll(".input__field");
 
-    // Verificar se os atributos foram adicionados ao primeiro input
+    // Verify if attributes were added to the first input
     expect(inputElements[0].getAttribute("data-gtm-name")).toBe("formatted-Formulário de Cadastro");
     expect(inputElements[0].getAttribute("data-gtm-inputtype")).toBe("text");
     expect(inputElements[0].getAttribute("data-gtm-subname")).toBe("formatted-nome");
 
-    // Verificar se os atributos foram adicionados ao segundo input
+    // Verify if attributes were added to the second input
     expect(inputElements[1].getAttribute("data-gtm-name")).toBe("formatted-Formulário de Cadastro");
     expect(inputElements[1].getAttribute("data-gtm-inputtype")).toBe("email");
     expect(inputElements[1].getAttribute("data-gtm-subname")).toBe("formatted-email");
 
-    // Verificar se a função formatGtmText foi chamada corretamente
+    // Verify if the formatGtmText function was called correctly
     expect(formatGtmText).toHaveBeenCalledWith("Formulário de Cadastro");
     expect(formatGtmText).toHaveBeenCalledWith("nome");
     expect(formatGtmText).toHaveBeenCalledWith("email");
   });
 
-  it("deve usar valores padrão quando elementos não existem", () => {
-    // Configurar o DOM sem o elemento de título
+  it("should use default values when elements don't exist", () => {
+    // Configure the DOM without the title element
     document.body.innerHTML = `
       <input class="input__field" type="text" name="" placeholder="Campo sem nome" />
     `;
 
-    // Executar a função de rastreamento
+    // Execute the tracking function
     inputs();
 
-    // Obter o input
+    // Get the input
     const inputElement = document.querySelector(".input__field");
     
-    // Verificar se o input foi encontrado
+    // Verify if the input was found
     if (!inputElement) {
-      fail("Input não encontrado");
+      fail("Input not found");
       return;
     }
 
-    // Verificar se os atributos foram adicionados com valores padrão
+    // Verify if attributes were added with default values
     expect(inputElement.getAttribute("data-gtm-name")).toBe("formatted-sem-titulo");
     expect(inputElement.getAttribute("data-gtm-inputtype")).toBe("text");
     expect(inputElement.getAttribute("data-gtm-subname")).toBe("formatted-sem-valor");
 
-    // Verificar se a função formatGtmText foi chamada corretamente
+    // Verify if the formatGtmText function was called correctly
     expect(formatGtmText).toHaveBeenCalledWith("sem-titulo");
     expect(formatGtmText).toHaveBeenCalledWith("sem-valor");
   });

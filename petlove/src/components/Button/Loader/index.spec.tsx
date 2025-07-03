@@ -24,15 +24,15 @@ describe("<Loader />", () => {
 
 		expect(loader).toBeInTheDocument();
 		expect(loader).toHaveClass("loader");
-		expect(loader).toHaveClass("--border-neutral-900");
+		expect(loader).toHaveClass("--border-neutral-0");
 	});
 
 	it("deve renderizar com cor personalizada", () => {
-		const { container } = render(<Loader color="primary-500" />);
+		const { container } = render(<Loader color="neutral-500" />);
 		const loader = container.firstChild as HTMLElement;
 
-		expect(loader).toHaveClass("--border-primary-500");
-		expect(loader).not.toHaveClass("--border-neutral-900");
+		expect(loader).toHaveClass("--border-neutral-500");
+		expect(loader).not.toHaveClass("--border-neutral-0");
 	});
 
 	it("deve renderizar com tamanho personalizado", () => {
@@ -56,11 +56,11 @@ describe("<Loader />", () => {
 
 	it("deve combinar múltiplas propriedades personalizadas", () => {
 		const { container } = render(
-			<Loader color="secondary-700" size={36} className="custom-class" />,
+			<Loader color="neutral-700" size={36} className="custom-class" />,
 		);
 		const loader = container.firstChild as HTMLElement;
 
-		expect(loader).toHaveClass("--border-secondary-700");
+		expect(loader).toHaveClass("--border-neutral-700");
 		expect(loader).toHaveClass("custom-class");
 
 		// Verificamos o estilo inline
