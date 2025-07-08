@@ -1,9 +1,9 @@
-import { renderHook, act, waitFor } from '@testing-library/react';
-import { useForm } from '../useForm';
+import { renderHook, act, waitFor } from "@testing-library/react";
+import { useForm } from "../useForm";
 
-describe('useForm', () => {
-	it('should initialize with provided values', () => {
-		const initialValues = { name: 'John', email: 'john@example.com', age: 30 };
+describe("useForm", () => {
+	it("deve inicializar com os valores fornecidos", () => {
+		const initialValues = { name: "John", email: "john@example.com", age: 30 };
 
 		const { result } = renderHook(() => useForm(initialValues));
 
@@ -14,31 +14,31 @@ describe('useForm', () => {
 		expect(result.current.isSubmitting).toBe(false);
 	});
 
-	it('should update a single value correctly', () => {
-		const initialValues = { name: 'John', email: 'john@example.com' };
+	it("deve atualizar um único valor corretamente", () => {
+		const initialValues = { name: "John", email: "john@example.com" };
 
 		const { result } = renderHook(() => useForm(initialValues));
 
 		act(() => {
 			result.current.handleChange({
-				target: { name: 'name', value: 'Jane' },
+				target: { name: "name", value: "Jane" },
 			} as React.ChangeEvent<HTMLInputElement>);
 		});
 
 		expect(result.current.values).toEqual({
-			name: 'Jane',
-			email: 'john@example.com',
+			name: "Jane",
+			email: "john@example.com",
 		});
 	});
 
-	it('should mark a field as touched when it loses focus', () => {
-		const initialValues = { name: '', email: '' };
+	it("deve marcar um campo como tocado ao perder o foco", () => {
+		const initialValues = { name: "", email: "" };
 
 		const { result } = renderHook(() => useForm(initialValues));
 
 		act(() => {
 			result.current.handleBlur({
-				target: { name: 'name' },
+				target: { name: "name" },
 			} as React.FocusEvent<HTMLInputElement>);
 		});
 
@@ -46,18 +46,18 @@ describe('useForm', () => {
 		expect(result.current.touched.email).toBeUndefined();
 	});
 
-	it('should validate fields using the provided validation function', () => {
-		const initialValues = { name: '', email: 'invalid' };
+	it("deve validar os campos usando a função de validação fornecida", () => {
+		const initialValues = { name: "", email: "invalid" };
 
 		const validate = (values: typeof initialValues) => {
 			const errors: Record<string, string> = {};
 
 			if (!values.name) {
-				errors.name = 'Name is required';
+				errors.name = "Nome é obrigatório";
 			}
 
-			if (typeof values.email === 'string' && !values.email.includes('@')) {
-				errors.email = 'Invalid email';
+			if (typeof values.email === "string" && !values.email.includes("@")) {
+				errors.email = "Email inválido";
 			}
 
 			return errors;
@@ -66,26 +66,25 @@ describe('useForm', () => {
 		const { result } = renderHook(() => useForm(initialValues, validate));
 
 		expect(result.current.errors).toEqual({
-			name: 'Name is required',
-			email: 'Invalid email',
+			name: "Nome é obrigatório",
+			email: "Email inválido",
 		});
-
 		expect(result.current.isValid).toBe(false);
 
 		act(() => {
 			result.current.handleChange({
-				target: { name: 'email', value: 'valid@example.com' },
+				target: { name: "email", value: "valid@example.com" },
 			} as React.ChangeEvent<HTMLInputElement>);
 		});
 
 		expect(result.current.errors).toEqual({
-			name: 'Name is required',
+			name: "Nome é obrigatório",
 		});
 		expect(result.current.isValid).toBe(false);
 
 		act(() => {
 			result.current.handleChange({
-				target: { name: 'name', value: 'John' },
+				target: { name: "name", value: "John" },
 			} as React.ChangeEvent<HTMLInputElement>);
 		});
 
@@ -93,8 +92,8 @@ describe('useForm', () => {
 		expect(result.current.isValid).toBe(true);
 	});
 
-	it('should execute onSubmit when the form is valid', async () => {
-		const initialValues = { name: 'John', email: 'john@example.com' };
+	it("deve executar onSubmit quando o formulário é válido", async () => {
+		const initialValues = { name: "John", email: "john@example.com" };
 		const onSubmit = jest.fn();
 
 		const { result } = renderHook(() =>
@@ -114,19 +113,19 @@ describe('useForm', () => {
 		expect(onSubmit).toHaveBeenCalledWith(initialValues);
 	});
 
-	it('should not execute onSubmit when the form is invalid', () => {
-		const initialValues = { name: '', email: 'invalid' };
+	it("não deve executar onSubmit quando o formulário é inválido", () => {
+		const initialValues = { name: "", email: "invalid" };
 		const onSubmit = jest.fn();
 
 		const validate = (values: typeof initialValues) => {
 			const errors: Record<string, string> = {};
 
 			if (!values.name) {
-				errors.name = 'Name is required';
+				errors.name = "Nome é obrigatório";
 			}
 
-			if (!values.email.includes('@')) {
-				errors.email = 'Invalid email';
+			if (!values.email.includes("@")) {
+				errors.email = "Email inválido";
 			}
 
 			return errors;
@@ -150,44 +149,44 @@ describe('useForm', () => {
 		});
 	});
 
-	it('deve permitir definir valores programaticamente', () => {
-		const initialValues = { name: '', email: '' };
+	it("deve permitir definir valores programaticamente", () => {
+		const initialValues = { name: "", email: "" };
 
 		const { result } = renderHook(() => useForm(initialValues));
 
 		act(() => {
 			result.current.setValues({
-				name: 'John',
-				email: 'john@example.com',
+				name: "John",
+				email: "john@example.com",
 			});
 		});
 
 		expect(result.current.values).toEqual({
-			name: 'John',
-			email: 'john@example.com',
+			name: "John",
+			email: "john@example.com",
 		});
 	});
 
-	it('deve permitir redefinir o formulário para os valores iniciais', () => {
-		const initialValues = { name: 'Initial', email: 'initial@example.com' };
+	it("deve permitir redefinir o formulário para os valores iniciais", () => {
+		const initialValues = { name: "Initial", email: "initial@example.com" };
 
 		const { result } = renderHook(() => useForm(initialValues));
 
 		act(() => {
 			result.current.handleChange({
-				target: { name: 'name', value: 'Modified' },
+				target: { name: "name", value: "Modified" },
 			} as React.ChangeEvent<HTMLInputElement>);
 		});
 
 		act(() => {
 			result.current.handleChange({
-				target: { name: 'email', value: 'modified@example.com' },
+				target: { name: "email", value: "modified@example.com" },
 			} as React.ChangeEvent<HTMLInputElement>);
 		});
 
 		expect(result.current.values).toEqual({
-			name: 'Modified',
-			email: 'modified@example.com',
+			name: "Modified",
+			email: "modified@example.com",
 		});
 
 		act(() => {
@@ -198,8 +197,8 @@ describe('useForm', () => {
 		expect(result.current.errors).toEqual({});
 	});
 
-	it('deve lidar com submissões assíncronas', async () => {
-		const initialValues = { name: 'John', email: 'john@example.com' };
+	it("deve lidar com submissões assíncronas", async () => {
+		const initialValues = { name: "John", email: "john@example.com" };
 		const onSubmit = jest.fn().mockImplementation(() => {
 			return new Promise<void>((resolve) => {
 				setTimeout(() => {

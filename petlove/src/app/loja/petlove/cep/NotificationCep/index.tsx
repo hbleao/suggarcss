@@ -12,21 +12,20 @@ import type { NotificationCepProps } from './types';
 export const NotificationCep = ({
   cep,
   street,
-  neighborhood,
-  stateCode,
+  city,
+  state,
   error,
   coverage,
 }: NotificationCepProps) => {
   let notificationType: 'eligible' | 'notEligible' | 'outService' =
     'notEligible';
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const notification: any = {
     eligible: {
       variant: 'outlined',
       icon: IcResidenceSVG,
       message: {
         title: `${street}`,
-        description: `${cep} - ${neighborhood}/${stateCode}`,
+        description: `${cep} - ${city}/${state}`,
       },
     },
     notEligible: {

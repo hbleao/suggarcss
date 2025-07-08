@@ -27,10 +27,6 @@ jest.mock('./modals', () => ({
   modals: jest.fn(),
 }));
 
-jest.mock('./carousel', () => ({
-  carousel: jest.fn(),
-}));
-
 jest.mock('./utils', () => ({
   formatGtmText: jest.fn((text) => `formatted-${text}`),
 }));
@@ -64,22 +60,20 @@ describe('useTracking integration', () => {
     global.MutationObserver = originalMutationObserver;
   });
   
-  it('should call basic tracking functions on mount', () => {
+  it('deve chamar todas as funções de rastreamento na montagem', () => {
     // Renderizar o hook
     renderHook(() => useTracking());
     
     // Verificar se o dataLayer foi inicializado
     expect(window.dataLayer).toBeDefined();
     
-    // Verificar se as funções de rastreamento básicas foram chamadas
+    // Verificar se todas as funções de rastreamento foram chamadas
     expect(require('./buttons').buttons).toHaveBeenCalled();
     expect(require('./inputs').inputs).toHaveBeenCalled();
     expect(require('./checkbox').checkbox).toHaveBeenCalled();
     expect(require('./select').selects).toHaveBeenCalled();
     expect(require('./link').link).toHaveBeenCalled();
-    expect(require('./carousel').carousel).toHaveBeenCalled();
-    // modals só é chamado quando há um parâmetro modal na URL
-    expect(require('./modals').modals).not.toHaveBeenCalled();
+    expect(require('./modals').modals).toHaveBeenCalled();
     
     // Verificar se o MutationObserver foi criado
     expect(MutationObserver).toHaveBeenCalled();
@@ -95,7 +89,7 @@ describe('useTracking integration', () => {
     );
   });
   
-  it('should disconnect the observer when the component is unmounted', () => {
+  it('deve desconectar o observer quando o componente é desmontado', () => {
     // Renderizar o hook
     const { unmount } = renderHook(() => useTracking());
     
@@ -109,51 +103,18 @@ describe('useTracking integration', () => {
     expect(mockObserverInstance.disconnect).toHaveBeenCalled();
   });
   
-  it('should call the modals function when there is a modal parameter in the URL', () => {
-    // Configurar URL com um modal
-    const searchParams = new URLSearchParams(window.location.search);
-    searchParams.set('modal', 'teste');
-    window.history.pushState({}, '', `?${searchParams.toString()}`);
+  it('deve chamar as funções de rastreamento quando ocorrem mutações no DOM', () => {
+    // Criar um mock que permite simular mutações
+    let mutationCallback: MutationCallback = () => {}; // Inicialização padrão
+    const mockObserverInstance = {
+      observe: jest.fn(),
+      disconnect: jest.fn(),
+      takeRecords: jest.fn()
+    };
     
-    // Limpar os mocks antes de renderizar o hook
-    jest.clearAllMocks();
-    
-    // Criar um mock para o MutationObserver que executa o callback imediatamente
-    const mockObserverCallback = jest.fn();
-    global.MutationObserver = jest.fn().mockImplementation((callback) => {
-      mockObserverCallback.mockImplementation(callback);
-      return {
-        observe: jest.fn(),
-        disconnect: jest.fn(),
-        takeRecords: jest.fn()
-      };
-    }) as unknown as typeof MutationObserver;
-    
-    // Renderizar o hook
-    renderHook(() => useTracking());
-    
-    // Simular uma mutação para acionar o callback
-    mockObserverCallback([{ type: 'childList' }]);
-    
-    // Verificar se a função modals foi chamada
-    expect(require('./modals').modals).toHaveBeenCalled();
-  });
-  
-  it('should call the modals function when there is a modal parameter in the URL after a mutation', () => {
-    // Configurar URL com um modal
-    const searchParams = new URLSearchParams(window.location.search);
-    searchParams.set('modal', 'teste');
-    window.history.pushState({}, '', `?${searchParams.toString()}`);
-    
-    // Criar um mock para o MutationObserver que armazena o callback
-    let mutationCallback: (mutations: MutationRecord[], observer: MutationObserver) => void = () => {};
     global.MutationObserver = jest.fn().mockImplementation((callback) => {
       mutationCallback = callback;
-      return {
-        observe: jest.fn(),
-        disconnect: jest.fn(),
-        takeRecords: jest.fn()
-      };
+      return mockObserverInstance;
     }) as unknown as typeof MutationObserver;
     
     // Renderizar o hook
@@ -162,48 +123,19 @@ describe('useTracking integration', () => {
     // Limpar os mocks para verificar apenas as chamadas após a mutação
     jest.clearAllMocks();
     
-    // Simular uma mutação usando o callback armazenado
-    mutationCallback([{ type: 'childList' } as unknown as MutationRecord], {} as MutationObserver);
-    
-    // Verificar se a função modals foi chamada
-    expect(require('./modals').modals).toHaveBeenCalled();
-  });
-  
-  it('should call tracking functions when DOM mutations occur', () => {
-    // Limpar a URL para garantir que não há parâmetro modal
-    window.history.pushState({}, '', '/');
-    
-    // Criar um mock para o MutationObserver que armazena o callback
-    let mutationCallback: (mutations: MutationRecord[], observer: MutationObserver) => void = () => {};
-    global.MutationObserver = jest.fn().mockImplementation((callback) => {
-      mutationCallback = callback;
-      return {
-        observe: jest.fn(),
-        disconnect: jest.fn(),
-        takeRecords: jest.fn()
-      };
-    }) as unknown as typeof MutationObserver;
-    
-    // Renderizar o hook
-    renderHook(() => useTracking());
-    
-    // Limpar os mocks para verificar apenas as chamadas após a mutação
-    jest.clearAllMocks();
-    
-    // Simular uma mutação usando o callback armazenado
-    mutationCallback([{ type: 'childList' } as unknown as MutationRecord], {} as MutationObserver);
+    // Simular uma mutação
+    const mockMutations = [{ type: 'childList' }] as unknown as MutationRecord[];
+    mutationCallback(mockMutations, mockObserverInstance as unknown as MutationObserver);
     
     // Verificar se as funções de rastreamento foram chamadas novamente
     expect(require('./buttons').buttons).toHaveBeenCalled();
     expect(require('./inputs').inputs).toHaveBeenCalled();
     expect(require('./checkbox').checkbox).toHaveBeenCalled();
     expect(require('./link').link).toHaveBeenCalled();
-    expect(require('./carousel').carousel).toHaveBeenCalled();
-    // modals só é chamado quando há um parâmetro modal na URL
-    expect(require('./modals').modals).not.toHaveBeenCalled();
+    expect(require('./modals').modals).toHaveBeenCalled();
   });
   
-  it('should return undefined when window is not defined', () => {
+  it('deve retornar undefined quando window não está definido', () => {
     // Salvar a referência original de window
     const originalWindow = global.window;
     
@@ -222,7 +154,7 @@ describe('useTracking integration', () => {
     global.window = originalWindow;
   });
   
-  it('should format texts correctly for GTM', () => {
+  it('deve formatar textos corretamente para GTM', () => {
     // Testar a função formatGtmText
     expect(formatGtmText('Texto de Teste')).toBe('formatted-Texto de Teste');
     expect(formatGtmText('TEXTO EM MAIÚSCULAS')).toBe('formatted-TEXTO EM MAIÚSCULAS');

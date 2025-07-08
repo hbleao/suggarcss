@@ -7,7 +7,7 @@ jest.mock('./styles.scss', () => ({}));
 
 // Mock da função clsx
 jest.mock('@/utils/clsx', () => ({
-  clsx: (...args: unknown[]) => args.filter(Boolean).join(' '),
+  clsx: (...args: any[]) => args.filter(Boolean).join(' '),
 }));
 
 describe('Button', () => {
@@ -72,7 +72,7 @@ describe('Button', () => {
     expect(button).toBeInTheDocument();
     
     // Verificar se o loader está presente
-    const loader = button.querySelector('.loader');
+    const loader = button.querySelector('.btn__loader');
     expect(loader).toBeInTheDocument();
     
     // Verificar se o conteúdo do botão não está visível

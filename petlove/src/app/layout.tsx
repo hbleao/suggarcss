@@ -8,7 +8,7 @@ import { TolkitLexis } from '@/utils/lexis';
 import { RootProvider } from '@/providers';
 
 import '@/styles/global.scss';
-import { generateSessionId, GTM } from '@/utils';
+import { generateSessionId } from '@/utils';
 
 export const metadata: Metadata = {
   title: 'Tech Store - Next.js',
@@ -65,21 +65,14 @@ export default function RootLayout({
   const sessionId = generateSessionId(organizationID);
   return (
     <html lang="pt-BR">
-
       <head>
         <PublicEnvScript />
-        <meta charSet='utf-8' />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://www.portoseguro.com.br/" />
-        <title>Plano de Saúde para Pets: Ambulatorial, Essencial e Completo | Porto</title>
-        <meta name="description" content="O Plano de Saúde para Pets é ideal para seu animal de estimação com os novos planos e com rede credenciada. Proteja seu pet com amor. Confira!" />
         <link rel="icon" href="/favicon.ico" />
       </head>
       <TolkitLexis sessionId={sessionId} organizationId={organizationID} />
       <body className={`${open_sans.className} ${porto_robert.className}`}>
         <RootProvider>{children}</RootProvider>
       </body>
-      <GTM />
     </html>
   );
 }

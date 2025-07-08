@@ -2,7 +2,6 @@ export { clsx } from './clsx';
 export { formatAemImageUrl } from './formatAemImageUrl';
 export { formatGtmText } from './formatGtm';
 export { generateSessionId } from './generateSessionId';
-export { GTM } from './gtm';
 export { cepMask } from './mask/cep';
 export { cnpjMask } from './mask/cnpj';
 export { cpfMask } from './mask/cpf';

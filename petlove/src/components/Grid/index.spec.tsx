@@ -16,7 +16,7 @@ jest.mock("@/utils/clsx", () => ({
 }));
 
 describe("Grid", () => {
-	it("should render correctly with default values", () => {
+	it("deve renderizar corretamente com valores padrão", () => {
 		render(
 			<Grid data-testid="grid">
 				<div>Item 1</div>
@@ -37,7 +37,7 @@ describe("Grid", () => {
 		expect(grid).toHaveTextContent("Item 2");
 	});
 
-	it("should render with custom gap", () => {
+	it("deve renderizar com gap personalizado", () => {
 		render(
 			<Grid gap="2rem" data-testid="grid">
 				<div>Item 1</div>
@@ -50,7 +50,7 @@ describe("Grid", () => {
 		});
 	});
 
-	it("should render with custom background", () => {
+	it("deve renderizar com background personalizado", () => {
 		render(
 			<Grid background="#f5f5f5" data-testid="grid">
 				<div>Item 1</div>
@@ -63,7 +63,7 @@ describe("Grid", () => {
 		});
 	});
 
-	it("should apply additional CSS classes", () => {
+	it("deve aplicar classes CSS adicionais", () => {
 		render(
 			<Grid className="custom-class" data-testid="grid">
 				<div>Item 1</div>
@@ -75,7 +75,7 @@ describe("Grid", () => {
 		expect(grid).toHaveClass("grid-class");
 	});
 
-	it("should render with 8 columns in portrait mode", () => {
+	it("deve renderizar com 8 colunas em modo portrait", () => {
 		const { useMediaQuery } = require("@/hooks");
 		useMediaQuery.mockReturnValue(true);
 
@@ -93,7 +93,7 @@ describe("Grid", () => {
 		useMediaQuery.mockReturnValue(false);
 	});
 
-	it("should render with 12 columns in landscape mode", () => {
+	it("deve renderizar com 12 colunas em modo landscape", () => {
 		const { useMediaQuery } = require("@/hooks");
 		useMediaQuery.mockReturnValue(false);
 
@@ -109,7 +109,7 @@ describe("Grid", () => {
 		});
 	});
 
-	it("should combine multiple custom properties", () => {
+	it("deve combinar múltiplas propriedades personalizadas", () => {
 		render(
 			<Grid
 				gap="3rem"
@@ -130,7 +130,7 @@ describe("Grid", () => {
 		});
 	});
 
-	it("should render without children", () => {
+	it("deve renderizar sem filhos", () => {
 		render(<Grid data-testid="grid" />);
 
 		const grid = screen.getByTestId("grid");
@@ -138,7 +138,7 @@ describe("Grid", () => {
 		expect(grid).toBeEmptyDOMElement();
 	});
 
-	it("should render with CSS variables as gap", () => {
+	it("deve renderizar com variáveis CSS como gap", () => {
 		render(
 			<Grid gap="var(--spacing-md)" data-testid="grid">
 				<div>Item 1</div>

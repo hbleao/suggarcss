@@ -1,4 +1,4 @@
-'use server';
+// 'use server';
 import { env } from 'next-runtime-env';
 
 import { api } from '@/lib';
@@ -15,22 +15,19 @@ type DataQualityServiceResult = {
 }
 const sensedia = env('NEXT_PUBLIC_SENSEDIA_CLOUD_URL');
 
-let controller: AbortController | null = null;
-
 export const DataQualityService = async ({
   type,
   param,
 }: DataQualityServiceProps): Promise<DataQualityServiceResult> => {
+  const controller = new AbortController();
+  const signal = controller.signal;
 
   const endpoint = `${sensedia}/hub-vendas-carbon/cliente/v1/validacoes/${param}/${type}`;
+  // https://portoapicloud-hml.portoseguro.com.br/hub-vendas-carbon/cliente/v1/validacoes/51999998888/telefone'
+
+  // https://portoapicloud-hml.portoseguro.com.br/hub-vendas-carbon/cliente/v1/validacoes/51999999999/telefone
 
   const { access_token } = await AuthorizationService();
-
-  if (controller) {
-    controller.abort();
-  }
-
-  controller = new AbortController();
 
   const headers = {
     Authorization: `Bearer ${access_token}`,
@@ -38,10 +35,7 @@ export const DataQualityService = async ({
   }
 
   const httpResponse =
-    await api.get<DataQualityServiceResponse>(endpoint, {
-      headers,
-      signal: controller.signal,
-    });
+    await api.get<DataQualityServiceResponse>(endpoint, { signal, headers });
 
   if (httpResponse.status !== 200) {
     return {

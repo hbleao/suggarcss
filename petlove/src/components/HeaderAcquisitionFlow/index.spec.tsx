@@ -8,40 +8,6 @@ jest.mock('next/navigation', () => ({
 	}),
 }));
 
-// Mock do componente Image do Next.js para evitar problemas de contexto
-jest.mock('next/image', () => ({
-	__esModule: true,
-	default: ({ src, alt, onClick, className }: { src: string; alt: string; onClick?: () => void; className?: string }) => {
-		// Se tiver onClick, envolvemos em um botão para acessibilidade
-		if (onClick) {
-			return (
-				<button 
-					type="button"
-					className={className}
-					onClick={onClick}
-					data-testid="next-image-button"
-				>
-					<img 
-						src={typeof src === 'string' ? src : '/mock-image.png'} 
-						alt={alt} 
-						data-testid="next-image" 
-					/>
-				</button>
-			);
-		}
-
-		// Sem onClick, apenas retornamos a imagem
-		return (
-			<img 
-				src={typeof src === 'string' ? src : '/mock-image.png'} 
-				alt={alt} 
-				className={className} 
-				data-testid="next-image" 
-			/>
-		);
-	},
-}));
-
 type MakeSutProps = {
 	goBackLink?: string;
 	hasGoBackLink?: boolean;

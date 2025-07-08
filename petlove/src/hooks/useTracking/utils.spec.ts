@@ -2,23 +2,23 @@ import { formatGtmText } from "./utils";
 
 describe("utils", () => {
   describe("formatGtmText", () => {
-    it("should convert to lowercase", () => {
+    it("deve converter texto para minúsculas", () => {
       expect(formatGtmText("TEXTO DE TESTE")).toBe("texto-de-teste");
     });
 
-    it('should convert to lowercase and replace spaces with hyphens', () => {
+    it("deve substituir espaços por hífens", () => {
       expect(formatGtmText("texto com espaços")).toBe("texto-com-espaços");
     });
 
-    it('should handle multiple spaces', () => {
+    it("deve lidar com múltiplos espaços", () => {
       expect(formatGtmText("texto  com   múltiplos    espaços")).toBe("texto-com-múltiplos-espaços");
     });
 
-    it("should return empty string for empty input", () => {
+    it("deve retornar string vazia para entrada vazia", () => {
       expect(formatGtmText("")).toBe("");
     });
 
-    it('should keep special characters', () => {
+    it("deve manter caracteres especiais", () => {
       expect(formatGtmText("texto com @#$%^&*()")).toBe("texto-com-@#$%^&*()");
     });
   });

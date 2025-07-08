@@ -15,7 +15,7 @@ export const FieldCity = ({ state, dispatch }: ReducerStateProps) => {
   return (
     <div>
       <Dropdown
-        disabled={!state.postalGuide?.selectedState || state.postalGuide.isFetchingCity}
+        disabled={!state.postalGuide?.selectedState}
         label="Cidade"
         value={state.postalGuide?.selectedCity}
         readOnly

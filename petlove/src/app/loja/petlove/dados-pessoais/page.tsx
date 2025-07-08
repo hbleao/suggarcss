@@ -15,8 +15,8 @@ import {
   ProgressBar,
   Typography,
 } from '@/components';
-import { useDebouncedValue, useTracking } from '@/hooks';
-import { DataQualityService, encryptValue, getPublicIP, ProposalService } from '@/services';
+import { useDebouncedValue } from '@/hooks';
+import { DataQualityService, encryptValueService, getPublicIP, ProposalService } from '@/services';
 import { useAquisitionStore } from '@/store';
 import {
   cpfMask,
@@ -25,13 +25,10 @@ import {
   phoneMask,
   sanitize
 } from '@/utils';
-import { pushPromoMktComunicationToDataLayer } from './dataLayer';
-import { handleFieldsValidation } from './validation';
 
 export default function PersonalData() {
-  useTracking();
-  const cartCookieDomain = env('NEXT_PUBLIC_CART_COOKIE_DOMAIN');
   const organizationId = generateSessionId(String(env('NEXT_PUBLIC_ORGANIZATION_ID')));
+  const cartCookieDomain = generateSessionId(String(env('NEXT_PUBLIC_CART_COOKIE_DOMAIN')));
   const { data: localStorage, setUser: setLocalStorage } = useAquisitionStore((state) => state);
   const [isLoadingProposal, setIsLoadingProposal] = useState(false);
   const [isErrorProposalRequest, setIsErrorProposalRequest] = useState(false);
@@ -52,25 +49,11 @@ export default function PersonalData() {
     phone: '',
     email: '',
     acceptTerms: false,
-    errors: {
-      cpf: '',
-      fullName: '',
-    }
   });
-  const isEmailValueDebounce = useDebouncedValue(user.email, 1000);
-  const isPhoneValueDebounce = useDebouncedValue(user.phone, 1000);
-  const isCpfValueDebounce = useDebouncedValue(user.cpf, 700);
-  const isFullNameValueDebounce = useDebouncedValue(user.fullName, 700);
-  const isEnableButton =
-    emailValidation.isValid &&
-    user.fullName.length > 5 &&
-    user.errors?.fullName?.length < 1 &&
-    user.errors?.cpf?.length < 1 &&
-    user.cpf.length === 14 &&
-    phoneValidation.isValid &&
-    !isLoadingEmailValidation &&
-    !isLoadingPhoneValidation;
-  const [_, setCookie, removeCookie] = useCookies([
+  const isEmailValueDebounce = useDebouncedValue(user.email, 700);
+  const isPhoneValueDebounce = useDebouncedValue(user.phone, 700);
+  const isEnableButton = emailValidation.isValid && user.fullName.length > 5 && user.cpf.length === 14 && phoneValidation.isValid;
+  const [_, setCookie] = useCookies([
     'shopping_token',
     'nom_enc_sms',
     'em_enc_sms',
@@ -87,10 +70,6 @@ export default function PersonalData() {
       fullName: localStorage.user.fullName,
       phone: phoneMask(localStorage.user.phone),
       acceptTerms: localStorage.user.acceptTerms,
-      errors: {
-        cpf: '',
-        fullName: '',
-      }
     });
   }
 
@@ -143,92 +122,29 @@ export default function PersonalData() {
   }
 
   function redirectToCart(url: string) {
-    window.open(url, '_self');
+    setTimeout(() => {
+      window.open(url, '_self');
+    }, 0);
   }
 
   async function handleSetCookies(cartId: string) {
     try {
-      const cookieDomain = { path: '/', domain: cartCookieDomain };
-
-      removeCookie('shopping_token', cookieDomain);
-
-      const encryptFullNameValue = encryptValue(user.fullName);
-      const encryptEmailValue = encryptValue(user.email);
-      const encryptCpfValue = encryptValue(user.cpf);
-      const encryptPhoneValue = encryptValue(user.phone);
+      const encryptFullNameValue = await encryptValueService(user.fullName);
+      const encryptEmailValue = await encryptValueService(user.email);
+      const encryptCpfValue = await encryptValueService(onlyNumbers(user.cpf));
+      const encryptPhoneValue = await encryptValueService(onlyNumbers(user.phone));
 
       setCookie('shopping_token', cartId);
-      setCookie('nom_enc_sms', encryptFullNameValue, cookieDomain);
-      setCookie('em_enc_sms', encryptEmailValue, cookieDomain);
-      setCookie('tax_enc_sms', encryptCpfValue, cookieDomain);
-      setCookie('mob_enc_sms', encryptPhoneValue, cookieDomain);
-      setCookie('sid_enc_sms', organizationId, cookieDomain);
+      setCookie('nom_enc_sms', encryptFullNameValue);
+      setCookie('em_enc_sms', encryptEmailValue);
+      setCookie('tax_enc_sms', encryptCpfValue);
+      setCookie('mob_enc_sms', encryptPhoneValue);
+      setCookie('sid_enc_sms', organizationId);
 
     } catch (error) {
       console.error('HandleSetCookies: ', error);
       throw error;
     }
-  }
-
-  async function checkEmailValidation() {
-    if (user.email?.length < 8) return;
-    setEmailValidation({
-      isValid: false,
-      message: ''
-    });
-    try {
-      setIsLoadingEmailValidation(true);
-      const httpEmailValidationResult = await DataQualityService({
-        type: 'email',
-        param: user.email
-      });
-      setEmailValidation(httpEmailValidationResult);
-    } catch (error) {
-      setEmailValidation({
-        isValid: false,
-        message: 'Digite um email válido'
-      });
-    } finally {
-      setIsLoadingEmailValidation(false);
-    }
-  }
-
-  async function checkPhoneValidation() {
-    if (user.phone?.length === 14) return;
-    setPhoneValidation({
-      isValid: false,
-      message: ''
-    });
-    try {
-      setIsLoadingPhoneValidation(true);
-      const httpPhoneValidationResult = await DataQualityService({
-        type: 'telefone',
-        param: onlyNumbers(user.phone)
-      });
-      setPhoneValidation(httpPhoneValidationResult);
-    } catch (error) {
-      setPhoneValidation({
-        isValid: false,
-        message: 'Digite um telefone válido'
-      });
-    } finally {
-      setIsLoadingPhoneValidation(false);
-    }
-  }
-
-  function handleMktCommunication() {
-    setUser({
-      ...user,
-      acceptTerms: !user.acceptTerms,
-    })
-    pushPromoMktComunicationToDataLayer({
-      acceptTerms: user?.acceptTerms, cpf: user?.cpf
-    });
-  }
-
-  function checkCpfAndFullNameValidation() {
-    const errors = handleFieldsValidation(user);
-    setUser({ ...user, errors });
   }
 
   async function handleNextScreen() {
@@ -242,6 +158,8 @@ export default function PersonalData() {
       await handleSetCookies(httpProposalResponse?.cartCommerceId.cartId);
 
       window.sessionStorage.setItem('shopping_token', httpProposalResponse.cartCommerceId.cartId);
+
+      if (isErrorProposalRequest) return;
 
       setLocalStorage({
         acceptTerms: user.acceptTerms,
@@ -260,6 +178,46 @@ export default function PersonalData() {
     }
   }
 
+  async function checkEmailValidation() {
+    if (user.email?.length < 8) return;
+    try {
+      setIsLoadingEmailValidation(true);
+      const httpEmailValidationResult = await DataQualityService({
+        type: 'email',
+        param: user.email
+      });
+      console.log('httpEmailValidationResult', httpEmailValidationResult);
+      setEmailValidation(httpEmailValidationResult);
+    } catch (error) {
+      setEmailValidation({
+        isValid: false,
+        message: 'Valor inválido'
+      });
+    } finally {
+      setIsLoadingEmailValidation(false);
+    }
+  }
+
+  async function checkPhoneValidation() {
+    if (user.phone?.length !== 15) return;
+    try {
+      setIsLoadingPhoneValidation(true);
+      const httpPhoneValidationResult = await DataQualityService({
+        type: 'telefone',
+        param: onlyNumbers(user.phone)
+      });
+      console.log('httpPhoneValidationResult', httpPhoneValidationResult);
+      setPhoneValidation(httpPhoneValidationResult);
+    } catch (error) {
+      setEmailValidation({
+        isValid: false,
+        message: 'Valor inválido'
+      });
+    } finally {
+      setIsLoadingPhoneValidation(false);
+    }
+  }
+
   useEffect(() => {
     loadInitialStorage();
     handleFetchPublicIP();
@@ -273,10 +231,6 @@ export default function PersonalData() {
     checkPhoneValidation();
   }, [isPhoneValueDebounce]);
 
-  useEffect(() => {
-    checkCpfAndFullNameValidation();
-  }, [isCpfValueDebounce, isFullNameValueDebounce]);
-
   return (
     <>
       <HeaderAcquisitionFlow
@@ -285,7 +239,7 @@ export default function PersonalData() {
       />
       <ProgressBar initialValue={80} value={90} />
       <main className="page__personal-data">
-        <Typography id="gtm-title" variant="title4" className="personal-data__title">
+        <Typography variant="title4" className="personal-data__title">
           Pra continuar, queremos conhecer você!
         </Typography>
         <Typography
@@ -302,25 +256,23 @@ export default function PersonalData() {
             width="fluid"
             autoFocus
             value={user.fullName}
-            success={user.fullName.length > 5 && user.errors?.fullName?.length < 1}
+            success={user.email.length > 5}
             disabled={isLoadingProposal}
-            onChange={(e) => setUser({ ...user, fullName: sanitize.string(e.target.value) })}
-            errorMessage={user.errors?.fullName}
+            onChange={(e) => setUser({ ...user, fullName: sanitize(e.target.value) })}
           />
           <Input
             label="CPF"
             width="fluid"
             value={user.cpf}
             disabled={isLoadingProposal}
-            success={user.cpf.length === 14 && !user.errors?.cpf}
+            success={user.cpf.length === 14}
             onChange={(e) => setUser({ ...user, cpf: cpfMask(e.target.value) })}
-            errorMessage={user.errors?.cpf}
           />
           <Input
             label="Telefone"
             width="fluid"
             value={user.phone}
-            disabled={isLoadingProposal || isLoadingPhoneValidation}
+            disabled={isLoadingProposal}
             success={phoneValidation.isValid}
             isLoading={isLoadingPhoneValidation}
             onChange={(e) =>
@@ -333,8 +285,8 @@ export default function PersonalData() {
             width="fluid"
             value={user.email}
             success={emailValidation.isValid}
-            disabled={isLoadingProposal || isLoadingEmailValidation}
-            onChange={(e) => setUser({ ...user, email: sanitize.email(e.target.value) })}
+            disabled={isLoadingProposal}
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
             isLoading={isLoadingEmailValidation}
             helperText="As próximas etapas para ativar seu plano Petlove Saúde serão enviadas para este e-mail."
             errorMessage={emailValidation.message}
@@ -344,7 +296,12 @@ export default function PersonalData() {
             label="Tenho interesse em receber comunicação com condições especiais e
 							ofertas de Produtos e Serviços Porto."
             variant={user.acceptTerms ? 'checked' : 'default'}
-            onClick={handleMktCommunication}
+            onClick={() =>
+              setUser({
+                ...user,
+                acceptTerms: !user.acceptTerms,
+              })
+            }
           />
 
           <p className="personal-data__checkbox">

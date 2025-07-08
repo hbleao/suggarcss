@@ -14,7 +14,7 @@ import {
 } from '@/components';
 import { useTracking } from '@/hooks/useTracking';
 import { useAquisitionStore } from '@/store';
-import { sanitize } from '@/utils';
+import { onlyNumbers, sanitize } from '@/utils';
 
 export default function ScreenAddress() {
   useTracking();
@@ -25,8 +25,6 @@ export default function ScreenAddress() {
   const [addressWhitoutNumber, setAddressWhitoutNumber] =
     useState<boolean>(false);
   const [complement, setComplement] = useState<string>('');
-  const MAX_NUMBER_LENGTH = 6;
-  const maxNumberLengthError = number.length > MAX_NUMBER_LENGTH;
 
   function getInitialDataFromSessionStorage() {
     setComplement(address.complement);
@@ -40,11 +38,6 @@ export default function ScreenAddress() {
       complement: complement,
     });
     router.push('/loja/petlove/planos');
-  }
-
-  function handleSetNumber(value: string) {
-    const sanitizedValue = sanitize.number(value);
-    setNumber(sanitizedValue);
   }
 
   function handleCheckBox() {
@@ -82,14 +75,14 @@ export default function ScreenAddress() {
           width="fluid"
           label="CEP"
           disabled
-          value={address.cep}
+          value={sanitize(address.cep)}
         />
         <Input
           name=""
           width="fluid"
           label="Rua, Avenida, alameda"
           disabled
-          value={address.street}
+          value={sanitize(address.street)}
         />
         <Input
           name="numero"
@@ -97,8 +90,7 @@ export default function ScreenAddress() {
           label="Número"
           disabled={addressWhitoutNumber}
           value={number}
-          onChange={(e) => handleSetNumber(e.target.value)}
-          errorMessage={maxNumberLengthError ? 'Limite de 6 caracteres atingido' : ''}
+          onChange={(e) => setNumber(sanitize(onlyNumbers(e.target.value)))}
         />
         <Checkbox
           title="meu-endereco-nao-tem-numero"
@@ -107,11 +99,11 @@ export default function ScreenAddress() {
           onClick={() => handleCheckBox()}
         />
         <Input
-          name="complemento (opcional)"
+          name="complemento"
           width="fluid"
           label="Complemento"
           value={complement}
-          onChange={(e) => setComplement(sanitize.string(e.target.value))}
+          onChange={(e) => setComplement(sanitize(e.target.value))}
         />
         <Input
           name="cidade"
@@ -130,7 +122,7 @@ export default function ScreenAddress() {
 
         <Button
           variant='insurance'
-          disabled={addressWhitoutNumber || maxNumberLengthError ? !addressWhitoutNumber : number.length < 1}
+          disabled={addressWhitoutNumber ? !addressWhitoutNumber : number.length < 1}
           width="fluid"
           onClick={handleNextStep}
         >

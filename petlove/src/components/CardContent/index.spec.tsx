@@ -9,15 +9,6 @@ jest.mock("next/image", () => ({
 	),
 }));
 
-// Mock do componente Link para evitar problemas de contexto
-jest.mock("../Link", () => ({
-	Link: ({ href, children, ...props }: { href: string; children: React.ReactNode }) => (
-		<a href={href} {...props} data-testid="mocked-link">
-			{children}
-		</a>
-	),
-}));
-
 describe("<CardContent />", () => {
 	it("deve renderizar o componente vazio sem erros", () => {
 		const { container } = render(<CardContent />);

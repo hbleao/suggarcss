@@ -71,8 +71,7 @@ describe("useTracking", () => {
     expect(checkboxMock).toHaveBeenCalled();
     expect(selectsMock).toHaveBeenCalled();
     expect(linkMock).toHaveBeenCalled();
-    // modals só é chamado quando há um parâmetro modal na URL
-    expect(modalsMock).not.toHaveBeenCalled();
+    expect(modalsMock).toHaveBeenCalled();
 
     // Verificar se o MutationObserver foi configurado corretamente
     expect(mockObserve).toHaveBeenCalledWith(
@@ -190,7 +189,6 @@ describe("useTracking", () => {
     expect(inputsMock).toHaveBeenCalled();
     expect(checkboxMock).toHaveBeenCalled();
     expect(linkMock).toHaveBeenCalled();
-    // modals só é chamado quando há um parâmetro modal na URL
-    expect(modalsMock).not.toHaveBeenCalled();
+    expect(modalsMock).toHaveBeenCalled();
   });
 });

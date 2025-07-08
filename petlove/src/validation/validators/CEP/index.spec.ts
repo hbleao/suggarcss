@@ -3,7 +3,7 @@ import { CepValidation } from './index';
 
 describe('CepValidation', () => {
   const field = 'cep';
-  const errorMessage = 'Invalid ZIP code';
+  const errorMessage = 'CEP inválido';
   const validator = new CepValidation(field, errorMessage);
 
   it('should return null for a valid CEP', () => {

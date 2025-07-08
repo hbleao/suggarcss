@@ -169,7 +169,7 @@ describe("Flex", () => {
     const element = screen.getByText("Item 1");
     const container = element.parentElement;
     expect(container).not.toBeNull();
-    expect(container).toHaveStyle({ color: "red" });
+    expect(container).toHaveStyle({ color: "rgb(255, 0, 0)" });
   });
 
   it("deve combinar múltiplas propriedades flex", () => {

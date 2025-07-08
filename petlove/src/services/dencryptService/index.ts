@@ -1,11 +1,11 @@
 'use server';
 import * as CryptoJS from 'crypto-js';
 
-const DEFAULT_ENCRYPTION_KEY = 'chave';
+const ENCRYPTION_KEY = 'chave';
 
 const getKey = () => {
-  const hashed = CryptoJS.SHA256(DEFAULT_ENCRYPTION_KEY).toString();
-  return CryptoJS.enc.Hex.parse(hashed.substring(0, 16));
+  const hashed = CryptoJS.SHA256(ENCRYPTION_KEY).toString();
+  return CryptoJS.enc.Hex.parse(hashed.substring(0, 32));
 };
 
 export const decryptValueService = async (encrypted: string) => {
