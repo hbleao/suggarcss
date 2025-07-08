@@ -1,309 +1,276 @@
-import { useAquisitionStore } from '@/store';
 import { sanitize } from '@/utils';
-import { render, screen } from '@testing-library/react';
-import { useRouter } from 'next/navigation';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import ScreenAddress from './page';
 
-interface Address {
-  cep?: string;
-  street?: string;
-  number?: string;
-  complement?: string;
-  city?: string;
-  state?: string;
-  hasNoNumber?: boolean;
-  [key: string]: any;
-}
-
-// Mocks
 jest.mock('next/navigation', () => ({
-  useRouter: jest.fn(),
+	useRouter: () => ({
+		push: jest.fn(),
+		replace: jest.fn(),
+		back: jest.fn(),
+		forward: jest.fn(),
+		prefetch: jest.fn(),
+		refresh: jest.fn(),
+	}),
 }));
 
 jest.mock('@/hooks/useTracking', () => ({
-  useTracking: jest.fn(),
+	useTracking: jest.fn(),
 }));
+
+const mockAddress = {
+	cep: '01001-000',
+	street: 'Praça da Sé',
+	number: '',
+	complement: '',
+	city: 'São Paulo',
+	state: 'SP',
+	stateCode: 'SP',
+	neighborhood: 'Sé',
+	hasCoverage: true,
+};
+
+const mockSetAddress = jest.fn();
+
+interface StoreState {
+	data: { address: typeof mockAddress };
+	setAddress: typeof mockSetAddress;
+}
 
 jest.mock('@/store', () => ({
-  useAquisitionStore: jest.fn(),
+	useAquisitionStore: (selector: (state: StoreState) => unknown) => {
+		const state = {
+			data: { address: mockAddress },
+			setAddress: mockSetAddress,
+		};
+		return selector(state);
+	},
 }));
 
-jest.mock('@/utils', () => {
-  return {
-    sanitize: {
-      number: jest.fn((val: string) => val.replace(/\D/g, '')),
-      string: jest.fn((val: string) => val),
-    },
-  };
-});
+const makeSut = () => {
+	return render(<ScreenAddress />);
+};
 
-// Mockamos o componente da página em vez de importá-lo diretamente
-import React from 'react';
+describe('Address Page', () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
 
-jest.mock('./page', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      // Acessamos os dados do endereço do mock do store
-      const address = useAquisitionStore((state: { data: { address: Address } }) => state.data.address);
-      const setAddress = useAquisitionStore((state: { setAddress: (address: Address) => void }) => state.setAddress);
-      const router = useRouter();
+	it('Should correctly render the page', () => {
+		makeSut();
 
-      // Estados locais simulados
-      const [numero, setNumero] = React.useState(address?.number || '');
-      const [complemento, setComplemento] = React.useState(address?.complement || '');
-      const [semNumero, setSemNumero] = React.useState(false);
+		const titleElement = screen.getByText(
+			'Cuidamos do seu pet onde ele estiver',
+		);
+		expect(titleElement).toBeInTheDocument();
 
-      // Handlers simulados
-      const handleNoNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSemNumero(e.target.checked);
-        if (e.target.checked) {
-          setNumero('');
-        }
-      };
+		const subtitleElement = screen.getByText(
+			'Agora, informe a região onde seu pet mora para encontrarmos o plano ideal.',
+		);
+		expect(subtitleElement).toBeInTheDocument();
 
-      const handleSubmit = () => {
-        setAddress({
-          ...address,
-          number: numero,
-          complement: complemento,
-          hasNoNumber: semNumero
-        });
-        router.push('/loja/petlove/planos');
-      };
+		const cepInput = screen.getByLabelText('CEP');
+		expect(cepInput).toBeInTheDocument();
+		expect(cepInput).toBeDisabled();
+		expect(cepInput).toHaveValue('01001-000');
 
-      const handleNumeroChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const sanitizedValue = sanitize.number(e.target.value);
-        setNumero(sanitizedValue);
-      };
+		const streetInput = screen.getByLabelText('Rua, Avenida, alameda');
+		expect(streetInput).toBeInTheDocument();
+		expect(streetInput).toBeDisabled();
+		expect(streetInput).toHaveValue('Praça da Sé');
 
-      return (
-        <div data-testid="address-page">
-          <h1>Cuidamos do seu pet onde ele estiver</h1>
-          <label htmlFor="cep">CEP</label>
-          <input
-            id="cep"
-            data-testid="cep-input"
-            value={address?.cep || ''}
-            readOnly
-          />
-          <label htmlFor="rua">Rua, Avenida, alameda</label>
-          <input
-            id="rua"
-            data-testid="rua-input"
-            value={address?.street || ''}
-            readOnly
-          />
-          <label htmlFor="numero">Número</label>
-          <input
-            id="numero"
-            data-testid="numero-input"
-            value={numero}
-            onChange={handleNumeroChange}
-            disabled={semNumero}
-          />
-          <label htmlFor="complemento">Complemento</label>
-          <input
-            id="complemento"
-            data-testid="complemento-input"
-            value={complemento}
-            onChange={(e) => setComplemento(e.target.value)}
-          />
-          <label>
-            <input
-              type="checkbox"
-              data-testid="sem-numero-checkbox"
-              checked={semNumero}
-              onChange={handleNoNumberChange}
-            />
-            Meu endereço não tem número
-          </label>
-          <input
-            id="cidade"
-            data-testid="cidade-input"
-            value={address?.city || ''}
-            readOnly
-          />
-          <button
-            type="button"
-            data-testid="continuar-button"
-            onClick={handleSubmit}
-          >
-            Continuar
-          </button>
-        </div>
-      );
-    }
-  };
-});
+		const numberInput = screen.getByLabelText('Número');
+		expect(numberInput).toBeInTheDocument();
 
-describe('ScreenAddress Page', () => {
-  const mockRouter = {
-    push: jest.fn(),
-  };
+		const noNumberCheckbox = screen.getByText('Meu endereço não tem número');
+		expect(noNumberCheckbox).toBeInTheDocument();
 
-  const mockSetAddress = jest.fn();
-  const mockAddress: Address = {
-    cep: '01001-000',
-    street: 'Praça da Sé',
-    number: '',
-    complement: '',
-    city: 'São Paulo',
-    state: 'SP',
-    hasNoNumber: false,
-  };
+		const complementInput = screen.getByLabelText('Complemento');
+		expect(complementInput).toBeInTheDocument();
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-    (useRouter as jest.Mock).mockReturnValue(mockRouter);
-    (useAquisitionStore as jest.Mock).mockImplementation((selector: (state: any) => any) => {
-      if (typeof selector === 'function') {
-        const state = {
-          data: { address: mockAddress },
-          setAddress: mockSetAddress,
-        };
-        return selector(state);
-      }
-      return { data: { address: mockAddress }, setAddress: mockSetAddress };
-    });
-  });
+		const cityInput = screen.getByLabelText('Cidade');
+		expect(cityInput).toBeInTheDocument();
+		expect(cityInput).toBeDisabled();
+		expect(cityInput).toHaveValue('São Paulo');
 
-  it('deve renderizar o componente corretamente', () => {
-    render(<div data-testid="address-page">
-      <label htmlFor="numero">Número</label>
-      <input id="numero" data-testid="numero-input" />
-      <label>
-        <input type="checkbox" data-testid="sem-numero-checkbox" />
-        Meu endereço não tem número
-      </label>
-      <button type="button" data-testid="continuar-button">Continuar</button>
-    </div>);
+		const stateInput = screen.getByLabelText('Estado');
+		expect(stateInput).toBeInTheDocument();
+		expect(stateInput).toBeDisabled();
+		expect(stateInput).toHaveValue('SP');
 
-    expect(screen.getByLabelText('Número')).toBeInTheDocument();
-    expect(screen.getByText('Meu endereço não tem número')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /continuar/i })).toBeInTheDocument();
-  });
+		const continueButton = screen.getByText('Continuar');
+		expect(continueButton).toBeInTheDocument();
+		// Button should be disabled initially as number is empty
+		expect(continueButton).toBeDisabled();
+	});
 
-  it('deve preencher os campos com os dados do endereço armazenado', () => {
-    const mockAddressWithData: Address = {
-      ...mockAddress,
-      number: '123',
-      complement: 'Apto 456',
-    };
+	it('Should enable continue button when number is filled', () => {
+		makeSut();
 
-    (useAquisitionStore as jest.Mock).mockImplementation((selector: (state: any) => any) => {
-      if (typeof selector === 'function') {
-        const state = { data: { address: mockAddressWithData }, setAddress: mockSetAddress };
-        return selector(state);
-      }
-      return { data: { address: mockAddressWithData }, setAddress: mockSetAddress };
-    });
+		const numberInput = screen.getByLabelText('Número');
+		const continueButton = screen.getByText('Continuar');
 
-    // Renderizamos o mock que agora usa os dados do store
-    render(<div data-testid="mock-component">Mock</div>);
+		// Initially the button should be disabled
+		expect(continueButton).toBeDisabled();
 
-    // Verificamos se os dados do endereço foram usados corretamente
-    expect(mockAddressWithData.street).toBe('Praça da Sé');
-    expect(mockAddressWithData.number).toBe('123');
-    expect(mockAddressWithData.complement).toBe('Apto 456');
-    expect(mockAddressWithData.city).toBe('São Paulo');
-    // Removemos este teste que não faz sentido sem renderizar o componente real
-    // expect(screen.getByDisplayValue('SP')).toBeInTheDocument();
-  });
+		// Fill in the number
+		fireEvent.change(numberInput, { target: { value: '123' } });
 
-  it('deve permitir a edição do número e complemento', () => {
-    // Simulamos diretamente as ações sem renderizar o componente
-    const mockNumeroValue = '123';
-    const mockComplementoValue = 'Apto 456';
+		// Now the button should be enabled
+		expect(continueButton).not.toBeDisabled();
+	});
 
-    // Simulamos a sanitização do número
-    (sanitize.number as jest.Mock).mockReturnValueOnce(mockNumeroValue);
+	it('Should disable number input when "no number" checkbox is checked', () => {
+		makeSut();
 
-    // Verificamos que os valores podem ser alterados
-    expect(mockNumeroValue).toBe('123');
-    expect(mockComplementoValue).toBe('Apto 456');
-  });
+		const numberInput = screen.getByLabelText('Número');
+		const noNumberCheckbox = screen.getByRole('checkbox', {
+			name: /Meu endereço não tem número/i,
+		});
 
-  it('deve sanitizar o campo de número para aceitar apenas números', () => {
-    // Testamos diretamente a função de sanitização
-    const inputValue = '123abc';
-    const expectedOutput = '123';
+		// Initially the number input should be enabled
+		expect(numberInput).not.toBeDisabled();
 
-    // Configuramos o mock para retornar apenas os números
-    (sanitize.number as jest.Mock).mockReturnValueOnce(expectedOutput);
+		// Check the "no number" checkbox
+		fireEvent.click(noNumberCheckbox);
 
-    // Chamamos a função diretamente
-    const result = sanitize.number(inputValue);
+		// Now the number input should be disabled
+		expect(numberInput).toBeDisabled();
+		// And the value should be empty
+		expect(numberInput).toHaveValue('');
+	});
 
-    // Verificamos se a função foi chamada corretamente
-    expect(sanitize.number).toHaveBeenCalledWith(inputValue);
-    expect(result).toBe(expectedOutput);
-  });
+	it('Should enable continue button when "no number" checkbox is checked', () => {
+		makeSut();
 
-  it('deve desabilitar o campo de número quando a opção de endereço sem número for marcada', () => {
-    // Testamos diretamente a lógica de negócio
-    let isDisabled = false;
-    let checkboxValue = false;
+		const noNumberCheckbox = screen.getByRole('checkbox', {
+			name: /Meu endereço não tem número/i,
+		});
+		const continueButton = screen.getByText('Continuar');
 
-    // Inicialmente o campo não está desabilitado
-    expect(isDisabled).toBe(false);
+		// Initially the button should be disabled
+		expect(continueButton).toBeDisabled();
 
-    // Simulamos a marcação do checkbox
-    checkboxValue = true;
+		// Check the "no number" checkbox
+		fireEvent.click(noNumberCheckbox);
 
-    // Quando o checkbox é marcado, o campo deve ser desabilitado
-    if (checkboxValue) {
-      isDisabled = true;
-    }
+		// Now the button should be enabled
+		expect(continueButton).not.toBeDisabled();
+	});
 
-    // Verificamos se o campo foi desabilitado
-    expect(isDisabled).toBe(true);
-  });
+	it('Should sanitize number input to accept only numbers', () => {
+		makeSut();
 
-  it('deve navegar para a página de planos quando os campos obrigatórios estiverem preenchidos', () => {
-    // Limpamos as chamadas anteriores
-    jest.clearAllMocks();
+		const numberInput = screen.getByLabelText('Número');
 
-    // Simulamos diretamente as ações que ocorreriam no componente
-    const numero = '123';
+		// Enter a value with non-numeric characters
+		fireEvent.change(numberInput, { target: { value: '123abc' } });
 
-    // Simulamos o envio do formulário
-    mockSetAddress({
-      ...mockAddress,
-      number: numero,
-    });
-    mockRouter.push('/loja/petlove/planos');
+		// The input should only contain the numeric part
+		expect(numberInput).toHaveValue('123');
+	});
 
-    // Verificamos se as funções foram chamadas corretamente
-    expect(mockSetAddress).toHaveBeenCalledWith({
-      ...mockAddress,
-      number: numero,
-    });
+	it('Should show error message when number exceeds maximum length', () => {
+		makeSut();
 
-    expect(mockRouter.push).toHaveBeenCalledWith('/loja/petlove/planos');
-  });
+		const numberInput = screen.getByLabelText('Número');
 
-  it('deve navegar para a página de planos mesmo sem preencher o número quando a opção de endereço sem número estiver marcada', () => {
-    // Limpamos as chamadas anteriores
-    jest.clearAllMocks();
+		// Enter a value that exceeds the maximum length (6 characters)
+		fireEvent.change(numberInput, { target: { value: '1234567' } });
 
-    // Simulamos diretamente as ações que ocorreriam no componente
-    const semNumero = true;
+		// Error message should be displayed
+		const errorMessage = screen.getByText('Limite de 6 caracteres atingido');
+		expect(errorMessage).toBeInTheDocument();
 
-    // Simulamos o envio do formulário com a opção sem número marcada
-    mockSetAddress({
-      ...mockAddress,
-      number: '',
-      hasNoNumber: semNumero,
-    });
-    mockRouter.push('/loja/petlove/planos');
+		// Continue button should be disabled
+		const continueButton = screen.getByText('Continuar');
+		expect(continueButton).toBeDisabled();
+	});
 
-    // Verificamos se as funções foram chamadas corretamente
-    expect(mockSetAddress).toHaveBeenCalledWith({
-      ...mockAddress,
-      number: '',
-      hasNoNumber: semNumero,
-    });
+	it('Should allow filling the complement field', () => {
+		makeSut();
 
-    expect(mockRouter.push).toHaveBeenCalledWith('/loja/petlove/planos');
-  });
+		const complementInput = screen.getByLabelText('Complemento');
+
+		// Enter a value in the complement field
+		fireEvent.change(complementInput, { target: { value: 'Apto 123' } });
+
+		// The input should contain the entered value
+		expect(complementInput).toHaveValue('Apto 123');
+	});
+
+	it('Should navigate to plans page when continue button is clicked', () => {
+		const mockRouter = jest.requireMock('next/navigation').useRouter();
+		makeSut();
+
+		const numberInput = screen.getByLabelText('Número');
+		const continueButton = screen.getByText('Continuar');
+
+		// Fill in the number to enable the button
+		fireEvent.change(numberInput, { target: { value: '123' } });
+
+		// Click the continue button
+		fireEvent.click(continueButton);
+
+		// Should navigate to the plans page
+		expect(mockRouter.push).toHaveBeenCalledWith('/loja/petlove/planos');
+
+		// Should update the address in the store
+		expect(mockSetAddress).toHaveBeenCalledWith({
+			...mockAddress,
+			number: '123',
+			complement: '',
+		});
+	});
+
+	it('Should navigate to plans page when continue button is clicked with "no number" checked', () => {
+		const mockRouter = jest.requireMock('next/navigation').useRouter();
+		makeSut();
+
+		const noNumberCheckbox = screen.getByRole('checkbox', {
+			name: /Meu endereço não tem número/i,
+		});
+		const continueButton = screen.getByText('Continuar');
+
+		// Check the "no number" checkbox
+		fireEvent.click(noNumberCheckbox);
+
+		// Click the continue button
+		fireEvent.click(continueButton);
+
+		// Should navigate to the plans page
+		expect(mockRouter.push).toHaveBeenCalledWith('/loja/petlove/planos');
+
+		// Should update the address in the store with empty number
+		expect(mockSetAddress).toHaveBeenCalledWith({
+			...mockAddress,
+			number: '',
+			complement: '',
+		});
+	});
+
+	it('Should navigate to plans page with complement when filled', () => {
+		const mockRouter = jest.requireMock('next/navigation').useRouter();
+		makeSut();
+
+		const numberInput = screen.getByLabelText('Número');
+		const complementInput = screen.getByLabelText('Complemento');
+		const continueButton = screen.getByText('Continuar');
+
+		// Fill in the number and complement
+		fireEvent.change(numberInput, { target: { value: '123' } });
+		fireEvent.change(complementInput, { target: { value: 'Apto 456' } });
+
+		// Click the continue button
+		fireEvent.click(continueButton);
+
+		// Should navigate to the plans page
+		expect(mockRouter.push).toHaveBeenCalledWith('/loja/petlove/planos');
+
+		// Should update the address in the store with both number and complement
+		expect(mockSetAddress).toHaveBeenCalledWith({
+			...mockAddress,
+			number: '123',
+			complement: 'Apto 456',
+		});
+	});
 });
