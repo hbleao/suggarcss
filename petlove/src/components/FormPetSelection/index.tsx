@@ -2,11 +2,9 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { Button, Input, Typography } from '@/components';
-
 import s from './styles.module.scss';
 
-import { PetSelection, Spacing } from '@/components';
+import { Button, Input, PetSelection, Spacing, Typography } from '@/components';
 import { useTracking } from '@/hooks';
 import { useAquisitionStore } from '@/store';
 import { sanitize } from '@/utils';
@@ -19,6 +17,7 @@ export const FormPetSelection = () => {
   useTracking();
 
   function getInitialDataFromSessionStorage() {
+    if (!data.pet.name) return;
     setName(data.pet.name);
     setPetType(data.pet.type);
   }
@@ -62,7 +61,7 @@ export const FormPetSelection = () => {
         autoFocus
         className={s.input}
         value={petName}
-        onChange={e => setName(sanitize(e.target.value))}
+        onChange={e => setName(sanitize.string(e.target.value))}
         width="fluid"
       />
       <Spacing top={4} />

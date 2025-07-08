@@ -57,12 +57,15 @@ describe("Dropdown", () => {
 
 	it("deve renderizar com mensagem de erro", () => {
 		const errorMessage = "Este campo é obrigatório";
-		render(<Dropdown errorMessage={errorMessage} />);
+		const { container } = render(<Dropdown errorMessage={errorMessage} />);
 
 		const error = screen.getByText(errorMessage);
 		expect(error).toBeInTheDocument();
 		expect(error).toHaveClass("dropdown__error-message");
-		expect(error.closest(".dropdown__root")).toHaveClass("--error");
+		
+		// A mensagem de erro está fora do elemento raiz, então precisamos verificar o elemento raiz diretamente
+		const rootElement = container.querySelector(".dropdown__root");
+		expect(rootElement).toHaveClass("--error");
 	});
 
 	it("deve renderizar com texto de ajuda", () => {
@@ -112,10 +115,10 @@ describe("Dropdown", () => {
 
 		expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
 
-		const trigger = screen
-			.getByRole("textbox", { hidden: true })
-			.closest(".dropdown__trigger");
-		fireEvent.click(trigger!);
+		const textbox = screen.getByRole("textbox", { hidden: true });
+		const trigger = textbox.closest(".dropdown__trigger");
+		expect(trigger).not.toBeNull();
+		fireEvent.click(trigger as HTMLElement);
 
 		const listbox = screen.getByRole("listbox");
 		expect(listbox).toBeInTheDocument();
@@ -132,10 +135,10 @@ describe("Dropdown", () => {
 		render(<Dropdown options={mockOptions} onChange={handleChange} />);
 
 		// Abre a lista
-		const trigger = screen
-			.getByRole("textbox", { hidden: true })
-			.closest(".dropdown__trigger");
-		fireEvent.click(trigger!);
+		const textbox = screen.getByRole("textbox", { hidden: true });
+		const trigger = textbox.closest(".dropdown__trigger");
+		expect(trigger).not.toBeNull();
+		fireEvent.click(trigger as HTMLElement);
 
 		const option = screen.getByText("Opção 2");
 		fireEvent.click(option);
@@ -148,10 +151,10 @@ describe("Dropdown", () => {
 	it("deve marcar a opção selecionada com aria-selected", () => {
 		render(<Dropdown options={mockOptions} value="option2" />);
 
-		const trigger = screen
-			.getByRole("textbox", { hidden: true })
-			.closest(".dropdown__trigger");
-		fireEvent.click(trigger!);
+		const textbox = screen.getByRole("textbox", { hidden: true });
+		const trigger = textbox.closest(".dropdown__trigger");
+		expect(trigger).not.toBeNull();
+		fireEvent.click(trigger as HTMLElement);
 
 		const options = screen.getAllByRole("option");
 		expect(options[0]).toHaveAttribute("aria-selected", "false");
@@ -162,10 +165,10 @@ describe("Dropdown", () => {
 	it("não deve abrir o dropdown quando desabilitado", () => {
 		render(<Dropdown options={mockOptions} disabled />);
 
-		const trigger = screen
-			.getByRole("textbox", { hidden: true })
-			.closest(".dropdown__trigger");
-		fireEvent.click(trigger!);
+		const textbox = screen.getByRole("textbox", { hidden: true });
+		const trigger = textbox.closest(".dropdown__trigger");
+		expect(trigger).not.toBeNull();
+		fireEvent.click(trigger as HTMLElement);
 
 		expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
 		expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
@@ -220,10 +223,10 @@ describe("Dropdown", () => {
 		const handleChange = jest.fn();
 		render(<Dropdown options={mockOptions} onChange={handleChange} />);
 
-		const trigger = screen
-			.getByRole("textbox", { hidden: true })
-			.closest(".dropdown__trigger");
-		fireEvent.click(trigger!);
+		const textbox = screen.getByRole("textbox", { hidden: true });
+		const trigger = textbox.closest(".dropdown__trigger");
+		expect(trigger).not.toBeNull();
+		fireEvent.click(trigger as HTMLElement);
 
 		const option = screen.getByText("Opção 3");
 		fireEvent.keyDown(option, { key: "Enter" });

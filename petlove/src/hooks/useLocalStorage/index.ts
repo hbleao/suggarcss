@@ -51,35 +51,27 @@ import { useEffect, useState } from 'react';
  * }
  */
 export function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val: T) => T)) => void] {
-  // Estado para armazenar o valor
   const [storedValue, setStoredValue] = useState<T>(() => {
     if (typeof window === 'undefined') {
       return initialValue;
     }
 
     try {
-      // Obter do localStorage pelo key
       const item = window.localStorage.getItem(key);
-      // Analisar o item armazenado ou retornar initialValue
       return item ? JSON.parse(item) : initialValue;
     } catch (error) {
-      // Se ocorrer erro, retornar initialValue
       console.error(`Erro ao recuperar valor do localStorage para a chave "${key}":`, error);
       return initialValue;
     }
   });
 
-  // Função para atualizar o valor no localStorage
   const setValue = (value: T | ((val: T) => T)) => {
     try {
-      // Permitir que o valor seja uma função (como no setState)
       const valueToStore =
         value instanceof Function ? value(storedValue) : value;
 
-      // Salvar estado
       setStoredValue(valueToStore);
 
-      // Salvar no localStorage
       if (typeof window !== 'undefined') {
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
@@ -88,7 +80,6 @@ export function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T 
     }
   };
 
-  // Atualizar o valor armazenado se a chave mudar
   useEffect(() => {
     if (typeof window === 'undefined') {
       return;

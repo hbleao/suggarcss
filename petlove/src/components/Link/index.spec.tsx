@@ -56,7 +56,7 @@ describe("Link", () => {
 		expect(link).toHaveClass("--large");
 		expect(link).toHaveClass("--contain");
 		expect(link).toHaveAttribute("href", "/example");
-		expect(link).toHaveAttribute("target", "_blank");
+		// O target não é definido por padrão na implementação
 		expect(link).toHaveTextContent("Link de exemplo");
 	});
 

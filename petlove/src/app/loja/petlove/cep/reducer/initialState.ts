@@ -46,6 +46,7 @@ export const initialState = {
     address: '',
     street: '',
     cep: '',
+    neighborhood: '',
     state: '',
     stateCode: '',
   },

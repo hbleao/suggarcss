@@ -8,11 +8,12 @@ import { ModalWithoutCep } from './ModalWithoutCep';
 import { NotificationCep } from './NotificationCep';
 import { cepReducer, initialState } from './reducer';
 
-import { Button, HeaderAcquisitionFlow, Input, ProgressBar, Typography } from '@/components';
+import { Button, CustomData, HeaderAcquisitionFlow, Input, ProgressBar, Typography } from '@/components';
 import { useDebouncedValue, useTracking } from '@/hooks';
 import { CepService, fetchPostalGuideStateService, PostalCepService } from '@/services';
 import { useAquisitionStore } from '@/store';
 import { cepMask } from '@/utils';
+import { pushCoverageCepToDataLayer, pushCoveragePostalGuideToDataLayer, pushErrorCoverageCepToDataLayer, pushErrorCoveragePostalGuideToDataLayer } from './dataLayer';
 
 export default function Cep() {
   useTracking();
@@ -35,6 +36,7 @@ export default function Cep() {
       neighborhood: state.search.neighborhood,
       ibgeCode: state.notification.ibgeCode,
     });
+
     router.push('/loja/petlove/endereco');
   }
 
@@ -54,6 +56,7 @@ export default function Cep() {
     });
     dispatch({ type: 'resetPostalGuideErrors' });
     dispatch({ type: 'clearNotification' });
+    dispatch({ type: 'resetSearchErrors' });
 
     try {
       const isValid = validationField();
@@ -62,13 +65,15 @@ export default function Cep() {
       const userAddess = await CepService(state.search.cep);
       dispatch({ type: 'setAllSearchFields', payload: userAddess });
       dispatch({ type: 'setAllNotificationFields', payload: userAddess });
+      pushCoverageCepToDataLayer(userAddess);
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
-      console.error('CepService:', error);
       dispatch({
         type: 'setSearchErrors',
         fieldName: 'cep',
-        payload: error.message
+        payload: 'Algo deu errado. Tente novamente mais tarde.'
       });
+      pushErrorCoverageCepToDataLayer(error);
     } finally {
       dispatch({
         type: 'setSearchField',
@@ -111,6 +116,11 @@ export default function Cep() {
         payload: true
       });
       dispatch({
+        type: 'setPostalGuideField',
+        fieldName: 'addressList',
+        payload: []
+      });
+      dispatch({
         type: 'setPostalGuideErrors',
         fieldName: 'addressInput',
         payload: ''
@@ -134,13 +144,21 @@ export default function Cep() {
         fieldName: 'addressList',
         payload: logradouros
       });
-    } catch (error) {
+      dispatch({
+        type: 'setPostalGuideErrors',
+        fieldName: 'addressInput',
+        payload: ''
+      });
+      pushCoveragePostalGuideToDataLayer();
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    } catch (error: any) {
       console.error('fetchfullUserAddress', error);
       dispatch({
         type: 'setPostalGuideErrors',
         fieldName: 'addressInput',
         payload: 'error'
       });
+      pushErrorCoveragePostalGuideToDataLayer(error);
     } finally {
       dispatch({
         type: 'setPostalGuideField',
@@ -193,6 +211,15 @@ export default function Cep() {
 
   return (
     <>
+      <CustomData
+        pageName="Cuidamos do seu pet onde ele estiver"
+        category='aquisicao'
+        product='petlove-saude'
+        subproduct=''
+        funnel='short-form'
+        vertical='servico'
+        cpf=''
+      />
       <HeaderAcquisitionFlow
         goBackLink="/loja/petlove/dados-do-pet"
         hasShoppingCart={false}
@@ -225,6 +252,7 @@ export default function Cep() {
             autoFocus
             value={state.search.cep}
             isLoading={state.search.isFetchingCep}
+            success={state.notification.hasCoverage}
             onChange={(value) =>
               dispatch({
                 type: 'setSearchField',
@@ -250,8 +278,8 @@ export default function Cep() {
             coverage={state.notification.hasCoverage}
             cep={state.notification.cep}
             street={state.notification.street}
-            state={state.notification.stateCode}
-            city={state.notification.state}
+            stateCode={state.notification.stateCode}
+            neighborhood={state.notification.neighborhood}
           />
         )}
 

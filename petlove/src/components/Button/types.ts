@@ -10,5 +10,6 @@ export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
   width?: 'contain' | 'fluid';
   variant?: Variant;
   disabled?: boolean;
+  isLoading?: boolean;
   type?: 'button' | 'submit' | 'reset';
 };

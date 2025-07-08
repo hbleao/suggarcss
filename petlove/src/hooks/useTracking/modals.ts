@@ -1,53 +1,56 @@
 export function modals() {
-	let currentModal: string | null = null;
+  const LOCAL_STORAGE_KEY = '@petlove:current-modal';
+  const triggerEvent = (action: 'open' | 'close', name: string) => {
+    window.dataLayer.push({
+      event: 'modal',
+      action,
+      name,
+    });
+  };
 
-	const getModalNameFromURL = (): string => {
-		const searchParams = new URLSearchParams(window.location.search);
-		return searchParams.get('modal') || '';
-	};
+  const checkModalChange = () => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const newModal = searchParams.get('modal') || '';
 
-	const triggerEvent = (action: 'open' | 'close', name: string) => {
-		window.dataLayer.push({
-			event: 'modal',
-			action,
-			name,
-		});
-	};
+    if (newModal) {
+      window.localStorage.setItem(LOCAL_STORAGE_KEY, newModal);
+      triggerEvent('open', newModal);
+      return;
+    }
 
-	const checkModalChange = () => {
-		const newModal = getModalNameFromURL();
-		if (newModal !== currentModal) {
-			currentModal = newModal;
-			triggerEvent('open', currentModal);
-		}
+    const currentModal = window.localStorage.getItem(LOCAL_STORAGE_KEY);
 
-		if (!newModal && currentModal) {
-			triggerEvent('close', currentModal);
-			currentModal = null;
-		}
-	};
+    if (currentModal) {
+      triggerEvent('close', currentModal);
+    }
+  };
 
-	checkModalChange();
+  checkModalChange();
 
-	window.addEventListener('popstate', checkModalChange);
-	window.addEventListener('pushState', checkModalChange);
-	window.addEventListener('replaceState', checkModalChange);
+  window.addEventListener('popstate', checkModalChange);
+  window.addEventListener('pushState', checkModalChange);
+  window.addEventListener('replaceState', checkModalChange);
 
-	// Criar versões monitoradas dos métodos history.pushState e history.replaceState
-	const originalPushState = history.pushState;
-	const originalReplaceState = history.replaceState;
+  const originalPushState = history.pushState;
+  const originalReplaceState = history.replaceState;
 
-	// Sobrescrever pushState
-	history.pushState = function(data: Record<string, unknown>, unused: string, url?: string | URL | null) {
-		const result = originalPushState.apply(this, [data, unused, url]);
-		window.dispatchEvent(new Event('pushState'));
-		return result;
-	};
+  history.pushState = function (
+    data: Record<string, unknown>,
+    unused: string,
+    url?: string | URL | null,
+  ) {
+    const result = originalPushState.apply(this, [data, unused, url]);
+    window.dispatchEvent(new Event('pushState'));
+    return result;
+  };
 
-	// Sobrescrever replaceState
-	history.replaceState = function(data: Record<string, unknown>, unused: string, url?: string | URL | null) {
-		const result = originalReplaceState.apply(this, [data, unused, url]);
-		window.dispatchEvent(new Event('replaceState'));
-		return result;
-	};
+  history.replaceState = function (
+    data: Record<string, unknown>,
+    unused: string,
+    url?: string | URL | null,
+  ) {
+    const result = originalReplaceState.apply(this, [data, unused, url]);
+    window.dispatchEvent(new Event('replaceState'));
+    return result;
+  };
 }

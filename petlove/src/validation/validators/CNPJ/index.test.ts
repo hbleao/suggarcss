@@ -3,11 +3,11 @@ import { CnpjValidation } from './index';
 
 describe('CnpjValidation', () => {
   const field = 'cnpj';
-  const errorMessage = 'CNPJ inválido';
+  const errorMessage = 'Invalid CNPJ';
   const validator = new CnpjValidation(field, errorMessage);
 
   it('should return null for a valid CNPJ', () => {
-    const validCnpj = '12345678000195';
+    const validCnpj = '63025530000104';
     expect(validator.validate(validCnpj)).toBeNull();
   });
 

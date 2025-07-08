@@ -7,6 +7,7 @@ import './styles.scss';
 import {
   Button,
   Checkbox,
+  CustomData,
   HeaderAcquisitionFlow,
   Input,
   ProgressBar,
@@ -14,7 +15,7 @@ import {
 } from '@/components';
 import { useTracking } from '@/hooks/useTracking';
 import { useAquisitionStore } from '@/store';
-import { onlyNumbers, sanitize } from '@/utils';
+import { sanitize } from '@/utils';
 
 export default function ScreenAddress() {
   useTracking();
@@ -25,6 +26,8 @@ export default function ScreenAddress() {
   const [addressWhitoutNumber, setAddressWhitoutNumber] =
     useState<boolean>(false);
   const [complement, setComplement] = useState<string>('');
+  const MAX_NUMBER_LENGTH = 6;
+  const maxNumberLengthError = number.length > MAX_NUMBER_LENGTH;
 
   function getInitialDataFromSessionStorage() {
     setComplement(address.complement);
@@ -40,6 +43,11 @@ export default function ScreenAddress() {
     router.push('/loja/petlove/planos');
   }
 
+  function handleSetNumber(value: string) {
+    const sanitizedValue = sanitize.number(value);
+    setNumber(sanitizedValue);
+  }
+
   function handleCheckBox() {
     setNumber('');
     setAddressWhitoutNumber((oldState) => !oldState);
@@ -51,6 +59,15 @@ export default function ScreenAddress() {
 
   return (
     <>
+      <CustomData
+        pageName="Cuidamos do seu pet onde ele estiver"
+        category='aquisicao'
+        product='petlove-saude'
+        subproduct=''
+        funnel='short-form'
+        vertical='servico'
+        cpf=''
+      />
       <HeaderAcquisitionFlow
         goBackLink="/loja/petlove/cep"
         hasShoppingCart={false}
@@ -75,14 +92,14 @@ export default function ScreenAddress() {
           width="fluid"
           label="CEP"
           disabled
-          value={sanitize(address.cep)}
+          value={address.cep}
         />
         <Input
           name=""
           width="fluid"
           label="Rua, Avenida, alameda"
           disabled
-          value={sanitize(address.street)}
+          value={address.street}
         />
         <Input
           name="numero"
@@ -90,7 +107,8 @@ export default function ScreenAddress() {
           label="Número"
           disabled={addressWhitoutNumber}
           value={number}
-          onChange={(e) => setNumber(sanitize(onlyNumbers(e.target.value)))}
+          onChange={(e) => handleSetNumber(e.target.value)}
+          errorMessage={maxNumberLengthError ? 'Limite de 6 caracteres atingido' : ''}
         />
         <Checkbox
           title="meu-endereco-nao-tem-numero"
@@ -99,11 +117,11 @@ export default function ScreenAddress() {
           onClick={() => handleCheckBox()}
         />
         <Input
-          name="complemento"
+          name="complemento (opcional)"
           width="fluid"
           label="Complemento"
           value={complement}
-          onChange={(e) => setComplement(sanitize(e.target.value))}
+          onChange={(e) => setComplement(sanitize.string(e.target.value))}
         />
         <Input
           name="cidade"
@@ -122,7 +140,7 @@ export default function ScreenAddress() {
 
         <Button
           variant='insurance'
-          disabled={addressWhitoutNumber ? !addressWhitoutNumber : number.length < 1}
+          disabled={addressWhitoutNumber || maxNumberLengthError ? !addressWhitoutNumber : number.length < 1}
           width="fluid"
           onClick={handleNextStep}
         >

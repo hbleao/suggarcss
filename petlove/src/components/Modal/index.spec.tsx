@@ -1,225 +1,212 @@
-import { render, screen, fireEvent, createEvent } from "@testing-library/react";
+import { createEvent, fireEvent, render, screen } from '@testing-library/react';
 
-import { Modal } from ".";
+import { Modal } from '.';
 
-jest.mock("./styles.scss", () => ({}));
+jest.mock('./styles.scss', () => ({}));
 
-jest.mock("next/navigation", () => ({
-	useRouter: jest.fn(() => ({
-		push: jest.fn(),
-	})),
-	useSearchParams: jest.fn(() => ({
-		get: jest.fn((param) => (param === "modal" ? "test-modal" : null)),
-	})),
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+  })),
+  useSearchParams: jest.fn(() => ({
+    get: jest.fn((param) => (param === 'modal' ? 'test-modal' : null)),
+  })),
 }));
 
-jest.mock("@/utils", () => {
-	const mockClsx = jest.fn((...args: unknown[]) =>
-		args.filter(Boolean).join(" "),
-	);
-	return {
-		clsx: mockClsx,
-	};
+jest.mock('@/utils', () => {
+  const mockClsx = jest.fn((...args: unknown[]) =>
+    args.filter(Boolean).join(' '),
+  );
+  return {
+    clsx: mockClsx,
+  };
 });
 
-describe("Modal", () => {
-	const originalLocation = window.location;
-	let mockRouterPush: jest.Mock;
+describe('Modal', () => {
+  let mockRouterPush: jest.Mock;
 
-	beforeEach(() => {
-		mockRouterPush = jest.fn();
-		const { useRouter } = require("next/navigation");
-		useRouter.mockReturnValue({
-			push: mockRouterPush,
-		});
+  beforeEach(() => {
+    mockRouterPush = jest.fn();
+    const { useRouter } = require('next/navigation');
+    useRouter.mockReturnValue({
+      push: mockRouterPush,
+    });
+  });
 
-		Object.defineProperty(window, "location", {
-			writable: true,
-			value: { search: "?modal=test-modal" },
-		});
-	});
+  it('should be render correctly opened', () => {
+    const { container } = render(
+      <Modal
+        name="test-modal"
+        title="Título do Modal"
+        subtitle="Subtítulo do Modal"
+      >
+        <p>Conteúdo do modal</p>
+      </Modal>,
+    );
 
-	afterEach(() => {
-		Object.defineProperty(window, "location", {
-			writable: true,
-			value: originalLocation,
-		});
-		jest.clearAllMocks();
-	});
+    const modal = container.querySelector('.modal__root');
+    expect(modal).toBeInTheDocument();
+    expect(modal).toHaveClass('modal__root');
+    expect(modal).not.toHaveClass('modal--hidden');
 
-	it("deve renderizar corretamente quando aberto", () => {
-		const { container } = render(
-			<Modal
-				name="test-modal"
-				title="Título do Modal"
-				subtitle="Subtítulo do Modal"
-			>
-				<p>Conteúdo do modal</p>
-			</Modal>,
-		);
+    const overlay = container.querySelector('.modal__overlay');
+    expect(overlay).toBeInTheDocument();
 
-		const modal = container.querySelector(".modal__root");
-		expect(modal).toBeInTheDocument();
-		expect(modal).toHaveClass("modal__root");
-		expect(modal).not.toHaveClass("modal--hidden");
+    const title = screen.getByText('Título do Modal');
+    expect(title).toBeInTheDocument();
+    expect(title).toHaveClass('modal__header-title');
+    expect(title).toHaveAttribute('id', 'modal-title');
 
-		const overlay = container.querySelector(".modal__overlay");
-		expect(overlay).toBeInTheDocument();
+    const subtitle = screen.getByText('Subtítulo do Modal');
+    expect(subtitle).toBeInTheDocument();
+    expect(subtitle).toHaveClass('modal__header-subtitle');
+    expect(subtitle).toHaveAttribute('id', 'modal-subtitle');
 
-		const title = screen.getByText("Título do Modal");
-		expect(title).toBeInTheDocument();
-		expect(title).toHaveClass("modal__header-title");
-		expect(title).toHaveAttribute("id", "modal-title");
+    const content = screen.getByText('Conteúdo do modal');
+    expect(content).toBeInTheDocument();
 
-		const subtitle = screen.getByText("Subtítulo do Modal");
-		expect(subtitle).toBeInTheDocument();
-		expect(subtitle).toHaveClass("modal__header-subtitle");
-		expect(subtitle).toHaveAttribute("id", "modal-subtitle");
+    const closeButton = screen.getByRole('button', { name: /fechar modal/i });
+    expect(closeButton).toBeInTheDocument();
+    expect(closeButton).toHaveClass('modal__header-icon-close');
+    expect(closeButton).toHaveAttribute('aria-label', 'Fechar Modal');
+  });
 
-		const content = screen.getByText("Conteúdo do modal");
-		expect(content).toBeInTheDocument();
+  it("should be able to close modal when click on close button", () => {
 
-		const closeButton = screen.getByRole("button", { name: /fechar modal/i });
-		expect(closeButton).toBeInTheDocument();
-		expect(closeButton).toHaveClass("modal__header-icon-close");
-		expect(closeButton).toHaveAttribute("aria-label", "Fechar Modal");
-	});
+    render(
+      <Modal name="test-modal" title="Título do Modal">
+        <p>Conteúdo do modal</p>
+      </Modal>,
+    );
 
-	it("deve fechar o modal ao clicar no botão de fechar", () => {
-		render(
-			<Modal name="test-modal" title="Título do Modal">
-				<p>Conteúdo do modal</p>
-			</Modal>,
-		);
+    const closeButton = screen.getByRole("button", { name: /fechar modal/i });
+    fireEvent.click(closeButton);
 
-		const closeButton = screen.getByRole("button", { name: /fechar modal/i });
-		fireEvent.click(closeButton);
+    expect(mockRouterPush).toHaveBeenCalledWith("?", { scroll: false });
+  });
 
-		expect(mockRouterPush).toHaveBeenCalledWith("?", { scroll: false });
-	});
+  it("should be able to close overlay when click on close button", () => {
+    const { container } = render(
+      <Modal name="test-modal" title="Título do Modal">
+        <p>Conteúdo do modal</p>
+      </Modal>,
+    );
 
-	it("deve fechar o modal ao clicar no overlay", () => {
-		const { container } = render(
-			<Modal name="test-modal" title="Título do Modal">
-				<p>Conteúdo do modal</p>
-			</Modal>,
-		);
+    const overlay = container.querySelector(".modal__overlay");
+    expect(overlay).toBeInTheDocument();
+    if (overlay) {
+      fireEvent.click(overlay);
+    }
 
-		const overlay = container.querySelector(".modal__overlay");
-		expect(overlay).toBeInTheDocument();
-		if (overlay) {
-			fireEvent.click(overlay);
-		}
+    expect(mockRouterPush).toHaveBeenCalledWith("?", { scroll: false });
+  });
 
-		expect(mockRouterPush).toHaveBeenCalledWith("?", { scroll: false });
-	});
+  it("should not be visible when the URL parameter does not match the modal name", () => {
+    const mockGet = jest.fn((param) =>
+      param === "modal" ? "outro-modal" : null,
+    );
+    const { useSearchParams } = require("next/navigation");
+    useSearchParams.mockReturnValue({
+      get: mockGet,
+    });
 
-	it("não deve estar visível quando o parâmetro de URL não corresponder ao nome do modal", () => {
-		const mockGet = jest.fn((param) =>
-			param === "modal" ? "outro-modal" : null,
-		);
-		const { useSearchParams } = require("next/navigation");
-		useSearchParams.mockReturnValue({
-			get: mockGet,
-		});
+    const { container } = render(
+      <Modal name="test-modal" title="Título do Modal">
+        <p>Conteúdo do modal</p>
+      </Modal>,
+    );
 
-		const { container } = render(
-			<Modal name="test-modal" title="Título do Modal">
-				<p>Conteúdo do modal</p>
-			</Modal>,
-		);
+    const overlay = container.querySelector(".modal__overlay");
+    expect(overlay).toBeFalsy();
+  });
 
-		const overlay = container.querySelector(".modal__overlay");
-		expect(overlay).toBeFalsy();
-	});
+  it("should render the subtitle when provided", () => {
+    render(
+      <Modal
+        name="test-modal"
+        title="Título do Modal"
+        subtitle="Subtítulo do Modal"
+      >
+        <p>Conteúdo do modal</p>
+      </Modal>,
+    );
 
-	it("deve renderizar o subtítulo quando fornecido", () => {
-		render(
-			<Modal
-				name="test-modal"
-				title="Título do Modal"
-				subtitle="Subtítulo do Modal"
-			>
-				<p>Conteúdo do modal</p>
-			</Modal>,
-		);
+    const subtitle = screen.getByText("Subtítulo do Modal");
+    expect(subtitle).toBeInTheDocument();
+    expect(subtitle).toHaveClass("modal__header-subtitle");
+    expect(subtitle).toHaveAttribute("id", "modal-subtitle");
+  });
 
-		const subtitle = screen.getByText("Subtítulo do Modal");
-		expect(subtitle).toBeInTheDocument();
-		expect(subtitle).toHaveClass("modal__header-subtitle");
-		expect(subtitle).toHaveAttribute("id", "modal-subtitle");
-	});
+  it("não deve renderizar o subtítulo quando não fornecido", () => {
+    const { container } = render(
+      <Modal name="test-modal" title="Título do Modal">
+        <p>Conteúdo do modal</p>
+      </Modal>,
+    );
 
-	it("não deve renderizar o subtítulo quando não fornecido", () => {
-		const { container } = render(
-			<Modal name="test-modal" title="Título do Modal">
-				<p>Conteúdo do modal</p>
-			</Modal>,
-		);
+    const subtitleElement = container.querySelector("#modal-subtitle");
+    expect(subtitleElement).toBeInTheDocument();
+    expect(subtitleElement?.textContent).toBe("");
+  });
 
-		const subtitleElement = container.querySelector("#modal-subtitle");
-		expect(subtitleElement).toBeInTheDocument();
-		expect(subtitleElement?.textContent).toBe("");
-	});
+  it("deve ter os atributos de acessibilidade corretos", () => {
+    const { container } = render(
+      <Modal name="test-modal" title="Título do Modal">
+        <p>Conteúdo do modal</p>
+      </Modal>,
+    );
 
-	it("deve ter os atributos de acessibilidade corretos", () => {
-		const { container } = render(
-			<Modal name="test-modal" title="Título do Modal">
-				<p>Conteúdo do modal</p>
-			</Modal>,
-		);
+    const modal = container.querySelector(".modal__root");
+    expect(modal).toHaveAttribute("aria-modal", "true");
+    expect(modal).toHaveAttribute("aria-labelledby", "modal-title");
+    expect(modal).toHaveAttribute("aria-describedby", "modal-subtitle");
+    expect(modal).toHaveAttribute("tabindex", "-1");
+  });
 
-		const modal = container.querySelector(".modal__root");
-		expect(modal).toHaveAttribute("aria-modal", "true");
-		expect(modal).toHaveAttribute("aria-labelledby", "modal-title");
-		expect(modal).toHaveAttribute("aria-describedby", "modal-subtitle");
-		expect(modal).toHaveAttribute("tabindex", "-1");
-	});
+  it("deve renderizar o ícone de fechar corretamente", () => {
+    render(
+      <Modal name="test-modal" title="Título do Modal">
+        <p>Conteúdo do modal</p>
+      </Modal>,
+    );
 
-	it("deve renderizar o ícone de fechar corretamente", () => {
-		render(
-			<Modal name="test-modal" title="Título do Modal">
-				<p>Conteúdo do modal</p>
-			</Modal>,
-		);
+    const closeButton = screen.getByRole("button", { name: /fechar modal/i });
+    expect(closeButton).toBeInTheDocument();
+    expect(closeButton).toHaveClass("modal__header-icon-close");
+    expect(closeButton).toHaveAttribute("type", "button");
+    expect(closeButton).toHaveAttribute("aria-label", "Fechar Modal");
 
-		const closeButton = screen.getByRole("button", { name: /fechar modal/i });
-		expect(closeButton).toBeInTheDocument();
-		expect(closeButton).toHaveClass("modal__header-icon-close");
-		expect(closeButton).toHaveAttribute("type", "button");
-		expect(closeButton).toHaveAttribute("aria-label", "Fechar Modal");
+    const svg = closeButton.querySelector("svg");
+    expect(svg).toBeInTheDocument();
 
-		const svg = closeButton.querySelector("svg");
-		expect(svg).toBeInTheDocument();
+    if (svg) {
+      expect(svg).toHaveAttribute("width", "24");
+      expect(svg).toHaveAttribute("height", "24");
+      expect(svg).toHaveAttribute("viewBox", "0 0 40 40");
+      expect(svg).toHaveAttribute("fill", "none");
 
-		if (svg) {
-			expect(svg).toHaveAttribute("width", "24");
-			expect(svg).toHaveAttribute("height", "24");
-			expect(svg).toHaveAttribute("viewBox", "0 0 40 40");
-			expect(svg).toHaveAttribute("fill", "none");
+      const title = svg.querySelector("title");
+      expect(title).toHaveTextContent("Ícone de fechar");
+    }
+  });
 
-			const title = svg.querySelector("title");
-			expect(title).toHaveTextContent("Ícone de fechar");
-		}
-	});
+  it("deve impedir a propagação de eventos ao clicar no modal", () => {
+    const { container } = render(
+      <Modal name="test-modal" title="Título do Modal">
+        <p>Conteúdo do modal</p>
+      </Modal>,
+    );
 
-	it("deve impedir a propagação de eventos ao clicar no modal", () => {
-		const { container } = render(
-			<Modal name="test-modal" title="Título do Modal">
-				<p>Conteúdo do modal</p>
-			</Modal>,
-		);
+    const modal = container.querySelector(".modal__root");
+    expect(modal).toBeInTheDocument();
 
-		const modal = container.querySelector(".modal__root");
-		expect(modal).toBeInTheDocument();
+    if (modal) {
+      const clickEvent = createEvent.click(modal);
+      const stopPropagationSpy = jest.spyOn(clickEvent, "stopPropagation");
 
-		if (modal) {
-			const clickEvent = createEvent.click(modal);
-			const stopPropagationSpy = jest.spyOn(clickEvent, "stopPropagation");
+      fireEvent(modal, clickEvent);
 
-			fireEvent(modal, clickEvent);
-
-			expect(stopPropagationSpy).toHaveBeenCalled();
-		}
-	});
+      expect(stopPropagationSpy).toHaveBeenCalled();
+    }
+  });
 });

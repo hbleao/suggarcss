@@ -1,13 +1,10 @@
-import { initialState } from "./initialState";
+import type { initialState } from './initialState';
 
 export type SearchField = keyof typeof initialState.search;
 export type PostalGuideField = keyof typeof initialState.postalGuide;
 export type NotificationField = keyof typeof initialState.notification;
 
-export type Field =
-  | SearchField
-  | PostalGuideField
-  | NotificationField;
+export type Field = SearchField | PostalGuideField | NotificationField;
 
 export type ActionProps = {
   type:
@@ -27,7 +24,6 @@ export type ActionProps = {
   fieldName?: Field;
   payload?: any;
 };
-
 
 export type keyValueProps = {
   [key: string]: any;
@@ -55,11 +51,11 @@ export interface InitialStateProps {
     address: string;
     selectedCity: string;
     selectedState: string;
-    addressList: string[],
-    availableCities: string[],
-    filteredCities: string[],
-    availableStates: string[],
-    cepList: string[],
+    addressList: string[];
+    availableCities: string[];
+    filteredCities: string[];
+    availableStates: string[];
+    cepList: string[];
     dropdowns: {
       city: boolean;
       state: boolean;
@@ -71,15 +67,16 @@ export interface InitialStateProps {
       city: string;
       selectedState: string;
       addressInput: string;
-    }
-  }
+    };
+  };
   notification: {
     hasCoverage: boolean;
     address: string;
     street: string;
     ibgeCode: string;
     cep: string;
+    neighborhood: string;
     state: string;
     stateCode: string;
-  }
+  };
 }

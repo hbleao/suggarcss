@@ -1,3 +1,4 @@
+import { Loader } from "./Loader";
 import "./styles.scss";
 
 import type { ButtonProps } from "./types";
@@ -38,6 +39,7 @@ export const Button = ({
   width = "contain",
   disabled = false,
   className = "",
+  isLoading = false,
   children,
   ...restProps
 }: ButtonProps) => {
@@ -49,7 +51,7 @@ export const Button = ({
 
   return (
     <button className={composedClassName} disabled={disabled} {...restProps}>
-      {children}
+      {isLoading ? <Loader data-testid="loaderButton" /> : children}
     </button>
   );
 };

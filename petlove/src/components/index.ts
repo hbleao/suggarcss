@@ -11,6 +11,7 @@ export { Carousel } from './Carousel';
 export { Checkbox } from './Checkbox';
 export { Chip } from './Chip';
 export { Column } from './Column';
+export { CustomData } from './CustomData';
 export { Dialog } from './Dialog';
 export { Dropdown } from './Dropdown';
 export { Flex } from './Flex';

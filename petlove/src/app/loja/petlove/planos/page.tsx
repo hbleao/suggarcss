@@ -2,42 +2,56 @@
 
 import { useEffect, useState } from 'react';
 
-import { carouselSettings } from './carouselConfig';
+import { type CarouselConfig, carouselSettings } from './carouselConfig';
 import './styles.scss';
 
 import {
   Button,
   Carousel,
+  CustomData,
   Dialog,
   HeaderAcquisitionFlow,
   ProgressBar,
-  Typography
+  Typography,
 } from '@/components';
-import { useWindowSize } from '@/hooks';
+import { useTracking, useWindowSize } from '@/hooks';
 import { PlansService } from '@/services';
-import { Plan as PlanType } from '@/services/plansService/types';
+import type { Plan as PlanType } from '@/services/plansService/types';
 import { useAquisitionStore } from '@/store';
 import { LoaderPlans } from './LoaderPlans';
 import { Plan } from './Plan';
+import {
+  pushErrorPlansToDataLayer,
+  pushPlansToDataLayer
+} from './dataLayer';
 
 export default function Plans() {
+  useTracking();
   const { width } = useWindowSize();
-  const [carouselConfig, setCarouselConfit] = useState({});
+  const [carouselConfig, setCarouselConfit] = useState({} as CarouselConfig);
   const [plans, setPlans] = useState<PlanType[]>([]);
   const [isLoadingPlans, setIsLoadingPlans] = useState(false);
   const [isErrorFetchPlans, setIsErrorFetchPlans] = useState(false);
-  const state = useAquisitionStore(state => state);
+  const state = useAquisitionStore((state) => state);
 
   const fetchPlans = async () => {
     try {
+      if (!state.data?.address?.ibgeCode) return;
       setIsErrorFetchPlans(false);
       setIsLoadingPlans(true);
       const body = { ibgeCode: state.data.address.ibgeCode };
       const { data } = await PlansService(body);
       setPlans(data);
-    } catch (error) {
+      pushPlansToDataLayer(data, state?.data?.pet?.type);
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    } catch (error: any) {
       console.error('Erro na API de fetchPlans:', error);
-      setIsErrorFetchPlans(true)
+      setIsErrorFetchPlans(true);
+      pushErrorPlansToDataLayer({
+        endpoint: error?.url,
+        status: error?.status,
+        backendErrorMessage: error?.backendErrorMessage,
+      });
     } finally {
       setIsLoadingPlans(false);
     }
@@ -49,17 +63,31 @@ export default function Plans() {
 
   useEffect(() => {
     fetchPlans();
-  }, []);
+  }, [state.data?.address?.ibgeCode]);
 
   return (
     <>
+      <CustomData
+        pageName="O melhor plano para seu pet está aqui"
+        category='aquisicao'
+        product='petlove-saude'
+        subproduct=''
+        funnel='short-form'
+        vertical='servico'
+        cpf=''
+      />
       <HeaderAcquisitionFlow
         goBackLink="/loja/petlove/endereco"
         hasShoppingCart={false}
       />
       <ProgressBar value={80} initialValue={60} />
       <main className="page__plans">
-        <Typography variant="title4" weight="bold" className="plans__title">
+        <Typography
+          id="gtm-title"
+          variant="title4"
+          weight="bold"
+          className="plans__title"
+        >
           O <span className="plans__highlight">melhor plano</span> para o seu
           pet está aqui!
         </Typography>
@@ -80,7 +108,7 @@ export default function Plans() {
             arrows={carouselConfig.arrows}
           >
             {plans?.map((plan, index) => (
-              <Plan plan={plan} firstItem={index === 0} />
+              <Plan key={plan.planId} plan={plan} firstItem={index === 0} />
             ))}
           </Carousel>
         )}
@@ -93,17 +121,22 @@ export default function Plans() {
             arrows={carouselConfig.arrows}
           >
             {Array.from({ length: 5 }, (_, i) => (
-              <LoaderPlans />
+              <LoaderPlans key={`shadow-${// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                i}`} />
             ))}
-
           </Carousel>
         )}
 
-        <Dialog isOpen={isErrorFetchPlans}
+        <Dialog
+          isOpen={isErrorFetchPlans}
           title="Poxa, nosso sistema está em manutenção"
           subtitle="Estamos trabalhando para que volte a funcionar o quanto antes."
           description="Por favor, tente de novo mais tarde."
-          footer={<Button size='small' onClick={fetchPlans}>Tentar novamente</Button>}
+          footer={
+            <Button size="small" onClick={fetchPlans}>
+              Tentar novamente
+            </Button>
+          }
         />
       </main>
     </>

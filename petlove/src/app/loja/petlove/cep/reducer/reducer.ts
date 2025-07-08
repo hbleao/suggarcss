@@ -72,6 +72,7 @@ function reducer(state: InitialStateProps, action: ActionProps) {
         ibgeCode: 'ibgeCode',
         address: 'address',
         street: 'street',
+        neighborhood: 'neighborhood',
         cep: 'cep',
         state: 'state',
         stateCode: 'stateCode',
@@ -111,6 +112,7 @@ function reducer(state: InitialStateProps, action: ActionProps) {
         address: '',
         street: '',
         cep: '',
+        neighborhood: '',
         state: '',
         stateCode: '',
       }
