@@ -16,6 +16,9 @@ export const sanitize = {
   email: (value: string) => {
     return value.replace(/[^a-zA-Z0-9@._\-]/g, '');
   },
+  alphanumeric: (value: string) => {
+    return value.replace(/[^a-zA-Z0-9\u00C0-\u00FF\s]/g, '');
+  },
   dom: (input: string) => {
     return sanitizeHtml(input, {
       allowedTags: [],

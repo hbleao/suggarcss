@@ -25,7 +25,7 @@ import {
   phoneMask,
   sanitize
 } from '@/utils';
-import { pushAddToCartToDataLayer, pushPromoMktComunicationToDataLayer } from './dataLayer';
+import { pushAddLeadDataLayer, pushAddToCartToDataLayer, pushPromoMktComunicationToDataLayer } from './dataLayer';
 import { handleFieldsValidation } from './validation';
 
 export default function PersonalData() {
@@ -246,6 +246,7 @@ export default function PersonalData() {
 
       window.sessionStorage.setItem('shopping_token', httpProposalResponse.cartCommerceId.cartId);
 
+      pushAddLeadDataLayer(user?.cpf);
       pushAddToCartToDataLayer(localStorage.plan, localStorage.pet.name);
       pushPromoMktComunicationToDataLayer({
         acceptTerms: user?.acceptTerms, cpf: user?.cpf
@@ -311,7 +312,7 @@ export default function PersonalData() {
           className="personal-data__subtitle"
           weight="bold"
         >
-          Ou digite os seus dados para continuar
+          Digite os seus dados para continuar
         </Typography>
         <form className="personal-data__form">
           <Input

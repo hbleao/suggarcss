@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
-import { env } from 'next-runtime-env';
+import { env, PublicEnvScript } from 'next-runtime-env';
 
 import { TolkitLexis } from '@/utils/lexis';
 
 import { RootProvider } from '@/providers';
 
 import '@/styles/global.scss';
-import { generateSessionId, GTM } from '@/utils';
-import { VWO } from '@/utils/vwo';
+import { generateSessionId, GTM, VWO } from '@/utils';
 
 export const metadata: Metadata = {
   title: 'Tech Store - Next.js',
@@ -25,8 +24,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        <PublicEnvScript />
+        <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
         <VWO />
-        <GTM />
         <meta charSet='utf-8' />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://www.portoseguro.com.br/" />
@@ -35,8 +35,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <TolkitLexis sessionId={sessionId} organizationId={organizationID} />
-      <body >
+      <body>
         <RootProvider>{children}</RootProvider>
+        <GTM />
       </body>
     </html>
   );

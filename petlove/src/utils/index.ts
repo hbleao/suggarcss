@@ -11,4 +11,5 @@ export { onlyNumbers } from './mask/onlyNumbers';
 export { phoneMask } from './mask/phone';
 export { plateMask } from './mask/plate';
 export { sanitize } from './sanitize';
+export { VWO } from './vwo';
 

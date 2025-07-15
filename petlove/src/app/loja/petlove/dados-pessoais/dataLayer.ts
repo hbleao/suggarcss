@@ -77,3 +77,14 @@ export function pushAddToCartToDataLayer(plan: IPlan, petType: string) {
     items: item,
   });
 }
+
+export function pushAddLeadDataLayer(cpf: string) {
+  window.dataLayer.push({
+    event: "lead",
+    ev_action: "lead:form:enviar:sucesso",
+    ev_label: "tipo-pessoa:pf",
+    lead_id: "id",
+    client_id: encryptValue(cpf),
+    client_bcp: "<id do cliente na bcp>"
+  });
+}

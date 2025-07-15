@@ -1,2 +1,0 @@
-export { cepHandlers } from './cep';
-

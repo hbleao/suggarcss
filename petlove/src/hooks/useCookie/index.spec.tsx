@@ -1,5 +1,5 @@
-import { renderHook, act } from "@testing-library/react";
-import { useCookie } from "../useCookie";
+import { act, renderHook } from "@testing-library/react";
+import { useCookie } from ".";
 
 describe("useCookie", () => {
 	beforeEach(() => {

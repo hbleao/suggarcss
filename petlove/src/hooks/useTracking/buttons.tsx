@@ -3,10 +3,10 @@ import { formatGtmText } from './utils';
 export function buttons(): void {
   const buttons = document.querySelectorAll('button');
   const titleElement = document.querySelector('#gtm-title');
-
+  // biome-ignore lint/complexity/noForEach: <explanation>
   buttons.forEach((button: HTMLButtonElement) => {
     const titleText = titleElement?.textContent?.trim() ?? 'sem-titulo';
-    const buttonTitle = button?.title || '';
+    const buttonTitle = button?.textContent || '';
     const buttonLabel = buttonTitle.trim() || 'sem-label';
 
     button.setAttribute('data-gtm-name', formatGtmText(titleText));

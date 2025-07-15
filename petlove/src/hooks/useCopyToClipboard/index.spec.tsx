@@ -1,5 +1,5 @@
-import { renderHook, act } from "@testing-library/react";
-import { useCopyToClipboard } from "../useCopyToClipboard";
+import { act, renderHook } from "@testing-library/react";
+import { useCopyToClipboard } from ".";
 
 describe("useCopyToClipboard", () => {
 	const mockClipboard = {
@@ -39,7 +39,7 @@ describe("useCopyToClipboard", () => {
 		const mockError = new Error("Erro ao copiar");
 		mockClipboard.writeText.mockRejectedValueOnce(mockError);
 
-		jest.spyOn(console, "error").mockImplementation(() => {});
+		jest.spyOn(console, "error").mockImplementation(() => { });
 
 		const { result } = renderHook(() => useCopyToClipboard());
 

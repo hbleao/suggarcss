@@ -121,7 +121,7 @@ export default function ScreenAddress() {
           width="fluid"
           label="Complemento"
           value={complement}
-          onChange={(e) => setComplement(sanitize.string(e.target.value))}
+          onChange={(e) => setComplement(sanitize.alphanumeric(e.target.value))}
         />
         <Input
           name="cidade"

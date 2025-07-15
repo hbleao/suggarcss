@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 
-import { useTryCatch } from "../useTryCatch";
+import { useTryCatch } from ".";
 
 describe("useTryCatch", () => {
 	beforeEach(() => {

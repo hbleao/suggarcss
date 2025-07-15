@@ -1,5 +1,5 @@
-import { renderHook, act, waitFor } from "@testing-library/react";
-import { useAsync } from "../useAsync";
+import { act, renderHook, waitFor } from "@testing-library/react";
+import { useAsync } from ".";
 
 describe("useAsync", () => {
 	const originalConsoleError = console.error;
@@ -51,7 +51,7 @@ describe("useAsync", () => {
 		await act(async () => {
 			try {
 				await result.current.execute();
-			} catch {}
+			} catch { }
 		});
 
 		expect(result.current.status).toBe("error");

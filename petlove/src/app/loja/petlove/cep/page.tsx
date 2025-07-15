@@ -174,17 +174,18 @@ export default function Cep() {
 
   function handleOpenModalWithoutCep() {
     const params = new URLSearchParams(window.location.search);
+    console.log('handleOpenModalWithoutCep', params);
     params.set('modal', 'modal-nao-sei-o-cep');
     router.push(`?${params.toString()}`, { scroll: false });
-    dispatch({ type: 'cleanSearchFields' });
-    dispatch({ type: 'clearNotification' });
-    dispatch({
-      type: 'setSearchErrors',
-      fieldName: 'cep',
-      payload: ''
-    });
+    // dispatch({ type: 'cleanSearchFields' });
+    // dispatch({ type: 'clearNotification' });
+    // dispatch({
+    //   type: 'setSearchErrors',
+    //   fieldName: 'cep',
+    //   payload: ''
+    // });
 
-    dispatch({ type: 'clearPostalGuide' });
+    // dispatch({ type: 'clearPostalGuide' });
   }
 
   const handleCloseModalWithoutCep = () => {

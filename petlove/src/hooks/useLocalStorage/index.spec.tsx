@@ -1,10 +1,10 @@
-import { renderHook, act } from "@testing-library/react";
-import { useLocalStorage } from "../useLocalStorage";
+import { act, renderHook } from "@testing-library/react";
+import { useLocalStorage } from ".";
 
 describe("useLocalStorage", () => {
 	beforeEach(() => {
 		window.localStorage.clear();
-		jest.spyOn(console, "error").mockImplementation(() => {});
+		jest.spyOn(console, "error").mockImplementation(() => { });
 	});
 
 	afterEach(() => {

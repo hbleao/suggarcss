@@ -1,6 +1,6 @@
-import { renderHook, act } from "@testing-library/react";
-import { useIntersectionObserver } from "../useIntersectionObserver";
+import { act, renderHook } from "@testing-library/react";
 import { useRef } from "react";
+import { useIntersectionObserver } from ".";
 
 describe("useIntersectionObserver", () => {
 	class MockIntersectionObserver {
@@ -156,7 +156,7 @@ describe("useIntersectionObserver", () => {
 	it("não deve observar se o elemento de referência for null", () => {
 		jest.clearAllMocks();
 
-		const testMockObserver = new MockIntersectionObserver(() => {});
+		const testMockObserver = new MockIntersectionObserver(() => { });
 		global.IntersectionObserver = jest
 			.fn()
 			.mockImplementation(() => testMockObserver);

@@ -1,5 +1,5 @@
-import { renderHook, act, waitFor } from '@testing-library/react';
-import { useForm } from '../useForm';
+import { act, renderHook, waitFor } from '@testing-library/react';
+import { useForm } from '.';
 
 describe('useForm', () => {
 	it('should initialize with provided values', () => {

@@ -24,7 +24,7 @@ export function pushPlansToDataLayer(plans: Plan[], petType: string) {
   }));
 
   window.dataLayer.push({
-    event: 'view-item',
+    event: 'view_item',
     ev_action: 'ecommerce:visualizar:produto:sucesso',
     items,
   });

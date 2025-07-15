@@ -6,7 +6,7 @@ import { carousel } from "./carousel";
 import { checkbox } from "./checkbox";
 import { inputs } from "./inputs";
 import { link } from "./link";
-import { modals } from "./modals";
+import { modals } from "./modal";
 import { selects } from "./select";
 
 // Estender a interface Window para incluir dataLayer
