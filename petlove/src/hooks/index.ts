@@ -37,5 +37,8 @@ export { useCookie } from './useCookie';
 // Hooks para rastreamento de valores
 export { usePrevious } from './usePrevious';
 
+// Hooks para navegação
+export { usePreviousScreen } from './usePreviousScreen';
+
 // Hooks para tagueamento
 export { useTracking } from './useTracking';

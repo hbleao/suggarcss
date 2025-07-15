@@ -13,15 +13,17 @@ import {
   ProgressBar,
   Typography,
 } from '@/components';
-import { useTracking } from '@/hooks/useTracking';
+import { useTracking, usePreviousScreen } from '@/hooks';
 import { useAquisitionStore } from '@/store';
+import type { UserProps } from '@/store/aquisitionSlice/types';
 import { sanitize } from '@/utils';
 
 export default function ScreenAddress() {
   useTracking();
   const router = useRouter();
-  const { address } = useAquisitionStore((state) => state.data);
-  const setAddress = useAquisitionStore((state) => state.setAddress);
+  const { validatePreviousScreen } = usePreviousScreen('endereco');
+  const { address } = useAquisitionStore((state: UserProps) => state.data);
+  const setAddress = useAquisitionStore((state: UserProps) => state.setAddress);
   const [number, setNumber] = useState<string>('');
   const [addressWhitoutNumber, setAddressWhitoutNumber] =
     useState<boolean>(false);
@@ -56,6 +58,11 @@ export default function ScreenAddress() {
   useEffect(() => {
     getInitialDataFromSessionStorage();
   }, [address]);
+  
+  // Verifica se o usuário passou pela tela anterior (CEP)
+  useEffect(() => {
+    validatePreviousScreen();
+  }, [validatePreviousScreen]);
 
   return (
     <>
