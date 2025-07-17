@@ -1,0 +1,57 @@
+{
+  "name": "suggarcss",
+  "version": "1.0.0",
+  "description": "- [ ] Framework de UI completo - [ ] Ferramenta CLI para instalação de componentes de forma simples e rápida - [ ] Sistema de tokens centralizado para controle global e fácil atualização - [ ] Design responsivo com abordagem mobile-first - [ ] Sistema de grid flexível e personalizável - [ ] Temas configuráveis (claro/escuro e personalizados) - [ ] Variantes de componentes (tamanhos, estados, variações) - [ ] Animações e transições consistentes e personalizáveis - [ ] Componentes acessíveis seguindo WCAG 2.1 AA - [ ] Documentação interativa com exemplos de uso - [ ] API consistente entre componentes - [ ] Baixo acoplamento entre componentes para facilitar uso individual - [ ] Suporte a customização via props e CSS variables",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "suggarcss": "./dist/cli/index.js"
+  },
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "build": "rm -rf dist && rollup -c && npm run copy:assets",
+    "copy:assets": "cpx 'src/{components,styles,helpers,hooks,@types}/**/*' dist",
+    "lint": "npx @biomejs/biome lint --write ./src",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "prepare": "husky",
+    "semantic-release": "semantic-release",
+    "release": "semantic-release --no-ci"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.6.0",
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0",
+    "cpx": "^1.5.0",
+    "fs-extra": "^11.3.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.1.1",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.3",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/fs-extra": "^11.0.4",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "husky": "^9.1.7",
+    "jsdom": "^26.1.0",
+    "rollup": "^4.45.0",
+    "rollup-plugin-dts": "^6.2.1",
+    "rollup-plugin-sass": "^1.15.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "sass-embedded": "^1.89.2",
+    "semantic-release": "^24.2.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}
