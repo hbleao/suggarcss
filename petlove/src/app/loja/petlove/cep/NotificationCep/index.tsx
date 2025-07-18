@@ -84,3 +84,89 @@ export const NotificationCep = ({
     />
   );
 };
+
+
+// import Image from 'next/image';
+// import './styles.scss';
+
+// import IcAlertSVG from '@/assets/icons/ic-alert.svg';
+// import IcResidenceSVG from '@/assets/icons/ic-residence.svg';
+// import IcSadSVG from '@/assets/icons/ic-sad.svg';
+// import { Notification } from '@/components';
+
+// import type { NotificationCepProps } from './types';
+
+// type NotificationType = 'eligible' | 'notEligible' | 'outService';
+
+// const notificationMap: Record<NotificationType, {
+//   variant: 'outlined' | 'attention' | 'error';
+//   icon: any;
+//   message: { title: string; description: string };
+//   link?: { label: string; href: string };
+// }> = {
+//   eligible: {
+//     variant: 'outlined',
+//     icon: IcResidenceSVG,
+//     message: {
+//       title: '', // preenchido dinamicamente
+//       description: '', // idem
+//     },
+//   },
+//   notEligible: {
+//     variant: 'attention',
+//     icon: IcSadSVG,
+//     message: {
+//       title: 'Ainda não chegamos na sua região',
+//       description: 'Clique no para ser avisado quando chegarmos.',
+//     },
+//     link: {
+//       label: 'Clique aqui',
+//       href: 'https://materiais.petlove.com.br/estamos-chegando',
+//     },
+//   },
+//   outService: {
+//     variant: 'error',
+//     icon: IcAlertSVG,
+//     message: {
+//       title: 'Serviço indisponível',
+//       description: 'No momento nosso serviço está indisponível, tente novamente mais tarde.',
+//     },
+//   },
+// };
+
+// export const NotificationCep = ({
+//   cep,
+//   street,
+//   neighborhood,
+//   stateCode,
+//   error,
+//   coverage,
+// }: NotificationCepProps) => {
+//   const getNotificationType = (): NotificationType => {
+//     if (error) return 'outService';
+//     if (coverage) return 'eligible';
+//     return 'notEligible';
+//   };
+
+//   const type = getNotificationType();
+//   const config = notificationMap[type];
+
+//   // Preenche dinamicamente se for elegível
+//   const message = config.message.title
+//     ? config.message
+//     : {
+//         title: street,
+//         description: `${cep} - ${neighborhood}/${stateCode}`,
+//       };
+
+//   return (
+//     <Notification
+//       className="notificationContainer"
+//       variant={config.variant}
+//       icon={<Image src={config.icon} width={24} height={24} alt="" />}
+//       title={message.title}
+//       description={message.description}
+//       link={config.link}
+//     />
+//   );
+// };

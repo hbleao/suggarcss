@@ -1,41 +1,31 @@
-import { ValidationBuilder, ValidationComposite } from "@/validation/validators";
+import { ValidationBuilder, ValidationComposite } from '@/validation/validators';
 
-const validation = ValidationComposite.build([
-  ...ValidationBuilder.field('cpf')
+const validationSchema = {
+  cpf: ValidationBuilder.field('cpf')
     .required()
-    .cpf('Infome um CPF válido.')
-    .build(),
-  ...ValidationBuilder.field('fullName')
+    .cpf('Informe um CPF válido.')
+    .get(),
+  fullName: ValidationBuilder.field('fullName')
     .required()
     .minWords(2, 'Informe o nome completo.')
-    .build(),
-  ...ValidationBuilder.field('email')
+    .get(),
+  email: ValidationBuilder.field('email')
     .required()
     .email('Informe um email válido.')
-    .build(),
-]);
+    .get(),
+};
 
-export function handleFieldsValidation(fields: any) {
-  let errors = {} as any;
-  const fieldsValidation = [
-    { field: 'fullName', value: fields.fullName },
-    { field: 'cpf', value: fields.cpf },
-    { field: 'email', value: fields.email },
-  ];
+// Junta tudo numa lista plana
+const validation = ValidationComposite.build(
+  Object.values(validationSchema).flat()
+);
 
-  for (let i = 0; i < fieldsValidation.length; i++) {
-    const value = fieldsValidation[i].value;
-
+export function handleFieldsValidation(fields: Record<string, string>) {
+  return Object.entries(fields).reduce((errors, [field, value]) => {
     if (value.length > 5) {
-      const fieldName = fieldsValidation[i].field;
-      const messageValidation = validation.validate(fieldName, value);
-
-      errors = {
-        ...errors,
-        [fieldName]: messageValidation
-      }
+      const errorMessage = validation.validate(field, value);
+      if (errorMessage) errors[field] = errorMessage;
     }
-  }
-
-  return errors;
+    return errors;
+  }, {} as Record<string, string>);
 }

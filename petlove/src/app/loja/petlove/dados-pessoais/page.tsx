@@ -226,11 +226,15 @@ export default function PersonalData() {
       ...user,
       acceptTerms: !user.acceptTerms,
     })
-
   }
 
   function checkCpfAndFullNameValidation() {
-    const errors = handleFieldsValidation(user);
+    // const errors = handleFieldsValidation(user);
+    const errors = handleFieldsValidation({
+      cpf: '123',
+      fullName: 'João',
+      email: 'email@',
+    });
     setUser({ ...user, errors });
   }
 

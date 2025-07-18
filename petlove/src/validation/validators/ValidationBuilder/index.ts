@@ -91,7 +91,7 @@ export class ValidationBuilder {
     return this;
   }
 
-  build(): FieldValidation[] {
+  get(): FieldValidation[] {
     return this.validations;
   }
 }
